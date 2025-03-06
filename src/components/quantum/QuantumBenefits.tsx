@@ -8,33 +8,48 @@ export const QuantumBenefits = () => {
       icon: <Zap size={24} className="text-blue-500" />,
       title: "Exponential speed-up in biomedical simulations and drug development",
       description: "Process complex molecular interactions in minutes instead of months.",
-      percentage: 85
+      impact: "Transformative",
+      level: 85
     },
     {
       icon: <Brain size={24} className="text-purple-500" />,
       title: "Advanced disease prediction and prevention based on quantum-enhanced AI models",
       description: "Identify disease patterns before symptoms appear, enabling preventative interventions.",
-      percentage: 78
+      impact: "Significant",
+      level: 78
     },
     {
       icon: <CheckCircle2 size={24} className="text-green-500" />,
       title: "Hyper-personalized medicine tailored to an individual's genetic and immune landscape",
       description: "Customize treatments with unprecedented precision to maximize efficacy and minimize side effects.",
-      percentage: 92
+      impact: "Revolutionary",
+      level: 92
     },
     {
       icon: <Lock size={24} className="text-red-500" />,
       title: "Secure quantum encryption for privacy-first patient data management",
       description: "Protect sensitive health information with advanced quantum cryptography.",
-      percentage: 88
+      impact: "Substantial",
+      level: 88
     },
     {
       icon: <LineChart size={24} className="text-amber-500" />,
       title: "Enhanced AI-driven diagnostics and medical imaging analytics",
       description: "Detect abnormalities and diagnose conditions with greater accuracy and speed.",
-      percentage: 80
+      impact: "Significant",
+      level: 80
     }
   ];
+
+  const getImpactColor = (impact) => {
+    switch(impact) {
+      case "Revolutionary": return "bg-green-100 text-green-800";
+      case "Transformative": return "bg-blue-100 text-blue-800";
+      case "Substantial": return "bg-red-100 text-red-800";
+      case "Significant": return "bg-amber-100 text-amber-800";
+      default: return "bg-purple-100 text-purple-800";
+    }
+  };
 
   return (
     <section className="mb-16 px-6 py-16 bg-gradient-to-b from-white to-indigo-50">
@@ -74,13 +89,17 @@ export const QuantumBenefits = () => {
                     <div className="flex-1">
                       <div className="flex justify-between items-start mb-2">
                         <h4 className="text-lg font-bold text-health-dark pr-4">{benefit.title}</h4>
-                        <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-medium">
-                          {benefit.percentage}% improvement
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${getImpactColor(benefit.impact)}`}>
+                          {benefit.impact} impact
                         </span>
                       </div>
                       <p className="text-health-dark/70">{benefit.description}</p>
                       <div className="w-full h-2 bg-gray-200 rounded-full mt-3">
-                        <div className="h-2 bg-indigo-500 rounded-full" style={{ width: `${benefit.percentage}%` }}></div>
+                        <div className="h-2 bg-indigo-500 rounded-full" style={{ width: `${benefit.level}%` }}></div>
+                      </div>
+                      <div className="flex justify-between text-xs text-gray-500 mt-1">
+                        <span>Current capabilities</span>
+                        <span>Future potential</span>
                       </div>
                     </div>
                   </div>
