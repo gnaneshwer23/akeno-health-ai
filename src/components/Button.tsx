@@ -3,8 +3,8 @@ import React from 'react';
 import { cn } from "@/lib/utils";
 import { Link, LinkProps } from 'react-router-dom';
 
-// Extended type to handle both button and anchor attributes
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+// Define button-specific props
+interface ButtonBaseProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'default' | 'link';
   size?: 'sm' | 'md' | 'lg' | 'icon';
   children: React.ReactNode;
@@ -12,9 +12,31 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   icon?: React.ReactNode;
   as?: React.ElementType;
-  to?: string;
-  href?: string; // Adding href for when as="a"
 }
+
+// Button props when rendered as a button
+interface ButtonAsButtonProps extends ButtonBaseProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBaseProps> {
+  as?: 'button';
+  to?: never;
+  href?: never;
+}
+
+// Button props when rendered as a Link
+interface ButtonAsLinkProps extends ButtonBaseProps, Omit<LinkProps, keyof ButtonBaseProps> {
+  as: typeof Link | 'Link';
+  to: string;
+  href?: never;
+}
+
+// Button props when rendered as an anchor
+interface ButtonAsAnchorProps extends ButtonBaseProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps> {
+  as: 'a';
+  href: string;
+  to?: never;
+}
+
+// Union of all possible Button props
+type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps | ButtonAsAnchorProps;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   variant = 'primary',
@@ -55,12 +77,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   );
 
   // Handle React Router Link
-  if (Component === Link || to) {
+  if (Component === Link || Component === 'Link' || to) {
     return (
       <Link
         className={classNames}
         to={to || ""}
-        {...props}
+        {...(props as Omit<LinkProps, 'to' | 'className'>)}
       >
         <span className="relative z-10 flex items-center justify-center gap-2">
           {icon && <span className="inline-flex">{icon}</span>}
@@ -79,7 +101,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       <a
         className={classNames}
         href={href}
-        {...props}
+        {...(props as Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'className' | 'href'>)}
       >
         <span className="relative z-10 flex items-center justify-center gap-2">
           {icon && <span className="inline-flex">{icon}</span>}
@@ -97,7 +119,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     <button
       ref={ref}
       className={classNames}
-      {...props}
+      {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     >
       <span className="relative z-10 flex items-center justify-center gap-2">
         {icon && <span className="inline-flex">{icon}</span>}

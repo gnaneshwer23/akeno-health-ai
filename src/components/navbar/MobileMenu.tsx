@@ -74,7 +74,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onLinkClick }) => {
             variant="outline" 
             fullWidth 
             className="shadow-sm"
-            as={Link}
+            as="Link"
             to="/login"
             onClick={onLinkClick}
           >
@@ -84,7 +84,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onLinkClick }) => {
             variant="primary" 
             fullWidth 
             className="shadow"
-            as={Link}
+            as="Link"
             to="/login"
             onClick={onLinkClick}
           >

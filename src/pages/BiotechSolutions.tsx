@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
@@ -10,7 +9,7 @@ import {
   Brain, 
   LineChart, 
   Shield, 
-  Vial, 
+  Beaker, 
   Pill, 
   Zap, 
   Syringe, 
@@ -99,7 +98,7 @@ const BiotechSolutions = () => {
               {/* Card 2 */}
               <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:border-health-primary/20 transition-all">
                 <div className="mb-4 p-3 bg-health-primary/10 rounded-full w-12 h-12 flex items-center justify-center text-health-primary">
-                  <Vial size={24} />
+                  <Beaker size={24} />
                 </div>
                 <h3 className="text-xl font-medium text-health-dark mb-3">Biomarker-Based Clinical Trials</h3>
                 <p className="text-muted-foreground text-sm">

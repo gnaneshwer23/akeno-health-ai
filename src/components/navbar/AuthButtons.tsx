@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Button } from '../Button';
 
 const AuthButtons: React.FC = () => {
@@ -10,7 +9,7 @@ const AuthButtons: React.FC = () => {
         variant="outline" 
         size="sm" 
         className="shadow-sm hover:shadow transition-all"
-        as={Link}
+        as="Link"
         to="/login"
       >
         Sign In
@@ -19,7 +18,7 @@ const AuthButtons: React.FC = () => {
         variant="primary" 
         size="sm" 
         className="shadow hover:shadow-md transition-all"
-        as={Link}
+        as="Link"
         to="/login"
       >
         Get Started
