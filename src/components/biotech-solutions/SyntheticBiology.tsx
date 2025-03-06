@@ -3,7 +3,7 @@ import React from 'react';
 import { 
   Dna,
   Pill,
-  Vaccine,
+  TestTube,
   Sparkles,
   Brain
 } from 'lucide-react';
@@ -26,7 +26,7 @@ const SyntheticBiology = () => {
       description: "AI models predict immune checkpoint inhibitor responses and optimize T-cell receptor interactions for enhanced cancer immunotherapy."
     },
     {
-      icon: <Vaccine size={24} />,
+      icon: <TestTube size={24} />,
       title: "AI-Guided Personalized Vaccine Development",
       description: "AI identifies mutation patterns in infectious diseases to accelerate vaccine design and optimize immune response predictions."
     },
