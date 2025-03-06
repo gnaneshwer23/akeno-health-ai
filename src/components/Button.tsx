@@ -20,7 +20,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   icon,
   ...props
 }, ref) => {
-  const baseStyles = "relative inline-flex items-center justify-center rounded-full font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none overflow-hidden";
+  const baseStyles = "relative inline-flex items-center justify-center rounded-full font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none overflow-hidden shadow-sm";
   
   const variants = {
     primary: "bg-health-primary text-white hover:bg-health-primary/90 focus-visible:ring-health-primary",
@@ -55,9 +55,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         {children}
       </span>
       <span className="absolute inset-0 z-0 overflow-hidden rounded-full">
-        {variant === 'primary' && (
-          <span className="absolute top-1/2 left-1/2 aspect-square w-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white opacity-0 transition-all duration-500 group-active:w-32 group-active:opacity-20"></span>
-        )}
+        <span className="absolute top-1/2 left-1/2 aspect-square w-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white opacity-0 transition-all duration-300 group-active:w-32 group-active:opacity-20"></span>
       </span>
     </button>
   );

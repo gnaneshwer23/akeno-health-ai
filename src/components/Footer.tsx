@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/Button';
 import { AnimatedLogo } from '@/components/AnimatedLogo';
+import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -20,16 +21,34 @@ const Footer: React.FC = () => {
           </p>
           
           <div className="flex space-x-4">
-            {['facebook', 'twitter', 'linkedin', 'instagram'].map((social) => (
-              <a
-                key={social}
-                href={`#${social}`}
-                className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-health-primary transition-colors"
-              >
-                <span className="sr-only">{social}</span>
-                <div className="h-5 w-5 opacity-80"></div>
-              </a>
-            ))}
+            <a
+              href="#facebook"
+              className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-health-primary transition-colors"
+            >
+              <span className="sr-only">Facebook</span>
+              <Facebook size={18} className="opacity-80" />
+            </a>
+            <a
+              href="#twitter"
+              className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-health-primary transition-colors"
+            >
+              <span className="sr-only">Twitter</span>
+              <Twitter size={18} className="opacity-80" />
+            </a>
+            <a
+              href="#linkedin"
+              className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-health-primary transition-colors"
+            >
+              <span className="sr-only">LinkedIn</span>
+              <Linkedin size={18} className="opacity-80" />
+            </a>
+            <a
+              href="#instagram"
+              className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-health-primary transition-colors"
+            >
+              <span className="sr-only">Instagram</span>
+              <Instagram size={18} className="opacity-80" />
+            </a>
           </div>
         </div>
         
@@ -73,7 +92,11 @@ const Footer: React.FC = () => {
                 className="px-4 py-2.5 rounded-lg bg-white/10 border border-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-health-primary"
               />
             </div>
-            <Button variant="primary" size="md" className="w-full">
+            <Button 
+              variant="primary" 
+              size="md" 
+              className="w-full shadow hover:shadow-lg transition-all"
+            >
               Subscribe
             </Button>
           </form>

@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 lg:px-12",
-        isScrolled ? "py-3 glassmorphism backdrop-blur-lg" : "py-5 bg-transparent"
+        isScrolled ? "py-3 glassmorphism backdrop-blur-lg shadow-md" : "py-5 bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -53,8 +53,20 @@ const Navbar: React.FC = () => {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <Button variant="outline" size="sm">Sign In</Button>
-          <Button variant="primary" size="sm">Get Started</Button>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="shadow-sm hover:shadow transition-all"
+          >
+            Sign In
+          </Button>
+          <Button 
+            variant="primary" 
+            size="sm" 
+            className="shadow hover:shadow-md transition-all"
+          >
+            Get Started
+          </Button>
         </div>
 
         <button
@@ -87,8 +99,8 @@ const Navbar: React.FC = () => {
             ))}
           </nav>
           <div className="mt-auto mb-8 flex flex-col gap-4 w-full">
-            <Button variant="outline" fullWidth>Sign In</Button>
-            <Button variant="primary" fullWidth>Get Started</Button>
+            <Button variant="outline" fullWidth className="shadow-sm">Sign In</Button>
+            <Button variant="primary" fullWidth className="shadow">Get Started</Button>
           </div>
         </div>
       </div>

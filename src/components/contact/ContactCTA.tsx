@@ -15,13 +15,13 @@ const ContactCTA = () => {
         </p>
         
         <div className="flex flex-wrap justify-center gap-6">
-          <Button className="bg-white text-health-primary hover:bg-gray-100" icon={<Phone className="h-5 w-5" />}>
+          <Button className="bg-white text-health-primary hover:bg-gray-100 shadow-lg transform transition-transform hover:-translate-y-1" icon={<Phone className="h-5 w-5" />}>
             Call Us
           </Button>
-          <Button className="bg-white text-health-primary hover:bg-gray-100" icon={<Mail className="h-5 w-5" />}>
+          <Button className="bg-white text-health-primary hover:bg-gray-100 shadow-lg transform transition-transform hover:-translate-y-1" icon={<Mail className="h-5 w-5" />}>
             Email Support
           </Button>
-          <Button className="bg-white text-health-primary hover:bg-gray-100" icon={<MessageCircle className="h-5 w-5" />}>
+          <Button className="bg-white text-health-primary hover:bg-gray-100 shadow-lg transform transition-transform hover:-translate-y-1" icon={<MessageCircle className="h-5 w-5" />}>
             Live Chat
           </Button>
         </div>
