@@ -23,7 +23,8 @@ import {
   ChevronRight,
   CheckCircle2,
   Database,
-  Activity
+  Activity,
+  Sparkles
 } from 'lucide-react';
 import DiagnosticFeature from '@/components/doctor-solutions/DiagnosticFeature';
 import DiagnosticStep from '@/components/doctor-solutions/DiagnosticStep';
@@ -59,13 +60,18 @@ const BiotechSolutions = () => {
           
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-8">
-              <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
-                Biotech & Pharma
-              </div>
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
+                <Sparkles size={16} className="text-health-primary" />
+                <span>Biotech & Pharma</span>
+              </span>
               
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-health-dark mb-6">
-                AI-Powered Healthcare Solutions for Biotech & Pharma
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-health-dark mb-6">
+                Transforming <span className="text-health-primary">Pharmaceutical Research</span> with <span className="text-health-secondary">AI</span>
               </h1>
+              
+              <div className="flex justify-center mb-6">
+                <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary"></div>
+              </div>
               
               <div className="flex justify-center mb-8">
                 <div className="relative w-16 h-16 flex items-center justify-center">
