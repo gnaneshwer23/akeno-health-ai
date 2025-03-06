@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Atom, Zap, Braces } from 'lucide-react';
+import { Atom, Zap, Braces, Dna } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export const QuantumIntro = () => {
@@ -8,11 +8,12 @@ export const QuantumIntro = () => {
     <section className="mb-16 py-12 px-6 bg-gradient-to-r from-blue-50 to-indigo-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-health-dark mb-4">What is Quantum Computing?</h2>
+          <h2 className="text-3xl font-bold text-health-dark mb-4">Revolutionizing Healthcare with Quantum AI</h2>
           <p className="text-lg text-health-dark/70 max-w-3xl mx-auto">
-            Quantum computing uses <strong>quantum bits (qubits)</strong> to perform calculations that traditional computers struggle with. 
-            Unlike classical computers, which process data in binary (0s and 1s), quantum computers leverage 
-            <strong> superposition and entanglement</strong> to solve multi-dimensional problems exponentially faster.
+            Quantum computing is transforming precision medicine by accelerating drug discovery, optimizing diagnostics, and revolutionizing personalized healthcare. Akeno Health AI is at the forefront of integrating quantum computing to tackle some of the most complex challenges in medical research and patient care.
+          </p>
+          <p className="text-lg text-health-dark/70 max-w-3xl mx-auto mt-4 font-medium">
+            By harnessing quantum algorithms, we can enhance medical simulations, multi-omics analysis, and AI-driven treatment personalization, bringing forth an era of <span className="text-health-primary">hyper-efficient, data-driven precision medicine.</span>
           </p>
         </div>
         
@@ -22,9 +23,9 @@ export const QuantumIntro = () => {
               <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
                 <Atom size={24} className="text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-health-dark mb-2">Superposition</h3>
+              <h3 className="text-xl font-bold text-health-dark mb-2">Quantum Computing</h3>
               <p className="text-health-dark/70">
-                Qubits can exist in multiple states simultaneously, allowing quantum computers to process vast possibilities at once rather than sequentially.
+                Leveraging quantum bits (qubits) to perform calculations that traditional computers struggle with, enabling exponentially faster data processing.
               </p>
             </CardContent>
           </Card>
@@ -34,9 +35,9 @@ export const QuantumIntro = () => {
               <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
                 <Zap size={24} className="text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-health-dark mb-2">Entanglement</h3>
+              <h3 className="text-xl font-bold text-health-dark mb-2">AI Integration</h3>
               <p className="text-health-dark/70">
-                Quantum entanglement links qubits so that the state of one instantly affects others, enabling complex problem-solving across the entire system.
+                Combining quantum computing with AI to analyze complex medical data, identify patterns, and make predictions with unprecedented accuracy and speed.
               </p>
             </CardContent>
           </Card>
@@ -44,11 +45,11 @@ export const QuantumIntro = () => {
           <Card className="bg-white border-none hover:shadow-md transition-shadow">
             <CardContent className="p-6">
               <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
-                <Braces size={24} className="text-green-600" />
+                <Dna size={24} className="text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-health-dark mb-2">Quantum Advantage</h3>
+              <h3 className="text-xl font-bold text-health-dark mb-2">Healthcare Transformation</h3>
               <p className="text-health-dark/70">
-                This computational power is particularly beneficial in healthcare fields like genomics, drug development, and AI-driven diagnostics.
+                Redefining healthcare through quantum-powered precision medicine, drastically improving patient outcomes and treatment efficacy.
               </p>
             </CardContent>
           </Card>

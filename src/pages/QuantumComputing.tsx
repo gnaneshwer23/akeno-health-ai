@@ -7,6 +7,7 @@ import { QuantumIntro } from '@/components/quantum/QuantumIntro';
 import { QuantumApplications } from '@/components/quantum/QuantumApplications';
 import { QuantumFuture } from '@/components/quantum/QuantumFuture';
 import { QuantumCTA } from '@/components/quantum/QuantumCTA';
+import { QuantumBenefits } from '@/components/quantum/QuantumBenefits';
 
 const QuantumComputing = () => {
   return (
@@ -17,6 +18,7 @@ const QuantumComputing = () => {
         <QuantumHero />
         <QuantumIntro />
         <QuantumApplications />
+        <QuantumBenefits />
         <QuantumFuture />
         <QuantumCTA />
       </main>

@@ -12,14 +12,14 @@ export const QuantumHero = () => {
             <span>Next-Generation Technology</span>
           </span>
           
-          <h1 className="text-4xl md:text-5xl font-bold text-health-dark mb-6">Quantum Computing & Akeno Health AI</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-health-dark mb-6">Quantum Integration in Akeno Health AI</h1>
           
           <div className="flex justify-center mb-6">
             <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary"></div>
           </div>
           
           <p className="text-xl text-health-dark/70 max-w-3xl mx-auto mb-10">
-            Redefining healthcare through the power of quantum computing, unlocking new possibilities in precision medicine, drug discovery, and AI-driven diagnostics.
+            Revolutionizing healthcare through the power of quantum computing, unlocking new possibilities in precision medicine, drug discovery, and AI-driven diagnostics.
           </p>
         </div>
       </div>

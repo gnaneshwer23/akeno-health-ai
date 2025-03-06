@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/Button';
-import { Atom } from 'lucide-react';
+import { Atom, ArrowRight } from 'lucide-react';
 
 export const QuantumCTA = () => {
   return (
@@ -13,18 +13,23 @@ export const QuantumCTA = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="md:max-w-xl">
               <h2 className="text-2xl md:text-3xl font-bold text-health-dark mb-4">
-                Pioneering the Future of Quantum Healthcare
+                Join Us in Transforming Healthcare
               </h2>
               <p className="text-health-dark/70 mb-6">
-                Akeno Health AI is leading the application of quantum computing in healthcare, 
-                driving advancements in drug discovery, genomic research, diagnostics, and personalized medicine. 
-                Join us in revolutionizing precision medicine for better patient outcomes.
+                Quantum computing is the next frontier in AI-driven medical innovation. At Akeno Health AI, 
+                we are dedicated to leveraging this revolutionary technology to bring smarter, faster, 
+                and more personalized healthcare solutions to the world.
+              </p>
+              <p className="text-health-dark/70 mb-6 font-medium">
+                Stay tuned as we continue to pioneer the fusion of AI, quantum computing, and precision medicine.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button variant="primary" className="group" icon={<Atom size={16} />}>
                   Explore Quantum Solutions
                 </Button>
-                <Button variant="outline">Contact Our Research Team</Button>
+                <Button variant="outline" icon={<ArrowRight size={16} />}>
+                  Contact Our Research Team
+                </Button>
               </div>
             </div>
             
