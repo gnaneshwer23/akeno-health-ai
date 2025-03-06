@@ -25,6 +25,7 @@ const NavLinks: React.FC = () => {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/about">About</NavLink>
       <NavLink to="/how-it-works">How It Works</NavLink>
+      <NavLink to="/case-studies-blog">Case Studies & Blog</NavLink>
       <NavLink to="/patient-solutions">For Patients</NavLink>
       <NavLink to="/doctor-solutions">For Doctors</NavLink>
       <NavLink to="/biotech-solutions">For Pharma & Biotech</NavLink>
