@@ -34,9 +34,9 @@ const DigitalTwin = () => {
   return (
     <section className="py-20 px-6 bg-white relative">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
+        <div className="grid md:grid-cols-2 gap-10 items-start">
           <div className="order-2 md:order-1 relative">
-            <div className="aspect-square bg-health-light/10 rounded-2xl shadow-xl overflow-hidden border border-health-primary/10 p-6">
+            <div className="bg-health-light/10 rounded-2xl shadow-xl overflow-hidden border border-health-primary/10 p-6 min-h-[650px]">
               <div className="h-full flex flex-col">
                 <div className="text-center mb-6">
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-health-primary/10 mb-4">
@@ -91,6 +91,63 @@ const DigitalTwin = () => {
                     <div className="text-sm text-health-primary font-medium mb-2">AI Recommendation</div>
                     <div className="text-sm text-health-dark">
                       Based on your digital twin simulation, the combination therapy (C+A) shows 94% efficacy with minimal side effects. Recommended dosage: 75mg twice daily.
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white/80 rounded-xl p-4 shadow-sm">
+                    <div className="text-sm text-health-primary font-medium mb-2">Organ Systems Analysis</div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <div className="p-2 rounded bg-health-primary/5 text-center">
+                        <div className="text-xs text-health-dark font-medium">Cardiovascular</div>
+                        <div className="h-1.5 bg-health-primary/10 rounded-full overflow-hidden mt-1">
+                          <div className="h-full w-[85%] bg-green-500 rounded-full"></div>
+                        </div>
+                        <div className="text-xs mt-1 text-green-600">Optimal</div>
+                      </div>
+                      <div className="p-2 rounded bg-health-primary/5 text-center">
+                        <div className="text-xs text-health-dark font-medium">Neurological</div>
+                        <div className="h-1.5 bg-health-primary/10 rounded-full overflow-hidden mt-1">
+                          <div className="h-full w-[90%] bg-green-500 rounded-full"></div>
+                        </div>
+                        <div className="text-xs mt-1 text-green-600">Optimal</div>
+                      </div>
+                      <div className="p-2 rounded bg-health-primary/5 text-center">
+                        <div className="text-xs text-health-dark font-medium">Immune</div>
+                        <div className="h-1.5 bg-health-primary/10 rounded-full overflow-hidden mt-1">
+                          <div className="h-full w-[65%] bg-yellow-500 rounded-full"></div>
+                        </div>
+                        <div className="text-xs mt-1 text-yellow-600">Good</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white/80 rounded-xl p-4 shadow-sm">
+                    <div className="text-sm text-health-primary font-medium mb-2">Side Effect Likelihood</div>
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="text-xs text-health-dark">Fatigue</span>
+                        <div className="w-20 h-1.5 bg-health-primary/10 rounded-full overflow-hidden">
+                          <div className="h-full w-[15%] bg-green-500 rounded-full"></div>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-xs text-health-dark">Headache</span>
+                        <div className="w-20 h-1.5 bg-health-primary/10 rounded-full overflow-hidden">
+                          <div className="h-full w-[10%] bg-green-500 rounded-full"></div>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-xs text-health-dark">Insomnia</span>
+                        <div className="w-20 h-1.5 bg-health-primary/10 rounded-full overflow-hidden">
+                          <div className="h-full w-[5%] bg-green-500 rounded-full"></div>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-xs text-health-dark">GI Issues</span>
+                        <div className="w-20 h-1.5 bg-health-primary/10 rounded-full overflow-hidden">
+                          <div className="h-full w-[25%] bg-yellow-500 rounded-full"></div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   

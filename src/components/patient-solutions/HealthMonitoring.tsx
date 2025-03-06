@@ -35,7 +35,7 @@ const HealthMonitoring = () => {
   return (
     <section className="py-20 px-6 bg-health-light/10 relative">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
+        <div className="grid md:grid-cols-2 gap-10 items-start">
           <div>
             <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
               Solution 1
@@ -72,7 +72,7 @@ const HealthMonitoring = () => {
           </div>
           
           <div className="relative">
-            <div className="aspect-square bg-white rounded-2xl shadow-xl overflow-hidden border border-health-primary/10 p-6">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-health-primary/10 p-6 min-h-[650px]">
               <div className="h-full flex flex-col">
                 <div className="text-center mb-6">
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-health-primary/10 mb-4">
@@ -138,6 +138,31 @@ const HealthMonitoring = () => {
                     </div>
                     <div className="mt-2 text-xs text-health-dark">
                       AI Prediction: 87% lower risk of cardiovascular events compared to peer group
+                    </div>
+                  </div>
+                  
+                  <div className="col-span-2 bg-health-light/20 rounded-xl p-4">
+                    <div className="text-sm text-health-primary font-medium mb-1">Weekly Activity</div>
+                    <div className="grid grid-cols-7 gap-1 mt-2">
+                      {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => (
+                        <div key={i} className="text-center">
+                          <div className="text-xs mb-1">{day}</div>
+                          <div className={`mx-auto h-16 w-4 rounded-full overflow-hidden bg-health-primary/10 relative`}>
+                            <div 
+                              className="absolute bottom-0 w-full bg-health-primary" 
+                              style={{ height: `${[60, 40, 75, 50, 80, 30, 55][i]}%` }}
+                            ></div>
+                          </div>
+                          <div className="text-xs mt-1">{[6, 4, 8, 5, 9, 3, 6][i]}k</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="col-span-2 bg-health-primary/10 rounded-xl p-4">
+                    <div className="text-sm text-health-primary font-medium mb-1">AI Recommendation</div>
+                    <div className="text-sm text-health-dark">
+                      Based on your recent activity patterns and sleep quality, we recommend increasing your hydration by 20% and adding a 15-minute morning stretching routine to optimize your stress levels and energy throughout the day.
                     </div>
                   </div>
                 </div>
