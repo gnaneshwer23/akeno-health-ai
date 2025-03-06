@@ -9,27 +9,34 @@ import AboutUs from "./pages/AboutUs";
 import HowItWorks from "./pages/HowItWorks";
 import PatientSolutions from "./pages/PatientSolutions";
 import DoctorSolutions from "./pages/DoctorSolutions";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/patient-solutions" element={<PatientSolutions />} />
-          <Route path="/doctor-solutions" element={<DoctorSolutions />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <AuthProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/patient-solutions" element={<PatientSolutions />} />
+            <Route path="/doctor-solutions" element={<DoctorSolutions />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard/*" element={<Dashboard />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </AuthProvider>
   </QueryClientProvider>
 );
 
