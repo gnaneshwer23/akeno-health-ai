@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from './Button';
-import { Brain, Database, Activity, Lock, Cpu, FlaskConical, Atom, LineChart, Sparkles } from 'lucide-react';
+import { Brain, Database, Activity, Lock, Cpu, FlaskConical, Atom, LineChart, Sparkles, Globe, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ExplainerSectionProps {
@@ -44,6 +44,16 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
       icon: <Lock size={24} />,
       title: "Quantum Encryption & Privacy",
       description: "Utilizing blockchain technology and federated learning with quantum encryption, we ensure patient data remains private, secure, and fully compliant."
+    },
+    {
+      icon: <Globe size={24} />,
+      title: "Global Health Network Integration",
+      description: "Our platform connects with international research databases and healthcare systems to provide the most comprehensive and up-to-date treatment options."
+    },
+    {
+      icon: <Search size={24} />,
+      title: "Advanced Biomarker Discovery",
+      description: "AI continuously analyzes your biodata to discover novel health indicators and potential intervention points that traditional medicine might miss."
     }
   ];
 
