@@ -1,9 +1,24 @@
 
 import React from 'react';
 import { Button } from '@/components/Button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Activity, BrainCircuit, Shield } from 'lucide-react';
 
 const PatientSolutionsHero = () => {
+  const benefits = [
+    {
+      icon: <Activity size={20} className="text-health-primary" />,
+      text: "Continuous health monitoring"
+    },
+    {
+      icon: <BrainCircuit size={20} className="text-health-primary" />,
+      text: "AI-powered health insights"
+    },
+    {
+      icon: <Shield size={20} className="text-health-primary" />,
+      text: "Secure, private health data"
+    }
+  ];
+
   return (
     <section className="py-20 px-6 relative overflow-hidden">
       {/* Background Elements */}
@@ -21,9 +36,18 @@ const PatientSolutionsHero = () => {
           <span className="inline-block">Solutions for Patients</span>
         </h1>
         
-        <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
           At Akeno Health AI, we are redefining precision medicine by providing AI-driven solutions that empower patients with personalized healthcare experiences and preventive insights.
         </p>
+        
+        <div className="flex justify-center gap-4 mb-10">
+          {benefits.map((benefit, index) => (
+            <div key={index} className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
+              {benefit.icon}
+              <span className="text-sm font-medium text-health-dark">{benefit.text}</span>
+            </div>
+          ))}
+        </div>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button size="lg" variant="primary" className="sm:w-auto w-full">

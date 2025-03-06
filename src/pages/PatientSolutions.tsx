@@ -6,6 +6,8 @@ import SolutionsOverview from '@/components/patient-solutions/SolutionsOverview'
 import HealthMonitoring from '@/components/patient-solutions/HealthMonitoring';
 import DigitalTwin from '@/components/patient-solutions/DigitalTwin';
 import MobileHealthApp from '@/components/patient-solutions/MobileHealthApp';
+import PatientTestimonials from '@/components/patient-solutions/PatientTestimonials';
+import PatientFAQ from '@/components/patient-solutions/PatientFAQ';
 import PatientSolutionsCTA from '@/components/patient-solutions/PatientSolutionsCTA';
 import { Footer } from '@/components/Footer';
 
@@ -20,6 +22,8 @@ const PatientSolutions = () => {
         <HealthMonitoring />
         <DigitalTwin />
         <MobileHealthApp />
+        <PatientTestimonials />
+        <PatientFAQ />
         <PatientSolutionsCTA />
       </main>
       
