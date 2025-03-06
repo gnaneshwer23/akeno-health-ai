@@ -115,7 +115,7 @@ const Hero: React.FC = () => {
           ))}
         </div>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 fade-up-5">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 fade-up-5 mb-12">
           <Button 
             size="lg" 
             variant="primary" 
