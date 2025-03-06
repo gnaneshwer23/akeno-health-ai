@@ -7,6 +7,9 @@ import { FeaturesSection } from '@/components/FeaturesSection';
 import { CTASection } from '@/components/CTASection';
 import { ExplainerSection } from '@/components/ExplainerSection';
 import { Footer } from '@/components/Footer';
+import { StatisticsSection } from '@/components/StatisticsSection';
+import { TestimonialsSection } from '@/components/TestimonialsSection';
+import { PartnersSection } from '@/components/PartnersSection';
 
 const Index = () => {
   useEffect(() => {
@@ -39,10 +42,13 @@ const Index = () => {
       
       <main className="flex-grow">
         <Hero />
+        <StatisticsSection />
         <MissionStatement />
         <FeaturesSection />
-        <CTASection />
         <ExplainerSection />
+        <TestimonialsSection />
+        <PartnersSection />
+        <CTASection />
         <Footer />
       </main>
     </div>
