@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
           <span className="font-medium text-lg hidden sm:block">Akeno Health AI</span>
         </Link>
 
-        <nav className="hidden lg:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center space-x-6">
           <Link
             to="/"
             className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
@@ -50,20 +50,48 @@ const Navbar: React.FC = () => {
             Home
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
           </Link>
-          <a
-            href="#features"
-            className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
-          >
-            Features
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a
-            href="#about"
+          <Link
+            to="/about"
             className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
           >
             About
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
-          </a>
+          </Link>
+          <Link
+            to="/how-it-works"
+            className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
+          >
+            How It Works
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <Link
+            to="/patient-solutions"
+            className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
+          >
+            For Patients
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <Link
+            to="/doctor-solutions"
+            className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
+          >
+            For Doctors
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <Link
+            to="/biotech-solutions"
+            className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
+          >
+            For Pharma & Biotech
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <Link
+            to="/contact"
+            className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
+          >
+            Contact
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
+          </Link>
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
@@ -71,6 +99,8 @@ const Navbar: React.FC = () => {
             variant="outline" 
             size="sm" 
             className="shadow-sm hover:shadow transition-all"
+            as={Link}
+            to="/login"
           >
             Sign In
           </Button>
@@ -78,6 +108,8 @@ const Navbar: React.FC = () => {
             variant="primary" 
             size="sm" 
             className="shadow hover:shadow-md transition-all"
+            as={Link}
+            to="/login"
           >
             Get Started
           </Button>
@@ -99,33 +131,79 @@ const Navbar: React.FC = () => {
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
-        <div className="flex flex-col h-full p-6">
+        <div className="flex flex-col h-full p-6 overflow-y-auto">
           <nav className="flex flex-col space-y-6 mt-6">
             <Link
               to="/"
-              className="text-health-dark/80 hover:text-health-primary transition-colors text-2xl font-medium"
+              className="text-health-dark/80 hover:text-health-primary transition-colors text-xl font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </Link>
-            <a
-              href="#features"
-              className="text-health-dark/80 hover:text-health-primary transition-colors text-2xl font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Features
-            </a>
-            <a
-              href="#about"
-              className="text-health-dark/80 hover:text-health-primary transition-colors text-2xl font-medium"
+            <Link
+              to="/about"
+              className="text-health-dark/80 hover:text-health-primary transition-colors text-xl font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               About
-            </a>
+            </Link>
+            <Link
+              to="/how-it-works"
+              className="text-health-dark/80 hover:text-health-primary transition-colors text-xl font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              How It Works
+            </Link>
+            <Link
+              to="/patient-solutions"
+              className="text-health-dark/80 hover:text-health-primary transition-colors text-xl font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              For Patients
+            </Link>
+            <Link
+              to="/doctor-solutions"
+              className="text-health-dark/80 hover:text-health-primary transition-colors text-xl font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              For Doctors
+            </Link>
+            <Link
+              to="/biotech-solutions"
+              className="text-health-dark/80 hover:text-health-primary transition-colors text-xl font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              For Pharma & Biotech
+            </Link>
+            <Link
+              to="/contact"
+              className="text-health-dark/80 hover:text-health-primary transition-colors text-xl font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
           </nav>
           <div className="mt-auto mb-8 flex flex-col gap-4 w-full">
-            <Button variant="outline" fullWidth className="shadow-sm">Sign In</Button>
-            <Button variant="primary" fullWidth className="shadow">Get Started</Button>
+            <Button 
+              variant="outline" 
+              fullWidth 
+              className="shadow-sm"
+              as={Link}
+              to="/login"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Sign In
+            </Button>
+            <Button 
+              variant="primary" 
+              fullWidth 
+              className="shadow"
+              as={Link}
+              to="/login"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Get Started
+            </Button>
           </div>
         </div>
       </div>
