@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Button } from './Button';
-import { Brain, Database, Activity, Lock, Cpu, Flask } from 'lucide-react';
+import { Brain, Database, Activity, Lock, Cpu, FlaskConical } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ExplainerSectionProps {
@@ -31,7 +30,7 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
       description: "As your health data evolves, AI dynamically adjusts treatment strategies and provides early warnings based on real-time changes."
     },
     {
-      icon: <Flask size={24} />,
+      icon: <FlaskConical size={24} />,
       title: "Personalized Treatment Plans",
       description: "We provide tailored treatment recommendations, lifestyle optimizations, and drug suggestions aligned with your genetic profile."
     },
