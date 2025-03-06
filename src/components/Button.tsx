@@ -22,14 +22,14 @@ interface ButtonAsButtonProps extends ButtonBaseProps, Omit<React.ButtonHTMLAttr
 }
 
 // Button props when rendered as a Link
-interface ButtonAsLinkProps extends ButtonBaseProps, Omit<LinkProps, keyof ButtonBaseProps> {
-  as: typeof Link | 'Link';
+interface ButtonAsLinkProps extends Omit<ButtonBaseProps, 'as'>, Omit<LinkProps, keyof ButtonBaseProps | 'as'> {
+  as: 'Link' | typeof Link;
   to: string;
   href?: never;
 }
 
 // Button props when rendered as an anchor
-interface ButtonAsAnchorProps extends ButtonBaseProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps> {
+interface ButtonAsAnchorProps extends Omit<ButtonBaseProps, 'as'>, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps | 'as'> {
   as: 'a';
   href: string;
   to?: never;
@@ -38,7 +38,7 @@ interface ButtonAsAnchorProps extends ButtonBaseProps, Omit<React.AnchorHTMLAttr
 // Union of all possible Button props
 type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps | ButtonAsAnchorProps;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
+const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(({
   variant = 'primary',
   size = 'md',
   children,
@@ -117,7 +117,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   // Default button
   return (
     <button
-      ref={ref}
+      ref={ref as React.Ref<HTMLButtonElement>}
       className={classNames}
       {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     >
