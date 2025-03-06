@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import BlogCard from './BlogCard';
 import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+import { Search, Tag, Filter } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/Button';
 
 const blogCategories = [
   "Quantum Computing",
@@ -74,54 +76,66 @@ const BlogContentList = () => {
   });
 
   return (
-    <section className="py-16 px-6 bg-health-light/10">
+    <section className="py-20 px-6 bg-health-light/10">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-health-dark">
-            Blog Content: Thought Leadership & AI in Healthcare
+          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
+            <span className="bg-gradient-to-r from-health-secondary to-health-primary bg-clip-text text-transparent">
+              Blog Content:
+            </span> Thought Leadership & AI in Healthcare
           </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-health-secondary to-health-primary mx-auto mb-6"></div>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
             Akeno Health AI is committed to advancing knowledge, innovation, and awareness 
             around the intersection of AI, precision medicine, and quantum computing.
           </p>
         </div>
 
-        <div className="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
-          <div className="relative w-full md:w-72">
-            <Input
-              type="text"
-              placeholder="Search articles..."
-              className="pl-10 py-2 w-full"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-          </div>
-          
-          <div className="flex flex-wrap gap-2 justify-center">
-            <button
-              onClick={() => setActiveCategory('All')}
-              className={`px-3 py-1 rounded-full text-sm ${
-                activeCategory === 'All' 
-                  ? 'bg-health-primary text-white' 
-                  : 'bg-white text-health-dark hover:bg-health-light/50'
-              } transition-colors`}
-            >
-              All
-            </button>
-            {blogCategories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-3 py-1 rounded-full text-sm ${
-                  activeCategory === category 
-                    ? 'bg-health-primary text-white' 
-                    : 'bg-white text-health-dark hover:bg-health-light/50'
-                } transition-colors`}
+        <div className="mb-10 bg-white rounded-lg shadow-sm p-4 border border-gray-100">
+          <div className="flex flex-col md:flex-row gap-4 items-center">
+            <div className="relative w-full md:w-72">
+              <Input
+                type="text"
+                placeholder="Search articles..."
+                className="pl-10 py-2 w-full"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            </div>
+            
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Tag size={16} />
+              <span>Categories:</span>
+            </div>
+            
+            <div className="flex flex-wrap gap-2 justify-center">
+              <Badge
+                className={`cursor-pointer transition-all ${
+                  activeCategory === 'All' 
+                    ? 'bg-health-secondary text-white hover:bg-health-secondary/90' 
+                    : 'bg-gray-100 text-muted-foreground hover:bg-gray-200'
+                }`}
+                variant="outline"
+                onClick={() => setActiveCategory('All')}
               >
-                {category}
-              </button>
-            ))}
+                All
+              </Badge>
+              {blogCategories.map((category) => (
+                <Badge
+                  key={category}
+                  className={`cursor-pointer transition-all ${
+                    activeCategory === category 
+                      ? 'bg-health-secondary text-white hover:bg-health-secondary/90' 
+                      : 'bg-gray-100 text-muted-foreground hover:bg-gray-200'
+                  }`}
+                  variant="outline"
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                </Badge>
+              ))}
+            </div>
           </div>
         </div>
         
@@ -144,19 +158,19 @@ const BlogContentList = () => {
 
         <div className="mt-12 flex justify-center">
           <nav className="flex items-center gap-1">
-            <button className="w-8 h-8 flex items-center justify-center rounded border border-gray-300 bg-white text-health-dark">
+            <Button variant="primary" size="sm" className="w-8 h-8 p-0 flex items-center justify-center">
               1
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded border border-transparent hover:border-gray-300 hover:bg-white text-muted-foreground">
+            </Button>
+            <Button variant="ghost" size="sm" className="w-8 h-8 p-0 flex items-center justify-center text-muted-foreground">
               2
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded border border-transparent hover:border-gray-300 hover:bg-white text-muted-foreground">
+            </Button>
+            <Button variant="ghost" size="sm" className="w-8 h-8 p-0 flex items-center justify-center text-muted-foreground">
               3
-            </button>
+            </Button>
             <span className="px-2 text-muted-foreground">...</span>
-            <button className="w-8 h-8 flex items-center justify-center rounded border border-transparent hover:border-gray-300 hover:bg-white text-muted-foreground">
+            <Button variant="ghost" size="sm" className="w-8 h-8 p-0 flex items-center justify-center text-muted-foreground">
               8
-            </button>
+            </Button>
           </nav>
         </div>
       </div>

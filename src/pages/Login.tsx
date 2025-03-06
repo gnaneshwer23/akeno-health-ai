@@ -84,36 +84,34 @@ const Login = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <main className="flex-grow flex items-center justify-center py-10 px-6 bg-gradient-to-br from-white via-health-light/20 to-health-primary/10">
+      <main className="flex-grow flex items-center justify-center py-16 px-6 bg-gradient-to-br from-white via-health-light/20 to-health-primary/10">
         <div className="w-full max-w-md">
           <motion.div 
-            className="bg-white shadow-xl rounded-2xl p-8 border border-health-primary/10 relative overflow-hidden"
+            className="bg-white shadow-xl rounded-xl p-8 border border-health-primary/10 relative overflow-hidden"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
           >
-            {/* Decorative elements */}
-            <div className="absolute -top-16 -right-16 w-32 h-32 bg-health-primary/5 rounded-full"></div>
-            <div className="absolute -bottom-16 -left-16 w-32 h-32 bg-health-secondary/5 rounded-full"></div>
+            <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-health-primary to-health-secondary"></div>
             
             <motion.div className="text-center mb-8" variants={itemVariants}>
-              <h1 className="text-3xl font-medium text-health-dark mb-2">Welcome Back</h1>
+              <h1 className="text-3xl font-bold text-health-dark mb-2 bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">Welcome Back</h1>
               <p className="text-muted-foreground">Access your AI-powered health dashboard</p>
             </motion.div>
             
             <Tabs defaultValue="patient" onValueChange={(value) => setRole(value as UserRole)}>
               <motion.div variants={itemVariants}>
                 <TabsList className="grid grid-cols-3 mb-6">
-                  <TabsTrigger value="patient" className="flex items-center gap-1 group">
-                    <User size={16} className="group-data-[state=active]:text-health-primary" />
+                  <TabsTrigger value="patient" className="flex items-center gap-1 data-[state=active]:bg-health-primary/10 data-[state=active]:text-health-primary">
+                    <User size={16} />
                     <span>Patient</span>
                   </TabsTrigger>
-                  <TabsTrigger value="doctor" className="flex items-center gap-1 group">
-                    <Shield size={16} className="group-data-[state=active]:text-health-primary" />
+                  <TabsTrigger value="doctor" className="flex items-center gap-1 data-[state=active]:bg-health-primary/10 data-[state=active]:text-health-primary">
+                    <Shield size={16} />
                     <span>Doctor</span>
                   </TabsTrigger>
-                  <TabsTrigger value="researcher" className="flex items-center gap-1 group">
-                    <Send size={16} className="group-data-[state=active]:text-health-primary" />
+                  <TabsTrigger value="researcher" className="flex items-center gap-1 data-[state=active]:bg-health-primary/10 data-[state=active]:text-health-primary">
+                    <Send size={16} />
                     <span>Researcher</span>
                   </TabsTrigger>
                 </TabsList>
@@ -132,7 +130,7 @@ const Login = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="transition-all duration-300 focus:ring-2 focus:ring-health-primary/30 focus:border-health-primary"
+                    className="transition-all duration-300 focus:ring-2 focus:ring-health-primary/30 focus:border-health-primary shadow-sm"
                   />
                 </motion.div>
                 
@@ -154,7 +152,7 @@ const Login = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
-                      className="pr-10 transition-all duration-300 focus:ring-2 focus:ring-health-primary/30 focus:border-health-primary"
+                      className="pr-10 transition-all duration-300 focus:ring-2 focus:ring-health-primary/30 focus:border-health-primary shadow-sm"
                     />
                     <button
                       type="button"
@@ -172,7 +170,7 @@ const Login = () => {
                     type="submit" 
                     variant="primary" 
                     size="lg" 
-                    className="w-full mt-2 group relative"
+                    className="w-full mt-2 group relative shadow-sm"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
@@ -182,10 +180,8 @@ const Login = () => {
                       </>
                     ) : (
                       <>
-                        <span className="flex items-center">
-                          <Lock size={16} className="mr-2" />
-                          Sign In
-                        </span>
+                        <Lock size={16} className="mr-2" />
+                        Sign In
                         <ArrowRight size={16} className="absolute right-4 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300" />
                       </>
                     )}
@@ -195,7 +191,7 @@ const Login = () => {
                 <motion.div className="text-center mt-6" variants={itemVariants}>
                   <p className="text-sm text-muted-foreground">
                     Don't have an account?{" "}
-                    <a href="#" className="text-health-primary hover:underline transition-colors">
+                    <a href="#" className="text-health-primary hover:underline transition-colors font-medium">
                       Contact us for access
                     </a>
                   </p>
@@ -205,7 +201,7 @@ const Login = () => {
           </motion.div>
           
           <motion.div 
-            className="mt-8 text-center text-sm text-muted-foreground bg-white/50 backdrop-blur-sm p-4 rounded-lg shadow-sm"
+            className="mt-8 text-center text-sm text-muted-foreground bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-health-primary/5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
