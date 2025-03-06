@@ -89,24 +89,24 @@ const Hero: React.FC = () => {
       
       {/* Main Content */}
       <div className="max-w-5xl mx-auto text-center relative z-10">
-        <div className="inline-flex items-center px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium gap-2 fade-up-1">
-          <Sparkles size={16} />
-          <span>The Future of Healthcare Is Here</span>
-        </div>
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
+          <Sparkles size={16} className="text-health-primary" />
+          <span>Next-Generation Healthcare</span>
+        </span>
         
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-health-dark mb-6 leading-tight fade-up-2">
-          <span className="inline-block">Transforming Healthcare</span>{" "}
-          <span className="inline-block relative">
-            with AI & Quantum Computing
-            <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-health-primary to-health-secondary opacity-70"></span>
-          </span>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-health-dark mb-6 tracking-tight">
+          Transforming Healthcare with <span className="text-health-primary">AI</span> & <span className="text-health-secondary">Quantum Computing</span>
         </h1>
         
-        <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed fade-up-3">
+        <div className="flex justify-center mb-6">
+          <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary"></div>
+        </div>
+        
+        <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
           Imagine a world where diseases are predicted before symptoms appear, treatments are personalized based on your genetic and immune profile, and AI continuously adapts your healthcare plan—this is the future with Akeno Health AI.
         </p>
         
-        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12 fade-up-4">
+        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
           {features.map((feature, index) => (
             <div key={index} className="flex items-start gap-3 text-left">
               <div className="mt-0.5 flex-shrink-0">
@@ -119,7 +119,7 @@ const Hero: React.FC = () => {
           ))}
         </div>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 fade-up-5 mb-12">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
           <Button 
             size="lg" 
             variant="primary" 
@@ -162,3 +162,4 @@ const Hero: React.FC = () => {
 };
 
 export { Hero };
+
