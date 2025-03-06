@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, BrainCircuit, PillsIcon, Shield, Dna } from 'lucide-react';
+import { ArrowRight, BrainCircuit, Pill, Shield, Dna } from 'lucide-react';
 
 export const QuantumFuture = () => {
   const futureApplications = [
@@ -10,7 +10,7 @@ export const QuantumFuture = () => {
       description: "Simulating entire biological systems to test new treatments instantly."
     },
     {
-      icon: <PillsIcon size={24} className="text-purple-500" />,
+      icon: <Pill size={24} className="text-purple-500" />,
       title: "Quantum-powered Drug Repurposing",
       description: "Finding new applications for existing medications through quantum analysis."
     },
