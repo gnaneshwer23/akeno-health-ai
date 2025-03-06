@@ -47,7 +47,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
         <div className="lg:w-2/3">
           <div className="space-y-6">
             <div className="bg-health-light/30 rounded-xl p-6">
-              <div className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
                 {features.map((feature, index) => (
                   <div key={index} className="flex gap-4">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-health-primary/10 flex items-center justify-center text-health-primary">
@@ -57,7 +57,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
                       {feature.title && (
                         <h5 className="text-base font-medium text-health-dark mb-1">{feature.title}</h5>
                       )}
-                      <p className="text-muted-foreground">
+                      <p className="text-sm text-muted-foreground">
                         {feature.content}
                       </p>
                     </div>
@@ -75,7 +75,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
                 </div>
                 <div>
                   <h5 className="text-base font-medium text-health-dark mb-2">Outcome:</h5>
-                  <p className="text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     {outcome}
                   </p>
                 </div>

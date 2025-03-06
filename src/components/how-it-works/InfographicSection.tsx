@@ -7,37 +7,44 @@ const InfographicSection = () => {
   const journeySteps = [
     {
       step: 1,
-      content: "Patients onboard by syncing their wearable, EHR, and genetic data into Akeno Health AI.",
+      title: "Data Integration",
+      content: "Sync wearables, medical records, and genetic data with our platform",
       icon: <Smartphone size={24} />
     },
     {
       step: 2,
-      content: "AI continuously collects and interprets real-time biometrics, lifestyle inputs, and multi-omics data.",
+      title: "Continuous Analysis",
+      content: "AI interprets your health data in real-time",
       icon: <Database size={24} />
     },
     {
       step: 3,
-      content: "The Digital Twin AI engine analyses patient health trends, predicting disease risks with unparalleled accuracy.",
+      title: "Risk Assessment",
+      content: "Your Digital Twin predicts health risks with high accuracy",
       icon: <Brain size={24} />
     },
     {
       step: 4,
-      content: "AI provides personalized, real-time therapy recommendations based on genetics, immunology, and biomarker insights.",
+      title: "Custom Treatments",
+      content: "Receive personalized therapy recommendations",
       icon: <FlaskConical size={24} />
     },
     {
       step: 5,
-      content: "Continuous AI monitoring dynamically adjusts treatment recommendations based on patient responses.",
+      title: "Adaptive Care",
+      content: "Treatment adjustments based on your response",
       icon: <Activity size={24} />
     },
     {
       step: 6,
-      content: "Doctors and researchers gain AI-driven insights to refine treatment decisions and optimize healthcare strategies.",
+      title: "Clinical Insights",
+      content: "Your doctor receives AI-driven treatment guidance",
       icon: <HeartPulse size={24} />
     },
     {
       step: 7,
-      content: "Pharma and biotech firms leverage AI-driven analytics to power precision drug development and next-gen clinical research.",
+      title: "Research Impact",
+      content: "Your anonymized data helps advance medical breakthroughs",
       icon: <Beaker size={24} />
     }
   ];
@@ -47,8 +54,11 @@ const InfographicSection = () => {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
-            The Patient Health Journey with Akeno Health AI
+            Your Health Journey with Akeno AI
           </h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            How our technology transforms your healthcare experience
+          </p>
         </div>
         
         <div className="relative">
@@ -80,7 +90,10 @@ const InfographicSection = () => {
                       <div className="flex-shrink-0 h-10 w-10 rounded-full bg-health-primary/10 flex items-center justify-center text-health-primary">
                         {item.icon}
                       </div>
-                      <p className="text-muted-foreground">{item.content}</p>
+                      <div>
+                        <h4 className="font-medium text-health-dark mb-1">{item.title}</h4>
+                        <p className="text-sm text-muted-foreground">{item.content}</p>
+                      </div>
                     </div>
                   </div>
                 </div>

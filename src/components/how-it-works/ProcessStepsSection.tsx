@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ProcessStep from './ProcessStep';
 import { Smartphone, Database, Brain, Activity, FlaskConical, Workflow, Dna, LineChart, HeartPulse, Beaker, Users, Shield, FileText } from 'lucide-react';
@@ -8,155 +9,166 @@ const ProcessStepsSection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
-            Step-by-Step Process: AI-Driven Diagnostics & Personalized Therapy
+            Our AI-Driven Healthcare Process
           </h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            How we combine AI, genomics, and real-time monitoring to revolutionize healthcare
+          </p>
         </div>
         
         {/* Step 1 */}
         <ProcessStep
           stepNumber={1}
-          title="AI-Powered Health Data Collection & Digital Twin Creation"
-          description="Our AI collects, integrates, and analyzes comprehensive health data to create a personalized Digital Twin that simulates your unique physiology."
+          title="Data Collection & Digital Twin"
+          description="Our AI creates a virtual model of your health by gathering comprehensive data from multiple sources."
           icon={<Database size={60} className="text-health-primary/70" />}
           features={[
             {
               icon: <Smartphone size={24} />,
-              title: "Wearables & IoT Devices",
-              content: "Smartwatches, glucose monitors, ECG sensors, continuous glucose monitors (CGMs), and fitness trackers provide real-time biometrics (heart rate, HRV, sleep quality, blood oxygen, glucose levels, physical activity)."
+              title: "Wearables & IoT",
+              content: "Real-time biometrics from smartwatches, glucose monitors, and fitness trackers."
             },
             {
               icon: <FileText size={24} />,
-              title: "Electronic Health Records (EHRs)",
-              content: "AI securely integrates comprehensive medical history, including clinical notes, lab test results, imaging scans, prescriptions, and physician observations into the system."
+              title: "Medical Records",
+              content: "Secure integration of your clinical data, lab tests, and medical history."
             },
             {
               icon: <Dna size={24} />,
-              title: "Multi-Omics Data Analysis",
-              content: "AI extracts deep insights from genomics, epigenomics, transcriptomics, proteomics, metabolomics, and microbiome sequencing, identifying disease risks and immune response anomalies."
+              title: "Genetic Data",
+              content: "Analysis of your genomics, proteomics, and microbiome data."
             },
             {
               icon: <Activity size={24} />,
-              title: "Environmental & Lifestyle Data",
-              content: "AI continuously factors in diet, stress levels, exposure to environmental toxins, and social determinants of health to create a truly holistic healthcare profile."
+              title: "Lifestyle Data",
+              content: "Diet, stress levels, environment, and other health determinants."
             },
           ]}
-          outcome="A continuously evolving, AI-driven digital twin - a virtual representation of the patient's genetic, immune, and physiological state. This Digital Twin helps simulate disease progression, predict therapy responses, and guide precision healthcare interventions."
+          outcome="A personalized Digital Twin that simulates your health status and predicts responses to treatments."
         />
         
         {/* Step 2 */}
         <ProcessStep
           stepNumber={2}
-          title="AI-Driven Risk Prediction & Early Disease Detection"
-          description="Our AI identifies disease risks and early biomarkers years before symptoms appear, enabling proactive intervention."
+          title="Early Disease Detection"
+          description="Our AI identifies disease risks before symptoms appear, enabling proactive intervention."
           icon={<LineChart size={60} className="text-health-primary/70" />}
           features={[
             {
-              icon: <Brain size={20} />,
-              content: "AI-powered pattern recognition detects early biomarkers for chronic conditions, including cancer, cardiovascular diseases, neurodegenerative disorders, and metabolic dysfunctions."
+              icon: <Brain size={24} />,
+              title: "Pattern Recognition",
+              content: "AI detects early biomarkers for chronic conditions years before clinical symptoms."
             },
             {
-              icon: <Dna size={20} />,
-              content: "Predictive modelling integrates multi-omics data with real-time biometrics to provide high-accuracy risk assessments years before symptoms appear."
+              icon: <Dna size={24} />,
+              title: "Multi-Omics Analysis",
+              content: "Integration of genetic and molecular data for precise risk assessment."
             },
             {
-              icon: <Activity size={20} />,
-              content: "Advanced machine learning models refine predictions dynamically, ensuring personalized risk stratification that continuously adapts to each individual."
+              icon: <Activity size={24} />,
+              title: "Adaptive Learning",
+              content: "Models continuously refine predictions based on new health data."
             },
             {
-              icon: <HeartPulse size={20} />,
-              content: "Continuous AI monitoring identifies subtle variations in immune response, metabolism, and inflammatory markers to proactively recommend interventions."
+              icon: <HeartPulse size={24} />,
+              title: "Continuous Monitoring",
+              content: "Real-time tracking of subtle variations in health markers."
             },
           ]}
-          outcome="Patients and doctors receive highly personalized early disease warnings, allowing for timely preventive measures, risk mitigation strategies, and precision-based health interventions."
+          outcome="Early disease warnings and personalized prevention strategies to maintain optimal health."
         />
         
         {/* Step 3 */}
         <ProcessStep
           stepNumber={3}
-          title="AI-Optimized Personalized Treatment Plans"
-          description="Our AI creates highly personalized treatment plans based on your unique genetic, epigenetic, and molecular profile."
+          title="Personalized Treatment Plans"
+          description="Our AI creates tailored therapy recommendations based on your unique biological profile."
           icon={<FlaskConical size={60} className="text-health-primary/70" />}
           features={[
             {
-              icon: <Dna size={20} />,
-              content: "AI evaluates epigenetic markers and gene expression profiles to create highly personalized treatment recommendations tailored to each patient's molecular needs."
+              icon: <Dna size={24} />,
+              title: "Precision Medicine",
+              content: "Treatments based on your genetic and epigenetic markers."
             },
             {
-              icon: <Shield size={20} />,
-              content: "Quantum-powered drug repurposing finds FDA-approved drugs that match a patient's molecular profile, eliminating trial-and-error prescribing."
+              icon: <Shield size={24} />,
+              title: "Drug Matching",
+              content: "AI finds medications that match your molecular profile."
             },
             {
-              icon: <Activity size={20} />,
-              content: "CRISPR-based AI insights help clinicians and researchers optimize targeted gene therapies for genetic and autoimmune conditions."
+              icon: <Activity size={24} />,
+              title: "Advanced Therapies",
+              content: "CRISPR-based insights for genetic and autoimmune conditions."
             },
             {
-              icon: <Activity size={20} />,
-              content: "AI-driven lifestyle and dietary interventions provide specific, real-time recommendations for metabolic health, immune function, and longevity."
-            },
-            {
-              icon: <Brain size={20} />,
-              content: "AI models continuously refine treatments based on patient responses, adjusting recommendations dynamically in real-time."
+              icon: <Brain size={24} />,
+              title: "Adaptive Optimization",
+              content: "Treatment plans that evolve based on your response."
             },
           ]}
-          outcome="Every patient receives a dynamic, adaptive health plan that evolves with their biological state, maximizing therapy effectiveness and long-term well-being."
+          outcome="A dynamic health plan that evolves with your biological state for maximum effectiveness."
         />
         
         {/* Step 4 */}
         <ProcessStep
           stepNumber={4}
-          title="Continuous AI Monitoring & Adaptive Therapy Adjustments"
-          description="Our AI continuously monitors your health data and dynamically adjusts treatment recommendations in real-time."
+          title="Real-Time Health Monitoring"
+          description="Our AI continuously monitors your health and adjusts recommendations as your condition changes."
           icon={<Activity size={60} className="text-health-primary/70" />}
           features={[
             {
-              icon: <Smartphone size={20} />,
-              content: "AI continuously tracks health metrics using real-time wearables, at-home diagnostics, and medical-grade biosensors."
+              icon: <Smartphone size={24} />,
+              title: "Continuous Tracking",
+              content: "Real-time health metrics from wearables and biosensors."
             },
             {
-              icon: <Brain size={20} />,
-              content: "Machine learning algorithms refine medication dosing, nutritional plans, and exercise recommendations based on changing biomarker levels."
+              icon: <Brain size={24} />,
+              title: "Intelligent Adjustments",
+              content: "AI refines medication, nutrition, and exercise plans based on your data."
             },
             {
-              icon: <Workflow size={20} />,
-              content: "Digital Twin simulations predict treatment efficacy, adverse reactions, and personalized therapy adjustments to ensure patient safety."
+              icon: <Workflow size={24} />,
+              title: "Predictive Simulations",
+              content: "Digital Twin models to anticipate treatment outcomes."
             },
             {
-              icon: <Smartphone size={20} />,
-              content: "Patients receive actionable AI-driven insights through their mobile app, enabling real-time health optimization."
-            },
-            {
-              icon: <HeartPulse size={20} />,
-              content: "Telemedicine integration allows clinicians to receive automated alerts for critical patient changes, ensuring proactive intervention."
+              icon: <HeartPulse size={24} />,
+              title: "Clinical Integration",
+              content: "Automated alerts for healthcare providers when intervention is needed."
             },
           ]}
-          outcome="AI-driven healthcare ensures early detection of complications, real-time therapy optimization, and proactive intervention, significantly reducing hospitalization rates and chronic disease progression."
+          outcome="Proactive healthcare with reduced complications and optimized treatment effectiveness."
         />
         
         {/* Step 5 */}
         <ProcessStep
           stepNumber={5}
-          title="AI-Powered Biotech & Pharma Integration"
-          description="Our AI accelerates drug discovery, optimizes clinical trials, and drives breakthrough innovations in precision medicine."
+          title="Medical Research Acceleration"
+          description="Our AI drives breakthroughs in precision medicine and pharmaceutical development."
           icon={<Beaker size={60} className="text-health-primary/70" />}
           features={[
             {
-              icon: <Dna size={20} />,
-              content: "Quantum AI accelerates biomarker discovery for precision medicine therapies tailored to genetic and epigenetic profiles."
+              icon: <Dna size={24} />,
+              title: "Biomarker Discovery",
+              content: "AI identifies new therapeutic targets for precision medicine."
             },
             {
-              icon: <Users size={20} />,
-              content: "AI optimizes clinical trial recruitment by selecting ideal candidates based on predictive success rates, reducing costs and accelerating research timelines."
+              icon: <Users size={24} />,
+              title: "Clinical Trial Optimization",
+              content: "AI selects ideal trial candidates and predicts outcomes."
             },
             {
-              icon: <FlaskConical size={20} />,
-              content: "AI-powered synthetic biology and quantum simulations enable next-generation therapeutics, including highly targeted cancer treatments and regenerative medicine breakthroughs."
+              icon: <FlaskConical size={24} />,
+              title: "Drug Development",
+              content: "AI-powered simulations for faster therapeutic discovery."
             },
             {
-              icon: <Brain size={20} />,
-              content: "Machine learning models predict drug interactions, reducing the risks of adverse events and enhancing clinical decision-making."
+              icon: <Brain size={24} />,
+              title: "Safety Enhancement",
+              content: "Machine learning predicts drug interactions and reduces adverse events."
             },
           ]}
-          outcome="Akeno Health AI is actively driving breakthroughs in precision drug development, AI-powered biomarker discovery, and real-time clinical trial optimization, ensuring faster, safer, and more effective therapies reach patients."
+          outcome="Faster development of safer, more effective treatments for complex health conditions."
         />
       </div>
     </section>
