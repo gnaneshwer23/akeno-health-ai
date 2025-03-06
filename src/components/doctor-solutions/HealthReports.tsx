@@ -6,7 +6,7 @@ import {
   Dna, 
   LineChart, 
   LayoutDashboard, 
-  Flask 
+  FlaskConical 
 } from 'lucide-react';
 
 const HealthReports = () => {
@@ -37,7 +37,7 @@ const HealthReports = () => {
       description: "AI-powered interactive dashboards provide doctors with real-time alerts, AI-generated patient risk scores, and suggested clinical interventions."
     },
     {
-      icon: <Flask size={24} />,
+      icon: <FlaskConical size={24} />,
       title: "AI-Powered Laboratory Test Analysis",
       description: "AI identifies hidden patterns in blood tests, metabolic panels, and inflammatory markers, providing early warnings for potential health risks."
     }
