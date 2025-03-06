@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Button } from '@/components/Button';
-import { ArrowRight, Smartphone, Database, Brain, Activity, ChemicalX, FlaskConical, Workflow, Dna, LineChart, HeartPulse } from 'lucide-react';
+import { ArrowRight, Smartphone, Database, Brain, Activity, Flask, FlaskConical, Workflow, Dna, LineChart, HeartPulse, Beaker, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const HowItWorks = () => {
@@ -279,7 +278,7 @@ const HowItWorks = () => {
                         
                         <div className="flex gap-4">
                           <div className="flex-shrink-0 h-10 w-10 rounded-full bg-health-primary/10 flex items-center justify-center text-health-primary">
-                            <ChemicalX size={20} />
+                            <Beaker size={20} />
                           </div>
                           <div>
                             <p className="text-muted-foreground">
@@ -447,7 +446,7 @@ const HowItWorks = () => {
                         Our AI accelerates drug discovery, optimizes clinical trials, and drives breakthrough innovations in precision medicine.
                       </p>
                       <div className="h-40 w-40 mx-auto rounded-xl bg-gradient-to-br from-health-primary/20 to-health-secondary/20 flex items-center justify-center">
-                        <ChemicalX size={60} className="text-health-primary/70" />
+                        <Beaker size={60} className="text-health-primary/70" />
                       </div>
                     </div>
                   </div>
@@ -574,7 +573,7 @@ const HowItWorks = () => {
                   {
                     step: 7,
                     content: "Pharma and biotech firms leverage AI-driven analytics to power precision drug development and next-gen clinical research.",
-                    icon: <ChemicalX size={24} />
+                    icon: <Beaker size={24} />
                   }
                 ].map((item, index) => (
                   <div key={index} className={cn(
