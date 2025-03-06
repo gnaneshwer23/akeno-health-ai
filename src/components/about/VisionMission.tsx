@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Shield, Sparkles, Heart, Target, Lightbulb, Glasses, Network } from 'lucide-react';
+import { Shield, Sparkles, Heart, Target, Lightbulb, Glasses, Network, Cpu } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export const VisionMission = () => {
@@ -33,6 +34,11 @@ export const VisionMission = () => {
       icon: <Network size={24} />,
       title: "Global Health Ecosystem Integration",
       description: "Creating seamless connections between patients, providers, researchers, and healthcare systems to foster collaborative and comprehensive care networks."
+    },
+    {
+      icon: <Cpu size={24} />,
+      title: "Quantum Computing & Akeno Health AI",
+      description: "Harnessing quantum capabilities to solve complex healthcare problems, accelerate drug discovery, and enable unprecedented advances in personalized medicine."
     }
   ];
 
