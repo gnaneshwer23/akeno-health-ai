@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
         <div>
           <h3 className="text-lg font-medium mb-6">Company</h3>
           <ul className="space-y-4">
-            {['About Us', 'Careers', 'News', 'Blog', 'Contact'].map((item) => (
+            {['About Us', 'Careers', 'News', 'Blog', 'Contact', 'Frequently Asked Questions'].map((item) => (
               <li key={item}>
                 <a href="#" className="text-health-light/80 hover:text-white transition-colors">
                   {item}

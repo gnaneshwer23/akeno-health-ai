@@ -72,7 +72,7 @@ const HealthMonitoring = () => {
           </div>
           
           <div className="relative">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-health-primary/10 p-6 min-h-[650px]">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-health-primary/10 p-6 min-h-[700px]">
               <div className="h-full flex flex-col">
                 <div className="text-center mb-6">
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-health-primary/10 mb-4">
