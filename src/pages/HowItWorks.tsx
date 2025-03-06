@@ -1,10 +1,11 @@
 
 import React from 'react';
 import { Navbar } from '@/components/Navbar';
-import HeroSection from '@/components/how-it-works/HeroSection';
-import ProcessStepsSection from '@/components/how-it-works/ProcessStepsSection';
-import InfographicSection from '@/components/how-it-works/InfographicSection';
-import CallToActionSection from '@/components/how-it-works/CallToActionSection';
+import { HeroSection } from '@/components/how-it-works/HeroSection';
+import { ProcessStepsSection } from '@/components/how-it-works/ProcessStepsSection';
+import { InfographicSection } from '@/components/how-it-works/InfographicSection';
+import { CallToActionSection } from '@/components/how-it-works/CallToActionSection';
+import { Footer } from '@/components/Footer';
 
 const HowItWorks = () => {
   return (
@@ -17,6 +18,8 @@ const HowItWorks = () => {
         <InfographicSection />
         <CallToActionSection />
       </main>
+      
+      <Footer />
     </div>
   );
 };

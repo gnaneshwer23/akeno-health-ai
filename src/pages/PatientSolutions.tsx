@@ -7,6 +7,7 @@ import HealthMonitoring from '@/components/patient-solutions/HealthMonitoring';
 import DigitalTwin from '@/components/patient-solutions/DigitalTwin';
 import MobileHealthApp from '@/components/patient-solutions/MobileHealthApp';
 import PatientSolutionsCTA from '@/components/patient-solutions/PatientSolutionsCTA';
+import { Footer } from '@/components/Footer';
 
 const PatientSolutions = () => {
   return (
@@ -21,6 +22,8 @@ const PatientSolutions = () => {
         <MobileHealthApp />
         <PatientSolutionsCTA />
       </main>
+      
+      <Footer />
     </div>
   );
 };
