@@ -19,6 +19,9 @@ const Navbar: React.FC = () => {
       }
     };
 
+    // Initial check for page load
+    handleScroll();
+    
     window.addEventListener('scroll', handleScroll);
 
     return () => {
@@ -40,16 +43,27 @@ const Navbar: React.FC = () => {
         </Link>
 
         <nav className="hidden lg:flex items-center space-x-8">
-          {['Solutions', 'Technology', 'Science', 'About', 'Contact'].map((item) => (
-            <Link
-              key={item}
-              to={`/${item.toLowerCase()}`}
-              className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
-            >
-              {item}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-          ))}
+          <Link
+            to="/"
+            className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
+          >
+            Home
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
+          </Link>
+          <a
+            href="#features"
+            className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
+          >
+            Features
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a
+            href="#about"
+            className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
+          >
+            About
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
@@ -87,16 +101,27 @@ const Navbar: React.FC = () => {
       >
         <div className="flex flex-col h-full p-6">
           <nav className="flex flex-col space-y-6 mt-6">
-            {['Solutions', 'Technology', 'Science', 'About', 'Contact'].map((item) => (
-              <Link
-                key={item}
-                to={`/${item.toLowerCase()}`}
-                className="text-health-dark/80 hover:text-health-primary transition-colors text-2xl font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item}
-              </Link>
-            ))}
+            <Link
+              to="/"
+              className="text-health-dark/80 hover:text-health-primary transition-colors text-2xl font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <a
+              href="#features"
+              className="text-health-dark/80 hover:text-health-primary transition-colors text-2xl font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Features
+            </a>
+            <a
+              href="#about"
+              className="text-health-dark/80 hover:text-health-primary transition-colors text-2xl font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About
+            </a>
           </nav>
           <div className="mt-auto mb-8 flex flex-col gap-4 w-full">
             <Button variant="outline" fullWidth className="shadow-sm">Sign In</Button>
