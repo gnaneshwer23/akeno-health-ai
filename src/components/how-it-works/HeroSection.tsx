@@ -1,21 +1,26 @@
 
 import React from 'react';
-import { Brain, FlaskConical, Activity } from 'lucide-react';
+import { Brain, FlaskConical, Activity, Sparkles } from 'lucide-react';
 
 const HeroSection = () => {
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-health-light/50 to-white relative overflow-hidden">
       <div className="max-w-5xl mx-auto text-center relative z-10">
-        <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
-          Our Technology
-        </div>
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
+          <Sparkles size={16} className="text-health-primary" />
+          <span>Our Technology</span>
+        </span>
         
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-health-dark mb-8 leading-tight">
-          AI-Powered Precision Medicine
+        <h1 className="text-4xl md:text-5xl font-bold text-health-dark mb-6 tracking-tight">
+          Transforming Healthcare with <span className="text-health-primary">AI</span> & <span className="text-health-secondary">Precision Medicine</span>
         </h1>
         
-        <p className="text-lg text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
-          Transforming healthcare through <span className="font-medium">AI-driven diagnostics, multi-omics analysis</span>, and <span className="font-medium">real-time digital twin simulations</span> for personalized, data-driven healthcare.
+        <div className="flex justify-center mb-6">
+          <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary"></div>
+        </div>
+        
+        <p className="text-lg text-health-dark/70 max-w-3xl mx-auto mb-10 leading-relaxed">
+          Harnessing AI-driven diagnostics, multi-omics analysis, and real-time digital twin simulations for personalized, data-driven healthcare.
         </p>
         
         <div className="flex flex-wrap justify-center gap-4 mb-10">

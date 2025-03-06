@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Headset, MessageSquare, Phone, Mail } from 'lucide-react';
+import { Headset, MessageSquare, Phone, Mail, Sparkles } from 'lucide-react';
 
 const ContactHero = () => {
   return (
@@ -13,10 +13,21 @@ const ContactHero = () => {
               <Headset className="h-20 w-20 relative z-10" />
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Contact & Support
+          
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-white/10 text-white font-medium">
+            <Sparkles size={16} className="text-white" />
+            <span>Support & Assistance</span>
+          </span>
+          
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+            Connecting Through <span className="text-health-light/90">AI</span> & <span className="text-health-light/90">Human Support</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-10">
+          
+          <div className="flex justify-center mb-6">
+            <div className="h-1 w-24 bg-white"></div>
+          </div>
+          
+          <p className="text-xl mb-10 max-w-3xl mx-auto">
             We're committed to providing exceptional support for patients, healthcare providers, 
             researchers, and industry partners through AI-powered and human-led solutions.
           </p>

@@ -1,15 +1,26 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Brain, HeartPulse, Activity } from 'lucide-react';
+import { ArrowRight, Brain, HeartPulse, Activity, Sparkles } from 'lucide-react';
 
 const CallToActionSection = () => {
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-white to-health-light/30 relative overflow-hidden">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6 text-center">
-          The Future of Healthcare is Here
-        </h2>
+        <div className="text-center mb-12">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
+            <Sparkles size={16} className="text-health-primary" />
+            <span>Start Your Journey</span>
+          </span>
+          
+          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6 tracking-tight">
+            Embracing the Future of <span className="text-health-primary">AI-Powered</span> Healthcare
+          </h2>
+          
+          <div className="flex justify-center mb-6">
+            <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary"></div>
+          </div>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-white rounded-xl p-6 shadow-sm border border-health-primary/10 text-center">
