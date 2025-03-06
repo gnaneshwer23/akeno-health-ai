@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Button } from '@/components/Button';
-import { ArrowRight, Smartphone, Database, Brain, Activity, Flask, FlaskConical, Workflow, Dna, LineChart, HeartPulse, Beaker, Users } from 'lucide-react';
+import { ArrowRight, Smartphone, Database, Brain, Activity, FlaskConical, Workflow, Dna, LineChart, HeartPulse, Beaker, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const HowItWorks = () => {
