@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Atom, Zap, Braces, Dna } from 'lucide-react';
+import { Atom, Zap, Braces, Dna, BrainCircuit } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export const QuantumIntro = () => {
@@ -9,12 +9,45 @@ export const QuantumIntro = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-health-dark mb-4">Revolutionizing Healthcare with Quantum AI</h2>
-          <p className="text-lg text-health-dark/70 max-w-3xl mx-auto">
-            Quantum computing is transforming precision medicine by accelerating drug discovery, optimizing diagnostics, and revolutionizing personalized healthcare. Akeno Health AI is at the forefront of integrating quantum computing to tackle some of the most complex challenges in medical research and patient care.
-          </p>
-          <p className="text-lg text-health-dark/70 max-w-3xl mx-auto mt-4 font-medium">
-            By harnessing quantum algorithms, we can enhance medical simulations, multi-omics analysis, and AI-driven treatment personalization, bringing forth an era of <span className="text-health-primary">hyper-efficient, data-driven precision medicine.</span>
-          </p>
+          
+          <div className="flex justify-center mb-8">
+            <div className="w-full max-w-4xl bg-white rounded-xl shadow-sm p-6 relative overflow-hidden">
+              <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-100 rounded-full opacity-30"></div>
+              <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-100 rounded-full opacity-30"></div>
+              
+              <div className="relative z-10">
+                <p className="text-lg text-health-dark/70 mb-4">
+                  Quantum computing is transforming precision medicine by accelerating drug discovery, optimizing diagnostics, and revolutionizing personalized healthcare.
+                </p>
+                
+                <div className="flex justify-center my-6">
+                  <div className="relative w-52 h-52">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="h-40 w-40 rounded-full bg-indigo-100/50 animate-pulse"></div>
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="h-28 w-28 rounded-full bg-indigo-200/50 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Atom size={64} className="text-indigo-500" />
+                    </div>
+                    {/* Electron orbits */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="h-52 w-52 rounded-full border-2 border-dashed border-indigo-300/40 animate-spin" style={{ animationDuration: '15s' }}></div>
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="h-52 w-32 rounded-full border-2 border-dashed border-blue-300/40 animate-spin" style={{ animationDuration: '12s', transform: 'rotate(60deg)' }}></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <p className="text-lg text-health-dark/70 font-medium">
+                  Akeno Health AI harnesses quantum algorithms to bring forth an era of 
+                  <span className="text-health-primary"> hyper-efficient, data-driven precision medicine.</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -33,7 +66,7 @@ export const QuantumIntro = () => {
           <Card className="bg-white border-none hover:shadow-md transition-shadow">
             <CardContent className="p-6">
               <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-                <Zap size={24} className="text-blue-600" />
+                <BrainCircuit size={24} className="text-blue-600" />
               </div>
               <h3 className="text-xl font-bold text-health-dark mb-2">AI Integration</h3>
               <p className="text-health-dark/70">

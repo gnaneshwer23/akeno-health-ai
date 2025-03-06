@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, BrainCircuit, Network, Users, Lightbulb } from 'lucide-react';
+import { ArrowRight, BrainCircuit, Network, Users, Lightbulb, CircuitBoard } from 'lucide-react';
 
 export const QuantumFuture = () => {
   const futureInitiatives = [
@@ -24,21 +24,97 @@ export const QuantumFuture = () => {
   return (
     <section className="mb-16 py-16 px-6 bg-gradient-to-b from-indigo-50 to-white">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-health-dark mb-4">The Future of Quantum-Powered Healthcare</h2>
-          <p className="text-lg text-health-dark/70 max-w-3xl mx-auto">
-            As quantum computing continues to evolve, Akeno Health AI is committed to pushing the boundaries of <strong>personalized medicine, disease prediction, and real-time patient monitoring</strong>. We are actively working on pioneering technologies that will shape the future of healthcare.
-          </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
+          <div>
+            <h2 className="text-3xl font-bold text-health-dark mb-4">The Future of Quantum-Powered Healthcare</h2>
+            <div className="h-1 w-20 bg-health-primary mb-6"></div>
+            <p className="text-lg text-health-dark/70 mb-8">
+              As quantum computing continues to evolve, Akeno Health AI is committed to pushing the boundaries of <strong>personalized medicine, disease prediction, and real-time patient monitoring</strong>. We are actively working on pioneering technologies that will shape the future of healthcare.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
+                <h3 className="font-medium text-blue-800 mb-2">2023</h3>
+                <p className="text-sm text-blue-700">Initial quantum models for drug discovery</p>
+              </div>
+              <div className="bg-indigo-50 rounded-lg p-4 border border-indigo-100">
+                <h3 className="font-medium text-indigo-800 mb-2">2024</h3>
+                <p className="text-sm text-indigo-700">Quantum-enhanced diagnostics launch</p>
+              </div>
+              <div className="bg-purple-50 rounded-lg p-4 border border-purple-100">
+                <h3 className="font-medium text-purple-800 mb-2">2025</h3>
+                <p className="text-sm text-purple-700">Advanced hybrid AI-quantum systems</p>
+              </div>
+              <div className="bg-amber-50 rounded-lg p-4 border border-amber-100">
+                <h3 className="font-medium text-amber-800 mb-2">2026</h3>
+                <p className="text-sm text-amber-700">Full quantum integration across platforms</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex justify-center">
+            <div className="relative w-64 h-64">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-56 h-56 bg-indigo-100 rounded-full animate-pulse"></div>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-44 h-44 bg-blue-100 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-32 h-32 bg-indigo-200 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <CircuitBoard size={80} className="text-indigo-600" />
+              </div>
+              
+              {/* Connection lines */}
+              <svg className="absolute inset-0" width="256" height="256">
+                <circle cx="128" cy="128" r="100" fill="none" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" strokeDasharray="5,5" />
+                <circle cx="128" cy="128" r="80" fill="none" stroke="rgba(99, 102, 241, 0.3)" strokeWidth="1" strokeDasharray="5,5" />
+                <circle cx="128" cy="128" r="60" fill="none" stroke="rgba(99, 102, 241, 0.4)" strokeWidth="1" strokeDasharray="5,5" />
+                
+                {/* Nodes */}
+                <circle cx="200" cy="128" r="4" fill="rgba(99, 102, 241, 0.6)" />
+                <circle cx="56" cy="128" r="4" fill="rgba(99, 102, 241, 0.6)" />
+                <circle cx="128" cy="200" r="4" fill="rgba(99, 102, 241, 0.6)" />
+                <circle cx="128" cy="56" r="4" fill="rgba(99, 102, 241, 0.6)" />
+                <circle cx="173" cy="173" r="4" fill="rgba(99, 102, 241, 0.6)" />
+                <circle cx="173" cy="83" r="4" fill="rgba(99, 102, 241, 0.6)" />
+                <circle cx="83" cy="173" r="4" fill="rgba(99, 102, 241, 0.6)" />
+                <circle cx="83" cy="83" r="4" fill="rgba(99, 102, 241, 0.6)" />
+                
+                {/* Connection lines */}
+                <line x1="128" y1="128" x2="200" y2="128" stroke="rgba(99, 102, 241, 0.4)" strokeWidth="1" />
+                <line x1="128" y1="128" x2="56" y2="128" stroke="rgba(99, 102, 241, 0.4)" strokeWidth="1" />
+                <line x1="128" y1="128" x2="128" y2="200" stroke="rgba(99, 102, 241, 0.4)" strokeWidth="1" />
+                <line x1="128" y1="128" x2="128" y2="56" stroke="rgba(99, 102, 241, 0.4)" strokeWidth="1" />
+                <line x1="128" y1="128" x2="173" y2="173" stroke="rgba(99, 102, 241, 0.4)" strokeWidth="1" />
+                <line x1="128" y1="128" x2="173" y2="83" stroke="rgba(99, 102, 241, 0.4)" strokeWidth="1" />
+                <line x1="128" y1="128" x2="83" y2="173" stroke="rgba(99, 102, 241, 0.4)" strokeWidth="1" />
+                <line x1="128" y1="128" x2="83" y2="83" stroke="rgba(99, 102, 241, 0.4)" strokeWidth="1" />
+              </svg>
+            </div>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {futureInitiatives.map((initiative, index) => (
-            <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col h-full border border-indigo-100">
-              <div className="h-12 w-12 rounded-full bg-indigo-100 flex-shrink-0 flex items-center justify-center mb-4">
-                {initiative.icon}
+            <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-indigo-100">
+              <div className="flex flex-col h-full">
+                <div className="h-12 w-12 rounded-full bg-indigo-100 flex-shrink-0 flex items-center justify-center mb-4">
+                  {initiative.icon}
+                </div>
+                <h3 className="text-xl font-bold text-health-dark mb-3">{initiative.title}</h3>
+                <p className="text-health-dark/70 mb-4">{initiative.description}</p>
+                <div className="mt-auto pt-4">
+                  <div className="w-full h-1 bg-gray-200 rounded-full">
+                    <div className="h-1 bg-indigo-400 rounded-full w-1/2"></div>
+                  </div>
+                  <div className="flex justify-between text-xs text-gray-500 mt-1">
+                    <span>In progress</span>
+                    <span>Future state</span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-health-dark mb-3">{initiative.title}</h3>
-              <p className="text-health-dark/70">{initiative.description}</p>
             </div>
           ))}
         </div>
