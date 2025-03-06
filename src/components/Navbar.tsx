@@ -41,17 +41,21 @@ const Navbar: React.FC = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 lg:px-12",
-        isScrolled ? "py-3 glassmorphism backdrop-blur-lg shadow-md" : "py-5 bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 lg:px-8",
+        isScrolled 
+          ? "py-2 bg-white/95 backdrop-blur-lg border-b border-gray-100/50 shadow-sm" 
+          : "py-4 bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Brand />
-        <NavLinks />
+        <div className="flex-1 flex justify-center">
+          <NavLinks />
+        </div>
         <AuthButtons />
 
         <button
-          className="lg:hidden text-health-dark"
+          className="lg:hidden ml-4 text-health-dark hover:text-health-primary transition-colors"
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >

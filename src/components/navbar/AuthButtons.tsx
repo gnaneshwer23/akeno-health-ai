@@ -5,10 +5,10 @@ import { Button } from '../Button';
 
 const AuthButtons: React.FC = () => {
   return (
-    <div className="hidden lg:flex items-center gap-6">
+    <div className="hidden lg:flex items-center gap-4">
       <Link
         to="/login"
-        className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
+        className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium px-1"
       >
         Sign In
         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
@@ -16,7 +16,7 @@ const AuthButtons: React.FC = () => {
       <Button 
         variant="primary" 
         size="sm" 
-        className="shadow hover:shadow-md transition-all"
+        className="shadow hover:shadow-md transition-all whitespace-nowrap"
         as="Link"
         to="/contact"
       >

@@ -11,7 +11,7 @@ const NavLink: React.FC<NavLinkProps> = ({ to, children }) => {
   return (
     <Link
       to={to}
-      className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
+      className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium px-1"
     >
       {children}
       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
@@ -21,7 +21,7 @@ const NavLink: React.FC<NavLinkProps> = ({ to, children }) => {
 
 const NavLinks: React.FC = () => {
   return (
-    <nav className="hidden lg:flex items-center space-x-6">
+    <nav className="hidden lg:flex items-center gap-5 xl:gap-6">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/about">About</NavLink>
       <NavLink to="/how-it-works">How It Works</NavLink>
@@ -29,7 +29,7 @@ const NavLinks: React.FC = () => {
       <NavLink to="/patient-solutions">For Patients</NavLink>
       <NavLink to="/doctor-solutions">For Doctors</NavLink>
       <NavLink to="/biotech-solutions">For Pharma & Biotech</NavLink>
-      <NavLink to="/quantum-computing">Quantum Integration</NavLink>
+      <NavLink to="/quantum-computing">Quantum</NavLink>
       <NavLink to="/contact">Contact</NavLink>
     </nav>
   );
