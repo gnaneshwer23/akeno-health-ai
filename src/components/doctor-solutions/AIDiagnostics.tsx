@@ -8,8 +8,13 @@ import {
   ListChecks, 
   Puzzle,
   Activity,
-  ArrowRight
+  ArrowRight,
+  ChevronRight,
+  FileText,
+  LucideIcon,
+  AlertCircle
 } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const AIDiagnostics = () => {
   const features = [
@@ -42,6 +47,53 @@ const AIDiagnostics = () => {
       icon: <Puzzle size={24} />,
       title: "AI for Rare & Complex Diseases",
       description: "AI analyzes vast datasets to identify rare genetic disorders, autoimmune conditions, and hard-to-diagnose diseases, providing AI-generated differential diagnoses."
+    }
+  ];
+
+  type DiagnosticStepProps = {
+    icon: React.ReactNode;
+    title: string;
+    description: string;
+    active?: boolean;
+  };
+
+  const DiagnosticStep = ({ icon, title, description, active = false }: DiagnosticStepProps) => (
+    <div className={`flex items-center gap-4 p-3 rounded-lg transition-all ${active ? 'bg-health-primary/20' : 'bg-white hover:bg-health-light/50'}`}>
+      <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center ${active ? 'bg-health-primary text-white' : 'bg-health-primary/10 text-health-primary'}`}>
+        {icon}
+      </div>
+      <div className="flex-1">
+        <h4 className="font-medium text-health-dark">{title}</h4>
+        <p className="text-sm text-muted-foreground">{description}</p>
+      </div>
+      {active && <div className="w-2 h-8 bg-health-primary rounded-full"/>}
+    </div>
+  );
+
+  const diagnosticProcess = [
+    {
+      icon: <FileText size={24} />,
+      title: "Data Collection",
+      description: "Patient medical history, symptoms, and test results are gathered",
+      active: false
+    },
+    {
+      icon: <Brain size={24} />,
+      title: "AI Analysis",
+      description: "Deep learning algorithms process and analyze all patient data",
+      active: true
+    },
+    {
+      icon: <AlertCircle size={24} />,
+      title: "Finding Identification",
+      description: "AI detects anomalies and potential diagnoses",
+      active: false
+    },
+    {
+      icon: <ListChecks size={24} />,
+      title: "Clinical Validation",
+      description: "Medical professionals review AI findings and confirm diagnosis",
+      active: false
     }
   ];
 
@@ -85,111 +137,135 @@ const AIDiagnostics = () => {
           </div>
           
           <div className="relative">
-            <div className="aspect-video bg-white rounded-2xl shadow-xl overflow-hidden border border-health-primary/10">
-              <div className="h-full p-6 flex flex-col">
-                <div className="flex items-center justify-between mb-6 border-b pb-4">
-                  <div className="flex items-center gap-2">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-health-primary/10">
+              <div className="border-b border-gray-100">
+                <div className="flex items-center justify-between p-6">
+                  <div className="flex items-center gap-3">
                     <div className="bg-health-primary/10 p-2 rounded-full">
-                      <ScanLine size={24} className="text-health-primary" />
+                      <Brain size={24} className="text-health-primary" />
                     </div>
-                    <h3 className="font-medium">AI Diagnostic Assistant</h3>
+                    <div>
+                      <h3 className="font-medium text-health-dark">AI Diagnostic Assistant</h3>
+                      <p className="text-xs text-muted-foreground">Advanced medical analysis platform</p>
+                    </div>
                   </div>
-                  <div className="text-sm text-health-primary bg-health-primary/10 px-2 py-1 rounded-full">
-                    99.2% Accuracy
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-health-primary bg-health-primary/10 px-2 py-1 rounded-full">
+                      99.2% Accuracy
+                    </span>
+                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                      Live Analysis
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="mb-6">
+                  <h4 className="text-sm font-medium mb-3">Diagnostic Process</h4>
+                  <div className="space-y-3">
+                    {diagnosticProcess.map((step, index) => (
+                      <DiagnosticStep 
+                        key={index}
+                        icon={step.icon}
+                        title={step.title}
+                        description={step.description}
+                        active={step.active}
+                      />
+                    ))}
                   </div>
                 </div>
                 
-                <div className="flex-1 flex flex-col gap-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-gray-100 rounded-lg aspect-square overflow-hidden relative group">
-                      <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-500">
-                        Chest X-ray Image
-                      </div>
-                      <div className="absolute inset-0 bg-health-primary/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                        <div className="bg-white/80 rounded-full p-2">
-                          <ScanLine size={20} className="text-health-primary" />
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <Card className="border-0 shadow-sm">
+                    <CardHeader className="p-4 pb-2">
+                      <CardTitle className="text-sm flex items-center gap-2">
+                        <ScanLine size={16} className="text-health-primary" />
+                        Medical Imaging
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-4 pt-0">
+                      <div className="aspect-square bg-gray-100 rounded-lg relative flex items-center justify-center mb-2 overflow-hidden">
+                        <div className="absolute inset-0 flex items-center justify-center text-xs text-gray-500">
+                          Chest X-ray Image
+                        </div>
+                        <div className="absolute bottom-2 right-2 bg-white/80 rounded-full p-1">
+                          <Search size={14} className="text-health-primary" />
                         </div>
                       </div>
-                    </div>
-                    <div className="bg-gray-100 rounded-lg aspect-square overflow-hidden relative group">
-                      <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-500">
-                        CT Scan
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-muted-foreground">Processed</span>
+                        <span className="font-medium text-health-primary">4.3s</span>
                       </div>
-                      <div className="absolute inset-0 bg-health-primary/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                        <div className="bg-white/80 rounded-full p-2">
-                          <Brain size={20} className="text-health-primary" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    </CardContent>
+                  </Card>
                   
-                  <div className="bg-health-light p-4 rounded-lg">
-                    <div className="mb-3 text-sm font-medium flex items-center justify-between">
-                      <span>AI Analysis Results</span>
-                      <span className="text-xs text-health-primary bg-health-primary/10 px-2 py-0.5 rounded-full">
-                        Processing Time: 4.3s
-                      </span>
-                    </div>
-                    <div className="space-y-3">
-                      <div>
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-sm font-medium flex items-center gap-1">
-                            <Activity size={14} className="text-health-primary" />
-                            Early Stage Pneumonia
-                          </span>
-                          <span className="text-sm">96%</span>
+                  <Card className="border-0 shadow-sm">
+                    <CardHeader className="p-4 pb-2">
+                      <CardTitle className="text-sm flex items-center gap-2">
+                        <Brain size={16} className="text-health-primary" />
+                        AI Analysis
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-4 pt-0">
+                      <div className="space-y-2">
+                        <div>
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-xs font-medium flex items-center gap-1">
+                              <Activity size={12} className="text-health-primary" />
+                              Early Stage Pneumonia
+                            </span>
+                            <span className="text-xs font-medium">96%</span>
+                          </div>
+                          <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                            <div className="h-full bg-health-primary rounded-full" style={{ width: '96%' }}></div>
+                          </div>
                         </div>
-                        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-health-primary rounded-full" style={{ width: '96%' }}></div>
+                        <div>
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-xs font-medium flex items-center gap-1">
+                              <Activity size={12} className="text-health-primary" />
+                              COVID-19 Indicators
+                            </span>
+                            <span className="text-xs font-medium">12%</span>
+                          </div>
+                          <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                            <div className="h-full bg-health-primary rounded-full" style={{ width: '12%' }}></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-xs font-medium flex items-center gap-1">
+                              <Activity size={12} className="text-health-primary" />
+                              Pulmonary Fibrosis
+                            </span>
+                            <span className="text-xs font-medium">3%</span>
+                          </div>
+                          <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                            <div className="h-full bg-health-primary rounded-full" style={{ width: '3%' }}></div>
+                          </div>
                         </div>
                       </div>
-                      <div>
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-sm font-medium flex items-center gap-1">
-                            <Activity size={14} className="text-health-primary" />
-                            COVID-19 Indicators
-                          </span>
-                          <span className="text-sm">12%</span>
-                        </div>
-                        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-health-primary rounded-full" style={{ width: '12%' }}></div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-sm font-medium flex items-center gap-1">
-                            <Activity size={14} className="text-health-primary" />
-                            Pulmonary Fibrosis
-                          </span>
-                          <span className="text-sm">3%</span>
-                        </div>
-                        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-health-primary rounded-full" style={{ width: '3%' }}></div>
-                        </div>
-                      </div>
-                    </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                
+                <div className="bg-health-primary/10 p-4 rounded-lg">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-sm font-medium flex items-center gap-2">
+                      <Syringe size={16} className="text-health-primary" />
+                      AI Recommendation
+                    </h4>
+                    <span className="text-xs bg-health-primary/20 text-health-primary px-2 py-0.5 rounded-full">
+                      High Confidence
+                    </span>
                   </div>
-                  
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="flex flex-col items-center justify-center p-2 bg-health-light/50 rounded-lg">
-                      <Brain size={18} className="text-health-primary mb-1" />
-                      <span className="text-xs text-health-dark font-medium">AI Analysis</span>
-                    </div>
-                    <div className="flex flex-col items-center justify-center p-2 bg-health-light/50 rounded-lg">
-                      <ArrowRight size={18} className="text-health-primary mb-1" />
-                      <span className="text-xs text-health-dark font-medium">Processing</span>
-                    </div>
-                    <div className="flex flex-col items-center justify-center p-2 bg-health-primary/10 rounded-lg">
-                      <ListChecks size={18} className="text-health-primary mb-1" />
-                      <span className="text-xs text-health-dark font-medium">Diagnosis</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-auto bg-health-primary/10 p-4 rounded-lg">
-                    <div className="text-sm font-medium mb-2">AI Recommendation</div>
-                    <p className="text-sm">
-                      High probability of early-stage pneumonia detected. Recommend immediate antibiotic treatment with Azithromycin 500mg daily for 5 days and follow-up chest X-ray in 2 weeks.
-                    </p>
+                  <p className="text-sm mb-3">
+                    High probability of early-stage pneumonia detected. Recommend immediate antibiotic treatment with Azithromycin 500mg daily for 5 days and follow-up chest X-ray in 2 weeks.
+                  </p>
+                  <div className="flex items-center justify-between text-xs text-health-primary font-medium">
+                    <span>View detailed report</span>
+                    <ChevronRight size={14} />
                   </div>
                 </div>
               </div>
