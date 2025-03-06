@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   FileText, 
@@ -10,7 +9,8 @@ import {
   ArrowRight,
   Users,
   ShieldAlert,
-  Activity
+  Activity,
+  Brain
 } from 'lucide-react';
 
 const HealthReports = () => {
@@ -211,3 +211,4 @@ const HealthReports = () => {
 };
 
 export default HealthReports;
+
