@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
@@ -10,6 +9,7 @@ import { Footer } from '@/components/Footer';
 import { StatisticsSection } from '@/components/StatisticsSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { PartnersSection } from '@/components/PartnersSection';
+import { CertificationsSection } from '@/components/CertificationsSection';
 
 const Index = () => {
   useEffect(() => {
@@ -48,6 +48,7 @@ const Index = () => {
         <ExplainerSection />
         <TestimonialsSection />
         <PartnersSection />
+        <CertificationsSection />
         <CTASection />
       </main>
       
