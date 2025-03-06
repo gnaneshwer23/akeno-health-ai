@@ -1,7 +1,6 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from './Button';
-import { Check, ArrowRight, Sparkles, Shield, Activity, BarChart2 } from 'lucide-react';
+import { Check, ArrowRight, Sparkles, Shield, Activity, BarChart2, Brain } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -54,6 +53,10 @@ const Hero: React.FC = () => {
     {
       text: "AI-Driven Insights & Preventive Strategies",
       icon: <Check size={16} className="text-health-primary" />
+    },
+    {
+      text: "Neural Network-Based Health Optimization",
+      icon: <Brain size={16} className="text-health-primary" />
     }
   ];
   
