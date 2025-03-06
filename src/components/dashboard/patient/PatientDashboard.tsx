@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { 
@@ -15,7 +14,8 @@ import {
   Brain, 
   Droplet, 
   AlertCircle,
-  MessageSquare
+  MessageSquare,
+  User
 } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/Button';

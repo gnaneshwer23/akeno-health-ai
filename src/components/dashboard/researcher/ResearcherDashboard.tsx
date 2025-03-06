@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { 
@@ -12,7 +11,7 @@ import {
 import { 
   Microscope,
   Database,
-  Flask,
+  Beaker,
   Dna,
   Users,
   Search,
@@ -204,7 +203,7 @@ const ResearcherDashboard = () => {
                   
                   <div className="p-4 border rounded-lg flex items-center hover:bg-gray-50 transition-colors">
                     <div className="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600 mr-3">
-                      <Flask size={20} />
+                      <Beaker size={20} />
                     </div>
                     <div className="flex-1">
                       <div className="flex justify-between items-center">
@@ -402,7 +401,7 @@ const ResearcherDashboard = () => {
                 <div className="p-3 bg-gray-50 rounded-lg">
                   <div className="flex items-start gap-3">
                     <div className="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
-                      <Flask size={20} />
+                      <Beaker size={20} />
                     </div>
                     <div>
                       <h4 className="font-medium">Novel Kinase Inhibitor</h4>

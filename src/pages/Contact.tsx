@@ -1,7 +1,7 @@
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 import ContactHero from '@/components/contact/ContactHero';
 import AIChatbot from '@/components/contact/AIChatbot';
 import TelehealthConsultations from '@/components/contact/TelehealthConsultations';
