@@ -20,6 +20,9 @@ const Navbar: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    
+    // Initial check in case page is loaded at a position
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

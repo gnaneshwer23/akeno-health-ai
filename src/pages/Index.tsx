@@ -41,10 +41,11 @@ const Index = () => {
         <Hero />
         <MissionStatement />
         <FeaturesSection />
-        <CTASection />
         <ExplainerSection />
-        <Footer />
+        <CTASection />
       </main>
+      
+      <Footer />
     </div>
   );
 };
