@@ -12,14 +12,24 @@ const CallToActionSection = () => {
         </h2>
         
         <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-          At Akeno Health AI, we believe in proactive, personalized, and AI-enhanced healthcare solutions that transform patient lives, optimize therapies, and advance medical innovation. By combining machine learning, biometrics, genomics, and continuous monitoring, we create a comprehensive, AI-powered healthcare ecosystem that empowers individuals, supports clinicians, and accelerates pharmaceutical breakthroughs.
+          At Akeno Health AI, we believe in <span className="font-medium">proactive, personalized, and AI-enhanced healthcare solutions</span> that transform patient lives, optimize therapies, and advance medical innovation. By combining <span className="font-medium">machine learning, biometrics, genomics, and continuous monitoring</span>, we create a comprehensive, AI-powered healthcare ecosystem that empowers individuals, supports clinicians, and accelerates pharmaceutical breakthroughs.
         </p>
+        
+        <div className="p-6 mb-10 rounded-xl bg-health-primary/10 border border-health-primary/20">
+          <p className="text-health-dark font-medium">
+            Join us in shaping the future of medicine—where AI-driven precision healthcare redefines disease prevention, treatment personalization, and long-term well-being.
+          </p>
+        </div>
         
         <Button size="lg" variant="primary">
           Join us in shaping the future of medicine
           <ArrowRight size={16} />
         </Button>
       </div>
+      
+      {/* Background decorative elements */}
+      <div className="absolute -z-10 top-1/4 right-0 w-96 h-96 bg-health-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute -z-10 bottom-1/4 left-0 w-96 h-96 bg-health-secondary/5 rounded-full blur-3xl"></div>
     </section>
   );
 };

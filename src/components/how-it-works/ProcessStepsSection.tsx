@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ProcessStep from './ProcessStep';
-import { Smartphone, Database, Brain, Activity, FlaskConical, Workflow, Dna, LineChart, HeartPulse, Beaker, Users } from 'lucide-react';
+import { Smartphone, Database, Brain, Activity, FlaskConical, Workflow, Dna, LineChart, HeartPulse, Beaker, Users, Shield, Test, FileText } from 'lucide-react';
 
 const ProcessStepsSection = () => {
   return (
@@ -9,7 +9,7 @@ const ProcessStepsSection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
-            Step-by-Step Process: AI-Driven Diagnostics & Therapy Recommendations
+            Step-by-Step Process: AI-Driven Diagnostics & Personalized Therapy
           </h2>
         </div>
         
@@ -26,9 +26,9 @@ const ProcessStepsSection = () => {
               content: "Smartwatches, glucose monitors, ECG sensors, continuous glucose monitors (CGMs), and fitness trackers provide real-time biometrics (heart rate, HRV, sleep quality, blood oxygen, glucose levels, physical activity)."
             },
             {
-              icon: <Database size={24} />,
+              icon: <FileText size={24} />,
               title: "Electronic Health Records (EHRs)",
-              content: "A comprehensive medical history, including clinical notes, lab test results, imaging scans, prescriptions, and physician observations, is securely integrated into the system."
+              content: "AI securely integrates comprehensive medical history, including clinical notes, lab test results, imaging scans, prescriptions, and physician observations into the system."
             },
             {
               icon: <Dna size={24} />,
@@ -41,7 +41,7 @@ const ProcessStepsSection = () => {
               content: "AI continuously factors in diet, stress levels, exposure to environmental toxins, and social determinants of health to create a truly holistic healthcare profile."
             },
           ]}
-          outcome="A continuously evolving, AI-driven virtual representation of the patient's physiological, genetic, and immune system state. This Digital Twin is used to simulate disease progression, predict therapy responses, and guide precision healthcare interventions."
+          outcome="A continuously evolving, AI-driven digital twin - a virtual representation of the patient's genetic, immune, and physiological state. This Digital Twin helps simulate disease progression, predict therapy responses, and guide precision healthcare interventions."
         />
         
         {/* Step 2 */}
@@ -57,11 +57,11 @@ const ProcessStepsSection = () => {
             },
             {
               icon: <Dna size={20} />,
-              content: "Predictive modelling integrates multi-omics data with real-time biometrics to provide hyper-accurate risk assessments years before symptoms appear."
+              content: "Predictive modelling integrates multi-omics data with real-time biometrics to provide high-accuracy risk assessments years before symptoms appear."
             },
             {
               icon: <Activity size={20} />,
-              content: "Advanced machine learning models refine predictions dynamically, ensuring personalized risk stratification for each individual."
+              content: "Advanced machine learning models refine predictions dynamically, ensuring personalized risk stratification that continuously adapts to each individual."
             },
             {
               icon: <HeartPulse size={20} />,
@@ -74,21 +74,21 @@ const ProcessStepsSection = () => {
         {/* Step 3 */}
         <ProcessStep
           stepNumber={3}
-          title="Personalized AI-Optimized Treatment Plans"
+          title="AI-Optimized Personalized Treatment Plans"
           description="Our AI creates highly personalized treatment plans based on your unique genetic, epigenetic, and molecular profile."
           icon={<FlaskConical size={60} className="text-health-primary/70" />}
           features={[
             {
               icon: <Dna size={20} />,
-              content: "AI evaluates epigenetic markers and gene expression profiles to create highly personalized treatment recommendations."
+              content: "AI evaluates epigenetic markers and gene expression profiles to create highly personalized treatment recommendations tailored to each patient's molecular needs."
             },
             {
-              icon: <FlaskConical size={20} />,
-              content: "AI-powered drug repurposing finds existing FDA-approved drugs that best match a patient's molecular profile, eliminating trial-and-error prescribing."
+              icon: <Shield size={20} />,
+              content: "Quantum-powered drug repurposing finds FDA-approved drugs that match a patient's molecular profile, eliminating trial-and-error prescribing."
             },
             {
-              icon: <Beaker size={20} />,
-              content: "CRISPR-based gene editing insights help clinicians and researchers optimize targeted gene therapies for genetic and autoimmune conditions."
+              icon: <Test size={20} />,
+              content: "CRISPR-based AI insights help clinicians and researchers optimize targeted gene therapies for genetic and autoimmune conditions."
             },
             {
               icon: <Activity size={20} />,
@@ -96,7 +96,7 @@ const ProcessStepsSection = () => {
             },
             {
               icon: <Brain size={20} />,
-              content: "AI models continuously refine treatments based on patient responses, adjusting recommendations dynamically over time."
+              content: "AI models continuously refine treatments based on patient responses, adjusting recommendations dynamically in real-time."
             },
           ]}
           outcome="Every patient receives a dynamic, adaptive health plan that evolves with their biological state, maximizing therapy effectiveness and long-term well-being."
@@ -119,7 +119,7 @@ const ProcessStepsSection = () => {
             },
             {
               icon: <Workflow size={20} />,
-              content: "Digital Twin simulations predict and prevent adverse reactions, ensuring therapy efficacy and patient safety."
+              content: "Digital Twin simulations predict treatment efficacy, adverse reactions, and personalized therapy adjustments to ensure patient safety."
             },
             {
               icon: <Smartphone size={20} />,
@@ -142,7 +142,7 @@ const ProcessStepsSection = () => {
           features={[
             {
               icon: <Dna size={20} />,
-              content: "AI-driven biomarker analysis accelerates the discovery of precision medicine therapies tailored to genetic and epigenetic profiles."
+              content: "Quantum AI accelerates biomarker discovery for precision medicine therapies tailored to genetic and epigenetic profiles."
             },
             {
               icon: <Users size={20} />,
@@ -150,7 +150,7 @@ const ProcessStepsSection = () => {
             },
             {
               icon: <FlaskConical size={20} />,
-              content: "AI-powered synthetic biology techniques drive next-generation therapeutics, including highly targeted cancer treatments and regenerative medicine breakthroughs."
+              content: "AI-powered synthetic biology and quantum simulations enable next-generation therapeutics, including highly targeted cancer treatments and regenerative medicine breakthroughs."
             },
             {
               icon: <Brain size={20} />,
