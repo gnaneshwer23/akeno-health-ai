@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from './Button';
 import { Brain, Database, Activity, Lock, Cpu, FlaskConical } from 'lucide-react';
@@ -69,9 +70,6 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
               <div className="relative mb-6">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-health-primary/10 text-health-primary">
                   {step.icon}
-                </div>
-                <div className="absolute top-0 right-0 flex items-center justify-center w-6 h-6 rounded-full bg-health-primary text-white text-sm font-medium">
-                  {index + 1}
                 </div>
               </div>
               
