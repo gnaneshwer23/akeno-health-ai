@@ -1,7 +1,6 @@
-
 import React from 'react';
 import ProcessStep from './ProcessStep';
-import { Smartphone, Database, Brain, Activity, FlaskConical, Workflow, Dna, LineChart, HeartPulse, Beaker, Users, Shield, Test, FileText } from 'lucide-react';
+import { Smartphone, Database, Brain, Activity, FlaskConical, Workflow, Dna, LineChart, HeartPulse, Beaker, Users, Shield, FileText } from 'lucide-react';
 
 const ProcessStepsSection = () => {
   return (
@@ -87,7 +86,7 @@ const ProcessStepsSection = () => {
               content: "Quantum-powered drug repurposing finds FDA-approved drugs that match a patient's molecular profile, eliminating trial-and-error prescribing."
             },
             {
-              icon: <Test size={20} />,
+              icon: <Activity size={20} />,
               content: "CRISPR-based AI insights help clinicians and researchers optimize targeted gene therapies for genetic and autoimmune conditions."
             },
             {
