@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Shield, Sparkles, Heart, Target, Lightbulb, Glasses, Cpu } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -37,21 +38,21 @@ export const VisionMission = () => {
   ];
 
   return (
-    <section id="vision" className="mb-20 px-6">
+    <section id="vision" className="mb-20 px-6 py-16 bg-gradient-to-b from-white to-health-light">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row gap-10 md:gap-16 mb-16">
           {/* Vision Column */}
           <div className="md:w-1/2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-10 w-10 rounded-full bg-health-primary/10 flex items-center justify-center">
-                <Target size={24} className="text-health-primary" />
+              <div className="h-12 w-12 rounded-full bg-health-primary/10 flex items-center justify-center">
+                <Target size={28} className="text-health-primary" />
               </div>
               <h2 className="text-3xl font-bold text-health-dark">Our Vision</h2>
             </div>
             
-            <Card className="bg-health-light border-none">
-              <CardContent className="p-6">
-                <p className="text-health-dark/80 mb-6">
+            <Card className="bg-white border-none shadow-md hover:shadow-lg transition-shadow duration-300">
+              <CardContent className="p-8">
+                <p className="text-health-dark/80 mb-6 leading-relaxed">
                   At Akeno Health AI, our vision is to reshape the future of healthcare by seamlessly integrating artificial intelligence, 
                   multi-omics analysis, and real-time digital twin simulations. We envision a healthcare ecosystem where diseases are 
                   identified at their earliest stages, treatments are uniquely tailored to an individual's genetic, epigenetic, 
@@ -64,15 +65,15 @@ export const VisionMission = () => {
           {/* Mission Column */}
           <div className="md:w-1/2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-10 w-10 rounded-full bg-health-primary/10 flex items-center justify-center">
-                <Lightbulb size={24} className="text-health-primary" />
+              <div className="h-12 w-12 rounded-full bg-health-primary/10 flex items-center justify-center">
+                <Lightbulb size={28} className="text-health-primary" />
               </div>
               <h2 className="text-3xl font-bold text-health-dark">Our Mission</h2>
             </div>
             
-            <Card className="bg-health-light border-none">
-              <CardContent className="p-6">
-                <p className="text-health-dark/80">
+            <Card className="bg-white border-none shadow-md hover:shadow-lg transition-shadow duration-300">
+              <CardContent className="p-8">
+                <p className="text-health-dark/80 leading-relaxed">
                   We are committed to bridging the gap between conventional medicine and AI-powered precision healthcare. 
                   Our mission is to develop a proactive, predictive, and highly personalized approach to patient care, 
                   ensuring that individuals receive treatments and interventions that are tailored to their unique biology. 
@@ -86,25 +87,38 @@ export const VisionMission = () => {
         </div>
         
         {/* Key Pillars */}
-        <h3 className="text-2xl font-semibold text-health-dark mb-8 text-center">Our Key Pillars</h3>
+        <div className="text-center mb-12">
+          <h3 className="text-2xl font-semibold text-health-dark mb-4">Our Key Pillars</h3>
+          <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary mx-auto mb-8"></div>
+          <p className="text-health-dark/70 max-w-3xl mx-auto mb-10">
+            Our approach to transforming healthcare is built on six fundamental pillars that guide our research, 
+            development, and implementation of AI-driven healthcare solutions.
+          </p>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {pillars.map((pillar, index) => (
-            <div key={index} className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="h-10 w-10 rounded-full bg-health-primary/10 flex items-center justify-center flex-shrink-0">
+            <div 
+              key={index} 
+              className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+            >
+              <div className="h-12 w-12 rounded-full bg-health-primary/10 flex items-center justify-center flex-shrink-0">
                 {pillar.icon}
               </div>
               <div>
-                <h4 className="font-medium text-health-dark mb-2">{pillar.title}</h4>
-                <p className="text-health-dark/70 text-sm">{pillar.description}</p>
+                <h4 className="font-semibold text-health-dark mb-2">{pillar.title}</h4>
+                <p className="text-health-dark/70">{pillar.description}</p>
               </div>
             </div>
           ))}
         </div>
         
-        <div className="text-center mt-10">
-          <p className="text-lg font-semibold text-health-primary italic">
-            At Akeno Health AI, we don't just follow the future of healthcare—we create it.
-          </p>
+        <div className="text-center mt-12">
+          <div className="inline-block px-6 py-3 rounded-lg bg-health-primary/10 mb-4">
+            <p className="text-lg font-semibold text-health-primary italic">
+              At Akeno Health AI, we don't just follow the future of healthcare—we create it.
+            </p>
+          </div>
         </div>
       </div>
     </section>

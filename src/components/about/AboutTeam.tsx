@@ -154,7 +154,7 @@ export const AboutTeam = () => {
   ];
 
   return (
-    <section className="mb-20 px-6 relative">
+    <section className="mb-20 px-6 py-16 relative bg-gradient-to-b from-health-light to-white">
       <div className="absolute top-0 right-0 w-72 h-72 bg-health-primary/5 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-health-secondary/5 rounded-full blur-3xl -z-10"></div>
       
@@ -175,14 +175,14 @@ export const AboutTeam = () => {
         </div>
         
         <Tabs defaultValue="leadership" className="w-full">
-          <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-2 bg-transparent w-full mb-6">
+          <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-3 bg-transparent w-full mb-8">
             {teamGroups.map((group) => (
               <TabsTrigger 
                 key={group.id} 
                 value={group.id}
-                className="flex flex-col gap-2 p-4 data-[state=active]:bg-health-primary/10 data-[state=active]:text-health-primary rounded-xl transition-all duration-200"
+                className="flex flex-col gap-2 p-4 data-[state=active]:bg-health-primary/10 data-[state=active]:text-health-primary rounded-xl transition-all duration-200 shadow-sm border border-transparent data-[state=active]:border-health-primary/20 min-h-[100px]"
               >
-                <div className="text-current">
+                <div className="text-current bg-white/80 p-3 rounded-full">
                   {group.icon}
                 </div>
                 <span className="text-xs md:text-sm font-medium">{group.title}</span>
@@ -191,29 +191,34 @@ export const AboutTeam = () => {
           </TabsList>
           
           {teamGroups.map((group) => (
-            <TabsContent key={group.id} value={group.id} className="mt-4">
-              <Card className="bg-health-light border-none shadow-sm">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-health-dark mb-4">{group.title}</h3>
-                  <p className="text-health-dark/70 mb-8">{group.description}</p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {group.members.map((member, index) => (
-                      <div 
-                        key={index} 
-                        className="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
-                      >
-                        <Avatar className="h-20 w-20 mb-4 border-2 border-health-primary/20">
-                          <AvatarImage src={member.avatar} alt={member.name} />
-                          <AvatarFallback className="bg-health-primary/10 text-health-primary font-medium">
-                            {member.initials}
-                          </AvatarFallback>
-                        </Avatar>
-                        <h4 className="font-semibold text-health-dark text-lg mb-1">{member.name}</h4>
-                        <p className="text-health-primary font-medium text-sm mb-3">{member.title}</p>
-                        <p className="text-health-dark/70 text-sm text-center">{member.bio}</p>
-                      </div>
-                    ))}
+            <TabsContent key={group.id} value={group.id} className="mt-4 animate-fade-in">
+              <Card className="bg-white border-none shadow-md">
+                <CardContent className="p-8">
+                  <div className="flex flex-col md:flex-row gap-6 items-start mb-8">
+                    <div className="md:w-1/4">
+                      <h3 className="text-2xl font-bold text-health-dark mb-2">{group.title}</h3>
+                      <div className="h-1 w-12 bg-health-primary mb-4"></div>
+                      <p className="text-health-dark/70">{group.description}</p>
+                    </div>
+                    
+                    <div className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                      {group.members.map((member, index) => (
+                        <div 
+                          key={index} 
+                          className="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
+                        >
+                          <Avatar className="h-24 w-24 mb-4 border-2 border-health-primary/20 group-hover:border-health-primary transition-all duration-300">
+                            <AvatarImage src={member.avatar} alt={member.name} />
+                            <AvatarFallback className="bg-health-primary/10 text-health-primary font-medium text-xl">
+                              {member.initials}
+                            </AvatarFallback>
+                          </Avatar>
+                          <h4 className="font-semibold text-health-dark text-lg mb-1 group-hover:text-health-primary transition-colors">{member.name}</h4>
+                          <p className="text-health-primary font-medium text-sm mb-3">{member.title}</p>
+                          <p className="text-health-dark/70 text-sm text-center">{member.bio}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -221,11 +226,13 @@ export const AboutTeam = () => {
           ))}
         </Tabs>
         
-        <div className="mt-10 text-center">
-          <p className="text-health-dark/80 font-medium">
-            Our team is united by a mission to transform healthcare into a data-driven, precision-based, 
-            patient-first ecosystem that leverages AI to improve medical outcomes and accessibility for all.
-          </p>
+        <div className="mt-12 text-center">
+          <div className="inline-block px-6 py-3 rounded-lg bg-health-primary/10">
+            <p className="text-health-dark/80 font-medium">
+              Our team is united by a mission to transform healthcare into a data-driven, precision-based, 
+              patient-first ecosystem that leverages AI to improve medical outcomes and accessibility for all.
+            </p>
+          </div>
         </div>
       </div>
     </section>

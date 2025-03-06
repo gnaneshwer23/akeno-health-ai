@@ -2,7 +2,6 @@
 import React from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { Button } from '@/components/Button';
 import { AboutHero } from '@/components/about/AboutHero';
 import { VisionMission } from '@/components/about/VisionMission';
 import { AboutTeam } from '@/components/about/AboutTeam';
@@ -11,14 +10,14 @@ import { AboutCTA } from '@/components/about/AboutCTA';
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       
-      <main className="flex-grow pt-28 pb-20">
+      <main className="flex-grow pt-24">
         <AboutHero />
         <VisionMission />
-        <AboutTeam />
         <CompanyStory />
+        <AboutTeam />
         <AboutCTA />
       </main>
       

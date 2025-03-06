@@ -1,21 +1,24 @@
 
 import React from 'react';
-import { Microscope, Rocket, Link } from 'lucide-react';
+import { Microscope, Rocket, Link, CalendarDays } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export const CompanyStory = () => {
   const storyMilestones = [
     {
+      year: "2021",
       icon: <Microscope size={28} className="text-health-primary" />,
       title: "The Breakthrough Moment",
       description: "Recognizing that AI could revolutionize how health data is interpreted, we envisioned an intelligent AI-driven platform capable of analysing real-time health data, detecting early disease markers, and optimizing treatments with unmatched precision. By integrating multi-omics science, advanced machine learning models, and real-time wearable monitoring, we saw an opportunity to reshape how diseases are diagnosed, prevented, and treated."
     },
     {
+      year: "2022-2023",
       icon: <Rocket size={28} className="text-health-primary" />,
       title: "Turning Vision into Reality",
       description: "Years of dedicated research, development, and collaboration with leading healthcare institutions, biotech companies, and regulatory organizations led us to build a cutting-edge AI-powered healthcare ecosystem. Today, Akeno Health AI is a pioneering force in precision medicine, delivering transformative tools for patients, healthcare providers, biotech innovators, and pharmaceutical researchers worldwide."
     },
     {
+      year: "2024+",
       icon: <Link size={28} className="text-health-primary" />,
       title: "Commitment to Continuous Innovation",
       description: "We continue to push the frontiers of AI-driven diagnostics, real-time digital twin modelling, personalized therapy recommendations, and AI-enhanced drug discovery. Our unwavering commitment ensures that healthcare evolves into a more predictive, efficient, and personalized system—empowering individuals with real-time insights, customized treatments, and improved health outcomes."
@@ -23,8 +26,10 @@ export const CompanyStory = () => {
   ];
 
   return (
-    <section className="mb-20 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section className="mb-20 px-6 pt-16 pb-20 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-health-light to-white z-0"></div>
+      
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-health-dark mb-6">Our Story</h2>
           
@@ -33,9 +38,9 @@ export const CompanyStory = () => {
           </div>
         </div>
         
-        <Card className="bg-health-light border-none mb-12">
-          <CardContent className="p-6">
-            <p className="text-health-dark/80">
+        <Card className="bg-white border-none shadow-md mb-16 hover:shadow-lg transition-all duration-300">
+          <CardContent className="p-8">
+            <p className="text-health-dark/80 text-lg leading-relaxed">
               The foundation of Akeno Health AI was built upon a simple but powerful belief: healthcare should be 
               predictive, not reactive. Our journey began when a team of AI researchers, medical doctors, biotech 
               professionals, and digital health entrepreneurs recognized the limitations of traditional medicine—diseases 
@@ -50,17 +55,21 @@ export const CompanyStory = () => {
           {/* Connecting line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-health-primary/20 hidden md:block"></div>
           
-          <div className="space-y-10">
+          <div className="space-y-12">
             {storyMilestones.map((milestone, index) => (
               <div key={index} className="flex flex-col md:flex-row gap-6">
                 <div className="md:w-16 flex items-start justify-center">
-                  <div className="h-16 w-16 rounded-full bg-health-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="h-16 w-16 rounded-full bg-health-primary/10 flex items-center justify-center flex-shrink-0 border-2 border-health-primary/20">
                     {milestone.icon}
                   </div>
                 </div>
                 
-                <div className="flex-1 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-bold text-health-dark mb-3">{milestone.title}</h3>
+                <div className="flex-1 bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-2 mb-4">
+                    <CalendarDays size={18} className="text-health-primary" />
+                    <span className="text-health-primary font-semibold">{milestone.year}</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-health-dark mb-4">{milestone.title}</h3>
                   <p className="text-health-dark/70 leading-relaxed">{milestone.description}</p>
                 </div>
               </div>
@@ -68,11 +77,13 @@ export const CompanyStory = () => {
           </div>
         </div>
         
-        <div className="mt-10 text-center">
-          <p className="text-lg font-semibold text-health-primary">
-            📢 Join us on our journey to redefine healthcare—because the future of medicine is powered by AI, 
-            driven by data, and designed for precision.
-          </p>
+        <div className="mt-16 text-center">
+          <div className="inline-block px-6 py-3 rounded-lg bg-health-primary/10">
+            <p className="text-lg font-semibold text-health-primary">
+              📢 Join us on our journey to redefine healthcare—because the future of medicine is powered by AI, 
+              driven by data, and designed for precision.
+            </p>
+          </div>
         </div>
       </div>
     </section>
