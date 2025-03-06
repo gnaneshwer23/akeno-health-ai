@@ -9,6 +9,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean;
   className?: string;
   icon?: React.ReactNode;
+  as?: React.ElementType;
+  to?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
@@ -18,6 +20,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   fullWidth = false,
   className,
   icon,
+  as: Component = 'button',
+  to,
   ...props
 }, ref) => {
   const baseStyles = "relative inline-flex items-center justify-center rounded-full font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none overflow-hidden shadow-sm";
@@ -37,17 +41,37 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     lg: "text-lg px-8 py-3",
     icon: "p-2"
   };
+
+  const classNames = cn(
+    baseStyles,
+    variants[variant as keyof typeof variants],
+    sizes[size as keyof typeof sizes],
+    fullWidth ? "w-full" : "",
+    className
+  );
+
+  if (Component !== 'button') {
+    return (
+      <Component
+        className={classNames}
+        to={to}
+        {...props}
+      >
+        <span className="relative z-10 flex items-center justify-center gap-2">
+          {icon && <span className="inline-flex">{icon}</span>}
+          {children}
+        </span>
+        <span className="absolute inset-0 z-0 overflow-hidden rounded-full">
+          <span className="absolute top-1/2 left-1/2 aspect-square w-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white opacity-0 transition-all duration-300 group-active:w-32 group-active:opacity-20"></span>
+        </span>
+      </Component>
+    );
+  }
   
   return (
     <button
       ref={ref}
-      className={cn(
-        baseStyles,
-        variants[variant as keyof typeof variants],
-        sizes[size as keyof typeof sizes],
-        fullWidth ? "w-full" : "",
-        className
-      )}
+      className={classNames}
       {...props}
     >
       <span className="relative z-10 flex items-center justify-center gap-2">
