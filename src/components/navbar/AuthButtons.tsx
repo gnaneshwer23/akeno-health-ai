@@ -1,19 +1,18 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '../Button';
 
 const AuthButtons: React.FC = () => {
   return (
-    <div className="hidden lg:flex items-center gap-3">
-      <Button 
-        variant="outline" 
-        size="sm" 
-        className="shadow-sm hover:shadow hover:bg-health-light/50 transition-all text-health-dark"
-        as="Link"
+    <div className="hidden lg:flex items-center gap-6">
+      <Link
         to="/login"
+        className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
       >
         Sign In
-      </Button>
+        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
+      </Link>
       <Button 
         variant="primary" 
         size="sm" 
