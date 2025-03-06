@@ -11,6 +11,7 @@ import PatientSolutions from "./pages/PatientSolutions";
 import DoctorSolutions from "./pages/DoctorSolutions";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./contexts/AuthContext";
 
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/patient-solutions" element={<PatientSolutions />} />
             <Route path="/doctor-solutions" element={<DoctorSolutions />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
