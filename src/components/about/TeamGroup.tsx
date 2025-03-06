@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { TeamMemberCard } from './TeamMemberCard';
-import { LucideIcon } from 'lucide-react';
 
 export interface TeamMember {
   name: string;
