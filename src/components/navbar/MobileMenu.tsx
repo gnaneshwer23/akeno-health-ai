@@ -62,6 +62,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onLinkClick }) => {
             For Pharma & Biotech
           </Link>
           <Link
+            to="/quantum-computing"
+            className="text-health-dark/80 hover:text-health-primary transition-colors text-xl font-medium"
+            onClick={onLinkClick}
+          >
+            Quantum Computing
+          </Link>
+          <Link
             to="/contact"
             className="text-health-dark/80 hover:text-health-primary transition-colors text-xl font-medium"
             onClick={onLinkClick}
