@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { FeatureCard } from '@/components/FeatureCard';
-import { HeartPulse, Brain, Activity, FlaskConical, LineChart, Users, Sparkles } from 'lucide-react';
+import { HeartPulse, Brain, Activity, FlaskConical, LineChart, Users, Sparkles, Atom, Database } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const FeaturesSection: React.FC = () => {
@@ -12,9 +12,9 @@ const FeaturesSection: React.FC = () => {
       description: "Our AI identifies health risks before symptoms appear, enabling timely intervention and prevention strategies."
     },
     {
-      icon: <Brain size={24} className="text-health-primary" />,
+      icon: <Database size={24} className="text-health-primary" />,
       title: "Multi-Omics Integration",
-      description: "We analyze genomics, epigenetics, and proteomics to create deeply personalized treatment approaches."
+      description: "We analyze genomics, epigenetics, proteomics, and transcriptomics to create deeply personalized treatment approaches."
     },
     {
       icon: <Activity size={24} className="text-health-primary" />,
@@ -27,19 +27,19 @@ const FeaturesSection: React.FC = () => {
       description: "Virtual simulations of your body predict therapy responses before application, reducing risks and improving results."
     },
     {
-      icon: <LineChart size={24} className="text-health-primary" />,
-      title: "Predictive Analytics",
-      description: "Advanced algorithms analyze trends to forecast health changes and recommend preventive measures."
+      icon: <Atom size={24} className="text-health-primary" />,
+      title: "Quantum Computing Integration",
+      description: "Quantum-powered AI accelerates drug discovery, optimizes treatment plans, and enhances clinical trial outcomes."
     },
     {
-      icon: <Users size={24} className="text-health-primary" />,
+      icon: <Brain size={24} className="text-health-primary" />,
       title: "Personalized Medicine",
-      description: "Treatments tailored to your unique genetic makeup, lifestyle factors, and health history."
+      description: "Treatments tailored to your unique genetic makeup, lifestyle factors, and health history for better results."
     }
   ];
 
   return (
-    <section className="py-20 px-6 relative overflow-hidden bg-white">
+    <section id="features" className="py-20 px-6 relative overflow-hidden bg-white">
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-health-light/50 to-white pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-health-light/50 to-white pointer-events-none"></div>
       
@@ -55,11 +55,11 @@ const FeaturesSection: React.FC = () => {
           </div>
           
           <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
-            Advanced AI-Powered Features
+            Advanced AI & Quantum-Powered Features
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our platform leverages the latest advancements in artificial intelligence, digital twin technology, and multi-omics analysis to provide unprecedented precision in healthcare.
+            Our platform leverages the latest advancements in artificial intelligence, quantum computing, digital twin technology, and multi-omics analysis to provide unprecedented precision in healthcare.
           </p>
         </div>
         

@@ -1,6 +1,7 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Button } from './Button';
-import { Check, ArrowRight, Sparkles, Shield, Activity, BarChart2, Brain } from 'lucide-react';
+import { Check, ArrowRight, Sparkles, Shield, Activity, BarChart2, Brain, Cpu, Atom, FlaskConical } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -48,11 +49,11 @@ const Hero: React.FC = () => {
     },
     {
       text: "Digital Twin Technology for Predictive Modelling",
-      icon: <Sparkles size={16} className="text-health-primary" />
+      icon: <FlaskConical size={16} className="text-health-primary" />
     },
     {
-      text: "AI-Driven Insights & Preventive Strategies",
-      icon: <Check size={16} className="text-health-primary" />
+      text: "Quantum Computing for Drug Discovery",
+      icon: <Atom size={16} className="text-health-primary" />
     },
     {
       text: "Neural Network-Based Health Optimization",
@@ -96,7 +97,7 @@ const Hero: React.FC = () => {
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-health-dark mb-6 leading-tight fade-up-2">
           <span className="inline-block">Transforming Healthcare</span>{" "}
           <span className="inline-block relative">
-            with AI
+            with AI & Quantum Computing
             <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-health-primary to-health-secondary opacity-70"></span>
           </span>
         </h1>
@@ -124,10 +125,10 @@ const Hero: React.FC = () => {
             variant="primary" 
             className="sm:w-auto w-full group relative overflow-hidden"
             as="Link"
-            to="/patient-solutions"
+            to="/contact"
           >
             <span className="relative z-10 flex items-center gap-2">
-              Get Started
+              Join the Future of Healthcare
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </span>
             <span className="absolute inset-0 bg-gradient-to-r from-health-primary to-health-secondary opacity-0 group-hover:opacity-100 transition-opacity"></span>

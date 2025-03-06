@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from './Button';
-import { Brain, Database, Activity, Lock, Cpu, FlaskConical } from 'lucide-react';
+import { Brain, Database, Activity, Lock, Cpu, FlaskConical, Atom, LineChart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ExplainerSectionProps {
@@ -18,7 +18,12 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
     {
       icon: <Brain size={24} />,
       title: "Multi-Omics Analysis",
-      description: "AI analyses vast amounts of genomics, epigenetics, and metabolomics data to identify hidden disease risks and patterns before symptoms manifest."
+      description: "AI analyzes genomics, epigenetics, transcriptomics, proteomics, and metabolomics data to identify hidden disease risks before symptoms manifest."
+    },
+    {
+      icon: <Atom size={24} />,
+      title: "Quantum-Powered Drug Discovery",
+      description: "Quantum AI accelerates molecular simulations, biomarker discovery, and drug repurposing for faster and more precise treatment recommendations."
     },
     {
       icon: <Cpu size={24} />,
@@ -28,22 +33,22 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
     {
       icon: <Activity size={24} />,
       title: "Continuous Monitoring & Adaptive Therapy",
-      description: "As your health data evolves, AI dynamically adjusts treatment strategies and provides early warnings based on real-time changes."
+      description: "As your health data evolves, AI dynamically adjusts treatment strategies and provides early warnings based on real-time biomarker changes."
     },
     {
       icon: <FlaskConical size={24} />,
-      title: "Personalized Treatment Plans",
-      description: "We provide tailored treatment recommendations, lifestyle optimizations, and drug suggestions aligned with your genetic profile."
+      title: "Hyper-Personalized Treatment Plans",
+      description: "We provide tailored treatment recommendations, drug optimization strategies, and lifestyle interventions based on your unique biology."
     },
     {
       icon: <Lock size={24} />,
-      title: "Secure, Privacy-Centric Data Management",
-      description: "Utilizing blockchain technology and federated learning, we ensure patient data remains private, secure, and fully compliant with regulations."
+      title: "Quantum Encryption & Privacy",
+      description: "Utilizing blockchain technology and federated learning with quantum encryption, we ensure patient data remains private, secure, and fully compliant."
     }
   ];
 
   return (
-    <section className={cn("py-20 px-6 relative overflow-hidden", className)}>
+    <section id="how-it-works" className={cn("py-20 px-6 relative overflow-hidden", className)}>
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-white to-health-light/30"></div>
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-health-primary/5 rounded-full blur-3xl"></div>
@@ -56,11 +61,11 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
           </div>
           
           <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
-            The Future of Precision Medicine, Built on AI
+            The Future of Precision Medicine, Built on AI & Quantum Computing
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            At Akeno Health AI, we integrate cutting-edge artificial intelligence with multi-omics analysis and digital twin simulations to deliver truly personalized, data-driven healthcare. Here's how it works:
+            At Akeno Health AI, we integrate cutting-edge artificial intelligence, quantum computing, multi-omics analysis, and digital twin simulations to deliver truly personalized, data-driven healthcare. Here's how it works:
           </p>
         </div>
         
@@ -70,6 +75,9 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
               <div className="relative mb-6">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-health-primary/10 text-health-primary">
                   {step.icon}
+                </div>
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-health-primary text-white rounded-full flex items-center justify-center text-xs font-bold">
+                  {index + 1}
                 </div>
               </div>
               
@@ -84,8 +92,17 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
             Akeno Health AI is more than a healthcare platform—it's a revolution in precision medicine, transforming how diseases are detected, managed, and treated!
           </p>
           
-          <Button size="lg" variant="secondary">
-            Explore More
+          <Button 
+            size="lg" 
+            variant="secondary"
+            as="Link"
+            to="/how-it-works"
+            className="group"
+          >
+            <span className="flex items-center gap-2">
+              Explore More
+              <LineChart size={18} className="transition-transform group-hover:scale-110" />
+            </span>
           </Button>
         </div>
       </div>

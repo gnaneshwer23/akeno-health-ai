@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from './Button';
-import { ChevronRight, LineChart, Activity, Brain } from 'lucide-react';
+import { ChevronRight, LineChart, Activity, Brain, Sparkles, Atom } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface CTASectionProps {
@@ -20,8 +20,9 @@ const CTASection: React.FC<CTASectionProps> = ({ className }) => {
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
           {/* Left side */}
           <div className="flex-1 fade-up-1">
-            <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
-              Call-to-Action
+            <div className="inline-flex items-center px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium gap-2">
+              <Sparkles size={16} />
+              <span>Call-to-Action</span>
             </div>
             
             <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
@@ -35,7 +36,7 @@ const CTASection: React.FC<CTASectionProps> = ({ className }) => {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-health-dark mb-1">Understand Your Health Like Never Before</h3>
-                  <p className="text-muted-foreground">AI-driven insights based on your biomarkers, lifestyle patterns, genetic predisposition, and real-time health monitoring.</p>
+                  <p className="text-muted-foreground">AI-driven insights based on your biomarkers, genetic predisposition, lifestyle patterns, and real-time health monitoring.</p>
                 </div>
               </div>
               
@@ -45,24 +46,32 @@ const CTASection: React.FC<CTASectionProps> = ({ className }) => {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-health-dark mb-1">Personalized Recommendations</h3>
-                  <p className="text-muted-foreground">Get tailored advice for disease prevention, optimized treatments, and proactive health management.</p>
+                  <p className="text-muted-foreground">Get tailored advice for disease prevention, optimized treatments, and proactive health management strategies.</p>
                 </div>
               </div>
               
               <div className="flex gap-4">
                 <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-health-primary/10 flex items-center justify-center text-health-primary">
-                  <Brain size={24} />
+                  <Atom size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-medium text-health-dark mb-1">Complete Health Picture</h3>
-                  <p className="text-muted-foreground">Gain a complete picture of your health with real-time AI-driven insights!</p>
+                  <h3 className="text-lg font-medium text-health-dark mb-1">Quantum-Powered Health Solutions</h3>
+                  <p className="text-muted-foreground">Benefit from quantum computing insights that accelerate drug discovery and treatment optimization just for you.</p>
                 </div>
               </div>
             </div>
             
-            <Button size="lg" variant="primary" className="w-full sm:w-auto">
-              Sign Up Now
-              <ChevronRight size={16} />
+            <Button 
+              size="lg" 
+              variant="primary" 
+              className="w-full sm:w-auto group"
+              as="Link"
+              to="/contact"
+            >
+              <span className="flex items-center gap-2">
+                Start Your AI-Powered Health Journey
+                <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </span>
             </Button>
           </div>
           
@@ -118,26 +127,23 @@ const CTASection: React.FC<CTASectionProps> = ({ className }) => {
                       
                       <div className="bg-health-light rounded-xl p-3 flex justify-between items-center">
                         <div>
-                          <div className="text-xs text-health-primary font-medium">Sleep Quality</div>
-                          <div className="text-lg font-medium text-health-dark">7.2 hrs</div>
-                        </div>
-                        <div className="h-8 w-8 rounded-full bg-white/80 flex items-center justify-center text-health-primary">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M12 4V12L16 16" />
-                            <circle cx="12" cy="12" r="10" />
-                          </svg>
-                        </div>
-                      </div>
-                      
-                      <div className="bg-health-light rounded-xl p-3 flex justify-between items-center">
-                        <div>
-                          <div className="text-xs text-health-primary font-medium">Stress Level</div>
+                          <div className="text-xs text-health-primary font-medium">Genetic Risk</div>
                           <div className="text-lg font-medium text-health-dark">Low</div>
                         </div>
                         <div className="h-8 w-8 rounded-full bg-white/80 flex items-center justify-center text-green-500">
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M20 6L9 17L4 12" />
                           </svg>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-health-light rounded-xl p-3 flex justify-between items-center">
+                        <div>
+                          <div className="text-xs text-health-primary font-medium">AI Recommendations</div>
+                          <div className="text-lg font-medium text-health-dark">3 New</div>
+                        </div>
+                        <div className="h-8 w-8 rounded-full bg-health-primary/20 flex items-center justify-center">
+                          <span className="text-xs font-bold text-health-primary">New</span>
                         </div>
                       </div>
                     </div>

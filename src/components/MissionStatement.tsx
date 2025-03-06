@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Shield, Heart, Sparkles } from 'lucide-react';
+import { Shield, Heart, Sparkles, Atom, Brain } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ValueProps {
@@ -26,18 +26,23 @@ export const MissionStatement: React.FC = () => {
   const values = [
     {
       icon: <Shield size={28} />,
-      title: "Preventive Care",
-      description: "Our AI predicts health risks before they manifest, enabling proactive intervention and disease prevention."
+      title: "Preventive Healthcare",
+      description: "Our AI predicts health risks before they manifest, enabling proactive intervention and disease prevention through multi-omics analysis."
     },
     {
-      icon: <Sparkles size={28} />,
-      title: "Precision Medicine",
-      description: "We analyze your unique biological profile to create personalized treatment plans that work with your body."
+      icon: <Atom size={28} />,
+      title: "Quantum-Powered Medicine",
+      description: "We leverage quantum computing to accelerate drug discovery, optimize treatments, and enhance clinical research outcomes."
+    },
+    {
+      icon: <Brain size={28} />,
+      title: "AI-Driven Insights",
+      description: "Advanced machine learning analyzes genetic, epigenetic, environmental, and lifestyle factors to deliver personalized health strategies."
     },
     {
       icon: <Heart size={28} />,
-      title: "Patient-Centered",
-      description: "Everything we do prioritizes improving patient outcomes, experiences, and quality of life."
+      title: "Patient-Centered Care",
+      description: "Everything we do prioritizes improving patient outcomes, making healthcare more efficient, cost-effective, and accessible for everyone."
     }
   ];
 
@@ -52,15 +57,15 @@ export const MissionStatement: React.FC = () => {
           </div>
           
           <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
-            Leading the Future of Precision Healthcare
+            Revolutionizing Healthcare with AI, Quantum Computing & Multi-Omics
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            At Akeno Health AI, we're revolutionizing healthcare by combining cutting-edge AI with multi-omics data to predict, prevent, and personalize treatment—transforming reactive healthcare into a proactive, precision-based approach.
+            At Akeno Health AI, we're transforming healthcare by integrating cutting-edge AI diagnostics, multi-omics analysis, quantum computing, and digital twin simulations—shifting from reactive treatments to proactive, precision-driven solutions that ensure early disease detection and personalized care.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           {values.map((value, index) => (
             <Value
               key={index}
