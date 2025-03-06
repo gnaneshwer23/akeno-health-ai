@@ -84,16 +84,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onLinkClick }) => {
           </Link>
         </nav>
         <div className="mt-auto mb-8 flex flex-col gap-4 w-full">
-          <Button 
-            variant="outline" 
-            fullWidth 
-            className="shadow-sm"
-            as="Link"
+          <Link
             to="/login"
+            className="flex items-center justify-center h-10 px-4 border border-gray-200 rounded-md text-health-dark/80 hover:text-health-primary transition-colors text-sm font-medium"
             onClick={onLinkClick}
           >
             Sign In
-          </Button>
+          </Link>
           <Button 
             variant="primary" 
             fullWidth 

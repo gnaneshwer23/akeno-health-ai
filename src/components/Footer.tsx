@@ -1,8 +1,9 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/Button';
 import { AnimatedLogo } from '@/components/AnimatedLogo';
-import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -11,10 +12,10 @@ const Footer: React.FC = () => {
       
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
-          <div className="flex items-center gap-3 mb-6">
+          <Link to="/" className="flex items-center gap-3 mb-6">
             <AnimatedLogo className="opacity-90" />
-            <span className="text-xl font-medium">Akeno Health AI</span>
-          </div>
+            <span className="text-xl font-medium bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">Akeno Health AI</span>
+          </Link>
           
           <p className="text-health-light/80 mb-6">
             Transforming healthcare with AI-driven precision medicine and digital twin technology for personalized care.
@@ -55,11 +56,19 @@ const Footer: React.FC = () => {
         <div>
           <h3 className="text-lg font-medium mb-6">Company</h3>
           <ul className="space-y-4">
-            {['About Us', 'Careers', 'News', 'Blog', 'Contact', 'FAQs'].map((item) => (
-              <li key={item}>
-                <a href="#" className="text-health-light/80 hover:text-white transition-colors">
-                  {item}
-                </a>
+            {[
+              { name: 'About Us', path: '/about' },
+              { name: 'Blog', path: '/case-studies-blog' },
+              { name: 'Contact', path: '/contact' },
+              { name: 'How It Works', path: '/how-it-works' }
+            ].map((item) => (
+              <li key={item.name}>
+                <Link 
+                  to={item.path} 
+                  className="text-health-light/80 hover:text-white transition-colors"
+                >
+                  {item.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -68,11 +77,19 @@ const Footer: React.FC = () => {
         <div>
           <h3 className="text-lg font-medium mb-6">Solutions</h3>
           <ul className="space-y-4">
-            {['For Patients', 'For Physicians', 'For Hospitals', 'For Researchers', 'API & Developers'].map((item) => (
-              <li key={item}>
-                <a href="#" className="text-health-light/80 hover:text-white transition-colors">
-                  {item}
-                </a>
+            {[
+              { name: 'For Patients', path: '/patient-solutions' },
+              { name: 'For Physicians', path: '/doctor-solutions' },
+              { name: 'For Pharma & Biotech', path: '/biotech-solutions' },
+              { name: 'Quantum Integration', path: '/quantum-computing' }
+            ].map((item) => (
+              <li key={item.name}>
+                <Link
+                  to={item.path}
+                  className="text-health-light/80 hover:text-white transition-colors"
+                >
+                  {item.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -95,9 +112,10 @@ const Footer: React.FC = () => {
             <Button 
               variant="primary" 
               size="md" 
-              className="w-full shadow hover:shadow-lg transition-all"
+              className="w-full shadow hover:shadow-lg transition-all group"
             >
               Subscribe
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </Button>
           </form>
         </div>
