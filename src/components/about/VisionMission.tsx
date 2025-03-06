@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Shield, Sparkles, Heart, Target, Lightbulb, Glasses } from 'lucide-react';
+import { Shield, Sparkles, Heart, Target, Lightbulb, Glasses, Network } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export const VisionMission = () => {
@@ -29,6 +28,11 @@ export const VisionMission = () => {
       icon: <Glasses size={24} />,
       title: "Empowering Patients & Clinicians",
       description: "Delivering actionable AI-driven insights that support personalized health decisions, optimized treatments, and improved patient engagement."
+    },
+    {
+      icon: <Network size={24} />,
+      title: "Global Health Ecosystem Integration",
+      description: "Creating seamless connections between patients, providers, researchers, and healthcare systems to foster collaborative and comprehensive care networks."
     }
   ];
 
