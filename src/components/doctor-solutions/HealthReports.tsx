@@ -6,7 +6,11 @@ import {
   Dna, 
   LineChart, 
   LayoutDashboard, 
-  FlaskConical 
+  FlaskConical,
+  ArrowRight,
+  Users,
+  ShieldAlert,
+  Activity
 } from 'lucide-react';
 
 const HealthReports = () => {
@@ -58,6 +62,40 @@ const HealthReports = () => {
                 </div>
                 
                 <div className="flex-1 flex flex-col gap-4">
+                  {/* Workflow Diagram */}
+                  <div className="bg-white/80 rounded-xl p-3 shadow-sm mb-2">
+                    <div className="text-sm font-medium mb-3 text-center text-health-primary">AI Health Assessment Workflow</div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-col items-center">
+                        <div className="w-10 h-10 rounded-full bg-health-primary/10 flex items-center justify-center mb-1">
+                          <Users size={20} className="text-health-primary" />
+                        </div>
+                        <span className="text-xs text-center">Patient Data</span>
+                      </div>
+                      <ArrowRight size={14} className="text-gray-400" />
+                      <div className="flex flex-col items-center">
+                        <div className="w-10 h-10 rounded-full bg-health-primary/10 flex items-center justify-center mb-1">
+                          <Brain size={20} className="text-health-primary" />
+                        </div>
+                        <span className="text-xs text-center">AI Analysis</span>
+                      </div>
+                      <ArrowRight size={14} className="text-gray-400" />
+                      <div className="flex flex-col items-center">
+                        <div className="w-10 h-10 rounded-full bg-health-primary/10 flex items-center justify-center mb-1">
+                          <ShieldAlert size={20} className="text-health-primary" />
+                        </div>
+                        <span className="text-xs text-center">Risk Assessment</span>
+                      </div>
+                      <ArrowRight size={14} className="text-gray-400" />
+                      <div className="flex flex-col items-center">
+                        <div className="w-10 h-10 rounded-full bg-health-primary/20 flex items-center justify-center mb-1">
+                          <Activity size={20} className="text-health-primary" />
+                        </div>
+                        <span className="text-xs text-center">Care Plan</span>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="bg-white/80 rounded-xl p-4 shadow-sm">
                     <div className="flex justify-between items-center mb-3">
                       <div className="flex items-center gap-2">
@@ -147,9 +185,9 @@ const HealthReports = () => {
             
             <div className="space-y-4 mb-8">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3">
+                <div key={index} className="flex items-start gap-3 hover:bg-health-primary/5 p-2 rounded-lg transition-colors group">
                   <div className="mt-1 flex-shrink-0">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-health-primary/20 text-health-primary">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-health-primary/20 text-health-primary group-hover:bg-health-primary group-hover:text-white transition-colors">
                       {feature.icon}
                     </div>
                   </div>

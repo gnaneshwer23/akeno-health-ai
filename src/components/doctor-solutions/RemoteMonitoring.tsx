@@ -7,7 +7,12 @@ import {
   Users, 
   Calendar, 
   Activity,
-  Globe
+  Globe,
+  Smartphone,
+  Laptop,
+  Tablet,
+  Heart,
+  Stethoscope
 } from 'lucide-react';
 
 const RemoteMonitoring = () => {
@@ -68,9 +73,9 @@ const RemoteMonitoring = () => {
             
             <div className="space-y-5 mb-8">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3">
+                <div key={index} className="flex items-start gap-3 hover:bg-health-primary/5 p-2 rounded-lg transition-colors group">
                   <div className="mt-1 flex-shrink-0">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-health-primary/20 text-health-primary">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-health-primary/20 text-health-primary group-hover:bg-health-primary group-hover:text-white transition-colors">
                       {feature.icon}
                     </div>
                   </div>
@@ -99,6 +104,37 @@ const RemoteMonitoring = () => {
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
                     <span className="text-sm font-medium">Live Monitoring</span>
+                  </div>
+                </div>
+                
+                {/* Connected Devices Diagram */}
+                <div className="mb-4 bg-health-light/30 p-3 rounded-lg">
+                  <div className="text-sm font-medium mb-2 text-center">Connected Patient Devices</div>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 rounded-full bg-health-primary/10 flex items-center justify-center mb-1">
+                        <Smartphone size={20} className="text-health-primary" />
+                      </div>
+                      <span className="text-xs">Mobile App</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 rounded-full bg-health-primary/10 flex items-center justify-center mb-1">
+                        <Heart size={20} className="text-health-primary" />
+                      </div>
+                      <span className="text-xs">Heart Monitor</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 rounded-full bg-health-primary/10 flex items-center justify-center mb-1">
+                        <Activity size={20} className="text-health-primary" />
+                      </div>
+                      <span className="text-xs">Fitness Tracker</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 rounded-full bg-health-primary/10 flex items-center justify-center mb-1">
+                        <Stethoscope size={20} className="text-health-primary" />
+                      </div>
+                      <span className="text-xs">Medical Device</span>
+                    </div>
                   </div>
                 </div>
                 

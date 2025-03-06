@@ -6,7 +6,9 @@ import {
   Syringe, 
   ScanLine, 
   ListChecks, 
-  Puzzle 
+  Puzzle,
+  Activity,
+  ArrowRight
 } from 'lucide-react';
 
 const AIDiagnostics = () => {
@@ -62,9 +64,9 @@ const AIDiagnostics = () => {
             
             <div className="space-y-5 mb-8">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3">
+                <div key={index} className="flex items-start gap-3 hover:bg-health-primary/5 p-2 rounded-lg transition-colors group">
                   <div className="mt-1 flex-shrink-0">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-health-primary/20 text-health-primary">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-health-primary/20 text-health-primary group-hover:bg-health-primary group-hover:text-white transition-colors">
                       {feature.icon}
                     </div>
                   </div>
@@ -99,24 +101,42 @@ const AIDiagnostics = () => {
                 
                 <div className="flex-1 flex flex-col gap-4">
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-gray-100 rounded-lg aspect-square overflow-hidden relative">
+                    <div className="bg-gray-100 rounded-lg aspect-square overflow-hidden relative group">
                       <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-500">
                         Chest X-ray Image
                       </div>
+                      <div className="absolute inset-0 bg-health-primary/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <div className="bg-white/80 rounded-full p-2">
+                          <ScanLine size={20} className="text-health-primary" />
+                        </div>
+                      </div>
                     </div>
-                    <div className="bg-gray-100 rounded-lg aspect-square overflow-hidden relative">
+                    <div className="bg-gray-100 rounded-lg aspect-square overflow-hidden relative group">
                       <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-500">
                         CT Scan
+                      </div>
+                      <div className="absolute inset-0 bg-health-primary/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <div className="bg-white/80 rounded-full p-2">
+                          <Brain size={20} className="text-health-primary" />
+                        </div>
                       </div>
                     </div>
                   </div>
                   
                   <div className="bg-health-light p-4 rounded-lg">
-                    <div className="mb-2 text-sm font-medium">AI Analysis Results</div>
+                    <div className="mb-3 text-sm font-medium flex items-center justify-between">
+                      <span>AI Analysis Results</span>
+                      <span className="text-xs text-health-primary bg-health-primary/10 px-2 py-0.5 rounded-full">
+                        Processing Time: 4.3s
+                      </span>
+                    </div>
                     <div className="space-y-3">
                       <div>
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-sm font-medium">Early Stage Pneumonia</span>
+                          <span className="text-sm font-medium flex items-center gap-1">
+                            <Activity size={14} className="text-health-primary" />
+                            Early Stage Pneumonia
+                          </span>
                           <span className="text-sm">96%</span>
                         </div>
                         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -125,7 +145,10 @@ const AIDiagnostics = () => {
                       </div>
                       <div>
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-sm font-medium">COVID-19 Indicators</span>
+                          <span className="text-sm font-medium flex items-center gap-1">
+                            <Activity size={14} className="text-health-primary" />
+                            COVID-19 Indicators
+                          </span>
                           <span className="text-sm">12%</span>
                         </div>
                         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -134,13 +157,31 @@ const AIDiagnostics = () => {
                       </div>
                       <div>
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-sm font-medium">Pulmonary Fibrosis</span>
+                          <span className="text-sm font-medium flex items-center gap-1">
+                            <Activity size={14} className="text-health-primary" />
+                            Pulmonary Fibrosis
+                          </span>
                           <span className="text-sm">3%</span>
                         </div>
                         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                           <div className="h-full bg-health-primary rounded-full" style={{ width: '3%' }}></div>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className="flex flex-col items-center justify-center p-2 bg-health-light/50 rounded-lg">
+                      <Brain size={18} className="text-health-primary mb-1" />
+                      <span className="text-xs text-health-dark font-medium">AI Analysis</span>
+                    </div>
+                    <div className="flex flex-col items-center justify-center p-2 bg-health-light/50 rounded-lg">
+                      <ArrowRight size={18} className="text-health-primary mb-1" />
+                      <span className="text-xs text-health-dark font-medium">Processing</span>
+                    </div>
+                    <div className="flex flex-col items-center justify-center p-2 bg-health-primary/10 rounded-lg">
+                      <ListChecks size={18} className="text-health-primary mb-1" />
+                      <span className="text-xs text-health-dark font-medium">Diagnosis</span>
                     </div>
                   </div>
                   
