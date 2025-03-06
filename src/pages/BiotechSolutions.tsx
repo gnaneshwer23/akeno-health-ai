@@ -21,7 +21,9 @@ import {
   FileText, 
   Radio,
   ChevronRight,
-  CheckCircle2
+  CheckCircle2,
+  Database,
+  Activity
 } from 'lucide-react';
 import DiagnosticFeature from '@/components/doctor-solutions/DiagnosticFeature';
 import DiagnosticStep from '@/components/doctor-solutions/DiagnosticStep';
