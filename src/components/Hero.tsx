@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { Button } from './Button';
 import { Check, ArrowRight, Sparkles, Shield, Activity, BarChart2, Brain, Cpu, Atom, FlaskConical } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { AnimatedLogo } from './AnimatedLogo';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -90,13 +91,18 @@ const Hero: React.FC = () => {
       
       {/* Main Content */}
       <div className="max-w-5xl mx-auto text-center relative z-10">
+        {/* Logo Animation */}
+        <div className="mb-6 flex justify-center">
+          <AnimatedLogo size="xl" className="mb-2" />
+        </div>
+        
         <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
           <Sparkles size={16} className="text-health-primary" />
           <span>Next-Generation Healthcare</span>
         </span>
         
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-health-dark mb-6 tracking-tight">
-          Transforming Healthcare with <span className="text-health-primary">AI</span> & <span className="text-health-secondary">Quantum Computing</span>
+          <span className="bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">Akeno Health AI</span>: Transforming Healthcare with <span className="text-health-primary">AI</span> & <span className="text-health-secondary">Quantum Computing</span>
         </h1>
         
         <div className="flex justify-center mb-6">

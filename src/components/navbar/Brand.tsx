@@ -5,9 +5,14 @@ import { AnimatedLogo } from '../AnimatedLogo';
 
 const Brand: React.FC = () => {
   return (
-    <Link to="/" className="flex items-center gap-2 text-health-dark">
-      <AnimatedLogo size="md" />
-      <span className="font-medium text-lg hidden sm:block">Akeno Health AI</span>
+    <Link to="/" className="flex items-center gap-3 text-health-dark group">
+      <div className="relative">
+        <AnimatedLogo size="md" variant="default" className="transition-all duration-300 group-hover:scale-110" />
+      </div>
+      <div className="flex flex-col items-start">
+        <span className="font-bold text-xl hidden sm:block bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">Akeno Health</span>
+        <span className="text-xs text-health-dark/70 hidden md:block">AI-Powered Healthcare</span>
+      </div>
     </Link>
   );
 };
