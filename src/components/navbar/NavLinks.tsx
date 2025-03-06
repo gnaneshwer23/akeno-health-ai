@@ -28,7 +28,7 @@ const NavLinks: React.FC = () => {
       <NavLink to="/patient-solutions">For Patients</NavLink>
       <NavLink to="/doctor-solutions">For Doctors</NavLink>
       <NavLink to="/biotech-solutions">For Pharma & Biotech</NavLink>
-      <NavLink to="/quantum-computing">Quantum Computing</NavLink>
+      <NavLink to="/quantum-computing">Quantum Integration</NavLink>
       <NavLink to="/contact">Contact</NavLink>
     </nav>
   );
