@@ -41,12 +41,9 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
     }
   ];
 
-  const handleExploreMore = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <section className={cn("py-20 px-6 relative overflow-hidden", className)}>
+      {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-white to-health-light/30"></div>
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-health-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-health-secondary/5 rounded-full blur-3xl"></div>
@@ -89,7 +86,7 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
             Akeno Health AI is more than a healthcare platform—it's a revolution in precision medicine, transforming how diseases are detected, managed, and treated!
           </p>
           
-          <Button size="lg" variant="secondary" onClick={handleExploreMore}>
+          <Button size="lg" variant="secondary">
             Explore More
           </Button>
         </div>

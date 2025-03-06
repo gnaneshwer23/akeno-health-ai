@@ -20,9 +20,6 @@ const Navbar: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
-    // Initial check in case page is loaded at a position
-    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -43,16 +40,26 @@ const Navbar: React.FC = () => {
         </Link>
 
         <nav className="hidden lg:flex items-center space-x-8">
-          <Link
-            to="/how-it-works"
-            className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
-          >
-            How It Works
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
-          </Link>
+          {['Solutions', 'Technology', 'Science', 'About', 'Contact'].map((item) => (
+            <Link
+              key={item}
+              to={`/${item.toLowerCase()}`}
+              className="text-health-dark/80 hover:text-health-primary transition-colors relative group text-sm font-medium"
+            >
+              {item}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-health-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+          ))}
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="shadow-sm hover:shadow transition-all"
+          >
+            Sign In
+          </Button>
           <Button 
             variant="primary" 
             size="sm" 
@@ -80,15 +87,19 @@ const Navbar: React.FC = () => {
       >
         <div className="flex flex-col h-full p-6">
           <nav className="flex flex-col space-y-6 mt-6">
-            <Link
-              to="/how-it-works"
-              className="text-health-dark/80 hover:text-health-primary transition-colors text-2xl font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              How It Works
-            </Link>
+            {['Solutions', 'Technology', 'Science', 'About', 'Contact'].map((item) => (
+              <Link
+                key={item}
+                to={`/${item.toLowerCase()}`}
+                className="text-health-dark/80 hover:text-health-primary transition-colors text-2xl font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item}
+              </Link>
+            ))}
           </nav>
           <div className="mt-auto mb-8 flex flex-col gap-4 w-full">
+            <Button variant="outline" fullWidth className="shadow-sm">Sign In</Button>
             <Button variant="primary" fullWidth className="shadow">Get Started</Button>
           </div>
         </div>
