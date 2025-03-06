@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/Button';
 import { Atom, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const QuantumCTA = () => {
   return (
@@ -24,10 +25,10 @@ export const QuantumCTA = () => {
                 Stay tuned as we continue to pioneer the fusion of AI, quantum computing, and precision medicine.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button variant="primary" className="group" icon={<Atom size={16} />}>
+                <Button variant="primary" as="Link" to="/quantum-computing" className="group" icon={<Atom size={16} />}>
                   Explore Quantum Solutions
                 </Button>
-                <Button variant="outline" icon={<ArrowRight size={16} />}>
+                <Button variant="outline" as="Link" to="/contact" icon={<ArrowRight size={16} />}>
                   Contact Our Research Team
                 </Button>
               </div>

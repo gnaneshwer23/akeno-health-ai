@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from './Button';
 import { Check, ArrowRight, Sparkles, Shield, Activity, BarChart2, Brain, Cpu, Atom, FlaskConical } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -162,4 +163,3 @@ const Hero: React.FC = () => {
 };
 
 export { Hero };
-

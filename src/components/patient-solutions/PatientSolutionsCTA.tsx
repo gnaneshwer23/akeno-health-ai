@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/Button';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const PatientSolutionsCTA = () => {
   return (
@@ -16,11 +17,11 @@ const PatientSolutionsCTA = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" variant="primary">
+          <Button size="lg" variant="primary" as="Link" to="/contact">
             Get Started Now
             <ArrowRight size={16} />
           </Button>
-          <Button size="lg" variant="outline">
+          <Button size="lg" variant="outline" as="Link" to="/contact">
             Schedule a Demo
           </Button>
         </div>

@@ -6,6 +6,13 @@ import { Button } from '@/components/Button';
 import { Mail, User, MessageSquare, Building, ArrowRight } from 'lucide-react';
 
 const ContactForm = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In a real app, this would send the form data to a server
+    console.log('Form submitted');
+    // You could add toast notification here
+  };
+
   return (
     <section id="contact-form" className="scroll-mt-24">
       <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -49,7 +56,7 @@ const ContactForm = () => {
         </div>
         
         <div className="w-full md:w-1/2 bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="name" className="flex items-center gap-2">
                 <User className="h-4 w-4 text-health-primary" />
@@ -60,6 +67,7 @@ const ContactForm = () => {
                 type="text" 
                 placeholder="Enter your full name" 
                 className="border-gray-300 focus:border-health-primary" 
+                required
               />
             </div>
             
@@ -73,6 +81,7 @@ const ContactForm = () => {
                 type="email" 
                 placeholder="Enter your email address" 
                 className="border-gray-300 focus:border-health-primary" 
+                required
               />
             </div>
             
@@ -99,6 +108,7 @@ const ContactForm = () => {
                 rows={4} 
                 placeholder="How can we help you?" 
                 className="w-full rounded-md border border-gray-300 bg-background px-3 py-2 text-base placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                required
               />
             </div>
             

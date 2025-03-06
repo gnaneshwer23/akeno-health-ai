@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@/components/Button';
 import { Users, BookOpen, Briefcase, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 
 export const AboutCTA = () => {
   const ctaCards = [
@@ -11,7 +12,7 @@ export const AboutCTA = () => {
       bgColor: "bg-health-primary",
       title: "Leadership",
       description: "Our leadership team brings together expertise from AI research, medicine, healthcare policy, and business innovation.",
-      link: "#",
+      link: "/about",
       linkText: "Meet our team"
     },
     {
@@ -19,7 +20,7 @@ export const AboutCTA = () => {
       bgColor: "bg-health-secondary",
       title: "Research",
       description: "We continuously publish our research and collaborate with leading academic institutions to advance the field of AI in healthcare.",
-      link: "#",
+      link: "/quantum-computing",
       linkText: "View our publications"
     },
     {
@@ -27,7 +28,7 @@ export const AboutCTA = () => {
       bgColor: "bg-health-accent",
       title: "Careers",
       description: "Join our team of dedicated professionals working at the intersection of AI and healthcare to make a real difference in people's lives.",
-      link: "#",
+      link: "/contact",
       linkText: "See open positions"
     }
   ];
@@ -67,8 +68,8 @@ export const AboutCTA = () => {
                   <Button 
                     variant="link" 
                     className="text-health-primary font-medium p-0 h-auto flex items-center gap-1 hover:gap-2 transition-all"
-                    as="a" 
-                    href={card.link}
+                    as="Link" 
+                    to={card.link}
                   >
                     {card.linkText} <ArrowRight size={16} />
                   </Button>

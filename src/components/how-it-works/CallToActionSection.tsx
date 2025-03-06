@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Brain, HeartPulse, Activity, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CallToActionSection = () => {
   return (
@@ -55,9 +56,11 @@ const CallToActionSection = () => {
         </div>
         
         <div className="flex justify-center">
-          <Button className="bg-health-primary hover:bg-health-primary/90">
-            Start your AI health journey
-            <ArrowRight size={16} className="ml-2" />
+          <Button className="bg-health-primary hover:bg-health-primary/90" asChild>
+            <Link to="/contact">
+              Start your AI health journey
+              <ArrowRight size={16} className="ml-2" />
+            </Link>
           </Button>
         </div>
       </div>

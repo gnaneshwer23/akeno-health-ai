@@ -1,10 +1,22 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageCircle, Clock, FileText, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/Button';
 
 const AIChatbot = () => {
+  const [message, setMessage] = useState('');
+  
+  const handleSendMessage = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (message.trim()) {
+      // In a real app, this would send the message to an AI backend
+      console.log('Message sent:', message);
+      setMessage('');
+      // You could add a demo response here
+    }
+  };
+
   return (
     <section id="ai-chatbot" className="scroll-mt-24">
       <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -67,7 +79,7 @@ const AIChatbot = () => {
             </Card>
           </div>
           
-          <Button>
+          <Button as="Link" to="/contact">
             Start Chatting Now
           </Button>
         </div>
@@ -97,16 +109,18 @@ const AIChatbot = () => {
               <p className="text-sm">Great! Here's a step-by-step guide to setting up medication reminders...</p>
             </div>
           </div>
-          <div className="border-t border-gray-200 p-4 flex">
+          <form onSubmit={handleSendMessage} className="border-t border-gray-200 p-4 flex">
             <input 
               type="text" 
               placeholder="Type your message here..." 
               className="flex-grow p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-health-primary"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
-            <Button className="ml-2" size="sm">
+            <Button type="submit" className="ml-2" size="sm">
               <MessageCircle className="h-4 w-4 mr-1" /> Send
             </Button>
-          </div>
+          </form>
         </div>
       </div>
     </section>

@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { Button } from './Button';
 import { Brain, Database, Activity, Lock, Cpu, FlaskConical, Atom, LineChart, Sparkles, Globe, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 interface ExplainerSectionProps {
   className?: string;
@@ -59,7 +59,6 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
 
   return (
     <section id="how-it-works" className={cn("py-24 px-6 relative overflow-hidden", className)}>
-      {/* Enhanced background elements with more visual depth */}
       <div className="absolute inset-0 bg-gradient-to-b from-white to-health-light/40"></div>
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-health-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute -top-20 -left-20 w-40 h-40 bg-health-secondary/10 rounded-full blur-xl"></div>
@@ -82,7 +81,6 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
           </p>
         </div>
         
-        {/* Enhanced feature grid with improved visual styling */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-16">
           {features.map((feature, index) => (
             <div key={index} 
@@ -101,7 +99,6 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
           ))}
         </div>
         
-        {/* Enhanced CTA section */}
         <div className="bg-gradient-to-r from-health-primary/10 to-health-secondary/10 rounded-3xl p-10 mb-12 shadow-lg border border-health-primary/10">
           <div className="text-center fade-up-5 max-w-3xl mx-auto">
             <p className="text-lg text-health-dark font-medium mb-6">

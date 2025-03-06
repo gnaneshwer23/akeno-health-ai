@@ -2,6 +2,7 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Globe } from 'lucide-react';
 import { Button } from '@/components/Button';
+import { Link } from 'react-router-dom';
 
 const SupportTeam = () => {
   return (
@@ -67,7 +68,7 @@ const SupportTeam = () => {
       </div>
       
       <div className="mt-12 text-center">
-        <Button>
+        <Button as="Link" to="/contact">
           Contact Our Team
         </Button>
       </div>

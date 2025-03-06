@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from 'react-router-dom';
 
 interface ApplicationCardProps {
   icon: React.ReactNode;
@@ -8,6 +9,7 @@ interface ApplicationCardProps {
   description: string[];
   impact: string;
   diagram: React.ReactNode;
+  link?: string;
 }
 
 export const ApplicationCard = ({
@@ -15,7 +17,8 @@ export const ApplicationCard = ({
   title,
   description,
   impact,
-  diagram
+  diagram,
+  link = "/quantum-computing"
 }: ApplicationCardProps) => (
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
     <Card className="border-none shadow-sm md:col-span-2">
@@ -40,8 +43,10 @@ export const ApplicationCard = ({
       </CardContent>
     </Card>
     
-    <div className="bg-gradient-to-r from-indigo-100 to-blue-100 rounded-xl p-6 flex items-center justify-center">
-      {diagram}
-    </div>
+    <Link to={link} className="block">
+      <div className="bg-gradient-to-r from-indigo-100 to-blue-100 rounded-xl p-6 flex items-center justify-center h-full hover:shadow-md transition-shadow">
+        {diagram}
+      </div>
+    </Link>
   </div>
 );
