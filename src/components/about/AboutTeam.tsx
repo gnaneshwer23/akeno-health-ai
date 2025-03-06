@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { Tabs, TabsContent, TabsList } from '@/components/ui/tabs';
 import { teamGroups } from '@/data/teamData';
 import { TeamGroup } from './TeamGroup';
 import { TeamTabTrigger } from './TeamTabTrigger';
-import { Brain, Flask, Microscope, Stethoscope } from 'lucide-react';
+import { Brain, FlaskConical, Microscope, Stethoscope } from 'lucide-react';
 
 export const AboutTeam = () => {
   return (
@@ -68,7 +67,7 @@ export const AboutTeam = () => {
           
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all">
             <div className="flex items-start gap-3 mb-3">
-              <Flask size={24} className="text-health-primary" />
+              <FlaskConical size={24} className="text-health-primary" />
               <h4 className="font-semibold text-health-dark">Biotech Innovators</h4>
             </div>
             <p className="text-health-dark/70 text-sm">Visionaries with extensive experience in biotechnology, AI-driven healthcare, and medical innovation.</p>
