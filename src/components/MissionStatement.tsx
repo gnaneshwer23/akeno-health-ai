@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Shield, Heart, Sparkles, Atom, Brain } from 'lucide-react';
+import { Shield, Heart, Sparkles, Atom, Brain, Rocket } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ValueProps {
@@ -12,11 +12,11 @@ interface ValueProps {
 
 const Value: React.FC<ValueProps> = ({ icon, title, description, className }) => {
   return (
-    <div className={cn("flex flex-col items-center text-center", className)}>
-      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-health-primary/10 text-health-primary mb-4">
+    <div className={cn("flex flex-col items-center text-center transform transition-all duration-300 hover:-translate-y-1", className)}>
+      <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-health-primary/10 text-health-primary mb-5">
         {icon}
       </div>
-      <h3 className="text-xl font-medium text-health-dark mb-2">{title}</h3>
+      <h3 className="text-xl font-medium text-health-dark mb-3">{title}</h3>
       <p className="text-muted-foreground">{description}</p>
     </div>
   );
@@ -47,13 +47,20 @@ export const MissionStatement: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-6 relative overflow-hidden">
+    <section id="mission" className="py-24 px-6 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-white to-health-light/30 to-60%"></div>
+      
+      {/* Enhanced background elements */}
+      <div className="absolute top-1/4 -right-32 w-80 h-80 bg-health-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute -top-10 left-1/4 w-20 h-20 bg-health-primary/10 rounded-full blur-lg"></div>
+      <div className="absolute bottom-1/4 -left-32 w-80 h-80 bg-health-secondary/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-1/4 w-20 h-20 bg-health-secondary/10 rounded-full blur-lg"></div>
       
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
-            Our Mission
+          <div className="inline-flex items-center px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium gap-2">
+            <Rocket size={16} />
+            <span>Our Mission</span>
           </div>
           
           <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
@@ -77,10 +84,6 @@ export const MissionStatement: React.FC = () => {
           ))}
         </div>
       </div>
-      
-      {/* Background elements */}
-      <div className="absolute top-1/4 -right-32 w-64 h-64 bg-health-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 -left-32 w-64 h-64 bg-health-secondary/5 rounded-full blur-3xl"></div>
     </section>
   );
 };

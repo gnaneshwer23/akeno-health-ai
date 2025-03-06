@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from './Button';
-import { Brain, Database, Activity, Lock, Cpu, FlaskConical, Atom, LineChart } from 'lucide-react';
+import { Brain, Database, Activity, Lock, Cpu, FlaskConical, Atom, LineChart, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ExplainerSectionProps {
@@ -9,7 +9,7 @@ interface ExplainerSectionProps {
 }
 
 const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
-  const steps = [
+  const features = [
     {
       icon: <Database size={24} />,
       title: "AI-Driven Data Collection",
@@ -48,16 +48,19 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
   ];
 
   return (
-    <section id="how-it-works" className={cn("py-20 px-6 relative overflow-hidden", className)}>
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white to-health-light/30"></div>
+    <section id="how-it-works" className={cn("py-24 px-6 relative overflow-hidden", className)}>
+      {/* Enhanced background elements with more visual depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white to-health-light/40"></div>
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-health-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute -top-20 -left-20 w-40 h-40 bg-health-secondary/10 rounded-full blur-xl"></div>
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-health-secondary/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-health-primary/10 rounded-full blur-xl"></div>
       
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16 fade-up-1">
-          <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
-            How It Works
+          <div className="inline-flex items-center px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium gap-2">
+            <Sparkles size={16} />
+            <span>How It Works</span>
           </div>
           
           <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
@@ -65,45 +68,49 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            At Akeno Health AI, we integrate cutting-edge artificial intelligence, quantum computing, multi-omics analysis, and digital twin simulations to deliver truly personalized, data-driven healthcare. Here's how it works:
+            At Akeno Health AI, we integrate cutting-edge artificial intelligence, quantum computing, multi-omics analysis, and digital twin simulations to deliver truly personalized, data-driven healthcare.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {steps.map((step, index) => (
-            <div key={index} className={`bg-white/80 p-6 rounded-2xl border border-white/20 shadow-card fade-up-${Math.min(index % 5 + 2, 5)}`}>
-              <div className="relative mb-6">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-health-primary/10 text-health-primary">
-                  {step.icon}
-                </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-health-primary text-white rounded-full flex items-center justify-center text-xs font-bold">
-                  {index + 1}
+        {/* Enhanced feature grid with improved visual styling */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-16">
+          {features.map((feature, index) => (
+            <div key={index} 
+              className={`bg-white/90 p-7 rounded-2xl border border-white/20 shadow-card 
+                transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg
+                hover:border-health-primary/20 fade-up-${Math.min(index % 5 + 2, 5)}`}>
+              <div className="mb-5">
+                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-health-primary/10 text-health-primary">
+                  {feature.icon}
                 </div>
               </div>
               
-              <h3 className="text-xl font-medium text-health-dark mb-3">{step.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+              <h3 className="text-xl font-medium text-health-dark mb-3">{feature.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
         
-        <div className="text-center fade-up-5">
-          <p className="text-lg text-health-dark font-medium mb-6">
-            Akeno Health AI is more than a healthcare platform—it's a revolution in precision medicine, transforming how diseases are detected, managed, and treated!
-          </p>
-          
-          <Button 
-            size="lg" 
-            variant="secondary"
-            as="Link"
-            to="/how-it-works"
-            className="group"
-          >
-            <span className="flex items-center gap-2">
-              Explore More
-              <LineChart size={18} className="transition-transform group-hover:scale-110" />
-            </span>
-          </Button>
+        {/* Enhanced CTA section */}
+        <div className="bg-gradient-to-r from-health-primary/10 to-health-secondary/10 rounded-3xl p-10 mb-12 shadow-lg border border-health-primary/10">
+          <div className="text-center fade-up-5 max-w-3xl mx-auto">
+            <p className="text-lg text-health-dark font-medium mb-6">
+              Akeno Health AI is more than a healthcare platform—it's a revolution in precision medicine, transforming how diseases are detected, managed, and treated!
+            </p>
+            
+            <Button 
+              size="lg" 
+              variant="secondary"
+              as="Link"
+              to="/how-it-works"
+              className="group"
+            >
+              <span className="flex items-center gap-2">
+                Explore More
+                <LineChart size={18} className="transition-transform group-hover:scale-110" />
+              </span>
+            </Button>
+          </div>
         </div>
       </div>
     </section>
