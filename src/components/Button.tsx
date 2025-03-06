@@ -1,7 +1,9 @@
 
 import React from 'react';
 import { cn } from "@/lib/utils";
+import { Link, LinkProps } from 'react-router-dom';
 
+// Extended type to handle both button and anchor attributes
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'default' | 'link';
   size?: 'sm' | 'md' | 'lg' | 'icon';
@@ -11,6 +13,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactNode;
   as?: React.ElementType;
   to?: string;
+  href?: string; // Adding href for when as="a"
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
@@ -22,6 +25,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   icon,
   as: Component = 'button',
   to,
+  href,
   ...props
 }, ref) => {
   const baseStyles = "relative inline-flex items-center justify-center rounded-full font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none overflow-hidden shadow-sm";
@@ -50,11 +54,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     className
   );
 
-  if (Component !== 'button') {
+  // Handle React Router Link
+  if (Component === Link || to) {
     return (
-      <Component
+      <Link
         className={classNames}
-        to={to}
+        to={to || ""}
         {...props}
       >
         <span className="relative z-10 flex items-center justify-center gap-2">
@@ -64,10 +69,30 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         <span className="absolute inset-0 z-0 overflow-hidden rounded-full">
           <span className="absolute top-1/2 left-1/2 aspect-square w-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white opacity-0 transition-all duration-300 group-active:w-32 group-active:opacity-20"></span>
         </span>
-      </Component>
+      </Link>
     );
   }
   
+  // Handle regular anchor
+  if (Component === 'a') {
+    return (
+      <a
+        className={classNames}
+        href={href}
+        {...props}
+      >
+        <span className="relative z-10 flex items-center justify-center gap-2">
+          {icon && <span className="inline-flex">{icon}</span>}
+          {children}
+        </span>
+        <span className="absolute inset-0 z-0 overflow-hidden rounded-full">
+          <span className="absolute top-1/2 left-1/2 aspect-square w-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white opacity-0 transition-all duration-300 group-active:w-32 group-active:opacity-20"></span>
+        </span>
+      </a>
+    );
+  }
+  
+  // Default button
   return (
     <button
       ref={ref}
