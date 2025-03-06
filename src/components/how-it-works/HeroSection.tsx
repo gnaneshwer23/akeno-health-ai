@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Brain, FlaskConical, Activity } from 'lucide-react';
 
 const HeroSection = () => {
   return (
