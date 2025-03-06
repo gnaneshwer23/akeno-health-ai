@@ -49,8 +49,8 @@ const ContactCTA = () => {
           <Button 
             className="bg-white text-health-primary hover:bg-gray-100 shadow-lg transform transition-transform hover:-translate-y-1 group" 
             icon={<MessageCircle className="h-5 w-5 group-hover:animate-pulse" />}
-            as="Link"
-            to="#contact-form"
+            as="a"
+            href="#contact-form"
           >
             Live Chat
           </Button>
