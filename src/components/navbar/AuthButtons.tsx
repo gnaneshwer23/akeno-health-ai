@@ -19,7 +19,7 @@ const AuthButtons: React.FC = () => {
         size="sm" 
         className="shadow hover:shadow-md transition-all"
         as="Link"
-        to="/login"
+        to="/contact"
       >
         Get Started
       </Button>

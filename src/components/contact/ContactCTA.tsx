@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/Button';
 import { Phone, Mail, MessageCircle, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ContactCTA = () => {
   return (
@@ -32,18 +33,24 @@ const ContactCTA = () => {
           <Button 
             className="bg-white text-health-primary hover:bg-gray-100 shadow-lg transform transition-transform hover:-translate-y-1 group" 
             icon={<Phone className="h-5 w-5 group-hover:animate-pulse" />}
+            as="a"
+            href="tel:+18001234567"
           >
             Call Us
           </Button>
           <Button 
             className="bg-white text-health-primary hover:bg-gray-100 shadow-lg transform transition-transform hover:-translate-y-1 group" 
             icon={<Mail className="h-5 w-5 group-hover:animate-pulse" />}
+            as="a"
+            href="mailto:support@akenohealth.ai"
           >
             Email Support
           </Button>
           <Button 
             className="bg-white text-health-primary hover:bg-gray-100 shadow-lg transform transition-transform hover:-translate-y-1 group" 
             icon={<MessageCircle className="h-5 w-5 group-hover:animate-pulse" />}
+            as="Link"
+            to="#contact-form"
           >
             Live Chat
           </Button>
