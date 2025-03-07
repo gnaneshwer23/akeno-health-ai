@@ -9,32 +9,38 @@ const FeaturesSection: React.FC = () => {
     {
       icon: <HeartPulse size={24} className="text-health-primary" />,
       title: "Early Disease Detection",
-      description: "Our AI identifies health risks before symptoms appear, enabling timely intervention and prevention strategies."
+      description: "Our AI identifies health risks before symptoms appear, enabling timely intervention and prevention strategies.",
+      color: "from-indigo-500/20 to-indigo-400/10"
     },
     {
       icon: <Database size={24} className="text-health-primary" />,
       title: "Multi-Omics Integration",
-      description: "We analyze genomics, epigenetics, proteomics, and transcriptomics to create deeply personalized treatment approaches."
+      description: "We analyze genomics, epigenetics, proteomics, and transcriptomics to create deeply personalized treatment approaches.",
+      color: "from-purple-500/20 to-purple-400/10"
     },
     {
       icon: <Activity size={24} className="text-health-primary" />,
       title: "Continuous Monitoring",
-      description: "Real-time adaptation of care based on wearable data and biomarker changes for optimal health outcomes."
+      description: "Real-time adaptation of care based on wearable data and biomarker changes for optimal health outcomes.",
+      color: "from-blue-500/20 to-blue-400/10"
     },
     {
       icon: <FlaskConical size={24} className="text-health-primary" />,
       title: "Digital Twin Technology",
-      description: "Virtual simulations of your body predict therapy responses before application, reducing risks and improving results."
+      description: "Virtual simulations of your body predict therapy responses before application, reducing risks and improving results.",
+      color: "from-cyan-500/20 to-cyan-400/10"
     },
     {
       icon: <Atom size={24} className="text-health-primary" />,
       title: "Quantum Computing Integration",
-      description: "Quantum-powered AI accelerates drug discovery, optimizes treatment plans, and enhances clinical trial outcomes."
+      description: "Quantum-powered AI accelerates drug discovery, optimizes treatment plans, and enhances clinical trial outcomes.",
+      color: "from-sky-500/20 to-sky-400/10"
     },
     {
       icon: <Brain size={24} className="text-health-primary" />,
       title: "Personalized Medicine",
-      description: "Treatments tailored to your unique genetic makeup, lifestyle factors, and health history for better results."
+      description: "Treatments tailored to your unique genetic makeup, lifestyle factors, and health history for better results.",
+      color: "from-teal-500/20 to-teal-400/10"
     }
   ];
 
@@ -47,16 +53,23 @@ const FeaturesSection: React.FC = () => {
       <div className="absolute top-1/3 right-0 w-64 h-64 bg-health-primary/5 rounded-full blur-2xl"></div>
       <div className="absolute bottom-1/3 left-0 w-64 h-64 bg-health-secondary/5 rounded-full blur-2xl"></div>
       
+      {/* Decorative grid lines */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSA2MCAwIEwgMCA2MCIgc3Ryb2tlPSIjNmY3MmZmIiBzdHJva2Utb3BhY2l0eT0iMC4wMiIgc3Ryb2tlLXdpZHRoPSIxIi8+PHBhdGggZD0iTSAwIDAgTCA2MCA2MCIgc3Ryb2tlPSIjNmY3MmZmIiBzdHJva2Utb3BhY2l0eT0iMC4wMiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCBmaWxsPSJ1cmwoI2dyaWQpIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIi8+PC9zdmc+')] opacity-20 -z-10"></div>
+      
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16 fade-up-1">
-          <div className="inline-flex items-center px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium gap-2">
-            <Sparkles size={16} />
-            <span>Our Solutions</span>
+          <div className="inline-flex items-center px-5 py-2 mb-6 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 font-medium gap-2 border border-health-primary/10">
+            <Sparkles size={16} className="text-health-primary" />
+            <span className="bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">Our Solutions</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
             Advanced AI & Quantum-Powered Features
           </h2>
+          
+          <div className="flex justify-center mb-6">
+            <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary"></div>
+          </div>
           
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Our platform leverages the latest advancements in artificial intelligence, quantum computing, digital twin technology, and multi-omics analysis to provide unprecedented precision in healthcare.
@@ -66,13 +79,14 @@ const FeaturesSection: React.FC = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div key={index} className={cn(
-              "bg-white rounded-xl p-6 shadow-card border border-health-primary/10 hover:border-health-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1",
+              "bg-gradient-to-br rounded-xl p-6 shadow-md border border-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1",
+              feature.color,
               `fade-up-${Math.min(index % 5 + 2, 5)}`
             )}>
-              <div className="w-12 h-12 rounded-lg bg-health-primary/10 flex items-center justify-center mb-4">
+              <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-5 shadow-sm">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-medium text-health-dark mb-2">{feature.title}</h3>
+              <h3 className="text-xl font-semibold text-health-dark mb-3">{feature.title}</h3>
               <p className="text-muted-foreground">{feature.description}</p>
             </div>
           ))}
