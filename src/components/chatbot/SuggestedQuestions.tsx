@@ -2,12 +2,11 @@
 import React from 'react';
 import { 
   Brain, 
-  Pill, 
-  Activity, 
   FileQuestion, 
   Search,
   Users,
-  Microscope
+  Microscope,
+  Activity
 } from 'lucide-react';
 
 type SuggestedQuestionsProps = {
