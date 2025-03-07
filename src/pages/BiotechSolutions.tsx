@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
@@ -49,91 +48,91 @@ const BiotechSolutions = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-health-light">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-health-light to-white">
       <Navbar />
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="pt-28 pb-16 px-6 relative overflow-hidden bg-gradient-to-b from-white to-health-light">
-          <div className="absolute top-1/4 -right-32 w-96 h-96 bg-health-primary opacity-5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-health-secondary opacity-5 rounded-full blur-3xl"></div>
+        <section className="pt-28 pb-16 px-6 relative overflow-hidden bg-gradient-to-b from-white to-indigo-50">
+          <div className="absolute top-1/4 -right-32 w-96 h-96 bg-indigo-600 opacity-5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-purple-600 opacity-5 rounded-full blur-3xl"></div>
           
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-8">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
-                <Sparkles size={16} className="text-health-primary" />
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium animate-pulse">
+                <Sparkles size={16} className="text-white" />
                 <span>Biotech & Pharma</span>
               </span>
               
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-health-dark mb-6">
-                Transforming <span className="text-health-primary">Pharmaceutical Research</span> with <span className="text-health-secondary">AI</span>
+                Transforming <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Pharmaceutical Research</span> with <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">AI</span>
               </h1>
               
               <div className="flex justify-center mb-6">
-                <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary"></div>
+                <div className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
               </div>
               
               <div className="flex justify-center mb-8">
                 <div className="relative w-16 h-16 flex items-center justify-center">
-                  <div className="absolute inset-0 rounded-full bg-health-primary/10 animate-pulse-slow"></div>
-                  <FlaskConical size={32} className="text-health-primary" />
+                  <div className="absolute inset-0 rounded-full bg-indigo-500/10 animate-pulse-slow"></div>
+                  <FlaskConical size={32} className="text-indigo-600" />
                 </div>
               </div>
             </div>
             
             <div className="max-w-4xl mx-auto mb-12 text-lg text-muted-foreground">
-              <div className="flex flex-col md:flex-row gap-8 items-center p-6 bg-white rounded-xl shadow-sm border border-health-primary/10">
+              <div className="flex flex-col md:flex-row gap-8 items-center p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-md border border-indigo-200/30">
                 <div className="md:w-1/2 space-y-4">
                   <p>
                     At Akeno Health AI, we empower biotech and pharmaceutical companies with AI-driven solutions that transform:
                   </p>
                   <ul className="space-y-2">
                     <li className="flex gap-2 items-start">
-                      <ChevronRight size={18} className="text-health-primary mt-1 flex-shrink-0" />
+                      <ChevronRight size={18} className="text-indigo-600 mt-1 flex-shrink-0" />
                       <span>Drug discovery processes</span>
                     </li>
                     <li className="flex gap-2 items-start">
-                      <ChevronRight size={18} className="text-health-primary mt-1 flex-shrink-0" />
+                      <ChevronRight size={18} className="text-indigo-600 mt-1 flex-shrink-0" />
                       <span>Biomarker-based clinical trials</span>
                     </li>
                     <li className="flex gap-2 items-start">
-                      <ChevronRight size={18} className="text-health-primary mt-1 flex-shrink-0" />
+                      <ChevronRight size={18} className="text-indigo-600 mt-1 flex-shrink-0" />
                       <span>Synthetic biology innovations</span>
                     </li>
                     <li className="flex gap-2 items-start">
-                      <ChevronRight size={18} className="text-health-primary mt-1 flex-shrink-0" />
+                      <ChevronRight size={18} className="text-indigo-600 mt-1 flex-shrink-0" />
                       <span>Immune therapy development</span>
                     </li>
                   </ul>
                 </div>
                 <div className="md:w-1/2">
-                  <div className="rounded-lg overflow-hidden border border-health-primary/10">
-                    <div className="bg-health-primary/5 p-3 border-b border-health-primary/10 flex justify-between items-center">
+                  <div className="rounded-lg overflow-hidden border border-indigo-200 bg-gradient-to-br from-white to-indigo-50">
+                    <div className="bg-indigo-500/10 p-3 border-b border-indigo-200 flex justify-between items-center">
                       <div className="flex items-center gap-2">
-                        <Dna size={20} className="text-health-primary" />
+                        <Dna size={20} className="text-indigo-600" />
                         <span className="font-medium text-health-dark">AI Impact on Pharma R&D</span>
                       </div>
                     </div>
-                    <div className="p-4 bg-white">
+                    <div className="p-4 bg-white/50 backdrop-blur-sm">
                       <div className="space-y-3">
                         <div className="flex justify-between items-center">
                           <span className="text-sm">Development Speed</span>
                           <div className="w-32 h-2 bg-gray-100 rounded-full overflow-hidden">
-                            <div className="h-full bg-health-primary w-[85%]"></div>
+                            <div className="h-full bg-gradient-to-r from-indigo-400 to-indigo-600 w-[85%]"></div>
                           </div>
                           <span className="text-sm font-medium">+85%</span>
                         </div>
                         <div className="flex justify-between items-center">
                           <span className="text-sm">Cost Reduction</span>
                           <div className="w-32 h-2 bg-gray-100 rounded-full overflow-hidden">
-                            <div className="h-full bg-health-primary w-[70%]"></div>
+                            <div className="h-full bg-gradient-to-r from-indigo-400 to-indigo-600 w-[70%]"></div>
                           </div>
                           <span className="text-sm font-medium">+70%</span>
                         </div>
                         <div className="flex justify-between items-center">
                           <span className="text-sm">Treatment Efficacy</span>
                           <div className="w-32 h-2 bg-gray-100 rounded-full overflow-hidden">
-                            <div className="h-full bg-health-primary w-[90%]"></div>
+                            <div className="h-full bg-gradient-to-r from-indigo-400 to-indigo-600 w-[90%]"></div>
                           </div>
                           <span className="text-sm font-medium">+90%</span>
                         </div>
@@ -150,7 +149,7 @@ const BiotechSolutions = () => {
         <section id="drug-discovery" className="py-16 px-6 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-health-primary/10 text-health-primary mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 text-white mb-4 shadow-lg shadow-indigo-500/20">
                 <span className="text-xl font-bold">1</span>
               </div>
               
@@ -162,7 +161,7 @@ const BiotechSolutions = () => {
             {/* Process visualization */}
             <div className="mb-16 overflow-hidden">
               <div className="relative">
-                <div className="absolute left-0 right-0 top-1/2 h-1 bg-health-primary/20 -translate-y-1/2 z-0"></div>
+                <div className="absolute left-0 right-0 top-1/2 h-1 bg-gradient-to-r from-indigo-200 via-indigo-400 to-indigo-200 -translate-y-1/2 z-0"></div>
                 <div className="flex justify-between relative z-10">
                   {[
                     { icon: <MicroscopeIcon size={24} />, title: "Target Identification" },
@@ -177,8 +176,10 @@ const BiotechSolutions = () => {
                       onClick={() => setActiveStep(idx + 1)}
                     >
                       <div className={`w-16 h-16 rounded-full flex items-center justify-center 
-                        ${activeStep === idx + 1 ? 'bg-health-primary text-white' : 'bg-white text-health-primary border-2 border-health-primary/30'}
-                        transition-all duration-300`}
+                        ${activeStep === idx + 1 
+                          ? 'bg-gradient-to-br from-indigo-500 to-indigo-700 text-white shadow-lg shadow-indigo-500/30' 
+                          : 'bg-white text-indigo-600 border-2 border-indigo-300/50'}
+                        transition-all duration-300 hover:scale-105`}
                       >
                         {step.icon}
                       </div>
@@ -190,11 +191,13 @@ const BiotechSolutions = () => {
                 </div>
               </div>
               
-              <div className="bg-white p-6 rounded-2xl shadow-md border border-health-primary/10 mt-8">
+              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-indigo-200 mt-8">
                 {activeStep === 1 && (
                   <div className="flex flex-col md:flex-row gap-6 items-center">
                     <div className="md:w-1/3">
-                      <MicroscopeIcon size={80} className="text-health-primary mx-auto" />
+                      <div className="bg-indigo-100 p-6 rounded-full w-40 h-40 flex items-center justify-center mx-auto">
+                        <MicroscopeIcon size={80} className="text-indigo-600" />
+                      </div>
                     </div>
                     <div className="md:w-2/3">
                       <h3 className="text-xl font-medium text-health-dark mb-3">AI-Driven Target Identification</h3>
@@ -203,20 +206,20 @@ const BiotechSolutions = () => {
                         drug targets with higher precision and efficiency than traditional methods.
                       </p>
                       <div className="grid grid-cols-2 gap-2 text-sm">
-                        <div className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-health-primary" />
+                        <div className="flex items-center gap-2 bg-indigo-50 p-2 rounded-lg">
+                          <CheckCircle2 size={16} className="text-indigo-600" />
                           <span>Multi-omics integration</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-health-primary" />
+                        <div className="flex items-center gap-2 bg-indigo-50 p-2 rounded-lg">
+                          <CheckCircle2 size={16} className="text-indigo-600" />
                           <span>Network biology analysis</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-health-primary" />
+                        <div className="flex items-center gap-2 bg-indigo-50 p-2 rounded-lg">
+                          <CheckCircle2 size={16} className="text-indigo-600" />
                           <span>Pathway prediction</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-health-primary" />
+                        <div className="flex items-center gap-2 bg-indigo-50 p-2 rounded-lg">
+                          <CheckCircle2 size={16} className="text-indigo-600" />
                           <span>Target validation</span>
                         </div>
                       </div>
@@ -388,26 +391,31 @@ const BiotechSolutions = () => {
                 title="Predictive Safety & Efficacy"
                 description="AI analyses adverse event patterns, genetic predispositions, and polypharmacy risks to predict drug responses."
               />
+              
+              <DiagnosticFeature
+                icon={<Zap size={20} />}
+                title="Accelerated Drug Repurposing"
+                description="AI scans chemical libraries and disease ontologies to identify new applications for existing drugs."
+              />
             </div>
             
-            <div className="bg-health-primary/5 p-6 rounded-xl border border-health-primary/10">
-              <h4 className="flex items-center gap-2 text-health-primary font-medium mb-2">
-                <span className="w-6 h-6 rounded-full bg-health-primary text-white flex items-center justify-center text-xs">✓</span>
+            <div className="bg-gradient-to-r from-indigo-50 to-indigo-100 p-6 rounded-xl border border-indigo-200 shadow-inner">
+              <h4 className="flex items-center gap-2 text-indigo-700 font-medium mb-2">
+                <span className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs">✓</span>
                 Outcome
               </h4>
               <p className="text-health-dark">
                 AI accelerates drug discovery timelines, optimizes biomarker-driven clinical trials, enhances patient stratification, 
                 and increases the likelihood of successful therapeutic outcomes while reducing development costs.
               </p>
-            </div>
           </div>
         </section>
         
         {/* Synthetic Biology Section */}
-        <section id="synthetic-biology" className="py-16 px-6 bg-health-light/50">
+        <section id="synthetic-biology" className="py-16 px-6 bg-gradient-to-br from-purple-50 to-indigo-50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-health-secondary/10 text-health-secondary mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 text-white mb-4 shadow-lg shadow-purple-500/20">
                 <span className="text-xl font-bold">2</span>
               </div>
               
@@ -416,11 +424,11 @@ const BiotechSolutions = () => {
               </h2>
             </div>
             
-            <div className="bg-white rounded-xl shadow-md border border-health-secondary/10 mb-10 overflow-hidden">
+            <div className="bg-white rounded-xl shadow-md border border-purple-200 mb-10 overflow-hidden">
               <div className="grid md:grid-cols-2">
                 <div className="p-6 md:p-8">
                   <h3 className="text-xl font-medium text-health-dark mb-4 flex items-center gap-2">
-                    <Dna size={24} className="text-health-secondary" />
+                    <Dna size={24} className="text-purple-600" />
                     <span>Synthetic Biology Innovation Pipeline</span>
                   </h3>
                   <div className="space-y-4">
@@ -428,35 +436,36 @@ const BiotechSolutions = () => {
                       icon={<Dna size={24} />}
                       title="AI-Designed Gene & Cell Therapies"
                       description="AI analyses genomic sequences to design optimized gene-editing solutions."
-                      accentColor="bg-health-secondary/10 text-health-secondary"
-                      activeAccentColor="bg-health-secondary text-white"
+                      accentColor="bg-purple-500/10 text-purple-600"
+                      activeAccentColor="bg-purple-600 text-white"
                       active={true}
                     />
+                    
                     <DiagnosticStep
                       icon={<Pill size={24} />}
                       title="Precision Medicine Engineering"
                       description="AI-driven computational biology for customized therapeutic molecules."
-                      accentColor="bg-health-secondary/10 text-health-secondary"
-                      activeAccentColor="bg-health-secondary text-white"
+                      accentColor="bg-purple-500/10 text-purple-600"
+                      activeAccentColor="bg-purple-600 text-white"
                     />
                     <DiagnosticStep
                       icon={<Shield size={24} />}
                       title="Immunotherapy Development"
                       description="AI models predict immune checkpoint inhibitor responses and antibody engineering."
-                      accentColor="bg-health-secondary/10 text-health-secondary"
-                      activeAccentColor="bg-health-secondary text-white"
+                      accentColor="bg-purple-500/10 text-purple-600"
+                      activeAccentColor="bg-purple-600 text-white"
                     />
                     <DiagnosticStep
                       icon={<Syringe size={24} />}
                       title="Personalized Vaccine Development"
                       description="AI identifies mutation patterns to accelerate vaccine design and optimization."
-                      accentColor="bg-health-secondary/10 text-health-secondary"
-                      activeAccentColor="bg-health-secondary text-white"
+                      accentColor="bg-purple-500/10 text-purple-600"
+                      activeAccentColor="bg-purple-600 text-white"
                     />
                   </div>
                 </div>
                 
-                <div className="bg-health-secondary/5 p-6 md:p-8 flex items-center">
+                <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 md:p-8 flex items-center">
                   <div>
                     <h3 className="text-xl font-medium text-health-dark mb-4">AI-Guided Therapeutic Design</h3>
                     <div className="space-y-4">
@@ -466,7 +475,7 @@ const BiotechSolutions = () => {
                           <span className="text-sm">92%</span>
                         </div>
                         <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                          <div className="h-full bg-health-secondary w-[92%]"></div>
+                          <div className="h-full bg-gradient-to-r from-purple-400 to-purple-600 w-[92%]"></div>
                         </div>
                       </div>
                       
@@ -476,7 +485,7 @@ const BiotechSolutions = () => {
                           <span className="text-sm">88%</span>
                         </div>
                         <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                          <div className="h-full bg-health-secondary w-[88%]"></div>
+                          <div className="h-full bg-gradient-to-r from-purple-400 to-purple-600 w-[88%]"></div>
                         </div>
                       </div>
                       
@@ -486,7 +495,7 @@ const BiotechSolutions = () => {
                           <span className="text-sm">95%</span>
                         </div>
                         <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                          <div className="h-full bg-health-secondary w-[95%]"></div>
+                          <div className="h-full bg-gradient-to-r from-purple-400 to-purple-600 w-[95%]"></div>
                         </div>
                       </div>
                       
@@ -496,7 +505,7 @@ const BiotechSolutions = () => {
                           <span className="text-sm">78%</span>
                         </div>
                         <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                          <div className="h-full bg-health-secondary w-[78%]"></div>
+                          <div className="h-full bg-gradient-to-r from-purple-400 to-purple-600 w-[78%]"></div>
                         </div>
                       </div>
                     </div>
@@ -510,41 +519,41 @@ const BiotechSolutions = () => {
                 icon={<Dna size={20} />}
                 title="AI-Designed Gene & Cell Therapies"
                 description="AI analyses genomic sequences, CRISPR data, and immune system responses to design optimized gene-editing solutions."
-                accentColor="bg-health-secondary/20 text-health-secondary group-hover:bg-health-secondary group-hover:text-white"
+                accentColor="bg-purple-500/20 text-purple-600 group-hover:bg-purple-600 group-hover:text-white"
               />
               
               <DiagnosticFeature
                 icon={<Pill size={20} />}
                 title="Synthetic Biology for Precision Medicine"
                 description="AI-driven computational biology and protein engineering help design customized therapeutic molecules."
-                accentColor="bg-health-secondary/20 text-health-secondary group-hover:bg-health-secondary group-hover:text-white"
+                accentColor="bg-purple-500/20 text-purple-600 group-hover:bg-purple-600 group-hover:text-white"
               />
               
               <DiagnosticFeature
                 icon={<Shield size={20} />}
                 title="AI in Immunotherapy Development"
                 description="AI models predict immune checkpoint inhibitor responses, T-cell receptor interactions, and antibody engineering."
-                accentColor="bg-health-secondary/20 text-health-secondary group-hover:bg-health-secondary group-hover:text-white"
+                accentColor="bg-purple-500/20 text-purple-600 group-hover:bg-purple-600 group-hover:text-white"
               />
               
               <DiagnosticFeature
                 icon={<Syringe size={20} />}
                 title="AI-Guided Vaccine Development"
                 description="AI identifies mutation patterns in infectious diseases to accelerate vaccine design and optimize immune responses."
-                accentColor="bg-health-secondary/20 text-health-secondary group-hover:bg-health-secondary group-hover:text-white"
+                accentColor="bg-purple-500/20 text-purple-600 group-hover:bg-purple-600 group-hover:text-white"
               />
               
               <DiagnosticFeature
                 icon={<Zap size={20} />}
                 title="Real-Time Therapy Optimization"
                 description="AI continuously monitors patient immune profiles and treatment responses, dynamically adjusting dosage and combinations."
-                accentColor="bg-health-secondary/20 text-health-secondary group-hover:bg-health-secondary group-hover:text-white"
+                accentColor="bg-purple-500/20 text-purple-600 group-hover:bg-purple-600 group-hover:text-white"
               />
             </div>
             
-            <div className="bg-health-secondary/5 p-6 rounded-xl border border-health-secondary/10">
-              <h4 className="flex items-center gap-2 text-health-secondary font-medium mb-2">
-                <span className="w-6 h-6 rounded-full bg-health-secondary text-white flex items-center justify-center text-xs">✓</span>
+            <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200 shadow-inner">
+              <h4 className="flex items-center gap-2 text-purple-700 font-medium mb-2">
+                <span className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs">✓</span>
                 Outcome
               </h4>
               <p className="text-health-dark">
@@ -559,7 +568,7 @@ const BiotechSolutions = () => {
         <section id="clinical-research" className="py-16 px-6 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-health-accent/10 text-health-accent mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-white mb-4 shadow-lg shadow-blue-500/20">
                 <span className="text-xl font-bold">3</span>
               </div>
               
@@ -570,43 +579,44 @@ const BiotechSolutions = () => {
             
             {/* Data flow diagram */}
             <div className="mb-16">
-              <div className="relative p-4 bg-white rounded-xl shadow-md border border-health-accent/10">
+              <div className="relative p-4 bg-white rounded-xl shadow-md border border-blue-200">
                 <div className="grid md:grid-cols-3 gap-6">
                   {/* Data Sources */}
-                  <div className="bg-health-accent/5 p-4 rounded-lg">
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg">
                     <h3 className="text-lg font-medium text-health-dark mb-4 flex items-center gap-2">
-                      <Database size={20} className="text-health-accent" />
+                      <Database size={20} className="text-blue-600" />
                       <span>Data Sources</span>
                     </h3>
                     <div className="space-y-3">
-                      <Card className="bg-white">
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
                         <CardContent className="p-3">
                           <div className="flex items-center gap-2">
-                            <FileText size={18} className="text-health-accent" />
+                            <FileText size={18} className="text-blue-600" />
                             <span className="text-sm">Electronic Health Records</span>
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="bg-white">
+                      
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
                         <CardContent className="p-3">
                           <div className="flex items-center gap-2">
-                            <Activity size={18} className="text-health-accent" />
+                            <Activity size={18} className="text-blue-600" />
                             <span className="text-sm">Wearable Device Data</span>
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="bg-white">
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
                         <CardContent className="p-3">
                           <div className="flex items-center gap-2">
-                            <Globe size={18} className="text-health-accent" />
+                            <Globe size={18} className="text-blue-600" />
                             <span className="text-sm">Population Health Data</span>
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="bg-white">
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
                         <CardContent className="p-3">
                           <div className="flex items-center gap-2">
-                            <Dna size={18} className="text-health-accent" />
+                            <Dna size={18} className="text-blue-600" />
                             <span className="text-sm">Genomic Databases</span>
                           </div>
                         </CardContent>
@@ -615,204 +625,20 @@ const BiotechSolutions = () => {
                   </div>
                   
                   {/* AI Processing */}
-                  <div className="bg-health-accent/10 p-4 rounded-lg">
+                  <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-4 rounded-lg">
                     <h3 className="text-lg font-medium text-health-dark mb-4 flex items-center gap-2">
-                      <Brain size={20} className="text-health-accent" />
+                      <Brain size={20} className="text-blue-600" />
                       <span>AI Processing</span>
                     </h3>
                     <div className="space-y-3">
-                      <Card className="bg-white">
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
                         <CardContent className="p-3">
                           <div className="flex items-center gap-2">
-                            <Search size={18} className="text-health-accent" />
+                            <Search size={18} className="text-blue-600" />
                             <span className="text-sm">Pattern Recognition</span>
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="bg-white">
-                        <CardContent className="p-3">
-                          <div className="flex items-center gap-2">
-                            <LineChart size={18} className="text-health-accent" />
-                            <span className="text-sm">Predictive Modeling</span>
-                          </div>
-                        </CardContent>
-                      </Card>
-                      <Card className="bg-white">
-                        <CardContent className="p-3">
-                          <div className="flex items-center gap-2">
-                            <MicroscopeIcon size={18} className="text-health-accent" />
-                            <span className="text-sm">Biomarker Analysis</span>
-                          </div>
-                        </CardContent>
-                      </Card>
-                      <Card className="bg-white">
-                        <CardContent className="p-3">
-                          <div className="flex items-center gap-2">
-                            <Shield size={18} className="text-health-accent" />
-                            <span className="text-sm">Safety Signal Detection</span>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </div>
-                  
-                  {/* Clinical Insights */}
-                  <div className="bg-health-accent/5 p-4 rounded-lg">
-                    <h3 className="text-lg font-medium text-health-dark mb-4 flex items-center gap-2">
-                      <FlaskConical size={20} className="text-health-accent" />
-                      <span>Clinical Insights</span>
-                    </h3>
-                    <div className="space-y-3">
-                      <Card className="bg-white">
-                        <CardContent className="p-3">
-                          <div className="flex items-center gap-2">
-                            <Beaker size={18} className="text-health-accent" />
-                            <span className="text-sm">Drug Repurposing Opportunities</span>
-                          </div>
-                        </CardContent>
-                      </Card>
-                      <Card className="bg-white">
-                        <CardContent className="p-3">
-                          <div className="flex items-center gap-2">
-                            <Radio size={18} className="text-health-accent" />
-                            <span className="text-sm">Digital Biomarker Discovery</span>
-                          </div>
-                        </CardContent>
-                      </Card>
-                      <Card className="bg-white">
-                        <CardContent className="p-3">
-                          <div className="flex items-center gap-2">
-                            <Stethoscope size={18} className="text-health-accent" />
-                            <span className="text-sm">Treatment Response Prediction</span>
-                          </div>
-                        </CardContent>
-                      </Card>
-                      <Card className="bg-white">
-                        <CardContent className="p-3">
-                          <div className="flex items-center gap-2">
-                            <BarChart4 size={18} className="text-health-accent" />
-                            <span className="text-sm">Market Access Strategies</span>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="absolute top-1/2 left-1/3 w-0 h-0 -translate-y-1/2 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-16 border-l-health-accent/20 hidden md:block"></div>
-                <div className="absolute top-1/2 left-2/3 w-0 h-0 -translate-y-1/2 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-16 border-l-health-accent/40 hidden md:block"></div>
-              </div>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-              <DiagnosticFeature 
-                icon={<BarChart4 size={20} />}
-                title="AI-Powered Real-World Data Analytics"
-                description="AI extracts insights from EHRs, patient registries, and wearable data to enhance clinical trial designs."
-                accentColor="bg-health-accent/20 text-health-accent group-hover:bg-health-accent group-hover:text-white"
-              />
-              
-              <DiagnosticFeature
-                icon={<Search size={20} />}
-                title="AI-Enhanced Pharmacovigilance"
-                description="Machine learning models detect adverse drug reactions, drug interactions, and long-term safety concerns."
-                accentColor="bg-health-accent/20 text-health-accent group-hover:bg-health-accent group-hover:text-white"
-              />
-              
-              <DiagnosticFeature
-                icon={<Stethoscope size={20} />}
-                title="AI-Driven Drug Repurposing"
-                description="AI scans chemical libraries and disease ontologies to identify new applications for existing drugs."
-                accentColor="bg-health-accent/20 text-health-accent group-hover:bg-health-accent group-hover:text-white"
-              />
-              
-              <DiagnosticFeature
-                icon={<Globe size={20} />}
-                title="Population Health Insights"
-                description="AI analyses global epidemiology trends and genetic risk factors for region-specific treatment strategies."
-                accentColor="bg-health-accent/20 text-health-accent group-hover:bg-health-accent group-hover:text-white"
-              />
-              
-              <DiagnosticFeature
-                icon={<FileText size={20} />}
-                title="Regulatory-Grade AI Analytics"
-                description="AI supports regulatory submissions, compliance tracking, and evidence generation for global health agencies."
-                accentColor="bg-health-accent/20 text-health-accent group-hover:bg-health-accent group-hover:text-white"
-              />
-              
-              <DiagnosticFeature
-                icon={<Radio size={20} />}
-                title="AI-Powered Digital Biomarker Discovery"
-                description="AI uncovers novel digital biomarkers from multi-omics data and patient-reported outcomes."
-                accentColor="bg-health-accent/20 text-health-accent group-hover:bg-health-accent group-hover:text-white"
-              />
-            </div>
-            
-            <div className="bg-health-accent/5 p-6 rounded-xl border border-health-accent/10">
-              <h4 className="flex items-center gap-2 text-health-accent font-medium mb-2">
-                <span className="w-6 h-6 rounded-full bg-health-accent text-white flex items-center justify-center text-xs">✓</span>
-                Outcome
-              </h4>
-              <p className="text-health-dark">
-                AI-driven clinical insights enable more efficient, evidence-based drug development, regulatory approval processes, 
-                and post-market safety monitoring, reducing R&D costs and improving therapeutic success rates.
-              </p>
-            </div>
-          </div>
-        </section>
-        
-        {/* CTA Section */}
-        <section className="py-20 px-6 bg-gradient-to-b from-health-light to-white relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent pointer-events-none"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-health-secondary opacity-5 rounded-full blur-3xl"></div>
-          
-          <div className="max-w-4xl mx-auto text-center relative z-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-health-primary text-white mb-6">
-              <FlaskConical size={30} />
-            </div>
-            
-            <h2 className="text-2xl md:text-3xl font-medium text-health-dark mb-6">
-              Transform Biotech & Pharma Research with AI-Powered Solutions
-            </h2>
-            
-            <div className="bg-white p-6 rounded-xl shadow-md border border-health-primary/10 mb-10">
-              <div className="grid md:grid-cols-3 gap-4 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-health-primary mb-1">85%</div>
-                  <div className="text-sm text-muted-foreground">Faster Drug Development</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-health-primary mb-1">70%</div>
-                  <div className="text-sm text-muted-foreground">Lower R&D Costs</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-health-primary mb-1">3.5x</div>
-                  <div className="text-sm text-muted-foreground">Higher Success Rates</div>
-                </div>
-              </div>
-            </div>
-            
-            <p className="text-lg text-muted-foreground mb-10 max-w-3xl mx-auto">
-              With Akeno Health AI, biotech and pharmaceutical companies gain access to AI-powered solutions that transform 
-              drug discovery, optimize clinical trials, and enhance real-world data analytics—accelerating innovation and 
-              improving global healthcare outcomes.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" variant="primary">
-                Request a Demo
-              </Button>
-              <Button size="lg" variant="outline">
-                Learn More
-              </Button>
-            </div>
-          </div>
-        </section>
-      </main>
-      
-      <Footer />
-    </div>
-  );
-};
-
-export default BiotechSolutions;
+                      
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <Card
