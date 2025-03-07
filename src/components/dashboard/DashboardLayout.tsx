@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import Header from './header/Header';
 import Sidebar from './sidebar/Sidebar';
 import MobileSidebar from './sidebar/MobileSidebar';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
+import { Menu } from 'lucide-react';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -18,7 +19,11 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       <MobileSidebar 
         isOpen={mobileMenuOpen} 
         setIsOpen={setMobileMenuOpen}
-        trigger={<Button variant="ghost" size="icon" className="md:hidden" aria-label="Menu" />}
+        trigger={
+          <Button variant="ghost" size="icon" className="md:hidden" aria-label="Menu">
+            <Menu className="h-6 w-6" />
+          </Button>
+        }
       />
       
       {/* Header */}
