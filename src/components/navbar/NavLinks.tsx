@@ -2,7 +2,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Link, useLocation } from 'react-router-dom';
-import { MessageCircle } from 'lucide-react';
 
 interface NavLinksProps {
   className?: string;
@@ -76,20 +75,6 @@ const NavLinks: React.FC<NavLinksProps> = ({ className }) => {
           )}
         </div>
       ))}
-      
-      {/* Chatbot link with icon */}
-      <Link
-        to="/chatbot"
-        className={cn(
-          "flex items-center text-sm font-medium transition-colors py-2 ml-2",
-          isActive('/chatbot') 
-            ? "text-health-primary" 
-            : "text-health-dark hover:text-health-primary"
-        )}
-      >
-        <MessageCircle className="h-4 w-4 mr-1" />
-        AI Assistant
-      </Link>
     </div>
   );
 };
