@@ -43,13 +43,13 @@ const Navbar: React.FC = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 lg:px-8",
         isScrolled 
-          ? "py-2 bg-white/95 backdrop-blur-lg border-b border-gray-100/50 shadow-sm" 
+          ? "py-2 bg-white shadow-sm" 
           : "py-4 bg-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="max-w-7xl mx-auto flex items-center">
         <Brand />
-        <div className="flex-1 flex justify-center">
+        <div className="flex-1 flex justify-center ml-10">
           <NavLinks />
         </div>
         <AuthButtons />
