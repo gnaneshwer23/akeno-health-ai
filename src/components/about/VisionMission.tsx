@@ -6,34 +6,46 @@ import { Card, CardContent } from '@/components/ui/card';
 export const VisionMission = () => {
   const pillars = [
     {
-      icon: <Shield size={24} />,
+      icon: <Shield size={24} className="text-purple-600" />,
       title: "AI-Powered Predictive Healthcare",
-      description: "Early disease detection through advanced biomarker analysis and AI modeling, preventing conditions before they manifest and enabling proactive interventions."
+      description: "Early disease detection through advanced biomarker analysis and AI modeling, preventing conditions before they manifest and enabling proactive interventions.",
+      bgColor: "bg-gradient-to-br from-purple-100 to-purple-200",
+      borderColor: "border-purple-200"
     },
     {
-      icon: <Sparkles size={24} />,
+      icon: <Sparkles size={24} className="text-blue-600" />,
       title: "Personalized Medicine & Quantum-Driven Therapy",
-      description: "Leveraging AI to fine-tune treatments based on real-time biological changes, genomic insights, epigenetic modifications, and individual immune profiles."
+      description: "Leveraging AI to fine-tune treatments based on real-time biological changes, genomic insights, epigenetic modifications, and individual immune profiles.",
+      bgColor: "bg-gradient-to-br from-blue-100 to-blue-200",
+      borderColor: "border-blue-200"
     },
     {
-      icon: <Heart size={24} />,
+      icon: <Heart size={24} className="text-rose-600" />,
       title: "Continuous Health Monitoring & Adaptive Therapy",
-      description: "Using AI-driven analytics to dynamically update treatment plans in response to physiological, lifestyle, and environmental changes."
+      description: "Using AI-driven analytics to dynamically update treatment plans in response to physiological, lifestyle, and environmental changes.",
+      bgColor: "bg-gradient-to-br from-rose-100 to-rose-200",
+      borderColor: "border-rose-200"
     },
     {
-      icon: <Lightbulb size={24} />,
+      icon: <Lightbulb size={24} className="text-amber-600" />,
       title: "Quantum Computing for Drug Discovery",
-      description: "AI-powered biomarker research, drug repurposing, and clinical trial optimization for faster development of life-saving treatments."
+      description: "AI-powered biomarker research, drug repurposing, and clinical trial optimization for faster development of life-saving treatments.",
+      bgColor: "bg-gradient-to-br from-amber-100 to-amber-200",
+      borderColor: "border-amber-200"
     },
     {
-      icon: <Glasses size={24} />,
+      icon: <Glasses size={24} className="text-emerald-600" />,
       title: "Empowering Patients & Clinicians",
-      description: "Delivering real-time, actionable AI-driven health insights that support personalized decisions, optimize treatments, and improve patient engagement."
+      description: "Delivering real-time, actionable AI-driven health insights that support personalized decisions, optimize treatments, and improve patient engagement.",
+      bgColor: "bg-gradient-to-br from-emerald-100 to-emerald-200",
+      borderColor: "border-emerald-200"
     },
     {
-      icon: <Cpu size={24} />,
+      icon: <Cpu size={24} className="text-indigo-600" />,
       title: "Quantum Computing Integration",
-      description: "Harnessing quantum capabilities to solve complex healthcare problems, accelerate drug discovery, and enable unprecedented advances in personalized medicine."
+      description: "Harnessing quantum capabilities to solve complex healthcare problems, accelerate drug discovery, and enable unprecedented advances in personalized medicine.",
+      bgColor: "bg-gradient-to-br from-indigo-100 to-indigo-200",
+      borderColor: "border-indigo-200"
     }
   ];
 
@@ -49,13 +61,13 @@ export const VisionMission = () => {
           {/* Vision Column */}
           <div className="md:w-1/2 fade-up-1">
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-12 w-12 rounded-full bg-health-primary/10 flex items-center justify-center">
-                <Target size={28} className="text-health-primary" />
+              <div className="h-12 w-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+                <Target size={28} className="text-white" />
               </div>
               <h2 className="text-3xl font-bold text-health-dark">Our Vision</h2>
             </div>
             
-            <Card className="bg-white border-none shadow-md hover:shadow-lg transition-all duration-300">
+            <Card className="bg-gradient-to-br from-white to-indigo-50 border-none shadow-md hover:shadow-lg transition-all duration-300">
               <CardContent className="p-8">
                 <p className="text-health-dark/80 mb-6 leading-relaxed">
                   At Akeno Health AI, our vision is to reshape the future of healthcare by seamlessly integrating artificial intelligence, 
@@ -71,13 +83,13 @@ export const VisionMission = () => {
           {/* Mission Column */}
           <div className="md:w-1/2 fade-up-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-12 w-12 rounded-full bg-health-primary/10 flex items-center justify-center">
-                <Lightbulb size={28} className="text-health-primary" />
+              <div className="h-12 w-12 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-lg">
+                <Lightbulb size={28} className="text-white" />
               </div>
               <h2 className="text-3xl font-bold text-health-dark">Our Mission</h2>
             </div>
             
-            <Card className="bg-white border-none shadow-md hover:shadow-lg transition-all duration-300">
+            <Card className="bg-gradient-to-br from-white to-amber-50 border-none shadow-md hover:shadow-lg transition-all duration-300">
               <CardContent className="p-8">
                 <p className="text-health-dark/80 leading-relaxed">
                   We are committed to bridging the gap between traditional medicine and next-generation AI-powered healthcare. 
@@ -106,10 +118,10 @@ export const VisionMission = () => {
           {pillars.map((pillar, index) => (
             <div 
               key={index} 
-              className={`flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm border border-gray-100 
+              className={`flex items-start gap-4 p-6 ${pillar.bgColor} rounded-xl shadow-sm border ${pillar.borderColor}
                 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 fade-up-${Math.min(index % 5 + 2, 5)}`}
             >
-              <div className="h-12 w-12 rounded-full bg-health-primary/10 flex items-center justify-center flex-shrink-0">
+              <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
                 {pillar.icon}
               </div>
               <div>
@@ -121,8 +133,8 @@ export const VisionMission = () => {
         </div>
         
         <div className="text-center mt-12 fade-up-5">
-          <div className="inline-block px-6 py-3 rounded-lg bg-health-primary/10 mb-4">
-            <p className="text-lg font-semibold text-health-primary italic">
+          <div className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-100 to-purple-100 border border-purple-200 mb-4">
+            <p className="text-lg font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent italic">
               At Akeno Health AI, we don't just follow the future of healthcare—we create it.
             </p>
           </div>

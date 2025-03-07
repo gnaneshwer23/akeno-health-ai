@@ -7,49 +7,57 @@ export const CompanyStory = () => {
   const storyMilestones = [
     {
       year: "2021",
-      icon: <Microscope size={28} className="text-health-primary" />,
+      icon: <Microscope size={28} className="text-white" />,
       title: "The Breakthrough Moment",
-      description: "Recognizing that AI could revolutionize how health data is interpreted, we envisioned an intelligent AI-driven platform capable of analysing real-time health data, detecting early disease markers, and optimizing treatments with unmatched precision. By integrating multi-omics science, advanced machine learning models, and real-time wearable monitoring, we saw an opportunity to reshape how diseases are diagnosed, prevented, and treated."
+      description: "Recognizing that AI could revolutionize how health data is interpreted, we envisioned an intelligent AI-driven platform capable of analysing real-time health data, detecting early disease markers, and optimizing treatments with unmatched precision. By integrating multi-omics science, advanced machine learning models, and real-time wearable monitoring, we saw an opportunity to reshape how diseases are diagnosed, prevented, and treated.",
+      gradient: "bg-gradient-to-br from-purple-600 to-indigo-700"
     },
     {
       year: "2022-2023",
-      icon: <Rocket size={28} className="text-health-primary" />,
+      icon: <Rocket size={28} className="text-white" />,
       title: "Turning Vision into Reality",
-      description: "Years of dedicated research, development, and collaboration with leading healthcare institutions, biotech companies, and regulatory organizations led us to build a cutting-edge AI-powered healthcare ecosystem. Today, Akeno Health AI is a pioneering force in precision medicine, delivering transformative tools for patients, healthcare providers, biotech innovators, and pharmaceutical researchers worldwide."
+      description: "Years of dedicated research, development, and collaboration with leading healthcare institutions, biotech companies, and regulatory organizations led us to build a cutting-edge AI-powered healthcare ecosystem. Today, Akeno Health AI is a pioneering force in precision medicine, delivering transformative tools for patients, healthcare providers, biotech innovators, and pharmaceutical researchers worldwide.",
+      gradient: "bg-gradient-to-br from-blue-600 to-cyan-700"
     },
     {
       year: "2024+",
-      icon: <Link size={28} className="text-health-primary" />,
+      icon: <Link size={28} className="text-white" />,
       title: "Commitment to Continuous Innovation",
-      description: "We continue to push the frontiers of AI-driven diagnostics, real-time digital twin modelling, personalized therapy recommendations, and AI-enhanced drug discovery. Our unwavering commitment ensures that healthcare evolves into a more predictive, efficient, and personalized system—empowering individuals with real-time insights, customized treatments, and improved health outcomes."
+      description: "We continue to push the frontiers of AI-driven diagnostics, real-time digital twin modelling, personalized therapy recommendations, and AI-enhanced drug discovery. Our unwavering commitment ensures that healthcare evolves into a more predictive, efficient, and personalized system—empowering individuals with real-time insights, customized treatments, and improved health outcomes.",
+      gradient: "bg-gradient-to-br from-emerald-600 to-teal-700"
     }
   ];
 
   const innovationAreas = [
     {
-      icon: <Brain size={24} className="text-health-primary" />,
+      icon: <Brain size={24} className="text-white" />,
       title: "AI-powered diagnostics",
-      description: "Delivering precision at scale through advanced machine learning models"
+      description: "Delivering precision at scale through advanced machine learning models",
+      bgGradient: "bg-gradient-to-br from-purple-500 to-indigo-600"
     },
     {
-      icon: <FlaskConical size={24} className="text-health-primary" />,
+      icon: <FlaskConical size={24} className="text-white" />,
       title: "Digital twin modeling",
-      description: "Creating hyper-personalized treatment simulations that predict therapy outcomes"
+      description: "Creating hyper-personalized treatment simulations that predict therapy outcomes",
+      bgGradient: "bg-gradient-to-br from-blue-500 to-sky-600"
     },
     {
-      icon: <Cpu size={24} className="text-health-primary" />,
+      icon: <Cpu size={24} className="text-white" />,
       title: "Quantum computing applications",
-      description: "Accelerating drug discovery and disease prediction with quantum algorithms"
+      description: "Accelerating drug discovery and disease prediction with quantum algorithms",
+      bgGradient: "bg-gradient-to-br from-fuchsia-500 to-purple-600"
     },
     {
-      icon: <Database size={24} className="text-health-primary" />,
+      icon: <Database size={24} className="text-white" />,
       title: "Multi-omics analysis",
-      description: "Revolutionizing precision medicine through integrated biological data"
+      description: "Revolutionizing precision medicine through integrated biological data",
+      bgGradient: "bg-gradient-to-br from-amber-500 to-orange-600"
     },
     {
-      icon: <Activity size={24} className="text-health-primary" />,
+      icon: <Activity size={24} className="text-white" />,
       title: "Real-time health monitoring",
-      description: "Making proactive care accessible through continuous biomarker assessment"
+      description: "Making proactive care accessible through continuous biomarker assessment",
+      bgGradient: "bg-gradient-to-br from-emerald-500 to-green-600"
     }
   ];
 
@@ -65,11 +73,11 @@ export const CompanyStory = () => {
           <h2 className="text-3xl font-bold text-health-dark mb-6">Our Story: Turning AI Innovation into Reality</h2>
           
           <div className="flex justify-center mb-6">
-            <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary"></div>
+            <div className="h-1 w-24 bg-gradient-to-r from-purple-500 to-blue-500"></div>
           </div>
         </div>
         
-        <Card className="bg-white border-none shadow-md mb-16 hover:shadow-lg transition-all duration-300 fade-up-2">
+        <Card className="bg-gradient-to-br from-white to-blue-50 border-none shadow-md mb-16 hover:shadow-lg transition-all duration-300 fade-up-2">
           <CardContent className="p-8">
             <p className="text-health-dark/80 text-lg leading-relaxed">
               Akeno Health AI was founded on a simple but powerful belief: healthcare should be predictive, not reactive. 
@@ -84,21 +92,21 @@ export const CompanyStory = () => {
         {/* Timeline visualization */}
         <div className="relative mb-16">
           {/* Connecting line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-health-primary/20 hidden md:block"></div>
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400 via-blue-400 to-teal-400 hidden md:block"></div>
           
           <div className="space-y-12">
             {storyMilestones.map((milestone, index) => (
               <div key={index} className={`flex flex-col md:flex-row gap-6 fade-up-${index + 3}`}>
                 <div className="md:w-16 flex items-start justify-center">
-                  <div className="h-16 w-16 rounded-full bg-health-primary/10 flex items-center justify-center flex-shrink-0 border-2 border-health-primary/20">
+                  <div className={`h-16 w-16 rounded-full ${milestone.gradient} flex items-center justify-center flex-shrink-0 shadow-lg`}>
                     {milestone.icon}
                   </div>
                 </div>
                 
                 <div className="flex-1 bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                   <div className="flex items-center gap-2 mb-4">
-                    <CalendarDays size={18} className="text-health-primary" />
-                    <span className="text-health-primary font-semibold">{milestone.year}</span>
+                    <CalendarDays size={18} className={`${index === 0 ? 'text-purple-600' : index === 1 ? 'text-blue-600' : 'text-teal-600'}`} />
+                    <span className={`${index === 0 ? 'text-purple-600' : index === 1 ? 'text-blue-600' : 'text-teal-600'} font-semibold`}>{milestone.year}</span>
                   </div>
                   <h3 className="text-2xl font-bold text-health-dark mb-4">{milestone.title}</h3>
                   <p className="text-health-dark/70 leading-relaxed">{milestone.description}</p>
@@ -113,8 +121,8 @@ export const CompanyStory = () => {
           <h3 className="text-2xl font-semibold text-health-dark mb-8 text-center">Our Commitment to Innovation</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {innovationAreas.map((area, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 flex flex-col items-center text-center">
-                <div className="h-12 w-12 rounded-full bg-health-primary/10 flex items-center justify-center mb-4">
+              <div key={index} className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center group">
+                <div className={`h-14 w-14 rounded-lg ${area.bgGradient} flex items-center justify-center mb-4 shadow-md transform group-hover:rotate-6 transition-all`}>
                   {area.icon}
                 </div>
                 <h4 className="font-semibold text-health-dark mb-2">{area.title}</h4>
@@ -125,8 +133,8 @@ export const CompanyStory = () => {
         </div>
         
         <div className="mt-16 text-center fade-up-5">
-          <div className="inline-block px-8 py-5 rounded-lg bg-health-primary/10 transform hover:scale-105 transition-transform">
-            <p className="text-xl font-semibold text-health-primary mb-2">
+          <div className="inline-block px-8 py-5 rounded-lg bg-gradient-to-r from-purple-100 to-indigo-100 shadow-md transform hover:scale-105 transition-transform border border-indigo-200">
+            <p className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">
               Join us in shaping the future of AI-powered healthcare
             </p>
             <p className="text-health-dark/80">
