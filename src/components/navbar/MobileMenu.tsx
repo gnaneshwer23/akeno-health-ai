@@ -1,106 +1,207 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '../Button';
 import { cn } from '@/lib/utils';
+import { Link, useLocation } from 'react-router-dom';
+import { 
+  ChevronDown, 
+  Users, 
+  Stethoscope, 
+  Microscope, 
+  Atom, 
+  Home, 
+  Info, 
+  HelpCircle,
+  FileText,
+  Phone,
+  MessageCircle 
+} from 'lucide-react';
 
 interface MobileMenuProps {
   isOpen: boolean;
-  onLinkClick: () => void;
+  onLinkClick?: () => void;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onLinkClick }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({ 
+  isOpen,
+  onLinkClick = () => {} 
+}) => {
+  const location = useLocation();
+  const [solutionsOpen, setSolutionsOpen] = React.useState(false);
+
+  // Helper function to check if the current path starts with the given path
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
+
+  const toggleSolutions = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setSolutionsOpen(!solutionsOpen);
+  };
+
+  // Reset solutions dropdown when main menu closes
+  React.useEffect(() => {
+    if (!isOpen) {
+      setSolutionsOpen(false);
+    }
+  }, [isOpen]);
+
   return (
     <div
       className={cn(
-        "lg:hidden fixed inset-0 top-[60px] bg-white z-40 transition-all duration-300 ease-in-out",
-        isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 pointer-events-none"
+        'lg:hidden fixed top-[60px] left-0 right-0 h-[calc(100vh-60px)] transition-all duration-300 overflow-hidden z-40',
+        isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
       )}
     >
-      <div className="flex flex-col h-full p-6 overflow-y-auto">
-        <nav className="flex flex-col space-y-4 mt-4">
+      <div className="bg-white shadow-lg border-t border-gray-100 h-full overflow-y-auto">
+        <div className="container mx-auto px-4 py-4 flex flex-col space-y-1">
           <Link
             to="/"
-            className="text-health-dark/80 hover:text-health-primary transition-colors text-base py-2"
+            className={cn(
+              "flex items-center px-4 py-3 rounded-lg text-lg transition-colors",
+              isActive('/') ? "text-health-primary bg-health-primary/5" : "text-health-dark hover:bg-gray-50"
+            )}
             onClick={onLinkClick}
           >
+            <Home className="h-5 w-5 mr-3" />
             Home
           </Link>
+          
           <Link
             to="/about"
-            className="text-health-dark/80 hover:text-health-primary transition-colors text-base py-2"
+            className={cn(
+              "flex items-center px-4 py-3 rounded-lg text-lg transition-colors",
+              isActive('/about') ? "text-health-primary bg-health-primary/5" : "text-health-dark hover:bg-gray-50"
+            )}
             onClick={onLinkClick}
           >
-            About
+            <Info className="h-5 w-5 mr-3" />
+            About Us
           </Link>
+
           <Link
             to="/how-it-works"
-            className="text-health-dark/80 hover:text-health-primary transition-colors text-base py-2"
+            className={cn(
+              "flex items-center px-4 py-3 rounded-lg text-lg transition-colors",
+              isActive('/how-it-works') ? "text-health-primary bg-health-primary/5" : "text-health-dark hover:bg-gray-50"
+            )}
             onClick={onLinkClick}
           >
+            <HelpCircle className="h-5 w-5 mr-3" />
             How It Works
           </Link>
+
+          <div className="relative">
+            <button
+              onClick={toggleSolutions}
+              className={cn(
+                "flex items-center justify-between w-full px-4 py-3 rounded-lg text-lg transition-colors",
+                (isActive('/patient-solutions') || 
+                isActive('/doctor-solutions') || 
+                isActive('/biotech-solutions') || 
+                isActive('/quantum-computing')) 
+                  ? "text-health-primary bg-health-primary/5" 
+                  : "text-health-dark hover:bg-gray-50"
+              )}
+            >
+              <div className="flex items-center">
+                <Users className="h-5 w-5 mr-3" />
+                Solutions
+              </div>
+              <ChevronDown className={cn("h-5 w-5 transition-transform", solutionsOpen ? "transform rotate-180" : "")} />
+            </button>
+            
+            <div className={cn(
+              "pl-8 overflow-hidden transition-all duration-300",
+              solutionsOpen ? "max-h-[500px] opacity-100 mt-1" : "max-h-0 opacity-0"
+            )}>
+              <Link
+                to="/patient-solutions"
+                className={cn(
+                  "flex items-center px-4 py-3 rounded-lg text-lg transition-colors",
+                  isActive('/patient-solutions') ? "text-health-primary bg-health-primary/5" : "text-health-dark hover:bg-gray-50"
+                )}
+                onClick={onLinkClick}
+              >
+                <Users className="h-5 w-5 mr-3" />
+                For Patients
+              </Link>
+              
+              <Link
+                to="/doctor-solutions"
+                className={cn(
+                  "flex items-center px-4 py-3 rounded-lg text-lg transition-colors",
+                  isActive('/doctor-solutions') ? "text-health-primary bg-health-primary/5" : "text-health-dark hover:bg-gray-50"
+                )}
+                onClick={onLinkClick}
+              >
+                <Stethoscope className="h-5 w-5 mr-3" />
+                For Doctors
+              </Link>
+              
+              <Link
+                to="/biotech-solutions"
+                className={cn(
+                  "flex items-center px-4 py-3 rounded-lg text-lg transition-colors",
+                  isActive('/biotech-solutions') ? "text-health-primary bg-health-primary/5" : "text-health-dark hover:bg-gray-50"
+                )}
+                onClick={onLinkClick}
+              >
+                <Microscope className="h-5 w-5 mr-3" />
+                For Biotech
+              </Link>
+              
+              <Link
+                to="/quantum-computing"
+                className={cn(
+                  "flex items-center px-4 py-3 rounded-lg text-lg transition-colors",
+                  isActive('/quantum-computing') ? "text-health-primary bg-health-primary/5" : "text-health-dark hover:bg-gray-50"
+                )}
+                onClick={onLinkClick}
+              >
+                <Atom className="h-5 w-5 mr-3" />
+                Quantum Computing
+              </Link>
+            </div>
+          </div>
+
           <Link
             to="/case-studies-blog"
-            className="text-health-dark/80 hover:text-health-primary transition-colors text-base py-2"
+            className={cn(
+              "flex items-center px-4 py-3 rounded-lg text-lg transition-colors",
+              isActive('/case-studies-blog') ? "text-health-primary bg-health-primary/5" : "text-health-dark hover:bg-gray-50"
+            )}
             onClick={onLinkClick}
           >
+            <FileText className="h-5 w-5 mr-3" />
             Case Studies & Blog
           </Link>
-          <Link
-            to="/patient-solutions"
-            className="text-health-dark/80 hover:text-health-primary transition-colors text-base py-2"
-            onClick={onLinkClick}
-          >
-            For Patients
-          </Link>
-          <Link
-            to="/doctor-solutions"
-            className="text-health-dark/80 hover:text-health-primary transition-colors text-base py-2"
-            onClick={onLinkClick}
-          >
-            For Doctors
-          </Link>
-          <Link
-            to="/biotech-solutions"
-            className="text-health-dark/80 hover:text-health-primary transition-colors text-base py-2"
-            onClick={onLinkClick}
-          >
-            For Pharma & Biotech
-          </Link>
-          <Link
-            to="/quantum-computing"
-            className="text-health-dark/80 hover:text-health-primary transition-colors text-base py-2"
-            onClick={onLinkClick}
-          >
-            Quantum
-          </Link>
+
           <Link
             to="/contact"
-            className="text-health-dark/80 hover:text-health-primary transition-colors text-base py-2"
+            className={cn(
+              "flex items-center px-4 py-3 rounded-lg text-lg transition-colors",
+              isActive('/contact') ? "text-health-primary bg-health-primary/5" : "text-health-dark hover:bg-gray-50"
+            )}
             onClick={onLinkClick}
           >
+            <Phone className="h-5 w-5 mr-3" />
             Contact
           </Link>
-        </nav>
-        <div className="mt-8 flex flex-col gap-4 w-full">
+          
           <Link
-            to="/login"
-            className="flex items-center justify-center h-12 text-health-dark/80 hover:text-health-primary transition-colors text-base"
+            to="/chatbot"
+            className={cn(
+              "flex items-center px-4 py-3 rounded-lg text-lg transition-colors",
+              isActive('/chatbot') ? "text-health-primary bg-health-primary/5" : "text-health-dark hover:bg-gray-50"
+            )}
             onClick={onLinkClick}
           >
-            Sign In
+            <MessageCircle className="h-5 w-5 mr-3" />
+            AI Assistant
           </Link>
-          <Button 
-            variant="primary" 
-            fullWidth 
-            className="rounded-full h-12 text-base"
-            as="Link"
-            to="/contact"
-            onClick={onLinkClick}
-          >
-            Get Started
-          </Button>
         </div>
       </div>
     </div>

@@ -16,6 +16,7 @@ import CaseStudiesAndBlog from "./pages/CaseStudiesAndBlog";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
+import Chatbot from "./pages/Chatbot";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./contexts/AuthContext";
 
@@ -47,6 +48,7 @@ const App = () => (
             <Route path="/biotech-solutions" element={<BiotechSolutions />} />
             <Route path="/quantum-computing" element={<QuantumComputing />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/chatbot" element={<Chatbot />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
