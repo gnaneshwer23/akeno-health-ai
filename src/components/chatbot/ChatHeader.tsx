@@ -15,11 +15,11 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ onClose, onClearChat }) => {
         <div className="bg-white/20 p-2 rounded-full">
           <Bot className="h-6 w-6 text-white" />
         </div>
-        <div className="ml-3">
+        <div className="ml-3 flex-grow">
           <h3 className="font-medium text-white">Akeno AI Assistant</h3>
           <p className="text-xs text-white/80">Online | Powered by Advanced Health AI</p>
         </div>
-        <div className="ml-auto flex gap-2">
+        <div className="flex gap-2">
           <Button 
             onClick={onClearChat}
             variant="ghost" 

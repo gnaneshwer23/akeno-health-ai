@@ -17,7 +17,7 @@ const ChatMessageList: React.FC<ChatMessageListProps> = ({
   // Auto-scroll to the bottom of the messages
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, isTyping]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
