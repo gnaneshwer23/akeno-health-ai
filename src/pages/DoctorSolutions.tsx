@@ -11,16 +11,31 @@ import { Footer } from '@/components/Footer';
 
 const DoctorSolutions = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-health-light">
       <Navbar />
       
       <main className="flex-grow">
         <DoctorSolutionsHero />
-        <SolutionsOverview />
-        <AIDiagnostics />
-        <HealthReports />
-        <RemoteMonitoring />
-        <DoctorSolutionsCTA />
+        
+        <div className="bg-health-primary/5 py-4">
+          <SolutionsOverview />
+        </div>
+        
+        <div className="bg-gradient-to-r from-health-light to-white">
+          <AIDiagnostics />
+        </div>
+        
+        <div className="bg-white shadow-inner">
+          <HealthReports />
+        </div>
+        
+        <div className="bg-gradient-to-br from-health-primary/5 to-health-secondary/5">
+          <RemoteMonitoring />
+        </div>
+        
+        <div className="bg-health-muted">
+          <DoctorSolutionsCTA />
+        </div>
       </main>
       
       <Footer />
