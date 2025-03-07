@@ -76,8 +76,8 @@ const ContactCTA = () => {
           <Button 
             className="bg-white text-health-primary hover:bg-gray-100 shadow-lg transform transition-transform hover:-translate-y-1 border-2 border-transparent hover:border-white/20 group backdrop-blur-sm relative overflow-hidden" 
             icon={<MessageCircle className="h-5 w-5 group-hover:animate-pulse" />}
-            as="a"
-            href="#contact-form"
+            as="Link"
+            to="/contact#contact-form"
           >
             <span className="relative z-10">Live Chat</span>
             <div className="absolute inset-0 -z-10 bg-gradient-to-r from-white/0 via-health-light/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>

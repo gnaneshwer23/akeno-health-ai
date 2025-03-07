@@ -60,8 +60,8 @@ const CaseStudiesCTA = () => {
               variant="ghost" 
               size="sm" 
               className="text-indigo-200 hover:text-white hover:bg-white/10 group"
-              as="Link"
-              to="mailto:contact@akenohealthai.com"
+              as="a"
+              href="mailto:contact@akenohealthai.com"
             >
               contact@akenohealthai.com
               <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
@@ -78,8 +78,8 @@ const CaseStudiesCTA = () => {
               variant="ghost" 
               size="sm" 
               className="text-indigo-200 hover:text-white hover:bg-white/10 group"
-              as="Link"
-              to="tel:+18005551234"
+              as="a"
+              href="tel:+18005551234"
             >
               +1 (800) 555-1234
               <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
