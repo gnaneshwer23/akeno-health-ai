@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
@@ -408,6 +409,7 @@ const BiotechSolutions = () => {
                 AI accelerates drug discovery timelines, optimizes biomarker-driven clinical trials, enhances patient stratification, 
                 and increases the likelihood of successful therapeutic outcomes while reducing development costs.
               </p>
+            </div>
           </div>
         </section>
         
@@ -641,4 +643,143 @@ const BiotechSolutions = () => {
                       </Card>
                       
                       <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                        <Card
+                        <CardContent className="p-3">
+                          <div className="flex items-center gap-2">
+                            <Brain size={18} className="text-blue-600" />
+                            <span className="text-sm">Predictive Modeling</span>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <CardContent className="p-3">
+                          <div className="flex items-center gap-2">
+                            <Dna size={18} className="text-blue-600" />
+                            <span className="text-sm">Genomic Analysis</span>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <CardContent className="p-3">
+                          <div className="flex items-center gap-2">
+                            <BarChart4 size={18} className="text-blue-600" />
+                            <span className="text-sm">Statistical Learning</span>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                  
+                  {/* Clinical Insights */}
+                  <div className="bg-gradient-to-br from-blue-200 to-blue-300 p-4 rounded-lg">
+                    <h3 className="text-lg font-medium text-health-dark mb-4 flex items-center gap-2">
+                      <Stethoscope size={20} className="text-blue-600" />
+                      <span>Clinical Insights</span>
+                    </h3>
+                    <div className="space-y-3">
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <CardContent className="p-3">
+                          <div className="flex items-center gap-2">
+                            <LineChart size={18} className="text-blue-600" />
+                            <span className="text-sm">Biomarker Discovery</span>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <CardContent className="p-3">
+                          <div className="flex items-center gap-2">
+                            <Shield size={18} className="text-blue-600" />
+                            <span className="text-sm">Risk Stratification</span>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <CardContent className="p-3">
+                          <div className="flex items-center gap-2">
+                            <Pill size={18} className="text-blue-600" />
+                            <span className="text-sm">Treatment Response</span>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      
+                      <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <CardContent className="p-3">
+                          <div className="flex items-center gap-2">
+                            <Zap size={18} className="text-blue-600" />
+                            <span className="text-sm">Early Intervention</span>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+              <DiagnosticFeature 
+                icon={<Database size={20} />}
+                title="Multi-Omic Data Integration"
+                description="AI integrates genomic, proteomic, metabolomic, and clinical data for comprehensive insights."
+                accentColor="bg-blue-500/20 text-blue-600 group-hover:bg-blue-600 group-hover:text-white"
+              />
+              
+              <DiagnosticFeature
+                icon={<Brain size={20} />}
+                title="Predictive Biomarker Discovery"
+                description="AI identifies novel biomarkers for precision diagnostics and targeted therapies."
+                accentColor="bg-blue-500/20 text-blue-600 group-hover:bg-blue-600 group-hover:text-white"
+              />
+              
+              <DiagnosticFeature
+                icon={<BarChart4 size={20} />}
+                title="Real-World Evidence Analysis"
+                description="AI analyzes diverse data sources to validate research findings and guide clinical decisions."
+                accentColor="bg-blue-500/20 text-blue-600 group-hover:bg-blue-600 group-hover:text-white"
+              />
+              
+              <DiagnosticFeature
+                icon={<Radio size={20} />}
+                title="Radiomics & Digital Pathology"
+                description="AI extracts quantitative features from medical images for enhanced research insights."
+                accentColor="bg-blue-500/20 text-blue-600 group-hover:bg-blue-600 group-hover:text-white"
+              />
+              
+              <DiagnosticFeature
+                icon={<LineChart size={20} />}
+                title="Longitudinal Outcome Prediction"
+                description="AI models predict long-term patient outcomes to guide research priorities."
+                accentColor="bg-blue-500/20 text-blue-600 group-hover:bg-blue-600 group-hover:text-white"
+              />
+              
+              <DiagnosticFeature
+                icon={<Globe size={20} />}
+                title="Population Health Insights"
+                description="AI identifies patterns across diverse patient populations to inform research strategies."
+                accentColor="bg-blue-500/20 text-blue-600 group-hover:bg-blue-600 group-hover:text-white"
+              />
+            </div>
+            
+            <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 shadow-inner">
+              <h4 className="flex items-center gap-2 text-blue-700 font-medium mb-2">
+                <span className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs">✓</span>
+                Outcome
+              </h4>
+              <p className="text-health-dark">
+                AI enhances clinical research efficiency, accelerates biomarker discovery, enables personalized medicine approaches, 
+                and improves the translation of research findings into clinical practice with greater precision.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default BiotechSolutions;
