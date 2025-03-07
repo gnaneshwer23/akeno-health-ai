@@ -10,6 +10,7 @@ interface ApplicationCardProps {
   impact: string;
   diagram: React.ReactNode;
   link?: string;
+  gradient?: string;
 }
 
 export const ApplicationCard = ({
@@ -18,10 +19,11 @@ export const ApplicationCard = ({
   description,
   impact,
   diagram,
-  link = "/quantum-computing"
+  link = "/quantum-computing",
+  gradient = "from-indigo-100 to-blue-100"
 }: ApplicationCardProps) => (
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <Card className="border-none shadow-sm md:col-span-2">
+    <Card className="border-none shadow-sm md:col-span-2 bg-white hover:shadow-md transition-all">
       <CardHeader className="pb-2">
         <div className="h-12 w-12 rounded-full bg-health-primary/10 flex items-center justify-center mb-4">
           {icon}
@@ -44,7 +46,7 @@ export const ApplicationCard = ({
     </Card>
     
     <Link to={link} className="block">
-      <div className="bg-gradient-to-r from-indigo-100 to-blue-100 rounded-xl p-6 flex items-center justify-center h-full hover:shadow-md transition-shadow">
+      <div className={`bg-gradient-to-r ${gradient} rounded-xl p-6 flex items-center justify-center h-full hover:shadow-md transition-shadow border border-white/80`}>
         {diagram}
       </div>
     </Link>

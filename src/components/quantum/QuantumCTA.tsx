@@ -7,13 +7,14 @@ import { Link } from 'react-router-dom';
 export const QuantumCTA = () => {
   return (
     <section className="mb-16 px-6">
-      <div className="max-w-5xl mx-auto bg-gradient-to-r from-health-primary/10 to-health-secondary/10 rounded-2xl p-8 md:p-12 relative overflow-hidden">
-        <div className="absolute top-0 right-0 -mt-16 -mr-16 h-64 w-64 rounded-full bg-health-primary/5 blur-3xl z-0"></div>
+      <div className="max-w-5xl mx-auto bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-2xl p-8 md:p-12 relative overflow-hidden shadow-sm">
+        <div className="absolute top-0 right-0 -mt-16 -mr-16 h-64 w-64 rounded-full bg-purple-500/10 blur-3xl z-0"></div>
+        <div className="absolute bottom-0 left-0 -mb-16 -ml-16 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl z-0"></div>
         
         <div className="relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="md:max-w-xl">
-              <h2 className="text-2xl md:text-3xl font-bold text-health-dark mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-purple-700 to-blue-700 bg-clip-text text-transparent">
                 Join Us in Transforming Healthcare
               </h2>
               <p className="text-health-dark/70 mb-6">
@@ -25,22 +26,22 @@ export const QuantumCTA = () => {
                 Stay tuned as we continue to pioneer the fusion of AI, quantum computing, and precision medicine.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button variant="primary" as="Link" to="/quantum-computing" className="group" icon={<Atom size={16} />}>
+                <Button variant="primary" as="Link" to="/quantum-computing" className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700" icon={<Atom size={16} />}>
                   Explore Quantum Solutions
                 </Button>
-                <Button variant="outline" as="Link" to="/contact" icon={<ArrowRight size={16} />}>
+                <Button variant="outline" as="Link" to="/contact" className="border-purple-300 text-purple-600 hover:bg-purple-50" icon={<ArrowRight size={16} />}>
                   Contact Our Research Team
                 </Button>
               </div>
             </div>
             
             <div className="flex-shrink-0 w-40 h-40 md:w-48 md:h-48 relative">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 opacity-10 animate-pulse"></div>
-              <div className="absolute inset-3 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 opacity-20 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="absolute inset-8 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute inset-14 rounded-full bg-gradient-to-r from-blue-700 to-indigo-800 opacity-40 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 opacity-10 animate-pulse"></div>
+              <div className="absolute inset-3 rounded-full bg-gradient-to-r from-purple-500 to-blue-600 opacity-20 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              <div className="absolute inset-8 rounded-full bg-gradient-to-r from-purple-600 to-blue-700 opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute inset-14 rounded-full bg-gradient-to-r from-purple-700 to-blue-800 opacity-40 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <Atom size={40} className="text-health-primary" />
+                <Atom size={40} className="text-purple-600" />
               </div>
             </div>
           </div>

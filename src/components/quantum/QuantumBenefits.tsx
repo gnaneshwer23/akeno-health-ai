@@ -52,12 +52,12 @@ export const QuantumBenefits = () => {
   };
 
   return (
-    <section className="mb-16 px-6 py-16 bg-gradient-to-b from-white to-indigo-50">
+    <section className="mb-16 px-6 py-16 bg-gradient-to-b from-white to-purple-50">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="md:col-span-1">
-            <h2 className="text-3xl font-bold text-health-dark mb-4">Why Quantum Computing for Healthcare?</h2>
-            <div className="h-1 w-20 bg-health-primary mb-6"></div>
+            <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-700 to-blue-700 bg-clip-text text-transparent">Why Quantum Computing for Healthcare?</h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-blue-500 mb-6"></div>
             <p className="text-lg text-health-dark/70 mb-4">
               Traditional computing struggles to analyze the massive complexity of biological systems, making disease modeling and drug discovery slow and expensive.
             </p>
@@ -66,13 +66,13 @@ export const QuantumBenefits = () => {
             </p>
             
             <div className="hidden md:block relative mt-10">
-              <div className="w-full h-40 bg-gradient-to-r from-indigo-100 to-blue-100 rounded-lg flex items-center justify-center">
+              <div className="w-full h-40 bg-gradient-to-r from-purple-100 to-blue-100 rounded-lg flex items-center justify-center">
                 <div className="relative">
-                  <BarChart3 size={80} className="text-indigo-500/30" />
-                  <BarChart3 size={80} className="absolute top-0 left-0 text-indigo-600 animate-pulse" style={{ clipPath: 'polygon(0 50%, 100% 50%, 100% 100%, 0% 100%)' }} />
+                  <BarChart3 size={80} className="text-purple-500/30" />
+                  <BarChart3 size={80} className="absolute top-0 left-0 text-purple-600 animate-pulse" style={{ clipPath: 'polygon(0 50%, 100% 50%, 100% 100%, 0% 100%)' }} />
                 </div>
               </div>
-              <div className="absolute -top-4 -right-4 h-12 w-12 rounded-full bg-health-primary flex items-center justify-center text-white font-bold">10x</div>
+              <div className="absolute -top-4 -right-4 h-12 w-12 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold">10x</div>
             </div>
           </div>
           
@@ -81,7 +81,7 @@ export const QuantumBenefits = () => {
             
             <div className="space-y-6">
               {benefits.map((benefit, index) => (
-                <div key={index} className="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-all border border-indigo-100">
+                <div key={index} className="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-all border border-purple-100">
                   <div className="flex items-start gap-4">
                     <div className="h-12 w-12 rounded-full bg-indigo-100 flex-shrink-0 flex items-center justify-center">
                       {benefit.icon}
@@ -95,7 +95,7 @@ export const QuantumBenefits = () => {
                       </div>
                       <p className="text-health-dark/70">{benefit.description}</p>
                       <div className="w-full h-2 bg-gray-200 rounded-full mt-3">
-                        <div className="h-2 bg-indigo-500 rounded-full" style={{ width: `${benefit.level}%` }}></div>
+                        <div className="h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full" style={{ width: `${benefit.level}%` }}></div>
                       </div>
                       <div className="flex justify-between text-xs text-gray-500 mt-1">
                         <span>Current capabilities</span>

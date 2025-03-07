@@ -5,14 +5,14 @@ import { Card, CardContent } from '@/components/ui/card';
 
 export const QuantumIntro = () => {
   return (
-    <section className="mb-16 py-12 px-6 bg-gradient-to-r from-blue-50 to-indigo-50">
+    <section className="mb-16 py-12 px-6 bg-gradient-to-r from-purple-50 to-blue-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-health-dark mb-4">Revolutionizing Healthcare with Quantum AI</h2>
+          <h2 className="text-3xl font-bold text-health-dark mb-4 bg-gradient-to-r from-purple-700 to-blue-700 bg-clip-text text-transparent">Revolutionizing Healthcare with Quantum AI</h2>
           
           <div className="flex justify-center mb-8">
-            <div className="w-full max-w-4xl bg-white rounded-xl shadow-sm p-6 relative overflow-hidden">
-              <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-100 rounded-full opacity-30"></div>
+            <div className="w-full max-w-4xl bg-white rounded-xl shadow-md p-6 relative overflow-hidden border border-purple-100">
+              <div className="absolute -right-20 -top-20 w-64 h-64 bg-purple-100 rounded-full opacity-30"></div>
               <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-100 rounded-full opacity-30"></div>
               
               <div className="relative z-10">
@@ -23,17 +23,17 @@ export const QuantumIntro = () => {
                 <div className="flex justify-center my-6">
                   <div className="relative w-52 h-52">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="h-40 w-40 rounded-full bg-indigo-100/50 animate-pulse"></div>
+                      <div className="h-40 w-40 rounded-full bg-purple-100/50 animate-pulse"></div>
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="h-28 w-28 rounded-full bg-indigo-200/50 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                      <div className="h-28 w-28 rounded-full bg-purple-200/50 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Atom size={64} className="text-indigo-500" />
+                      <Atom size={64} className="text-purple-600" />
                     </div>
                     {/* Electron orbits */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="h-52 w-52 rounded-full border-2 border-dashed border-indigo-300/40 animate-spin" style={{ animationDuration: '15s' }}></div>
+                      <div className="h-52 w-52 rounded-full border-2 border-dashed border-purple-300/40 animate-spin" style={{ animationDuration: '15s' }}></div>
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="h-52 w-32 rounded-full border-2 border-dashed border-blue-300/40 animate-spin" style={{ animationDuration: '12s', transform: 'rotate(60deg)' }}></div>
@@ -43,7 +43,7 @@ export const QuantumIntro = () => {
                 
                 <p className="text-lg text-health-dark/70 font-medium">
                   Akeno Health AI harnesses quantum algorithms to bring forth an era of 
-                  <span className="text-health-primary"> hyper-efficient, data-driven precision medicine.</span>
+                  <span className="text-purple-600"> hyper-efficient, data-driven precision medicine.</span>
                 </p>
               </div>
             </div>
@@ -51,7 +51,7 @@ export const QuantumIntro = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card className="bg-white border-none hover:shadow-md transition-shadow">
+          <Card className="bg-gradient-to-br from-white to-purple-50 border-none hover:shadow-md transition-shadow">
             <CardContent className="p-6">
               <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
                 <Atom size={24} className="text-purple-600" />
@@ -63,7 +63,7 @@ export const QuantumIntro = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-white border-none hover:shadow-md transition-shadow">
+          <Card className="bg-gradient-to-br from-white to-blue-50 border-none hover:shadow-md transition-shadow">
             <CardContent className="p-6">
               <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
                 <BrainCircuit size={24} className="text-blue-600" />
@@ -75,7 +75,7 @@ export const QuantumIntro = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-white border-none hover:shadow-md transition-shadow">
+          <Card className="bg-gradient-to-br from-white to-green-50 border-none hover:shadow-md transition-shadow">
             <CardContent className="p-6">
               <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
                 <Dna size={24} className="text-green-600" />
