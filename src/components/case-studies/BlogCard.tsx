@@ -12,22 +12,73 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ title, topics, category = "Healthcare AI" }) => {
+  const getCategoryColors = (category: string) => {
+    switch (category) {
+      case "Quantum Computing":
+        return "bg-gradient-to-r from-purple-50 to-indigo-50 text-purple-700 border-purple-200";
+      case "AI Diagnostics":
+        return "bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 border-blue-200";
+      case "Precision Medicine":
+        return "bg-gradient-to-r from-teal-50 to-emerald-50 text-teal-700 border-teal-200";
+      case "Digital Twins":
+        return "bg-gradient-to-r from-cyan-50 to-blue-50 text-cyan-700 border-cyan-200";
+      case "Telemedicine":
+        return "bg-gradient-to-r from-amber-50 to-yellow-50 text-amber-700 border-amber-200";
+      default:
+        return "bg-gradient-to-r from-indigo-50 to-purple-50 text-indigo-700 border-indigo-200";
+    }
+  };
+
+  const getCategoryBg = (category: string) => {
+    switch (category) {
+      case "Quantum Computing":
+        return "from-purple-500/20 to-transparent";
+      case "AI Diagnostics":
+        return "from-blue-500/20 to-transparent";
+      case "Precision Medicine":
+        return "from-teal-500/20 to-transparent";
+      case "Digital Twins":
+        return "from-cyan-500/20 to-transparent";
+      case "Telemedicine":
+        return "from-amber-500/20 to-transparent";
+      default:
+        return "from-indigo-500/20 to-transparent";
+    }
+  };
+
+  const getTopicIconColor = (category: string) => {
+    switch (category) {
+      case "Quantum Computing":
+        return "text-purple-500";
+      case "AI Diagnostics":
+        return "text-blue-500";
+      case "Precision Medicine":
+        return "text-teal-500";
+      case "Digital Twins":
+        return "text-cyan-500";
+      case "Telemedicine":
+        return "text-amber-500";
+      default:
+        return "text-indigo-500";
+    }
+  };
+
   return (
-    <Card className="h-full shadow-md hover:shadow-lg transition-all duration-300 border-none overflow-hidden bg-white group">
-      <CardHeader className="pb-3 bg-gradient-to-r from-health-secondary/20 to-transparent">
+    <Card className="h-full shadow-md hover:shadow-xl transition-all duration-300 border-none overflow-hidden bg-white group rounded-xl">
+      <CardHeader className={`pb-3 bg-gradient-to-r ${getCategoryBg(category)}`}>
         <div className="flex justify-between items-start mb-3">
-          <Badge className="bg-health-light text-health-secondary border-health-secondary/30">
+          <Badge className={`${getCategoryColors(category)}`}>
             {category}
           </Badge>
         </div>
-        <CardTitle className="text-lg leading-tight font-bold text-health-dark">{title}</CardTitle>
+        <CardTitle className="text-lg leading-tight font-bold text-indigo-900">{title}</CardTitle>
       </CardHeader>
       <CardContent className="pt-4">
         <ul className="space-y-4 mb-4">
           {topics.map((topic, index) => (
             <li key={index} className="flex gap-3">
-              <CircleDot className="h-5 w-5 text-health-secondary mt-0.5 flex-shrink-0" />
-              <p className="text-muted-foreground text-sm">{topic}</p>
+              <CircleDot className={`h-5 w-5 ${getTopicIconColor(category)} mt-0.5 flex-shrink-0`} />
+              <p className="text-indigo-700/70 text-sm">{topic}</p>
             </li>
           ))}
         </ul>
@@ -36,7 +87,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, topics, category = "Healthca
         <Button 
           variant="ghost" 
           size="sm" 
-          className="ml-auto text-health-secondary group-hover:text-health-primary group-hover:bg-health-light/20 transition-all"
+          className={`ml-auto ${getTopicIconColor(category)} group-hover:bg-indigo-50/50 transition-all`}
         >
           Read More
           <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />

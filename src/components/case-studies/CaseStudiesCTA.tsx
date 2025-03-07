@@ -1,101 +1,108 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from '@/components/Button';
-import { ArrowRight, Mail, Check } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { useToast } from '@/components/ui/use-toast';
+import { ArrowRight, Mail, MessageSquare, Phone } from 'lucide-react';
 
 const CaseStudiesCTA = () => {
-  const [email, setEmail] = useState('');
-  const [isSubscribing, setIsSubscribing] = useState(false);
-  const { toast } = useToast();
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    
-    setIsSubscribing(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubscribing(false);
-      setEmail('');
-      toast({
-        title: "Subscription successful!",
-        description: "You've been added to our newsletter list.",
-        variant: "default",
-      });
-    }, 1000);
-  };
-
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-white to-health-light/30 relative overflow-hidden text-center">
-      {/* Decorative elements */}
+    <section className="py-20 px-6 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 text-white relative overflow-hidden">
+      {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute right-0 bottom-0 w-96 h-96 bg-health-secondary/5 rounded-full blur-3xl"></div>
-        <div className="absolute left-10 top-10 w-72 h-72 bg-health-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/10 blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-gradient-to-tl from-purple-500/20 to-pink-500/10 blur-3xl"></div>
       </div>
       
-      <div className="max-w-4xl mx-auto relative">
-        <div className="inline-block bg-health-secondary/10 text-health-secondary px-4 py-1 rounded-full mb-6">
-          <span className="text-sm font-medium">Subscribe to Our Newsletter</span>
-        </div>
-        
-        <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
-          Stay Updated & Join the AI Healthcare Revolution!
-        </h2>
-        
-        <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-          Akeno Health AI is at the forefront of AI-powered medical breakthroughs, integrating quantum computing, 
-          multi-omics analysis, and precision diagnostics into next-generation healthcare solutions. 
-          Stay ahead with our expert insights, case studies, and in-depth articles!
-        </p>
-        
-        <form onSubmit={handleSubscribe} className="max-w-md mx-auto mb-8">
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex-grow"
-              required
-            />
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Ready to Transform Healthcare with <br className="hidden md:block" />
+            <span className="bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
+              AI-Powered Innovation?
+            </span>
+          </h2>
+          <p className="text-indigo-100 max-w-3xl mx-auto mb-10">
+            Connect with our team to discover how Akeno Health AI can revolutionize your healthcare 
+            approach with AI, quantum computing, and personalized solutions.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
             <Button 
-              type="submit" 
-              disabled={isSubscribing}
-              variant="primary"
+              variant="primary" 
+              size="lg" 
+              className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 border-none shadow-lg shadow-indigo-900/30 group"
+              as="Link"
+              to="/contact"
             >
-              {isSubscribing ? "Subscribing..." : "Subscribe"}
-              {!isSubscribing && <ArrowRight size={16} />}
+              Schedule a Consultation
+              <ArrowRight className="transition-transform group-hover:translate-x-1" />
+            </Button>
+            
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-indigo-300 text-white hover:bg-white/10"
+              as="Link"
+              to="/how-it-works"
+            >
+              Explore Our Technology
             </Button>
           </div>
-        </form>
-        
-        <div className="flex flex-wrap justify-center gap-8 mb-8">
-          <div className="flex items-center gap-2">
-            <Check size={18} className="text-health-secondary" />
-            <span className="text-sm text-muted-foreground">Weekly Updates</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Check size={18} className="text-health-secondary" />
-            <span className="text-sm text-muted-foreground">Exclusive Content</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Check size={18} className="text-health-secondary" />
-            <span className="text-sm text-muted-foreground">Research Insights</span>
-          </div>
         </div>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" variant="primary" as="Link" to="/contact">
-            Subscribe to Our Blog
-            <ArrowRight size={16} />
-          </Button>
-          <Button size="lg" variant="outline" as="Link" to="/contact">
-            <Mail size={16} />
-            Contact Us
-          </Button>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm rounded-xl p-6 border border-white/10 shadow-xl hover:shadow-indigo-800/30 hover:translate-y-[-5px] transition-all duration-300">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-indigo-500 to-indigo-600 text-white mb-4 shadow-lg shadow-indigo-900/20">
+              <Mail className="w-5 h-5" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Email Us</h3>
+            <p className="text-indigo-200 mb-4">Reach out with your inquiries and a member of our team will respond within 24 hours.</p>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="text-indigo-200 hover:text-white hover:bg-white/10 group"
+              as="Link"
+              to="mailto:contact@akenohealthai.com"
+            >
+              contact@akenohealthai.com
+              <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </div>
+          
+          <div className="bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm rounded-xl p-6 border border-white/10 shadow-xl hover:shadow-indigo-800/30 hover:translate-y-[-5px] transition-all duration-300">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-600 text-white mb-4 shadow-lg shadow-purple-900/20">
+              <Phone className="w-5 h-5" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Call Us</h3>
+            <p className="text-indigo-200 mb-4">Speak directly with our healthcare and technology consultants for immediate assistance.</p>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="text-indigo-200 hover:text-white hover:bg-white/10 group"
+              as="Link"
+              to="tel:+18005551234"
+            >
+              +1 (800) 555-1234
+              <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </div>
+          
+          <div className="bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm rounded-xl p-6 border border-white/10 shadow-xl hover:shadow-indigo-800/30 hover:translate-y-[-5px] transition-all duration-300">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-pink-500 to-pink-600 text-white mb-4 shadow-lg shadow-pink-900/20">
+              <MessageSquare className="w-5 h-5" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Live Chat</h3>
+            <p className="text-indigo-200 mb-4">Chat with our AI assistant or request to connect with a human specialist.</p>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="text-indigo-200 hover:text-white hover:bg-white/10 group"
+              as="Link"
+              to="/contact#chat"
+            >
+              Start a Conversation
+              <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </div>
         </div>
       </div>
     </section>

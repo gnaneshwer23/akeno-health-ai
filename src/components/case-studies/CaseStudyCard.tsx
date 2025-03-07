@@ -18,38 +18,38 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   outcome,
 }) => {
   return (
-    <Card className="h-full shadow-md hover:shadow-lg transition-all duration-300 border-t-4 border-t-health-secondary overflow-hidden bg-white group">
-      <CardHeader className="bg-gradient-to-r from-health-light/50 to-transparent">
-        <CardTitle className="text-xl font-bold text-health-dark">{title}</CardTitle>
+    <Card className="h-full shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden bg-gradient-to-br from-white to-indigo-50 group border-t-4 border-t-purple-500 border-r border-r-indigo-200 border-l border-l-indigo-200 border-b border-b-indigo-200 rounded-xl">
+      <CardHeader className="bg-gradient-to-r from-purple-50 to-transparent">
+        <CardTitle className="text-xl font-bold text-indigo-900">{title}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4 pb-2">
         <div className="space-y-2">
-          <h4 className="font-semibold text-health-dark flex items-center gap-2">
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-health-primary/10 text-health-primary">1</span>
+          <h4 className="font-semibold text-indigo-900 flex items-center gap-2">
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 text-white shadow-md">1</span>
             Challenge:
           </h4>
-          <p className="text-muted-foreground pl-8">{challenge}</p>
+          <p className="text-indigo-700/70 pl-8">{challenge}</p>
         </div>
         <div className="space-y-2">
-          <h4 className="font-semibold text-health-dark flex items-center gap-2">
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-health-primary/10 text-health-primary">2</span>
+          <h4 className="font-semibold text-indigo-900 flex items-center gap-2">
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-md">2</span>
             Solution:
           </h4>
-          <p className="text-muted-foreground pl-8">{solution}</p>
+          <p className="text-indigo-700/70 pl-8">{solution}</p>
         </div>
         <div className="space-y-2">
-          <h4 className="font-semibold text-health-dark flex items-center gap-2">
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-health-primary/10 text-health-primary">3</span>
+          <h4 className="font-semibold text-indigo-900 flex items-center gap-2">
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 text-white shadow-md">3</span>
             Outcome:
           </h4>
-          <p className="text-muted-foreground pl-8">{outcome}</p>
+          <p className="text-indigo-700/70 pl-8">{outcome}</p>
         </div>
       </CardContent>
       <CardFooter className="pt-2">
         <Button 
           variant="ghost" 
           size="sm" 
-          className="ml-auto text-health-secondary group-hover:text-health-primary group-hover:bg-health-light/20 transition-all"
+          className="ml-auto text-purple-600 group-hover:text-indigo-700 group-hover:bg-indigo-100/50 transition-all"
         >
           View Details
           <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />

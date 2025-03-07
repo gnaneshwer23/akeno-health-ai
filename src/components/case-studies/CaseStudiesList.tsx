@@ -46,29 +46,29 @@ const CaseStudiesList = () => {
     : caseStudies.filter(study => study.metrics.includes(activeMetric));
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-white to-health-light/10">
+    <section className="py-20 px-6 bg-gradient-to-b from-indigo-50/60 to-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
-            <span className="bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
               Case Studies:
             </span> Real-World Impact of AI & Quantum Computing in Healthcare
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-health-primary to-health-secondary mx-auto mb-6"></div>
-          <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 mx-auto mb-6"></div>
+          <p className="mt-4 text-lg text-indigo-700/70 max-w-3xl mx-auto">
             Akeno Health AI is transforming the healthcare landscape by integrating AI, quantum computing, 
             multi-omics analysis, and digital twin simulations to revolutionize patient care.
           </p>
         </div>
         
         <div className="mb-10 flex justify-center">
-          <div className="bg-white p-1.5 rounded-lg shadow-sm border border-gray-100">
+          <div className="bg-white p-1.5 rounded-xl shadow-md border border-indigo-100">
             <div className="flex flex-wrap gap-2">
               <Badge 
                 className={`px-4 py-2 text-sm cursor-pointer transition-all hover:shadow-sm ${
                   activeMetric === 'All' 
-                    ? 'bg-health-primary text-white hover:bg-health-primary/90' 
-                    : 'bg-transparent text-muted-foreground hover:bg-gray-100'
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700' 
+                    : 'bg-transparent text-indigo-700 hover:bg-indigo-50'
                 }`}
                 variant="outline"
                 onClick={() => setActiveMetric('All')}
@@ -81,8 +81,8 @@ const CaseStudiesList = () => {
                   key={metric}
                   className={`px-4 py-2 text-sm cursor-pointer transition-all hover:shadow-sm ${
                     activeMetric === metric 
-                      ? 'bg-health-primary text-white hover:bg-health-primary/90' 
-                      : 'bg-transparent text-muted-foreground hover:bg-gray-100'
+                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700' 
+                      : 'bg-transparent text-indigo-700 hover:bg-indigo-50'
                   }`}
                   variant="outline"
                   onClick={() => setActiveMetric(metric)}
@@ -96,8 +96,8 @@ const CaseStudiesList = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredCaseStudies.length === 0 ? (
-            <div className="col-span-full text-center py-12">
-              <p className="text-muted-foreground">No case studies found matching the selected criteria.</p>
+            <div className="col-span-full text-center py-12 bg-indigo-50 rounded-xl border border-indigo-100">
+              <p className="text-indigo-700">No case studies found matching the selected criteria.</p>
             </div>
           ) : (
             filteredCaseStudies.map((study, index) => (
@@ -114,9 +114,9 @@ const CaseStudiesList = () => {
         
         <div className="mt-16 text-center">
           <div className="inline-flex items-center justify-center">
-            <div className="h-px w-12 bg-health-primary/30"></div>
-            <span className="px-4 text-health-primary">Explore more case studies</span>
-            <div className="h-px w-12 bg-health-primary/30"></div>
+            <div className="h-px w-12 bg-gradient-to-r from-indigo-300 to-purple-300"></div>
+            <span className="px-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent font-medium">Explore more case studies</span>
+            <div className="h-px w-12 bg-gradient-to-r from-purple-300 to-pink-300"></div>
           </div>
         </div>
       </div>
