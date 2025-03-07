@@ -71,7 +71,7 @@ const SuggestedQuestions: React.FC<SuggestedQuestionsProps> = ({
   ];
 
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-health-primary/10 overflow-hidden">
+    <div className="bg-gradient-to-b from-gray-50 to-white h-full">
       <div className="bg-gradient-to-r from-health-primary/90 to-health-secondary/90 p-3">
         <h3 className="font-medium text-white flex items-center">
           <Brain className="h-4 w-4 mr-2" /> 
@@ -79,22 +79,25 @@ const SuggestedQuestions: React.FC<SuggestedQuestionsProps> = ({
         </h3>
       </div>
       
-      <div className="p-3 divide-y divide-gray-100">
+      <div className="p-4 divide-y divide-gray-100">
         {questionCategories.map((category, index) => (
-          <div key={index} className="py-3 first:pt-0 last:pb-0">
+          <div key={index} className="py-4 first:pt-0">
             <h4 className="text-sm font-medium flex items-center text-gray-700 mb-2">
-              {category.icon}
-              <span className="ml-2">{category.title}</span>
+              <div className="w-6 h-6 flex items-center justify-center rounded-full bg-gray-100 mr-2">
+                {category.icon}
+              </div>
+              <span>{category.title}</span>
             </h4>
             
-            <ul className="space-y-1">
+            <ul className="space-y-1 pl-8">
               {category.questions.map((question, qIndex) => (
                 <li key={qIndex}>
                   <button
                     type="button"
                     onClick={() => onSelectQuestion(question)}
-                    className="text-sm text-left w-full px-2 py-1.5 rounded-md hover:bg-health-primary/5 text-gray-600 hover:text-health-primary transition-colors"
+                    className="text-sm text-left w-full px-3 py-1.5 rounded-md hover:bg-health-primary/5 text-gray-600 hover:text-health-primary transition-colors flex items-center"
                   >
+                    <span className="h-1.5 w-1.5 rounded-full bg-gray-300 mr-2 flex-shrink-0"></span>
                     {question}
                   </button>
                 </li>

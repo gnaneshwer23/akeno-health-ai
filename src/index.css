@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -137,11 +138,47 @@
 @keyframes typingAnimation {
   0% {
     opacity: 0.2;
+    transform: scale(0.8);
   }
   50% {
     opacity: 1;
+    transform: scale(1);
   }
   100% {
     opacity: 0.2;
+    transform: scale(0.8);
   }
+}
+
+/* Chat bubble animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-bubble-in {
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+/* Chat widget button pulsing effect */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+  }
+}
+
+.chat-pulse {
+  animation: pulse 2s infinite;
 }

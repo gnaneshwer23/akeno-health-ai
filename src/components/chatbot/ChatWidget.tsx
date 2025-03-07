@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import SuggestedQuestions from './SuggestedQuestions';
@@ -62,11 +62,21 @@ const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // Auto-scroll to the bottom of the messages
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Focus input when chat is opened
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 300);
+    }
+  }, [isOpen]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -165,15 +175,18 @@ const ChatWidget = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
-      <Sheet>
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
-          <Button className="h-14 w-14 rounded-full bg-health-primary hover:bg-health-primary/90 shadow-lg">
+          <Button 
+            className="h-14 w-14 rounded-full bg-gradient-to-r from-health-primary to-health-secondary hover:opacity-90 shadow-lg"
+            onClick={() => setIsOpen(true)}
+          >
             <MessageCircle className="h-6 w-6 text-white" />
           </Button>
         </SheetTrigger>
-        <SheetContent className="sm:max-w-md md:max-w-lg p-0 flex flex-col h-[80vh]" side="right">
+        <SheetContent className="sm:max-w-md md:max-w-lg p-0 flex flex-col h-[80vh] border-0 shadow-2xl rounded-xl overflow-hidden" side="right">
           {/* Chat header */}
-          <div className="bg-gradient-to-r from-health-primary to-health-secondary p-4">
+          <div className="bg-gradient-to-r from-health-primary to-health-secondary p-4 shadow-md">
             <div className="flex items-center">
               <div className="bg-white/20 p-2 rounded-full">
                 <Bot className="h-6 w-6 text-white" />
@@ -182,88 +195,106 @@ const ChatWidget = () => {
                 <h3 className="font-medium text-white">Akeno AI Assistant</h3>
                 <p className="text-xs text-white/80">Online | Powered by Advanced Health AI</p>
               </div>
-              <div className="ml-auto">
+              <div className="ml-auto flex gap-2">
                 <Button 
                   onClick={handleClearChat}
                   variant="ghost" 
                   className="text-white hover:bg-white/20"
+                  size="sm"
                 >
                   Clear Chat
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="text-white hover:bg-white/20 h-8 w-8 p-0"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <X size={16} />
                 </Button>
               </div>
             </div>
           </div>
           
-          <div className="grid md:grid-cols-3 flex-1 overflow-hidden">
+          <div className="grid md:grid-cols-3 flex-1 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
             {/* Suggested questions sidebar */}
-            <div className="hidden md:block overflow-y-auto border-r border-gray-200">
+            <div className="hidden md:block overflow-y-auto border-r border-gray-100">
               <SuggestedQuestions onSelectQuestion={handleSuggestedQuestion} />
             </div>
             
             {/* Chat messages */}
             <div className="md:col-span-2 flex flex-col h-full">
-              <div className="flex-grow p-4 overflow-y-auto bg-gray-50">
-                {messages.map((message) => (
-                  <div 
-                    key={message.id}
-                    className={`mb-4 flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-                  >
-                    <div className={`flex items-start max-w-[80%] ${message.sender === 'user' ? 'flex-row-reverse' : ''}`}>
-                      <div className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center ${
-                        message.sender === 'user' 
-                          ? 'bg-gray-200' 
-                          : 'bg-health-primary/20'
-                      }`}>
-                        {message.sender === 'user' ? (
-                          <MessageCircle size={16} />
-                        ) : (
-                          <Bot size={16} className="text-health-primary" />
-                        )}
-                      </div>
-                      
-                      <div className={`mx-2 p-3 rounded-lg ${
-                        message.sender === 'user'
-                          ? 'bg-health-primary/10 rounded-tr-none'
-                          : 'bg-white shadow-sm rounded-tl-none'
-                      }`}>
-                        <p className="text-sm">{message.content}</p>
-                        <span className="text-xs text-gray-500 mt-1 block">
-                          {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                        </span>
+              <div className="flex-grow p-4 overflow-y-auto">
+                <div className="space-y-5">
+                  {messages.map((message) => (
+                    <div 
+                      key={message.id}
+                      className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                    >
+                      <div className={`flex items-start max-w-[80%] ${message.sender === 'user' ? 'flex-row-reverse' : ''}`}>
+                        <div className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center ${
+                          message.sender === 'user' 
+                            ? 'bg-health-primary text-white' 
+                            : 'bg-health-primary/10'
+                        }`}>
+                          {message.sender === 'user' ? (
+                            <User size={16} />
+                          ) : (
+                            <Bot size={16} className="text-health-primary" />
+                          )}
+                        </div>
+                        
+                        <div className={`mx-2 p-3 rounded-2xl shadow-sm ${
+                          message.sender === 'user'
+                            ? 'bg-gradient-to-r from-health-primary to-health-secondary text-white rounded-tr-none'
+                            : 'bg-white rounded-tl-none border border-gray-100'
+                        }`}>
+                          <p className="text-sm">{message.content}</p>
+                          <span className={`text-xs mt-1 block ${
+                            message.sender === 'user' ? 'text-white/70' : 'text-gray-400'
+                          }`}>
+                            {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
                 
                 {/* Typing indicator */}
                 {isTyping && (
-                  <div className="flex items-center text-gray-500 text-sm mb-4">
-                    <div className="flex-shrink-0 h-8 w-8 rounded-full bg-health-primary/20 flex items-center justify-center mr-2">
+                  <div className="flex items-start mt-5">
+                    <div className="flex-shrink-0 h-8 w-8 rounded-full bg-health-primary/10 flex items-center justify-center">
                       <Bot size={16} className="text-health-primary" />
                     </div>
-                    <div className="flex space-x-1 items-center">
-                      <span>Typing</span>
-                      <span className="typing-dot">.</span>
-                      <span className="typing-dot">.</span>
-                      <span className="typing-dot">.</span>
+                    <div className="mx-2 px-4 py-2 bg-gray-100 rounded-full">
+                      <div className="flex space-x-1 items-center">
+                        <div className="w-2 h-2 bg-health-primary rounded-full typing-dot"></div>
+                        <div className="w-2 h-2 bg-health-primary rounded-full typing-dot"></div>
+                        <div className="w-2 h-2 bg-health-primary rounded-full typing-dot"></div>
+                      </div>
                     </div>
                   </div>
                 )}
                 
-                <div ref={messagesEndRef} />
+                <div ref={messagesEndRef} className="h-4" />
               </div>
               
               {/* Input form */}
-              <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-200 bg-white">
-                <div className="flex space-x-2">
+              <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-100 bg-white">
+                <div className="relative flex rounded-full border border-gray-200 bg-gray-50 focus-within:ring-1 focus-within:ring-health-primary focus-within:border-health-primary overflow-hidden shadow-sm">
                   <Input
+                    ref={inputRef}
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Type your question here..."
-                    className="flex-grow"
+                    className="flex-grow border-0 bg-transparent focus-visible:ring-0 rounded-l-full px-4"
                   />
-                  <Button type="submit" disabled={!input.trim()}>
-                    <Send className="h-4 w-4 mr-1" /> Send
+                  <Button 
+                    type="submit" 
+                    disabled={!input.trim()}
+                    className="rounded-full px-4 bg-gradient-to-r from-health-primary to-health-secondary hover:opacity-90"
+                  >
+                    <Send className="h-4 w-4" />
                   </Button>
                 </div>
               </form>
