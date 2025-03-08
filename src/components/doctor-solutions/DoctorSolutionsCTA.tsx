@@ -18,7 +18,7 @@ const DoctorSolutionsCTA = () => {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button size="lg" variant="primary" as="Link" to="/contact">
-            Get Started Now
+            Contact Us
             <ArrowRight size={16} />
           </Button>
           <Button size="lg" variant="outline" as="Link" to="/contact">
