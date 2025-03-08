@@ -13,7 +13,7 @@ const Brand: React.FC = () => {
         <span className="font-bold text-lg sm:text-xl text-health-primary">
           Akeno Health
         </span>
-        <span className="text-[10px] sm:text-xs text-health-dark/70">
+        <span className="text-[10px] sm:text-xs text-health-dark/70 whitespace-nowrap">
           AI-Powered Healthcare
         </span>
       </div>

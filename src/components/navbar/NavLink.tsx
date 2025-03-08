@@ -14,7 +14,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ to, isActive, children }) => {
     <Link
       to={to}
       className={cn(
-        "text-sm font-medium transition-colors py-2",
+        "text-sm font-medium transition-colors py-2 px-1 whitespace-nowrap",
         isActive ? "text-health-primary" : "text-health-dark hover:text-health-primary"
       )}
     >
