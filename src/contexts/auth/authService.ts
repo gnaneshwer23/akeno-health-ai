@@ -34,12 +34,17 @@ export const authService = {
       throw new Error('Email and password are required');
     }
     
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password
     });
     
-    if (error) throw error;
+    if (error) {
+      console.error("Login error:", error);
+      throw error;
+    }
+    
+    return data;
   },
 
   /**
@@ -50,7 +55,7 @@ export const authService = {
       throw new Error('Email and password are required');
     }
     
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -61,7 +66,12 @@ export const authService = {
       }
     });
     
-    if (error) throw error;
+    if (error) {
+      console.error("Signup error:", error);
+      throw error;
+    }
+    
+    return data;
   },
 
   /**

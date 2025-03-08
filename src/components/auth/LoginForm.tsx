@@ -10,6 +10,7 @@ import { Loader2, Lock, User, Send, Shield, ArrowRight, Eye, EyeOff, Mail, Alert
 import { motion } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { supabase } from '@/integrations/supabase/client';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -18,8 +19,6 @@ const LoginForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-  const [showTwoFactor, setShowTwoFactor] = useState(false);
-  const [twoFactorCode, setTwoFactorCode] = useState('');
   const [error, setError] = useState<string | null>(null);
   
   const { login } = useAuth();
@@ -40,31 +39,7 @@ const LoginForm = () => {
     
     setIsSubmitting(true);
     try {
-      // For demo, show 2FA screen after initial login
-      if (!showTwoFactor) {
-        // In a real app, this would be the first stage of auth
-        setShowTwoFactor(true);
-        toast({
-          title: "Verification required",
-          description: "Please enter the code sent to your email",
-        });
-        
-        // Simulate sending a verification code
-        setTimeout(() => {
-          setIsSubmitting(false);
-        }, 1000);
-        
-        return;
-      }
-      
-      // For demo, any 6-digit code will work
-      if (twoFactorCode.length !== 6) {
-        setError("Please enter a valid 6-digit code");
-        setIsSubmitting(false);
-        return;
-      }
-      
-      // Complete the login process
+      // Use the login function from AuthContext
       await login(email, password);
       
       toast({
@@ -75,6 +50,7 @@ const LoginForm = () => {
       // Navigate to the appropriate dashboard based on role
       navigate(from, { replace: true });
     } catch (error: any) {
+      console.error("Login error:", error);
       setError(error.message || "Authentication failed");
     } finally {
       setIsSubmitting(false);
@@ -96,89 +72,6 @@ const LoginForm = () => {
       }
     }
   };
-
-  if (showTwoFactor) {
-    return (
-      <form onSubmit={handleLogin} className="space-y-5">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="text-center mb-6"
-        >
-          <div className="h-20 w-20 bg-health-primary/10 rounded-full mx-auto flex items-center justify-center mb-4">
-            <Lock size={30} className="text-health-primary" />
-          </div>
-          <h3 className="text-xl font-semibold">Two-Factor Authentication</h3>
-          <p className="text-sm text-muted-foreground mt-1">
-            Please enter the 6-digit verification code sent to your email
-          </p>
-        </motion.div>
-        
-        {error && (
-          <Alert variant="destructive">
-            <AlertTriangle className="h-4 w-4" />
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
-        
-        <motion.div className="space-y-2" variants={itemVariants}>
-          <div className="flex justify-between items-center">
-            <Label htmlFor="verification-code" className="text-sm font-medium">
-              Verification Code
-            </Label>
-          </div>
-          <Input 
-            id="verification-code" 
-            type="text"
-            placeholder="000000" 
-            value={twoFactorCode}
-            onChange={(e) => {
-              // Only allow digits and max 6 characters
-              const value = e.target.value.replace(/\D/g, '').slice(0, 6);
-              setTwoFactorCode(value);
-            }}
-            className="text-center text-lg tracking-widest"
-            maxLength={6}
-            autoComplete="one-time-code"
-          />
-        </motion.div>
-        
-        <motion.div variants={itemVariants}>
-          <Button 
-            type="submit" 
-            variant="default" 
-            size="lg" 
-            className="w-full mt-4 bg-health-primary text-white hover:bg-health-primary/90"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 size={16} className="mr-2 animate-spin" />
-                Verifying...
-              </>
-            ) : (
-              <>
-                Verify and Login
-                <ArrowRight size={16} className="ml-2" />
-              </>
-            )}
-          </Button>
-          
-          <Button 
-            type="button" 
-            variant="ghost" 
-            size="sm"
-            className="w-full mt-2 text-muted-foreground"
-            onClick={() => setShowTwoFactor(false)}
-            disabled={isSubmitting}
-          >
-            Back to Login
-          </Button>
-        </motion.div>
-      </form>
-    );
-  }
 
   return (
     <form onSubmit={handleLogin} className="space-y-5">

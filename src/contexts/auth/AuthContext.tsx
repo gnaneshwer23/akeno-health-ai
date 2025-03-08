@@ -90,9 +90,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         description: "Welcome back to Akeno Health!",
       });
     } catch (error: any) {
+      console.error("Login error:", error);
       toast({
         title: "Login failed",
-        description: error.message || "An unknown error occurred",
+        description: error.message || "Invalid email or password",
         variant: "destructive",
       });
       throw error;
@@ -110,9 +111,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       
       toast({
         title: "Registration successful",
-        description: "Please check your email to confirm your account",
+        description: "Please check your email to confirm your account. You'll receive a verification link to activate your account.",
       });
     } catch (error: any) {
+      console.error("Signup error:", error);
       toast({
         title: "Registration failed",
         description: error.message || "An unknown error occurred",
