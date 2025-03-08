@@ -11,6 +11,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import ScrollToTop from '@/components/utils/ScrollToTop';
 import { Loader2 } from 'lucide-react';
 import { Toaster } from '@/components/ui/toaster';
+import FloatingChatbot from '@/components/chatbot/FloatingChatbot';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -66,6 +67,7 @@ const App = () => {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
+            <FloatingChatbot />
             <Toaster />
           </Router>
         </AuthProvider>
