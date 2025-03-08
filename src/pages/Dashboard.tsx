@@ -1,46 +1,32 @@
 
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
+import PatientDashboard from '@/components/dashboard/patient/PatientDashboard';
+import PatientProfile from '@/components/dashboard/patient/profile/PatientProfile';
+import PatientSettings from '@/components/dashboard/patient/settings/PatientSettings';
+import PatientHelp from '@/components/dashboard/patient/help/PatientHelp';
+import PatientHealthTracking from '@/components/dashboard/patient/health-tracking/PatientHealthTracking';
+import AIHealthAssistant from '@/components/dashboard/patient/ai-assistant/AIHealthAssistant';
+import PatientNotifications from '@/components/dashboard/patient/notifications/PatientNotifications';
+import DoctorDashboard from '@/components/dashboard/doctor/DoctorDashboard';
+import DoctorProfile from '@/components/dashboard/doctor/profile/DoctorProfile';
+import DoctorSettings from '@/components/dashboard/doctor/settings/DoctorSettings';
+import DoctorHelp from '@/components/dashboard/doctor/help/DoctorHelp';
+import PatientReports from '@/components/dashboard/doctor/patient-reports/PatientReports';
+import Consultations from '@/components/dashboard/doctor/consultations/Consultations';
+import DoctorAlerts from '@/components/dashboard/doctor/alerts/DoctorAlerts';
+import ResearcherDashboard from '@/components/dashboard/researcher/ResearcherDashboard';
+import ResearcherProfile from '@/components/dashboard/researcher/profile/ResearcherProfile';
+import ResearcherSettings from '@/components/dashboard/researcher/settings/ResearcherSettings';
+import ResearcherHelp from '@/components/dashboard/researcher/help/ResearcherHelp';
+import ResearchData from '@/components/dashboard/researcher/research-data/ResearchData';
+import Collaborations from '@/components/dashboard/researcher/collaborations/Collaborations';
+import Updates from '@/components/dashboard/researcher/updates/Updates';
 import { Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-
-// Lazy load patient components
-const PatientDashboard = lazy(() => import('@/components/dashboard/patient/PatientDashboard'));
-const PatientProfile = lazy(() => import('@/components/dashboard/patient/profile/PatientProfile'));
-const PatientSettings = lazy(() => import('@/components/dashboard/patient/settings/PatientSettings'));
-const PatientHelp = lazy(() => import('@/components/dashboard/patient/help/PatientHelp'));
-const PatientHealthTracking = lazy(() => import('@/components/dashboard/patient/health-tracking/PatientHealthTracking'));
-const AIHealthAssistant = lazy(() => import('@/components/dashboard/patient/ai-assistant/AIHealthAssistant'));
-const PatientNotifications = lazy(() => import('@/components/dashboard/patient/notifications/PatientNotifications'));
-
-// Lazy load doctor components
-const DoctorDashboard = lazy(() => import('@/components/dashboard/doctor/DoctorDashboard'));
-const DoctorProfile = lazy(() => import('@/components/dashboard/doctor/profile/DoctorProfile'));
-const DoctorSettings = lazy(() => import('@/components/dashboard/doctor/settings/DoctorSettings'));
-const DoctorHelp = lazy(() => import('@/components/dashboard/doctor/help/DoctorHelp'));
-const PatientReports = lazy(() => import('@/components/dashboard/doctor/patient-reports/PatientReports'));
-const Consultations = lazy(() => import('@/components/dashboard/doctor/consultations/Consultations'));
-const DoctorAlerts = lazy(() => import('@/components/dashboard/doctor/alerts/DoctorAlerts'));
-
-// Lazy load researcher components
-const ResearcherDashboard = lazy(() => import('@/components/dashboard/researcher/ResearcherDashboard'));
-const ResearcherProfile = lazy(() => import('@/components/dashboard/researcher/profile/ResearcherProfile'));
-const ResearcherSettings = lazy(() => import('@/components/dashboard/researcher/settings/ResearcherSettings'));
-const ResearcherHelp = lazy(() => import('@/components/dashboard/researcher/help/ResearcherHelp'));
-const ResearchData = lazy(() => import('@/components/dashboard/researcher/research-data/ResearchData'));
-const Collaborations = lazy(() => import('@/components/dashboard/researcher/collaborations/Collaborations'));
-const Updates = lazy(() => import('@/components/dashboard/researcher/updates/Updates'));
-
-// Route loading fallback
-const RouteLoadingFallback = () => (
-  <div className="flex flex-col items-center justify-center min-h-[50vh]">
-    <Loader2 className="h-8 w-8 animate-spin text-health-primary mb-4" />
-    <p className="text-sm text-muted-foreground">Loading content...</p>
-  </div>
-);
 
 const Dashboard = () => {
   const { user, isLoading } = useAuth();
@@ -94,17 +80,15 @@ const Dashboard = () => {
         element={
           <ProtectedRoute requiredRole="patient">
             <DashboardLayout>
-              <Suspense fallback={<RouteLoadingFallback />}>
-                <Routes>
-                  <Route path="/" element={<PatientDashboard />} />
-                  <Route path="/profile" element={<PatientProfile />} />
-                  <Route path="/settings" element={<PatientSettings />} />
-                  <Route path="/help" element={<PatientHelp />} />
-                  <Route path="/health-tracking" element={<PatientHealthTracking />} />
-                  <Route path="/ai-assistant" element={<AIHealthAssistant />} />
-                  <Route path="/notifications" element={<PatientNotifications />} />
-                </Routes>
-              </Suspense>
+              <Routes>
+                <Route path="/" element={<PatientDashboard />} />
+                <Route path="/profile" element={<PatientProfile />} />
+                <Route path="/settings" element={<PatientSettings />} />
+                <Route path="/help" element={<PatientHelp />} />
+                <Route path="/health-tracking" element={<PatientHealthTracking />} />
+                <Route path="/ai-assistant" element={<AIHealthAssistant />} />
+                <Route path="/notifications" element={<PatientNotifications />} />
+              </Routes>
             </DashboardLayout>
           </ProtectedRoute>
         } 
@@ -114,17 +98,15 @@ const Dashboard = () => {
         element={
           <ProtectedRoute requiredRole="doctor">
             <DashboardLayout>
-              <Suspense fallback={<RouteLoadingFallback />}>
-                <Routes>
-                  <Route path="/" element={<DoctorDashboard />} />
-                  <Route path="/profile" element={<DoctorProfile />} />
-                  <Route path="/settings" element={<DoctorSettings />} />
-                  <Route path="/help" element={<DoctorHelp />} />
-                  <Route path="/patient-reports" element={<PatientReports />} />
-                  <Route path="/consultations" element={<Consultations />} />
-                  <Route path="/alerts" element={<DoctorAlerts />} />
-                </Routes>
-              </Suspense>
+              <Routes>
+                <Route path="/" element={<DoctorDashboard />} />
+                <Route path="/profile" element={<DoctorProfile />} />
+                <Route path="/settings" element={<DoctorSettings />} />
+                <Route path="/help" element={<DoctorHelp />} />
+                <Route path="/patient-reports" element={<PatientReports />} />
+                <Route path="/consultations" element={<Consultations />} />
+                <Route path="/alerts" element={<DoctorAlerts />} />
+              </Routes>
             </DashboardLayout>
           </ProtectedRoute>
         } 
@@ -134,17 +116,15 @@ const Dashboard = () => {
         element={
           <ProtectedRoute requiredRole="researcher">
             <DashboardLayout>
-              <Suspense fallback={<RouteLoadingFallback />}>
-                <Routes>
-                  <Route path="/" element={<ResearcherDashboard />} />
-                  <Route path="/profile" element={<ResearcherProfile />} />
-                  <Route path="/settings" element={<ResearcherSettings />} />
-                  <Route path="/help" element={<ResearcherHelp />} />
-                  <Route path="/research-data" element={<ResearchData />} />
-                  <Route path="/collaborations" element={<Collaborations />} />
-                  <Route path="/updates" element={<Updates />} />
-                </Routes>
-              </Suspense>
+              <Routes>
+                <Route path="/" element={<ResearcherDashboard />} />
+                <Route path="/profile" element={<ResearcherProfile />} />
+                <Route path="/settings" element={<ResearcherSettings />} />
+                <Route path="/help" element={<ResearcherHelp />} />
+                <Route path="/research-data" element={<ResearchData />} />
+                <Route path="/collaborations" element={<Collaborations />} />
+                <Route path="/updates" element={<Updates />} />
+              </Routes>
             </DashboardLayout>
           </ProtectedRoute>
         } 
