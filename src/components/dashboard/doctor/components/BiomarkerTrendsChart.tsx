@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
 
 interface BiomarkerTrend {
-  name: string; // Added name property to match the required type
+  name?: string; // Made name optional
   value: number;
   date: string;
   min: number;
@@ -45,10 +45,10 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
 };
 
 const BiomarkerTrendsChart: React.FC<BiomarkerTrendsChartProps> = ({ biomarker, height = 300 }) => {
-  // Ensure each trend object has a name property (using the biomarker name)
+  // Modified to handle optional name property
   const trendsWithName = biomarker.trends.map(trend => ({
     ...trend,
-    name: biomarker.name  // Add the name property required by the BiomarkerTrend type
+    name: trend.name || biomarker.name  // Use trend name if it exists, otherwise use biomarker name
   }));
 
   return (
@@ -67,7 +67,7 @@ const BiomarkerTrendsChart: React.FC<BiomarkerTrendsChartProps> = ({ biomarker, 
       <CardContent>
         <ResponsiveContainer width="100%" height={height}>
           <LineChart
-            data={trendsWithName} // Use the modified trends array that includes name property
+            data={trendsWithName}
             margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
