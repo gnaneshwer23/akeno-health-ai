@@ -25,7 +25,7 @@ type GenomicDataFormData = Omit<GenomicDataType, 'id' | 'created_at' | 'updated_
 type MedicalImageFormData = Omit<MedicalImageType, 'id' | 'created_at' | 'updated_at'>;
 
 // Function to submit patient profile data
-export const submitPatientProfile = async (
+const submitPatientProfile = async (
   patientData: PatientProfileFormData
 ): Promise<PatientType | null> => {
   try {
@@ -70,7 +70,7 @@ export const submitPatientProfile = async (
 };
 
 // Function to get patient profile data
-export const getPatientProfile = async (): Promise<PatientType | null> => {
+const getPatientProfile = async (): Promise<PatientType | null> => {
   try {
     const { data: userData, error: userError } = await supabase.auth.getUser();
     if (userError || !userData.user) {
@@ -101,7 +101,7 @@ export const getPatientProfile = async (): Promise<PatientType | null> => {
 };
 
 // Function to submit electronic health record data
-export const submitEHRData = async (
+const submitEHRData = async (
   ehrData: ElectronicHealthRecordFormData
 ): Promise<ElectronicHealthRecordType | null> => {
   try {
@@ -146,7 +146,7 @@ export const submitEHRData = async (
 };
 
 // Function to get electronic health record data
-export const getEHRData = async (patientId: string): Promise<ElectronicHealthRecordType[] | null> => {
+const getEHRData = async (patientId: string): Promise<ElectronicHealthRecordType[] | null> => {
   try {
     const { data, error } = await supabase
       .from('electronic_health_records')
@@ -170,7 +170,7 @@ export const getEHRData = async (patientId: string): Promise<ElectronicHealthRec
 };
 
 // Function to submit wearable device data
-export const submitWearableData = async (
+const submitWearableData = async (
   wearableData: WearableDataFormData
 ): Promise<WearableDataType | null> => {
   try {
@@ -207,7 +207,7 @@ export const submitWearableData = async (
 };
 
 // Function to get wearable device data
-export const getWearableData = async (patientId: string): Promise<WearableDataType[] | null> => {
+const getWearableData = async (patientId: string): Promise<WearableDataType[] | null> => {
   try {
     const { data, error } = await supabase
       .from('wearable_data')
@@ -230,7 +230,7 @@ export const getWearableData = async (patientId: string): Promise<WearableDataTy
 };
 
 // Function to submit genomic data
-export const submitGenomicData = async (
+const submitGenomicData = async (
   genomicData: GenomicDataFormData
 ): Promise<GenomicDataType | null> => {
   try {
@@ -268,7 +268,7 @@ export const submitGenomicData = async (
 };
 
 // Function to get genomic data
-export const getGenomicData = async (patientId: string): Promise<GenomicDataType[] | null> => {
+const getGenomicData = async (patientId: string): Promise<GenomicDataType[] | null> => {
   try {
     const { data, error } = await supabase
       .from('genomic_data')
@@ -292,7 +292,7 @@ export const getGenomicData = async (patientId: string): Promise<GenomicDataType
 };
 
 // Function to submit medical image data
-export const submitMedicalImageData = async (
+const submitMedicalImageData = async (
   imageData: MedicalImageFormData
 ): Promise<MedicalImageType | null> => {
   try {
@@ -330,7 +330,7 @@ export const submitMedicalImageData = async (
 };
 
 // Function to get medical image data
-export const getMedicalImageData = async (patientId: string): Promise<MedicalImageType[] | null> => {
+const getMedicalImageData = async (patientId: string): Promise<MedicalImageType[] | null> => {
   try {
     const { data, error } = await supabase
       .from('medical_images')
@@ -351,4 +351,18 @@ export const getMedicalImageData = async (patientId: string): Promise<MedicalIma
     console.error('Error getting medical image data:', error);
     return null;
   }
+};
+
+// Export as a service object that components can import and use
+export const dataCollectionService = {
+  submitPatientProfile,
+  getPatientProfile,
+  submitEHRData,
+  getEHRData,
+  submitWearableData,
+  getWearableData,
+  submitGenomicData,
+  getGenomicData,
+  submitMedicalImageData,
+  getMedicalImageData
 };
