@@ -1,85 +1,41 @@
 
 import React from 'react';
-import { Bell, LogOut, Menu } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Bell, Search } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
-import { Button } from '@/components/Button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Separator } from '@/components/ui/separator';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 interface HeaderProps {
-  onMenuClick: () => void;
+  title?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
+const Header: React.FC<HeaderProps> = ({ title }) => {
+  const { user } = useAuth();
 
   return (
-    <header className="h-16 bg-white border-b border-gray-200 sticky top-0 z-30">
-      <div className="container mx-auto h-full px-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          {/* Mobile menu trigger */}
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="md:hidden" 
-            aria-label="Menu"
-            onClick={onMenuClick}
-          >
-            <Menu size={24} />
-          </Button>
-          
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-full bg-health-primary/20 flex items-center justify-center">
-              <div className="h-4 w-4 rounded-full bg-health-primary"></div>
-            </div>
-            <span className="font-medium text-lg hidden sm:inline">Akeno Health</span>
-          </div>
+    <header className="h-16 border-b flex items-center justify-between px-6">
+      {title && (
+        <h1 className="text-xl font-semibold">{title}</h1>
+      )}
+      
+      <div className="flex-1 flex justify-end items-center space-x-4">
+        <div className="relative w-full max-w-xs">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full h-9 pl-9 pr-4 rounded-full bg-secondary text-secondary-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+          />
         </div>
         
-        {/* User menu */}
-        <div className="flex items-center gap-4">
-          <Button 
-            variant="ghost" 
-            size="icon"
-            className="relative"
-          >
-            <Bell size={20} />
-            <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
-          </Button>
-          
-          <Separator orientation="vertical" className="h-8" />
-          
-          <div className="flex items-center gap-3">
-            <div className="hidden md:block text-right">
-              <p className="text-sm font-medium">{user?.name}</p>
-              <p className="text-xs text-muted-foreground capitalize">{user?.role}</p>
-            </div>
-            
-            <Avatar className="h-9 w-9">
-              <AvatarImage src={user?.profileImage} alt={user?.name} />
-              <AvatarFallback className="bg-health-primary text-white">
-                {user?.name?.charAt(0)}
-              </AvatarFallback>
-            </Avatar>
-            
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={handleLogout}
-              className="hidden md:flex"
-            >
-              <LogOut size={18} className="mr-2" />
-              Logout
-            </Button>
-          </div>
+        <ThemeToggle />
+        
+        <Button variant="ghost" size="icon" className="text-muted-foreground">
+          <Bell className="h-5 w-5" />
+        </Button>
+        
+        <div className="flex items-center space-x-2">
+          <span className="text-sm hidden sm:inline-block">Welcome, {user?.name}</span>
         </div>
       </div>
     </header>
