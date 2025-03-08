@@ -4,7 +4,6 @@ import Header from './header/Header';
 import Sidebar from './sidebar/Sidebar';
 import MobileSidebar from './sidebar/MobileSidebar';
 import DashboardSecurityBanner from './security/DashboardSecurityBanner';
-import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -15,21 +14,21 @@ interface DashboardLayoutProps {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       {/* Mobile Sidebar */}
       <MobileSidebar 
         isOpen={mobileMenuOpen} 
         setIsOpen={setMobileMenuOpen}
-        trigger={
-          <Button variant="ghost" size="icon" className="md:hidden" aria-label="Menu">
-            <Menu className="h-6 w-6" />
-          </Button>
-        }
+        trigger={<Menu className="h-6 w-6" />}
       />
       
       {/* Header */}
-      <Header onMenuClick={() => setMobileMenuOpen(true)} />
+      <Header onMenuClick={toggleMobileMenu} />
       
       {/* Main Content */}
       <div className="flex-1 flex">

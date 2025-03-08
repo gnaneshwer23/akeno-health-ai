@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Bell, Search } from 'lucide-react';
+import { Bell, Menu, Search } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 
@@ -15,21 +15,23 @@ const Header: React.FC<HeaderProps> = ({ title, onMenuClick }) => {
 
   return (
     <header className="h-16 border-b flex items-center justify-between px-6">
-      {onMenuClick && (
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="md:hidden mr-2" 
-          onClick={onMenuClick}
-          aria-label="Menu"
-        >
-          <Bell className="h-5 w-5" />
-        </Button>
-      )}
-      
-      {title && (
-        <h1 className="text-xl font-semibold">{title}</h1>
-      )}
+      <div className="flex items-center">
+        {onMenuClick && (
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="md:hidden mr-2" 
+            onClick={onMenuClick}
+            aria-label="Menu"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
+        )}
+        
+        {title && (
+          <h1 className="text-xl font-semibold">{title}</h1>
+        )}
+      </div>
       
       <div className="flex-1 flex justify-end items-center space-x-4">
         <div className="relative w-full max-w-xs">

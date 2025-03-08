@@ -3,7 +3,7 @@ import React from 'react';
 import { LogOut, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { 
   Sheet,
   SheetContent,
@@ -34,7 +34,14 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild className="md:hidden">
-        {trigger}
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="md:hidden"
+          aria-label="Menu"
+        >
+          {trigger}
+        </Button>
       </SheetTrigger>
       <SheetContent side="left" className="w-[270px] sm:w-[300px] flex flex-col p-0">
         <div className="p-4 flex items-center justify-between border-b">
