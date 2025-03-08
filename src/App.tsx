@@ -1,4 +1,3 @@
-
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -67,7 +66,7 @@ const App = () => {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
-            <FloatingChatbot />
+            <FloatingChatbot id="floating-chatbot-button" />
             <Toaster />
           </Router>
         </AuthProvider>

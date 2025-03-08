@@ -19,7 +19,11 @@ const initialMessages: Message[] = [
   }
 ];
 
-const FloatingChatbot: React.FC = () => {
+interface FloatingChatbotProps {
+  id?: string;
+}
+
+const FloatingChatbot: React.FC<FloatingChatbotProps> = ({ id }) => {
   const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
@@ -147,6 +151,7 @@ const FloatingChatbot: React.FC = () => {
       ) : null}
       
       <Button
+        id={id}
         onClick={toggleChat}
         className="bg-health-primary hover:bg-health-primary/90 text-white rounded-full h-14 w-14 flex items-center justify-center shadow-lg group"
         size="icon"
