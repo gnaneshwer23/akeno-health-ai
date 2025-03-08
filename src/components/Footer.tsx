@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/Button';
-import { AnimatedLogo } from '@/components/AnimatedLogo';
+import { AnimatedLogo } from '@/components/animated-logo';
 import { Facebook, Twitter, Linkedin, Instagram, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { Input } from '@/components/ui/input';
