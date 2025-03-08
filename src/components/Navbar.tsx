@@ -54,20 +54,21 @@ const Navbar: React.FC = () => {
           : "py-4 bg-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Brand />
-        <div className="flex-1 flex justify-center ml-10">
+        <div className="hidden lg:flex flex-1 justify-center">
           <NavLinks />
         </div>
-        <AuthButtons />
-
-        <button
-          className="lg:hidden ml-4 text-health-dark hover:text-health-primary transition-colors"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center">
+          <AuthButtons />
+          <button
+            className="lg:hidden ml-4 text-health-dark hover:text-health-primary transition-colors"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       <MobileMenu isOpen={mobileMenuOpen} onLinkClick={closeMobileMenu} />
