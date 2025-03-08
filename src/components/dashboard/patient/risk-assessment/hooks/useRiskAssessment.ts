@@ -168,7 +168,7 @@ export const useRiskAssessment = () => {
           variant: "default",
         });
         
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error loading risk assessment:", error);
         setLoading(false);
         
