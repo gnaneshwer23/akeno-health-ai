@@ -47,7 +47,7 @@ const Contact = () => {
                     <Button
                       variant="outline"
                       className="mt-auto"
-                      onClick={() => window.location.href = 'tel:+18001234567'}
+                      onClick={() => window.location.href = 'tel:+447454237802'}
                     >
                       Call Now
                     </Button>
@@ -64,7 +64,7 @@ const Contact = () => {
                     <Button
                       variant="outline"
                       className="mt-auto"
-                      onClick={() => window.location.href = 'mailto:support@akenohealth.ai'}
+                      onClick={() => window.location.href = 'mailto:akenohealth@gmail.com'}
                     >
                       Email Now
                     </Button>

@@ -44,6 +44,15 @@ const ContactForm = () => {
       
       if (error) throw error;
       
+      // Send notification email to admin
+      try {
+        // This is optional but helpful - send an email notification to the admin
+        await fetch(`mailto:akenohealth@gmail.com?subject=New Contact Form Submission&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0AOrganization: ${formData.organization}%0D%0AMessage: ${formData.message}`);
+      } catch (emailError) {
+        console.error('Failed to send email notification:', emailError);
+        // Continue with success flow even if email notification fails
+      }
+      
       toast({
         title: "Message sent",
         description: "We'll get back to you within 24-48 hours.",
