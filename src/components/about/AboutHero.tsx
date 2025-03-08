@@ -4,7 +4,7 @@ import { Heart, Sparkles, ChevronDown, Clock, Globe, Shield, Cpu } from 'lucide-
 
 export const AboutHero = () => {
   return (
-    <section className="relative mb-16 px-6 pt-8 pb-16 overflow-hidden">
+    <section className="relative mb-16 px-6 pt-28 pb-16 overflow-hidden">
       {/* Enhanced background elements */}
       <div className="absolute top-20 right-0 w-96 h-96 bg-health-primary/5 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-health-secondary/5 rounded-full blur-3xl -z-10"></div>
