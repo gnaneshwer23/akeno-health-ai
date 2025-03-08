@@ -14,7 +14,7 @@ type Message = {
 const initialMessages: Message[] = [
   {
     sender: 'bot',
-    text: 'Hello! I'm your Akeno Health AI assistant. How can I help you today?',
+    text: "Hello! I'm your Akeno Health AI assistant. How can I help you today?",
     timestamp: new Date(),
   }
 ];
