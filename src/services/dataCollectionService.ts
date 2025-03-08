@@ -38,7 +38,14 @@ const getPatientProfile = async (): Promise<PatientType> => {
     .single();
 
   if (error) throw error;
-  return data as PatientType;
+  
+  // Convert string date to Date object
+  return {
+    ...data,
+    date_of_birth: new Date(data.date_of_birth),
+    created_at: new Date(data.created_at),
+    updated_at: new Date(data.updated_at)
+  } as PatientType;
 };
 
 // Function to submit electronic health record data
@@ -71,7 +78,14 @@ const getEHRs = async (): Promise<ElectronicHealthRecordType[]> => {
     .order('record_date', { ascending: false });
 
   if (error) throw error;
-  return data as ElectronicHealthRecordType[];
+  
+  // Convert string dates to Date objects
+  return data.map(record => ({
+    ...record,
+    record_date: new Date(record.record_date),
+    created_at: new Date(record.created_at),
+    updated_at: new Date(record.updated_at)
+  })) as ElectronicHealthRecordType[];
 };
 
 // Function to submit wearable device data
@@ -104,7 +118,13 @@ const getWearableData = async (): Promise<WearableDataType[]> => {
     .order('recorded_at', { ascending: false });
 
   if (error) throw error;
-  return data as WearableDataType[];
+  
+  // Convert string dates to Date objects
+  return data.map(record => ({
+    ...record,
+    recorded_at: new Date(record.recorded_at),
+    created_at: new Date(record.created_at)
+  })) as WearableDataType[];
 };
 
 // Function to submit genomic data
@@ -137,7 +157,14 @@ const getGenomicData = async (): Promise<GenomicDataType[]> => {
     .order('collection_date', { ascending: false });
 
   if (error) throw error;
-  return data as GenomicDataType[];
+  
+  // Convert string dates to Date objects
+  return data.map(record => ({
+    ...record,
+    collection_date: new Date(record.collection_date),
+    created_at: new Date(record.created_at),
+    updated_at: new Date(record.updated_at)
+  })) as GenomicDataType[];
 };
 
 // Function to submit medical image data
@@ -170,7 +197,14 @@ const getMedicalImages = async (): Promise<MedicalImageType[]> => {
     .order('image_date', { ascending: false });
 
   if (error) throw error;
-  return data as MedicalImageType[];
+  
+  // Convert string dates to Date objects
+  return data.map(record => ({
+    ...record,
+    image_date: new Date(record.image_date),
+    created_at: new Date(record.created_at),
+    updated_at: new Date(record.updated_at)
+  })) as MedicalImageType[];
 };
 
 export const dataCollectionService = {
