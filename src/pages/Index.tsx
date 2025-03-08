@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
@@ -28,7 +27,7 @@ const Index = () => {
     });
 
     // Change page title
-    document.title = 'Akeno Health AI - Precision Healthcare';
+    document.title = 'Transforming Healthcare with AI & Precision Medicine';
     
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {

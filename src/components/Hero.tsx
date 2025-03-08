@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from './Button';
 import { Check, ArrowRight, Sparkles, Shield, Activity, BarChart2, Brain, Cpu, Atom, FlaskConical } from 'lucide-react';
@@ -112,7 +111,7 @@ const Hero: React.FC = () => {
         </div>
         
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-          <span className="bg-gradient-to-r from-health-primary via-health-secondary to-health-accent bg-clip-text text-transparent">Akeno Health AI</span>: Transforming Healthcare with <span className="text-health-primary">AI</span> & <span className="text-health-secondary">Quantum Computing</span>
+          <span className="bg-gradient-to-r from-health-primary via-health-secondary to-health-accent bg-clip-text text-transparent">Transforming Healthcare</span> with <span className="text-health-primary">AI</span> & <span className="text-health-secondary">Quantum Computing</span>
         </h1>
         
         <div className="flex justify-center mb-6">
