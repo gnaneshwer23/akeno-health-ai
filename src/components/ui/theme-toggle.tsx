@@ -1,11 +1,11 @@
 
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/components/theme-provider";
+import { useTheme as useNextTheme } from "next-themes";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export function ThemeToggle() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme, theme } = useNextTheme();
 
   return (
     <TooltipProvider>

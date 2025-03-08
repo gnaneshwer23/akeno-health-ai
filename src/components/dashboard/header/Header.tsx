@@ -7,13 +7,26 @@ import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 interface HeaderProps {
   title?: string;
+  onMenuClick?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ title }) => {
+const Header: React.FC<HeaderProps> = ({ title, onMenuClick }) => {
   const { user } = useAuth();
 
   return (
     <header className="h-16 border-b flex items-center justify-between px-6">
+      {onMenuClick && (
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="md:hidden mr-2" 
+          onClick={onMenuClick}
+          aria-label="Menu"
+        >
+          <Bell className="h-5 w-5" />
+        </Button>
+      )}
+      
       {title && (
         <h1 className="text-xl font-semibold">{title}</h1>
       )}
