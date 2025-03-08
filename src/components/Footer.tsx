@@ -1,10 +1,52 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/Button';
 import { AnimatedLogo } from '@/components/AnimatedLogo';
-import { Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { Input } from '@/components/ui/input';
 
 const Footer: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [subscriptionStatus, setSubscriptionStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email || !email.includes('@')) {
+      setSubscriptionStatus('error');
+      setErrorMessage('Please enter a valid email address');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubscriptionStatus('idle');
+    
+    try {
+      const { error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert([{ email }]);
+      
+      if (error) {
+        console.error('Subscription error:', error);
+        setSubscriptionStatus('error');
+        setErrorMessage(error.code === '23505' ? 'You are already subscribed!' : 'Failed to subscribe. Please try again.');
+      } else {
+        setSubscriptionStatus('success');
+        setEmail('');
+      }
+    } catch (err) {
+      console.error('Unexpected error:', err);
+      setSubscriptionStatus('error');
+      setErrorMessage('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <footer className="bg-health-dark text-white py-16 px-6 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.1),transparent_50%)] pointer-events-none"></div>
@@ -108,20 +150,40 @@ const Footer: React.FC = () => {
             Stay updated with our latest news and developments in AI healthcare.
           </p>
           
-          <form className="space-y-4">
+          <form onSubmit={handleSubscribe} className="space-y-4">
             <div className="flex flex-col space-y-2">
-              <input
+              <Input
                 type="email"
                 placeholder="Your email address"
                 className="px-4 py-2.5 rounded-lg bg-white/10 border border-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-health-primary"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isSubmitting}
               />
             </div>
+            
+            {subscriptionStatus === 'success' && (
+              <div className="flex items-center gap-2 text-green-400 text-sm">
+                <CheckCircle size={16} />
+                <span>Thank you for subscribing!</span>
+              </div>
+            )}
+            
+            {subscriptionStatus === 'error' && (
+              <div className="flex items-center gap-2 text-red-400 text-sm">
+                <AlertCircle size={16} />
+                <span>{errorMessage}</span>
+              </div>
+            )}
+            
             <Button 
               variant="primary" 
               size="md" 
               className="w-full shadow hover:shadow-lg transition-all group"
+              type="submit"
+              disabled={isSubmitting}
             >
-              Subscribe
+              {isSubmitting ? 'Subscribing...' : 'Subscribe'}
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </Button>
           </form>
