@@ -1,24 +1,71 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from '@/components/ui/button';
-import { Mail, User, MessageSquare, Building, Send } from 'lucide-react';
+import { Mail, User, MessageSquare, Building, Send, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    organization: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would send the form data to a server
-    toast({
-      title: "Message sent",
-      description: "We'll get back to you within 24-48 hours.",
-    });
-    // Reset form fields
-    const form = e.target as HTMLFormElement;
-    form.reset();
+    setIsSubmitting(true);
+    
+    try {
+      // Send the form data to Supabase
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            organization: formData.organization || null,
+            message: formData.message
+          }
+        ]);
+      
+      if (error) throw error;
+      
+      toast({
+        title: "Message sent",
+        description: "We'll get back to you within 24-48 hours.",
+      });
+      
+      // Reset form fields
+      setFormData({
+        name: '',
+        email: '',
+        organization: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again later or contact us directly via email.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -40,6 +87,8 @@ const ContactForm = () => {
                 type="text" 
                 placeholder="Enter your full name" 
                 required
+                value={formData.name}
+                onChange={handleChange}
               />
             </div>
             
@@ -53,6 +102,8 @@ const ContactForm = () => {
                 type="email" 
                 placeholder="Enter your email address" 
                 required
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -65,7 +116,9 @@ const ContactForm = () => {
             <Input 
               id="organization" 
               type="text" 
-              placeholder="Enter your organization name" 
+              placeholder="Enter your organization name"
+              value={formData.organization}
+              onChange={handleChange}
             />
           </div>
           
@@ -80,15 +133,27 @@ const ContactForm = () => {
               placeholder="How can we help you?" 
               className="w-full rounded-md border border-input px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-health-primary"
               required
+              value={formData.message}
+              onChange={handleChange}
             />
           </div>
           
           <Button 
             type="submit" 
             className="w-full bg-health-primary hover:bg-health-primary/90 text-white group" 
+            disabled={isSubmitting}
           >
-            <Send className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
-            Send Message
+            {isSubmitting ? (
+              <>
+                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                Sending...
+              </>
+            ) : (
+              <>
+                <Send className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
+                Send Message
+              </>
+            )}
           </Button>
           
           <p className="text-xs text-gray-500 text-center">
