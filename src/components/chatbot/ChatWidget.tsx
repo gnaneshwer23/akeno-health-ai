@@ -9,15 +9,15 @@ import ChatHeader from './ChatHeader';
 import ChatMessageList from './ChatMessageList';
 import ChatInputForm from './ChatInputForm';
 import { 
-  MessageType, 
   getResponseForMessage, 
   createUserMessage, 
   createBotMessage,
   getInitialMessage
 } from './chatService';
+import { ChatMessageType } from '@/types/supabase-types';
 
 const ChatWidget = () => {
-  const [messages, setMessages] = useState<MessageType[]>([getInitialMessage()]);
+  const [messages, setMessages] = useState<ChatMessageType[]>([getInitialMessage()]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [isOpen, setIsOpen] = useState(false);

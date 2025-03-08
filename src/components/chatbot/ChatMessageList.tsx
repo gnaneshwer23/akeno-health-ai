@@ -1,10 +1,11 @@
 
 import React, { useRef, useEffect } from 'react';
-import ChatMessage, { MessageType } from './ChatMessage';
+import ChatMessage from './ChatMessage';
 import TypingIndicator from './TypingIndicator';
+import { ChatMessageType } from '@/types/supabase-types';
 
 interface ChatMessageListProps {
-  messages: MessageType[];
+  messages: ChatMessageType[];
   isTyping: boolean;
 }
 

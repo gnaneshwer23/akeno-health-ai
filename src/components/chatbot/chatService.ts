@@ -1,10 +1,4 @@
-
-export type MessageType = {
-  id: string;
-  content: string;
-  sender: 'user' | 'bot';
-  timestamp: Date;
-};
+import { ChatMessageType } from '@/types/supabase-types';
 
 // Use the existing mock responses
 const MOCK_RESPONSES: Record<string, string[]> = {
@@ -62,29 +56,32 @@ export const getResponseForMessage = (message: string): string => {
   return responses[Math.floor(Math.random() * responses.length)];
 };
 
-export const createUserMessage = (content: string): MessageType => {
+export const createUserMessage = (content: string): ChatMessageType => {
   return {
     id: Date.now().toString(),
     content,
     sender: 'user',
     timestamp: new Date(),
+    session_id: Date.now().toString(), // Simplified session ID for client-side
   };
 };
 
-export const createBotMessage = (content: string): MessageType => {
+export const createBotMessage = (content: string): ChatMessageType => {
   return {
     id: Date.now().toString(),
     content,
     sender: 'bot',
     timestamp: new Date(),
+    session_id: Date.now().toString(), // Simplified session ID for client-side
   };
 };
 
-export const getInitialMessage = (): MessageType => {
+export const getInitialMessage = (): ChatMessageType => {
   return {
     id: '1',
     content: "Hi there! I'm Akeno's AI Assistant. How can I help you today?",
     sender: 'bot',
     timestamp: new Date(),
+    session_id: Date.now().toString(), // Simplified session ID for client-side
   };
 };

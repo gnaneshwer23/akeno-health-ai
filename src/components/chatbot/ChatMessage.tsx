@@ -1,16 +1,10 @@
 
 import React from 'react';
 import { Bot, User } from 'lucide-react';
-
-export type MessageType = {
-  id: string;
-  content: string;
-  sender: 'user' | 'bot';
-  timestamp: Date;
-};
+import { ChatMessageType } from '@/types/supabase-types';
 
 interface ChatMessageProps {
-  message: MessageType;
+  message: ChatMessageType;
 }
 
 const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
@@ -40,7 +34,9 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           <span className={`text-xs mt-1 block ${
             message.sender === 'user' ? 'text-white/70' : 'text-gray-400'
           }`}>
-            {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+            {message.timestamp instanceof Date 
+              ? message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+              : new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           </span>
         </div>
       </div>
