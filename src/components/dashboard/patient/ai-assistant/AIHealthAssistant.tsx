@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { MessageSquare, Brain, User } from 'lucide-react';
+import React, { useState } from 'react';
+import { MessageSquare, Brain, User, ArrowRight } from 'lucide-react';
 import { 
   Card, 
   CardContent, 
@@ -8,11 +8,31 @@ import {
   CardHeader, 
   CardTitle 
 } from "@/components/ui/card";
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
+import { useToast } from '@/hooks/use-toast';
 
 const AIHealthAssistant = () => {
   const { user } = useAuth();
+  const { toast } = useToast();
+  const [message, setMessage] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+
+  const handleSendMessage = () => {
+    if (!message.trim()) return;
+    
+    setIsTyping(true);
+    
+    // Simulate AI response after a delay
+    setTimeout(() => {
+      setIsTyping(false);
+      toast({
+        title: "AI Assistant",
+        description: "Your question has been processed. The AI health assistant will respond shortly.",
+      });
+      setMessage('');
+    }, 1500);
+  };
 
   return (
     <Card>
@@ -53,16 +73,39 @@ const AIHealthAssistant = () => {
               </ol>
             </div>
           </div>
+          
+          {isTyping && (
+            <div className="flex gap-3 mt-3">
+              <div className="flex-shrink-0 h-8 w-8 rounded-full bg-health-primary/20 flex items-center justify-center">
+                <Brain size={16} className="text-health-primary" />
+              </div>
+              <div className="flex-1 bg-white p-3 rounded-lg shadow-sm">
+                <div className="flex space-x-1">
+                  <div className="w-2 h-2 bg-health-primary/60 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-health-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-2 h-2 bg-health-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
         
         <div className="flex gap-2">
           <input 
             type="text" 
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-health-primary/50"
             placeholder="Ask about your health..."
+            onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
           />
-          <Button variant="primary" size="icon">
-            <MessageSquare size={18} />
+          <Button 
+            onClick={handleSendMessage}
+            variant="default"
+            size="icon"
+            disabled={!message.trim()}
+          >
+            <ArrowRight size={18} />
           </Button>
         </div>
       </CardContent>
