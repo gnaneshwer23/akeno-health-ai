@@ -36,6 +36,198 @@ export type Database = {
         }
         Relationships: []
       }
+      electronic_health_records: {
+        Row: {
+          allergies: string[] | null
+          created_at: string
+          diagnosis: string[] | null
+          id: string
+          medical_history: string | null
+          medications: string[] | null
+          patient_id: string
+          physician_notes: string | null
+          record_date: string
+          updated_at: string
+          vitals: Json | null
+        }
+        Insert: {
+          allergies?: string[] | null
+          created_at?: string
+          diagnosis?: string[] | null
+          id?: string
+          medical_history?: string | null
+          medications?: string[] | null
+          patient_id: string
+          physician_notes?: string | null
+          record_date?: string
+          updated_at?: string
+          vitals?: Json | null
+        }
+        Update: {
+          allergies?: string[] | null
+          created_at?: string
+          diagnosis?: string[] | null
+          id?: string
+          medical_history?: string | null
+          medications?: string[] | null
+          patient_id?: string
+          physician_notes?: string | null
+          record_date?: string
+          updated_at?: string
+          vitals?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "electronic_health_records_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      genomic_data: {
+        Row: {
+          analysis_results: Json | null
+          biomarkers: Json | null
+          collection_date: string
+          created_at: string
+          id: string
+          patient_id: string
+          sample_id: string
+          sequence_data: string | null
+          sequence_type: string
+          updated_at: string
+        }
+        Insert: {
+          analysis_results?: Json | null
+          biomarkers?: Json | null
+          collection_date: string
+          created_at?: string
+          id?: string
+          patient_id: string
+          sample_id: string
+          sequence_data?: string | null
+          sequence_type: string
+          updated_at?: string
+        }
+        Update: {
+          analysis_results?: Json | null
+          biomarkers?: Json | null
+          collection_date?: string
+          created_at?: string
+          id?: string
+          patient_id?: string
+          sample_id?: string
+          sequence_data?: string | null
+          sequence_type?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "genomic_data_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      medical_images: {
+        Row: {
+          ai_analysis_results: Json | null
+          body_part: string | null
+          created_at: string
+          id: string
+          image_date: string
+          image_type: string
+          image_url: string | null
+          patient_id: string
+          radiologist_notes: string | null
+          storage_path: string | null
+          updated_at: string
+        }
+        Insert: {
+          ai_analysis_results?: Json | null
+          body_part?: string | null
+          created_at?: string
+          id?: string
+          image_date: string
+          image_type: string
+          image_url?: string | null
+          patient_id: string
+          radiologist_notes?: string | null
+          storage_path?: string | null
+          updated_at?: string
+        }
+        Update: {
+          ai_analysis_results?: Json | null
+          body_part?: string | null
+          created_at?: string
+          id?: string
+          image_date?: string
+          image_type?: string
+          image_url?: string | null
+          patient_id?: string
+          radiologist_notes?: string | null
+          storage_path?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "medical_images_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      patients: {
+        Row: {
+          address: string | null
+          contact_email: string | null
+          contact_phone: string | null
+          created_at: string
+          date_of_birth: string
+          emergency_contact: string | null
+          first_name: string
+          gender: string | null
+          id: string
+          last_name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          address?: string | null
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          date_of_birth: string
+          emergency_contact?: string | null
+          first_name: string
+          gender?: string | null
+          id?: string
+          last_name: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          address?: string | null
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          date_of_birth?: string
+          emergency_contact?: string | null
+          first_name?: string
+          gender?: string | null
+          id?: string
+          last_name?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
@@ -66,12 +258,73 @@ export type Database = {
         }
         Relationships: []
       }
+      wearable_data: {
+        Row: {
+          additional_metrics: Json | null
+          blood_oxygen: number | null
+          blood_pressure: Json | null
+          created_at: string
+          device_id: string | null
+          device_type: string
+          heart_rate: number | null
+          id: string
+          patient_id: string
+          recorded_at: string
+          sleep_data: Json | null
+          steps_count: number | null
+          temperature: number | null
+        }
+        Insert: {
+          additional_metrics?: Json | null
+          blood_oxygen?: number | null
+          blood_pressure?: Json | null
+          created_at?: string
+          device_id?: string | null
+          device_type: string
+          heart_rate?: number | null
+          id?: string
+          patient_id: string
+          recorded_at: string
+          sleep_data?: Json | null
+          steps_count?: number | null
+          temperature?: number | null
+        }
+        Update: {
+          additional_metrics?: Json | null
+          blood_oxygen?: number | null
+          blood_pressure?: Json | null
+          created_at?: string
+          device_id?: string | null
+          device_type?: string
+          heart_rate?: number | null
+          id?: string
+          patient_id?: string
+          recorded_at?: string
+          sleep_data?: Json | null
+          steps_count?: number | null
+          temperature?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "wearable_data_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      user_has_patient_access: {
+        Args: {
+          patient_uuid: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
