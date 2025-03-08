@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   BrowserRouter,
@@ -7,12 +8,12 @@ import {
 import { Toaster } from 'sonner'
 import {
   ThemeProvider
-} from "@/components/theme-provider"
-import { QueryClient, QueryClientProvider } from 'react-query';
+} from "./components/theme-provider"
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { AuthProvider } from './contexts/AuthContext';
-import { ProtectedRoute } from './components/ProtectedRoute';
-import ScrollToTop from './components/ScrollToTop';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import ScrollToTop from './components/utils/ScrollToTop';
 import Index from './pages/Index';
 import AboutUs from './pages/AboutUs';
 import HowItWorks from './pages/HowItWorks';
