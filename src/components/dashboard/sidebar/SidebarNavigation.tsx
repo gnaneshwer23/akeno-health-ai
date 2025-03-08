@@ -12,7 +12,10 @@ import {
   HelpCircle,
   FileText,
   Video,
-  ShieldAlert
+  ShieldAlert,
+  Database,
+  Users,
+  Rss
 } from 'lucide-react';
 import SidebarNavItem from './SidebarNavItem';
 import { useToast } from '@/hooks/use-toast';
@@ -49,19 +52,19 @@ const SidebarNavigation = () => {
       { 
         icon: <User size={20} />, 
         label: 'Profile', 
-        href: user?.role === 'patient' ? `${dashboardPath}/profile` : `${dashboardPath}/profile`, 
+        href: `${dashboardPath}/profile`, 
         isActive: location.pathname === `${dashboardPath}/profile`
       },
       { 
         icon: <Settings size={20} />, 
         label: 'Settings', 
-        href: user?.role === 'patient' ? `${dashboardPath}/settings` : `${dashboardPath}/settings`, 
+        href: `${dashboardPath}/settings`, 
         isActive: location.pathname === `${dashboardPath}/settings`
       },
       { 
         icon: <HelpCircle size={20} />, 
         label: 'Help', 
-        href: user?.role === 'patient' ? `${dashboardPath}/help` : `${dashboardPath}/help`, 
+        href: `${dashboardPath}/help`, 
         isActive: location.pathname === `${dashboardPath}/help`
       },
     ];
@@ -114,9 +117,24 @@ const SidebarNavigation = () => {
       case 'researcher':
         return [
           ...commonItems,
-          { icon: <Activity size={20} />, label: 'Research Data', href: '#', isActive: false },
-          { icon: <MessageCircle size={20} />, label: 'Collaborations', href: '#', isActive: false },
-          { icon: <Bell size={20} />, label: 'Updates', href: '#', isActive: false },
+          { 
+            icon: <Database size={20} />, 
+            label: 'Research Data', 
+            href: `${dashboardPath}/research-data`, 
+            isActive: location.pathname === `${dashboardPath}/research-data` 
+          },
+          { 
+            icon: <Users size={20} />, 
+            label: 'Collaborations', 
+            href: `${dashboardPath}/collaborations`, 
+            isActive: location.pathname === `${dashboardPath}/collaborations` 
+          },
+          { 
+            icon: <Rss size={20} />, 
+            label: 'Updates', 
+            href: `${dashboardPath}/updates`, 
+            isActive: location.pathname === `${dashboardPath}/updates` 
+          },
         ];
       default:
         return commonItems;

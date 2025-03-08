@@ -19,6 +19,12 @@ import PatientReports from '@/components/dashboard/doctor/patient-reports/Patien
 import Consultations from '@/components/dashboard/doctor/consultations/Consultations';
 import DoctorAlerts from '@/components/dashboard/doctor/alerts/DoctorAlerts';
 import ResearcherDashboard from '@/components/dashboard/researcher/ResearcherDashboard';
+import ResearcherProfile from '@/components/dashboard/researcher/profile/ResearcherProfile';
+import ResearcherSettings from '@/components/dashboard/researcher/settings/ResearcherSettings';
+import ResearcherHelp from '@/components/dashboard/researcher/help/ResearcherHelp';
+import ResearchData from '@/components/dashboard/researcher/research-data/ResearchData';
+import Collaborations from '@/components/dashboard/researcher/collaborations/Collaborations';
+import Updates from '@/components/dashboard/researcher/updates/Updates';
 import { Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -110,7 +116,15 @@ const Dashboard = () => {
         element={
           <ProtectedRoute requiredRole="researcher">
             <DashboardLayout>
-              <ResearcherDashboard />
+              <Routes>
+                <Route path="/" element={<ResearcherDashboard />} />
+                <Route path="/profile" element={<ResearcherProfile />} />
+                <Route path="/settings" element={<ResearcherSettings />} />
+                <Route path="/help" element={<ResearcherHelp />} />
+                <Route path="/research-data" element={<ResearchData />} />
+                <Route path="/collaborations" element={<Collaborations />} />
+                <Route path="/updates" element={<Updates />} />
+              </Routes>
             </DashboardLayout>
           </ProtectedRoute>
         } 
