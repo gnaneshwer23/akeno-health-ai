@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { cn } from "@/lib/utils";
+import { User, Brain, Activity, Cpu, Atom, HeartPulse, Dna } from 'lucide-react';
 
 interface AnimatedLogoProps {
   className?: string;
@@ -135,51 +136,16 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
       return (
         <div className="relative w-full h-full flex items-center justify-center">
           <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-health-primary to-health-secondary opacity-20"></div>
-          <div className="relative w-2/3 h-2/3">
-            <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-              <path 
-                d="M12 4.75L19.25 9L12 13.25L4.75 9L12 4.75Z" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M12 13.25V19.25" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M19.25 9V16.25" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M4.75 9V16.25" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M12 19.25L19.25 15.25" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M12 19.25L4.75 15.25" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-            </svg>
+          <div className="relative w-2/3 h-2/3 flex items-center justify-center">
+            <div className="relative">
+              {/* Human silhouette */}
+              <User className="w-full h-full text-health-primary" strokeWidth={1.5} />
+              {/* Health data nodes */}
+              <div className="absolute top-0 left-0 w-3 h-3 bg-health-secondary rounded-full animate-pulse" />
+              <div className="absolute top-0 right-0 w-3 h-3 bg-health-accent rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+              <div className="absolute bottom-0 left-0 w-3 h-3 bg-health-primary rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+              <div className="absolute bottom-0 right-0 w-3 h-3 bg-health-secondary rounded-full animate-pulse" style={{ animationDelay: '0.7s' }} />
+            </div>
           </div>
         </div>
       );
@@ -191,51 +157,16 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
           <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-health-primary via-health-secondary to-health-accent opacity-80"></div>
           <div className="absolute inset-0 rounded-full border-2 border-white opacity-30"></div>
           <div className="absolute inset-[15%] rounded-full bg-white opacity-90"></div>
-          <div className="relative w-1/2 h-1/2 text-health-primary">
-            <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-              <path 
-                d="M12 4.75L19.25 9L12 13.25L4.75 9L12 4.75Z" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M12 13.25V19.25" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M19.25 9V16.25" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M4.75 9V16.25" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M12 19.25L19.25 15.25" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M12 19.25L4.75 15.25" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-            </svg>
+          <div className="relative w-1/2 h-1/2 text-health-primary flex items-center justify-center">
+            <User className="w-full h-full" strokeWidth={2} />
+            
+            {/* Connecting lines */}
+            <div className="absolute inset-0 z-10">
+              <div className="absolute top-0 right-1/4 h-[40%] w-px bg-health-primary/40" />
+              <div className="absolute top-0 left-1/4 h-[40%] w-px bg-health-secondary/40" />
+              <div className="absolute bottom-0 right-1/4 h-[40%] w-px bg-health-accent/40" />
+              <div className="absolute bottom-0 left-1/4 h-[40%] w-px bg-health-primary/40" />
+            </div>
           </div>
         </div>
       );
@@ -260,51 +191,43 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
           <div className="w-1/2 h-1/2 rounded-full bg-white opacity-90 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
         </div>
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-1/2 h-1/2 flex items-center justify-center">
-            <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-health-primary">
-              <path 
-                d="M12 4.75L19.25 9L12 13.25L4.75 9L12 4.75Z" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M12 13.25V19.25" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M19.25 9V16.25" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M4.75 9V16.25" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M12 19.25L19.25 15.25" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <path 
-                d="M12 19.25L4.75 15.25" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-            </svg>
+          <div className="w-2/5 h-2/5 flex items-center justify-center relative">
+            {/* Human at center */}
+            <User className="w-full h-full text-health-primary z-10" strokeWidth={1.5} />
+            
+            {/* Health data and AI nodes surrounding the human */}
+            <div className="absolute inset-0">
+              {/* Animated connections between human and health/AI elements */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full">
+                <Brain size={12} className="text-health-secondary" />
+                <div className="absolute h-5 w-px bg-health-secondary/60 bottom-full left-1/2 transform -translate-x-1/2"></div>
+              </div>
+              
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
+                <Activity size={12} className="text-health-primary" />
+                <div className="absolute h-5 w-px bg-health-primary/60 top-full left-1/2 transform -translate-x-1/2"></div>
+              </div>
+              
+              <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-full">
+                <HeartPulse size={12} className="text-health-accent" />
+                <div className="absolute w-5 h-px bg-health-accent/60 right-full top-1/2 transform -translate-y-1/2"></div>
+              </div>
+              
+              <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-full">
+                <Atom size={12} className="text-health-secondary" />
+                <div className="absolute w-5 h-px bg-health-secondary/60 left-full top-1/2 transform -translate-y-1/2"></div>
+              </div>
+              
+              <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
+                <Cpu size={12} className="text-health-primary" />
+                <div className="absolute h-4 w-px bg-health-primary/60 rotate-45 bottom-full right-1/2"></div>
+              </div>
+              
+              <div className="absolute bottom-0 left-0 transform -translate-x-1/2 translate-y-1/2">
+                <Dna size={12} className="text-health-accent" />
+                <div className="absolute h-4 w-px bg-health-accent/60 rotate-45 top-full left-1/2"></div>
+              </div>
+            </div>
           </div>
         </div>
       </>
