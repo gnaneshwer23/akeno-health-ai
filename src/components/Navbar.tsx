@@ -55,11 +55,18 @@ const Navbar: React.FC = () => {
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Brand />
-        <div className="hidden lg:flex flex-1 items-center justify-center">
+        <div className="flex-shrink-0">
+          <Brand />
+        </div>
+        
+        <div className="hidden lg:flex flex-1 justify-center px-10">
           <NavLinks />
         </div>
-        <AuthButtons />
+        
+        <div className="hidden lg:block flex-shrink-0">
+          <AuthButtons />
+        </div>
+        
         <button
           className="lg:hidden ml-4 text-health-dark hover:text-health-primary transition-colors"
           onClick={toggleMobileMenu}
