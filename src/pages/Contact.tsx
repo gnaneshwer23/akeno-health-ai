@@ -45,10 +45,9 @@ const Contact = () => {
                     <h3 className="text-xl font-semibold mb-2">Phone Support</h3>
                     <p className="text-gray-600 mb-4">Speak directly with our support team for complex inquiries.</p>
                     <Button
-                      as="a"
-                      href="tel:+18001234567"
                       variant="outline"
                       className="mt-auto"
+                      onClick={() => window.location.href = 'tel:+18001234567'}
                     >
                       Call Us
                     </Button>
@@ -63,10 +62,9 @@ const Contact = () => {
                     <h3 className="text-xl font-semibold mb-2">Email Support</h3>
                     <p className="text-gray-600 mb-4">Send us an email for non-urgent questions and inquiries.</p>
                     <Button
-                      as="a"
-                      href="mailto:support@akenohealth.ai"
                       variant="outline"
                       className="mt-auto"
+                      onClick={() => window.location.href = 'mailto:support@akenohealth.ai'}
                     >
                       Email Us
                     </Button>
