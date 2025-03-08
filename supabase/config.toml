@@ -24,7 +24,6 @@ enabled = true
 
 [auth]
 enabled = true
-port = 9999
 
 [realtime]
 enabled = true

@@ -12,7 +12,11 @@ const AuthLayout = () => {
       
       <main className="flex-grow flex items-center justify-center py-16 px-6 bg-gradient-to-br from-white via-health-light/20 to-health-primary/10">
         <div className="w-full max-w-md">
-          <AuthCard />
+          <AuthCard 
+            title="Welcome"
+          >
+            {/* Auth form content will be inserted as children by the parent component */}
+          </AuthCard>
           
           <motion.div 
             className="mt-8 text-center text-sm text-muted-foreground bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-health-primary/5"

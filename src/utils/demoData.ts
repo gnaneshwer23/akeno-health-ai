@@ -206,17 +206,15 @@ export async function seedDemoData() {
     
     if (processingError) {
       console.error("Error processing data:", processingError);
-      toast({
-        title: "Data processing error",
+      // Fix toast implementation (using direct function call, not jsx properties)
+      toast("Data processing error", {
         description: "Could not generate health insights for demo data",
-        variant: "destructive",
       });
     } else {
       console.log("Data processed successfully:", processedData);
-      toast({
-        title: "Health insights generated",
+      // Fix toast implementation
+      toast("Health insights generated", {
         description: "AI analysis complete for your health data",
-        variant: "default",
       });
     }
     
@@ -224,10 +222,9 @@ export async function seedDemoData() {
     
   } catch (error) {
     console.error("Error seeding demo data:", error);
-    toast({
-      title: "Error creating demo account",
+    // Fix toast implementation
+    toast("Error creating demo account", {
       description: error.message || "Failed to create demo account",
-      variant: "destructive",
     });
     throw error;
   }

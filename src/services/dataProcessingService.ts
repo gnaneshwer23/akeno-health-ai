@@ -112,7 +112,10 @@ export const dataProcessingService = {
           }
         },
         genomicData: genomicData ? {
-          riskMarkers: genomicData.biomarkers?.risk_markers || []
+          // Fix the type issue by safely checking and casting the data
+          riskMarkers: typeof genomicData.biomarkers === 'object' && genomicData.biomarkers 
+            ? (genomicData.biomarkers as any)?.risk_markers || []
+            : []
         } : {}
       };
       
