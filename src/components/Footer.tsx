@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/Button';
@@ -23,28 +22,36 @@ const Footer: React.FC = () => {
           
           <div className="flex space-x-4">
             <a
-              href="#facebook"
+              href="https://www.facebook.com/profile.php?id=61570947218535"
+              target="_blank"
+              rel="noopener noreferrer"
               className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-health-primary transition-colors"
             >
               <span className="sr-only">Facebook</span>
               <Facebook size={18} className="opacity-80" />
             </a>
             <a
-              href="#twitter"
+              href="https://x.com/GnaneshwerJadav"
+              target="_blank"
+              rel="noopener noreferrer"
               className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-health-primary transition-colors"
             >
               <span className="sr-only">Twitter</span>
               <Twitter size={18} className="opacity-80" />
             </a>
             <a
-              href="#linkedin"
+              href="https://www.linkedin.com/company/79849451/admin/dashboard/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-health-primary transition-colors"
             >
               <span className="sr-only">LinkedIn</span>
               <Linkedin size={18} className="opacity-80" />
             </a>
             <a
-              href="#instagram"
+              href="https://www.instagram.com/gnaneshwer_17/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-health-primary transition-colors"
             >
               <span className="sr-only">Instagram</span>
