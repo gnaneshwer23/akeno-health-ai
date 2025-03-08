@@ -17,7 +17,7 @@ import {
   Activity, 
   Droplet, 
   Brain, 
-  Lungs, 
+  Stethoscope,  // Replace Lungs with Stethoscope
   Plus, 
   AlertTriangle,
   TrendingUp,
@@ -256,7 +256,7 @@ const PatientHealthTracking = () => {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Lungs className="h-5 w-5 text-indigo-500" />
+                          <Stethoscope className="h-5 w-5 text-indigo-500" />
                           <h4 className="font-medium">Respiratory Health</h4>
                         </div>
                         <Badge>Good</Badge>
