@@ -1,128 +1,133 @@
 
-import { supabase } from '@/integrations/supabase/client';
-import { PatientType, ElectronicHealthRecordType, WearableDataType, GenomicDataType } from '@/types/supabase-types';
-
-export interface ProcessedPatientData {
-  riskScores: {
-    cardiovascular: number;
-    diabetes: number;
-    cognitive: number;
-    [key: string]: number;
-  };
-  recommendations: {
-    category: string;
-    priority: 'high' | 'medium' | 'low';
-    title: string;
-    description: string;
-    action: string;
-  }[];
-  processingTimestamp: string;
-}
+import { supabase } from "@/integrations/supabase/client";
+import { dataPreprocessingService } from "./dataPreprocessingService";
 
 /**
- * Processes patient data using the Supabase Edge Function
+ * Service for processing and analyzing health data
  */
-export const processPatientData = async (
-  patientData: PatientType,
-  ehrData: ElectronicHealthRecordType[],
-  wearableData: WearableDataType[],
-  genomicData: GenomicDataType[]
-): Promise<ProcessedPatientData | null> => {
-  try {
-    console.log('Calling data processing edge function');
-    
-    // Prepare data for processing
-    const latestEHR = ehrData && ehrData.length > 0 ? ehrData[0] : null;
-    const latestWearableData = wearableData && wearableData.length > 0 
-      ? wearableData.slice(0, 10) // Only send recent data
-      : [];
-      
-    // Calculate age
-    const age = patientData.date_of_birth 
-      ? Math.floor((new Date().getTime() - new Date(patientData.date_of_birth).getTime()) / (365.25 * 24 * 60 * 60 * 1000))
-      : 0;
-    
-    // Prepare data payload for processing
-    const dataPayload = {
-      patientInfo: {
-        id: patientData.id,
-        age,
-        gender: patientData.gender,
-        bmi: 25, // Example value - would be calculated from actual data
-      },
-      vitalSigns: {
-        bloodPressure: latestWearableData[0]?.blood_pressure || null,
-        heartRate: latestWearableData[0]?.heart_rate || null,
-        bloodOxygen: latestWearableData[0]?.blood_oxygen || null,
-      },
-      labResults: {
-        glucose: 95, // Example value - would come from EHR
-        cholesterol: { total: 180, ldl: 100, hdl: 50 }, // Example values
-      },
-      genomicData: {
-        riskMarkers: genomicData?.length > 0 
-          ? (genomicData[0].biomarkers as any)?.riskMarkers || [] 
-          : [],
-      },
-      medicalHistory: {
-        conditions: latestEHR?.diagnosis || [],
-        medications: latestEHR?.medications || [],
-        allergies: latestEHR?.allergies || [],
-      }
-    };
-    
-    // Call the edge function
-    const { data, error } = await supabase.functions.invoke('data-processing', {
-      body: dataPayload,
-    });
-    
-    if (error) {
-      console.error('Error calling data processing function:', error);
-      return null;
-    }
-    
-    console.log('Received processed data:', data);
-    return data as ProcessedPatientData;
-    
-  } catch (error) {
-    console.error('Error in processPatientData:', error);
-    return null;
-  }
-};
-
-/**
- * Gets a comprehensive health assessment for a patient
- */
-export const getHealthAssessment = async (patientId: string): Promise<ProcessedPatientData | null> => {
-  try {
-    // Import the data collection service
-    const { dataCollectionService } = await import('./dataCollectionService');
-    
-    // Fetch all required patient data
-    const patientData = await dataCollectionService.getPatientProfile();
-    if (!patientData) {
-      throw new Error('Patient data not found');
-    }
-    
-    const ehrData = await dataCollectionService.getEHRData(patientId);
-    const wearableData = await dataCollectionService.getWearableData(patientId);
-    const genomicData = await dataCollectionService.getGenomicData(patientId);
-    
-    // Process the data to generate insights
-    return await processPatientData(
-      patientData,
-      ehrData || [],
-      wearableData || [],
-      genomicData || []
-    );
-    
-  } catch (error) {
-    console.error('Error in getHealthAssessment:', error);
-    return null;
-  }
-};
-
 export const dataProcessingService = {
-  processPatientData,
-  getHealthAssessment
+  /**
+   * Process patient data and generate health insights
+   * @param patientData The patient data to process
+   * @returns Processed health insights
+   */
+  async processPatientData(patientData: any) {
+    try {
+      console.log("Starting patient data processing...");
+      
+      // Preprocess the data first
+      const preprocessedData = await dataPreprocessingService.preprocessForAnalysis(patientData);
+      console.log("Data preprocessed successfully:", preprocessedData);
+      
+      // Send to edge function for AI-driven processing
+      const { data, error } = await supabase.functions.invoke('data-processing', {
+        body: preprocessedData
+      });
+      
+      if (error) {
+        console.error("Error processing patient data:", error);
+        throw new Error(`Data processing failed: ${error.message}`);
+      }
+      
+      console.log("Data processed successfully with insights:", data);
+      return data;
+    } catch (error) {
+      console.error("Error in data processing service:", error);
+      throw error;
+    }
+  },
+  
+  /**
+   * Generate health risk assessments for a patient
+   * @param patientId The ID of the patient
+   * @returns Health risk assessment results
+   */
+  async generateRiskAssessment(patientId: string) {
+    try {
+      // Get the latest patient data
+      const { data: patient, error: patientError } = await supabase
+        .from('patients')
+        .select('*')
+        .eq('id', patientId)
+        .single();
+      
+      if (patientError) throw patientError;
+      
+      // Get the latest EHR data
+      const { data: ehrData, error: ehrError } = await supabase
+        .from('electronic_health_records')
+        .select('*')
+        .eq('patient_id', patientId)
+        .order('record_date', { ascending: false })
+        .limit(1)
+        .single();
+      
+      if (ehrError && ehrError.code !== 'PGRST116') throw ehrError;
+      
+      // Get the latest wearable data
+      const { data: wearableData, error: wearableError } = await supabase
+        .from('wearable_data')
+        .select('*')
+        .eq('patient_id', patientId)
+        .order('recorded_at', { ascending: false })
+        .limit(7);
+      
+      if (wearableError) throw wearableError;
+      
+      // Get genomic data if available
+      const { data: genomicData, error: genomicError } = await supabase
+        .from('genomic_data')
+        .select('*')
+        .eq('patient_id', patientId)
+        .limit(1)
+        .single();
+      
+      if (genomicError && genomicError.code !== 'PGRST116') throw genomicError;
+      
+      // Combine all data for processing
+      const combinedData = {
+        patient,
+        ehr: ehrData || null,
+        wearable: wearableData || [],
+        genomic: genomicData || null
+      };
+      
+      // Format the data for processing
+      const formattedData = {
+        patientInfo: {
+          id: patient.id,
+          age: this.calculateAge(patient.date_of_birth),
+          gender: patient.gender,
+          bmi: 24.5 // Placeholder - would normally be calculated from height/weight
+        },
+        vitalSigns: ehrData?.vitals || {},
+        labResults: {
+          cholesterol: {
+            total: 180, // Placeholder values for demonstration
+            hdl: 50,
+            ldl: 120
+          },
+          glucose: {
+            level: 95
+          }
+        },
+        genomicData: genomicData ? {
+          riskMarkers: genomicData.biomarkers?.risk_markers || []
+        } : {}
+      };
+      
+      // Process the data and return insights
+      return await this.processPatientData(formattedData);
+    } catch (error) {
+      console.error("Error generating risk assessment:", error);
+      throw error;
+    }
+  },
+  
+  /**
+   * Calculate age from date of birth
+   */
+  calculateAge(dateOfBirth: string) {
+    return dataPreprocessingService.calculateAge(dateOfBirth);
+  }
 };

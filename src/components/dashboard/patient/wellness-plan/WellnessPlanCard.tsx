@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { AlertCircle } from 'lucide-react';
 import { 
   Card, 
@@ -9,6 +9,8 @@ import {
   CardTitle 
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { dataProcessingService } from '@/services/dataProcessingService';
+import { useToast } from '@/hooks/use-toast';
 
 interface RecommendationProps {
   title: string;
@@ -31,59 +33,216 @@ const Recommendation: React.FC<RecommendationProps> = ({ title, description, col
 };
 
 const WellnessPlanCard = () => {
-  const nutritionRecommendations = [
-    {
-      title: "Increase Omega-3 Intake",
-      description: "Your blood work indicates slightly low omega-3 levels. Consider adding fatty fish, flaxseeds, or a supplement to your diet.",
-      color: "green"
-    },
-    {
-      title: "Reduce Refined Carbohydrates",
-      description: "Your glucose variability would benefit from replacing refined carbs with complex carbohydrates and fiber-rich foods.",
-      color: "green"
-    },
-    {
-      title: "Optimize Vitamin D",
-      description: "Your current level is 28 ng/mL, which is below optimal. Consider 15 minutes of morning sunlight and a daily supplement.",
-      color: "green"
-    }
-  ];
+  const [recommendations, setRecommendations] = useState({
+    nutrition: [
+      {
+        title: "Loading nutrition recommendations...",
+        description: "Please wait while we analyze your health data",
+        color: "gray"
+      }
+    ],
+    fitness: [
+      {
+        title: "Loading fitness recommendations...",
+        description: "Please wait while we analyze your health data",
+        color: "gray"
+      }
+    ],
+    mental: [
+      {
+        title: "Loading mental health recommendations...",
+        description: "Please wait while we analyze your health data",
+        color: "gray"
+      }
+    ]
+  });
+  
+  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
 
-  const fitnessRecommendations = [
-    {
-      title: "Increase Cardiovascular Exercise",
-      description: "Aim for 150 minutes of moderate-intensity aerobic activity weekly for optimal heart health.",
-      color: "blue"
-    },
-    {
-      title: "Add Resistance Training",
-      description: "Your muscle mass is slightly below optimal. Add 2-3 strength training sessions per week.",
-      color: "blue"
-    },
-    {
-      title: "Improve Flexibility",
-      description: "Your mobility assessment indicates tight hip flexors and hamstrings. Add daily stretching or yoga.",
-      color: "blue"
+  useEffect(() => {
+    const loadRecommendations = async () => {
+      try {
+        // Fetch patient ID (in a real app, this would come from the authenticated user)
+        const patientId = localStorage.getItem('demoPatientId') || 'demo-patient-id';
+        
+        // Get health insights with recommendations
+        const assessmentData = await dataProcessingService.generateRiskAssessment(patientId);
+        
+        // Map the recommendations to our wellness plan categories
+        const processedRecommendations = processRecommendations(assessmentData.recommendations || []);
+        setRecommendations(processedRecommendations);
+        setLoading(false);
+        
+      } catch (error) {
+        console.error("Error loading wellness recommendations:", error);
+        setLoading(false);
+        
+        // Set fallback recommendations
+        setRecommendations({
+          nutrition: [
+            {
+              title: "Balanced Diet",
+              description: "Focus on a diet rich in vegetables, fruits, lean proteins, and whole grains.",
+              color: "green"
+            },
+            {
+              title: "Hydration",
+              description: "Maintain adequate hydration by drinking at least 8 glasses of water daily.",
+              color: "green"
+            }
+          ],
+          fitness: [
+            {
+              title: "Regular Exercise",
+              description: "Aim for at least 150 minutes of moderate-intensity activity weekly.",
+              color: "blue"
+            },
+            {
+              title: "Strength Training",
+              description: "Include resistance training 2-3 times per week to maintain muscle mass.",
+              color: "blue"
+            }
+          ],
+          mental: [
+            {
+              title: "Stress Management",
+              description: "Practice mindfulness, meditation, or deep breathing for 10 minutes daily.",
+              color: "purple"
+            },
+            {
+              title: "Quality Sleep",
+              description: "Prioritize 7-9 hours of quality sleep each night for mental well-being.",
+              color: "purple"
+            }
+          ]
+        });
+        
+        toast({
+          title: "Using default recommendations",
+          description: "Could not retrieve personalized wellness plan",
+          variant: "destructive",
+        });
+      }
+    };
+    
+    loadRecommendations();
+  }, []);
+  
+  // Process and categorize recommendations
+  const processRecommendations = (recommendationsData: any[]) => {
+    const processedRecs = {
+      nutrition: [],
+      fitness: [],
+      mental: []
+    };
+    
+    // If no recommendations, provide default ones
+    if (!recommendationsData || recommendationsData.length === 0) {
+      return {
+        nutrition: [
+          {
+            title: "Balanced Diet",
+            description: "Focus on a diet rich in vegetables, fruits, lean proteins, and whole grains.",
+            color: "green"
+          },
+          {
+            title: "Adequate Hydration",
+            description: "Maintain proper hydration by drinking at least 8 glasses of water daily.",
+            color: "green"
+          }
+        ],
+        fitness: [
+          {
+            title: "Regular Physical Activity",
+            description: "Aim for at least 150 minutes of moderate activity each week.",
+            color: "blue"
+          },
+          {
+            title: "Strength Training",
+            description: "Add resistance training 2-3 times weekly for muscle maintenance.",
+            color: "blue"
+          }
+        ],
+        mental: [
+          {
+            title: "Stress Management",
+            description: "Practice mindfulness or meditation for 10 minutes daily.",
+            color: "purple"
+          },
+          {
+            title: "Quality Sleep",
+            description: "Prioritize 7-9 hours of quality sleep for mental well-being.",
+            color: "purple"
+          }
+        ]
+      };
     }
-  ];
-
-  const mentalRecommendations = [
-    {
-      title: "Stress Management",
-      description: "Your cortisol patterns suggest elevated stress. Consider daily meditation or deep breathing exercises.",
-      color: "purple"
-    },
-    {
-      title: "Cognitive Training",
-      description: "Regular brain games can help maintain cognitive function, especially important with your family history.",
-      color: "purple"
-    },
-    {
-      title: "Social Connection",
-      description: "Research shows social engagement is critical for mental health. Aim for regular social activities.",
-      color: "purple"
+    
+    // Map API recommendations to wellness categories
+    recommendationsData.forEach(rec => {
+      const recommendation = {
+        title: rec.title,
+        description: rec.description,
+        color: getCategoryColor(rec.category)
+      };
+      
+      // Categorize based on recommendation category
+      if (rec.category === 'metabolic' || rec.category === 'nutritional') {
+        processedRecs.nutrition.push(recommendation);
+      } else if (rec.category === 'cardiovascular' || rec.category === 'fitness') {
+        processedRecs.fitness.push(recommendation);
+      } else if (rec.category === 'preventive' || rec.category === 'cognitive') {
+        processedRecs.mental.push(recommendation);
+      } else {
+        // Default to nutrition if category doesn't match
+        processedRecs.nutrition.push(recommendation);
+      }
+    });
+    
+    // Add default recommendations if any category is empty
+    if (processedRecs.nutrition.length === 0) {
+      processedRecs.nutrition.push({
+        title: "Balanced Nutrition",
+        description: "Focus on whole foods, adequate protein, and plenty of vegetables.",
+        color: "green"
+      });
     }
-  ];
+    
+    if (processedRecs.fitness.length === 0) {
+      processedRecs.fitness.push({
+        title: "Regular Exercise",
+        description: "Aim for a combination of cardiovascular and strength training exercises.",
+        color: "blue"
+      });
+    }
+    
+    if (processedRecs.mental.length === 0) {
+      processedRecs.mental.push({
+        title: "Mental Wellness",
+        description: "Practice regular stress management techniques and ensure adequate sleep.",
+        color: "purple"
+      });
+    }
+    
+    return processedRecs;
+  };
+  
+  // Get color based on recommendation category
+  const getCategoryColor = (category: string): string => {
+    switch (category) {
+      case 'cardiovascular':
+        return 'red';
+      case 'metabolic':
+        return 'green';
+      case 'preventive':
+        return 'blue';
+      case 'cognitive':
+        return 'purple';
+      default:
+        return 'green';
+    }
+  };
 
   return (
     <Card>
@@ -100,36 +259,54 @@ const WellnessPlanCard = () => {
           </TabsList>
           
           <TabsContent value="nutrition" className="space-y-4">
-            {nutritionRecommendations.map((rec, index) => (
-              <Recommendation 
-                key={index}
-                title={rec.title}
-                description={rec.description}
-                color={rec.color}
-              />
-            ))}
+            {loading ? (
+              <div className="py-6 text-center text-muted-foreground">
+                <p>Analyzing your data to generate nutrition recommendations...</p>
+              </div>
+            ) : (
+              recommendations.nutrition.map((rec, index) => (
+                <Recommendation 
+                  key={index}
+                  title={rec.title}
+                  description={rec.description}
+                  color={rec.color}
+                />
+              ))
+            )}
           </TabsContent>
           
           <TabsContent value="fitness" className="space-y-4">
-            {fitnessRecommendations.map((rec, index) => (
-              <Recommendation 
-                key={index}
-                title={rec.title}
-                description={rec.description}
-                color={rec.color}
-              />
-            ))}
+            {loading ? (
+              <div className="py-6 text-center text-muted-foreground">
+                <p>Analyzing your data to generate fitness recommendations...</p>
+              </div>
+            ) : (
+              recommendations.fitness.map((rec, index) => (
+                <Recommendation 
+                  key={index}
+                  title={rec.title}
+                  description={rec.description}
+                  color={rec.color}
+                />
+              ))
+            )}
           </TabsContent>
           
           <TabsContent value="mental" className="space-y-4">
-            {mentalRecommendations.map((rec, index) => (
-              <Recommendation 
-                key={index}
-                title={rec.title}
-                description={rec.description}
-                color={rec.color}
-              />
-            ))}
+            {loading ? (
+              <div className="py-6 text-center text-muted-foreground">
+                <p>Analyzing your data to generate mental health recommendations...</p>
+              </div>
+            ) : (
+              recommendations.mental.map((rec, index) => (
+                <Recommendation 
+                  key={index}
+                  title={rec.title}
+                  description={rec.description}
+                  color={rec.color}
+                />
+              ))
+            )}
           </TabsContent>
         </Tabs>
       </CardContent>

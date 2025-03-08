@@ -1,4 +1,3 @@
-
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 // CORS headers for cross-origin requests
@@ -8,25 +7,308 @@ const corsHeaders = {
 };
 
 /**
+ * Preprocesses and cleans patient data before further processing
+ * @param data The raw patient data to clean and preprocess
+ */
+function preprocessData(data: any) {
+  console.log("Starting data preprocessing...");
+  const preprocessedData = { ...data };
+  
+  // Step 1: Data cleaning - handle missing values
+  preprocessedData.cleanedData = handleMissingValues(data);
+  
+  // Step 2: Feature extraction - identify biomarkers and health indicators
+  preprocessedData.features = extractFeatures(preprocessedData.cleanedData);
+  
+  // Step 3: Data normalization - standardize units and formats
+  preprocessedData.normalizedData = normalizeData(preprocessedData.cleanedData);
+  
+  // Step 4: Anomaly detection - identify outliers in medical data
+  preprocessedData.anomalies = detectAnomalies(preprocessedData.normalizedData);
+  
+  console.log("Data preprocessing completed");
+  return preprocessedData;
+}
+
+/**
+ * Handle missing or incomplete values in patient data
+ */
+function handleMissingValues(data: any) {
+  console.log("Cleaning data and handling missing values...");
+  const cleaned = { ...data };
+  
+  // Fill in missing vital signs with default values
+  if (!cleaned.vitalSigns) cleaned.vitalSigns = {};
+  if (!cleaned.vitalSigns.bloodPressure) {
+    cleaned.vitalSigns.bloodPressure = { systolic: 120, diastolic: 80 };
+    console.log("Added default blood pressure values");
+  }
+  
+  if (!cleaned.vitalSigns.heartRate) {
+    cleaned.vitalSigns.heartRate = 70;
+    console.log("Added default heart rate value");
+  }
+  
+  // Fill in missing lab results with null to indicate absence rather than 0
+  if (!cleaned.labResults) cleaned.labResults = {};
+  if (!cleaned.labResults.cholesterol) {
+    cleaned.labResults.cholesterol = { total: null, hdl: null, ldl: null };
+    console.log("Added null placeholders for missing cholesterol values");
+  }
+  
+  // Ensure patient info exists
+  if (!cleaned.patientInfo) cleaned.patientInfo = {};
+  if (!cleaned.patientInfo.age && cleaned.patientInfo.dateOfBirth) {
+    cleaned.patientInfo.age = calculateAge(cleaned.patientInfo.dateOfBirth);
+    console.log("Calculated age from date of birth");
+  }
+  
+  return cleaned;
+}
+
+/**
+ * Extract relevant features from patient data
+ */
+function extractFeatures(data: any) {
+  console.log("Extracting features from patient data...");
+  const features = {
+    cardiovascularIndicators: [],
+    metabolicIndicators: [],
+    geneticMarkers: [],
+    lifestyleFactors: []
+  };
+  
+  // Extract cardiovascular indicators
+  if (data.vitalSigns?.bloodPressure) {
+    const { systolic, diastolic } = data.vitalSigns.bloodPressure;
+    
+    if (systolic > 140 || diastolic > 90) {
+      features.cardiovascularIndicators.push("hypertension_risk");
+    } else if (systolic > 120 || diastolic > 80) {
+      features.cardiovascularIndicators.push("elevated_bp");
+    }
+  }
+  
+  if (data.labResults?.cholesterol) {
+    const { total, hdl, ldl } = data.labResults.cholesterol;
+    
+    if (total > 200) {
+      features.cardiovascularIndicators.push("elevated_cholesterol");
+    }
+    
+    if (hdl < 40) {
+      features.cardiovascularIndicators.push("low_hdl");
+    }
+    
+    if (ldl > 130) {
+      features.cardiovascularIndicators.push("elevated_ldl");
+    }
+  }
+  
+  // Extract metabolic indicators
+  if (data.labResults?.glucose) {
+    const glucoseLevel = data.labResults.glucose.level;
+    
+    if (glucoseLevel > 125) {
+      features.metabolicIndicators.push("diabetes_risk");
+    } else if (glucoseLevel > 100) {
+      features.metabolicIndicators.push("prediabetes_risk");
+    }
+  }
+  
+  if (data.patientInfo?.bmi) {
+    if (data.patientInfo.bmi >= 30) {
+      features.metabolicIndicators.push("obesity");
+    } else if (data.patientInfo.bmi >= 25) {
+      features.metabolicIndicators.push("overweight");
+    }
+  }
+  
+  // Extract genetic markers
+  if (data.genomicData?.riskMarkers) {
+    data.genomicData.riskMarkers.forEach((marker: string) => {
+      if (marker.includes("APOE4")) {
+        features.geneticMarkers.push("alzheimers_risk_factor");
+      }
+      
+      if (marker.includes("BRCA1") || marker.includes("BRCA2")) {
+        features.geneticMarkers.push("breast_cancer_risk_factor");
+      }
+      
+      if (marker.includes("MTHFR")) {
+        features.geneticMarkers.push("folate_metabolism_variant");
+      }
+    });
+  }
+  
+  console.log(`Extracted ${Object.values(features).flat().length} features`);
+  return features;
+}
+
+/**
+ * Normalize data units and formats
+ */
+function normalizeData(data: any) {
+  console.log("Normalizing data units and formats...");
+  const normalized = { ...data };
+  
+  // Convert temperature to Celsius if in Fahrenheit
+  if (normalized.vitalSigns?.temperature > 40) {
+    normalized.vitalSigns.temperature = (normalized.vitalSigns.temperature - 32) * 5/9;
+    console.log("Converted temperature from Fahrenheit to Celsius");
+  }
+  
+  // Normalize units for cholesterol (mg/dL to mmol/L if needed)
+  if (normalized.labResults?.cholesterol?.total > 50) {
+    // If values are in mg/dL (US standard), convert to mmol/L (international standard)
+    normalized.labResults.cholesterol.total_mmol = normalized.labResults.cholesterol.total / 38.67;
+    normalized.labResults.cholesterol.hdl_mmol = normalized.labResults.cholesterol.hdl / 38.67;
+    normalized.labResults.cholesterol.ldl_mmol = normalized.labResults.cholesterol.ldl / 38.67;
+    console.log("Added mmol/L values for cholesterol measurements");
+  }
+  
+  // Normalize blood glucose measurements (mg/dL to mmol/L if needed)
+  if (normalized.labResults?.glucose?.level > 25) {
+    normalized.labResults.glucose.level_mmol = normalized.labResults.glucose.level / 18;
+    console.log("Added mmol/L value for glucose measurement");
+  }
+  
+  // Standardize date formats
+  if (normalized.patientInfo?.dateOfBirth && typeof normalized.patientInfo.dateOfBirth === 'string') {
+    normalized.patientInfo.dateOfBirth = new Date(normalized.patientInfo.dateOfBirth).toISOString();
+    console.log("Standardized date of birth format");
+  }
+  
+  return normalized;
+}
+
+/**
+ * Detect anomalies or outliers in patient data
+ */
+function detectAnomalies(data: any) {
+  console.log("Detecting anomalies in patient data...");
+  const anomalies = [];
+  
+  // Check for abnormal vital signs
+  if (data.vitalSigns?.heartRate < 40 || data.vitalSigns?.heartRate > 120) {
+    anomalies.push({
+      type: "vital_sign",
+      parameter: "heart_rate",
+      value: data.vitalSigns.heartRate,
+      message: "Heart rate is outside normal range (40-120 bpm)"
+    });
+  }
+  
+  if (data.vitalSigns?.bloodPressure?.systolic > 180 || data.vitalSigns?.bloodPressure?.diastolic > 120) {
+    anomalies.push({
+      type: "vital_sign",
+      parameter: "blood_pressure",
+      value: `${data.vitalSigns.bloodPressure.systolic}/${data.vitalSigns.bloodPressure.diastolic}`,
+      message: "Blood pressure is critically high"
+    });
+  }
+  
+  if (data.vitalSigns?.oxygenSaturation < 90) {
+    anomalies.push({
+      type: "vital_sign",
+      parameter: "oxygen_saturation",
+      value: data.vitalSigns.oxygenSaturation,
+      message: "Oxygen saturation is below the normal threshold (90%)"
+    });
+  }
+  
+  // Check for abnormal lab results
+  if (data.labResults?.glucose?.level > 300) {
+    anomalies.push({
+      type: "lab_result",
+      parameter: "glucose",
+      value: data.labResults.glucose.level,
+      message: "Blood glucose level is dangerously high"
+    });
+  }
+  
+  if (data.labResults?.cholesterol?.total > 300) {
+    anomalies.push({
+      type: "lab_result",
+      parameter: "cholesterol",
+      value: data.labResults.cholesterol.total,
+      message: "Total cholesterol is extremely elevated"
+    });
+  }
+  
+  console.log(`Detected ${anomalies.length} anomalies in patient data`);
+  return anomalies;
+}
+
+/**
  * Processes patient data and returns insights
  * @param data The patient data to process
  */
 function processPatientData(data: any) {
-  // Here we would have complex processing logic
-  // This is a simplified placeholder
+  // Preprocess the data first - new step
+  const preprocessedData = preprocessData(data);
+  
+  // Continue with original risk calculation using preprocessed data
   const riskScores = {
-    cardiovascular: calculateRiskScore(data.vitalSigns?.bloodPressure, data.labResults?.cholesterol),
-    diabetes: calculateDiabetesRisk(data.labResults?.glucose, data.patientInfo?.bmi),
-    cognitive: calculateCognitiveRisk(data.genomicData, data.patientInfo?.age),
+    cardiovascular: calculateRiskScore(
+      preprocessedData.normalizedData.vitalSigns?.bloodPressure, 
+      preprocessedData.normalizedData.labResults?.cholesterol
+    ),
+    diabetes: calculateDiabetesRisk(
+      preprocessedData.normalizedData.labResults?.glucose, 
+      preprocessedData.normalizedData.patientInfo?.bmi
+    ),
+    cognitive: calculateCognitiveRisk(
+      preprocessedData.normalizedData.genomicData, 
+      preprocessedData.normalizedData.patientInfo?.age
+    ),
   };
   
-  const recommendations = generateRecommendations(riskScores, data);
+  const recommendations = generateRecommendations(riskScores, preprocessedData.normalizedData);
   
   return {
     riskScores,
     recommendations,
+    preprocessingResults: {
+      featureCount: Object.values(preprocessedData.features).flat().length,
+      anomalyCount: preprocessedData.anomalies.length,
+      significantFindings: preprocessedData.anomalies.length > 0 ? 
+        preprocessedData.anomalies.map(a => a.message) : ["No significant anomalies detected"],
+      topFeatures: getTopFeatures(preprocessedData.features)
+    },
     processingTimestamp: new Date().toISOString(),
   };
+}
+
+/**
+ * Get the most important features extracted during preprocessing
+ */
+function getTopFeatures(features: any) {
+  const allFeatures = Object.entries(features).map(([category, items]) => {
+    return (items as string[]).map(item => ({
+      category,
+      name: item
+    }));
+  }).flat();
+  
+  // Return top 5 features or all if less than 5
+  return allFeatures.slice(0, 5);
+}
+
+/**
+ * Calculate age from date of birth
+ */
+function calculateAge(dateOfBirth: string) {
+  const birthDate = new Date(dateOfBirth);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDifference = today.getMonth() - birthDate.getMonth();
+  
+  if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  
+  return age;
 }
 
 /**
@@ -155,9 +437,9 @@ serve(async (req) => {
     const requestData = await req.json();
     console.log("Processing patient data:", JSON.stringify(requestData).substring(0, 200) + "...");
     
-    // Process the data
+    // Process the data with our enhanced preprocessing pipeline
     const results = processPatientData(requestData);
-    console.log("Generated results:", JSON.stringify(results).substring(0, 200) + "...");
+    console.log("Generated results with preprocessing:", JSON.stringify(results).substring(0, 200) + "...");
     
     // Return the processed data
     return new Response(

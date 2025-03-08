@@ -1,244 +1,234 @@
 
-import { supabase } from '@/integrations/supabase/client';
-import { useToast } from '@/hooks/use-toast';
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 /**
- * Seeds the database with demo data for the currently authenticated user
+ * Seeds demo data for a new demo user
  */
-export const seedDemoData = async () => {
+export async function seedDemoData() {
   try {
-    console.log('Seeding demo data...');
+    // Step 1: Create a demo user account
+    const email = `demo${Math.floor(Math.random() * 10000)}@healthai.demo`;
+    const password = "demo1234";
     
-    // Get the current authenticated user
-    const { data: userData, error: userError } = await supabase.auth.getUser();
-    if (userError || !userData.user) {
-      throw new Error('User not authenticated');
-    }
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          name: "Demo User",
+          role: "patient"
+        }
+      }
+    });
     
-    const userId = userData.user.id;
+    if (error) throw new Error(error.message);
+    if (!data?.user) throw new Error("Failed to create demo user");
     
-    // Create a patient record for the user
-    const patientData = {
-      user_id: userId,
-      first_name: 'Jane',
-      last_name: 'Doe',
-      date_of_birth: '1985-05-15', // YYYY-MM-DD format
-      gender: 'female',
-      contact_email: userData.user.email,
-      contact_phone: '555-123-4567',
-      address: '123 Health St, Medical City, CA 90210',
-      emergency_contact: 'John Doe: 555-987-6543'
-    };
+    const userId = data.user.id;
     
-    // Insert patient data
+    // Auto sign in the demo user
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+    
+    if (signInError) throw new Error(signInError.message);
+    
+    // Step 2: Create patient profile
     const { data: patient, error: patientError } = await supabase
       .from('patients')
-      .upsert(patientData, { onConflict: 'user_id' })
+      .insert({
+        user_id: userId,
+        first_name: "Demo",
+        last_name: "Patient",
+        date_of_birth: "1985-07-15",
+        gender: "other",
+        contact_email: email,
+        contact_phone: "555-123-4567",
+        address: "123 Health St, Digital City",
+        emergency_contact: "Family Member: 555-987-6543"
+      })
       .select()
       .single();
-      
-    if (patientError) {
-      throw new Error(`Error creating patient: ${patientError.message}`);
-    }
     
-    const patientId = patient.id;
+    if (patientError) throw new Error(patientError.message);
     
-    // Create electronic health record
-    const ehrData = {
-      patient_id: patientId,
-      record_date: new Date().toISOString(),
-      physician_notes: 'Patient is in good health overall. Regular check-ups recommended.',
-      diagnosis: ['Mild hypertension', 'Seasonal allergies'],
-      medications: ['Lisinopril 10mg daily', 'Zyrtec as needed'],
-      allergies: ['Penicillin', 'Peanuts'],
-      vitals: {
-        height_cm: 165,
-        weight_kg: 65,
-        bmi: 23.9,
-        temperature_c: 36.7,
-        blood_pressure: {
-          systolic: 128,
-          diastolic: 82
+    // Step 3: Seed electronic health records
+    const ehrData = [
+      {
+        patient_id: patient.id,
+        record_date: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days ago
+        physician_notes: "Patient reports occasional headaches and fatigue. Recommended lifestyle modifications and follow-up in 3 months.",
+        diagnosis: ["Tension headache", "Fatigue"],
+        medications: ["Acetaminophen PRN", "Multivitamin daily"],
+        allergies: ["Penicillin"],
+        vitals: {
+          blood_pressure: { systolic: 128, diastolic: 82 },
+          heart_rate: 76,
+          temperature: 98.6,
+          respiratory_rate: 16,
+          oxygen_saturation: 98
         },
-        heart_rate: 72,
-        respiratory_rate: 16
+        medical_history: "No significant past medical history."
       },
-      medical_history: 'No significant past medical history. Family history of cardiovascular disease.'
-    };
+      {
+        patient_id: patient.id,
+        record_date: new Date(Date.now() - 180 * 24 * 60 * 60 * 1000).toISOString(), // 180 days ago
+        physician_notes: "Annual physical examination. All vitals within normal limits. Recommended standard health screenings based on age.",
+        diagnosis: ["Routine physical examination"],
+        medications: ["Multivitamin daily"],
+        allergies: ["Penicillin"],
+        vitals: {
+          blood_pressure: { systolic: 124, diastolic: 78 },
+          heart_rate: 68,
+          temperature: 98.4,
+          respiratory_rate: 14,
+          oxygen_saturation: 99
+        },
+        medical_history: "No significant past medical history."
+      }
+    ];
     
-    // Insert EHR data
     const { error: ehrError } = await supabase
       .from('electronic_health_records')
-      .upsert(ehrData);
-      
-    if (ehrError) {
-      throw new Error(`Error creating health record: ${ehrError.message}`);
-    }
+      .insert(ehrData);
     
-    // Create wearable data (last 7 days)
-    const wearableData = [];
-    const now = new Date();
+    if (ehrError) throw new Error(ehrError.message);
     
-    for (let i = 0; i < 7; i++) {
-      const date = new Date(now);
+    // Step 4: Seed wearable data
+    const today = new Date();
+    const wearableData = Array.from({ length: 7 }, (_, i) => {
+      const date = new Date(today);
       date.setDate(date.getDate() - i);
       
-      // Create some variation in the data
-      const heartRateVariation = Math.floor(Math.random() * 10) - 5;
-      const stepsVariation = Math.floor(Math.random() * 2000) - 1000;
-      const sleepVariation = Math.floor(Math.random() * 60) - 30;
-      
-      wearableData.push({
-        patient_id: patientId,
-        device_type: 'smartwatch',
-        device_id: 'DEMO-WATCH-123',
+      return {
+        patient_id: patient.id,
+        device_type: "Smartwatch",
+        device_id: "Demo-Device-123",
         recorded_at: date.toISOString(),
-        heart_rate: 68 + heartRateVariation,
-        blood_pressure: {
-          systolic: 120 + heartRateVariation,
-          diastolic: 80 + Math.floor(heartRateVariation / 2)
+        heart_rate: 60 + Math.floor(Math.random() * 20),
+        blood_pressure: { 
+          systolic: 115 + Math.floor(Math.random() * 15),
+          diastolic: 75 + Math.floor(Math.random() * 10)
         },
-        blood_oxygen: 98 + (Math.random() > 0.5 ? -1 : 0),
-        steps_count: 7500 + stepsVariation,
+        blood_oxygen: 95 + Math.floor(Math.random() * 5),
+        steps_count: 7000 + Math.floor(Math.random() * 4000),
         sleep_data: {
-          total_minutes: 420 + sleepVariation,
-          deep_sleep_minutes: 120 + Math.floor(sleepVariation / 3),
-          rem_sleep_minutes: 90 + Math.floor(sleepVariation / 3),
-          light_sleep_minutes: 210 + Math.floor(sleepVariation / 3)
+          total_duration_minutes: 400 + Math.floor(Math.random() * 120),
+          deep_sleep_minutes: 120 + Math.floor(Math.random() * 60),
+          rem_sleep_minutes: 90 + Math.floor(Math.random() * 45)
         },
-        temperature: 36.6 + (Math.random() * 0.4 - 0.2)
-      });
-    }
+        temperature: 98.4 + (Math.random() * 0.8 - 0.4)
+      };
+    });
     
-    // Insert wearable data
-    for (const data of wearableData) {
-      const { error: wearableError } = await supabase
-        .from('wearable_data')
-        .upsert(data);
-        
-      if (wearableError) {
-        console.error(`Error creating wearable data: ${wearableError.message}`);
-        // Continue with other records
-      }
-    }
+    const { error: wearableError } = await supabase
+      .from('wearable_data')
+      .insert(wearableData);
     
-    // Create genomic data
+    if (wearableError) throw new Error(wearableError.message);
+    
+    // Step 5: Seed genomic data
     const genomicData = {
-      patient_id: patientId,
-      sample_id: 'DEMO-DNA-123',
-      collection_date: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days ago
-      sequence_type: 'dna',
-      sequence_data: null, // Would contain actual sequence data in a real app
+      patient_id: patient.id,
+      sample_id: `DEMO-DNA-${Math.floor(Math.random() * 10000)}`,
+      collection_date: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString(), // 90 days ago
+      sequence_type: "dna",
+      sequence_data: "Demo genome sequence data (abbreviated)",
       analysis_results: {
         ancestry: {
           european: 65,
           east_asian: 20,
-          african: 10,
-          other: 5
+          african: 15
         },
-        traits: [
-          { name: 'Lactose tolerance', status: 'positive' },
-          { name: 'Caffeine metabolism', status: 'normal' }
-        ]
+        risk_markers: ["APOE3/APOE3", "BRCA1-negative", "MTHFR-heterozygous"],
+        carrier_status: {
+          cystic_fibrosis: "negative",
+          sickle_cell_anemia: "negative",
+          tay_sachs: "negative"
+        }
       },
       biomarkers: {
-        metabolic: {
-          insulin_sensitivity: 'normal',
-          vitamin_d: 'normal'
-        },
-        cardiovascular: {
-          ldl_response: 'normal',
-          hdl_levels: 'optimal'
-        },
-        riskMarkers: []
+        telomere_length: "average",
+        metabolic_markers: "normal",
+        inflammatory_markers: "slightly_elevated"
       }
     };
     
-    // Insert genomic data
     const { error: genomicError } = await supabase
       .from('genomic_data')
-      .upsert(genomicData);
-      
-    if (genomicError) {
-      throw new Error(`Error creating genomic data: ${genomicError.message}`);
-    }
+      .insert(genomicData);
     
-    // Create medical image data
-    const medicalImageData = {
-      patient_id: patientId,
-      image_type: 'xray',
-      image_date: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000).toISOString(), // 60 days ago
-      image_url: 'https://via.placeholder.com/500x500?text=Demo+X-Ray+Image',
-      body_part: 'chest',
-      radiologist_notes: 'Normal chest X-ray. No significant findings.',
-      ai_analysis_results: {
-        findings: 'No abnormalities detected',
-        confidence: 0.92,
-        processing_time_ms: 1243
+    if (genomicError) throw new Error(genomicError.message);
+    
+    // Process the demo data to generate insights
+    const patientData = {
+      patientInfo: {
+        id: patient.id,
+        age: 38,
+        gender: "other",
+        bmi: 23.5
+      },
+      vitalSigns: {
+        bloodPressure: {
+          systolic: 124,
+          diastolic: 78
+        },
+        heartRate: 68,
+        temperature: 98.4,
+        respiratoryRate: 14,
+        oxygenSaturation: 99
+      },
+      labResults: {
+        cholesterol: {
+          total: 175,
+          hdl: 55,
+          ldl: 110
+        },
+        glucose: {
+          level: 92
+        },
+        hemoglobin: 14.2
+      },
+      genomicData: {
+        riskMarkers: ["APOE3/APOE3", "BRCA1-negative", "MTHFR-heterozygous"]
       }
     };
     
-    // Insert medical image data
-    const { error: imageError } = await supabase
-      .from('medical_images')
-      .upsert(medicalImageData);
-      
-    if (imageError) {
-      throw new Error(`Error creating medical image data: ${imageError.message}`);
+    // Call the data processing edge function to generate insights
+    const { data: processedData, error: processingError } = await supabase.functions.invoke(
+      'data-processing',
+      {
+        body: patientData
+      }
+    );
+    
+    if (processingError) {
+      console.error("Error processing data:", processingError);
+      toast({
+        title: "Data processing error",
+        description: "Could not generate health insights for demo data",
+        variant: "destructive",
+      });
+    } else {
+      console.log("Data processed successfully:", processedData);
+      toast({
+        title: "Health insights generated",
+        description: "AI analysis complete for your health data",
+        variant: "default",
+      });
     }
     
-    console.log('Demo data seeded successfully');
-    return {
-      success: true,
-      patientId
-    };
+    return { success: true, userId, patientId: patient.id };
     
   } catch (error) {
-    console.error('Error seeding demo data:', error);
-    return {
-      success: false,
-      error: error.message
-    };
+    console.error("Error seeding demo data:", error);
+    toast({
+      title: "Error creating demo account",
+      description: error.message || "Failed to create demo account",
+      variant: "destructive",
+    });
+    throw error;
   }
-};
-
-export const useDemoData = () => {
-  const { toast } = useToast();
-  
-  const loadDemoData = async () => {
-    try {
-      toast({
-        title: 'Loading Demo Data',
-        description: 'Please wait while we prepare your demonstration data...',
-      });
-      
-      const result = await seedDemoData();
-      
-      if (result.success) {
-        toast({
-          title: 'Demo Data Loaded',
-          description: 'Sample patient data has been added to your account',
-          variant: 'success',
-        });
-        return result.patientId;
-      } else {
-        toast({
-          title: 'Error Loading Demo Data',
-          description: result.error || 'An unknown error occurred',
-          variant: 'destructive',
-        });
-        return null;
-      }
-    } catch (error) {
-      console.error('Error in loadDemoData:', error);
-      toast({
-        title: 'Error Loading Demo Data',
-        description: error.message || 'An unknown error occurred',
-        variant: 'destructive',
-      });
-      return null;
-    }
-  };
-  
-  return { loadDemoData };
-};
+}
