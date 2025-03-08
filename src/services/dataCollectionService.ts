@@ -1,4 +1,6 @@
+
 import { supabase } from '@/integrations/supabase/client';
+import { Json } from '@/integrations/supabase/types';
 import {
   PatientType,
   ElectronicHealthRecordType,
@@ -6,6 +8,13 @@ import {
   GenomicDataType,
   MedicalImageType,
 } from '@/types/supabase-types';
+
+// Define form data types to match our component needs
+type PatientProfileFormData = Omit<PatientType, 'id' | 'created_at' | 'updated_at'>;
+type ElectronicHealthRecordFormData = Omit<ElectronicHealthRecordType, 'id' | 'created_at' | 'updated_at'>;
+type WearableDataFormData = Omit<WearableDataType, 'id' | 'created_at'>;
+type GenomicDataFormData = Omit<GenomicDataType, 'id' | 'created_at' | 'updated_at'>;
+type MedicalImageFormData = Omit<MedicalImageType, 'id' | 'created_at' | 'updated_at'>;
 
 // Function to submit patient profile data
 export const submitPatientProfile = async (
@@ -18,7 +27,7 @@ export const submitPatientProfile = async (
       return null;
     }
 
-    // Convert Date to string for Supabase
+    // Convert Date to ISO string for Supabase
     const formattedPatientData = {
       ...patientData,
       user_id: userData.user.id,
@@ -39,7 +48,9 @@ export const submitPatientProfile = async (
     // Convert date string back to Date object for our app
     return {
       ...data,
-      date_of_birth: new Date(data.date_of_birth)
+      date_of_birth: new Date(data.date_of_birth),
+      created_at: new Date(data.created_at),
+      updated_at: new Date(data.updated_at)
     } as PatientType;
 
   } catch (error) {
@@ -75,7 +86,7 @@ export const submitEHR = async (
   ehrData: ElectronicHealthRecordFormData
 ): Promise<ElectronicHealthRecordType | null> => {
   try {
-    // Convert Date to string for Supabase
+    // Convert Date to ISO string for Supabase
     const formattedEhrData = {
       ...ehrData,
       record_date: ehrData.record_date.toISOString().split('T')[0]
@@ -95,7 +106,9 @@ export const submitEHR = async (
     // Convert date string back to Date object for our app
     return {
       ...data,
-      record_date: new Date(data.record_date)
+      record_date: new Date(data.record_date),
+      created_at: new Date(data.created_at),
+      updated_at: new Date(data.updated_at)
     } as ElectronicHealthRecordType;
 
   } catch (error) {
@@ -137,7 +150,7 @@ export const submitWearableData = async (
   wearableData: WearableDataFormData
 ): Promise<WearableDataType | null> => {
   try {
-    // Convert Date to string for Supabase
+    // Convert Date to ISO string for Supabase
     const formattedWearableData = {
       ...wearableData,
       recorded_at: wearableData.recorded_at.toISOString()
@@ -157,7 +170,8 @@ export const submitWearableData = async (
     // Convert date string back to Date object for our app
     return {
       ...data,
-      recorded_at: new Date(data.recorded_at)
+      recorded_at: new Date(data.recorded_at),
+      created_at: new Date(data.created_at)
     } as WearableDataType;
 
   } catch (error) {
@@ -198,7 +212,7 @@ export const submitGenomicData = async (
   genomicData: GenomicDataFormData
 ): Promise<GenomicDataType | null> => {
   try {
-    // Convert Date to string for Supabase
+    // Convert Date to ISO string for Supabase
     const formattedGenomicData = {
       ...genomicData,
       collection_date: genomicData.collection_date.toISOString().split('T')[0]
@@ -218,7 +232,9 @@ export const submitGenomicData = async (
     // Convert date string back to Date object for our app
     return {
       ...data,
-      collection_date: new Date(data.collection_date)
+      collection_date: new Date(data.collection_date),
+      created_at: new Date(data.created_at),
+      updated_at: new Date(data.updated_at)
     } as GenomicDataType;
 
   } catch (error) {
@@ -260,7 +276,7 @@ export const submitMedicalImage = async (
   imageData: MedicalImageFormData
 ): Promise<MedicalImageType | null> => {
   try {
-    // Convert Date to string for Supabase
+    // Convert Date to ISO string for Supabase
     const formattedImageData = {
       ...imageData,
       image_date: imageData.image_date.toISOString().split('T')[0]
@@ -280,7 +296,9 @@ export const submitMedicalImage = async (
     // Convert date string back to Date object for our app
     return {
       ...data,
-      image_date: new Date(data.image_date)
+      image_date: new Date(data.image_date),
+      created_at: new Date(data.created_at),
+      updated_at: new Date(data.updated_at)
     } as MedicalImageType;
 
   } catch (error) {
