@@ -49,7 +49,7 @@ const Contact = () => {
                       className="mt-auto"
                       onClick={() => window.location.href = 'tel:+18001234567'}
                     >
-                      Call Us
+                      Call Now
                     </Button>
                   </div>
                 </div>
@@ -66,7 +66,7 @@ const Contact = () => {
                       className="mt-auto"
                       onClick={() => window.location.href = 'mailto:support@akenohealth.ai'}
                     >
-                      Email Us
+                      Email Now
                     </Button>
                   </div>
                 </div>
