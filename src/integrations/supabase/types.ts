@@ -9,6 +9,42 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      backup_logs: {
+        Row: {
+          backup_location: string | null
+          backup_size: number | null
+          backup_status: string
+          backup_type: string
+          completed_at: string | null
+          created_by: string | null
+          error_message: string | null
+          id: string
+          started_at: string
+        }
+        Insert: {
+          backup_location?: string | null
+          backup_size?: number | null
+          backup_status: string
+          backup_type: string
+          completed_at?: string | null
+          created_by?: string | null
+          error_message?: string | null
+          id?: string
+          started_at?: string
+        }
+        Update: {
+          backup_location?: string | null
+          backup_size?: number | null
+          backup_status?: string
+          backup_type?: string
+          completed_at?: string | null
+          created_by?: string | null
+          error_message?: string | null
+          id?: string
+          started_at?: string
+        }
+        Relationships: []
+      }
       chat_messages: {
         Row: {
           content: string
@@ -255,6 +291,48 @@ export type Database = {
           profile_image?: string | null
           role?: string | null
           updated_at?: string
+        }
+        Relationships: []
+      }
+      research_findings: {
+        Row: {
+          created_at: string
+          date_published: string
+          finding_type: string
+          id: string
+          reference_url: string | null
+          relevance_score: number | null
+          specialization: string | null
+          summary: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          date_published?: string
+          finding_type: string
+          id?: string
+          reference_url?: string | null
+          relevance_score?: number | null
+          specialization?: string | null
+          summary: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          date_published?: string
+          finding_type?: string
+          id?: string
+          reference_url?: string | null
+          relevance_score?: number | null
+          specialization?: string | null
+          summary?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
