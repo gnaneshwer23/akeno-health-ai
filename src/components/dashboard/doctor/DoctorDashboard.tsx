@@ -7,6 +7,9 @@ import PatientRiskMonitor from './sections/PatientRiskMonitor';
 import AIInsightsSection from './sections/AIInsightsSection';
 import ScheduleSection from './sections/ScheduleSection';
 import APIManagementSection from './sections/APIManagementSection';
+import BiomarkerAnalysisSection from './sections/BiomarkerAnalysisSection';
+import MedicalImagingAISection from './sections/MedicalImagingAISection';
+import HospitalResourcePredictionSection from './sections/HospitalResourcePredictionSection';
 
 const DoctorDashboard = () => {
   const { user } = useAuth();
@@ -37,6 +40,17 @@ const DoctorDashboard = () => {
         {/* API Management Section */}
         <APIManagementSection />
       </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        {/* Biomarker Trends */}
+        <BiomarkerAnalysisSection />
+        
+        {/* Medical Imaging AI */}
+        <MedicalImagingAISection />
+      </div>
+
+      {/* Hospital Resource Prediction */}
+      <HospitalResourcePredictionSection />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Appointments */}
