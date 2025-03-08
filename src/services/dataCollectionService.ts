@@ -1,4 +1,3 @@
-
 import { supabase } from '@/integrations/supabase/client';
 import {
   PatientType,
@@ -9,39 +8,44 @@ import {
 } from '@/types/supabase-types';
 
 // Function to submit patient profile data
-export const submitPatientProfile = async (patientData: Omit<PatientType, 'id' | 'user_id' | 'created_at' | 'updated_at'>) => {
-  const { 
-    first_name, 
-    last_name, 
-    date_of_birth,
-    gender,
-    contact_email,
-    contact_phone,
-    address,
-    emergency_contact
-  } = patientData;
+export const submitPatientProfile = async (
+  patientData: PatientProfileFormData
+): Promise<PatientType | null> => {
+  try {
+    const { data: userData } = await supabase.auth.getUser();
+    if (!userData.user) {
+      console.error('No authenticated user found');
+      return null;
+    }
 
-  const { data: userData } = await supabase.auth.getUser();
-  if (!userData.user) throw new Error('Not authenticated');
-
-  const { data, error } = await supabase
-    .from('patients')
-    .upsert({ 
+    // Convert Date to string for Supabase
+    const formattedPatientData = {
+      ...patientData,
       user_id: userData.user.id,
-      first_name, 
-      last_name, 
-      date_of_birth,
-      gender,
-      contact_email,
-      contact_phone,
-      address,
-      emergency_contact
-    }, { onConflict: 'user_id' })
-    .select()
-    .single();
+      date_of_birth: patientData.date_of_birth.toISOString().split('T')[0]
+    };
 
-  if (error) throw error;
-  return data;
+    const { data, error } = await supabase
+      .from('patients')
+      .insert(formattedPatientData)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error submitting patient profile:', error);
+      return null;
+    }
+
+    // Convert date string back to Date object for our app
+    return {
+      ...data,
+      date_of_birth: new Date(data.date_of_birth)
+    } as PatientType;
+
+  } catch (error) {
+    console.error('Error in submitPatientProfile:', error);
+    return null;
+  }
 };
 
 // Function to get the patient profile
@@ -67,27 +71,37 @@ export const getPatientProfile = async (): Promise<PatientType> => {
 };
 
 // Function to submit electronic health record data
-export const submitEHR = async (ehrData: Omit<ElectronicHealthRecordType, 'id' | 'created_at' | 'updated_at'>) => {
-  const { data: patientData, error: patientError } = await supabase
-    .from('patients')
-    .select('id')
-    .eq('user_id', (await supabase.auth.getUser()).data.user?.id)
-    .single();
-
-  if (patientError) throw patientError;
-  if (!patientData) throw new Error('Patient profile not found');
-
-  const { data, error } = await supabase
-    .from('electronic_health_records')
-    .insert({
+export const submitEHR = async (
+  ehrData: ElectronicHealthRecordFormData
+): Promise<ElectronicHealthRecordType | null> => {
+  try {
+    // Convert Date to string for Supabase
+    const formattedEhrData = {
       ...ehrData,
-      patient_id: patientData.id
-    })
-    .select()
-    .single();
+      record_date: ehrData.record_date.toISOString().split('T')[0]
+    };
 
-  if (error) throw error;
-  return data;
+    const { data, error } = await supabase
+      .from('electronic_health_records')
+      .insert(formattedEhrData)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error submitting EHR:', error);
+      return null;
+    }
+
+    // Convert date string back to Date object for our app
+    return {
+      ...data,
+      record_date: new Date(data.record_date)
+    } as ElectronicHealthRecordType;
+
+  } catch (error) {
+    console.error('Error in submitEHR:', error);
+    return null;
+  }
 };
 
 // Function to get electronic health records
@@ -119,27 +133,37 @@ export const getEHRs = async (): Promise<ElectronicHealthRecordType[]> => {
 };
 
 // Function to submit wearable device data
-export const submitWearableData = async (wearableData: Omit<WearableDataType, 'id' | 'created_at'>) => {
-  const { data: patientData, error: patientError } = await supabase
-    .from('patients')
-    .select('id')
-    .eq('user_id', (await supabase.auth.getUser()).data.user?.id)
-    .single();
-
-  if (patientError) throw patientError;
-  if (!patientData) throw new Error('Patient profile not found');
-
-  const { data, error } = await supabase
-    .from('wearable_data')
-    .insert({
+export const submitWearableData = async (
+  wearableData: WearableDataFormData
+): Promise<WearableDataType | null> => {
+  try {
+    // Convert Date to string for Supabase
+    const formattedWearableData = {
       ...wearableData,
-      patient_id: patientData.id
-    })
-    .select()
-    .single();
+      recorded_at: wearableData.recorded_at.toISOString()
+    };
 
-  if (error) throw error;
-  return data;
+    const { data, error } = await supabase
+      .from('wearable_data')
+      .insert(formattedWearableData)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error submitting wearable data:', error);
+      return null;
+    }
+
+    // Convert date string back to Date object for our app
+    return {
+      ...data,
+      recorded_at: new Date(data.recorded_at)
+    } as WearableDataType;
+
+  } catch (error) {
+    console.error('Error in submitWearableData:', error);
+    return null;
+  }
 };
 
 // Function to get wearable data
@@ -170,27 +194,37 @@ export const getWearableData = async (): Promise<WearableDataType[]> => {
 };
 
 // Function to submit genomic data
-export const submitGenomicData = async (genomicData: Omit<GenomicDataType, 'id' | 'created_at' | 'updated_at'>) => {
-  const { data: patientData, error: patientError } = await supabase
-    .from('patients')
-    .select('id')
-    .eq('user_id', (await supabase.auth.getUser()).data.user?.id)
-    .single();
-
-  if (patientError) throw patientError;
-  if (!patientData) throw new Error('Patient profile not found');
-
-  const { data, error } = await supabase
-    .from('genomic_data')
-    .insert({
+export const submitGenomicData = async (
+  genomicData: GenomicDataFormData
+): Promise<GenomicDataType | null> => {
+  try {
+    // Convert Date to string for Supabase
+    const formattedGenomicData = {
       ...genomicData,
-      patient_id: patientData.id
-    })
-    .select()
-    .single();
+      collection_date: genomicData.collection_date.toISOString().split('T')[0]
+    };
 
-  if (error) throw error;
-  return data;
+    const { data, error } = await supabase
+      .from('genomic_data')
+      .insert(formattedGenomicData)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error submitting genomic data:', error);
+      return null;
+    }
+
+    // Convert date string back to Date object for our app
+    return {
+      ...data,
+      collection_date: new Date(data.collection_date)
+    } as GenomicDataType;
+
+  } catch (error) {
+    console.error('Error in submitGenomicData:', error);
+    return null;
+  }
 };
 
 // Function to get genomic data
@@ -222,27 +256,37 @@ export const getGenomicData = async (): Promise<GenomicDataType[]> => {
 };
 
 // Function to submit medical image data
-export const submitMedicalImage = async (imageData: Omit<MedicalImageType, 'id' | 'created_at' | 'updated_at'>) => {
-  const { data: patientData, error: patientError } = await supabase
-    .from('patients')
-    .select('id')
-    .eq('user_id', (await supabase.auth.getUser()).data.user?.id)
-    .single();
-
-  if (patientError) throw patientError;
-  if (!patientData) throw new Error('Patient profile not found');
-
-  const { data, error } = await supabase
-    .from('medical_images')
-    .insert({
+export const submitMedicalImage = async (
+  imageData: MedicalImageFormData
+): Promise<MedicalImageType | null> => {
+  try {
+    // Convert Date to string for Supabase
+    const formattedImageData = {
       ...imageData,
-      patient_id: patientData.id
-    })
-    .select()
-    .single();
+      image_date: imageData.image_date.toISOString().split('T')[0]
+    };
 
-  if (error) throw error;
-  return data;
+    const { data, error } = await supabase
+      .from('medical_images')
+      .insert(formattedImageData)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error submitting medical image:', error);
+      return null;
+    }
+
+    // Convert date string back to Date object for our app
+    return {
+      ...data,
+      image_date: new Date(data.image_date)
+    } as MedicalImageType;
+
+  } catch (error) {
+    console.error('Error in submitMedicalImage:', error);
+    return null;
+  }
 };
 
 // Function to get medical images
