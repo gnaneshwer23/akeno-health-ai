@@ -24,6 +24,8 @@ const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
           ? 'bg-gradient-to-r from-health-primary/20 to-health-primary/5 text-health-primary font-medium shadow-sm'
           : 'hover:bg-gray-100 text-gray-700 hover:text-health-primary'
       }`}
+      aria-label={`Navigate to ${label}`}
+      title={label}
     >
       <div className={`p-1.5 rounded-full ${isActive ? 'bg-health-primary/10' : 'bg-transparent'}`}>
         {icon}

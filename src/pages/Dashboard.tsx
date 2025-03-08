@@ -5,6 +5,12 @@ import { useAuth } from '@/contexts/AuthContext';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import PatientDashboard from '@/components/dashboard/patient/PatientDashboard';
+import PatientProfile from '@/components/dashboard/patient/profile/PatientProfile';
+import PatientSettings from '@/components/dashboard/patient/settings/PatientSettings';
+import PatientHelp from '@/components/dashboard/patient/help/PatientHelp';
+import PatientHealthTracking from '@/components/dashboard/patient/health-tracking/PatientHealthTracking';
+import AIHealthAssistant from '@/components/dashboard/patient/ai-assistant/AIHealthAssistant';
+import PatientNotifications from '@/components/dashboard/patient/notifications/PatientNotifications';
 import DoctorDashboard from '@/components/dashboard/doctor/DoctorDashboard';
 import ResearcherDashboard from '@/components/dashboard/researcher/ResearcherDashboard';
 import { Loader2 } from 'lucide-react';
@@ -62,7 +68,15 @@ const Dashboard = () => {
         element={
           <ProtectedRoute requiredRole="patient">
             <DashboardLayout>
-              <PatientDashboard />
+              <Routes>
+                <Route path="/" element={<PatientDashboard />} />
+                <Route path="/profile" element={<PatientProfile />} />
+                <Route path="/settings" element={<PatientSettings />} />
+                <Route path="/help" element={<PatientHelp />} />
+                <Route path="/health-tracking" element={<PatientHealthTracking />} />
+                <Route path="/ai-assistant" element={<AIHealthAssistant />} />
+                <Route path="/notifications" element={<PatientNotifications />} />
+              </Routes>
             </DashboardLayout>
           </ProtectedRoute>
         } 

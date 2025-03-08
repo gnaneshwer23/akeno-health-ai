@@ -35,20 +35,56 @@ const SidebarNavigation = () => {
   const getNavItems = () => {
     const dashboardPath = `/dashboard/${user?.role || 'patient'}`;
     
+    // Common items with proper paths for patients
     const commonItems = [
-      { icon: <Home size={20} />, label: 'Dashboard', href: dashboardPath, isActive: location.pathname === dashboardPath },
-      { icon: <User size={20} />, label: 'Profile', href: '#', isActive: false },
-      { icon: <Settings size={20} />, label: 'Settings', href: '#', isActive: false },
-      { icon: <HelpCircle size={20} />, label: 'Help', href: '#', isActive: false },
+      { 
+        icon: <Home size={20} />, 
+        label: 'Dashboard', 
+        href: dashboardPath, 
+        isActive: location.pathname === dashboardPath 
+      },
+      { 
+        icon: <User size={20} />, 
+        label: 'Profile', 
+        href: user?.role === 'patient' ? `${dashboardPath}/profile` : '#', 
+        isActive: location.pathname === `${dashboardPath}/profile`
+      },
+      { 
+        icon: <Settings size={20} />, 
+        label: 'Settings', 
+        href: user?.role === 'patient' ? `${dashboardPath}/settings` : '#', 
+        isActive: location.pathname === `${dashboardPath}/settings`
+      },
+      { 
+        icon: <HelpCircle size={20} />, 
+        label: 'Help', 
+        href: user?.role === 'patient' ? `${dashboardPath}/help` : '#', 
+        isActive: location.pathname === `${dashboardPath}/help`
+      },
     ];
 
     switch (user?.role) {
       case 'patient':
         return [
           ...commonItems,
-          { icon: <Activity size={20} />, label: 'Health Tracking', href: '#', isActive: false },
-          { icon: <MessageCircle size={20} />, label: 'AI Assistant', href: '#', isActive: false },
-          { icon: <Bell size={20} />, label: 'Notifications', href: '#', isActive: false },
+          { 
+            icon: <Activity size={20} />, 
+            label: 'Health Tracking', 
+            href: `${dashboardPath}/health-tracking`, 
+            isActive: location.pathname === `${dashboardPath}/health-tracking` 
+          },
+          { 
+            icon: <MessageCircle size={20} />, 
+            label: 'AI Assistant', 
+            href: `${dashboardPath}/ai-assistant`, 
+            isActive: location.pathname === `${dashboardPath}/ai-assistant` 
+          },
+          { 
+            icon: <Bell size={20} />, 
+            label: 'Notifications', 
+            href: `${dashboardPath}/notifications`, 
+            isActive: location.pathname === `${dashboardPath}/notifications` 
+          },
         ];
       case 'doctor':
         return [
