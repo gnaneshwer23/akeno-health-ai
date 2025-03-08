@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Brain, Lung, Heart, FileText, Eye } from 'lucide-react';
+import { Brain, FileText, Eye, Heart, AlertCircle } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -70,7 +70,7 @@ const MedicalImagingGrid = () => {
       case 'Brain':
         return <Brain size={24} className="text-purple-500" />;
       case 'Chest':
-        return <Lung size={24} className="text-blue-500" />;
+        return <AlertCircle size={24} className="text-blue-500" />;
       case 'Heart':
         return <Heart size={24} className="text-red-500" />;
       default:
