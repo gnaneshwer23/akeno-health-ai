@@ -114,5 +114,34 @@ export const securityService = {
       console.error("Error verifying access permission:", error);
       return false;
     }
+  },
+  
+  /**
+   * Generate a secure API key for external integrations
+   */
+  async generateAPIKey(userId: string, expiryDays = 30): Promise<string> {
+    try {
+      // In a real implementation, this would generate a secure random token
+      // and store it in a database with the associated user and expiry
+      const mockApiKey = `hc_${Math.random().toString(36).substring(2, 15)}_${Date.now().toString(36)}`;
+      
+      // Store the API key (would be done in a production environment)
+      console.log(`Generated API key for user ${userId} valid for ${expiryDays} days: ${mockApiKey}`);
+      
+      return mockApiKey;
+    } catch (error) {
+      console.error("Error generating API key:", error);
+      throw new Error("Failed to generate API key");
+    }
+  },
+  
+  /**
+   * Validate an API key for external requests
+   */
+  async validateAPIKey(apiKey: string): Promise<boolean> {
+    // In a real implementation, this would check the database
+    // for a valid, non-expired API key
+    // This is a mock implementation that validates the format
+    return apiKey.startsWith('hc_') && apiKey.length > 20;
   }
 };
