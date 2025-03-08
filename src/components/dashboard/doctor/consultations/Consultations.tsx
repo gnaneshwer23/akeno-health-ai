@@ -95,7 +95,7 @@ const Consultations = () => {
         </TabsList>
         
         <TabsContent value="upcoming" className="mt-6">
-          <ConsultationsList type="upcoming" />
+          <ConsultationsList status="upcoming" />
         </TabsContent>
         
         <TabsContent value="live" className="mt-6">
@@ -103,7 +103,7 @@ const Consultations = () => {
         </TabsContent>
         
         <TabsContent value="past" className="mt-6">
-          <ConsultationsList type="past" />
+          <ConsultationsList status="past" />
         </TabsContent>
         
         <TabsContent value="tools" className="mt-6">
