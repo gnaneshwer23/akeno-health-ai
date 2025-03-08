@@ -14,7 +14,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ className }) => {
   const { isActive } = useActiveLink();
   
   return (
-    <nav className={cn('flex items-center space-x-6', className)}>
+    <nav className={cn('flex items-center space-x-8', className)}>
       {navigationLinks.map((link) => (
         <div key={link.name} className="relative group">
           {link.isDropdown ? (

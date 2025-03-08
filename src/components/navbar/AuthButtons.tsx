@@ -7,7 +7,7 @@ const AuthButtons: React.FC = () => {
     <div className="hidden lg:flex items-center">
       <Link
         to="/login"
-        className="text-health-dark/80 hover:text-health-primary transition-colors text-sm font-medium px-1"
+        className="text-health-dark/80 hover:text-health-primary transition-colors text-sm font-medium ml-8"
       >
         Sign In
       </Link>

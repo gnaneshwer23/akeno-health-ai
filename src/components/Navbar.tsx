@@ -59,9 +59,7 @@ const Navbar: React.FC = () => {
         <div className="hidden lg:flex flex-1 items-center justify-center">
           <NavLinks />
         </div>
-        <div className="hidden lg:flex items-center space-x-6">
-          <AuthButtons />
-        </div>
+        <AuthButtons />
         <button
           className="lg:hidden ml-4 text-health-dark hover:text-health-primary transition-colors"
           onClick={toggleMobileMenu}
