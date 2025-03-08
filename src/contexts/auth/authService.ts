@@ -34,17 +34,31 @@ export const authService = {
       throw new Error('Email and password are required');
     }
     
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
+    console.log("Authenticating with Supabase:", { email });
     
-    if (error) {
-      console.error("Login error:", error);
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+      
+      if (error) {
+        console.error("Login error from Supabase:", error);
+        throw error;
+      }
+      
+      if (!data.user || !data.session) {
+        console.error("Login returned no user or session");
+        throw new Error("Failed to authenticate. Please try again later.");
+      }
+      
+      console.log("Authentication successful, user ID:", data.user.id);
+      return data;
+    } catch (error: any) {
+      console.error("Login error in try/catch:", error);
+      // Rethrow to be handled by the calling function
       throw error;
     }
-    
-    return data;
   },
 
   /**

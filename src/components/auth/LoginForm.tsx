@@ -31,11 +31,15 @@ const LoginForm = () => {
   // Memoize event handlers to prevent recreating functions on each render
   const handleEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-  }, []);
+    // Clear errors when user starts typing
+    if (error) setError(null);
+  }, [error]);
 
   const handlePasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-  }, []);
+    // Clear errors when user starts typing
+    if (error) setError(null);
+  }, [error]);
 
   const handleRoleSelect = useCallback((selectedRole: 'patient' | 'doctor' | 'researcher') => {
     setRole(selectedRole);
@@ -52,14 +56,38 @@ const LoginForm = () => {
     
     setIsSubmitting(true);
     try {
+      console.log("Attempting login with:", { email, rememberMe });
+      
       // Use the login function from AuthContext
       await login(email, password);
+      
+      console.log("Login successful, navigating to:", from);
       
       // Navigate to the appropriate dashboard based on role after successful login
       navigate(from, { replace: true });
     } catch (error: any) {
       console.error("Login error:", error);
-      setError(error.message || "Authentication failed");
+      
+      // Extract the most user-friendly error message
+      let errorMessage = "Authentication failed";
+      
+      if (error.message) {
+        if (error.message.includes("Invalid login credentials")) {
+          errorMessage = "Invalid email or password. Please try again.";
+        } else if (error.message.includes("Email not confirmed")) {
+          errorMessage = "Please verify your email before logging in.";
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
+      setError(errorMessage);
+      
+      toast({
+        title: "Login failed",
+        description: errorMessage,
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
