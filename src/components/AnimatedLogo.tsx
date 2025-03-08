@@ -1,7 +1,6 @@
-
 import React, { useEffect, useRef } from 'react';
 import { cn } from "@/lib/utils";
-import { User, Brain, Activity, Cpu, Atom, HeartPulse, Dna } from 'lucide-react';
+import { User, Brain, Activity, Cpu, Atom, HeartPulse, Dna, Baby } from 'lucide-react';
 
 interface AnimatedLogoProps {
   className?: string;
@@ -137,15 +136,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         <div className="relative w-full h-full flex items-center justify-center">
           <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-health-primary to-health-secondary opacity-20"></div>
           <div className="relative w-2/3 h-2/3 flex items-center justify-center">
-            <div className="relative">
-              {/* Human silhouette */}
-              <User className="w-full h-full text-health-primary" strokeWidth={1.5} />
-              {/* Health data nodes */}
-              <div className="absolute top-0 left-0 w-3 h-3 bg-health-secondary rounded-full animate-pulse" />
-              <div className="absolute top-0 right-0 w-3 h-3 bg-health-accent rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
-              <div className="absolute bottom-0 left-0 w-3 h-3 bg-health-primary rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-              <div className="absolute bottom-0 right-0 w-3 h-3 bg-health-secondary rounded-full animate-pulse" style={{ animationDelay: '0.7s' }} />
-            </div>
+            <HumanBodySilhouette />
           </div>
         </div>
       );
@@ -157,16 +148,8 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
           <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-health-primary via-health-secondary to-health-accent opacity-80"></div>
           <div className="absolute inset-0 rounded-full border-2 border-white opacity-30"></div>
           <div className="absolute inset-[15%] rounded-full bg-white opacity-90"></div>
-          <div className="relative w-1/2 h-1/2 text-health-primary flex items-center justify-center">
-            <User className="w-full h-full" strokeWidth={2} />
-            
-            {/* Connecting lines */}
-            <div className="absolute inset-0 z-10">
-              <div className="absolute top-0 right-1/4 h-[40%] w-px bg-health-primary/40" />
-              <div className="absolute top-0 left-1/4 h-[40%] w-px bg-health-secondary/40" />
-              <div className="absolute bottom-0 right-1/4 h-[40%] w-px bg-health-accent/40" />
-              <div className="absolute bottom-0 left-1/4 h-[40%] w-px bg-health-primary/40" />
-            </div>
+          <div className="relative w-3/4 h-3/4 text-health-primary flex items-center justify-center">
+            <HumanBodySilhouette />
           </div>
         </div>
       );
@@ -192,8 +175,8 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         </div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-2/5 h-2/5 flex items-center justify-center relative">
-            {/* Human at center */}
-            <User className="w-full h-full text-health-primary z-10" strokeWidth={1.5} />
+            {/* Human silhouette at center */}
+            <HumanBodySilhouette />
             
             {/* Health data and AI nodes surrounding the human */}
             <div className="absolute inset-0">
@@ -231,6 +214,45 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
           </div>
         </div>
       </>
+    );
+  };
+
+  // Human body silhouette component
+  const HumanBodySilhouette = () => {
+    return (
+      <div className="relative h-full w-full flex items-center justify-center">
+        {/* SVG for human body silhouette */}
+        <svg 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="1.5" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          className="w-full h-full text-health-primary"
+        >
+          {/* Head */}
+          <circle cx="12" cy="5" r="2.5" />
+          
+          {/* Body */}
+          <path d="M12 7.5v5" />
+          <path d="M10 10.5h4" />
+          
+          {/* Legs */}
+          <path d="M12 12.5l-2 5" />
+          <path d="M12 12.5l2 5" />
+          
+          {/* Arms */}
+          <path d="M10 10.5l-2 3" />
+          <path d="M14 10.5l2 3" />
+        </svg>
+        
+        {/* Data connection points */}
+        <div className="absolute top-1/3 left-1/3 w-1.5 h-1.5 bg-health-secondary rounded-full animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-health-accent rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute top-2/3 left-1/3 w-1.5 h-1.5 bg-health-primary rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-health-secondary rounded-full animate-pulse" style={{ animationDelay: '0.7s' }}></div>
+      </div>
     );
   };
 
