@@ -51,15 +51,17 @@ const Navbar: React.FC = () => {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 lg:px-8",
         isScrolled || location.pathname !== "/" 
           ? "py-2 bg-white shadow-sm" 
-          : "py-4 bg-white shadow-sm" // Changed from transparent to white
+          : "py-4 bg-white shadow-sm"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Brand />
-        <div className="hidden lg:flex items-center justify-center">
+        <div className="hidden lg:flex flex-1 items-center justify-center">
           <NavLinks />
         </div>
-        <AuthButtons />
+        <div className="hidden lg:flex items-center space-x-6">
+          <AuthButtons />
+        </div>
         <button
           className="lg:hidden ml-4 text-health-dark hover:text-health-primary transition-colors"
           onClick={toggleMobileMenu}
