@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Input } from "@/components/ui/input";
@@ -10,7 +10,20 @@ import { Loader2, Lock, User, Send, Shield, ArrowRight, Eye, EyeOff, Mail, Alert
 import { motion } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { supabase } from '@/integrations/supabase/client';
+
+// Animation variants - defined outside component to prevent recreation on each render
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12
+    }
+  }
+};
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -28,6 +41,23 @@ const LoginForm = () => {
   
   const from = (location.state as any)?.from?.pathname || '/dashboard';
 
+  // Memoize event handlers to prevent recreating functions on each render
+  const handleEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  }, []);
+
+  const handlePasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  }, []);
+
+  const toggleShowPassword = useCallback(() => {
+    setShowPassword(prev => !prev);
+  }, []);
+
+  const handleRoleSelect = useCallback((selectedRole: 'patient' | 'doctor' | 'researcher') => {
+    setRole(selectedRole);
+  }, []);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -42,34 +72,13 @@ const LoginForm = () => {
       // Use the login function from AuthContext
       await login(email, password);
       
-      toast({
-        title: "Login successful",
-        description: "Welcome to your AI-powered healthcare dashboard",
-      });
-      
-      // Navigate to the appropriate dashboard based on role
+      // Navigate to the appropriate dashboard based on role after successful login
       navigate(from, { replace: true });
     } catch (error: any) {
       console.error("Login error:", error);
       setError(error.message || "Authentication failed");
     } finally {
       setIsSubmitting(false);
-    }
-  };
-
-  const toggleShowPassword = () => setShowPassword(!showPassword);
-
-  // Animation variants
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12
-      }
     }
   };
 
@@ -91,7 +100,7 @@ const LoginForm = () => {
             <Button
               type="button"
               variant={role === 'patient' ? 'default' : 'outline'}
-              onClick={() => setRole('patient')}
+              onClick={() => handleRoleSelect('patient')}
               className="flex items-center justify-center gap-1"
             >
               <User size={16} />
@@ -100,7 +109,7 @@ const LoginForm = () => {
             <Button
               type="button"
               variant={role === 'doctor' ? 'default' : 'outline'}
-              onClick={() => setRole('doctor')}
+              onClick={() => handleRoleSelect('doctor')}
               className="flex items-center justify-center gap-1"
             >
               <Shield size={16} />
@@ -109,7 +118,7 @@ const LoginForm = () => {
             <Button
               type="button"
               variant={role === 'researcher' ? 'default' : 'outline'}
-              onClick={() => setRole('researcher')}
+              onClick={() => handleRoleSelect('researcher')}
               className="flex items-center justify-center gap-1"
             >
               <Send size={16} />
@@ -128,7 +137,7 @@ const LoginForm = () => {
             type="email" 
             placeholder="your.email@example.com" 
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
             required
             className="transition-all duration-300 focus:ring-2 focus:ring-health-primary/30 focus:border-health-primary shadow-sm"
           />
@@ -150,7 +159,7 @@ const LoginForm = () => {
               type={showPassword ? "text" : "password"}
               placeholder="••••••••" 
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
               required
               className="pr-10 transition-all duration-300 focus:ring-2 focus:ring-health-primary/30 focus:border-health-primary shadow-sm"
             />
@@ -206,4 +215,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default memo(LoginForm);

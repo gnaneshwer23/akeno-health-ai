@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { memo } from 'react';
 import LoginForm from '@/components/auth/LoginForm';
 import AuthLayout from '@/components/auth/AuthLayout';
 import { useAuth } from '@/contexts/AuthContext';
@@ -8,7 +8,7 @@ import { Navigate } from 'react-router-dom';
 const Login = () => {
   const { isAuthenticated } = useAuth();
 
-  // Redirect if already authenticated
+  // Early return with redirect if already authenticated
   if (isAuthenticated) {
     return <Navigate to="/dashboard" replace />;
   }
@@ -20,4 +20,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default memo(Login);
