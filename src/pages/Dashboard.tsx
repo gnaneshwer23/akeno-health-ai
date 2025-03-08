@@ -12,6 +12,12 @@ import PatientHealthTracking from '@/components/dashboard/patient/health-trackin
 import AIHealthAssistant from '@/components/dashboard/patient/ai-assistant/AIHealthAssistant';
 import PatientNotifications from '@/components/dashboard/patient/notifications/PatientNotifications';
 import DoctorDashboard from '@/components/dashboard/doctor/DoctorDashboard';
+import DoctorProfile from '@/components/dashboard/doctor/profile/DoctorProfile';
+import DoctorSettings from '@/components/dashboard/doctor/settings/DoctorSettings';
+import DoctorHelp from '@/components/dashboard/doctor/help/DoctorHelp';
+import PatientReports from '@/components/dashboard/doctor/patient-reports/PatientReports';
+import Consultations from '@/components/dashboard/doctor/consultations/Consultations';
+import DoctorAlerts from '@/components/dashboard/doctor/alerts/DoctorAlerts';
 import ResearcherDashboard from '@/components/dashboard/researcher/ResearcherDashboard';
 import { Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -86,7 +92,15 @@ const Dashboard = () => {
         element={
           <ProtectedRoute requiredRole="doctor">
             <DashboardLayout>
-              <DoctorDashboard />
+              <Routes>
+                <Route path="/" element={<DoctorDashboard />} />
+                <Route path="/profile" element={<DoctorProfile />} />
+                <Route path="/settings" element={<DoctorSettings />} />
+                <Route path="/help" element={<DoctorHelp />} />
+                <Route path="/patient-reports" element={<PatientReports />} />
+                <Route path="/consultations" element={<Consultations />} />
+                <Route path="/alerts" element={<DoctorAlerts />} />
+              </Routes>
             </DashboardLayout>
           </ProtectedRoute>
         } 

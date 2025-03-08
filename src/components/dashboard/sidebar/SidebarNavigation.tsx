@@ -9,7 +9,10 @@ import {
   MessageCircle, 
   Bell,
   Settings, 
-  HelpCircle
+  HelpCircle,
+  FileText,
+  Video,
+  ShieldAlert
 } from 'lucide-react';
 import SidebarNavItem from './SidebarNavItem';
 import { useToast } from '@/hooks/use-toast';
@@ -35,7 +38,7 @@ const SidebarNavigation = () => {
   const getNavItems = () => {
     const dashboardPath = `/dashboard/${user?.role || 'patient'}`;
     
-    // Common items with proper paths for patients
+    // Common items with proper paths for each role
     const commonItems = [
       { 
         icon: <Home size={20} />, 
@@ -46,19 +49,19 @@ const SidebarNavigation = () => {
       { 
         icon: <User size={20} />, 
         label: 'Profile', 
-        href: user?.role === 'patient' ? `${dashboardPath}/profile` : '#', 
+        href: user?.role === 'patient' ? `${dashboardPath}/profile` : `${dashboardPath}/profile`, 
         isActive: location.pathname === `${dashboardPath}/profile`
       },
       { 
         icon: <Settings size={20} />, 
         label: 'Settings', 
-        href: user?.role === 'patient' ? `${dashboardPath}/settings` : '#', 
+        href: user?.role === 'patient' ? `${dashboardPath}/settings` : `${dashboardPath}/settings`, 
         isActive: location.pathname === `${dashboardPath}/settings`
       },
       { 
         icon: <HelpCircle size={20} />, 
         label: 'Help', 
-        href: user?.role === 'patient' ? `${dashboardPath}/help` : '#', 
+        href: user?.role === 'patient' ? `${dashboardPath}/help` : `${dashboardPath}/help`, 
         isActive: location.pathname === `${dashboardPath}/help`
       },
     ];
@@ -89,9 +92,24 @@ const SidebarNavigation = () => {
       case 'doctor':
         return [
           ...commonItems,
-          { icon: <Activity size={20} />, label: 'Patient Reports', href: '#', isActive: false },
-          { icon: <MessageCircle size={20} />, label: 'Consultations', href: '#', isActive: false },
-          { icon: <Bell size={20} />, label: 'Alerts', href: '#', isActive: false },
+          { 
+            icon: <FileText size={20} />, 
+            label: 'Patient Reports', 
+            href: `${dashboardPath}/patient-reports`, 
+            isActive: location.pathname === `${dashboardPath}/patient-reports` 
+          },
+          { 
+            icon: <Video size={20} />, 
+            label: 'Consultations', 
+            href: `${dashboardPath}/consultations`, 
+            isActive: location.pathname === `${dashboardPath}/consultations` 
+          },
+          { 
+            icon: <ShieldAlert size={20} />, 
+            label: 'Alerts', 
+            href: `${dashboardPath}/alerts`, 
+            isActive: location.pathname === `${dashboardPath}/alerts` 
+          },
         ];
       case 'researcher':
         return [

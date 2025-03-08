@@ -1,0 +1,153 @@
+
+import React from 'react';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer
+} from 'recharts';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Button } from '@/components/ui/button';
+import { DownloadIcon, AlertTriangle } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import { Badge } from '@/components/ui/badge';
+
+const data = [
+  {
+    name: 'Nov 22',
+    glucose: 142,
+    cholesterol: 190,
+    triglycerides: 180,
+    hbA1c: 6.3,
+  },
+  {
+    name: 'Dec 22',
+    glucose: 138,
+    cholesterol: 188,
+    triglycerides: 175,
+    hbA1c: 6.2,
+  },
+  {
+    name: 'Jan 23',
+    glucose: 145,
+    cholesterol: 195,
+    triglycerides: 185,
+    hbA1c: 6.4,
+  },
+  {
+    name: 'Feb 23',
+    glucose: 150,
+    cholesterol: 200,
+    triglycerides: 190,
+    hbA1c: 6.5,
+  },
+  {
+    name: 'Mar 23',
+    glucose: 148,
+    cholesterol: 198,
+    triglycerides: 188,
+    hbA1c: 6.5,
+  },
+  {
+    name: 'Apr 23',
+    glucose: 155,
+    cholesterol: 210,
+    triglycerides: 200,
+    hbA1c: 6.7,
+  },
+  {
+    name: 'May 23',
+    glucose: 160,
+    cholesterol: 215,
+    triglycerides: 205,
+    hbA1c: 6.8,
+  },
+];
+
+const BiomarkerTrendsChart = () => {
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-6">
+        <div className="flex items-center gap-3">
+          <Select defaultValue="metabolic">
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Select biomarker group" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="metabolic">Metabolic Panel</SelectItem>
+              <SelectItem value="lipid">Lipid Panel</SelectItem>
+              <SelectItem value="liver">Liver Function</SelectItem>
+              <SelectItem value="kidney">Kidney Function</SelectItem>
+              <SelectItem value="inflammation">Inflammation Markers</SelectItem>
+            </SelectContent>
+          </Select>
+          <Button variant="outline" size="sm">
+            <DownloadIcon size={16} className="mr-2" />
+            Export Data
+          </Button>
+        </div>
+        <div className="flex items-center gap-2">
+          <AlertTriangle size={16} className="text-amber-500" />
+          <span className="text-sm text-amber-500 font-medium">Concerning trend detected</span>
+        </div>
+      </div>
+
+      {/* Chart */}
+      <div className="border rounded-lg p-4 mb-6">
+        <ResponsiveContainer width="100%" height={300}>
+          <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="glucose" stroke="#3b82f6" activeDot={{ r: 8 }} name="Glucose (mg/dL)" />
+            <Line type="monotone" dataKey="cholesterol" stroke="#10b981" name="Cholesterol (mg/dL)" />
+            <Line type="monotone" dataKey="triglycerides" stroke="#f59e0b" name="Triglycerides (mg/dL)" />
+            <Line type="monotone" dataKey="hbA1c" stroke="#ef4444" name="HbA1c (%)" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* AI Insights */}
+      <div className="bg-muted p-4 rounded-lg">
+        <h3 className="text-sm font-medium mb-2">AI Analysis Insights</h3>
+        <Separator className="mb-3" />
+        <div className="space-y-3">
+          <div className="flex items-start gap-2">
+            <AlertTriangle size={16} className="text-amber-500 mt-0.5" />
+            <div>
+              <h4 className="text-sm font-medium">Glucose Trend</h4>
+              <p className="text-sm text-muted-foreground">Rising pattern in fasting glucose (142 → 160 mg/dL) over 6 months indicates worsening glycemic control.</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <AlertTriangle size={16} className="text-amber-500 mt-0.5" />
+            <div>
+              <h4 className="text-sm font-medium">HbA1c Concern</h4>
+              <p className="text-sm text-muted-foreground">HbA1c increasing from 6.3% to 6.8%, suggesting prediabetic progression. Recommend lifestyle intervention.</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <AlertTriangle size={16} className="text-amber-500 mt-0.5" />
+            <div>
+              <h4 className="text-sm font-medium">Lipid Profile</h4>
+              <p className="text-sm text-muted-foreground">Cholesterol and triglycerides showing upward trajectory. Consider statin therapy evaluation.</p>
+            </div>
+          </div>
+        </div>
+        <Separator className="my-3" />
+        <div className="flex items-center justify-between">
+          <Badge variant="outline" className="text-xs">Generated by AI Health Model v2.4</Badge>
+          <Button variant="ghost" size="sm">View Full Analysis</Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BiomarkerTrendsChart;
