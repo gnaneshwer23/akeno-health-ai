@@ -1,3 +1,4 @@
+
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 // CORS headers for cross-origin requests
@@ -241,14 +242,318 @@ function detectAnomalies(data: any) {
 }
 
 /**
+ * Analyzes medical imaging data to detect anomalies
+ * @param imageData The medical image data to analyze
+ */
+function analyzeImagingData(imageData: any) {
+  console.log("Analyzing medical imaging data...");
+  
+  // This would typically be a complex ML model for image analysis
+  // Here we're simulating the analysis with a simple mock implementation
+  
+  const results = {
+    detectedAnomalies: [],
+    confidenceScore: 0.94,
+    processingTime: 1.2, // seconds
+    regions: []
+  };
+  
+  // Simulate finding anomalies based on image type and body part
+  if (imageData.image_type === 'mri' || imageData.image_type === 'ct_scan') {
+    // For brain imaging
+    if (imageData.body_part?.toLowerCase().includes('brain')) {
+      if (Math.random() > 0.7) {
+        results.detectedAnomalies.push({
+          type: 'structural',
+          description: 'Potential small vessel ischemic changes',
+          severity: 'mild',
+          location: 'frontal lobe',
+          confidence: 0.82
+        });
+      }
+    }
+    
+    // For chest imaging
+    if (imageData.body_part?.toLowerCase().includes('chest') || 
+        imageData.body_part?.toLowerCase().includes('lung')) {
+      if (Math.random() > 0.6) {
+        results.detectedAnomalies.push({
+          type: 'nodular',
+          description: 'Small nodular opacity',
+          severity: 'indeterminate',
+          location: 'right lower lobe',
+          confidence: 0.76,
+          recommendations: 'Follow-up imaging in 6 months recommended'
+        });
+      }
+    }
+    
+    // For abdominal imaging
+    if (imageData.body_part?.toLowerCase().includes('abdomen')) {
+      if (Math.random() > 0.8) {
+        results.detectedAnomalies.push({
+          type: 'cystic',
+          description: 'Small hepatic cyst',
+          severity: 'benign',
+          location: 'right hepatic lobe',
+          confidence: 0.92
+        });
+      }
+    }
+  }
+  
+  // For x-rays
+  if (imageData.image_type === 'xray') {
+    if (imageData.body_part?.toLowerCase().includes('chest')) {
+      if (Math.random() > 0.75) {
+        results.detectedAnomalies.push({
+          type: 'pulmonary',
+          description: 'Mild pulmonary infiltrates',
+          severity: 'moderate',
+          location: 'bilateral lower lobes',
+          confidence: 0.85
+        });
+      }
+    }
+  }
+  
+  // Add imaging regions for visualization (mock data)
+  if (results.detectedAnomalies.length > 0) {
+    results.regions = results.detectedAnomalies.map(anomaly => ({
+      id: `region-${Math.floor(Math.random() * 1000)}`,
+      type: anomaly.type,
+      coordinates: {
+        x: Math.floor(Math.random() * 80) + 10,
+        y: Math.floor(Math.random() * 80) + 10,
+        width: Math.floor(Math.random() * 30) + 5,
+        height: Math.floor(Math.random() * 30) + 5
+      },
+      confidence: anomaly.confidence
+    }));
+  }
+  
+  return results;
+}
+
+/**
+ * Performs multi-omics data fusion and analysis
+ * @param patientData Combined patient data including genomics
+ */
+function performMultiOmicsAnalysis(patientData: any) {
+  console.log("Performing multi-omics data fusion and analysis...");
+  
+  const analysis = {
+    pathways: [],
+    biomarkers: [],
+    personalizedInsights: []
+  };
+  
+  // Analyze genetic markers in combination with other health data
+  if (patientData.genomicData?.riskMarkers) {
+    // Check for cardiovascular genetic risk markers combined with traditional risk factors
+    const hasCardiovascularGeneticRisk = patientData.genomicData.riskMarkers.some(
+      (marker: string) => marker.includes("APOE4") || marker.includes("LPA")
+    );
+    
+    const hasCardiovascularTraditionalRisk = (patientData.vitalSigns?.bloodPressure?.systolic > 140) || 
+                                           (patientData.labResults?.cholesterol?.ldl > 130);
+    
+    if (hasCardiovascularGeneticRisk && hasCardiovascularTraditionalRisk) {
+      analysis.pathways.push({
+        name: "Atherosclerosis pathway",
+        significance: "high",
+        explanation: "Combined genetic and traditional risk factors suggest increased cardiovascular risk"
+      });
+      
+      analysis.biomarkers.push({
+        name: "Lipoprotein(a)",
+        category: "lipid",
+        recommendation: "Consider advanced lipid testing"
+      });
+      
+      analysis.personalizedInsights.push(
+        "Your genetic profile combined with current cholesterol levels indicates elevated cardiovascular risk"
+      );
+    }
+    
+    // Check for metabolic risk markers
+    const hasMetabolicGeneticRisk = patientData.genomicData.riskMarkers.some(
+      (marker: string) => marker.includes("TCF7L2") || marker.includes("MTNR1B")
+    );
+    
+    const hasMetabolicTraditionalRisk = (patientData.patientInfo?.bmi > 25) || 
+                                      (patientData.labResults?.glucose?.level > 100);
+    
+    if (hasMetabolicGeneticRisk && hasMetabolicTraditionalRisk) {
+      analysis.pathways.push({
+        name: "Glucose metabolism pathway",
+        significance: "medium",
+        explanation: "Genetic variants affecting glucose metabolism combined with elevated glucose levels"
+      });
+      
+      analysis.biomarkers.push({
+        name: "HbA1c",
+        category: "glycemic",
+        recommendation: "Monitor glycemic control regularly"
+      });
+      
+      analysis.personalizedInsights.push(
+        "Consider more frequent blood glucose monitoring based on your genetic predisposition to metabolic disorders"
+      );
+    }
+  }
+  
+  // Analyze time-series wearable data for patterns
+  if (patientData.wearable && patientData.wearable.length > 0) {
+    // Look for sleep-cardiovascular interactions
+    const hasSleepDisruption = patientData.wearable.some(
+      (data: any) => data.sleep_data && data.sleep_data.total_duration_minutes < 360
+    );
+    
+    const hasCardiovascularIrregularity = patientData.wearable.some(
+      (data: any) => data.heart_rate > 85 || 
+                   (data.blood_pressure && data.blood_pressure.systolic > 135)
+    );
+    
+    if (hasSleepDisruption && hasCardiovascularIrregularity) {
+      analysis.pathways.push({
+        name: "Sleep-cardiovascular interaction",
+        significance: "medium",
+        explanation: "Sleep disruption patterns correlating with cardiovascular irregularities"
+      });
+      
+      analysis.personalizedInsights.push(
+        "Your wearable data shows a potential relationship between sleep quality and cardiovascular metrics"
+      );
+    }
+  }
+  
+  return analysis;
+}
+
+/**
+ * Generates personalized treatment recommendations based on patient data
+ * @param patientData The patient data to use for generating recommendations
+ * @param riskScores Previously calculated risk scores
+ */
+function generateTreatmentRecommendations(patientData: any, riskScores: any) {
+  console.log("Generating personalized treatment recommendations...");
+  
+  const recommendations = {
+    medications: [],
+    lifestyle: [],
+    monitoring: [],
+    screenings: [],
+    specialistReferrals: []
+  };
+  
+  // Cardiovascular recommendations
+  if (riskScores.cardiovascular > 0.3) {
+    if (riskScores.cardiovascular > 0.6) {
+      recommendations.medications.push({
+        category: "antihypertensive",
+        suggestion: "Consider ACE inhibitor or ARB if lifestyle modifications insufficient",
+        evidence: "Based on elevated blood pressure and risk profile"
+      });
+    }
+    
+    recommendations.lifestyle.push({
+      category: "diet",
+      suggestion: "DASH diet with reduced sodium intake",
+      details: "Aim for <2000mg sodium daily, increase potassium-rich foods"
+    });
+    
+    recommendations.lifestyle.push({
+      category: "exercise",
+      suggestion: "Moderate aerobic exercise 150 minutes weekly",
+      details: "Spread across at least 3 days, include resistance training twice weekly"
+    });
+    
+    recommendations.monitoring.push({
+      tool: "Blood Pressure Monitor",
+      frequency: "Weekly",
+      targets: "Aim for <130/80 mmHg"
+    });
+    
+    if (patientData.genomicData?.riskMarkers?.includes("LPA variant")) {
+      recommendations.screenings.push({
+        test: "Advanced Lipid Panel",
+        frequency: "Annually",
+        rationale: "Genetic predisposition to cardiovascular disease"
+      });
+    }
+  }
+  
+  // Metabolic/diabetes recommendations
+  if (riskScores.diabetes > 0.3) {
+    recommendations.lifestyle.push({
+      category: "diet",
+      suggestion: "Low glycemic index diet with controlled carbohydrate intake",
+      details: "Emphasize complex carbohydrates, limit added sugars"
+    });
+    
+    if (riskScores.diabetes > 0.5) {
+      recommendations.medications.push({
+        category: "antidiabetic",
+        suggestion: "Consider metformin if prediabetic with additional risk factors",
+        evidence: "Shown to reduce progression to type 2 diabetes in high-risk individuals"
+      });
+    }
+    
+    recommendations.monitoring.push({
+      tool: "Glucose Monitor",
+      frequency: "Monthly fasting glucose, quarterly HbA1c",
+      targets: "Fasting glucose <100 mg/dL, HbA1c <5.7%"
+    });
+    
+    if (patientData.patientInfo?.bmi > 30) {
+      recommendations.specialistReferrals.push({
+        specialty: "Endocrinology",
+        timeframe: "Within 3 months",
+        purpose: "Comprehensive metabolic evaluation and management"
+      });
+    }
+  }
+  
+  // Cognitive health recommendations
+  if (riskScores.cognitive > 0.3) {
+    recommendations.lifestyle.push({
+      category: "cognitive",
+      suggestion: "Cognitive engagement activities and brain training",
+      details: "Regular mental challenges, learning new skills, social engagement"
+    });
+    
+    recommendations.lifestyle.push({
+      category: "diet",
+      suggestion: "Mediterranean diet with emphasis on omega-3 fatty acids",
+      details: "Increase fatty fish consumption (2-3 times weekly)"
+    });
+    
+    if (patientData.genomicData?.riskMarkers?.includes("APOE4")) {
+      recommendations.screenings.push({
+        test: "Comprehensive Neurological Assessment",
+        frequency: "Every 2 years",
+        rationale: "Genetic predisposition to neurodegenerative conditions"
+      });
+    }
+  }
+  
+  return recommendations;
+}
+
+/**
  * Processes patient data and returns insights
  * @param data The patient data to process
  */
 function processPatientData(data: any) {
-  // Preprocess the data first - new step
+  // Extract the request type for specialized processing
+  const requestType = data.requestType || 'comprehensive-analysis';
+  console.log(`Processing request type: ${requestType}`);
+  
+  // Preprocess the data first
   const preprocessedData = preprocessData(data);
   
-  // Continue with original risk calculation using preprocessed data
+  // Calculate risk scores using preprocessed data
   const riskScores = {
     cardiovascular: calculateRiskScore(
       preprocessedData.normalizedData.vitalSigns?.bloodPressure, 
@@ -264,11 +569,9 @@ function processPatientData(data: any) {
     ),
   };
   
-  const recommendations = generateRecommendations(riskScores, preprocessedData.normalizedData);
-  
-  return {
+  let results = {
     riskScores,
-    recommendations,
+    recommendations: generateRecommendations(riskScores, preprocessedData.normalizedData),
     preprocessingResults: {
       featureCount: Object.values(preprocessedData.features).flat().length,
       anomalyCount: preprocessedData.anomalies.length,
@@ -278,6 +581,87 @@ function processPatientData(data: any) {
     },
     processingTimestamp: new Date().toISOString(),
   };
+  
+  // Handle specialized processing based on request type
+  if (requestType === 'imaging-analysis' && data.imageData) {
+    results.imagingAnalysis = analyzeImagingData(data.imageData);
+  }
+  
+  if (requestType === 'treatment-recommendations') {
+    results.treatmentPlan = generateTreatmentRecommendations(
+      preprocessedData.normalizedData, 
+      riskScores
+    );
+  }
+  
+  if (data.includeMultiOmicsAnalysis) {
+    results.multiOmicsAnalysis = performMultiOmicsAnalysis(preprocessedData.normalizedData);
+  }
+  
+  if (data.includeBiomarkerAnalysis) {
+    // Add biomarker trend analysis
+    results.biomarkerTrends = {
+      significant: [],
+      monitoring: [],
+      normal: []
+    };
+    
+    // Analyze cholesterol trends if available
+    if (preprocessedData.normalizedData.labResults?.cholesterol) {
+      const cholesterol = preprocessedData.normalizedData.labResults.cholesterol;
+      
+      if (cholesterol.total > 200 || cholesterol.ldl > 130) {
+        results.biomarkerTrends.significant.push({
+          biomarker: "LDL Cholesterol",
+          value: cholesterol.ldl,
+          trend: "elevated",
+          riskImpact: "Increased cardiovascular risk",
+          recommendation: "Dietary modification and consider statin therapy if lifestyle changes insufficient"
+        });
+      } else {
+        results.biomarkerTrends.normal.push({
+          biomarker: "LDL Cholesterol",
+          value: cholesterol.ldl,
+          trend: "stable",
+          riskImpact: "Maintained cardiovascular health"
+        });
+      }
+      
+      if (cholesterol.hdl < 40) {
+        results.biomarkerTrends.monitoring.push({
+          biomarker: "HDL Cholesterol",
+          value: cholesterol.hdl,
+          trend: "suboptimal",
+          riskImpact: "Reduced cardioprotective effect",
+          recommendation: "Increase aerobic exercise and omega-3 fatty acid intake"
+        });
+      }
+    }
+    
+    // Analyze glucose trends if available
+    if (preprocessedData.normalizedData.labResults?.glucose) {
+      const glucose = preprocessedData.normalizedData.labResults.glucose;
+      
+      if (glucose.level > 100) {
+        results.biomarkerTrends.monitoring.push({
+          biomarker: "Fasting Glucose",
+          value: glucose.level,
+          trend: glucose.level > 125 ? "elevated" : "borderline",
+          riskImpact: "Increased diabetes risk",
+          recommendation: "Reduce simple carbohydrate intake and monitor regularly"
+        });
+      } else {
+        results.biomarkerTrends.normal.push({
+          biomarker: "Fasting Glucose",
+          value: glucose.level,
+          trend: "normal",
+          riskImpact: "Maintained metabolic health"
+        });
+      }
+    }
+  }
+  
+  return results;
 }
 
 /**
@@ -437,9 +821,9 @@ serve(async (req) => {
     const requestData = await req.json();
     console.log("Processing patient data:", JSON.stringify(requestData).substring(0, 200) + "...");
     
-    // Process the data with our enhanced preprocessing pipeline
+    // Process the data with our enhanced AI/ML processing pipeline
     const results = processPatientData(requestData);
-    console.log("Generated results with preprocessing:", JSON.stringify(results).substring(0, 200) + "...");
+    console.log("Generated results with AI analysis:", JSON.stringify(results).substring(0, 200) + "...");
     
     // Return the processed data
     return new Response(

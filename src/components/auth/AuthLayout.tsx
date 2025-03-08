@@ -5,7 +5,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import AuthCard from './AuthCard';
 
-const AuthLayout = () => {
+const AuthLayout = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -15,7 +15,7 @@ const AuthLayout = () => {
           <AuthCard 
             title="Welcome"
           >
-            {/* Auth form content will be inserted as children by the parent component */}
+            {children}
           </AuthCard>
           
           <motion.div 
