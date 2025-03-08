@@ -1,23 +1,75 @@
 
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, UserPlus } from 'lucide-react';
+import { User, UserPlus, Database } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import { useAuth } from '@/contexts/AuthContext';
+import { useDemoData } from '@/utils/demoData';
+import { useToast } from '@/hooks/use-toast';
 
 const AuthCard = () => {
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const { signup } = useAuth();
+  const { loadDemoData } = useDemoData();
+  const { toast } = useToast();
 
   // Handle successful registration
   const handleSuccessfulRegistration = async (email: string, password: string) => {
     setRegisterEmail(email);
     setRegisterPassword(password);
     setActiveTab('login');
+  };
+
+  // Handle loading demo data
+  const handleLoadDemoData = async () => {
+    try {
+      setLoading(true);
+      
+      // Generate a random email and password for demo account
+      const randomId = Math.floor(Math.random() * 1000000);
+      const email = `demo${randomId}@akeno.health`;
+      const password = `demo${randomId}`;
+      
+      // Register the demo account
+      await signup(email, password);
+      
+      toast({
+        title: 'Demo Account Created',
+        description: 'Logging you in and preparing your demo data...',
+      });
+      
+      // Wait a moment for sign up to complete and trigger auth state change
+      setTimeout(async () => {
+        try {
+          // Load demo data for the new account
+          await loadDemoData();
+        } catch (err) {
+          console.error('Error loading demo data:', err);
+          toast({
+            title: 'Error',
+            description: 'Error loading demo data. Please try again.',
+            variant: 'destructive',
+          });
+        } finally {
+          setLoading(false);
+        }
+      }, 2000);
+      
+    } catch (error) {
+      console.error('Error setting up demo account:', error);
+      toast({
+        title: 'Error',
+        description: 'Could not create demo account. Please try again.',
+        variant: 'destructive',
+      });
+      setLoading(false);
+    }
   };
 
   // Animation variants
@@ -96,6 +148,24 @@ const AuthCard = () => {
         <TabsContent value="register" className="space-y-6">
           <RegisterForm />
         </TabsContent>
+        
+        <motion.div className="mt-6 pt-6 border-t" variants={itemVariants}>
+          <div className="text-center mb-4">
+            <p className="text-sm text-muted-foreground">
+              Want to explore without creating an account?
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            className="w-full flex items-center justify-center gap-2 border-health-primary/30 hover:bg-health-primary/5"
+            onClick={handleLoadDemoData}
+            disabled={loading}
+          >
+            <Database size={16} />
+            <span>Try Demo Account</span>
+            {loading && <span className="ml-2 size-4 rounded-full border-2 border-t-transparent border-health-primary animate-spin"></span>}
+          </Button>
+        </motion.div>
         
         <motion.div className="text-center mt-6" variants={itemVariants}>
           <p className="text-sm text-muted-foreground">

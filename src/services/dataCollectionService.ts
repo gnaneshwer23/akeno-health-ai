@@ -1,70 +1,66 @@
 
-import { supabase } from '@/integrations/supabase/client';
-import { Json } from '@/integrations/supabase/types';
-import {
-  PatientType,
-  ElectronicHealthRecordType,
-  WearableDataType,
-  GenomicDataType,
-  MedicalImageType,
-} from '@/types/supabase-types';
-import {
-  standardizePatientData,
-  standardizeEHRData,
-  standardizeWearableData,
-  standardizeGenomicData,
-  standardizeMedicalImageData,
-  extractStructuredData
-} from './dataStandardizationService';
+import { supabase } from "@/integrations/supabase/client";
+import { 
+  PatientType, 
+  ElectronicHealthRecordType, 
+  WearableDataType, 
+  GenomicDataType, 
+  MedicalImageType 
+} from "@/types/supabase-types";
+import { Json } from "@/integrations/supabase/types";
 
-// Define form data types to match our component needs
-type PatientProfileFormData = Omit<PatientType, 'id' | 'created_at' | 'updated_at'>;
-type ElectronicHealthRecordFormData = Omit<ElectronicHealthRecordType, 'id' | 'created_at' | 'updated_at'>;
-type WearableDataFormData = Omit<WearableDataType, 'id' | 'created_at'>;
-type GenomicDataFormData = Omit<GenomicDataType, 'id' | 'created_at' | 'updated_at'>;
-type MedicalImageFormData = Omit<MedicalImageType, 'id' | 'created_at' | 'updated_at'>;
+// Define form data types
+type PatientProfileFormData = Omit<PatientType, 'id' | 'created_at' | 'updated_at'> & {
+  date_of_birth: Date;
+};
+
+type ElectronicHealthRecordFormData = Omit<ElectronicHealthRecordType, 'id' | 'created_at' | 'updated_at'> & {
+  record_date: Date;
+};
+
+type WearableDataFormData = Omit<WearableDataType, 'id' | 'created_at'> & {
+  recorded_at: Date;
+};
+
+type GenomicDataFormData = Omit<GenomicDataType, 'id' | 'created_at' | 'updated_at'> & {
+  collection_date: Date;
+};
+
+type MedicalImageFormData = Omit<MedicalImageType, 'id' | 'created_at' | 'updated_at'> & {
+  image_date: Date;
+};
 
 // Function to submit patient profile data
 const submitPatientProfile = async (
   patientData: PatientProfileFormData
 ): Promise<PatientType | null> => {
   try {
-    const { data: userData, error: userError } = await supabase.auth.getUser();
-    if (userError || !userData.user) {
-      console.error('Authentication error:', userError);
-      return null;
-    }
-
-    // Standardize data for AI processing
-    const standardizedData = standardizePatientData(patientData);
-    console.log('Standardized patient data:', standardizedData);
-
-    // Convert Date to ISO string for Supabase
-    const formattedPatientData = {
+    // Convert Date objects to ISO strings for Supabase
+    const formattedData = {
       ...patientData,
-      user_id: userData.user.id,
-      date_of_birth: patientData.date_of_birth.toISOString().split('T')[0]
+      date_of_birth: patientData.date_of_birth.toISOString().split('T')[0], // Format as YYYY-MM-DD
     };
 
-    // Insert patient data into the database
     const { data, error } = await supabase
       .from('patients')
-      .insert(formattedPatientData)
+      .insert(formattedData)
       .select()
       .single();
 
-    if (error) throw error;
+    if (error) {
+      console.error('Error submitting patient profile:', error);
+      return null;
+    }
 
-    // Convert date string back to Date object for our app
+    // Convert string dates back to Date objects for frontend use
     return {
       ...data,
       date_of_birth: new Date(data.date_of_birth),
       created_at: new Date(data.created_at),
-      updated_at: new Date(data.updated_at)
+      updated_at: new Date(data.updated_at),
     } as PatientType;
-
   } catch (error) {
-    console.error('Error submitting patient profile:', error);
+    console.error('Error in submitPatientProfile:', error);
     return null;
   }
 };
@@ -74,7 +70,7 @@ const getPatientProfile = async (): Promise<PatientType | null> => {
   try {
     const { data: userData, error: userError } = await supabase.auth.getUser();
     if (userError || !userData.user) {
-      console.error('Authentication error:', userError);
+      console.error('Error getting user:', userError);
       return null;
     }
 
@@ -84,18 +80,20 @@ const getPatientProfile = async (): Promise<PatientType | null> => {
       .eq('user_id', userData.user.id)
       .single();
 
-    if (error) throw error;
-    if (!data) return null;
+    if (error) {
+      console.error('Error getting patient profile:', error);
+      return null;
+    }
 
+    // Convert string dates to Date objects
     return {
       ...data,
       date_of_birth: new Date(data.date_of_birth),
       created_at: new Date(data.created_at),
-      updated_at: new Date(data.updated_at)
+      updated_at: new Date(data.updated_at),
     } as PatientType;
-
   } catch (error) {
-    console.error('Error getting patient profile:', error);
+    console.error('Error in getPatientProfile:', error);
     return null;
   }
 };
@@ -105,42 +103,32 @@ const submitEHRData = async (
   ehrData: ElectronicHealthRecordFormData
 ): Promise<ElectronicHealthRecordType | null> => {
   try {
-    // Process unstructured data in physician notes if present
-    if (ehrData.physician_notes) {
-      const structuredNotes = extractStructuredData(ehrData.physician_notes);
-      console.log('Extracted structured data from notes:', structuredNotes);
-      // Could update ehrData with extracted information here
-    }
-
-    // Standardize data for AI processing
-    const standardizedData = standardizeEHRData(ehrData);
-    console.log('Standardized EHR data:', standardizedData);
-
-    // Convert Date to ISO string for Supabase
-    const formattedEhrData = {
+    // Convert Date objects to ISO strings for Supabase
+    const formattedData = {
       ...ehrData,
-      record_date: ehrData.record_date.toISOString().split('T')[0]
+      record_date: ehrData.record_date.toISOString(),
     };
 
-    // Insert EHR data into the database
     const { data, error } = await supabase
       .from('electronic_health_records')
-      .insert(formattedEhrData)
+      .insert(formattedData)
       .select()
       .single();
 
-    if (error) throw error;
+    if (error) {
+      console.error('Error submitting EHR data:', error);
+      return null;
+    }
 
-    // Convert date string back to Date object for our app
+    // Convert string dates back to Date objects
     return {
       ...data,
       record_date: new Date(data.record_date),
       created_at: new Date(data.created_at),
-      updated_at: new Date(data.updated_at)
+      updated_at: new Date(data.updated_at),
     } as ElectronicHealthRecordType;
-
   } catch (error) {
-    console.error('Error submitting EHR data:', error);
+    console.error('Error in submitEHRData:', error);
     return null;
   }
 };
@@ -151,20 +139,23 @@ const getEHRData = async (patientId: string): Promise<ElectronicHealthRecordType
     const { data, error } = await supabase
       .from('electronic_health_records')
       .select('*')
-      .eq('patient_id', patientId);
+      .eq('patient_id', patientId)
+      .order('record_date', { ascending: false });
 
-    if (error) throw error;
-    if (!data) return null;
+    if (error) {
+      console.error('Error getting EHR data:', error);
+      return null;
+    }
 
+    // Convert string dates to Date objects for each record
     return data.map(record => ({
       ...record,
       record_date: new Date(record.record_date),
       created_at: new Date(record.created_at),
-      updated_at: new Date(record.updated_at)
+      updated_at: new Date(record.updated_at),
     })) as ElectronicHealthRecordType[];
-
   } catch (error) {
-    console.error('Error getting EHR data:', error);
+    console.error('Error in getEHRData:', error);
     return null;
   }
 };
@@ -174,34 +165,31 @@ const submitWearableData = async (
   wearableData: WearableDataFormData
 ): Promise<WearableDataType | null> => {
   try {
-    // Standardize data for AI processing
-    const standardizedData = standardizeWearableData(wearableData);
-    console.log('Standardized wearable data:', standardizedData);
-
-    // Convert Date to ISO string for Supabase
-    const formattedWearableData = {
+    // Convert Date objects to ISO strings for Supabase
+    const formattedData = {
       ...wearableData,
-      recorded_at: wearableData.recorded_at.toISOString()
+      recorded_at: wearableData.recorded_at.toISOString(),
     };
 
-    // Insert wearable data into the database
     const { data, error } = await supabase
       .from('wearable_data')
-      .insert(formattedWearableData)
+      .insert(formattedData)
       .select()
       .single();
 
-    if (error) throw error;
+    if (error) {
+      console.error('Error submitting wearable data:', error);
+      return null;
+    }
 
-    // Convert date string back to Date object for our app
+    // Convert string dates back to Date objects
     return {
       ...data,
       recorded_at: new Date(data.recorded_at),
-      created_at: new Date(data.created_at)
+      created_at: new Date(data.created_at),
     } as WearableDataType;
-
   } catch (error) {
-    console.error('Error submitting wearable data:', error);
+    console.error('Error in submitWearableData:', error);
     return null;
   }
 };
@@ -212,19 +200,22 @@ const getWearableData = async (patientId: string): Promise<WearableDataType[] | 
     const { data, error } = await supabase
       .from('wearable_data')
       .select('*')
-      .eq('patient_id', patientId);
+      .eq('patient_id', patientId)
+      .order('recorded_at', { ascending: false });
 
-    if (error) throw error;
-    if (!data) return null;
+    if (error) {
+      console.error('Error getting wearable data:', error);
+      return null;
+    }
 
+    // Convert string dates to Date objects for each record
     return data.map(record => ({
       ...record,
       recorded_at: new Date(record.recorded_at),
-      created_at: new Date(record.created_at)
+      created_at: new Date(record.created_at),
     })) as WearableDataType[];
-
   } catch (error) {
-    console.error('Error getting wearable data:', error);
+    console.error('Error in getWearableData:', error);
     return null;
   }
 };
@@ -234,35 +225,32 @@ const submitGenomicData = async (
   genomicData: GenomicDataFormData
 ): Promise<GenomicDataType | null> => {
   try {
-    // Standardize data for AI processing
-    const standardizedData = standardizeGenomicData(genomicData);
-    console.log('Standardized genomic data:', standardizedData);
-
-    // Convert Date to ISO string for Supabase
-    const formattedGenomicData = {
+    // Convert Date objects to ISO strings for Supabase
+    const formattedData = {
       ...genomicData,
-      collection_date: genomicData.collection_date.toISOString().split('T')[0]
+      collection_date: genomicData.collection_date.toISOString(),
     };
 
-    // Insert genomic data into the database
     const { data, error } = await supabase
       .from('genomic_data')
-      .insert(formattedGenomicData)
+      .insert(formattedData)
       .select()
       .single();
 
-    if (error) throw error;
+    if (error) {
+      console.error('Error submitting genomic data:', error);
+      return null;
+    }
 
-    // Convert date string back to Date object for our app
+    // Convert string dates back to Date objects
     return {
       ...data,
       collection_date: new Date(data.collection_date),
       created_at: new Date(data.created_at),
-      updated_at: new Date(data.updated_at)
+      updated_at: new Date(data.updated_at),
     } as GenomicDataType;
-
   } catch (error) {
-    console.error('Error submitting genomic data:', error);
+    console.error('Error in submitGenomicData:', error);
     return null;
   }
 };
@@ -273,20 +261,23 @@ const getGenomicData = async (patientId: string): Promise<GenomicDataType[] | nu
     const { data, error } = await supabase
       .from('genomic_data')
       .select('*')
-      .eq('patient_id', patientId);
+      .eq('patient_id', patientId)
+      .order('collection_date', { ascending: false });
 
-    if (error) throw error;
-    if (!data) return null;
+    if (error) {
+      console.error('Error getting genomic data:', error);
+      return null;
+    }
 
+    // Convert string dates to Date objects for each record
     return data.map(record => ({
       ...record,
       collection_date: new Date(record.collection_date),
       created_at: new Date(record.created_at),
-      updated_at: new Date(record.updated_at)
+      updated_at: new Date(record.updated_at),
     })) as GenomicDataType[];
-
   } catch (error) {
-    console.error('Error getting genomic data:', error);
+    console.error('Error in getGenomicData:', error);
     return null;
   }
 };
@@ -296,35 +287,32 @@ const submitMedicalImageData = async (
   imageData: MedicalImageFormData
 ): Promise<MedicalImageType | null> => {
   try {
-    // Standardize data for AI processing
-    const standardizedData = standardizeMedicalImageData(imageData);
-    console.log('Standardized medical image data:', standardizedData);
-
-    // Convert Date to ISO string for Supabase
-    const formattedImageData = {
+    // Convert Date objects to ISO strings for Supabase
+    const formattedData = {
       ...imageData,
-      image_date: imageData.image_date.toISOString().split('T')[0]
+      image_date: imageData.image_date.toISOString(),
     };
 
-    // Insert medical image data into the database
     const { data, error } = await supabase
       .from('medical_images')
-      .insert(formattedImageData)
+      .insert(formattedData)
       .select()
       .single();
 
-    if (error) throw error;
+    if (error) {
+      console.error('Error submitting medical image data:', error);
+      return null;
+    }
 
-    // Convert date string back to Date object for our app
+    // Convert string dates back to Date objects
     return {
       ...data,
       image_date: new Date(data.image_date),
       created_at: new Date(data.created_at),
-      updated_at: new Date(data.updated_at)
+      updated_at: new Date(data.updated_at),
     } as MedicalImageType;
-
   } catch (error) {
-    console.error('Error submitting medical image data:', error);
+    console.error('Error in submitMedicalImageData:', error);
     return null;
   }
 };
@@ -335,20 +323,23 @@ const getMedicalImageData = async (patientId: string): Promise<MedicalImageType[
     const { data, error } = await supabase
       .from('medical_images')
       .select('*')
-      .eq('patient_id', patientId);
+      .eq('patient_id', patientId)
+      .order('image_date', { ascending: false });
 
-    if (error) throw error;
-    if (!data) return null;
+    if (error) {
+      console.error('Error getting medical image data:', error);
+      return null;
+    }
 
+    // Convert string dates to Date objects for each record
     return data.map(record => ({
       ...record,
       image_date: new Date(record.image_date),
       created_at: new Date(record.created_at),
-      updated_at: new Date(record.updated_at)
+      updated_at: new Date(record.updated_at),
     })) as MedicalImageType[];
-
   } catch (error) {
-    console.error('Error getting medical image data:', error);
+    console.error('Error in getMedicalImageData:', error);
     return null;
   }
 };

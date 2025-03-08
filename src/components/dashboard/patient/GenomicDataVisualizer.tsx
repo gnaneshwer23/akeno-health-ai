@@ -1,181 +1,120 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Dna, Activity, FileSpreadsheet } from 'lucide-react';
 import { 
-  PieChart, 
-  Pie, 
-  Cell, 
-  ResponsiveContainer, 
-  Tooltip, 
-  Legend,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid
-} from 'recharts';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
+  Card, 
+  CardContent, 
+  CardDescription, 
+  CardHeader, 
+  CardTitle 
+} from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { 
+  Table, 
+  TableBody, 
+  TableCell, 
+  TableHead, 
+  TableHeader, 
+  TableRow 
+} from '@/components/ui/table';
 import { GenomicDataType } from '@/types/supabase-types';
 import { dataCollectionService } from '@/services/dataCollectionService';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Badge } from '@/components/ui/badge';
-import { Dna, AlertCircle } from 'lucide-react';
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
-
-const GenomicDataVisualizer: React.FC = () => {
-  const [genomicData, setGenomicData] = useState<GenomicDataType[]>([]);
-  const [activeView, setActiveView] = useState('overview');
-  const [isLoading, setIsLoading] = useState(true);
+const GenomicDataVisualizer = ({ patientId }: { patientId: string }) => {
+  const [genomicData, setGenomicData] = useState<GenomicDataType[] | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchGenomicData = async () => {
       try {
-        setIsLoading(true);
-        const data = await dataCollectionService.getGenomicData();
+        setLoading(true);
+        const data = await dataCollectionService.getGenomicData(patientId);
         setGenomicData(data);
-      } catch (error) {
-        console.error('Error fetching genomic data:', error);
+      } catch (err) {
+        console.error('Error fetching genomic data:', err);
+        setError('Failed to load genomic data');
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     };
 
     fetchGenomicData();
-  }, []);
+  }, [patientId]);
 
-  const renderGeneticRiskFactors = () => {
-    // This would be calculated from the genomic data
-    const riskFactors = [
-      { name: 'Alzheimer\'s Disease', risk: 10, category: 'low' },
-      { name: 'Type 2 Diabetes', risk: 35, category: 'moderate' },
-      { name: 'Breast Cancer', risk: 22, category: 'low' },
-      { name: 'Cardiovascular Disease', risk: 45, category: 'moderate' },
-      { name: 'Colorectal Cancer', risk: 18, category: 'low' },
-    ];
-
-    return (
-      <div className="space-y-6">
-        <div className="h-[300px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              data={riskFactors}
-              margin={{
-                top: 20,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
-              <XAxis dataKey="name" />
-              <YAxis label={{ value: 'Risk %', angle: -90, position: 'insideLeft' }} />
-              <Tooltip />
-              <Bar dataKey="risk" name="Genetic Risk Factor">
-                {riskFactors.map((entry, index) => (
-                  <Cell 
-                    key={`cell-${index}`} 
-                    fill={entry.risk > 40 ? '#f87171' : entry.risk > 20 ? '#facc15' : '#4ade80'} 
-                  />
-                ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
-        <div className="space-y-2">
-          {riskFactors.map((factor, index) => (
-            <div key={index} className="flex items-center justify-between p-2 border rounded-md">
-              <span>{factor.name}</span>
-              <Badge className={
-                factor.category === 'high' ? 'bg-red-100 text-red-800' : 
-                factor.category === 'moderate' ? 'bg-yellow-100 text-yellow-800' : 
-                'bg-green-100 text-green-800'
-              }>
-                {factor.category.charAt(0).toUpperCase() + factor.category.slice(1)} Risk
-              </Badge>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  const renderBiomarkerDistribution = () => {
-    // Mock data for biomarker distribution
-    const biomarkerData = [
-      { name: 'Normal', value: 70 },
-      { name: 'Borderline', value: 20 },
-      { name: 'Abnormal', value: 10 },
-    ];
-
-    return (
-      <div className="h-[300px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie
-              data={biomarkerData}
-              cx="50%"
-              cy="50%"
-              labelLine={false}
-              label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-              outerRadius={100}
-              fill="#8884d8"
-              dataKey="value"
-            >
-              {biomarkerData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
-    );
-  };
-
-  if (isLoading) {
-    return <Skeleton className="h-[400px] w-full" />;
+  if (loading) {
+    return <div className="flex justify-center items-center">Loading genomic data...</div>;
   }
 
-  if (genomicData.length === 0) {
-    return (
-      <div className="text-center py-8">
-        <Dna className="h-12 w-12 text-muted-foreground mx-auto mb-2" />
-        <h3 className="text-lg font-medium mb-2">No Genomic Data Available</h3>
-        <p className="text-muted-foreground max-w-md mx-auto">
-          Your genetic data hasn't been uploaded yet. Speak with your healthcare provider about genetic testing options.
-        </p>
-      </div>
-    );
+  if (error) {
+    return <div className="text-red-500">Error: {error}</div>;
+  }
+
+  if (!genomicData || genomicData.length === 0) {
+    return <div className="text-gray-500">No genomic data available for this patient.</div>;
   }
 
   return (
-    <div className="space-y-4">
-      <Tabs value={activeView} onValueChange={setActiveView}>
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="overview">Genetic Risk Assessment</TabsTrigger>
-          <TabsTrigger value="biomarkers">Biomarker Distribution</TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="overview" className="pt-4">
-          <Card>
-            <CardContent className="pt-6">
-              {renderGeneticRiskFactors()}
-            </CardContent>
-          </Card>
-        </TabsContent>
-        
-        <TabsContent value="biomarkers" className="pt-4">
-          <Card>
-            <CardContent className="pt-6">
-              {renderBiomarkerDistribution()}
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <Dna className="h-5 w-5 text-blue-500" />
+          Genomic Data
+        </CardTitle>
+        <CardDescription>Analysis of patient's genetic information</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Tabs defaultValue="summary" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="summary">Summary</TabsTrigger>
+            <TabsTrigger value="details">Details</TabsTrigger>
+            <TabsTrigger value="rawdata">Raw Data</TabsTrigger>
+          </TabsList>
+          <TabsContent value="summary" className="space-y-2">
+            <h4 className="text-sm font-medium">Key Biomarkers</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {genomicData[0].biomarkers &&
+                Object.entries(genomicData[0].biomarkers).map(([key, value]) => (
+                  <div key={key} className="p-3 rounded-md bg-gray-50">
+                    <span className="text-xs font-semibold uppercase text-gray-500">{key}</span>
+                    <p className="text-sm">{JSON.stringify(value)}</p>
+                  </div>
+                ))}
+            </div>
+            <h4 className="text-sm font-medium mt-4">Analysis Results</h4>
+            <p className="text-sm text-muted-foreground">
+              {genomicData[0].analysis_results
+                ? JSON.stringify(genomicData[0].analysis_results)
+                : 'No analysis results available.'}
+            </p>
+          </TabsContent>
+          <TabsContent value="details" className="space-y-2">
+            <h4 className="text-sm font-medium">Detailed Genomic Information</h4>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Sample ID</TableHead>
+                  <TableHead>Collection Date</TableHead>
+                  <TableHead>Sequence Type</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>{genomicData[0].sample_id}</TableCell>
+                  <TableCell>{new Date(genomicData[0].collection_date).toLocaleDateString()}</TableCell>
+                  <TableCell>{genomicData[0].sequence_type}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TabsContent>
+          <TabsContent value="rawdata">
+            <h4 className="text-sm font-medium">Raw Sequence Data</h4>
+            <p className="text-sm text-muted-foreground">
+              {genomicData[0].sequence_data ? genomicData[0].sequence_data.substring(0, 200) + '...' : 'No raw data available.'}
+            </p>
+          </TabsContent>
+        </Tabs>
+      </CardContent>
+    </Card>
   );
 };
 
