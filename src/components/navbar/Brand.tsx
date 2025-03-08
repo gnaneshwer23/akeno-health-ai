@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AnimatedLogo } from '../AnimatedLogo';
+import { AnimatedLogo } from '../animated-logo';
 
 const Brand: React.FC = () => {
   return (

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Button } from './Button';
 import { Check, ArrowRight, Sparkles, Shield, Activity, BarChart2, Brain, Cpu, Atom, FlaskConical } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { AnimatedLogo } from './AnimatedLogo';
+import { AnimatedLogo } from './animated-logo';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
