@@ -10,11 +10,11 @@ export const teamGroups: TeamGroupData[] = [
     description: "Visionaries with deep-rooted experience in biotechnology, AI innovation, digital health transformation, and medical research.",
     members: [
       {
-        name: "Dr. Eliza Chen",
+        name: "Dr. Gnaneshwer Reddy",
         title: "CEO & Co-Founder",
-        bio: "Former Director of AI Research at Stanford Medicine, specialized in computational biology and AI applications in healthcare.",
+        bio: "Serial Entrepreneur and Director of AI Research at HealthyBharat, specialised in computational biology and AI applications in healthcare.",
         avatar: "/placeholder.svg",
-        initials: "EC"
+        initials: "GR"
       },
       {
         name: "Dr. Marcus Wei",
