@@ -1,62 +1,15 @@
 
 import { useState, useEffect } from 'react';
-import { Heart, Droplet, Dna } from 'lucide-react';
-import { dataProcessingService } from '@/services/dataProcessingService';
 import { useToast } from '@/hooks/use-toast';
-import { 
-  getRiskLabel, 
-  getRiskColor, 
-  getCardiovascularDescription, 
-  getDiabetesDescription, 
-  getCognitiveDescription 
-} from '../utils/riskAssessmentUtils';
 
-interface RiskItem {
-  icon: React.ReactNode;
-  name: string;
-  risk: string;
-  riskColor: string;
-  progress: number;
-  description: string;
-}
+import { RiskItem, BiomarkerItem, RiskAssessmentData } from '../types/riskAssessmentTypes';
+import { getInitialRiskItems, getInitialBiomarkers } from '../utils/initialStates';
+import { processRiskItems, processBiomarkers, createFallbackRiskItems } from '../utils/riskDataProcessor';
+import { riskAssessmentService } from '../services/riskAssessmentService';
 
-interface BiomarkerItem {
-  name: string;
-  value: number | string;
-  status: string;
-  trend: string;
-  impact: string;
-}
-
-export const useRiskAssessment = () => {
-  const [riskItems, setRiskItems] = useState<RiskItem[]>([
-    {
-      icon: <Heart className="h-4 w-4 text-red-500" />,
-      name: "Cardiovascular Disease",
-      risk: "Loading...",
-      riskColor: "text-gray-600",
-      progress: 0,
-      description: "Analyzing your cardiovascular risk factors"
-    },
-    {
-      icon: <Droplet className="h-4 w-4 text-blue-500" />,
-      name: "Type 2 Diabetes",
-      risk: "Loading...",
-      riskColor: "text-gray-600",
-      progress: 0,
-      description: "Analyzing your metabolic health indicators"
-    },
-    {
-      icon: <Dna className="h-4 w-4 text-purple-500" />,
-      name: "Alzheimer's Disease",
-      risk: "Loading...",
-      riskColor: "text-gray-600",
-      progress: 0,
-      description: "Analyzing your genetic profile and risk factors"
-    }
-  ]);
-  
-  const [biomarkers, setBiomarkers] = useState<BiomarkerItem[]>([]);
+export const useRiskAssessment = (): RiskAssessmentData => {
+  const [riskItems, setRiskItems] = useState<RiskItem[]>(getInitialRiskItems());
+  const [biomarkers, setBiomarkers] = useState<BiomarkerItem[]>(getInitialBiomarkers());
   const [processingResults, setProcessingResults] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [multiOmicsAnalysis, setMultiOmicsAnalysis] = useState<any>(null);
@@ -65,92 +18,22 @@ export const useRiskAssessment = () => {
   useEffect(() => {
     const loadRiskAssessment = async () => {
       try {
-        // Fetch patient ID (in a real app, this would come from the authenticated user)
-        // For demo, we'll use a placeholder patient ID or get it from localStorage
-        const patientId = localStorage.getItem('demoPatientId') || 'demo-patient-id';
+        // Get patient ID
+        const patientId = riskAssessmentService.getPatientId();
         
-        // Get risk assessment data
-        const assessmentData = await dataProcessingService.generateRiskAssessment(patientId);
+        // Fetch risk assessment data
+        const assessmentData = await riskAssessmentService.fetchRiskAssessment(patientId);
         
-        // Update risk items with real data
-        const updatedRiskItems = [...riskItems];
-        
-        // Cardiovascular risk
-        if (assessmentData.riskScores.cardiovascular !== undefined) {
-          const cvRisk = assessmentData.riskScores.cardiovascular;
-          updatedRiskItems[0] = {
-            ...updatedRiskItems[0],
-            risk: getRiskLabel(cvRisk),
-            riskColor: getRiskColor(cvRisk),
-            progress: Math.round(cvRisk * 100),
-            description: getCardiovascularDescription(cvRisk)
-          };
-        }
-        
-        // Diabetes risk
-        if (assessmentData.riskScores.diabetes !== undefined) {
-          const diabetesRisk = assessmentData.riskScores.diabetes;
-          updatedRiskItems[1] = {
-            ...updatedRiskItems[1],
-            risk: getRiskLabel(diabetesRisk),
-            riskColor: getRiskColor(diabetesRisk),
-            progress: Math.round(diabetesRisk * 100),
-            description: getDiabetesDescription(diabetesRisk)
-          };
-        }
-        
-        // Cognitive risk
-        if (assessmentData.riskScores.cognitive !== undefined) {
-          const cognitiveRisk = assessmentData.riskScores.cognitive;
-          updatedRiskItems[2] = {
-            ...updatedRiskItems[2],
-            risk: getRiskLabel(cognitiveRisk),
-            riskColor: getRiskColor(cognitiveRisk),
-            progress: Math.round(cognitiveRisk * 100),
-            description: getCognitiveDescription(cognitiveRisk)
-          };
-        }
-        
+        // Process and update risk items
+        const updatedRiskItems = processRiskItems(assessmentData, riskItems);
         setRiskItems(updatedRiskItems);
+        
+        // Set processing results
         setProcessingResults(assessmentData.preprocessingResults);
         
-        // Set biomarker data if available
+        // Process and update biomarkers if available
         if (assessmentData.biomarkerTrends) {
-          const biomarkerList: BiomarkerItem[] = [];
-          
-          // Add significant biomarkers first
-          assessmentData.biomarkerTrends.significant?.forEach((marker: any) => {
-            biomarkerList.push({
-              name: marker.biomarker,
-              value: marker.value,
-              status: "Alert",
-              trend: marker.trend,
-              impact: marker.riskImpact
-            });
-          });
-          
-          // Add monitoring biomarkers next
-          assessmentData.biomarkerTrends.monitoring?.forEach((marker: any) => {
-            biomarkerList.push({
-              name: marker.biomarker,
-              value: marker.value,
-              status: "Monitor",
-              trend: marker.trend,
-              impact: marker.riskImpact
-            });
-          });
-          
-          // Add normal biomarkers last
-          assessmentData.biomarkerTrends.normal?.forEach((marker: any) => {
-            biomarkerList.push({
-              name: marker.biomarker,
-              value: marker.value,
-              status: "Normal",
-              trend: marker.trend,
-              impact: marker.riskImpact
-            });
-          });
-          
+          const biomarkerList = processBiomarkers(assessmentData);
           setBiomarkers(biomarkerList);
         }
         
@@ -180,14 +63,7 @@ export const useRiskAssessment = () => {
         });
         
         // Set fallback data
-        const fallbackItems = riskItems.map(item => ({
-          ...item,
-          risk: "Unknown",
-          riskColor: "text-gray-600",
-          progress: 0,
-          description: "Could not analyze your health data"
-        }));
-        
+        const fallbackItems = createFallbackRiskItems(riskItems);
         setRiskItems(fallbackItems);
       }
     };
