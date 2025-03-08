@@ -9,9 +9,9 @@ import { Button } from '@/components/ui/button';
 
 const Contact = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-white to-health-light/30">
+    <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow pt-20">
         <ContactHero />
         
         <div className="container mx-auto px-4 py-16">
