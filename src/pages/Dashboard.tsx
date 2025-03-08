@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
@@ -8,15 +8,31 @@ import PatientDashboard from '@/components/dashboard/patient/PatientDashboard';
 import DoctorDashboard from '@/components/dashboard/doctor/DoctorDashboard';
 import ResearcherDashboard from '@/components/dashboard/researcher/ResearcherDashboard';
 import { Loader2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Dashboard = () => {
   const { user, isLoading } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  useEffect(() => {
+    // Show a welcome toast when dashboard loads
+    if (user && !isLoading) {
+      toast({
+        title: `Welcome, ${user.name}`,
+        description: `Your ${user.role} dashboard is ready with AI-powered insights`,
+      });
+    }
+  }, [user, isLoading, toast]);
 
   if (isLoading) {
     return (
-      <div className="h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-health-primary" />
-        <span className="ml-2 text-health-dark">Loading...</span>
+      <div className="h-screen flex flex-col items-center justify-center bg-gray-50">
+        <Loader2 className="h-8 w-8 animate-spin text-health-primary mb-4" />
+        <div className="text-center">
+          <h2 className="text-xl font-medium text-health-dark mb-1">Loading your dashboard</h2>
+          <p className="text-sm text-muted-foreground">Preparing your personalized AI insights...</p>
+        </div>
       </div>
     );
   }

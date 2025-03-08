@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, UserCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLocation, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -30,15 +30,15 @@ const AuthCard: React.FC<AuthCardProps> = ({
   const handleTryDemo = async () => {
     try {
       toast({
-        title: "Loading demo data...",
-        description: "Please wait while we prepare your demo account.",
+        title: "Loading demo account...",
+        description: "Please wait while we prepare your demo access.",
       });
       
       await seedDemoData();
       
       toast({
-        title: "Demo data loaded!",
-        description: "You've been logged in with demo data.",
+        title: "Demo access granted!",
+        description: "You're now signed in with a demo account.",
         variant: "default",
       });
       
@@ -47,7 +47,7 @@ const AuthCard: React.FC<AuthCardProps> = ({
     } catch (error) {
       console.error("Error loading demo data:", error);
       toast({
-        title: "Error loading demo data",
+        title: "Error setting up demo",
         description: error.message || "Something went wrong",
         variant: "destructive",
       });
@@ -55,9 +55,9 @@ const AuthCard: React.FC<AuthCardProps> = ({
   };
 
   return (
-    <Card className={cn("w-full max-w-md mx-auto", className)}>
+    <Card className={cn("w-full max-w-md mx-auto bg-white/90 backdrop-blur-sm shadow-md border-health-primary/5", className)}>
       <CardHeader>
-        <CardTitle className="text-2xl font-bold">{title}</CardTitle>
+        <CardTitle className="text-xl font-bold">{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent>
@@ -80,11 +80,12 @@ const AuthCard: React.FC<AuthCardProps> = ({
         <div className="mt-4 text-center">
           <Button 
             variant="outline" 
-            className="w-full" 
+            className="w-full group relative border-health-primary/20 text-health-dark hover:text-health-primary hover:border-health-primary" 
             onClick={handleTryDemo}
           >
-            Try Demo Account
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <UserCheck className="mr-2 h-4 w-4" />
+            <span>Try Demo Account</span>
+            <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
           </Button>
         </div>
         
@@ -92,14 +93,14 @@ const AuthCard: React.FC<AuthCardProps> = ({
           {isLoginPage ? (
             <p className="text-muted-foreground">
               Don't have an account?{" "}
-              <Link to="/register" className="text-blue-600 hover:underline">
+              <Link to="/register" className="text-health-primary hover:underline font-medium">
                 Register
               </Link>
             </p>
           ) : (
             <p className="text-muted-foreground">
               Already have an account?{" "}
-              <Link to="/login" className="text-blue-600 hover:underline">
+              <Link to="/login" className="text-health-primary hover:underline font-medium">
                 Login
               </Link>
             </p>

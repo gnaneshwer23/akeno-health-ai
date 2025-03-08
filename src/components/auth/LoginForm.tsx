@@ -4,10 +4,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from '@/components/Button';
-import { Loader2, Lock, User, Send, Shield, ArrowRight, Eye, EyeOff, Mail } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Loader2, Lock, User, Send, Shield, ArrowRight, Eye, EyeOff, Mail, AlertTriangle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -15,6 +17,10 @@ const LoginForm = () => {
   const [role, setRole] = useState<'patient' | 'doctor' | 'researcher'>('patient');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [showTwoFactor, setShowTwoFactor] = useState(false);
+  const [twoFactorCode, setTwoFactorCode] = useState('');
+  const [error, setError] = useState<string | null>(null);
   
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -25,22 +31,51 @@ const LoginForm = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
     
     if (!email || !password) {
-      toast({
-        title: "Login failed",
-        description: "Please enter both email and password",
-        variant: "destructive",
-      });
+      setError("Please enter both email and password");
       return;
     }
     
     setIsSubmitting(true);
     try {
+      // For demo, show 2FA screen after initial login
+      if (!showTwoFactor) {
+        // In a real app, this would be the first stage of auth
+        setShowTwoFactor(true);
+        toast({
+          title: "Verification required",
+          description: "Please enter the code sent to your email",
+        });
+        
+        // Simulate sending a verification code
+        setTimeout(() => {
+          setIsSubmitting(false);
+        }, 1000);
+        
+        return;
+      }
+      
+      // For demo, any 6-digit code will work
+      if (twoFactorCode.length !== 6) {
+        setError("Please enter a valid 6-digit code");
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // Complete the login process
       await login(email, password);
+      
+      toast({
+        title: "Login successful",
+        description: "Welcome to your AI-powered healthcare dashboard",
+      });
+      
+      // Navigate to the appropriate dashboard based on role
       navigate(from, { replace: true });
-    } catch (error) {
-      // Error is handled in the login function
+    } catch (error: any) {
+      setError(error.message || "Authentication failed");
     } finally {
       setIsSubmitting(false);
     }
@@ -62,8 +97,98 @@ const LoginForm = () => {
     }
   };
 
+  if (showTwoFactor) {
+    return (
+      <form onSubmit={handleLogin} className="space-y-5">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="text-center mb-6"
+        >
+          <div className="h-20 w-20 bg-health-primary/10 rounded-full mx-auto flex items-center justify-center mb-4">
+            <Lock size={30} className="text-health-primary" />
+          </div>
+          <h3 className="text-xl font-semibold">Two-Factor Authentication</h3>
+          <p className="text-sm text-muted-foreground mt-1">
+            Please enter the 6-digit verification code sent to your email
+          </p>
+        </motion.div>
+        
+        {error && (
+          <Alert variant="destructive">
+            <AlertTriangle className="h-4 w-4" />
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+        
+        <motion.div className="space-y-2" variants={itemVariants}>
+          <div className="flex justify-between items-center">
+            <Label htmlFor="verification-code" className="text-sm font-medium">
+              Verification Code
+            </Label>
+          </div>
+          <Input 
+            id="verification-code" 
+            type="text"
+            placeholder="000000" 
+            value={twoFactorCode}
+            onChange={(e) => {
+              // Only allow digits and max 6 characters
+              const value = e.target.value.replace(/\D/g, '').slice(0, 6);
+              setTwoFactorCode(value);
+            }}
+            className="text-center text-lg tracking-widest"
+            maxLength={6}
+            autoComplete="one-time-code"
+          />
+        </motion.div>
+        
+        <motion.div variants={itemVariants}>
+          <Button 
+            type="submit" 
+            variant="default" 
+            size="lg" 
+            className="w-full mt-4 bg-health-primary text-white hover:bg-health-primary/90"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 size={16} className="mr-2 animate-spin" />
+                Verifying...
+              </>
+            ) : (
+              <>
+                Verify and Login
+                <ArrowRight size={16} className="ml-2" />
+              </>
+            )}
+          </Button>
+          
+          <Button 
+            type="button" 
+            variant="ghost" 
+            size="sm"
+            className="w-full mt-2 text-muted-foreground"
+            onClick={() => setShowTwoFactor(false)}
+            disabled={isSubmitting}
+          >
+            Back to Login
+          </Button>
+        </motion.div>
+      </form>
+    );
+  }
+
   return (
     <form onSubmit={handleLogin} className="space-y-5">
+      {error && (
+        <Alert variant="destructive">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+      
       <div className="space-y-4">
         <motion.div className="space-y-2" variants={itemVariants}>
           <Label htmlFor="role" className="text-sm font-medium">
@@ -146,14 +271,28 @@ const LoginForm = () => {
             </button>
           </div>
         </motion.div>
+        
+        <motion.div className="flex items-center space-x-2" variants={itemVariants}>
+          <Checkbox 
+            id="remember" 
+            checked={rememberMe}
+            onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+          />
+          <label
+            htmlFor="remember"
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            Remember me for 30 days
+          </label>
+        </motion.div>
       </div>
       
       <motion.div variants={itemVariants}>
         <Button 
           type="submit" 
-          variant="primary" 
+          variant="default" 
           size="lg" 
-          className="w-full mt-2 group relative shadow-sm"
+          className="w-full mt-2 group relative shadow-sm bg-health-primary text-white hover:bg-health-primary/90"
           disabled={isSubmitting}
         >
           {isSubmitting ? (

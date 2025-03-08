@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import Header from './header/Header';
 import Sidebar from './sidebar/Sidebar';
 import MobileSidebar from './sidebar/MobileSidebar';
+import DashboardSecurityBanner from './security/DashboardSecurityBanner';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -35,9 +37,15 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         <Sidebar />
         
         {/* Main dashboard content */}
-        <main className="flex-1 p-6 overflow-auto">
+        <motion.main 
+          className="flex-1 p-6 overflow-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <DashboardSecurityBanner />
           {children}
-        </main>
+        </motion.main>
       </div>
     </div>
   );
