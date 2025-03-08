@@ -35,7 +35,7 @@ serve(async (req) => {
     
     if (userError || !user) {
       return new Response(
-        JSON.stringify({ error: 'Unauthorized' }),
+        JSON.stringify({ error: 'Unauthorized', details: userError }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -43,7 +43,7 @@ serve(async (req) => {
     // Parse the request to get the data source and payload
     const { source, data } = await req.json();
     
-    console.log(`Processing ${source} data:`, data);
+    console.log(`Processing ${source} data for user ${user.id}:`, data);
 
     // Process data based on source
     let result;
