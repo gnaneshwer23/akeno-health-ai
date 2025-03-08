@@ -13,8 +13,7 @@ import {
   Info, 
   HelpCircle,
   FileText,
-  Phone,
-  MessageCircle 
+  Phone
 } from 'lucide-react';
 
 interface MobileMenuProps {
@@ -122,14 +121,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             icon={Phone} 
             label="Contact" 
             isActive={isActive('/contact')} 
-            onClick={onLinkClick} 
-          />
-          
-          <MobileMenuLink 
-            to="/chatbot" 
-            icon={MessageCircle} 
-            label="AI Assistant" 
-            isActive={isActive('/chatbot')} 
             onClick={onLinkClick} 
           />
         </div>
