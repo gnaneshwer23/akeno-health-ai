@@ -1,44 +1,8 @@
 
-import { Users, Brain, Stethoscope, Lightbulb } from 'lucide-react';
+import { Users, Stethoscope, Lightbulb } from 'lucide-react';
 import { TeamGroupData } from '@/components/about/TeamGroup';
 
 export const teamGroups: TeamGroupData[] = [
-  {
-    id: "scientists",
-    icon: <Brain size={28} />,
-    title: "AI Scientists & Computational Biologists",
-    description: "Experts in deep learning, predictive analytics, bioinformatics, and AI-driven multi-omics modelling.",
-    members: [
-      {
-        name: "Dr. Aisha Patel",
-        title: "Head of AI Research",
-        bio: "Specializes in multi-modal learning for medical imaging and genomic data integration.",
-        avatar: "/placeholder.svg",
-        initials: "AP"
-      },
-      {
-        name: "Dr. James Lee",
-        title: "Lead Computational Biologist",
-        bio: "Expert in protein structure prediction and drug-target interaction modelling using deep learning.",
-        avatar: "/placeholder.svg",
-        initials: "JL"
-      },
-      {
-        name: "Dr. Sofia Rodriguez",
-        title: "Senior AI Researcher",
-        bio: "Focuses on natural language processing for medical literature and electronic health records.",
-        avatar: "/placeholder.svg",
-        initials: "SR"
-      },
-      {
-        name: "Dr. David Kim",
-        title: "Senior Data Scientist",
-        bio: "Specializes in real-time health monitoring algorithms and predictive health analytics.",
-        avatar: "/placeholder.svg",
-        initials: "DK"
-      }
-    ]
-  },
   {
     id: "medical",
     icon: <Stethoscope size={28} />,

@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList } from '@/components/ui/tabs';
 import { teamGroups } from '@/data/teamData';
 import { TeamGroup } from './TeamGroup';
 import { TeamTabTrigger } from './TeamTabTrigger';
-import { Brain, FlaskConical, Microscope, Stethoscope, Users, Star, Sparkles } from 'lucide-react';
+import { Users, Stethoscope, Lightbulb, Sparkles } from 'lucide-react';
 
 export const AboutTeam = () => {
   return (
@@ -38,9 +38,9 @@ export const AboutTeam = () => {
         
         <div className="mb-16 bg-white rounded-2xl shadow-lg border border-purple-100 p-6 fade-up-2">
           <h3 className="text-2xl font-bold text-center text-health-dark mb-8 flex items-center justify-center gap-2">
-            <Star size={24} className="text-purple-500" />
+            <Sparkles size={24} className="text-purple-500" />
             Leadership Team
-            <Star size={24} className="text-purple-500" />
+            <Sparkles size={24} className="text-purple-500" />
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -78,9 +78,9 @@ export const AboutTeam = () => {
           </div>
         </div>
         
-        <Tabs defaultValue="scientists" className="w-full fade-up-3">
-          <TabsList className="grid grid-cols-1 md:grid-cols-3 gap-3 bg-transparent w-full mb-8">
-            {teamGroups.map((group) => (
+        <Tabs defaultValue="medical" className="w-full fade-up-3">
+          <TabsList className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-transparent w-full mb-8">
+            {teamGroups.filter(group => group.id !== "scientists").map((group) => (
               <TeamTabTrigger 
                 key={group.id} 
                 id={group.id}
@@ -90,7 +90,7 @@ export const AboutTeam = () => {
             ))}
           </TabsList>
           
-          {teamGroups.map((group) => (
+          {teamGroups.filter(group => group.id !== "scientists").map((group) => (
             <TabsContent key={group.id} value={group.id} className="mt-4 animate-fade-in">
               <TeamGroup group={group} />
             </TabsContent>
@@ -98,16 +98,6 @@ export const AboutTeam = () => {
         </Tabs>
         
         <div className="grid md:grid-cols-4 gap-6 mt-12 fade-up-4">
-          <div className="bg-gradient-to-br from-white to-purple-50 rounded-xl p-6 shadow-md border border-purple-100 hover:shadow-lg transition-all group">
-            <div className="flex items-start gap-3 mb-3">
-              <div className="bg-gradient-to-br from-purple-500 to-indigo-600 p-2 rounded-lg shadow-md text-white group-hover:rotate-6 transition-transform">
-                <Brain size={24} />
-              </div>
-              <h4 className="font-semibold text-health-dark">AI Scientists & Quantum Experts</h4>
-            </div>
-            <p className="text-health-dark/70 text-sm">Specialists in deep learning, predictive analytics, bioinformatics, and AI-powered multi-omics modeling.</p>
-          </div>
-          
           <div className="bg-gradient-to-br from-white to-blue-50 rounded-xl p-6 shadow-md border border-blue-100 hover:shadow-lg transition-all group">
             <div className="flex items-start gap-3 mb-3">
               <div className="bg-gradient-to-br from-blue-500 to-sky-600 p-2 rounded-lg shadow-md text-white group-hover:rotate-6 transition-transform">
@@ -121,21 +111,31 @@ export const AboutTeam = () => {
           <div className="bg-gradient-to-br from-white to-amber-50 rounded-xl p-6 shadow-md border border-amber-100 hover:shadow-lg transition-all group">
             <div className="flex items-start gap-3 mb-3">
               <div className="bg-gradient-to-br from-amber-500 to-orange-600 p-2 rounded-lg shadow-md text-white group-hover:rotate-6 transition-transform">
-                <FlaskConical size={24} />
+                <Lightbulb size={24} />
               </div>
-              <h4 className="font-semibold text-health-dark">Biotech Innovators</h4>
+              <h4 className="font-semibold text-health-dark">Strategic Advisors</h4>
             </div>
-            <p className="text-health-dark/70 text-sm">Visionaries with extensive experience in biotechnology, AI-driven healthcare, and medical innovation.</p>
+            <p className="text-health-dark/70 text-sm">Visionaries with extensive experience in healthcare strategy, AI ethics, and medical innovation.</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-white to-purple-50 rounded-xl p-6 shadow-md border border-purple-100 hover:shadow-lg transition-all group">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="bg-gradient-to-br from-purple-500 to-fuchsia-600 p-2 rounded-lg shadow-md text-white group-hover:rotate-6 transition-transform">
+                <Users size={24} />
+              </div>
+              <h4 className="font-semibold text-health-dark">Regulatory Experts</h4>
+            </div>
+            <p className="text-health-dark/70 text-sm">Specialists in navigating healthcare regulation, compliance, and data privacy in digital health.</p>
           </div>
           
           <div className="bg-gradient-to-br from-white to-emerald-50 rounded-xl p-6 shadow-md border border-emerald-100 hover:shadow-lg transition-all group">
             <div className="flex items-start gap-3 mb-3">
               <div className="bg-gradient-to-br from-emerald-500 to-teal-600 p-2 rounded-lg shadow-md text-white group-hover:rotate-6 transition-transform">
-                <Microscope size={24} />
+                <Sparkles size={24} />
               </div>
-              <h4 className="font-semibold text-health-dark">Research Experts</h4>
+              <h4 className="font-semibold text-health-dark">Innovation Team</h4>
             </div>
-            <p className="text-health-dark/70 text-sm">Leaders in biopharma, health policy, AI ethics, regulatory affairs, and digital health transformation.</p>
+            <p className="text-health-dark/70 text-sm">Creators of breakthrough AI healthcare technologies and digital health transformation experts.</p>
           </div>
         </div>
         
