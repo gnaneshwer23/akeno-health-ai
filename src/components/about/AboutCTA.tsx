@@ -1,87 +1,11 @@
 
 import React from 'react';
-import { Button } from '@/components/Button';
-import { 
-  Users, 
-  BookOpen, 
-  Briefcase, 
-  ArrowRight, 
-  Sparkles, 
-  Building, 
-  Globe, 
-  Handshake, 
-  FlaskConical, 
-  ActivitySquare,
-  ShieldCheck 
-} from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { Handshake } from 'lucide-react';
+import { PartnersSection } from './cta/PartnersSection';
+import { CTACardsSection } from './cta/CTACardsSection';
+import { ActionButtons } from './cta/ActionButtons';
 
 export const AboutCTA = () => {
-  const ctaCards = [
-    {
-      icon: <Users size={24} className="text-white" />,
-      bgGradient: "bg-gradient-to-br from-purple-500 to-indigo-600",
-      shadowColor: "shadow-purple-500/20",
-      borderColor: "border-indigo-300/20",
-      title: "Leadership",
-      description: "Our leadership team brings together expertise from AI research, medicine, healthcare policy, and business innovation.",
-      link: "/about",
-      linkText: "Meet our team",
-      buttonColor: "text-indigo-600"
-    },
-    {
-      icon: <BookOpen size={24} className="text-white" />,
-      bgGradient: "bg-gradient-to-br from-fuchsia-500 to-purple-600",
-      shadowColor: "shadow-fuchsia-500/20",
-      borderColor: "border-purple-300/20",
-      title: "Research",
-      description: "We continuously publish our research and collaborate with leading academic institutions to advance the field of AI in healthcare.",
-      link: "/quantum-computing",
-      linkText: "View our publications",
-      buttonColor: "text-purple-600"
-    },
-    {
-      icon: <Briefcase size={24} className="text-white" />,
-      bgGradient: "bg-gradient-to-br from-blue-500 to-sky-600",
-      shadowColor: "shadow-blue-500/20",
-      borderColor: "border-sky-300/20",
-      title: "Careers",
-      description: "Join our team of dedicated professionals working at the intersection of AI and healthcare to make a real difference in people's lives.",
-      link: "/contact",
-      linkText: "See open positions",
-      buttonColor: "text-blue-600"
-    }
-  ];
-
-  const partnerTypes = [
-    {
-      title: "Top-Tier Hospitals & Clinics",
-      description: "Implementing AI-powered diagnostics and patient monitoring",
-      icon: <Building className="h-6 w-6 text-indigo-500" />
-    },
-    {
-      title: "Pharmaceutical Giants & Biotech Startups",
-      description: "Accelerating clinical trials and drug discovery with AI",
-      icon: <FlaskConical className="h-6 w-6 text-purple-500" />
-    },
-    {
-      title: "Wearable Tech & IoT Companies",
-      description: "Integrating smart health devices for continuous monitoring",
-      icon: <ActivitySquare className="h-6 w-6 text-blue-500" />
-    },
-    {
-      title: "Academic & Research Institutions",
-      description: "Partnering for AI-driven medical breakthroughs",
-      icon: <BookOpen className="h-6 w-6 text-amber-500" />
-    },
-    {
-      title: "Regulatory & Compliance Bodies",
-      description: "Ensuring ethical, secure, and GDPR-compliant health data processing",
-      icon: <ShieldCheck className="h-6 w-6 text-emerald-500" />
-    }
-  ];
-
   return (
     <section className="px-6 py-20 relative overflow-hidden" id="partners">
       {/* Enhanced background with patterns and gradients */}
@@ -117,119 +41,20 @@ export const AboutCTA = () => {
           </p>
         </div>
         
-        <div className="bg-white rounded-2xl shadow-xl border border-blue-100 p-8 mb-16">
-          <h3 className="text-xl font-bold text-health-dark mb-6 flex items-center gap-2">
-            <Globe className="h-6 w-6 text-blue-500" />
-            Key Collaborators
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {partnerTypes.map((partner, index) => (
-              <div key={index} className="flex items-start gap-3 p-4 rounded-xl bg-gradient-to-br from-white to-blue-50/50 border border-blue-100 shadow-sm hover:shadow-md transition-all">
-                <div className="p-2 rounded-lg bg-white shadow-sm">
-                  {partner.icon}
-                </div>
-                <div>
-                  <h4 className="font-semibold text-health-dark mb-1">{partner.title}</h4>
-                  <p className="text-health-dark/70 text-sm">{partner.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="mt-8 text-center">
-            <h3 className="text-lg font-bold text-health-dark mb-3">Investors Who Believe in the Future of AI Healthcare</h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              <span className="px-4 py-2 bg-blue-50 rounded-full text-blue-700 text-sm font-medium border border-blue-100">[Investment Firm A]</span>
-              <span className="px-4 py-2 bg-indigo-50 rounded-full text-indigo-700 text-sm font-medium border border-indigo-100">[Investment Firm B]</span>
-              <span className="px-4 py-2 bg-purple-50 rounded-full text-purple-700 text-sm font-medium border border-purple-100">[Angel Investors & Venture Capital Partners]</span>
-            </div>
-            
-            <p className="text-health-dark/80 font-medium mt-6">
-              Together, we are building the most advanced AI-powered healthcare ecosystem in the world.
-            </p>
-          </div>
-        </div>
+        <PartnersSection />
       
         <h3 className="text-2xl font-bold text-center text-health-dark mb-6">
           Explore More
         </h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {ctaCards.map((card, index) => (
-            <Card 
-              key={index} 
-              className={`border-none hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white/80 backdrop-blur-sm ${card.shadowColor} ${card.borderColor}`}
-            >
-              <CardContent className="p-0 overflow-hidden">
-                <div className={`${card.bgGradient} p-6 rounded-t-lg relative overflow-hidden`}>
-                  {/* Decorative elements */}
-                  <div className="absolute -right-4 -top-4 w-16 h-16 bg-white/10 rounded-full"></div>
-                  <div className="absolute -left-4 -bottom-4 w-12 h-12 bg-white/10 rounded-full"></div>
-                  
-                  <div className="flex items-center gap-3 mb-2 relative z-10">
-                    <div className="h-12 w-12 rounded-xl bg-white/20 flex items-center justify-center shadow-inner">
-                      {card.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-white">{card.title}</h3>
-                  </div>
-                </div>
-                
-                <div className="p-6 rounded-b-lg">
-                  <p className="text-health-dark/70 mb-6 min-h-[80px]">
-                    {card.description}
-                  </p>
-                  
-                  <Button 
-                    variant="link" 
-                    className={`${card.buttonColor} font-medium p-0 h-auto flex items-center gap-1 hover:gap-2 transition-all group`}
-                    as="Link" 
-                    to={card.link}
-                  >
-                    <span className="group-hover:underline">{card.linkText}</span> 
-                    <ArrowRight size={16} className="group-hover:animate-pulse" />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <CTACardsSection />
         
         <div className="text-center mt-16">
           <p className="text-xl font-medium text-health-dark mb-8">
             Be Part of the Healthcare Revolution
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button
-              variant="primary"
-              size="lg"
-              as="Link"
-              to="/contact"
-              className="group"
-            >
-              Join the Future of AI Healthcare
-              <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
-            </Button>
-            
-            <Button
-              variant="outline"
-              size="lg"
-              as="Link"
-              to="/contact"
-            >
-              Request a Demo
-            </Button>
-            
-            <Button
-              variant="ghost"
-              size="lg"
-              as="Link"
-              to="/contact"
-            >
-              Partner With Us
-            </Button>
-          </div>
+          <ActionButtons />
           
           <p className="text-base text-health-dark/60 mt-12">
             Akeno Health – Pioneering AI-Driven Personalised Medicine for a Healthier Tomorrow.
