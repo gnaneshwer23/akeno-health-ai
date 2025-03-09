@@ -1,0 +1,40 @@
+
+/* Column Styles */
+.flow-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+  position: relative;
+}
+
+/* Position adjustments for the Akeno AI Engine */
+.flow-column:nth-child(3) {
+  margin-left: -20px;
+  margin-right: -20px;
+  z-index: 2;
+}
+
+.column-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.data-source-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  width: 100%;
+}

@@ -1,0 +1,104 @@
+
+/* Floating connection styles */
+.floating-connection {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-connection-top {
+  top: 20%;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.floating-connection-middle {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.floating-connection-bottom {
+  bottom: 20%;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.floating-connection-vertical {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+}
+
+.flow-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #3498db, #9b59b6);
+  opacity: 0;
+  animation: flowParticle 3s linear infinite;
+}
+
+.flow-particle-vertical {
+  animation: flowParticleVertical 3s linear infinite;
+}
+
+.flow-particle:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.flow-particle:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.flow-particle:nth-child(3) {
+  animation-delay: 2s;
+}
+
+@keyframes flowParticle {
+  0% {
+    left: 0;
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes flowParticleVertical {
+  0% {
+    top: 0;
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}

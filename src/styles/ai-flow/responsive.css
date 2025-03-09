@@ -1,0 +1,56 @@
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  .flow-diagram.single-layer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .flow-column {
+    min-width: 200px;
+    max-width: 45%;
+  }
+  
+  .flow-column:nth-child(3) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .flow-connector {
+    display: none;
+  }
+  
+  .floating-connection {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .flow-diagram.single-layer {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .flow-column {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .flow-connector {
+    display: flex;
+    transform: rotate(90deg);
+    margin: 5px 0;
+  }
+  
+  .solutions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .title-ai-flow {
+    font-size: 22px;
+  }
+  
+  .column-title {
+    font-size: 16px;
+  }
+}

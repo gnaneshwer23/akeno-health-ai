@@ -1,0 +1,38 @@
+
+/* AI Flow Diagram Base Styles */
+.container-ai-flow {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.title-ai-flow {
+  font-size: 28px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #2c3e50, #3498db);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.flow-diagram {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.flow-diagram.single-layer {
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
