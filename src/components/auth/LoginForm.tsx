@@ -14,10 +14,14 @@ import RememberMeCheckbox from './RememberMeCheckbox';
 import LoginButton from './LoginButton';
 import LoginErrorAlert from './LoginErrorAlert';
 
-const LoginForm = () => {
+interface LoginFormProps {
+  initialRole?: UserRole;
+}
+
+const LoginForm = ({ initialRole }: LoginFormProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState<UserRole>('patient');
+  const [role, setRole] = useState<UserRole>(initialRole || 'patient');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState<string | null>(null);

@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -15,12 +16,16 @@ import TermsCheckbox from './TermsCheckbox';
 import RegisterButton from './RegisterButton';
 import RegisterErrorAlert from './RegisterErrorAlert';
 
-const RegisterForm = () => {
+interface RegisterFormProps {
+  initialRole?: UserRole;
+}
+
+const RegisterForm = ({ initialRole }: RegisterFormProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
-  const [role, setRole] = useState<UserRole>('patient');
+  const [role, setRole] = useState<UserRole>(initialRole || 'patient');
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
