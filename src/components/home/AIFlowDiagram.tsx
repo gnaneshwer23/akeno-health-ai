@@ -21,7 +21,7 @@ import '@/styles/ai-flow-diagram.css';
 const AIFlowDiagram = () => {
   return (
     <div className="container-ai-flow">
-      <h2 className="title-ai-flow">Akeno Health AI: Transforming Healthcare with AI-Powered Insights</h2>
+      <h2 className="title-ai-flow">Transforming Healthcare with AI-Powered Insights</h2>
       
       <div className="flow-diagram single-layer">
         {/* Data Sources */}
