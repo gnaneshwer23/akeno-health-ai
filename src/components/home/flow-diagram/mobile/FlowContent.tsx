@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { FileText, HeartPulse, Microscope, Database } from 'lucide-react';
-import { User, Stethoscope, Building, Heart } from 'lucide-react';
+import { User, Stethoscope, Building, Heart, Brain } from 'lucide-react';
 import { CheckCircle, Zap, TrendingUp, LineChart, FlaskConical, Activity, Users } from 'lucide-react';
 import FlowHeader from './FlowHeader';
 import Divider from './Divider';
