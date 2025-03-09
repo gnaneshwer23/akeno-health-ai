@@ -1,15 +1,14 @@
+
 import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { MissionStatement } from '@/components/MissionStatement';
 import { FeaturesSection } from '@/components/FeaturesSection';
 import { CTASection } from '@/components/CTASection';
-import { ExplainerSection } from '@/components/ExplainerSection';
 import { Footer } from '@/components/Footer';
 import { StatisticsSection } from '@/components/StatisticsSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { PartnersSection } from '@/components/PartnersSection';
-import { CertificationsSection } from '@/components/CertificationsSection';
 
 const Index = () => {
   useEffect(() => {
@@ -83,17 +82,6 @@ const Index = () => {
           <div className="absolute right-0 top-1/3 bottom-1/3 w-2 bg-gradient-to-t from-health-primary/50 to-health-secondary/50 rounded-l-lg"></div>
         </div>
         
-        <div className="relative">
-          <ExplainerSection />
-          
-          {/* Curved divider */}
-          <div className="absolute bottom-0 left-0 right-0 h-16 overflow-hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute bottom-0 w-full h-20 text-white">
-              <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="currentColor" opacity=".1"></path>
-            </svg>
-          </div>
-        </div>
-        
         <div className="relative bg-gradient-to-br from-health-light/30 to-white">
           <TestimonialsSection />
           
@@ -110,13 +98,6 @@ const Index = () => {
         </div>
         
         <CTASection />
-        
-        <div className="relative">
-          <CertificationsSection />
-          
-          {/* Bottom gradient */}
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-health-light/30 to-transparent -z-10"></div>
-        </div>
       </main>
       
       <Footer />
