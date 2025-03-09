@@ -1,0 +1,176 @@
+
+/* Animation for floating elements */
+@keyframes float {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(10px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Animated typing text fade up animation */
+@keyframes fade-up {
+  0%, 15% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  20%, 35% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  40%, 100% {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.animate-fade-up {
+  animation-name: fade-up;
+  animation-timing-function: ease-in-out;
+}
+
+/* Typing indicator animation */
+.typing-dot {
+  animation: typingAnimation 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingAnimation {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+}
+
+/* Chat bubble animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-bubble-in {
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+/* Chat widget button pulsing effect */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+  }
+}
+
+.chat-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* AI Flow Diagram Animations */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatAnimation {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-4px) rotate(0.5deg); }
+  75% { transform: translateY(2px) rotate(-0.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes sparkle {
+  0% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+  100% { opacity: 0; transform: scale(0) rotate(360deg); }
+}
+
+@keyframes techPulse {
+  0% { opacity: 0.8; transform: scale(1) translateY(0); }
+  50% { opacity: 1; transform: scale(1.05) translateY(-1px); }
+  100% { opacity: 0.8; transform: scale(1) translateY(0); }
+}
+
+@keyframes iconFloat {
+  0% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(-2px) rotate(3deg); }
+  75% { transform: translateY(1px) rotate(-2deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+@keyframes dataFlow {
+  0% { stroke-dashoffset: 1000; opacity: 0.15; transform: scale(0.98); }
+  40% { opacity: 0.45; transform: scale(1.01); }
+  60% { opacity: 0.45; transform: scale(1.01); }
+  100% { stroke-dashoffset: 0; opacity: 0.15; transform: scale(0.98); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+  60% { transform: translateY(-5px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes titleGradient {
+  0% { background-position: 0% 0%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes float-up {
+  0% { transform: translateY(100%) scale(0.6) rotate(0deg); opacity: 0; }
+  20% { transform: translateY(50%) scale(1.1) rotate(45deg); opacity: 0.8; }
+  80% { transform: translateY(-50%) scale(0.9) rotate(180deg); opacity: 0.6; }
+  100% { transform: translateY(-100%) scale(0.4) rotate(360deg); opacity: 0; }
+}
+
+/* Define the pulse animation */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+}

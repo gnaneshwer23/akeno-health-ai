@@ -16,6 +16,7 @@ import {
   LayoutDashboard, 
   Rocket
 } from 'lucide-react';
+import '@/styles/ai-flow-diagram.css';
 
 const AIFlowDiagram = () => {
   return (
