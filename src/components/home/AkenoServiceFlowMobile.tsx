@@ -14,7 +14,7 @@ import {
   CheckCheck, 
   Zap,
   HeartPulse,
-  Flask
+  TestTube
 } from 'lucide-react';
 
 const DataSource = ({ title, icon, color, delay = 0 }) => (
@@ -130,7 +130,7 @@ const AkenoServiceFlowMobile = () => {
           />
           <DataSource 
             title="Clinical Trial Data" 
-            icon={<Flask size={20} className="text-purple-500" />} 
+            icon={<TestTube size={20} className="text-purple-500" />} 
             color="purple"
             delay={0.4}
           />
