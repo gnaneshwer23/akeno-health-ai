@@ -29,6 +29,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const PatientProfile = () => {
   const { user } = useAuth();
@@ -38,6 +39,13 @@ const PatientProfile = () => {
     toast({
       title: "Profile saved",
       description: "Your profile information has been updated successfully.",
+    });
+  };
+
+  const handleActionClick = (action: string) => {
+    toast({
+      title: "Action triggered",
+      description: `${action} action will be available soon!`,
     });
   };
 
@@ -54,11 +62,21 @@ const PatientProfile = () => {
           <p className="text-muted-foreground">Personalized AI-driven health insights and data management</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" size="sm" className="flex items-center gap-2">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="flex items-center gap-2"
+            onClick={() => handleActionClick("Privacy Settings")}
+          >
             <Lock size={16} />
             <span>Privacy Settings</span>
           </Button>
-          <Button variant="outline" size="sm" className="flex items-center gap-2">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="flex items-center gap-2"
+            onClick={() => handleActionClick("Export Data")}
+          >
             <Database size={16} />
             <span>Export Data</span>
           </Button>
@@ -83,9 +101,14 @@ const PatientProfile = () => {
                   {user?.name?.charAt(0)}
                 </AvatarFallback>
               </Avatar>
-              <div className="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200"
+                onClick={() => handleActionClick("Upload Profile Picture")}
+              >
                 <Edit className="h-6 w-6 text-white" />
-              </div>
+              </Button>
             </div>
             
             <div className="text-center">
@@ -109,10 +132,11 @@ const PatientProfile = () => {
               <Progress value={85} className="h-2" />
             </div>
             
-            <Button variant="outline" className="w-full mt-2" onClick={() => toast({
-              title: "Coming Soon",
-              description: "Profile picture upload will be available soon!",
-            })}>
+            <Button 
+              variant="outline" 
+              className="w-full mt-2" 
+              onClick={() => handleActionClick("Edit Profile")}
+            >
               <Edit className="mr-2 h-4 w-4" />
               Edit Profile
             </Button>
@@ -280,7 +304,13 @@ const PatientProfile = () => {
                         <Badge variant="secondary" className="bg-gray-100">Sleep</Badge>
                       </div>
                       <div className="mt-3">
-                        <Button variant="outline" size="sm">Disconnect</Button>
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => handleActionClick("Disconnect Apple Watch")}
+                        >
+                          Disconnect
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -303,15 +333,22 @@ const PatientProfile = () => {
                         <Badge variant="secondary" className="bg-gray-100">Trends</Badge>
                       </div>
                       <div className="mt-3">
-                        <Button variant="outline" size="sm">Disconnect</Button>
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => handleActionClick("Disconnect CGM")}
+                        >
+                          Disconnect
+                        </Button>
                       </div>
                     </div>
                   </div>
                   
-                  <Button variant="outline" className="w-full border-dashed border-2" onClick={() => toast({
-                    title: "Coming Soon",
-                    description: "Connect new device functionality will be available soon!",
-                  })}>
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-dashed border-2" 
+                    onClick={() => handleActionClick("Connect New Device")}
+                  >
                     + Connect New Device
                   </Button>
                 </div>
@@ -333,8 +370,20 @@ const PatientProfile = () => {
                       </div>
                       <p className="text-xs mt-1">Health Partners Medical Group</p>
                       <div className="mt-3 flex gap-2">
-                        <Button variant="outline" size="sm">Message</Button>
-                        <Button variant="outline" size="sm">Schedule</Button>
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => handleActionClick("Message Dr. Johnson")}
+                        >
+                          Message
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => handleActionClick("Schedule with Dr. Johnson")}
+                        >
+                          Schedule
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -353,16 +402,29 @@ const PatientProfile = () => {
                       </div>
                       <p className="text-xs mt-1">Metabolic Health Specialists</p>
                       <div className="mt-3 flex gap-2">
-                        <Button variant="outline" size="sm">Message</Button>
-                        <Button variant="outline" size="sm">Schedule</Button>
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => handleActionClick("Message Dr. Chen")}
+                        >
+                          Message
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => handleActionClick("Schedule with Dr. Chen")}
+                        >
+                          Schedule
+                        </Button>
                       </div>
                     </div>
                   </div>
                   
-                  <Button variant="outline" className="w-full border-dashed border-2" onClick={() => toast({
-                    title: "Coming Soon",
-                    description: "Add healthcare provider functionality will be available soon!",
-                  })}>
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-dashed border-2" 
+                    onClick={() => handleActionClick("Add Healthcare Provider")}
+                  >
                     + Add Healthcare Provider
                   </Button>
                 </div>
@@ -458,7 +520,14 @@ const PatientProfile = () => {
                 <div>
                   <h4 className="font-medium text-green-800">Activity Recommendation</h4>
                   <p className="text-sm text-green-700 mt-1">Your glucose levels have shown a rising trend over the last three weeks. Increasing daily fiber intake and adding 20 minutes of walking could help stabilize levels.</p>
-                  <Button size="sm" variant="outline" className="mt-2 border-green-200 text-green-700 hover:bg-green-100">Apply to Health Plan</Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="mt-2 border-green-200 text-green-700 hover:bg-green-100"
+                    onClick={() => handleActionClick("Apply to Health Plan")}
+                  >
+                    Apply to Health Plan
+                  </Button>
                 </div>
               </div>
             </div>
@@ -471,7 +540,14 @@ const PatientProfile = () => {
                 <div>
                   <h4 className="font-medium text-blue-800">Cardiac Health</h4>
                   <p className="text-sm text-blue-700 mt-1">Your ECG readings are within normal range, but your sleep patterns suggest some nighttime elevated heart rates. Consider reducing screen time 1 hour before bed.</p>
-                  <Button size="sm" variant="outline" className="mt-2 border-blue-200 text-blue-700 hover:bg-blue-100">Learn More</Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="mt-2 border-blue-200 text-blue-700 hover:bg-blue-100"
+                    onClick={() => handleActionClick("Learn More About Cardiac Health")}
+                  >
+                    Learn More
+                  </Button>
                 </div>
               </div>
             </div>
@@ -484,13 +560,37 @@ const PatientProfile = () => {
                 <div>
                   <h4 className="font-medium text-purple-800">Cognitive Health</h4>
                   <p className="text-sm text-purple-700 mt-1">Your cognitive assessments show strong performance. To maintain brain health, consider adding omega-3 rich foods and daily cognitive exercises.</p>
-                  <Button size="sm" variant="outline" className="mt-2 border-purple-200 text-purple-700 hover:bg-purple-100">View Cognitive Plan</Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="mt-2 border-purple-200 text-purple-700 hover:bg-purple-100"
+                    onClick={() => handleActionClick("View Cognitive Plan")}
+                  >
+                    View Cognitive Plan
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
         </CardContent>
       </Card>
+
+      <div className="flex justify-center gap-4 mt-8">
+        <Button 
+          className="bg-health-primary hover:bg-health-secondary"
+          asChild
+        >
+          <Link to="/dashboard/patient">
+            Return to Dashboard
+          </Link>
+        </Button>
+        <Button 
+          variant="outline" 
+          onClick={() => handleActionClick("Download Health Records")}
+        >
+          Download Health Records
+        </Button>
+      </div>
     </motion.div>
   );
 };
