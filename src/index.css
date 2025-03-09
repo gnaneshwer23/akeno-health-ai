@@ -265,6 +265,12 @@
   100% { transform: translateY(-100%) scale(0.4) rotate(360deg); opacity: 0; }
 }
 
+@keyframes pulse-arrow {
+  0% { opacity: 0.5; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(3px); }
+  100% { opacity: 0.5; transform: translateX(0); }
+}
+
 /* AI Flow Diagram Styles */
 .container-ai-flow {
   background: rgba(255, 255, 255, 0.9);
@@ -293,25 +299,66 @@
 #diagram {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-top: 20px;
   position: relative;
 }
 
+.three-column-layout {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.column-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 1.5rem 0 1rem;
+  color: #3a506b;
+  padding: 0.5rem;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 0.5rem;
+}
+
 @media (max-width: 1200px) {
-  #diagram {
-    grid-template-columns: repeat(2, 1fr);
+  .three-column-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .solutions-benefits {
+    grid-column: span 2;
   }
 }
 
-@media (max-width: 640px) {
-  #diagram {
+@media (max-width: 768px) {
+  .three-column-layout {
     grid-template-columns: 1fr;
+  }
+  
+  .solutions-benefits {
+    grid-column: span 1;
   }
 }
 
 .column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.solutions-section,
+.benefits-section {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -392,7 +439,6 @@ small {
   overflow: hidden;
   max-width: 340px;
   margin: 0 auto;
-  transform: translateY(30px);
   backdrop-filter: blur(12px);
   box-shadow: 0 15px 35px rgba(74, 144, 226, 0.1);
 }
@@ -421,4 +467,44 @@ small {
   font-size: 28px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   transform-origin: center;
+}
+
+/* New connector styles */
+.connector {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  animation: pulse-arrow 1.5s infinite;
+}
+
+.connector-in {
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  animation: pulse-arrow 1.5s infinite;
+}
+
+.arrow-icon {
+  color: #6366f1;
+  filter: drop-shadow(0 0 3px rgba(99, 102, 241, 0.5));
+}
+
+.data-source {
+  border-left: 4px solid #3b82f6;
+}
+
+.ai-engine {
+  border-left: 4px solid #8b5cf6;
+}
+
+.solution {
+  border-left: 4px solid #10b981;
+}
+
+.benefit {
+  border-left: 4px solid #f59e0b;
 }
