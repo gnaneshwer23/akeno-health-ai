@@ -1,20 +1,19 @@
-
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Loader2, Lock, Mail, User, Check, UserPlus, AlertTriangle, Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import { UserRole } from '@/contexts/auth/types';
+
 import RoleSelector from './RoleSelector';
 import EmailInput from './EmailInput';
-import PasswordInput from './PasswordInput';
-import { itemVariants } from './animations';
+import PasswordInputRegister from './PasswordInputRegister';
+import NameInput from './NameInput';
+import ConfirmPasswordInput from './ConfirmPasswordInput';
+import TermsCheckbox from './TermsCheckbox';
+import RegisterButton from './RegisterButton';
+import RegisterErrorAlert from './RegisterErrorAlert';
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
@@ -35,7 +34,6 @@ const RegisterForm = () => {
     e.preventDefault();
     setError(null);
     
-    // Validation
     if (!email || !password || !name) {
       setError("All fields are required");
       return;
@@ -66,7 +64,6 @@ const RegisterForm = () => {
         description: "Please check your email to confirm your account",
       });
       
-      // Redirect to login page
       navigate('/login', { replace: true });
     } catch (error: any) {
       console.error("Signup error:", error);
@@ -76,7 +73,17 @@ const RegisterForm = () => {
     }
   };
 
-  const toggleShowPassword = () => setShowPassword(!showPassword);
+  const handleRoleSelect = (newRole: UserRole) => setRole(newRole);
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value);
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
+  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value);
+  const handleTermsChange = (checked: boolean) => setAgreeTerms(checked);
+
+  const toggleShowPassword = useCallback(() => {
+    setShowPassword(!showPassword);
+  }, [showPassword]);
 
   return (
     <motion.div 
@@ -93,122 +100,53 @@ const RegisterForm = () => {
       }}
     >
       <form onSubmit={handleRegister} className="space-y-5">
-        {error && (
-          <Alert variant="destructive" className="animate-fade-in">
-            <AlertTriangle className="h-4 w-4" />
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
+        <RegisterErrorAlert error={error} />
         
         <div className="space-y-4">
           <RoleSelector 
             role={role} 
-            onRoleSelect={(newRole) => setRole(newRole)} 
+            onRoleSelect={handleRoleSelect} 
           />
           
-          <motion.div className="space-y-2" variants={itemVariants}>
-            <Label htmlFor="name" className="text-sm font-medium flex items-center gap-1.5">
-              <User size={14} className="text-health-primary" />
-              Full Name
-            </Label>
-            <Input 
-              id="name" 
-              type="text" 
-              placeholder="Your Full Name" 
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              className="transition-all duration-300 focus:ring-2 focus:ring-health-primary/30 focus:border-health-primary shadow-sm"
-            />
-          </motion.div>
+          <NameInput
+            name={name}
+            onChange={handleNameChange}
+          />
           
           <EmailInput 
             email={email} 
-            onChange={(e) => setEmail(e.target.value)} 
+            onChange={handleEmailChange} 
           />
           
-          <motion.div className="space-y-2" variants={itemVariants}>
-            <Label htmlFor="password" className="text-sm font-medium flex items-center gap-1.5">
-              <Lock size={14} className="text-health-primary" />
-              Password
-            </Label>
-            <div className="relative">
-              <Input 
-                id="password" 
-                type={showPassword ? "text" : "password"}
-                placeholder="••••••••" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="pr-10 transition-all duration-300 focus:ring-2 focus:ring-health-primary/30 focus:border-health-primary shadow-sm"
-              />
-              <button
-                type="button"
-                onClick={toggleShowPassword}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-health-primary transition-colors"
-                aria-label={showPassword ? "Hide password" : "Show password"}
-              >
-                {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-              </button>
-            </div>
-          </motion.div>
-          
-          <motion.div className="space-y-2" variants={itemVariants}>
-            <Label htmlFor="confirmPassword" className="text-sm font-medium flex items-center gap-1.5">
-              <Check size={14} className="text-health-primary" />
-              Confirm Password
-            </Label>
-            <Input 
-              id="confirmPassword" 
-              type={showPassword ? "text" : "password"}
-              placeholder="••••••••" 
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              className="transition-all duration-300 focus:ring-2 focus:ring-health-primary/30 focus:border-health-primary shadow-sm"
+          <div className="relative">
+            <PasswordInputRegister 
+              password={password} 
+              onChange={handlePasswordChange}
+              showPassword={showPassword}
             />
-          </motion.div>
-          
-          <motion.div className="flex items-center space-x-2 pt-2" variants={itemVariants}>
-            <Checkbox 
-              id="terms" 
-              checked={agreeTerms}
-              onCheckedChange={(checked) => setAgreeTerms(checked as boolean)}
-              required
-            />
-            <label
-              htmlFor="terms"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            <button
+              type="button"
+              onClick={toggleShowPassword}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-health-primary transition-colors"
+              aria-label={showPassword ? "Hide password" : "Show password"}
             >
-              I agree to the{" "}
-              <a href="#" className="text-health-primary hover:underline">Terms of Service</a>
-              {" "}and{" "}
-              <a href="#" className="text-health-primary hover:underline">Privacy Policy</a>
-            </label>
-          </motion.div>
+              {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+            </button>
+          </div>
+          
+          <ConfirmPasswordInput 
+            confirmPassword={confirmPassword}
+            onChange={handleConfirmPasswordChange}
+            showPassword={showPassword}
+          />
+          
+          <TermsCheckbox 
+            checked={agreeTerms}
+            onCheckedChange={handleTermsChange}
+          />
         </div>
         
-        <motion.div variants={itemVariants}>
-          <Button 
-            type="submit" 
-            variant="default" 
-            size="lg" 
-            className="w-full mt-4 group relative shadow-sm bg-health-primary text-white hover:bg-health-primary/90"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 size={16} className="mr-2 animate-spin" />
-                Creating account...
-              </>
-            ) : (
-              <>
-                <UserPlus size={16} className="mr-2" />
-                Create Account
-              </>
-            )}
-          </Button>
-        </motion.div>
+        <RegisterButton isSubmitting={isSubmitting} />
       </form>
     </motion.div>
   );
