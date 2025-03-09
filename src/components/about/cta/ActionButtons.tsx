@@ -1,38 +1,39 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 export const ActionButtons = () => {
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
       <Button
-        variant="primary"
         size="lg"
-        as="Link"
-        to="/contact"
-        className="group"
+        className="group bg-health-primary hover:bg-health-secondary"
+        asChild
       >
-        Join the Future of AI Healthcare
-        <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
+        <Link to="/contact" className="flex items-center gap-2">
+          Join the Future of AI Healthcare
+          <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+        </Link>
       </Button>
       
       <Button
         variant="outline"
         size="lg"
-        as="Link"
-        to="/contact"
+        className="border-health-primary/30 hover:border-health-primary/60"
+        asChild
       >
-        Request a Demo
+        <Link to="/contact">Request a Demo</Link>
       </Button>
       
       <Button
         variant="ghost"
         size="lg"
-        as="Link"
-        to="/contact"
+        className="hover:bg-health-primary/5"
+        asChild
       >
-        Partner With Us
+        <Link to="/contact">Partner With Us</Link>
       </Button>
     </div>
   );

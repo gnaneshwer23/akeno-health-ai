@@ -4,7 +4,9 @@ import { Tabs, TabsContent, TabsList } from '@/components/ui/tabs';
 import { teamGroups } from '@/data/teamData';
 import { TeamGroup } from './TeamGroup';
 import { TeamTabTrigger } from './TeamTabTrigger';
-import { Users, Stethoscope, Lightbulb, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import { Users, Stethoscope, Lightbulb, Sparkles, ArrowRight } from 'lucide-react';
 
 export const AboutTeam = () => {
   return (
@@ -79,15 +81,17 @@ export const AboutTeam = () => {
         </div>
         
         <Tabs defaultValue="medical" className="w-full fade-up-3">
-          <TabsList className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-transparent w-full mb-8">
-            {teamGroups.filter(group => group.id !== "scientists").map((group) => (
-              <TeamTabTrigger 
-                key={group.id} 
-                id={group.id}
-                icon={group.icon}
-                title={group.title}
-              />
-            ))}
+          <TabsList className="grid grid-cols-2 w-full max-w-2xl mx-auto gap-4 bg-transparent mb-10">
+            <TeamTabTrigger 
+              id="medical"
+              icon={<Stethoscope size={28} />}
+              title="Medical & Clinical Experts"
+            />
+            <TeamTabTrigger 
+              id="advisors"
+              icon={<Lightbulb size={28} />}
+              title="Strategic Advisors & Industry Experts"
+            />
           </TabsList>
           
           {teamGroups.filter(group => group.id !== "scientists").map((group) => (
@@ -97,11 +101,31 @@ export const AboutTeam = () => {
           ))}
         </Tabs>
         
-        <div className="mt-12 text-center fade-up-5">
-          <div className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-100 to-purple-100 border border-purple-200 shadow-md">
-            <p className="text-health-dark/80 font-medium">
-              We are backed by renowned medical professionals, AI pioneers, and biotech leaders who guide our mission towards a smarter, more efficient healthcare system.
-            </p>
+        <div className="mt-16 px-8 py-6 rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-purple-100 shadow-md text-center fade-up-5">
+          <p className="text-health-dark/80 font-medium text-lg mb-8">
+            We are backed by renowned medical professionals, AI pioneers, and biotech leaders who guide our mission towards a smarter, more efficient healthcare system.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button 
+              size="lg" 
+              className="group bg-health-primary hover:bg-health-secondary"
+              asChild
+            >
+              <Link to="/contact" className="flex items-center gap-2">
+                Join Our Team
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Button>
+            
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-health-primary/30 hover:border-health-primary/60"
+              asChild
+            >
+              <Link to="/contact">Become a Partner</Link>
+            </Button>
           </div>
         </div>
       </div>
