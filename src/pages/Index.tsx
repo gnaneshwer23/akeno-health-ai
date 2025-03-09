@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
-import { MissionStatement } from '@/components/MissionStatement';
 import { FeaturesSection } from '@/components/features/FeaturesSection';
 import { CTASection } from '@/components/CTASection';
 import { Footer } from '@/components/Footer';
@@ -94,7 +93,6 @@ const Index = () => {
         </div>
         
         <div className="relative bg-gradient-to-br from-health-light/30 to-white">
-          <MissionStatement />
           <QuantumCTA />
           
           {/* Enhanced decorative circles */}
