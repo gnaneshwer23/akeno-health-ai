@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
+import styles from './AIFlowDiagram.module.css';
 
 interface ParticleEffectProps {
   selector: string;
@@ -20,7 +21,7 @@ const ParticleEffect: React.FC<ParticleEffectProps> = ({ selector }) => {
         const interval = setInterval(() => {
           if (Math.random() < 0.3) { // 30% chance to create a particle
             const particle = document.createElement('div');
-            particle.className = 'particle';
+            particle.className = styles.particle;
             
             // Random position along the bottom of the node
             const x = Math.random() * typedNode.offsetWidth;
