@@ -61,7 +61,7 @@ const AIFlowDiagram = () => {
         </div>
         
         {/* Flow Connector with Animation */}
-        <div className="flow-connector">
+        <div className="flow-connector to-engine">
           <div className="flow-animation">
             <div className="flow-dot"></div>
             <div className="flow-dot"></div>
@@ -71,7 +71,7 @@ const AIFlowDiagram = () => {
         </div>
         
         {/* Akeno AI Engine */}
-        <div className="flow-column">
+        <div className="flow-column engine-column">
           <h3 className="column-title">Akeno AI Engine</h3>
           <div className="engine-container-card">
             <Brain className="engine-icon-card" />
