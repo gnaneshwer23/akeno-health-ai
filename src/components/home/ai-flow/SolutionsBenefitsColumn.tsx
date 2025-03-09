@@ -2,7 +2,7 @@
 import React from 'react';
 import HealthcareSolutionsSection from './HealthcareSolutionsSection';
 import BenefitsSection from './BenefitsSection';
-import styles from './AIFlowDiagram.module.css';
+import styles from './styles';
 
 const SolutionsBenefitsColumn = () => {
   return (

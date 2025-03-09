@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import styles from './AIFlowDiagram.module.css';
+import styles from './styles';
 
 interface ParticleEffectProps {
   selector: string;
