@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { ArrowRight, Activity, BrainCircuit, Shield, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const PatientSolutionsHero = () => {
   const benefits = [
@@ -55,12 +56,11 @@ const PatientSolutionsHero = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button size="lg" variant="primary" className="sm:w-auto w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-            Sign Up Now
-            <ArrowRight size={16} />
+          <Button size="lg" asChild className="gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+            <Link to="/register">Sign Up Now <ArrowRight size={16} /></Link>
           </Button>
-          <Button size="lg" variant="outline" className="sm:w-auto w-full border-indigo-300 text-indigo-700 hover:bg-indigo-50">
-            Request a Consultation
+          <Button size="lg" variant="outline" asChild className="border-indigo-300 text-indigo-700 hover:bg-indigo-50">
+            <Link to="/contact">Request a Consultation</Link>
           </Button>
         </div>
       </div>

@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { ArrowRight, Stethoscope, Brain, Search, Activity, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const DoctorSolutionsHero = () => {
   return (
@@ -58,12 +59,11 @@ const DoctorSolutionsHero = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button size="lg" variant="primary" className="sm:w-auto w-full">
-            Explore Solutions
-            <ArrowRight size={16} />
+          <Button size="lg" asChild>
+            <Link to="/contact">Explore Solutions <ArrowRight size={16} /></Link>
           </Button>
-          <Button size="lg" variant="outline" className="sm:w-auto w-full">
-            Request a Demo
+          <Button size="lg" variant="outline" asChild>
+            <Link to="/contact">Request a Demo</Link>
           </Button>
         </div>
       </div>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Hospital, Zap, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HospitalSolutionsHero = () => {
   return (
@@ -27,11 +28,11 @@ const HospitalSolutionsHero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="gap-2">
-                Request Demo <ArrowRight size={18} />
+              <Button size="lg" className="gap-2" asChild>
+                <Link to="/contact">Request Demo <ArrowRight size={18} /></Link>
               </Button>
-              <Button size="lg" variant="outline" className="gap-2">
-                Learn More <Zap size={18} />
+              <Button size="lg" variant="outline" className="gap-2" asChild>
+                <Link to="/how-it-works">Learn More <Zap size={18} /></Link>
               </Button>
             </div>
           </div>

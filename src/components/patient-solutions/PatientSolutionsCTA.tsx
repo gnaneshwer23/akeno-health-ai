@@ -1,8 +1,8 @@
-
 import React from 'react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { ArrowRight, Activity, Brain, Shield, ClipboardCheck } from 'lucide-react';
 import { Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const PatientSolutionsCTA = () => {
   return (
@@ -50,34 +50,26 @@ const PatientSolutionsCTA = () => {
         
         <div className="flex flex-col md:flex-row gap-4 justify-center">
           <Button 
-            variant="primary" 
-            size="lg" 
-            as="Link" 
-            to="/register" 
+            asChild
             className="bg-white text-indigo-700 hover:bg-blue-50"
           >
-            Sign Up Now
-            <ArrowRight size={16} />
+            <Link to="/register">Sign Up Now <ArrowRight size={16} /></Link>
           </Button>
           
           <Button 
             variant="outline" 
-            size="lg" 
-            as="Link" 
-            to="/contact" 
+            asChild
             className="border-white text-white hover:bg-white/10"
           >
-            Request a Consultation
+            <Link to="/contact">Request a Consultation</Link>
           </Button>
           
           <Button 
             variant="ghost" 
-            size="lg" 
-            as="Link" 
-            to="/how-it-works" 
+            asChild
             className="text-white hover:bg-white/10"
           >
-            Learn More
+            <Link to="/how-it-works">Learn More</Link>
           </Button>
         </div>
       </div>
