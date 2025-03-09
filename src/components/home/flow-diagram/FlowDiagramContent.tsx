@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   FileText, 
@@ -11,7 +10,7 @@ import {
   Zap,
   HeartPulse,
   Brain,
-  Flask,
+  FlaskConical,
   Microscope,
   Tablet,
   Activity
@@ -77,7 +76,7 @@ const FlowDiagramContent = () => {
       
       <div className="absolute left-[40%] top-[42%]">
         <div className="w-16 h-16 rounded-full bg-[#F1F0FB] shadow-sm border border-[#8571DD]/20 flex items-center justify-center">
-          <Flask size={24} className="text-[#8571DD]" />
+          <FlaskConical size={24} className="text-[#8571DD]" />
         </div>
         <span className="text-xs font-medium mt-1 block text-center">Research AI</span>
       </div>

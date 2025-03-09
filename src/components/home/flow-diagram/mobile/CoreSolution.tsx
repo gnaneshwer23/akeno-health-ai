@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Activity, Flask, Tablet } from 'lucide-react';
+import { Brain, Activity, FlaskConical, Tablet } from 'lucide-react';
 
 const CoreSolution = () => (
   <motion.div 
@@ -27,7 +27,7 @@ const CoreSolution = () => (
       <Tablet size={18} className="text-[#8571DD]" />
     </div>
     <div className="absolute -bottom-2 -left-4 w-10 h-10 rounded-full bg-[#F1F0FB] shadow-sm border border-[#8571DD]/20 flex items-center justify-center">
-      <Flask size={18} className="text-[#8571DD]" />
+      <FlaskConical size={18} className="text-[#8571DD]" />
     </div>
     
     <div className="absolute -right-16 top-1/2 transform -translate-y-1/2 text-sm font-semibold text-[#8571DD]">
