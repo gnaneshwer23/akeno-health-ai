@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import AuthCard from './AuthCard';
-import { Database, Microscope, Server, Sparkles, Flask, ShieldCheck, Dna } from 'lucide-react';
+import { Database, Microscope, Server, Sparkles, Beaker, ShieldCheck, Dna } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 interface ResearcherAuthLayoutProps {
@@ -71,7 +70,7 @@ const ResearcherAuthLayout = ({
             transition={{ duration: 0.5 }}
           >
             <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-indigo-600/10 mb-6">
-              <Flask className="h-8 w-8 text-indigo-600" />
+              <Beaker className="h-8 w-8 text-indigo-600" />
             </div>
             
             <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
