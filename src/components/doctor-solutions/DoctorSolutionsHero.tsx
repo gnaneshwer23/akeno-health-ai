@@ -14,19 +14,19 @@ const DoctorSolutionsHero = () => {
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-health-primary/10 text-health-primary font-medium">
           <Sparkles size={16} className="text-health-primary" />
-          <span>Doctor-Centered Solutions</span>
+          <span>For Doctors</span>
         </span>
         
         <h1 className="text-4xl md:text-5xl font-bold text-health-dark mb-6 tracking-tight">
-          Enhancing Medical Practice with <span className="text-health-primary">AI</span> & <span className="text-health-secondary">Data Science</span>
+          AI That <span className="text-health-primary">Supports</span> Your Expertise
         </h1>
         
         <div className="flex justify-center mb-6">
           <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary"></div>
         </div>
         
-        <p className="text-lg text-health-dark/70 max-w-3xl mx-auto mb-10 leading-relaxed">
-          At Akeno Health AI, we empower healthcare providers with cutting-edge AI-driven solutions that enhance diagnostics, clinical decision-making, and patient monitoring.
+        <p className="text-lg text-health-dark/70 max-w-3xl mx-auto mb-8 leading-relaxed">
+          Akeno Health doesn't replace doctors—it empowers them. Our AI-powered clinical decision support system, real-time patient data insights, and seamless EHR integration help reduce workload, enhance accuracy, and improve patient outcomes.
         </p>
         
         {/* Icon Feature Grid */}
@@ -47,13 +47,13 @@ const DoctorSolutionsHero = () => {
             <div className="w-12 h-12 rounded-full bg-health-primary/10 flex items-center justify-center mb-2">
               <Search size={24} className="text-health-primary" />
             </div>
-            <span className="text-sm font-medium text-health-dark">Imaging Analysis</span>
+            <span className="text-sm font-medium text-health-dark">Faster Decisions</span>
           </div>
           <div className="flex flex-col items-center p-4 rounded-lg bg-white/50 border border-health-primary/10 shadow-sm">
             <div className="w-12 h-12 rounded-full bg-health-primary/10 flex items-center justify-center mb-2">
               <Activity size={24} className="text-health-primary" />
             </div>
-            <span className="text-sm font-medium text-health-dark">Patient Monitoring</span>
+            <span className="text-sm font-medium text-health-dark">Better Outcomes</span>
           </div>
         </div>
         
@@ -63,7 +63,7 @@ const DoctorSolutionsHero = () => {
             <ArrowRight size={16} />
           </Button>
           <Button size="lg" variant="outline" className="sm:w-auto w-full">
-            Schedule a Demo
+            Request a Demo
           </Button>
         </div>
       </div>

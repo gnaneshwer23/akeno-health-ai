@@ -7,18 +7,18 @@ const SolutionsOverview = () => {
   const solutions = [
     {
       icon: <Stethoscope size={24} />,
-      title: "AI-Assisted Diagnostics",
-      description: "Advanced machine learning models analyze medical imaging, pathology reports, laboratory results, and genetic data to provide high-accuracy diagnoses."
+      title: "AI-Powered Clinical Decision Support",
+      description: "Enhanced clinical expertise with real-time, evidence-based AI assistance for patient diagnosis, risk stratification, and evidence-based treatment suggestions."
     },
     {
       icon: <FileText size={24} />,
-      title: "AI-Generated Health Reports",
-      description: "AI compiles holistic patient reports by integrating EHRs, biometrics, genomic sequencing, and other data to provide a 360-degree health overview."
+      title: "EHR Integration & Patient Insights",
+      description: "Seamless integration with your existing systems providing instant AI analysis of EHRs, imaging data, lab results, and genomics with automated documentation."
     },
     {
       icon: <Bell size={24} />,
-      title: "Real-Time Alerts & Monitoring",
-      description: "AI continuously monitors patient vitals and biomarkers, issuing instant alerts for critical conditions and enabling remote patient monitoring."
+      title: "AI Treatment Recommendations",
+      description: "Personalized, evidence-based treatment plans leveraging AI and precision medicine with automatic alerts for drug interactions and safety concerns."
     }
   ];
 
@@ -27,11 +27,11 @@ const SolutionsOverview = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
-            Comprehensive Solutions for Healthcare Providers
+            AI-Powered Solutions for Healthcare Professionals
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our platform integrates AI-powered diagnostics, risk assessments, and remote monitoring to transform medicine into a more predictive, proactive, and precision-based system.
+            Our platform integrates AI-powered diagnostics, real-time data insights, and treatment recommendations to transform medicine into a more predictive, proactive, and precision-based system.
           </p>
         </div>
         
@@ -57,7 +57,7 @@ const SolutionsOverview = () => {
             <div className="w-16 h-16 rounded-full bg-health-primary/10 flex items-center justify-center mb-2">
               <Bell size={28} className="text-health-primary" />
             </div>
-            <span className="text-sm font-medium text-health-dark">Monitor</span>
+            <span className="text-sm font-medium text-health-dark">Treat</span>
           </div>
         </div>
         

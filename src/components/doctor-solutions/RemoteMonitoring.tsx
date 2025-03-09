@@ -17,11 +17,11 @@ const RemoteMonitoring = () => {
             </div>
             
             <h2 className="text-3xl md:text-4xl font-medium bg-gradient-to-r from-health-dark to-health-primary bg-clip-text text-transparent mb-6">
-              Real-Time Alerts & Remote Patient Monitoring
+              AI-Powered Treatment Recommendations
             </h2>
             
             <p className="text-lg text-muted-foreground mb-8">
-              Our AI-powered remote monitoring system provides continuous patient tracking, real-time critical alerts, and comprehensive telehealth solutions for healthcare providers.
+              Akeno Health leverages AI and precision medicine to ensure that each patient receives the right treatment, at the right time, with the right dosage, while automatically screening for potential drug interactions.
             </p>
             
             <MonitoringFeaturesList />

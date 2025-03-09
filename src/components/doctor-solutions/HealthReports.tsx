@@ -23,11 +23,11 @@ const HealthReports = () => {
             </div>
             
             <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
-              AI-Generated Patient Health Reports & Risk Assessments
+              Seamless EHR Integration & Real-Time Patient Insights
             </h2>
             
             <p className="text-lg text-muted-foreground mb-6">
-              Our AI analyzes comprehensive patient data to generate detailed health reports, identify risk factors, and provide actionable clinical insights for healthcare providers.
+              Akeno Health integrates directly into your Electronic Health Records (EHR) system, providing real-time, AI-powered data analysis that enhances decision-making and reduces administrative burden.
             </p>
             
             <HealthReportFeaturesList />

@@ -1,28 +1,78 @@
 
 import React from 'react';
 import { Button } from '@/components/Button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Clock, Brain, Activity, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const DoctorSolutionsCTA = () => {
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-white to-health-light/30 relative overflow-hidden text-center">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
-          Transform Your Clinical Practice with AI
+    <section className="py-20 px-6 bg-gradient-to-b from-health-primary to-health-secondary text-white relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full bg-pattern-grid opacity-10"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full opacity-10 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full opacity-10 blur-3xl"></div>
+      
+      <div className="max-w-5xl mx-auto text-center relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          Join the Akeno Doctor Network
         </h2>
         
-        <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-          With Akeno Health AI, doctors and healthcare providers gain access to powerful AI-driven tools that optimize diagnostics, improve patient risk assessments, and enable continuous remote monitoring—leading to smarter, faster, and more effective patient care. By integrating AI with real-world clinical applications, we are transforming medicine into a more predictive, proactive, and precision-based system.
+        <p className="text-xl font-light max-w-3xl mx-auto mb-10 text-blue-100">
+          Harness the power of AI to enhance your expertise, not replace it. Join thousands of forward-thinking doctors using AI to revolutionize patient care.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" variant="primary" as="Link" to="/contact">
-            Contact Us
+        <div className="grid md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 flex flex-col items-center">
+            <Clock size={28} className="text-blue-200 mb-3" />
+            <p className="text-sm">Save Time</p>
+          </div>
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 flex flex-col items-center">
+            <Brain size={28} className="text-blue-200 mb-3" />
+            <p className="text-sm">Improve Accuracy</p>
+          </div>
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 flex flex-col items-center">
+            <Activity size={28} className="text-blue-200 mb-3" />
+            <p className="text-sm">Enhance Patient Outcomes</p>
+          </div>
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 flex flex-col items-center">
+            <Shield size={28} className="text-blue-200 mb-3" />
+            <p className="text-sm">Real-Time AI Support</p>
+          </div>
+        </div>
+        
+        <div className="flex flex-col md:flex-row gap-4 justify-center">
+          <Button 
+            variant="primary" 
+            size="lg" 
+            as="Link" 
+            to="/register" 
+            className="bg-white text-health-primary hover:bg-blue-50"
+          >
+            Sign Up Now
             <ArrowRight size={16} />
           </Button>
-          <Button size="lg" variant="outline" as="Link" to="/contact">
-            Schedule a Demo
+          
+          <Button 
+            variant="outline" 
+            size="lg" 
+            as="Link" 
+            to="/contact" 
+            className="border-white text-white hover:bg-white/10"
+          >
+            Request a Demo
+          </Button>
+          
+          <Button 
+            variant="ghost" 
+            size="lg" 
+            as="Link" 
+            to="/how-it-works" 
+            className="text-white hover:bg-white/10"
+          >
+            Learn More
           </Button>
         </div>
       </div>
