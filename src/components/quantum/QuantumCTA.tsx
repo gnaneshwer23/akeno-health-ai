@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { Atom, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -24,11 +24,25 @@ export const QuantumCTA = () => {
                 Akeno Health isn't just leading healthcare innovation – we're redefining it for the future.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button variant="primary" as="Link" to="/contact" className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700" icon={<Atom size={16} />}>
-                  Contact Us Today
+                <Button 
+                  className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+                  asChild
+                >
+                  <Link to="/contact" className="flex items-center gap-2">
+                    <Atom size={16} />
+                    Contact Us Today
+                  </Link>
                 </Button>
-                <Button variant="outline" as="Link" to="/case-studies-and-blog" className="border-purple-300 text-purple-600 hover:bg-purple-50" icon={<ArrowRight size={16} />}>
-                  Explore Our Research
+                
+                <Button 
+                  variant="outline" 
+                  className="border-purple-300 text-purple-600 hover:bg-purple-50"
+                  asChild
+                >
+                  <Link to="/case-studies" className="flex items-center gap-2">
+                    <ArrowRight size={16} />
+                    Explore Our Research
+                  </Link>
                 </Button>
               </div>
             </div>

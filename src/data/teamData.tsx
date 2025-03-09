@@ -1,11 +1,12 @@
 
 import { ReactNode } from 'react';
 import { TeamGroupData } from '@/components/about/TeamGroup';
+import { Users, Microscope, Briefcase, Brain } from 'lucide-react';
 
 export const teamGroups: TeamGroupData[] = [
   {
     id: "medical",
-    icon: <span>Icon</span>,
+    icon: <Microscope className="h-6 w-6 text-health-primary" />,
     title: "Medical & Clinical Experts",
     description: "Physicians, immunologists, and healthcare specialists ensuring that AI solutions align with real-world clinical needs.",
     members: [
@@ -41,7 +42,7 @@ export const teamGroups: TeamGroupData[] = [
   },
   {
     id: "advisors",
-    icon: <span>Icon</span>,
+    icon: <Briefcase className="h-6 w-6 text-health-primary" />,
     title: "Strategic Advisors & Industry Experts",
     description: "Leaders in biopharma, health policy, AI ethics, regulatory affairs, and global healthcare strategy.",
     members: [
