@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
-import { FeaturesSection } from '@/components/features/FeaturesSection';
 import { CTASection } from '@/components/CTASection';
 import { Footer } from '@/components/Footer';
 import { StatisticsSection } from '@/components/StatisticsSection';
@@ -82,14 +81,6 @@ const Index = () => {
         
         <div className="relative py-10 px-4 bg-gradient-to-br from-white to-health-light/30">
           <AIFlowDiagram />
-        </div>
-        
-        <div className="relative">
-          <FeaturesSection />
-          
-          {/* Enhanced side accent bars */}
-          <div className="absolute left-0 top-1/4 bottom-1/4 w-2 bg-gradient-to-b from-health-primary/50 to-health-secondary/50 rounded-r-lg"></div>
-          <div className="absolute right-0 top-1/3 bottom-1/3 w-2 bg-gradient-to-t from-health-primary/50 to-health-secondary/50 rounded-l-lg"></div>
         </div>
         
         <div className="relative bg-gradient-to-br from-health-light/30 to-white">
