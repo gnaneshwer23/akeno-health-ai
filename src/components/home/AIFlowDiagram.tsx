@@ -24,6 +24,34 @@ const AIFlowDiagram = () => {
       <h2 className="title-ai-flow">Transforming Healthcare with AI-Powered Insights</h2>
       
       <div className="flow-diagram single-layer">
+        {/* Floating connections - horizontal top */}
+        <div className="floating-connection floating-connection-top">
+          <div className="flow-particle"></div>
+          <div className="flow-particle"></div>
+          <div className="flow-particle"></div>
+        </div>
+        
+        {/* Floating connections - horizontal middle */}
+        <div className="floating-connection floating-connection-middle">
+          <div className="flow-particle"></div>
+          <div className="flow-particle"></div>
+          <div className="flow-particle"></div>
+        </div>
+        
+        {/* Floating connections - horizontal bottom */}
+        <div className="floating-connection floating-connection-bottom">
+          <div className="flow-particle"></div>
+          <div className="flow-particle"></div>
+          <div className="flow-particle"></div>
+        </div>
+        
+        {/* Floating connection - vertical */}
+        <div className="floating-connection floating-connection-vertical">
+          <div className="flow-particle flow-particle-vertical"></div>
+          <div className="flow-particle flow-particle-vertical"></div>
+          <div className="flow-particle flow-particle-vertical"></div>
+        </div>
+        
         {/* Data Sources */}
         <div className="flow-column">
           <h3 className="column-title">Data Sources</h3>
