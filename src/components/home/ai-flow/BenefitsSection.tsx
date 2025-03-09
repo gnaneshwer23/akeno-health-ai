@@ -1,43 +1,42 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import styles from './AIFlowDiagram.module.css';
 
 const BenefitsSection = () => {
   return (
-    <div className={styles.sectionsContainer}>
-      <div className={styles.sectionTitle}>System-wide Benefits</div>
+    <div className="benefits-section">
+      <div className="section-title">System-wide Benefits</div>
       
-      <div className={styles.benefit}>
-        <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+      <div className="node benefit real-time">
+        <div className="connector-in">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
         <div>Real-Time Health AI</div>
-        <small className={styles.nodeDescription}>24/7 Monitoring & Insights</small>
+        <small>24/7 Monitoring & Insights</small>
       </div>
       
-      <div className={styles.benefit}>
-        <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+      <div className="node benefit precision">
+        <div className="connector-in">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
         <div>Precision Medicine</div>
-        <small className={styles.nodeDescription}>Personalized Treatment</small>
+        <small>Personalized Treatment</small>
       </div>
       
-      <div className={styles.benefit}>
-        <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+      <div className="node benefit smart">
+        <div className="connector-in">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
         <div>Smart Healthcare</div>
-        <small className={styles.nodeDescription}>Automated Workflows</small>
+        <small>Automated Workflows</small>
       </div>
       
-      <div className={styles.benefit}>
-        <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+      <div className="node benefit research">
+        <div className="connector-in">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
         <div>Accelerated R&D</div>
-        <small className={styles.nodeDescription}>Quantum-Powered Discovery</small>
+        <small>Quantum-Powered Discovery</small>
       </div>
     </div>
   );

@@ -1,47 +1,46 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import styles from './AIFlowDiagram.module.css';
 
 const HealthcareSolutionsSection = () => {
   return (
-    <div className={styles.sectionsContainer}>
-      <div className={styles.sectionTitle}>Healthcare AI Solutions</div>
+    <div className="solutions-section">
+      <div className="section-title">Healthcare AI Solutions</div>
       
-      <div className={styles.solution}>
-        <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+      <div className="node solution virtual-health">
+        <div className="connector-in">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
-        <div className={styles.icon}>👤</div>
+        <div className="icon">👤</div>
         <div>Virtual Health AI</div>
-        <small className={styles.nodeDescription}>LLMs, Personalized Care</small>
+        <small>LLMs, Personalized Care</small>
       </div>
       
-      <div className={styles.solution}>
-        <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+      <div className="node solution digital-twin">
+        <div className="connector-in">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
-        <div className={styles.icon}>👨‍⚕️</div>
+        <div className="icon">👨‍⚕️</div>
         <div>Digital Twin AI</div>
-        <small className={styles.nodeDescription}>Treatment Simulation</small>
+        <small>Treatment Simulation</small>
       </div>
       
-      <div className={styles.solution}>
-        <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+      <div className="node solution workflow">
+        <div className="connector-in">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
-        <div className={styles.icon}>🏥</div>
+        <div className="icon">🏥</div>
         <div>Workflow AI</div>
-        <small className={styles.nodeDescription}>Resource Optimization</small>
+        <small>Resource Optimization</small>
       </div>
       
-      <div className={styles.solution}>
-        <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+      <div className="node solution drug-discovery">
+        <div className="connector-in">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
-        <div className={styles.icon}>💊</div>
+        <div className="icon">💊</div>
         <div>Drug Discovery AI</div>
-        <small className={styles.nodeDescription}>Quantum Computing</small>
+        <small>Quantum Computing</small>
       </div>
     </div>
   );

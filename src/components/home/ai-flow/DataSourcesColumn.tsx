@@ -1,46 +1,45 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import styles from './AIFlowDiagram.module.css';
 
 const DataSourcesColumn = () => {
   return (
-    <div className={`${styles.column} ${styles.dataSources}`}>
-      <h3 className={styles.columnTitle}>Data Sources</h3>
+    <div className="column data-sources">
+      <h3 className="column-title">Data Sources</h3>
       
-      <div className={styles.dataSource}>
-        <div className={styles.icon}>⌚</div>
+      <div className="node data-source wearables">
+        <div className="icon">⌚</div>
         <div>Edge AI & IoT</div>
-        <small className={styles.nodeDescription}>Smartwatches, ECG, Glucose</small>
-        <div className={styles.connector}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+        <small>Smartwatches, ECG, Glucose</small>
+        <div className="connector">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
       </div>
       
-      <div className={styles.dataSource}>
-        <div className={styles.icon}>📋</div>
+      <div className="node data-source ehr">
+        <div className="icon">📋</div>
         <div>EHR Integration</div>
-        <small className={styles.nodeDescription}>FHIR, DICOM, OpenEHR</small>
-        <div className={styles.connector}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+        <small>FHIR, DICOM, OpenEHR</small>
+        <div className="connector">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
       </div>
       
-      <div className={styles.dataSource}>
-        <div className={styles.icon}>🧬</div>
+      <div className="node data-source genomics">
+        <div className="icon">🧬</div>
         <div>Multi-Omics Analysis</div>
-        <small className={styles.nodeDescription}>NGS, Proteomics, PRS</small>
-        <div className={styles.connector}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+        <small>NGS, Proteomics, PRS</small>
+        <div className="connector">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
       </div>
       
-      <div className={styles.dataSource}>
-        <div className={styles.icon}>🔬</div>
+      <div className="node data-source imaging">
+        <div className="icon">🔬</div>
         <div>AI-Enhanced Imaging</div>
-        <small className={styles.nodeDescription}>Radiology AI, DICOM</small>
-        <div className={styles.connector}>
-          <ArrowRight className={styles.arrowIcon} size={16} />
+        <small>Radiology AI, DICOM</small>
+        <div className="connector">
+          <ArrowRight className="arrow-icon" size={16} />
         </div>
       </div>
     </div>

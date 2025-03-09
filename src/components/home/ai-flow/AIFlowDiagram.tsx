@@ -4,14 +4,13 @@ import DataSourcesColumn from './DataSourcesColumn';
 import AIEngineColumn from './AIEngineColumn';
 import SolutionsBenefitsColumn from './SolutionsBenefitsColumn';
 import ParticleEffect from './ParticleEffect';
-import styles from './AIFlowDiagram.module.css';
 
 const AIFlowDiagram = () => {
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Akeno Health AI: Transforming Healthcare with AI-Powered Insights</h2>
+    <div className="container-ai-flow">
+      <h2 className="title-ai-flow">Akeno Health AI: Transforming Healthcare with AI-Powered Insights</h2>
       
-      <div id="diagram" className={`${styles.diagram} ${styles.threeColumnLayout}`}>
+      <div id="diagram" className="three-column-layout">
         {/* Left Column: Data Sources (Inputs) */}
         <DataSourcesColumn />
         
