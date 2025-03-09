@@ -17,9 +17,8 @@ export const HeroContent: React.FC = () => {
         </div>
       </div>
       
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 rounded-full bg-gradient-to-r from-health-primary/15 to-health-secondary/15 text-health-primary font-medium backdrop-blur-sm border border-health-primary/20">
-        <span className="text-sm">Patented Technology</span>
-        <span className="px-2 py-0.5 bg-health-accent text-white text-xs rounded-full font-bold">No. 439306</span>
+      <div className="text-sm font-medium text-health-primary/80 mb-4">
+        Patented Technology
       </div>
       
       <div className="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 text-health-primary font-medium backdrop-blur-sm border border-health-primary/20">
