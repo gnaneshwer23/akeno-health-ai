@@ -19,22 +19,31 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [supabaseUser, setSupabaseUser] = useState<User | null>(null);
   const { toast } = useToast();
 
-  // Set user state based on Supabase user and profile
+  // Optimized function to set user state based on Supabase user and profile
   const setUserFromSupabase = async (session: Session | null) => {
     if (!session?.user) {
       setUser(null);
+      setIsLoading(false);
       return;
     }
 
     try {
+      // Check if we already have the user with this ID to avoid unnecessary profile fetches
+      if (user?.id === session.user.id && supabaseUser?.id === session.user.id) {
+        setIsLoading(false);
+        return;
+      }
+      
       const profile = await authService.fetchUserProfile(session.user.id);
       
       if (profile) {
-        setUser(authService.mapToAuthUser(
+        const authUser = authService.mapToAuthUser(
           session.user.id,
           session.user.email || '',
           profile
-        ));
+        );
+        
+        setUser(authUser);
       } else {
         // Basic user info if profile not found
         setUser({
@@ -50,6 +59,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     } catch (error) {
       console.error('Error in setUserFromSupabase:', error);
       setUser(null);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -60,15 +71,17 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUserFromSupabase(session);
-      setIsLoading(false);
     });
 
     // Set up auth listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         console.log('Auth state changed:', event);
-        await setUserFromSupabase(session);
-        setIsLoading(false);
+        
+        // Only update user data for relevant auth events
+        if (['SIGNED_IN', 'SIGNED_OUT', 'USER_UPDATED', 'TOKEN_REFRESHED'].includes(event)) {
+          await setUserFromSupabase(session);
+        }
       }
     );
 
@@ -78,17 +91,17 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     };
   }, []);
 
-  // Login with Supabase
+  // Optimized login with Supabase
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     
     try {
-      await authService.login(email, password);
+      const data = await authService.login(email, password);
       
-      toast({
-        title: "Login successful",
-        description: "Welcome back to Akeno Health!",
-      });
+      if (data?.user && data?.session) {
+        // Success message will be shown when auth state changes
+        return data;
+      }
     } catch (error: any) {
       console.error("Login error:", error);
       toast({
@@ -98,7 +111,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
       throw error;
     } finally {
-      setIsLoading(false);
+      // setIsLoading is handled by the auth state change listener
     }
   };
 
@@ -126,17 +139,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
-  // Logout with Supabase
+  // Optimized logout with Supabase
   const logout = async () => {
     try {
       await authService.logout();
-      
-      setUser(null);
-      
-      toast({
-        title: "Logged out",
-        description: "You have been successfully logged out",
-      });
+      // User state will be updated by the auth state change listener
+      // No need to manually set user to null here
     } catch (error: any) {
       toast({
         title: "Error logging out",

@@ -37,6 +37,7 @@ export const authService = {
     console.log("Authenticating with Supabase:", { email });
     
     try {
+      // Use a single direct API call to Supabase for authentication
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password

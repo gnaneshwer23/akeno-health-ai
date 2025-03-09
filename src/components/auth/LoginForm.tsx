@@ -56,14 +56,16 @@ const LoginForm = () => {
     
     setIsSubmitting(true);
     try {
-      console.log("Attempting login with:", { email, rememberMe });
-      
-      // Use the login function from AuthContext
+      // Simplified login call
       await login(email, password);
       
-      console.log("Login successful, navigating to:", from);
+      // Only show success toast once
+      toast({
+        title: "Login successful",
+        description: "Welcome back to Akeno Health!",
+      });
       
-      // Navigate to the appropriate dashboard based on role after successful login
+      // Navigate to the appropriate dashboard
       navigate(from, { replace: true });
     } catch (error: any) {
       console.error("Login error:", error);
@@ -82,12 +84,6 @@ const LoginForm = () => {
       }
       
       setError(errorMessage);
-      
-      toast({
-        title: "Login failed",
-        description: errorMessage,
-        variant: "destructive",
-      });
     } finally {
       setIsSubmitting(false);
     }
