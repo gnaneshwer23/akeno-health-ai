@@ -1,9 +1,12 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AnimatedLogo } from '../animated-logo';
 
 const Brand: React.FC = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  
   return (
     <Link to="/" className="flex items-center gap-2 group">
       <div className="relative">
@@ -14,7 +17,7 @@ const Brand: React.FC = () => {
           Akeno Health
         </span>
         <span className="text-[10px] sm:text-xs text-health-dark/70 whitespace-nowrap">
-          AI-Powered Healthcare
+          {isHomePage ? "Patent No. 439306" : "AI-Powered Healthcare"}
         </span>
       </div>
     </Link>
