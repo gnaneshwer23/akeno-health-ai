@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { UserRound, Stethoscope, Building, Heart } from 'lucide-react';
+import { User, Stethoscope, Building, FlaskConical } from 'lucide-react';
 import Stakeholder from './Stakeholder';
+import { DIAGRAM_COLORS } from '../utils/diagramUtils';
 
 const StakeholdersList = () => {
   return (
@@ -9,22 +10,26 @@ const StakeholdersList = () => {
       <h3 className="text-sm font-semibold text-[#8571DD] mb-3">Stakeholders</h3>
       <Stakeholder 
         title="Patients" 
-        icon={<UserRound size={22} className="text-[#8571DD]" />}
+        icon={<User size={20} className="text-[#8571DD]" />} 
+        color={DIAGRAM_COLORS.primary}
         delay={0.6}
       />
       <Stakeholder 
         title="Doctors & Clinicians" 
-        icon={<Stethoscope size={22} className="text-[#8571DD]" />}
+        icon={<Stethoscope size={20} className="text-[#8571DD]" />} 
+        color={DIAGRAM_COLORS.primary}
         delay={0.7}
       />
       <Stakeholder 
         title="Hospitals & Healthcare" 
-        icon={<Building size={22} className="text-[#8571DD]" />}
+        icon={<Building size={20} className="text-[#8571DD]" />} 
+        color={DIAGRAM_COLORS.primary}
         delay={0.8}
       />
       <Stakeholder 
-        title="Pharmaceutical & Research" 
-        icon={<Heart size={22} className="text-[#8571DD]" />}
+        title="Pharma & Research" 
+        icon={<FlaskConical size={20} className="text-[#8571DD]" />} 
+        color={DIAGRAM_COLORS.primary}
         delay={0.9}
       />
     </div>

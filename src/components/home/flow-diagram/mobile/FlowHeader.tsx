@@ -1,28 +1,30 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Activity } from 'lucide-react';
+import { Brain, Activity } from 'lucide-react';
 
-const FlowHeader = () => {
-  return (
-    <motion.div 
-      className="text-center mb-8"
-      initial={{ opacity: 0, y: -20 }}
+const FlowHeader = () => (
+  <div className="text-center mb-8">
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      className="flex items-center justify-center gap-2 mb-2"
     >
-      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F1F0FB] text-[#8571DD] font-medium text-xs mb-3">
-        <Activity size={14} className="text-[#8571DD]" />
-        <span>AI-POWERED HEALTHCARE</span>
-      </div>
-      <h2 className="text-xl font-bold text-[#1A1F2C]">
-        End-to-End Healthcare AI System
-      </h2>
-      <p className="text-sm text-gray-600 mt-2">
-        From patient data to personalized healthcare solutions
-      </p>
+      <Brain size={20} className="text-[#8571DD]" />
+      <h2 className="text-lg font-medium text-[#1A1F2C]">Akeno AI Healthcare Flow</h2>
+      <Activity size={20} className="text-[#8571DD]" />
     </motion.div>
-  );
-};
+    
+    <motion.p
+      initial={{ opacity: 0, y: -5 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="text-sm text-gray-500 max-w-xs mx-auto"
+    >
+      From patient data collection to AI analysis and personalized healthcare delivery
+    </motion.p>
+  </div>
+);
 
 export default FlowHeader;

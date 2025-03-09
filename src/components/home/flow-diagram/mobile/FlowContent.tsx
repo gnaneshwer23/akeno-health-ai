@@ -11,13 +11,32 @@ const FlowContent = () => {
   return (
     <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-sm border border-[#8571DD]/10">
       <FlowHeader />
-      <DataSourcesList />
+      
+      {/* Layer 1: Data Collection */}
+      <div className="bg-gradient-to-r from-[#F1F0FB]/30 to-white/30 p-4 rounded-lg border border-[#8571DD]/10 mb-4">
+        <DataSourcesList />
+      </div>
+      
       <Divider delay={0.4} />
-      <CoreSolution />
+      
+      {/* Layer 2: AI Processing */}
+      <div className="relative bg-gradient-to-r from-white/30 to-[#F1F0FB]/30 p-4 rounded-lg border border-[#8571DD]/10 mb-4">
+        <CoreSolution />
+      </div>
+      
       <Divider delay={0.5} />
-      <StakeholdersList />
+      
+      {/* Layer 3: Stakeholders */}
+      <div className="bg-gradient-to-r from-[#F1F0FB]/30 to-white/30 p-4 rounded-lg border border-[#8571DD]/10 mb-4">
+        <StakeholdersList />
+      </div>
+      
       <Divider delay={0.9} />
-      <OutcomesList />
+      
+      {/* Layer 4: Healthcare Impacts */}
+      <div className="bg-gradient-to-r from-white/30 to-[#F1F0FB]/30 p-4 rounded-lg border border-[#8571DD]/10">
+        <OutcomesList />
+      </div>
     </div>
   );
 };
