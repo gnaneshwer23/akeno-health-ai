@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -14,37 +14,32 @@ export const FeaturesCallToAction: React.FC = () => {
       
       <div className="flex flex-col md:flex-row items-center justify-center gap-4">
         <Button
-          variant="primary"
           size="lg"
-          as="Link"
-          to="/contact"
-          className="group relative overflow-hidden"
+          className="relative overflow-hidden bg-health-primary hover:bg-health-secondary group"
+          asChild
         >
-          <span className="relative z-10 flex items-center">
+          <Link to="/contact" className="flex items-center gap-2">
             Join the AI Healthcare Revolution
-            <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
-          </span>
-          <span className="absolute inset-0 bg-gradient-to-r from-health-primary via-health-secondary to-health-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+          </Link>
         </Button>
         
         <Button
           variant="outline"
           size="lg"
-          as="Link"
-          to="/contact"
           className="group border-health-primary/30 hover:border-health-primary/60"
+          asChild
         >
-          Request a Demo
+          <Link to="/contact">Request a Demo</Link>
         </Button>
         
         <Button
           variant="ghost"
           size="lg"
-          as="Link"
-          to="/contact"
           className="group hover:bg-health-primary/5"
+          asChild
         >
-          Partner With Us
+          <Link to="/contact">Partner With Us</Link>
         </Button>
       </div>
     </div>
