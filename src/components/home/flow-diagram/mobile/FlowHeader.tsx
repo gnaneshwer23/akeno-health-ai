@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Brain, Activity } from 'lucide-react';
 
 const FlowHeader = () => (
-  <div className="text-center mb-8">
+  <div className="text-center mb-6">
     <motion.div
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ const FlowHeader = () => (
       transition={{ duration: 0.5, delay: 0.2 }}
       className="text-sm text-gray-500 max-w-xs mx-auto"
     >
-      From patient data collection to AI analysis and personalized healthcare delivery
+      From patient data collection to AI analysis and healthcare delivery
     </motion.p>
   </div>
 );

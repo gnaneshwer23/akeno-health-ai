@@ -1,62 +1,55 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Search, TrendingUp, FlaskConical, Stethoscope, Pill } from 'lucide-react';
-import { DIAGRAM_COLORS } from '../utils/diagramUtils';
+import { Brain, Search, TrendingUp, FlaskConical, Stethoscope } from 'lucide-react';
 
 const CoreSolution = () => {
   const aiModels = [
-    { icon: <TrendingUp size={18} />, label: "Predictive AI", position: "top-[10%] left-[20%]" },
-    { icon: <Search size={18} />, label: "Diagnostic AI", position: "top-[20%] right-[15%]" },
-    { icon: <FlaskConical size={18} />, label: "Research AI", position: "bottom-[20%] left-[15%]" },
-    { icon: <Stethoscope size={18} />, label: "Clinical AI", position: "bottom-[15%] right-[20%]" },
-    { icon: <Pill size={18} />, label: "Pharma AI", position: "bottom-[35%] right-[10%]" },
+    { icon: <TrendingUp size={18} />, label: "Predictive AI", color: "#8571DD" },
+    { icon: <Search size={18} />, label: "Diagnostic AI", color: "#8571DD" },
+    { icon: <FlaskConical size={18} />, label: "Research AI", color: "#8571DD" },
+    { icon: <Stethoscope size={18} />, label: "Clinical AI", color: "#8571DD" },
   ];
 
   return (
-    <div className="mx-auto py-8 relative">
-      <h3 className="text-sm font-semibold text-[#8571DD] mb-5 text-center">AI Processing Hub</h3>
+    <div className="py-4">
+      <h3 className="text-sm font-semibold text-[#8571DD] mb-6 text-center">AI Processing Hub</h3>
       
       <motion.div 
-        className="relative mx-auto"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
+        className="flex flex-col items-center justify-center gap-5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
       >
         {/* Main AI Hub */}
-        <div className={`w-32 h-32 mx-auto rounded-xl border border-[${DIAGRAM_COLORS.primary}]/30 bg-[${DIAGRAM_COLORS.secondary}] shadow-md flex items-center justify-center relative z-10`}>
-          <div className={`absolute inset-0 bg-gradient-to-br from-[${DIAGRAM_COLORS.secondary}] to-[${DIAGRAM_COLORS.secondary}] rounded-xl`} />
-          <div className={`w-20 h-20 rounded-full bg-[${DIAGRAM_COLORS.secondary}] flex items-center justify-center`}>
-            <Brain size={36} className={`text-[${DIAGRAM_COLORS.primary}]`} />
-          </div>
-        </div>
+        <motion.div
+          className="relative w-24 h-24 rounded-full bg-[#F1F0FB] flex items-center justify-center shadow-md border border-[#8571DD]/20 z-10"
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <Brain size={36} className="text-[#8571DD]" />
+          <div className="absolute -inset-3 border border-dashed border-[#8571DD]/20 rounded-full" />
+          <div className="absolute -inset-6 border border-dashed border-[#8571DD]/10 rounded-full" />
+        </motion.div>
         
-        {/* Label */}
-        <div className={`text-center mt-4 font-semibold text-[${DIAGRAM_COLORS.primary}]`}>
-          Akeno AI Core
-        </div>
+        <p className="text-sm font-medium text-[#1A1F2C] mt-1">Akeno AI Core</p>
         
         {/* AI Models */}
-        {aiModels.map((model, index) => (
-          <motion.div 
-            key={index}
-            className={`absolute ${model.position} bg-white p-2 rounded-lg shadow-sm border border-[${DIAGRAM_COLORS.primary}]/20 flex items-center gap-2`}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 + (index * 0.1) }}
-          >
-            <div className={`text-[${DIAGRAM_COLORS.primary}]`}>{model.icon}</div>
-            <span className="text-xs font-medium">{model.label}</span>
-          </motion.div>
-        ))}
-        
-        {/* Decorative elements */}
-        <div className={`absolute inset-0 border border-dashed border-[${DIAGRAM_COLORS.primary}]/30 rounded-xl rotate-6 -z-10`} />
-        <div className={`absolute inset-0 border border-dashed border-[${DIAGRAM_COLORS.primary}]/30 rounded-xl -rotate-3 -z-10`} />
-        
-        {/* Circular data flow indicator */}
-        <div className={`absolute -inset-4 border-2 border-dashed border-[${DIAGRAM_COLORS.primary}]/10 rounded-full animate-spin-slow`} style={{animationDuration: '30s'}} />
-        <div className={`absolute -inset-8 border border-dashed border-[${DIAGRAM_COLORS.primary}]/5 rounded-full animate-spin-slow`} style={{animationDuration: '40s', animationDirection: 'reverse'}} />
+        <div className="grid grid-cols-2 gap-4 mt-4 w-full">
+          {aiModels.map((model, index) => (
+            <motion.div 
+              key={index}
+              className="bg-white p-3 rounded-lg shadow-sm border border-[#8571DD]/10 flex items-center gap-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.5 + (index * 0.1) }}
+            >
+              <div className="text-[#8571DD]">{model.icon}</div>
+              <span className="text-xs font-medium">{model.label}</span>
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </div>
   );

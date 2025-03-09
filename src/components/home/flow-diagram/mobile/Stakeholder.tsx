@@ -11,7 +11,7 @@ const Stakeholder = ({ title, icon, delay = 0, color = "#8571DD" }: DiagramItemP
     transition={{ duration: 0.5, delay }}
   >
     <div className={`w-10 h-10 rounded-full bg-white border border-[${color}]/20 flex items-center justify-center shadow-sm`}>
-      {icon}
+      <div className="text-[#8571DD]">{icon}</div>
     </div>
     <span className="text-sm font-medium text-[#1A1F2C]">{title}</span>
   </motion.div>
