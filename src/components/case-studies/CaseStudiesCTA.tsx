@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/Button';
 import { ArrowRight, Mail, MessageSquare, Phone } from 'lucide-react';
@@ -13,25 +14,15 @@ const CaseStudiesCTA = () => {
       
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
-              AI-Powered Innovation
-            </span>
-          </h2>
-          <p className="text-indigo-100 max-w-3xl mx-auto mb-10">
-            Connect with our team to discover how Akeno Health AI can revolutionize your healthcare 
-            approach with AI, quantum computing, and personalized solutions.
-          </p>
-          
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <Button 
               variant="primary" 
               size="lg" 
               className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 border-none shadow-lg shadow-indigo-900/30 group"
               as="Link"
-              to="/contact"
+              to="/register"
             >
-              Schedule a Consultation
+              Join Our Network
               <ArrowRight className="transition-transform group-hover:translate-x-1" />
             </Button>
             
