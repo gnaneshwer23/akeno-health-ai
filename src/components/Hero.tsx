@@ -1,32 +1,100 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from './Button';
-import { ArrowRight, Sparkles, Activity, Brain, Shield } from 'lucide-react';
+import { Check, ArrowRight, Sparkles, Shield, Activity, BarChart2, Brain, Cpu, Atom, FlaskConical } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AnimatedLogo } from './animated-logo';
 
 const Hero: React.FC = () => {
-  const coreFeatures = [
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      if (!heroRef.current) return;
+      
+      const { clientX, clientY } = event;
+      const { left, top, width, height } = heroRef.current.getBoundingClientRect();
+      
+      const x = (clientX - left) / width - 0.5;
+      const y = (clientY - top) / height - 0.5;
+      
+      const elements = heroRef.current.querySelectorAll('.parallax');
+      elements.forEach((el) => {
+        const element = el as HTMLElement;
+        const speed = parseFloat(element.dataset.speed || '0.05');
+        const xOffset = x * speed * 50;
+        const yOffset = y * speed * 50;
+        
+        element.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+      });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+  
+  const features = [
     {
-      text: "AI-Driven Diagnostics & Monitoring",
+      text: "Continuous Health Monitoring",
       icon: <Activity size={16} className="text-health-primary" />
     },
     {
-      text: "Precision Medicine & Digital Twin",
+      text: "AI-Driven Diagnostics & Precision Medicine",
       icon: <Brain size={16} className="text-health-primary" />
     },
     {
-      text: "Secure Blockchain Health Records",
+      text: "Clinical Trial Matching & Drug Discovery",
+      icon: <FlaskConical size={16} className="text-health-primary" />
+    },
+    {
+      text: "Digital Twin Technology",
+      icon: <Cpu size={16} className="text-health-primary" />
+    },
+    {
+      text: "Blockchain-Powered Health Records",
       icon: <Shield size={16} className="text-health-primary" />
+    },
+    {
+      text: "AI & Quantum Computing Solutions",
+      icon: <Atom size={16} className="text-health-primary" />
     }
   ];
   
   return (
-    <section className="pt-32 pb-20 px-6 flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Background Elements */}
+    <section ref={heroRef} className="min-h-screen pt-32 pb-20 px-6 flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Enhanced Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-health-light/50 via-white/80 to-white"></div>
-      <div className="absolute top-1/4 -right-32 w-96 h-96 bg-indigo-500 opacity-5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-purple-500 opacity-5 rounded-full blur-3xl"></div>
+      
+      {/* Colorful background shapes */}
+      <div className="absolute top-1/4 -right-32 w-96 h-96 bg-indigo-500 opacity-5 rounded-full blur-3xl parallax" data-speed="0.03"></div>
+      <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-purple-500 opacity-5 rounded-full blur-3xl parallax" data-speed="0.02"></div>
+      <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-cyan-500 opacity-5 rounded-full blur-2xl parallax" data-speed="0.04"></div>
+      
+      {/* Geometric shapes */}
+      <div className="absolute top-40 left-20 w-24 h-24 border-2 border-health-primary/20 rounded-xl rotate-12 parallax" data-speed="0.05"></div>
+      <div className="absolute bottom-40 right-20 w-32 h-32 border-2 border-health-secondary/20 rounded-full -rotate-12 parallax" data-speed="0.06"></div>
+      <div className="absolute top-1/2 right-1/4 w-16 h-16 border-2 border-health-accent/30 rotate-45 parallax" data-speed="0.07"></div>
+      
+      {/* Animated particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {Array(10).fill(0).map((_, i) => (
+          <div 
+            key={i}
+            className="absolute rounded-full bg-gradient-to-br from-health-primary/30 to-health-secondary/30"
+            style={{
+              width: `${Math.random() * 10 + 5}px`,
+              height: `${Math.random() * 10 + 5}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `float ${Math.random() * 5 + 10}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          ></div>
+        ))}
+      </div>
       
       {/* Main Content */}
       <div className="max-w-5xl mx-auto text-center relative z-10">
@@ -56,12 +124,13 @@ const Hero: React.FC = () => {
         </div>
         
         <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-          Pioneering the most advanced AI-driven healthcare ecosystem, delivering real-time disease prediction, 
-          hyper-personalised treatment recommendations, and seamless clinical connectivity.
+          Pioneering the most advanced AI-driven healthcare ecosystem, delivering real-time disease prediction, hyper-personalised treatment recommendations, and seamless clinical connectivity.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10">
-          {coreFeatures.map((feature, index) => (
+        <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-10 relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-health-primary/5 to-health-secondary/5 rounded-2xl -z-10 blur-xl"></div>
+          
+          {features.map((feature, index) => (
             <div key={index} className="flex items-start gap-3 text-left bg-white/50 backdrop-blur-sm rounded-xl p-3 border border-white/80 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
               <div className="mt-0.5 flex-shrink-0">
                 <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-health-primary/20 to-health-secondary/20 text-health-primary">
@@ -73,27 +142,52 @@ const Hero: React.FC = () => {
           ))}
         </div>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <p className="text-lg text-health-primary/80 font-medium mb-8">
+          Smarter Healthcare. Faster Treatments. Better Outcomes.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
           <Button 
             size="lg" 
             variant="primary" 
-            className="sm:w-auto w-full group"
+            className="sm:w-auto w-full group relative overflow-hidden"
             as="Link"
             to="/contact"
           >
-            Get Started
-            <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
+            <span className="relative z-10 flex items-center gap-2">
+              Get Started
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-health-primary to-health-secondary opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </Button>
           <Button 
             size="lg" 
             variant="outline" 
-            className="sm:w-auto w-full"
+            className="sm:w-auto w-full relative overflow-hidden group"
             as="Link"
-            to="/how-it-works"
+            to="/contact"
           >
-            Learn More
+            <span className="relative z-10">Request a Demo</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-health-primary/10 to-health-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </Button>
+          <Button 
+            size="lg" 
+            variant="ghost" 
+            className="sm:w-auto w-full relative overflow-hidden group"
+            as="Link"
+            to="/contact"
+          >
+            <span className="relative z-10">Join Our Network</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-health-primary/5 to-health-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </Button>
         </div>
+      </div>
+      
+      {/* Enhanced decorative elements */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-3">
+        <div className="w-2 h-2 rounded-full bg-health-primary/60 animate-pulse"></div>
+        <div className="w-2 h-2 rounded-full bg-health-secondary/60 animate-pulse" style={{animationDelay: '0.3s'}}></div>
+        <div className="w-2 h-2 rounded-full bg-health-accent/60 animate-pulse" style={{animationDelay: '0.6s'}}></div>
       </div>
       
       {/* Animated scroll indicator */}
