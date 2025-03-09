@@ -26,35 +26,35 @@ const AIFlowDiagram = () => {
         {/* Left Column: Data Sources */}
         <div className="flow-column data-sources">
           <h3 className="column-title">Data Sources</h3>
-          <div className="flow-items-compact">
-            <div className="flow-item-small data-source">
-              <Watch className="item-icon-small" />
-              <div className="item-title-small">Edge AI & IoT</div>
-              <div className="item-desc-small">Smartwatches, ECG</div>
+          <div className="data-source-items">
+            <div className="flow-item-card">
+              <Watch className="item-icon-card" />
+              <div className="item-title-card">Edge AI & IoT</div>
+              <div className="item-desc-card">Smartwatches, ECG</div>
             </div>
             
-            <div className="flow-item-small data-source">
-              <Clipboard className="item-icon-small" />
-              <div className="item-title-small">EHR Integration</div>
-              <div className="item-desc-small">FHIR, DICOM</div>
+            <div className="flow-item-card">
+              <Clipboard className="item-icon-card" />
+              <div className="item-title-card">EHR Integration</div>
+              <div className="item-desc-card">FHIR, DICOM</div>
             </div>
             
-            <div className="flow-item-small data-source">
-              <Dna className="item-icon-small" />
-              <div className="item-title-small">Multi-Omics</div>
-              <div className="item-desc-small">NGS, Proteomics</div>
+            <div className="flow-item-card">
+              <Dna className="item-icon-card" />
+              <div className="item-title-card">Multi-Omics</div>
+              <div className="item-desc-card">NGS, Proteomics</div>
             </div>
             
-            <div className="flow-item-small data-source">
-              <Microscope className="item-icon-small" />
-              <div className="item-title-small">AI Imaging</div>
-              <div className="item-desc-small">Radiology AI</div>
+            <div className="flow-item-card">
+              <Microscope className="item-icon-card" />
+              <div className="item-title-card">AI Imaging</div>
+              <div className="item-desc-card">Radiology AI</div>
             </div>
             
-            <div className="flow-item-small data-source">
-              <Apple className="item-icon-small" />
-              <div className="item-title-small">Behavioral</div>
-              <div className="item-desc-small">NLP, Mental Health</div>
+            <div className="flow-item-card">
+              <Apple className="item-icon-card" />
+              <div className="item-title-card">Behavioral</div>
+              <div className="item-desc-card">NLP, Mental Health</div>
             </div>
           </div>
         </div>
@@ -67,27 +67,27 @@ const AIFlowDiagram = () => {
         {/* Middle Column: Akeno AI Engine */}
         <div className="flow-column ai-engine">
           <h3 className="column-title">Akeno AI Engine</h3>
-          <div className="flow-item-small engine-container">
-            <Brain className="engine-icon-small" />
-            <div className="engine-modules-compact">
-              <div className="engine-module-small">
-                <div className="module-title-small">Predictive Analytics</div>
-                <div className="module-desc-small">Risk Assessment</div>
+          <div className="engine-container-card">
+            <Brain className="engine-icon-card" />
+            <div className="engine-modules-card">
+              <div className="engine-module-card">
+                <div className="module-title-card">Predictive Analytics</div>
+                <div className="module-desc-card">Risk Assessment</div>
               </div>
               
-              <div className="engine-module-small">
-                <div className="module-title-small">Diagnostic Intelligence</div>
-                <div className="module-desc-small">Medical Imaging</div>
+              <div className="engine-module-card">
+                <div className="module-title-card">Diagnostic Intelligence</div>
+                <div className="module-desc-card">Medical Imaging</div>
               </div>
               
-              <div className="engine-module-small">
-                <div className="module-title-small">Clinical Decision</div>
-                <div className="module-desc-small">Treatment Optimization</div>
+              <div className="engine-module-card">
+                <div className="module-title-card">Clinical Decision</div>
+                <div className="module-desc-card">Treatment Optimization</div>
               </div>
               
-              <div className="engine-module-small">
-                <div className="module-title-small">Research & Discovery</div>
-                <div className="module-desc-small">Drug Development</div>
+              <div className="engine-module-card">
+                <div className="module-title-card">Research & Discovery</div>
+                <div className="module-desc-card">Drug Development</div>
               </div>
             </div>
           </div>
@@ -101,62 +101,59 @@ const AIFlowDiagram = () => {
         {/* Right Column: AI Solutions & Outcomes */}
         <div className="flow-column solutions">
           <h3 className="column-title">AI Solutions & Outcomes</h3>
-          <div className="solutions-container-compact">
-            <div className="solutions-section">
-              <h4 className="solutions-subtitle-small">Healthcare AI Solutions</h4>
-              <div className="flow-items-row">
-                <div className="flow-item-small solution">
-                  <User className="item-icon-small" />
-                  <div className="item-title-small">Virtual Health AI</div>
-                  <div className="item-desc-small">LLMs, Care</div>
-                </div>
-                
-                <div className="flow-item-small solution">
-                  <User className="item-icon-small" />
-                  <div className="item-title-small">Digital Twin AI</div>
-                  <div className="item-desc-small">Simulation</div>
-                </div>
-                
-                <div className="flow-item-small solution">
-                  <Hospital className="item-icon-small" />
-                  <div className="item-title-small">Workflow AI</div>
-                  <div className="item-desc-small">Optimization</div>
-                </div>
-                
-                <div className="flow-item-small solution">
-                  <Pill className="item-icon-small" />
-                  <div className="item-title-small">Drug Discovery</div>
-                  <div className="item-desc-small">Quantum</div>
-                </div>
+          
+          <div className="solutions-container-card">
+            <h4 className="solutions-subtitle-card">Healthcare AI Solutions</h4>
+            <div className="solutions-grid">
+              <div className="flow-item-card">
+                <User className="item-icon-card" />
+                <div className="item-title-card">Virtual Health AI</div>
+                <div className="item-desc-card">LLMs, Care</div>
+              </div>
+              
+              <div className="flow-item-card">
+                <User className="item-icon-card" />
+                <div className="item-title-card">Digital Twin AI</div>
+                <div className="item-desc-card">Simulation</div>
+              </div>
+              
+              <div className="flow-item-card">
+                <Hospital className="item-icon-card" />
+                <div className="item-title-card">Workflow AI</div>
+                <div className="item-desc-card">Optimization</div>
+              </div>
+              
+              <div className="flow-item-card">
+                <Pill className="item-icon-card" />
+                <div className="item-title-card">Drug Discovery</div>
+                <div className="item-desc-card">Quantum</div>
               </div>
             </div>
             
-            <div className="solutions-section">
-              <h4 className="solutions-subtitle-small">System-Wide Benefits</h4>
-              <div className="flow-items-row">
-                <div className="flow-item-small benefit">
-                  <Clock className="item-icon-small" />
-                  <div className="item-title-small">Real-Time Health</div>
-                  <div className="item-desc-small">24/7 Monitoring</div>
-                </div>
-                
-                <div className="flow-item-small benefit">
-                  <Award className="item-icon-small" />
-                  <div className="item-title-small">Precision Medicine</div>
-                  <div className="item-desc-small">Personalized</div>
-                </div>
-                
-                <div className="flow-item-small benefit">
-                  <LayoutDashboard className="item-icon-small" />
-                  <div className="item-title-small">Smart Healthcare</div>
-                  <div className="item-desc-small">Workflows</div>
-                </div>
-                
-                <div className="flow-item-small benefit">
-                  <Rocket className="item-icon-small" />
-                  <div className="item-title-small">Accelerated R&D</div>
-                  <div className="item-desc-small">Discovery</div>
-                </div>
+            <h4 className="solutions-subtitle-card">System-Wide Benefits</h4>
+            <div className="solutions-grid">
+              <div className="flow-item-card">
+                <Clock className="item-icon-card" />
+                <div className="item-title-card">Real-Time Health</div>
+                <div className="item-desc-card">24/7 Monitoring</div>
+              </div>
+              
+              <div className="flow-item-card">
+                <Award className="item-icon-card" />
+                <div className="item-title-card">Precision Medicine</div>
+                <div className="item-desc-card">Personalized</div>
+              </div>
+              
+              <div className="flow-item-card">
+                <LayoutDashboard className="item-icon-card" />
+                <div className="item-title-card">Smart Healthcare</div>
+                <div className="item-desc-card">Workflows</div>
+              </div>
+              
+              <div className="flow-item-card">
+                <Rocket className="item-icon-card" />
+                <div className="item-title-card">Accelerated R&D</div>
+                <div className="item-desc-card">Discovery</div>
               </div>
             </div>
           </div>
