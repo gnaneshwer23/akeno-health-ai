@@ -9,7 +9,7 @@ import { StatisticsSection } from '@/components/StatisticsSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { PartnersSection } from '@/components/PartnersSection';
 import { QuantumCTA } from '@/components/quantum/QuantumCTA';
-import AIFlowDiagram from '@/components/home/ai-flow/AIFlowDiagram';
+import AIFlowDiagram from '@/components/home/AIFlowDiagram';
 
 const Index = () => {
   useEffect(() => {
