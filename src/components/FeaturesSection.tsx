@@ -2,7 +2,7 @@
 import React from 'react';
 import { FeatureCard } from './FeatureCard';
 import { Button } from './Button';
-import { ShieldCheck, Brain, Database, Stethoscope, Flask, Network } from 'lucide-react';
+import { ShieldCheck, Brain, Database, Stethoscope, FlaskConical, Network, ActivitySquare } from 'lucide-react';
 
 const FeaturesSection: React.FC = () => {
   const features = [
@@ -27,7 +27,7 @@ const FeaturesSection: React.FC = () => {
       description: "Our AI provides healthcare professionals with real-time, evidence-based recommendations for faster, more accurate diagnoses."
     },
     {
-      icon: <Flask className="w-12 h-12 text-health-primary" />,
+      icon: <FlaskConical className="w-12 h-12 text-health-primary" />,
       title: "Accelerated Drug Discovery & Clinical Trial Matching",
       description: "Quantum computing and advanced AI algorithms accelerate pharmaceutical research and match patients to appropriate clinical trials."
     },
