@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/Button';
 import { ArrowRight, Mail, MessageSquare, Phone } from 'lucide-react';
@@ -15,9 +14,8 @@ const CaseStudiesCTA = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Transform Healthcare with <br className="hidden md:block" />
             <span className="bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
-              AI-Powered Innovation?
+              AI-Powered Innovation
             </span>
           </h2>
           <p className="text-indigo-100 max-w-3xl mx-auto mb-10">
