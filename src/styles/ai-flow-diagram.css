@@ -35,7 +35,6 @@
 .flow-diagram.single-layer {
   flex-wrap: nowrap;
   align-items: stretch;
-  justify-content: flex-start;
 }
 
 .flow-column {
@@ -45,11 +44,6 @@
   align-items: center;
   gap: 10px;
   min-width: 220px;
-}
-
-/* Adjust the engine column to be closer to data sources */
-.flow-column.engine-column {
-  margin-left: -30px;
 }
 
 .column-title {
@@ -122,12 +116,6 @@
   padding: 0 5px;
   position: relative;
   width: 40px;
-}
-
-/* Adjust connector positions */
-.flow-connector.to-engine {
-  margin-left: -10px;
-  margin-right: -20px;
 }
 
 .flow-animation {
@@ -250,17 +238,8 @@
     max-width: 45%;
   }
   
-  .flow-column.engine-column {
-    margin-left: 0;
-  }
-  
   .flow-connector {
     display: none;
-  }
-  
-  .flow-connector.to-engine {
-    margin-left: 5px;
-    margin-right: 5px;
   }
 }
 
@@ -275,19 +254,10 @@
     width: 100%;
   }
   
-  .flow-column.engine-column {
-    margin-left: 0;
-  }
-  
   .flow-connector {
     display: flex;
     transform: rotate(90deg);
     margin: 5px 0;
-  }
-  
-  .flow-connector.to-engine {
-    margin-left: 0;
-    margin-right: 0;
   }
   
   .solutions-grid {
