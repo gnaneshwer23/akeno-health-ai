@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Atom, ArrowRight } from 'lucide-react';
+import { Atom, ArrowRight, Brain, Shield, Activity } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const QuantumCTA = () => {
@@ -14,15 +14,34 @@ export const QuantumCTA = () => {
         <div className="relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="md:max-w-xl">
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-purple-500/10 text-purple-700 text-sm font-medium mb-5">
+                <Atom size={16} className="text-purple-600 mr-2" />
+                <span>Quantum Computing in Healthcare</span>
+              </div>
+              
               <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-purple-700 to-blue-700 bg-clip-text text-transparent">
-                Join the Quantum AI Revolution
+                Join the Quantum AI Revolution in Healthcare
               </h2>
               <p className="text-health-dark/70 mb-6">
-                Are you a researcher, healthcare professional, or investor looking to be part of the next breakthrough in AI-driven medicine? Partner with Akeno Health and help us build the future of AI-powered, quantum-accelerated, and blockchain-secured healthcare.
+                Be part of the next breakthrough in AI-driven medicine. Partner with Akeno Health to build the future of 
+                AI-powered, quantum-accelerated, and blockchain-secured healthcare that will transform patient outcomes worldwide.
               </p>
-              <p className="text-health-dark/70 mb-6 font-medium">
-                Akeno Health isn't just leading healthcare innovation – we're redefining it for the future.
-              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-lg shadow-sm border border-purple-300/30">
+                  <Brain size={18} className="text-purple-600" />
+                  <span className="text-sm font-medium">Enhanced AI Diagnostics</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-lg shadow-sm border border-purple-300/30">
+                  <Activity size={18} className="text-blue-600" />
+                  <span className="text-sm font-medium">Drug Discovery</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-lg shadow-sm border border-purple-300/30">
+                  <Shield size={18} className="text-indigo-600" />
+                  <span className="text-sm font-medium">Secure Processing</span>
+                </div>
+              </div>
+              
               <div className="flex flex-wrap gap-4">
                 <Button 
                   className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"

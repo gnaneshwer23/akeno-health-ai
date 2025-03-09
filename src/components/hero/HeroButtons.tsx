@@ -1,12 +1,12 @@
 
 import React from 'react';
 import { Button } from '../ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Play, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const HeroButtons: React.FC = () => {
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
       <Button 
         size="lg" 
         className="sm:w-auto w-full group relative overflow-hidden bg-health-primary hover:bg-health-secondary"
@@ -24,7 +24,10 @@ export const HeroButtons: React.FC = () => {
         className="sm:w-auto w-full relative overflow-hidden group border-health-primary/30 hover:border-health-primary/60"
         asChild
       >
-        <Link to="/contact">Request a Demo</Link>
+        <Link to="/contact" className="flex items-center gap-2">
+          <Play size={16} className="text-health-primary" />
+          Request a Demo
+        </Link>
       </Button>
       
       <Button 
@@ -33,7 +36,10 @@ export const HeroButtons: React.FC = () => {
         className="sm:w-auto w-full relative overflow-hidden group hover:bg-health-primary/5"
         asChild
       >
-        <Link to="/contact">Join Our Network</Link>
+        <Link to="/contact" className="flex items-center gap-2">
+          <Users size={16} className="text-health-primary" />
+          Join Our Network
+        </Link>
       </Button>
     </div>
   );

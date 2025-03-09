@@ -3,12 +3,13 @@ import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { MissionStatement } from '@/components/MissionStatement';
-import { FeaturesSection } from '@/components/FeaturesSection';
+import { FeaturesSection } from '@/components/features/FeaturesSection';
 import { CTASection } from '@/components/CTASection';
 import { Footer } from '@/components/Footer';
 import { StatisticsSection } from '@/components/StatisticsSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { PartnersSection } from '@/components/PartnersSection';
+import { QuantumCTA } from '@/components/quantum/QuantumCTA';
 
 const Index = () => {
   useEffect(() => {
@@ -26,7 +27,7 @@ const Index = () => {
     });
 
     // Change page title
-    document.title = 'Transforming Healthcare with AI & Precision Medicine';
+    document.title = 'Akeno Health – The Future of AI-Driven Healthcare';
     
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -68,12 +69,6 @@ const Index = () => {
         
         <div className="relative">
           <StatisticsSection />
-          <MissionStatement />
-          
-          {/* Enhanced decorative corner element */}
-          <div className="absolute top-0 right-0 w-48 h-48 overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-health-primary/30 to-transparent rounded-full transform translate-x-1/2 -translate-y-1/2 blur-lg"></div>
-          </div>
           
           {/* Healthcare-specific decorative elements */}
           <div className="absolute bottom-24 left-10 opacity-10">
@@ -85,7 +80,7 @@ const Index = () => {
           </div>
         </div>
         
-        <div className="relative bg-gradient-to-b from-white to-health-light/30 py-10">
+        <div className="relative">
           <FeaturesSection />
           
           {/* Enhanced side accent bars */}
@@ -94,7 +89,8 @@ const Index = () => {
         </div>
         
         <div className="relative bg-gradient-to-br from-health-light/30 to-white">
-          <TestimonialsSection />
+          <MissionStatement />
+          <QuantumCTA />
           
           {/* Enhanced decorative circles */}
           <div className="absolute top-1/4 left-10 w-20 h-20 rounded-full border-4 border-dashed border-health-primary/20 -z-10 animate-rotate-slow"></div>
@@ -102,6 +98,7 @@ const Index = () => {
         </div>
         
         <div className="relative">
+          <TestimonialsSection />
           <PartnersSection />
           
           {/* Enhanced diamond pattern background */}

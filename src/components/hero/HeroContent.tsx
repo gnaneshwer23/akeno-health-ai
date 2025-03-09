@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { AnimatedLogo } from '../animated-logo';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Shield, Brain, Activity, Zap } from 'lucide-react';
 import { HeroFeatureGrid } from './HeroFeatureGrid';
 import { HeroButtons } from './HeroButtons';
 import { HeroAnimatedTypingText } from './HeroAnimatedTypingText';
@@ -18,8 +18,8 @@ export const HeroContent: React.FC = () => {
       </div>
       
       <div className="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 text-health-primary font-medium backdrop-blur-sm border border-health-primary/20">
-        <Sparkles size={18} className="text-health-primary" />
-        <span>The Future of AI-Driven Healthcare</span>
+        <Shield size={18} className="text-health-primary" />
+        <span>Pioneering the Next Generation of AI Healthcare</span>
       </div>
       
       <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight">
@@ -38,6 +38,21 @@ export const HeroContent: React.FC = () => {
         Pioneering the most advanced AI-driven healthcare ecosystem, delivering real-time disease prediction, hyper-personalised treatment recommendations, and seamless clinical connectivity.
       </p>
       
+      <div className="flex flex-wrap justify-center gap-3 mb-8">
+        <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-health-primary/10">
+          <Activity size={18} className="text-health-primary" />
+          <span className="text-sm font-medium">Continuous Health Monitoring</span>
+        </div>
+        <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-health-primary/10">
+          <Brain size={18} className="text-health-secondary" />
+          <span className="text-sm font-medium">AI-Driven Diagnostics</span>
+        </div>
+        <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-health-primary/10">
+          <Zap size={18} className="text-health-accent" />
+          <span className="text-sm font-medium">Precision Medicine</span>
+        </div>
+      </div>
+      
       <HeroFeatureGrid />
       
       <p className="text-lg text-health-primary/80 font-medium mb-8">
@@ -45,6 +60,10 @@ export const HeroContent: React.FC = () => {
       </p>
       
       <HeroButtons />
+      
+      <div className="mt-6 text-sm text-health-dark/60 font-medium">
+        Your Health, Your Data, Your Future – Powered by AI
+      </div>
       
       <HeroAnimatedTypingText />
     </div>

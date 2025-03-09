@@ -1,30 +1,29 @@
 
-import React from 'react';
-import { Activity, Brain, FlaskConical, Cpu, Shield, Atom } from 'lucide-react';
+import { Activity, Brain, Shield, Zap, Database, Link } from 'lucide-react';
 
 export const features = [
   {
-    text: "Continuous Health Monitoring",
-    icon: <Activity size={18} className="text-health-primary" />
+    text: "Continuous AI-powered health monitoring and early detection",
+    icon: <Activity size={18} />
   },
   {
-    text: "AI-Driven Diagnostics",
-    icon: <Brain size={18} className="text-health-primary" />
+    text: "AI-driven diagnostics and clinical decision support",
+    icon: <Brain size={18} />
   },
   {
-    text: "Clinical Trial Matching",
-    icon: <FlaskConical size={18} className="text-health-primary" />
+    text: "Hyper-personalized treatments with precision medicine",
+    icon: <Zap size={18} />
   },
   {
-    text: "Digital Twin Technology",
-    icon: <Cpu size={18} className="text-health-primary" />
+    text: "Quantum-accelerated drug discovery platform",
+    icon: <Database size={18} />
   },
   {
-    text: "Blockchain Health Records",
-    icon: <Shield size={18} className="text-health-primary" />
+    text: "Blockchain-secured patient health records",
+    icon: <Shield size={18} />
   },
   {
-    text: "Quantum Computing Solutions",
-    icon: <Atom size={18} className="text-health-primary" />
+    text: "Seamless ecosystem for all healthcare stakeholders",
+    icon: <Link size={18} />
   }
 ];

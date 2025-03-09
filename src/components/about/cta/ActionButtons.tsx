@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Play, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -24,7 +24,10 @@ export const ActionButtons = () => {
         className="border-health-primary/30 hover:border-health-primary/60"
         asChild
       >
-        <Link to="/contact">Request a Demo</Link>
+        <Link to="/contact" className="flex items-center gap-2">
+          <Play size={16} className="text-health-primary" />
+          Request a Demo
+        </Link>
       </Button>
       
       <Button
@@ -33,7 +36,10 @@ export const ActionButtons = () => {
         className="hover:bg-health-primary/5"
         asChild
       >
-        <Link to="/contact">Partner With Us</Link>
+        <Link to="/contact" className="flex items-center gap-2">
+          <Users size={16} className="text-health-primary" />
+          Partner With Us
+        </Link>
       </Button>
     </div>
   );

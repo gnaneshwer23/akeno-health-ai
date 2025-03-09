@@ -8,9 +8,12 @@ export const HeroFeatureGrid: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-health-primary/5 to-health-secondary/5 rounded-2xl -z-10 blur-xl"></div>
       
       {features.map((feature, index) => (
-        <div key={index} className="flex items-start gap-3 text-left bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-white/80 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
+        <div 
+          key={index} 
+          className="flex items-start gap-3 text-left bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-white/80 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
+        >
           <div className="mt-0.5 flex-shrink-0">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-health-primary/20 to-health-secondary/20 text-health-primary">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-health-primary to-health-secondary text-white">
               {feature.icon}
             </div>
           </div>
