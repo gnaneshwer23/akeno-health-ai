@@ -1,8 +1,9 @@
 
 import React from 'react';
-import { Button } from '@/components/Button';
-import { Check, ArrowRight, Sparkles, Target, Rocket, Shield } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Check, ArrowRight, Sparkles, Target, Rocket } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 
 export const VisionMission = () => {
   const missionPoints = [
@@ -36,7 +37,7 @@ export const VisionMission = () => {
           </div>
           
           <p className="text-lg text-health-dark/70 max-w-3xl mx-auto mb-4">
-            At <span className="font-semibold">Akeno Health</span>, we believe that <span className="font-semibold">healthcare should be predictive, personalised, and accessible to everyone</span>. Our mission is to <span className="font-semibold">revolutionise global healthcare</span> by integrating <span className="font-semibold">cutting-edge artificial intelligence, real-time health monitoring, and advanced medical analytics</span> into a seamless, intelligent, and proactive healthcare ecosystem.
+            At <span className="font-semibold">Akeno Health</span>, we believe that <span className="font-semibold">healthcare should be predictive, personalised, and accessible to everyone</span>.
           </p>
         </div>
         
@@ -99,14 +100,14 @@ export const VisionMission = () => {
           </p>
           
           <Button 
-            variant="primary" 
             size="lg" 
             className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 group"
-            as="Link"
-            to="/contact"
+            asChild
           >
-            Join Us in the AI Healthcare Revolution
-            <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
+            <Link to="/contact" className="flex items-center gap-2">
+              Join Us in the AI Healthcare Revolution
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </Link>
           </Button>
         </div>
       </div>
