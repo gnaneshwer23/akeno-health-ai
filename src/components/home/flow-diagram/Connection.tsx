@@ -1,16 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { DiagramCoordinates } from './utils/diagramUtils';
-
-interface ConnectionProps {
-  start: DiagramCoordinates;
-  end: DiagramCoordinates;
-  animated?: boolean;
-  dotted?: boolean;
-  color?: string;
-  delay?: number;
-}
+import { ConnectionProps } from './utils/diagramUtils';
 
 const Connection: React.FC<ConnectionProps> = ({ 
   start, 
@@ -28,32 +19,37 @@ const Connection: React.FC<ConnectionProps> = ({
   const isGoingUp = end.y < start.y;
   const isGoingRight = end.x > start.x;
   
-  // Calculate control points for bezier curve
+  // Calculate control points for bezier curve - adjusted for smoother curves
   let controlPoint1X, controlPoint1Y, controlPoint2X, controlPoint2Y;
   
   if (isGoingRight) {
     controlPoint1X = start.x + width * 0.4;
     controlPoint2X = start.x + width * 0.6;
   } else {
-    controlPoint1X = start.x - width * 0.4;
-    controlPoint2X = start.x - width * 0.6;
+    controlPoint1X = start.x - Math.abs(width) * 0.4;
+    controlPoint2X = start.x - Math.abs(width) * 0.6;
   }
   
   if (isGoingUp) {
-    controlPoint1Y = start.y - Math.abs(height) * 0.1;
-    controlPoint2Y = end.y + Math.abs(height) * 0.1;
+    controlPoint1Y = start.y - Math.abs(height) * 0.2;
+    controlPoint2Y = end.y + Math.abs(height) * 0.2;
   } else {
-    controlPoint1Y = start.y + Math.abs(height) * 0.1;
-    controlPoint2Y = end.y - Math.abs(height) * 0.1;
+    controlPoint1Y = start.y + Math.abs(height) * 0.2;
+    controlPoint2Y = end.y - Math.abs(height) * 0.2;
   }
   
-  // Create path for SVG
+  // Create path for SVG - using absolute positioning to make offsets easier
   const path = `M${0},${0} C${controlPoint1X - start.x},${controlPoint1Y - start.y} ${controlPoint2X - start.x},${controlPoint2Y - start.y} ${width},${height}`;
 
   return (
     <svg 
       className="absolute pointer-events-none" 
-      style={{ left: start.x, top: start.y, width: Math.abs(width), height: Math.abs(height) }}
+      style={{ 
+        left: start.x, 
+        top: start.y, 
+        width: Math.abs(width), 
+        height: Math.abs(height) 
+      }}
     >
       <motion.path
         d={path}

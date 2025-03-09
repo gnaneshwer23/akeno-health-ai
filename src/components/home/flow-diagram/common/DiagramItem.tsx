@@ -1,54 +1,88 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 import { DiagramItemProps } from '../utils/diagramUtils';
 
 interface DiagramItemBaseProps extends DiagramItemProps {
-  variant: 'icon' | 'avatar';
-  containerClassName?: string;
+  variant: 'icon' | 'avatar' | 'outcome';
   iconContainerClassName?: string;
   textClassName?: string;
-  animationProps?: Record<string, any>;
+  animationDirection?: 'x' | 'y';
+  animationDistance?: number;
 }
 
 const DiagramItem = ({ 
   title, 
   icon, 
-  color = "[#8571DD]", 
+  color = "#8571DD", 
   delay = 0,
   variant = 'icon',
-  containerClassName = "",
+  className = "",
   iconContainerClassName = "",
   textClassName = "",
-  animationProps = {}
+  animationDirection = 'y',
+  animationDistance = 20
 }: DiagramItemBaseProps) => {
   
-  const defaultAnimationProps = {
-    initial: variant === 'icon' ? { opacity: 0, y: 20 } : { opacity: 0, scale: 0.9 },
-    animate: variant === 'icon' ? { opacity: 1, y: 0 } : { opacity: 1, scale: 1 },
-    transition: { duration: 0.5, delay }
+  // Configure animation based on variant and direction
+  const getAnimationProps = () => {
+    const initial = { opacity: 0 };
+    const animate = { opacity: 1 };
+    
+    if (animationDirection === 'y') {
+      initial['y'] = variant === 'outcome' ? 0 : animationDistance;
+      animate['y'] = 0;
+    } else {
+      initial['x'] = variant === 'icon' ? -animationDistance : 
+                    variant === 'outcome' ? animationDistance : 0;
+      animate['x'] = 0;
+    }
+    
+    if (variant === 'avatar') {
+      initial['scale'] = 0.9;
+      animate['scale'] = 1;
+    }
+    
+    return { initial, animate, transition: { duration: 0.5, delay } };
   };
 
-  const mergedAnimationProps = { ...defaultAnimationProps, ...animationProps };
-
-  const isRounded = variant === 'avatar';
+  const animationProps = getAnimationProps();
+  
+  // Determine container classes based on variant
+  const containerClasses = cn(
+    "flex", 
+    variant === 'outcome' ? "flex-row items-center gap-3" : "flex-col items-center gap-3",
+    className
+  );
+  
+  // Determine icon container classes based on variant
+  const iconContainerClasses = cn(
+    variant === 'avatar' ? "rounded-full" : 
+    variant === 'outcome' ? "min-w-fit" : "rounded-md",
+    variant === 'outcome' ? "" : "w-20 h-20 shadow-sm flex items-center justify-center",
+    variant === 'outcome' ? "" : `bg-white border border-${color}/20`,
+    iconContainerClassName
+  );
+  
+  // Determine text classes based on variant
+  const textClasses = cn(
+    "font-medium",
+    variant === 'outcome' ? "text-sm" : "text-sm text-center",
+    variant === 'outcome' ? "" : "max-w-[120px]",
+    `text-[#1A1F2C]`,
+    textClassName
+  );
   
   return (
     <motion.div 
-      className={`flex flex-col items-center gap-3 ${containerClassName}`}
-      {...mergedAnimationProps}
+      className={containerClasses}
+      {...animationProps}
     >
-      <div className={`
-        w-20 h-20 
-        ${isRounded ? 'rounded-full' : 'rounded-md'} 
-        bg-white border border-${color}/20 
-        flex items-center justify-center 
-        shadow-sm
-        ${iconContainerClassName}
-      `}>
+      <div className={iconContainerClasses}>
         {icon}
       </div>
-      <span className={`text-sm font-medium text-center max-w-[120px] text-[#1A1F2C] ${textClassName}`}>{title}</span>
+      <span className={textClasses}>{title}</span>
     </motion.div>
   );
 };
