@@ -15,22 +15,20 @@ export const QuantumCTA = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="md:max-w-xl">
               <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-purple-700 to-blue-700 bg-clip-text text-transparent">
-                Join Us in Transforming Healthcare
+                Join the Quantum AI Revolution
               </h2>
               <p className="text-health-dark/70 mb-6">
-                Quantum computing is the next frontier in AI-driven medical innovation. At Akeno Health AI, 
-                we are dedicated to leveraging this revolutionary technology to bring smarter, faster, 
-                and more personalized healthcare solutions to the world.
+                Are you a researcher, healthcare professional, or investor looking to be part of the next breakthrough in AI-driven medicine? Partner with Akeno Health and help us build the future of AI-powered, quantum-accelerated, and blockchain-secured healthcare.
               </p>
               <p className="text-health-dark/70 mb-6 font-medium">
-                Stay tuned as we continue to pioneer the fusion of AI, quantum computing, and precision medicine.
+                Akeno Health isn't just leading healthcare innovation – we're redefining it for the future.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button variant="primary" as="Link" to="/quantum-computing" className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700" icon={<Atom size={16} />}>
-                  Explore Quantum Solutions
+                <Button variant="primary" as="Link" to="/contact" className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700" icon={<Atom size={16} />}>
+                  Contact Us Today
                 </Button>
-                <Button variant="outline" as="Link" to="/contact" className="border-purple-300 text-purple-600 hover:bg-purple-50" icon={<ArrowRight size={16} />}>
-                  Contact Our Research Team
+                <Button variant="outline" as="Link" to="/case-studies-and-blog" className="border-purple-300 text-purple-600 hover:bg-purple-50" icon={<ArrowRight size={16} />}>
+                  Explore Our Research
                 </Button>
               </div>
             </div>

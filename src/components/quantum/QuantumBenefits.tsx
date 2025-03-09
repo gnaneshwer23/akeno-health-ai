@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { CheckCircle2, Zap, Lock, Brain, LineChart, BarChart3 } from 'lucide-react';
+import { CheckCircle2, Zap, Lock, Brain, LineChart, BarChart3, Shield } from 'lucide-react';
 
 export const QuantumBenefits = () => {
   const benefits = [
@@ -26,16 +26,16 @@ export const QuantumBenefits = () => {
       level: 92
     },
     {
-      icon: <Lock size={24} className="text-red-500" />,
-      title: "Secure quantum encryption for privacy-first patient data management",
-      description: "Protect sensitive health information with advanced quantum cryptography.",
+      icon: <Shield size={24} className="text-red-500" />,
+      title: "Quantum encryption for ultra-secure health data exchange",
+      description: "Completely unhackable patient data protection using quantum key distribution and blockchain technology.",
       impact: "Substantial",
       level: 88
     },
     {
       icon: <LineChart size={24} className="text-amber-500" />,
       title: "Enhanced AI-driven diagnostics and medical imaging analytics",
-      description: "Detect abnormalities and diagnose conditions with greater accuracy and speed.",
+      description: "Detect abnormalities and diagnose conditions with greater accuracy and speed than ever possible before.",
       impact: "Significant",
       level: 80
     }

@@ -8,7 +8,7 @@ export const QuantumIntro = () => {
     <section className="mb-16 py-12 px-6 bg-gradient-to-r from-purple-50 to-blue-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-health-dark mb-4 bg-gradient-to-r from-purple-700 to-blue-700 bg-clip-text text-transparent">Revolutionizing Healthcare with Quantum AI</h2>
+          <h2 className="text-3xl font-bold text-health-dark mb-4 bg-gradient-to-r from-purple-700 to-blue-700 bg-clip-text text-transparent">What is Quantum Computing & Why It Matters in Healthcare?</h2>
           
           <div className="flex justify-center mb-8">
             <div className="w-full max-w-4xl bg-white rounded-xl shadow-md p-6 relative overflow-hidden border border-purple-100">
@@ -17,7 +17,7 @@ export const QuantumIntro = () => {
               
               <div className="relative z-10">
                 <p className="text-lg text-health-dark/70 mb-4">
-                  Quantum computing is transforming precision medicine by accelerating drug discovery, optimizing diagnostics, and revolutionizing personalized healthcare.
+                  Traditional computing struggles with ultra-complex biological and chemical simulations. Quantum computing overcomes these limitations by leveraging quantum bits (qubits), which can exist in multiple states simultaneously, performing calculations at speeds unimaginable for classical computers.
                 </p>
                 
                 <div className="flex justify-center my-6">
@@ -56,9 +56,9 @@ export const QuantumIntro = () => {
               <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
                 <Atom size={24} className="text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-health-dark mb-2">Quantum Computing</h3>
+              <h3 className="text-xl font-bold text-health-dark mb-2">Exponential Computing Power</h3>
               <p className="text-health-dark/70">
-                Leveraging quantum bits (qubits) to perform calculations that traditional computers struggle with, enabling exponentially faster data processing.
+                Solves complex biological simulations in seconds, which would take supercomputers millions of years to complete, dramatically accelerating medical research.
               </p>
             </CardContent>
           </Card>
@@ -82,7 +82,7 @@ export const QuantumIntro = () => {
               </div>
               <h3 className="text-xl font-bold text-health-dark mb-2">Healthcare Transformation</h3>
               <p className="text-health-dark/70">
-                Redefining healthcare through quantum-powered precision medicine, drastically improving patient outcomes and treatment efficacy.
+                Redefining healthcare through quantum-powered precision medicine, drastically improving patient outcomes through drug discovery, predictive disease modeling, and secure data exchange.
               </p>
             </CardContent>
           </Card>

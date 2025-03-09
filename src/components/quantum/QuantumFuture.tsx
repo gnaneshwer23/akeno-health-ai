@@ -26,10 +26,10 @@ export const QuantumFuture = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
           <div>
-            <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-700 to-blue-700 bg-clip-text text-transparent">The Future of Quantum-Powered Healthcare</h2>
+            <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-700 to-blue-700 bg-clip-text text-transparent">Akeno Health's Quantum Computing Innovations</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-blue-500 mb-6"></div>
             <p className="text-lg text-health-dark/70 mb-8">
-              As quantum computing continues to evolve, Akeno Health AI is committed to pushing the boundaries of <strong>personalized medicine, disease prediction, and real-time patient monitoring</strong>. We are actively working on pioneering technologies that will shape the future of healthcare.
+              As quantum computing continues to evolve, Akeno Health AI is committed to pushing the boundaries of <strong>personalized medicine, disease prediction, and real-time patient monitoring</strong>. We are actively partnering with top research institutions, quantum AI startups, and leading technology companies to integrate quantum-powered algorithms into our ecosystem.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-blue-50 rounded-lg p-4 border border-blue-100 hover:shadow-md transition-all">

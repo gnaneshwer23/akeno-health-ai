@@ -13,7 +13,7 @@ export const QuantumHero = () => {
           </span>
           
           <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-purple-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent">
-            Advancing Medicine with <span className="text-purple-600">Quantum</span> & <span className="text-blue-600">AI Integration</span>
+            Quantum Computing & AI – The Future of Healthcare Innovation
           </h1>
           
           <div className="flex justify-center mb-6">
@@ -21,7 +21,7 @@ export const QuantumHero = () => {
           </div>
           
           <p className="text-xl text-health-dark/70 max-w-3xl mx-auto mb-10 leading-relaxed">
-            Revolutionizing healthcare through the power of quantum computing, unlocking new possibilities in precision medicine, drug discovery, and AI-driven diagnostics.
+            Revolutionising Medicine, Drug Discovery, and Personalised Healthcare through unprecedented computational power to solve the most complex challenges in healthcare.
           </p>
         </div>
       </div>
