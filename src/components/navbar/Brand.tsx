@@ -17,7 +17,7 @@ const Brand: React.FC = () => {
           Akeno Health
         </span>
         <span className="text-[10px] sm:text-xs text-health-dark/70 whitespace-nowrap">
-          {isHomePage ? "Patent No. 439306" : "AI-Powered Healthcare"}
+          AI-Powered Healthcare
         </span>
       </div>
     </Link>

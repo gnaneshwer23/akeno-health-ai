@@ -17,6 +17,10 @@ export const HeroContent: React.FC = () => {
         </div>
       </div>
       
+      <div className="text-sm font-medium text-health-primary/80 mb-4">
+        Patented Technology
+      </div>
+      
       <div className="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 text-health-primary font-medium backdrop-blur-sm border border-health-primary/20">
         <Shield size={18} className="text-health-primary" />
         <span>Pioneering the Next Generation of AI Healthcare</span>
