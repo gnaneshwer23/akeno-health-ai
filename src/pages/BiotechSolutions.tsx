@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
@@ -390,7 +389,7 @@ const BiotechSolutions = () => {
               />
             </div>
             
-            <div className="bg-gradient-to-r from-indigo-50 to-indigo-100 p-6 rounded-xl border border-indigo-200 shadow-inner">
+            <div className="bg-gradient-to-r from-indigo-50 to-indigo-100 p-6 rounded-xl shadow-inner">
               <h4 className="flex items-center gap-2 text-indigo-700 font-medium mb-2">
                 <span className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs">✓</span>
                 Outcome
@@ -657,7 +656,7 @@ const BiotechSolutions = () => {
                       <Card className="bg-white/80 backdrop-blur-sm border border-blue-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
                         <CardContent className="p-3">
                           <div className="flex items-center gap-2">
-                            <ActivityIcon size={18} className="text-blue-600" />
+                            <Activity size={18} className="text-blue-600" />
                             <span className="text-sm">Audit Trail</span>
                           </div>
                         </CardContent>
