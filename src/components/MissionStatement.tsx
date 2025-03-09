@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from './Button';
-import { ActivitySquare, Brain, FlaskConical, Database, Award, ArrowRight } from 'lucide-react';
+import { ActivitySquare, Brain, FlaskConical, Database, Award, ArrowRight, HeartPulse } from 'lucide-react';
 
 const services = [
   {
@@ -18,6 +18,11 @@ const services = [
     icon: <Award className="h-10 w-10 text-health-primary" />,
     title: "Precision Medicine & Digital Twin Technology",
     description: "Hyper-personalised treatments tailored to genetics, microbiome, and disease progression for optimised health outcomes."
+  },
+  {
+    icon: <HeartPulse className="h-10 w-10 text-health-primary" />,
+    title: "AI-Integrated Mental & Cognitive Health Monitoring",
+    description: "Advanced AI-driven assessments detect early signs of cognitive decline, stress, and mental health conditions, enabling proactive and personalised interventions."
   },
   {
     icon: <FlaskConical className="h-10 w-10 text-health-primary" />,
