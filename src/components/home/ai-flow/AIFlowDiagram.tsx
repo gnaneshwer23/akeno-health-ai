@@ -4,7 +4,7 @@ import DataSourcesColumn from './DataSourcesColumn';
 import AIEngineColumn from './AIEngineColumn';
 import SolutionsBenefitsColumn from './SolutionsBenefitsColumn';
 import ParticleEffect from './ParticleEffect';
-import styles from './styles';
+import styles from './AIFlowDiagram.module.css';
 import { ArrowRight } from 'lucide-react';
 
 const AIFlowDiagram = () => {

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import styles from './styles';
+import styles from './AIFlowDiagram.module.css';
 
 const DataSourcesColumn = () => {
   return (
