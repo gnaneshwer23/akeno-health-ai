@@ -16,10 +16,11 @@ const RememberMeCheckbox = ({ checked, onCheckedChange }: RememberMeCheckboxProp
         id="remember" 
         checked={checked}
         onCheckedChange={(checked) => onCheckedChange(checked as boolean)}
+        className="data-[state=checked]:bg-health-primary data-[state=checked]:border-health-primary"
       />
       <label
         htmlFor="remember"
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
       >
         Remember me for 30 days
       </label>

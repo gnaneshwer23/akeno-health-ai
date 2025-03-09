@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer';
 import AuthCard from './AuthCard';
 import { Shield, Lock, CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import { fadeIn, slideInFromLeft, slideInFromRight, containerVariants, itemVariants } from './animations';
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -67,15 +68,15 @@ const AuthLayout = ({
           {/* Left side content */}
           <motion.div 
             className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0 px-4"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            initial="hidden"
+            animate="visible"
+            variants={slideInFromLeft}
           >
             <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-health-primary/10 mb-6">
               <Shield className="h-8 w-8 text-health-primary" />
             </div>
             
-            <h1 className="text-3xl md:text-4xl font-bold text-health-dark mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-health-dark mb-4 bg-clip-text text-transparent bg-gradient-to-r from-health-primary to-health-secondary">
               {pageTitle}
             </h1>
             
@@ -83,12 +84,13 @@ const AuthLayout = ({
               {pageDescription}
             </p>
             
-            <div className="space-y-4 w-full max-w-md">
+            <motion.div 
+              className="space-y-4 w-full max-w-md"
+              variants={containerVariants}
+            >
               <motion.div 
-                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-health-primary/5"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-health-primary/5 hover:shadow-md hover:border-health-primary/20 transition-all duration-300"
+                variants={itemVariants}
               >
                 <CheckCircle2 className="h-5 w-5 text-health-primary mt-0.5 flex-shrink-0" />
                 <div>
@@ -98,10 +100,8 @@ const AuthLayout = ({
               </motion.div>
               
               <motion.div 
-                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-health-primary/5"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-health-primary/5 hover:shadow-md hover:border-health-primary/20 transition-all duration-300"
+                variants={itemVariants}
               >
                 <Sparkles className="h-5 w-5 text-health-primary mt-0.5 flex-shrink-0" />
                 <div>
@@ -111,10 +111,8 @@ const AuthLayout = ({
               </motion.div>
               
               <motion.div 
-                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-health-primary/5"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
+                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-health-primary/5 hover:shadow-md hover:border-health-primary/20 transition-all duration-300"
+                variants={itemVariants}
               >
                 <ArrowRight className="h-5 w-5 text-health-primary mt-0.5 flex-shrink-0" />
                 <div>
@@ -122,20 +120,21 @@ const AuthLayout = ({
                   <p className="text-xs text-muted-foreground">{isRegister ? "Create your account in less than 2 minutes" : "Sign in to access your dashboard instantly"}</p>
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
           </motion.div>
           
           {/* Right side form */}
           <motion.div 
             className="w-full md:w-1/2"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            initial="hidden"
+            animate="visible"
+            variants={slideInFromRight}
           >
             <div className="relative">
               <AuthCard 
                 title={isRegister ? "Sign Up" : "Sign In"}
                 description={isRegister ? "Fill in your details to create your account" : "Enter your credentials to access your account"}
+                className="hover:shadow-lg transition-all duration-300"
               >
                 {children}
               </AuthCard>
@@ -159,9 +158,9 @@ const AuthLayout = ({
       
       <motion.div 
         className="w-full max-w-3xl mx-auto text-center px-6 py-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.5 }}
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
       >
         <div className="flex items-center justify-center gap-2 mb-3">
           <Lock className="h-4 w-4 text-health-primary" />

@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer';
 import AuthCard from './AuthCard';
 import { Database, Microscope, Server, Sparkles, Beaker, ShieldCheck, Dna } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import { fadeIn, slideInFromLeft, slideInFromRight, containerVariants, itemVariants } from './animations';
 
 interface ResearcherAuthLayoutProps {
   children: React.ReactNode;
@@ -66,15 +67,15 @@ const ResearcherAuthLayout = ({
           {/* Left side content */}
           <motion.div 
             className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0 px-4"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            initial="hidden"
+            animate="visible"
+            variants={slideInFromLeft}
           >
             <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-indigo-600/10 mb-6">
               <Beaker className="h-8 w-8 text-indigo-600" />
             </div>
             
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-indigo-800">
               {pageTitle}
             </h1>
             
@@ -82,12 +83,13 @@ const ResearcherAuthLayout = ({
               {pageDescription}
             </p>
             
-            <div className="space-y-4 w-full max-w-md">
+            <motion.div 
+              className="space-y-4 w-full max-w-md"
+              variants={containerVariants}
+            >
               <motion.div 
-                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-indigo-100"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-indigo-100 hover:shadow-md hover:border-indigo-200 transition-all duration-300"
+                variants={itemVariants}
               >
                 <Microscope className="h-5 w-5 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <div>
@@ -97,10 +99,8 @@ const ResearcherAuthLayout = ({
               </motion.div>
               
               <motion.div 
-                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-indigo-100"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-indigo-100 hover:shadow-md hover:border-indigo-200 transition-all duration-300"
+                variants={itemVariants}
               >
                 <Database className="h-5 w-5 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <div>
@@ -110,10 +110,8 @@ const ResearcherAuthLayout = ({
               </motion.div>
               
               <motion.div 
-                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-indigo-100"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
+                className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-indigo-100 hover:shadow-md hover:border-indigo-200 transition-all duration-300"
+                variants={itemVariants}
               >
                 <Dna className="h-5 w-5 text-indigo-600 mt-0.5 flex-shrink-0" />
                 <div>
@@ -121,21 +119,21 @@ const ResearcherAuthLayout = ({
                   <p className="text-xs text-muted-foreground">Utilize AI for genomics analysis and personalized therapeutic development</p>
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
           </motion.div>
           
           {/* Right side form */}
           <motion.div 
             className="w-full md:w-1/2"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            initial="hidden"
+            animate="visible"
+            variants={slideInFromRight}
           >
             <div className="relative">
               <AuthCard 
                 title={isRegister ? "Researcher Sign Up" : "Researcher Sign In"}
                 description={isRegister ? "Create your account to access Akeno's biotech research platform" : "Access your AI-powered drug discovery dashboard"}
-                className="border-indigo-200"
+                className="border-indigo-200 hover:shadow-lg transition-all duration-300"
               >
                 {children}
               </AuthCard>
@@ -159,9 +157,9 @@ const ResearcherAuthLayout = ({
       
       <motion.div 
         className="w-full max-w-3xl mx-auto text-center px-6 py-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.5 }}
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
       >
         <div className="flex items-center justify-center gap-2 mb-3">
           <ShieldCheck className="h-4 w-4 text-indigo-600" />
