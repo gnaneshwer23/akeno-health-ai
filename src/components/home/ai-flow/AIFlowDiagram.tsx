@@ -5,6 +5,7 @@ import AIEngineColumn from './AIEngineColumn';
 import SolutionsBenefitsColumn from './SolutionsBenefitsColumn';
 import ParticleEffect from './ParticleEffect';
 import styles from './AIFlowDiagram.module.css';
+import { ArrowRight } from 'lucide-react';
 
 const AIFlowDiagram = () => {
   return (
@@ -13,10 +14,20 @@ const AIFlowDiagram = () => {
       
       <div id="diagram" className={`${styles.diagram} ${styles.threeColumnLayout}`}>
         {/* Left Column: Data Sources (Inputs) */}
-        <DataSourcesColumn />
+        <div style={{ position: 'relative' }}>
+          <DataSourcesColumn />
+          <div className={`${styles.columnConnector} ${styles.leftConnector}`}>
+            <ArrowRight size={20} className={styles.arrowIcon} />
+          </div>
+        </div>
         
         {/* Middle Column: Akeno AI Engine (Processing Layer) */}
-        <AIEngineColumn />
+        <div style={{ position: 'relative' }}>
+          <AIEngineColumn />
+          <div className={`${styles.columnConnector} ${styles.leftConnector}`}>
+            <ArrowRight size={20} className={styles.arrowIcon} />
+          </div>
+        </div>
         
         {/* Right Column: Solutions & Benefits (Outputs) */}
         <SolutionsBenefitsColumn />

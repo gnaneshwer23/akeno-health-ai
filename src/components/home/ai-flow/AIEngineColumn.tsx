@@ -16,19 +16,19 @@ const AIEngineColumn = () => {
         <div className={styles.aiEngine}>
           <div className={styles.icon}>🔮</div>
           <div>Predictive Analytics</div>
-          <small className={styles.nodeDescription}>Risk Assessment & Forecasting</small>
+          <small className={styles.nodeDescription}>Risk Assessment</small>
         </div>
         
         <div className={styles.aiEngine}>
           <div className={styles.icon}>⚕️</div>
           <div>Diagnostic Intelligence</div>
-          <small className={styles.nodeDescription}>Medical Imaging & Pathology</small>
+          <small className={styles.nodeDescription}>Medical Imaging</small>
         </div>
         
         <div className={styles.aiEngine}>
           <div className={styles.icon}>📊</div>
-          <div>Clinical Decision Support</div>
-          <small className={styles.nodeDescription}>Treatment Optimization & NLP</small>
+          <div>Decision Support</div>
+          <small className={styles.nodeDescription}>Treatment Optimization</small>
         </div>
       </div>
     </div>
