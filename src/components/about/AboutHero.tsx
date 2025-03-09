@@ -19,7 +19,7 @@ export const AboutHero = () => {
           </span>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-health-dark mb-6 tracking-tight fade-up-1">
-            Revolutionizing Healthcare with <span className="text-health-primary">AI</span> & <span className="text-health-secondary">Quantum Computing</span>
+            Pioneering AI-Driven Personalised Medicine for All
           </h1>
           
           <div className="flex justify-center mb-8">
@@ -27,8 +27,8 @@ export const AboutHero = () => {
           </div>
           
           <p className="text-xl md:text-2xl text-health-dark/70 max-w-3xl mx-auto mb-10 leading-relaxed fade-up-3">
-            Pioneering the future of precision healthcare through artificial intelligence, quantum computing, 
-            multi-omics analysis, and data-driven medicine.
+            Our Mission to Revolutionise Healthcare through artificial intelligence, 
+            real-time health monitoring, and advanced medical analytics.
           </p>
           
           <div className="flex flex-wrap justify-center gap-8 mb-12 fade-up-4">
