@@ -83,33 +83,47 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleLogin} className="space-y-5">
-      <LoginErrorAlert error={error} />
-      
-      <div className="space-y-4">
-        <RoleSelector 
-          role={role} 
-          onRoleSelect={handleRoleSelect} 
-        />
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: {
+            staggerChildren: 0.1
+          }
+        }
+      }}
+    >
+      <form onSubmit={handleLogin} className="space-y-5">
+        <LoginErrorAlert error={error} />
         
-        <EmailInput 
-          email={email} 
-          onChange={handleEmailChange} 
-        />
+        <div className="space-y-4">
+          <RoleSelector 
+            role={role} 
+            onRoleSelect={handleRoleSelect} 
+          />
+          
+          <EmailInput 
+            email={email} 
+            onChange={handleEmailChange} 
+          />
+          
+          <PasswordInput 
+            password={password} 
+            onChange={handlePasswordChange} 
+          />
+          
+          <RememberMeCheckbox 
+            checked={rememberMe} 
+            onCheckedChange={setRememberMe} 
+          />
+        </div>
         
-        <PasswordInput 
-          password={password} 
-          onChange={handlePasswordChange} 
-        />
-        
-        <RememberMeCheckbox 
-          checked={rememberMe} 
-          onCheckedChange={setRememberMe} 
-        />
-      </div>
-      
-      <LoginButton isSubmitting={isSubmitting} />
-    </form>
+        <LoginButton isSubmitting={isSubmitting} />
+      </form>
+    </motion.div>
   );
 };
 
