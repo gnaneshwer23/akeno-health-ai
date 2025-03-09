@@ -78,13 +78,7 @@ export const AboutTeam = () => {
           </div>
         </div>
         
-        <h3 className="text-2xl font-bold text-center text-health-dark mb-8 fade-up-3 flex items-center justify-center gap-2">
-          <Sparkles size={24} className="text-indigo-500" />
-          Our Experts
-          <Sparkles size={24} className="text-indigo-500" />
-        </h3>
-        
-        <Tabs defaultValue="leadership" className="w-full">
+        <Tabs defaultValue="leadership" className="w-full fade-up-3">
           <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-3 bg-transparent w-full mb-8">
             {teamGroups.map((group) => (
               <TeamTabTrigger 
