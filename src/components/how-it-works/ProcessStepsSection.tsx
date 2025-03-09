@@ -1,7 +1,11 @@
 
 import React from 'react';
 import ProcessStep from './ProcessStep';
-import { Smartphone, Database, Brain, Activity, FlaskConical, Workflow, Dna, LineChart, HeartPulse, Beaker, Users, Shield, FileText } from 'lucide-react';
+import { 
+  Smartphone, Database, Brain, Activity, FlaskConical, Workflow, 
+  Dna, LineChart, HeartPulse, Beaker, Users, Shield, FileText, 
+  Zap, Lock, Link as LinkIcon, Pill
+} from 'lucide-react';
 
 const ProcessStepsSection = () => {
   return (
@@ -29,156 +33,218 @@ const ProcessStepsSection = () => {
         {/* Step 1 */}
         <ProcessStep
           stepNumber={1}
-          title="Data Collection & Digital Twin"
-          description="Our AI creates a virtual model of your health by gathering comprehensive data from multiple sources."
+          title="Real-Time Health Monitoring & Data Collection"
+          description="Akeno Health continuously gathers real-time health data from multiple sources, creating a comprehensive 360° view of a patient's health."
           icon={<Database size={60} className="text-indigo-500" />}
           features={[
             {
               icon: <Smartphone size={24} />,
-              title: "Wearables & IoT",
-              content: "Real-time biometrics from smartwatches, glucose monitors, and fitness trackers."
+              title: "Wearables & IoT Devices",
+              content: "Smartwatches, ECG patches, glucose monitors, BP cuffs, fitness trackers"
             },
             {
               icon: <FileText size={24} />,
-              title: "Medical Records",
-              content: "Secure integration of your clinical data, lab tests, and medical history."
+              title: "Electronic Health Records",
+              content: "Secure, AI-integrated health data exchange from clinics & hospitals"
             },
             {
               icon: <Dna size={24} />,
-              title: "Genetic Data",
-              content: "Analysis of your genomics, proteomics, and microbiome data."
+              title: "Genomic & Microbiome Data",
+              content: "Personalised DNA & gut microbiome analysis for precision medicine"
             },
             {
               icon: <Activity size={24} />,
-              title: "Lifestyle Data",
-              content: "Diet, stress levels, environment, and other health determinants."
+              title: "Medical Imaging & Lab Data",
+              content: "AI-driven diagnostics from X-rays, MRIs, and blood tests"
             },
           ]}
-          outcome="A personalized Digital Twin that simulates your health status and predicts responses to treatments."
+          outcome="A fully automated, real-time health monitoring system that detects patterns before symptoms appear."
         />
         
         {/* Step 2 */}
         <ProcessStep
           stepNumber={2}
-          title="Early Disease Detection"
-          description="Our AI identifies disease risks before symptoms appear, enabling proactive intervention."
+          title="AI-Powered Early Detection & Personalised Risk Analysis"
+          description="Akeno Health's AI-driven risk assessment engine continuously analyses real-time health data to detect early warning signs of diseases and health risks."
           icon={<LineChart size={60} className="text-purple-500" />}
           features={[
             {
               icon: <Brain size={24} />,
-              title: "Pattern Recognition",
-              content: "AI detects early biomarkers for chronic conditions years before clinical symptoms."
+              title: "Predictive AI Modelling",
+              content: "Identifies potential health risks based on patient history & biometric patterns"
             },
             {
               icon: <Dna size={24} />,
-              title: "Multi-Omics Analysis",
-              content: "Integration of genetic and molecular data for precise risk assessment."
+              title: "Disease Forecasting",
+              content: "AI predicts conditions like cancer, diabetes, heart disease, neurological disorders"
             },
             {
               icon: <Activity size={24} />,
-              title: "Adaptive Learning",
-              content: "Models continuously refine predictions based on new health data."
+              title: "Personalised Risk Scores",
+              content: "AI generates individualised risk reports and alerts patients & doctors"
             },
             {
               icon: <HeartPulse size={24} />,
-              title: "Continuous Monitoring",
-              content: "Real-time tracking of subtle variations in health markers."
+              title: "Automated Preventive Plans",
+              content: "AI recommends customised lifestyle & medical interventions"
             },
           ]}
-          outcome="Early disease warnings and personalized prevention strategies to maintain optimal health."
+          outcome="Patients receive early health warnings & personalised recommendations before diseases progress."
         />
         
         {/* Step 3 */}
         <ProcessStep
           stepNumber={3}
-          title="Personalized Treatment Plans"
-          description="Our AI creates tailored therapy recommendations based on your unique biological profile."
-          icon={<FlaskConical size={60} className="text-blue-500" />}
+          title="AI-Driven Clinical Decision Support & Doctor Insights"
+          description="Akeno Health empowers doctors & healthcare providers with AI-driven clinical decision support, allowing them to deliver more accurate, personalised, and faster diagnoses."
+          icon={<Brain size={60} className="text-blue-500" />}
           features={[
             {
               icon: <Dna size={24} />,
-              title: "Precision Medicine",
-              content: "Treatments based on your genetic and epigenetic markers."
+              title: "AI-Powered Diagnosis",
+              content: "Instant differential diagnosis suggestions with symptom analysis"
             },
             {
               icon: <Shield size={24} />,
-              title: "Drug Matching",
-              content: "AI finds medications that match your molecular profile."
+              title: "Automated Treatment Plans",
+              content: "AI recommends evidence-based personalised treatment options"
             },
             {
               icon: <Activity size={24} />,
-              title: "Advanced Therapies",
-              content: "CRISPR-based insights for genetic and autoimmune conditions."
+              title: "Medication Safety Alerts",
+              content: "Ensures patient safety by preventing adverse drug reactions"
             },
             {
-              icon: <Brain size={24} />,
-              title: "Adaptive Optimization",
-              content: "Treatment plans that evolve based on your response."
+              icon: <Users size={24} />,
+              title: "Doctor Collaboration Platform",
+              content: "AI-enhanced real-time consultation between specialists"
             },
           ]}
-          outcome="A dynamic health plan that evolves with your biological state for maximum effectiveness."
+          outcome="Doctors make faster, evidence-based decisions, improving patient outcomes & reducing errors."
         />
         
         {/* Step 4 */}
         <ProcessStep
           stepNumber={4}
-          title="Real-Time Health Monitoring"
-          description="Our AI continuously monitors your health and adjusts recommendations as your condition changes."
-          icon={<Activity size={60} className="text-cyan-500" />}
+          title="Precision Medicine & AI-Powered Treatment Optimisation"
+          description="Akeno Health leverages AI, Quantum Computing, and Digital Twin Technology to optimise treatments for each individual."
+          icon={<Zap size={60} className="text-cyan-500" />}
           features={[
             {
-              icon: <Smartphone size={24} />,
-              title: "Continuous Tracking",
-              content: "Real-time health metrics from wearables and biosensors."
+              icon: <Dna size={24} />,
+              title: "Genomics Integration",
+              content: "AI customises treatments based on DNA & microbiome analysis"
             },
             {
               icon: <Brain size={24} />,
-              title: "Intelligent Adjustments",
-              content: "AI refines medication, nutrition, and exercise plans based on your data."
+              title: "Digital Twin Technology",
+              content: "Creates a virtual health replica to simulate treatments before prescribing"
             },
             {
-              icon: <Workflow size={24} />,
-              title: "Predictive Simulations",
-              content: "Digital Twin models to anticipate treatment outcomes."
+              icon: <FlaskConical size={24} />,
+              title: "Quantum-Powered Drug Matching",
+              content: "Identifies the most effective drugs for a patient's unique genetic profile"
             },
             {
               icon: <HeartPulse size={24} />,
-              title: "Clinical Integration",
-              content: "Automated alerts for healthcare providers when intervention is needed."
+              title: "AI-Optimised Dosage",
+              content: "AI tailors drug dosages in real-time based on metabolic responses"
             },
           ]}
-          outcome="Proactive healthcare with reduced complications and optimized treatment effectiveness."
+          outcome="Every patient receives fully personalised, optimised treatment for faster recovery & fewer side effects."
         />
         
         {/* Step 5 */}
         <ProcessStep
           stepNumber={5}
-          title="Medical Research Acceleration"
-          description="Our AI drives breakthroughs in precision medicine and pharmaceutical development."
-          icon={<Beaker size={60} className="text-pink-500" />}
+          title="Seamless Connectivity – Patients, Doctors, Pharma, and Research"
+          description="Akeno Health eliminates healthcare silos by seamlessly integrating patients, healthcare providers, researchers, and pharma companies through a real-time, AI-powered ecosystem."
+          icon={<LinkIcon size={60} className="text-pink-500" />}
           features={[
             {
-              icon: <Dna size={24} />,
-              title: "Biomarker Discovery",
-              content: "AI identifies new therapeutic targets for precision medicine."
+              icon: <Pill size={24} />,
+              title: "AI-Powered Prescription",
+              content: "Connects doctors, pharmacies, and patients for seamless medication management"
+            },
+            {
+              icon: <Smartphone size={24} />,
+              title: "Telemedicine & AI Assistant",
+              content: "Instant patient support via AI-driven chatbots & telehealth"
             },
             {
               icon: <Users size={24} />,
-              title: "Clinical Trial Optimization",
-              content: "AI selects ideal trial candidates and predicts outcomes."
+              title: "Automated Referrals",
+              content: "AI matches patients to the best specialists & healthcare facilities"
+            },
+            {
+              icon: <Shield size={24} />,
+              title: "AI-Powered Insurance",
+              content: "Faster approvals & fraud detection for insurance companies"
+            },
+          ]}
+          outcome="A fully connected, AI-driven healthcare ecosystem that optimises efficiency for all stakeholders."
+        />
+        
+        {/* Step 6 */}
+        <ProcessStep
+          stepNumber={6}
+          title="AI-Powered Clinical Trials Matching & Drug Discovery Acceleration"
+          description="Akeno Health revolutionises clinical trials and drug discovery by leveraging AI and Quantum Computing to streamline research, recruitment, and pharmaceutical innovation."
+          icon={<Beaker size={60} className="text-indigo-500" />}
+          features={[
+            {
+              icon: <Users size={24} />,
+              title: "Automated Trial Matching",
+              content: "AI scans millions of patient profiles to match them with relevant clinical trials"
             },
             {
               icon: <FlaskConical size={24} />,
-              title: "Drug Development",
-              content: "AI-powered simulations for faster therapeutic discovery."
+              title: "Quantum-Accelerated Discovery",
+              content: "AI simulates molecular interactions to identify potential drug candidates faster"
+            },
+            {
+              icon: <Dna size={24} />,
+              title: "AI-Powered Biomarker Discovery",
+              content: "Identifies early disease indicators for targeted therapies"
+            },
+            {
+              icon: <Shield size={24} />,
+              title: "Blockchain-Based Consent",
+              content: "Ensures secure & transparent clinical trial participation"
+            },
+          ]}
+          outcome="Faster drug development, increased trial success rates, and better treatment options for patients."
+        />
+        
+        {/* Step 7 */}
+        <ProcessStep
+          stepNumber={7}
+          title="Blockchain-Enabled Data Security & Patient-Controlled Health Records"
+          description="Akeno Health revolutionises health data security by integrating Blockchain, AI, and Quantum Encryption for ultra-secure, patient-owned medical records."
+          icon={<Lock size={60} className="text-green-500" />}
+          features={[
+            {
+              icon: <Database size={24} />,
+              title: "Decentralised Health Records",
+              content: "Patients fully control their health data and decide who can access it"
+            },
+            {
+              icon: <Shield size={24} />,
+              title: "Quantum Encryption",
+              content: "Protects sensitive patient data from cyber threats"
+            },
+            {
+              icon: <Lock size={24} />,
+              title: "Zero-Knowledge Proofs",
+              content: "Patients can share insights without revealing personal identity"
             },
             {
               icon: <Brain size={24} />,
-              title: "Safety Enhancement",
-              content: "Machine learning predicts drug interactions and reduces adverse events."
+              title: "AI-Powered Anonymisation",
+              content: "Enables secure medical research & AI training without compromising privacy"
             },
           ]}
-          outcome="Faster development of safer, more effective treatments for complex health conditions."
+          outcome="Patients have complete control over their health records while ensuring ultra-secure, tamper-proof data protection."
         />
       </div>
     </section>

@@ -1,57 +1,60 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Smartphone, Database, Brain, FlaskConical, Activity, HeartPulse, Beaker } from 'lucide-react';
+import { 
+  Smartphone, Database, Brain, FlaskConical, Activity, HeartPulse, 
+  Beaker, Link as LinkIcon, Shield, Users, Zap, Lock
+} from 'lucide-react';
 
 const InfographicSection = () => {
   const journeySteps = [
     {
       step: 1,
-      title: "Data Integration",
-      content: "Sync wearables, medical records, and genetic data with our platform",
+      title: "Health Data Collection",
+      content: "AI gathers data from wearables, medical records, genetics, and more",
       icon: <Smartphone size={24} />,
       color: "indigo"
     },
     {
       step: 2,
-      title: "Continuous Analysis",
-      content: "AI interprets your health data in real-time",
+      title: "Digital Twin Creation",
+      content: "AI builds a virtual health model to simulate outcomes",
       icon: <Database size={24} />,
       color: "purple"
     },
     {
       step: 3,
-      title: "Risk Assessment",
-      content: "Your Digital Twin predicts health risks with high accuracy",
+      title: "AI Risk Analysis",
+      content: "Early disease detection before symptoms appear",
       icon: <Brain size={24} />,
       color: "blue"
     },
     {
       step: 4,
-      title: "Custom Treatments",
-      content: "Receive personalized therapy recommendations",
-      icon: <FlaskConical size={24} />,
+      title: "AI-Powered Diagnosis",
+      content: "Enhanced medical insights for doctors",
+      icon: <Zap size={24} />,
       color: "cyan"
     },
     {
       step: 5,
-      title: "Adaptive Care",
-      content: "Treatment adjustments based on your response",
-      icon: <Activity size={24} />,
+      title: "Precision Treatment",
+      content: "Personalized therapy based on your unique biology",
+      icon: <FlaskConical size={24} />,
       color: "teal"
     },
     {
       step: 6,
-      title: "Clinical Insights",
-      content: "Your doctor receives AI-driven treatment guidance",
-      icon: <HeartPulse size={24} />,
+      title: "Continuous Monitoring",
+      content: "Real-time health tracking and adjustments",
+      icon: <Activity size={24} />,
       color: "pink"
     },
     {
       step: 7,
-      title: "Research Impact",
-      content: "Your anonymized data helps advance medical breakthroughs",
-      icon: <Beaker size={24} />,
+      title: "Secure Data Sharing",
+      content: "Blockchain-protected health data under your control",
+      icon: <Lock size={24} />,
       color: "amber"
     }
   ];
@@ -144,14 +147,14 @@ const InfographicSection = () => {
         <div className="text-center mb-16">
           <span className="inline-flex items-center px-4 py-1.5 mb-4 rounded-full bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-600 font-medium gap-2 border border-indigo-200/50 shadow-sm">
             <Activity size={16} className="text-indigo-500" />
-            <span>Patient Experience</span>
+            <span>Your AI-Powered Healthcare Journey</span>
           </span>
           
           <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
             Your Health Journey with <span className="bg-gradient-to-br from-indigo-600 to-purple-600 bg-clip-text text-transparent">Akeno AI</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            How our technology transforms your healthcare experience
+            How our technology transforms your healthcare experience at every step
           </p>
         </div>
         

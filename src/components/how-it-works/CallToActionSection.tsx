@@ -1,75 +1,159 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Brain, HeartPulse, Activity, Sparkles } from 'lucide-react';
+import { Button } from '@/components/Button';
+import { ArrowRight, CheckCircle, Users, Brain, Database, Shield, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const CallToActionSection = () => {
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-br from-indigo-300/20 to-purple-300/20 blur-2xl -z-10"></div>
-      <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-gradient-to-br from-purple-300/20 to-pink-300/20 blur-2xl -z-10"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-blue-300/10 to-cyan-300/10 blur-3xl -z-10"></div>
+    <section className="py-24 px-6 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 text-white relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/10 blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-gradient-to-tl from-purple-500/20 to-pink-500/10 blur-3xl"></div>
+      </div>
       
-      {/* Decorative dots pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0iIzgzNGZmZiIgZmlsbC1vcGFjaXR5PSIwLjA1Ii8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCBmaWxsPSJ1cmwoI2dyaWQpIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIi8+PC9zdmc+')] opacity-60 -z-10"></div>
-      
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-pink-500/20 to-purple-500/20 text-purple-600 font-medium border border-purple-200 shadow-sm">
-            <Sparkles size={16} className="text-purple-500" />
-            <span>Start Your Journey</span>
-          </span>
-          
-          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6 tracking-tight">
-            Embracing the Future of <span className="bg-gradient-to-br from-indigo-600 to-purple-600 bg-clip-text text-transparent">AI-Powered</span> Healthcare
+      <div className="max-w-5xl mx-auto relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Why Akeno Health is the <span className="text-indigo-300">Future of Healthcare</span>
           </h2>
           
           <div className="flex justify-center mb-6">
-            <div className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-gradient-to-br from-indigo-50 to-white rounded-xl p-6 shadow-md border border-indigo-200 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-            <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-md mx-auto mb-4">
-              <Brain className="w-9 h-9" />
-            </div>
-            <h3 className="font-medium mb-2 text-indigo-900">Proactive Care</h3>
-            <p className="text-sm text-indigo-700/70">Detect and address health issues before they become serious</p>
+            <div className="h-1 w-24 bg-gradient-to-r from-indigo-400 to-purple-400"></div>
           </div>
           
-          <div className="bg-gradient-to-br from-purple-50 to-white rounded-xl p-6 shadow-md border border-purple-200 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-            <div className="bg-gradient-to-br from-purple-500 to-purple-600 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-md mx-auto mb-4">
-              <HeartPulse className="w-9 h-9" />
-            </div>
-            <h3 className="font-medium mb-2 text-purple-900">Personalized Medicine</h3>
-            <p className="text-sm text-purple-700/70">Treatments tailored to your unique biological profile</p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-pink-50 to-white rounded-xl p-6 shadow-md border border-pink-200 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-            <div className="bg-gradient-to-br from-pink-500 to-pink-600 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-md mx-auto mb-4">
-              <Activity className="w-9 h-9" />
-            </div>
-            <h3 className="font-medium mb-2 text-pink-900">Continuous Optimization</h3>
-            <p className="text-sm text-pink-700/70">Real-time adjustments to maximize treatment effectiveness</p>
-          </div>
-        </div>
-        
-        <div className="p-6 mb-10 rounded-xl bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-indigo-200 text-center shadow-md">
-          <p className="text-health-dark font-medium bg-gradient-to-br from-indigo-700 to-purple-700 bg-clip-text text-transparent">
-            Join us in shaping the future of medicine—where AI-driven precision healthcare transforms lives.
+          <p className="text-lg text-indigo-100/90 max-w-3xl mx-auto">
+            Experience the world's first fully AI-powered, self-learning healthcare ecosystem
           </p>
         </div>
         
-        <div className="flex justify-center">
-          <Button className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 shadow-md hover:shadow-lg transition-all duration-300 text-white border-none py-6" asChild>
-            <Link to="/contact" className="flex items-center">
-              <span>Start your AI health journey</span>
-              <ArrowRight size={16} className="ml-2 animate-pulse" />
-            </Link>
-          </Button>
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all">
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
+                <p className="text-indigo-100">
+                  <span className="font-semibold">The world's first fully AI-powered</span>, self-learning healthcare ecosystem
+                </p>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
+                <p className="text-indigo-100">
+                  <span className="font-semibold">Early disease detection</span> & real-time predictive diagnostics
+                </p>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
+                <p className="text-indigo-100">
+                  <span className="font-semibold">AI-driven precision medicine</span> & Quantum-powered drug discovery
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all">
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
+                <p className="text-indigo-100">
+                  <span className="font-semibold">Seamless doctor-patient-pharma connectivity</span> for optimized care
+                </p>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
+                <p className="text-indigo-100">
+                  <span className="font-semibold">Blockchain-secured, patient-controlled</span> health data with quantum encryption
+                </p>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
+                <p className="text-indigo-100">
+                  <span className="font-semibold">AI-automated clinical trials</span> & research acceleration for better treatments
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="bg-white/5 rounded-2xl p-8 md:p-12 border border-white/10 mb-12">
+          <h3 className="text-2xl font-bold mb-6 text-center">
+            Experience the Future of AI Healthcare – Get Started Today!
+          </h3>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                  <Users size={20} className="text-indigo-300" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-lg">For Patients</h4>
+                  <p className="text-indigo-200/70 text-sm">Get personalised, AI-powered health monitoring & early detection</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                  <Brain size={20} className="text-indigo-300" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-lg">For Doctors & Hospitals</h4>
+                  <p className="text-indigo-200/70 text-sm">Enhance decision-making with AI-driven diagnostics & real-time insights</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                  <Database size={20} className="text-indigo-300" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-lg">For Pharma & Researchers</h4>
+                  <p className="text-indigo-200/70 text-sm">Accelerate drug discovery, clinical trials, and personalised medicine</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                  <Zap size={20} className="text-indigo-300" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-lg">For Investors & Partners</h4>
+                  <p className="text-indigo-200/70 text-sm">Be part of the world's most advanced healthcare AI ecosystem</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
+            <Button 
+              variant="primary" 
+              size="lg"
+              as="Link"
+              to="/contact"
+              className="group bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 w-full md:w-auto"
+              icon={<ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />}
+            >
+              Contact Us Today
+            </Button>
+            
+            <Button 
+              variant="outline" 
+              size="lg"
+              as="Link"
+              to="/patient-solutions"
+              className="border-indigo-300 text-indigo-100 hover:bg-indigo-500/10 w-full md:w-auto"
+              icon={<Shield size={16} />}
+            >
+              Learn About Our Solutions
+            </Button>
+          </div>
         </div>
       </div>
     </section>
