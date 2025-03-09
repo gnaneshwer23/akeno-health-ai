@@ -1,3 +1,4 @@
+
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -21,6 +22,7 @@ const AboutUs = lazy(() => import('./pages/AboutUs'));
 const HowItWorks = lazy(() => import('./pages/HowItWorks'));
 const PatientSolutions = lazy(() => import('./pages/PatientSolutions'));
 const DoctorSolutions = lazy(() => import('./pages/DoctorSolutions'));
+const HospitalSolutions = lazy(() => import('./pages/HospitalSolutions'));
 const BiotechSolutions = lazy(() => import('./pages/BiotechSolutions'));
 const QuantumComputing = lazy(() => import('./pages/QuantumComputing'));
 const HealthcareDecisionMaking = lazy(() => import('./pages/HealthcareDecisionMaking'));
@@ -47,6 +49,7 @@ const App = () => {
                 <Route path="/how-it-works" element={<HowItWorks />} />
                 <Route path="/patient-solutions" element={<PatientSolutions />} />
                 <Route path="/doctor-solutions" element={<DoctorSolutions />} />
+                <Route path="/hospital-solutions" element={<HospitalSolutions />} />
                 <Route path="/biotech-solutions" element={<BiotechSolutions />} />
                 <Route path="/quantum-computing" element={<QuantumComputing />} />
                 <Route path="/healthcare-decision-making" element={<HealthcareDecisionMaking />} />

@@ -10,6 +10,7 @@ export const navigationLinks = [
     sublinks: [
       { name: 'For Patients', path: '/patient-solutions' },
       { name: 'For Doctors', path: '/doctor-solutions' },
+      { name: 'For Hospitals', path: '/hospital-solutions' },
       { name: 'For Biotech', path: '/biotech-solutions' },
       { name: 'Quantum Computing', path: '/quantum-computing' },
     ]
