@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
@@ -83,14 +82,6 @@ const Index = () => {
           <AIFlowDiagram />
         </div>
         
-        <div className="relative bg-gradient-to-br from-health-light/30 to-white">
-          <QuantumCTA />
-          
-          {/* Enhanced decorative circles */}
-          <div className="absolute top-1/4 left-10 w-20 h-20 rounded-full border-4 border-dashed border-health-primary/20 -z-10 animate-rotate-slow"></div>
-          <div className="absolute bottom-1/4 right-10 w-16 h-16 rounded-full border-4 border-dashed border-health-secondary/20 -z-10 animate-rotate-slow" style={{animationDirection: 'reverse'}}></div>
-        </div>
-        
         <div className="relative">
           <TestimonialsSection />
           <PartnersSection />
@@ -99,7 +90,14 @@ const Index = () => {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgMjAgMTAgTSAxMCAwIEwgMTAgMjAiIHN0cm9rZT0iIzZmNzJmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuMDUiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNncmlkKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==')] opacity-30 -z-10"></div>
         </div>
         
-        <CTASection />
+        {/* Moved QuantumCTA to the bottom, replacing the CTASection */}
+        <div className="relative bg-gradient-to-br from-health-light/30 to-white">
+          <QuantumCTA />
+          
+          {/* Enhanced decorative circles */}
+          <div className="absolute top-1/4 left-10 w-20 h-20 rounded-full border-4 border-dashed border-health-primary/20 -z-10 animate-rotate-slow"></div>
+          <div className="absolute bottom-1/4 right-10 w-16 h-16 rounded-full border-4 border-dashed border-health-secondary/20 -z-10 animate-rotate-slow" style={{animationDirection: 'reverse'}}></div>
+        </div>
       </main>
       
       <Footer />
