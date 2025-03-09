@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { 
-  ArrowRight, 
+  ChevronRight, 
   Watch, 
   Clipboard, 
   Dna, 
@@ -60,9 +60,14 @@ const AIFlowDiagram = () => {
           </div>
         </div>
         
-        {/* Arrow Connectors */}
+        {/* Flow Connector with Animation */}
         <div className="flow-connector">
-          <ArrowRight className="flow-arrow" />
+          <div className="flow-animation">
+            <div className="flow-dot"></div>
+            <div className="flow-dot"></div>
+            <div className="flow-dot"></div>
+            <ChevronRight className="flow-arrow-end" />
+          </div>
         </div>
         
         {/* Akeno AI Engine */}
@@ -94,9 +99,14 @@ const AIFlowDiagram = () => {
           </div>
         </div>
         
-        {/* Arrow Connectors */}
+        {/* Flow Connector with Animation */}
         <div className="flow-connector">
-          <ArrowRight className="flow-arrow" />
+          <div className="flow-animation">
+            <div className="flow-dot"></div>
+            <div className="flow-dot"></div>
+            <div className="flow-dot"></div>
+            <ChevronRight className="flow-arrow-end" />
+          </div>
         </div>
         
         {/* Healthcare AI Solutions */}
@@ -129,9 +139,14 @@ const AIFlowDiagram = () => {
           </div>
         </div>
         
-        {/* Arrow Connectors */}
+        {/* Flow Connector with Animation */}
         <div className="flow-connector">
-          <ArrowRight className="flow-arrow" />
+          <div className="flow-animation">
+            <div className="flow-dot"></div>
+            <div className="flow-dot"></div>
+            <div className="flow-dot"></div>
+            <ChevronRight className="flow-arrow-end" />
+          </div>
         </div>
         
         {/* System-Wide Benefits */}
