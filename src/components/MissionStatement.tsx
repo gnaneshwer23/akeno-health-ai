@@ -1,108 +1,99 @@
 
 import React from 'react';
-import { Shield, Heart, Sparkles, Atom, Brain, Rocket } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Button } from './Button';
+import { ActivitySquare, Brain, FlaskConical, Database, Award, ArrowRight } from 'lucide-react';
 
-interface ValueProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  className?: string;
-  color: string;
-}
+const services = [
+  {
+    icon: <ActivitySquare className="h-10 w-10 text-health-primary" />,
+    title: "Continuous Health Monitoring",
+    description: "AI-powered wearables and real-time biomarkers detect early disease signals before symptoms appear."
+  },
+  {
+    icon: <Brain className="h-10 w-10 text-health-primary" />,
+    title: "AI-Powered Diagnostics & Clinical Decision Support",
+    description: "AI-enhanced tools empower doctors with real-time, evidence-based recommendations, reducing diagnostic errors and treatment delays."
+  },
+  {
+    icon: <Award className="h-10 w-10 text-health-primary" />,
+    title: "Precision Medicine & Digital Twin Technology",
+    description: "Hyper-personalised treatments tailored to genetics, microbiome, and disease progression for optimised health outcomes."
+  },
+  {
+    icon: <FlaskConical className="h-10 w-10 text-health-primary" />,
+    title: "AI-Driven Clinical Trials & Drug Discovery",
+    description: "Advanced AI matches patients to clinical trials and accelerates drug discovery using quantum computing."
+  },
+  {
+    icon: <Database className="h-10 w-10 text-health-primary" />,
+    title: "Blockchain-Powered Universal Health Records (UHRs)",
+    description: "A secure, decentralised health data system, ensuring patient ownership and real-time access to medical history."
+  }
+];
 
-const Value: React.FC<ValueProps> = ({ icon, title, description, className, color }) => {
-  return (
-    <div className={cn("flex flex-col items-center text-center transform transition-all duration-300 hover:-translate-y-1", className)}>
-      <div className={`flex items-center justify-center w-16 h-16 rounded-xl ${color} mb-5 shadow-md`}>
-        {icon}
-      </div>
-      <h3 className="text-xl font-medium text-health-dark mb-3">{title}</h3>
-      <p className="text-muted-foreground">{description}</p>
-    </div>
-  );
-};
-
-export const MissionStatement: React.FC = () => {
-  const values = [
-    {
-      icon: <Shield size={28} className="text-white" />,
-      title: "Preventive Healthcare",
-      description: "Our AI predicts health risks before they manifest, enabling proactive intervention and disease prevention through multi-omics analysis.",
-      color: "bg-gradient-to-br from-blue-500 to-blue-600"
-    },
-    {
-      icon: <Atom size={28} className="text-white" />,
-      title: "Quantum-Powered Medicine",
-      description: "We leverage quantum computing to accelerate drug discovery, optimize treatments, and enhance clinical research outcomes.",
-      color: "bg-gradient-to-br from-purple-500 to-purple-600"
-    },
-    {
-      icon: <Brain size={28} className="text-white" />,
-      title: "AI-Driven Insights",
-      description: "Advanced machine learning analyzes genetic, epigenetic, environmental, and lifestyle factors to deliver personalized health strategies.",
-      color: "bg-gradient-to-br from-indigo-500 to-indigo-600"
-    },
-    {
-      icon: <Heart size={28} className="text-white" />,
-      title: "Patient-Centered Care",
-      description: "Everything we do prioritizes improving patient outcomes, making healthcare more efficient, cost-effective, and accessible for everyone.",
-      color: "bg-gradient-to-br from-pink-500 to-pink-600"
-    }
-  ];
-
+const MissionStatement: React.FC = () => {
   return (
     <section id="mission" className="py-24 px-6 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-white to-health-light/30 to-60%"></div>
-      
-      {/* Enhanced background elements */}
-      <div className="absolute top-1/4 -right-32 w-80 h-80 bg-health-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute -top-10 left-1/4 w-20 h-20 bg-health-primary/10 rounded-full blur-lg"></div>
-      <div className="absolute bottom-1/4 -left-32 w-80 h-80 bg-health-secondary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-10 right-1/4 w-20 h-20 bg-health-secondary/10 rounded-full blur-lg"></div>
-      
-      {/* Decorative pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CjxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsbD0ibm9uZSIvPgo8cGF0aCBkPSJNMzAgMzAgTDYwIDMwIE02MCAzMCBMNjAgNjAiIHN0cm9rZT0iI2VlZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIi8+Cjwvc3ZnPg==')] opacity-10 -z-10"></div>
+      {/* Background gradient and decorations */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-health-light/20"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-health-primary/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-health-secondary/5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
       
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-5 py-2 mb-6 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 font-medium gap-2 border border-health-primary/10 shadow-sm">
-            <Rocket size={16} className="text-health-primary" />
-            <span className="bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">Our Mission</span>
-          </div>
-          
-          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
-            Revolutionizing Healthcare with AI, Quantum Computing & Multi-Omics
+          <h2 className="inline-flex items-center px-5 py-1.5 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 text-health-primary text-sm font-medium mb-5">
+            AI-Powered Healthcare, Redefined
           </h2>
-          
-          <div className="flex justify-center mb-6">
-            <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary"></div>
-          </div>
-          
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            At Akeno Health AI, we're transforming healthcare by integrating cutting-edge AI diagnostics, multi-omics analysis, quantum computing, and digital twin simulations—shifting from reactive treatments to proactive, precision-driven solutions that ensure early disease detection and personalized care.
+          <h3 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">What We Do</h3>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-health-primary to-health-secondary rounded-full mx-auto mb-6"></div>
+          <p className="text-lg text-health-dark/70 max-w-3xl mx-auto">
+            Akeno Health integrates cutting-edge AI, real-time health analytics, and blockchain security to revolutionise healthcare. Our platform provides:
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {values.map((value, index) => (
-            <Value
-              key={index}
-              icon={value.icon}
-              title={value.title}
-              description={value.description}
-              color={value.color}
-              className={`fade-up-${index + 2}`}
-            />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {services.map((service, index) => (
+            <div key={index} className="relative p-6 rounded-2xl bg-white border border-health-primary/10 shadow-sm hover:shadow-md transition-shadow group">
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-health-primary/5 to-health-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+              <div className="relative z-10">
+                <div className="flex justify-center items-center w-16 h-16 rounded-full bg-health-primary/10 mb-5 mx-auto">
+                  {service.icon}
+                </div>
+                <h4 className="text-xl font-semibold text-health-dark text-center mb-3">{service.title}</h4>
+                <p className="text-health-dark/70 text-center">{service.description}</p>
+              </div>
+            </div>
           ))}
         </div>
         
-        {/* Circular accents */}
-        <div className="absolute top-20 right-20 w-6 h-6 rounded-full bg-health-primary/20"></div>
-        <div className="absolute top-40 right-40 w-3 h-3 rounded-full bg-health-secondary/30"></div>
-        <div className="absolute bottom-20 left-20 w-6 h-6 rounded-full bg-health-secondary/20"></div>
-        <div className="absolute bottom-40 left-40 w-3 h-3 rounded-full bg-health-primary/30"></div>
+        <div className="text-center">
+          <p className="text-lg font-medium text-health-dark mb-8">
+            Join the Akeno Health revolution – bridging healthcare, AI, and patient-centric innovation.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              variant="primary"
+              size="lg"
+              as="Link"
+              to="/how-it-works"
+              className="group"
+            >
+              Learn More
+              <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              as="Link"
+              to="/contact"
+            >
+              Join the Future of Healthcare
+            </Button>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
+
+export { MissionStatement };

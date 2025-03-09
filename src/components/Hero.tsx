@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Button } from './Button';
 import { Check, ArrowRight, Sparkles, Shield, Activity, BarChart2, Brain, Cpu, Atom, FlaskConical } from 'lucide-react';
@@ -37,28 +38,28 @@ const Hero: React.FC = () => {
   
   const features = [
     {
-      text: "AI-Powered Early Disease Detection",
+      text: "Continuous Health Monitoring",
       icon: <Activity size={16} className="text-health-primary" />
     },
     {
-      text: "Personalized Medicine with Multi-Omics Integration",
-      icon: <BarChart2 size={16} className="text-health-primary" />
+      text: "AI-Driven Diagnostics & Precision Medicine",
+      icon: <Brain size={16} className="text-health-primary" />
     },
     {
-      text: "Continuous AI Monitoring & Adaptive Therapy",
-      icon: <Shield size={16} className="text-health-primary" />
-    },
-    {
-      text: "Digital Twin Technology for Predictive Modelling",
+      text: "Clinical Trial Matching & Drug Discovery",
       icon: <FlaskConical size={16} className="text-health-primary" />
     },
     {
-      text: "Quantum Computing for Drug Discovery",
-      icon: <Atom size={16} className="text-health-primary" />
+      text: "Digital Twin Technology",
+      icon: <Cpu size={16} className="text-health-primary" />
     },
     {
-      text: "Neural Network-Based Health Optimization",
-      icon: <Brain size={16} className="text-health-primary" />
+      text: "Blockchain-Powered Health Records",
+      icon: <Shield size={16} className="text-health-primary" />
+    },
+    {
+      text: "AI & Quantum Computing Solutions",
+      icon: <Atom size={16} className="text-health-primary" />
     }
   ];
   
@@ -107,22 +108,26 @@ const Hero: React.FC = () => {
         
         <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 text-health-primary font-medium backdrop-blur-sm border border-health-primary/20">
           <Sparkles size={18} className="text-health-primary" />
-          <span>Next-Generation Healthcare</span>
+          <span>The Future of AI-Driven Healthcare</span>
         </div>
         
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-          <span className="bg-gradient-to-r from-health-primary via-health-secondary to-health-accent bg-clip-text text-transparent">Transforming Healthcare</span> with <span className="text-health-primary">AI</span> & <span className="text-health-secondary">Quantum Computing</span>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
+          <span className="bg-gradient-to-r from-health-primary via-health-secondary to-health-accent bg-clip-text text-transparent">Transforming Healthcare</span> with <span className="text-health-primary">AI</span>
         </h1>
+        
+        <h2 className="text-xl md:text-2xl font-medium text-health-dark/80 mb-6">
+          Predict • Prevent • Personalise • Empower
+        </h2>
         
         <div className="flex justify-center mb-6">
           <div className="h-1.5 w-32 bg-gradient-to-r from-health-primary via-health-secondary to-health-accent rounded-full"></div>
         </div>
         
-        <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
-          Imagine a world where diseases are predicted before symptoms appear, treatments are personalized based on your genetic and immune profile, and AI continuously adapts your healthcare plan—this is the future with Akeno Health AI.
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+          Pioneering the most advanced AI-driven healthcare ecosystem, delivering real-time disease prediction, hyper-personalised treatment recommendations, and seamless clinical connectivity.
         </p>
         
-        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12 relative">
+        <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-10 relative">
           <div className="absolute inset-0 bg-gradient-to-br from-health-primary/5 to-health-secondary/5 rounded-2xl -z-10 blur-xl"></div>
           
           {features.map((feature, index) => (
@@ -137,6 +142,10 @@ const Hero: React.FC = () => {
           ))}
         </div>
         
+        <p className="text-lg text-health-primary/80 font-medium mb-8">
+          Smarter Healthcare. Faster Treatments. Better Outcomes.
+        </p>
+        
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
           <Button 
             size="lg" 
@@ -146,7 +155,7 @@ const Hero: React.FC = () => {
             to="/contact"
           >
             <span className="relative z-10 flex items-center gap-2">
-              Join the Future of Healthcare
+              Get Started
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </span>
             <span className="absolute inset-0 bg-gradient-to-r from-health-primary to-health-secondary opacity-0 group-hover:opacity-100 transition-opacity"></span>
@@ -156,10 +165,20 @@ const Hero: React.FC = () => {
             variant="outline" 
             className="sm:w-auto w-full relative overflow-hidden group"
             as="Link"
-            to="/how-it-works"
+            to="/contact"
           >
-            <span className="relative z-10">Learn More</span>
+            <span className="relative z-10">Request a Demo</span>
             <span className="absolute inset-0 bg-gradient-to-r from-health-primary/10 to-health-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </Button>
+          <Button 
+            size="lg" 
+            variant="ghost" 
+            className="sm:w-auto w-full relative overflow-hidden group"
+            as="Link"
+            to="/contact"
+          >
+            <span className="relative z-10">Join Our Network</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-health-primary/5 to-health-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </Button>
         </div>
       </div>
@@ -173,7 +192,7 @@ const Hero: React.FC = () => {
       
       {/* Animated scroll indicator */}
       <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-80 animate-pulse-slow">
-        <span className="text-sm text-health-dark/80 mb-2 font-medium">Scroll to explore</span>
+        <span className="text-sm text-health-dark/80 mb-2 font-medium">Your Health, Your Data, Your Future</span>
         <div className="w-1 h-10 bg-gradient-to-b from-health-primary via-health-secondary to-transparent rounded-full"></div>
       </div>
     </section>

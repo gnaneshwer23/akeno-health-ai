@@ -1,95 +1,81 @@
 
 import React from 'react';
-import { FeatureCard } from '@/components/FeatureCard';
-import { HeartPulse, Brain, Activity, FlaskConical, LineChart, Users, Sparkles, Atom, Database } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { FeatureCard } from './FeatureCard';
+import { Button } from './Button';
+import { ShieldCheck, Brain, Database, Stethoscope, Flask, Network } from 'lucide-react';
 
 const FeaturesSection: React.FC = () => {
   const features = [
     {
-      icon: <HeartPulse size={24} className="text-health-primary" />,
-      title: "Early Disease Detection",
-      description: "Our AI identifies health risks before symptoms appear, enabling timely intervention and prevention strategies.",
-      color: "from-indigo-500/20 to-indigo-400/10"
+      icon: <ActivitySquare className="w-12 h-12 text-health-primary" />,
+      title: "First-of-Its-Kind AI-Driven Continuous Health Monitoring",
+      description: "Our AI system continuously monitors your health markers, detecting diseases before symptoms appear and enabling truly preventative care."
     },
     {
-      icon: <Database size={24} className="text-health-primary" />,
-      title: "Multi-Omics Integration",
-      description: "We analyze genomics, epigenetics, proteomics, and transcriptomics to create deeply personalized treatment approaches.",
-      color: "from-purple-500/20 to-purple-400/10"
+      icon: <Brain className="w-12 h-12 text-health-primary" />,
+      title: "AI-Powered Precision Medicine & Digital Twin Technology",
+      description: "Hyper-personalised treatments based on your genetics, lifestyle and health data, using cutting-edge digital twin modelling."
     },
     {
-      icon: <Activity size={24} className="text-health-primary" />,
-      title: "Continuous Monitoring",
-      description: "Real-time adaptation of care based on wearable data and biomarker changes for optimal health outcomes.",
-      color: "from-blue-500/20 to-blue-400/10"
+      icon: <Database className="w-12 h-12 text-health-primary" />,
+      title: "Seamless EHR & Blockchain-Powered Universal Health Records",
+      description: "Secure, patient-owned universal health records providing complete, real-time access to all your medical data across providers."
     },
     {
-      icon: <FlaskConical size={24} className="text-health-primary" />,
-      title: "Digital Twin Technology",
-      description: "Virtual simulations of your body predict therapy responses before application, reducing risks and improving results.",
-      color: "from-cyan-500/20 to-cyan-400/10"
+      icon: <Stethoscope className="w-12 h-12 text-health-primary" />,
+      title: "AI-Driven Clinical Decision Support",
+      description: "Our AI provides healthcare professionals with real-time, evidence-based recommendations for faster, more accurate diagnoses."
     },
     {
-      icon: <Atom size={24} className="text-health-primary" />,
-      title: "Quantum Computing Integration",
-      description: "Quantum-powered AI accelerates drug discovery, optimizes treatment plans, and enhances clinical trial outcomes.",
-      color: "from-sky-500/20 to-sky-400/10"
+      icon: <Flask className="w-12 h-12 text-health-primary" />,
+      title: "Accelerated Drug Discovery & Clinical Trial Matching",
+      description: "Quantum computing and advanced AI algorithms accelerate pharmaceutical research and match patients to appropriate clinical trials."
     },
     {
-      icon: <Brain size={24} className="text-health-primary" />,
-      title: "Personalized Medicine",
-      description: "Treatments tailored to your unique genetic makeup, lifestyle factors, and health history for better results.",
-      color: "from-teal-500/20 to-teal-400/10"
+      icon: <Network className="w-12 h-12 text-health-primary" />,
+      title: "Federated Learning & Edge AI for Healthcare Intelligence",
+      description: "Secure, decentralised healthcare intelligence that preserves privacy while advancing medical knowledge."
     }
   ];
 
   return (
-    <section id="features" className="py-20 px-6 relative overflow-hidden bg-white">
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-health-light/50 to-white pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-health-light/50 to-white pointer-events-none"></div>
-      
-      {/* Background elements */}
-      <div className="absolute top-1/3 right-0 w-64 h-64 bg-health-primary/5 rounded-full blur-2xl"></div>
-      <div className="absolute bottom-1/3 left-0 w-64 h-64 bg-health-secondary/5 rounded-full blur-2xl"></div>
-      
-      {/* Decorative grid lines */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSA2MCAwIEwgMCA2MCIgc3Ryb2tlPSIjNmY3MmZmIiBzdHJva2Utb3BhY2l0eT0iMC4wMiIgc3Ryb2tlLXdpZHRoPSIxIi8+PHBhdGggZD0iTSAwIDAgTCA2MCA2MCIgc3Ryb2tlPSIjNmY3MmZmIiBzdHJva2Utb3BhY2l0eT0iMC4wMiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCBmaWxsPSJ1cmwoI2dyaWQpIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIi8+PC9zdmc+')] opacity-20 -z-10"></div>
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16 fade-up-1">
-          <div className="inline-flex items-center px-5 py-2 mb-6 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 font-medium gap-2 border border-health-primary/10">
-            <Sparkles size={16} className="text-health-primary" />
-            <span className="bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">Our Solutions</span>
-          </div>
-          
-          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
-            Advanced AI & Quantum-Powered Features
-          </h2>
-          
-          <div className="flex justify-center mb-6">
-            <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary"></div>
-          </div>
-          
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our platform leverages the latest advancements in artificial intelligence, quantum computing, digital twin technology, and multi-omics analysis to provide unprecedented precision in healthcare.
+    <section className="py-24 px-6" id="features">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="inline-flex items-center px-5 py-1.5 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 text-health-primary text-sm font-medium mb-5">
+            The Gold Standard in AI Healthcare
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">Why Akeno Health?</h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-health-primary to-health-secondary rounded-full mx-auto mb-6"></div>
+          <p className="text-lg text-health-dark/70 max-w-3xl mx-auto">
+            Akeno Health is the first AI-driven ecosystem that integrates real-time disease forecasting, AI-powered diagnostics, hyper-personalised treatments, and clinical research acceleration.
           </p>
         </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
-            <div key={index} className={cn(
-              "bg-gradient-to-br rounded-xl p-6 shadow-md border border-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1",
-              feature.color,
-              `fade-up-${Math.min(index % 5 + 2, 5)}`
-            )}>
-              <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-5 shadow-sm">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-health-dark mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
-            </div>
+            <FeatureCard
+              key={index}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+            />
           ))}
+        </div>
+
+        <div className="text-center">
+          <p className="text-xl font-medium text-health-dark mb-8">
+            Akeno Health is not just improving healthcare – we are redefining it.
+          </p>
+          <Button
+            variant="primary"
+            size="lg"
+            as="Link"
+            to="/contact"
+            className="px-8"
+          >
+            Experience the Future of AI Healthcare Today
+          </Button>
         </div>
       </div>
     </section>
