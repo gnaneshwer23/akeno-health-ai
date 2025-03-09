@@ -25,6 +25,7 @@ import ResearcherHelp from '@/components/dashboard/researcher/help/ResearcherHel
 import ResearchData from '@/components/dashboard/researcher/research-data/ResearchData';
 import Collaborations from '@/components/dashboard/researcher/collaborations/Collaborations';
 import Updates from '@/components/dashboard/researcher/updates/Updates';
+import HospitalDashboard from '@/components/dashboard/hospital/HospitalDashboard';
 import { Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -64,6 +65,8 @@ const Dashboard = () => {
         return '/dashboard/doctor';
       case 'researcher':
         return '/dashboard/researcher';
+      case 'hospital':
+        return '/dashboard/hospital';
       default:
         return '/login';
     }
@@ -124,6 +127,18 @@ const Dashboard = () => {
                 <Route path="/research-data" element={<ResearchData />} />
                 <Route path="/collaborations" element={<Collaborations />} />
                 <Route path="/updates" element={<Updates />} />
+              </Routes>
+            </DashboardLayout>
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/hospital/*" 
+        element={
+          <ProtectedRoute requiredRole="hospital">
+            <DashboardLayout>
+              <Routes>
+                <Route path="/" element={<HospitalDashboard />} />
               </Routes>
             </DashboardLayout>
           </ProtectedRoute>

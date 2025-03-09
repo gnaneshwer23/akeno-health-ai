@@ -3,135 +3,136 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Calendar, Clock, Users, AlertTriangle, Activity, ChevronRight } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Calendar, Clock, Users, AlertCircle, CheckCircle2, ArrowUpDown, BadgeAlert } from 'lucide-react';
-import { Progress } from '@/components/ui/progress';
 
-interface SurgerySchedulingSectionProps {
+interface SurgerySchedulingProps {
   onActionClick: (action: string) => void;
 }
 
-const SurgerySchedulingSection: React.FC<SurgerySchedulingSectionProps> = ({ onActionClick }) => {
-  // Sample surgery data for demonstration
-  const todaySurgeries = [
-    { id: 'S001', patient: 'Robert Johnson', procedure: 'Total Knee Replacement', surgeon: 'Dr. Zhang', room: 'OR 3', startTime: '08:30 AM', duration: '2 hrs', status: 'In Progress' },
-    { id: 'S002', patient: 'Olivia Smith', procedure: 'Laparoscopic Cholecystectomy', surgeon: 'Dr. Patel', room: 'OR 1', startTime: '10:00 AM', duration: '1.5 hrs', status: 'Scheduled' },
-    { id: 'S003', patient: 'William Davis', procedure: 'Colonoscopy', surgeon: 'Dr. Garcia', room: 'OR 5', startTime: '11:30 AM', duration: '1 hr', status: 'Scheduled' },
-    { id: 'S004', patient: 'Emily Wilson', procedure: 'C-Section', surgeon: 'Dr. Martinez', room: 'OR 2', startTime: '09:15 AM', duration: '1.5 hrs', status: 'Completed' },
+const SurgerySchedulingSection: React.FC<SurgerySchedulingProps> = ({ onActionClick }) => {
+  // Sample surgery scheduling data
+  const scheduledSurgeries = [
+    { id: 'S001', patientId: 'P245', patientName: 'Robert Johnson', procedure: 'Knee Arthroscopy', surgeon: 'Dr. Emily Chang', room: 'OR-3', time: '08:30 AM', duration: '1.5 hrs', status: 'Confirmed' },
+    { id: 'S002', patientId: 'P312', patientName: 'Sarah Martinez', procedure: 'Appendectomy', surgeon: 'Dr. David Kim', room: 'OR-1', time: '10:00 AM', duration: '1 hr', status: 'Confirmed' },
+    { id: 'S003', patientId: 'P178', patientName: 'Thomas Williams', procedure: 'Cataract Surgery', surgeon: 'Dr. Lisa Wong', room: 'OR-5', time: '11:30 AM', duration: '45 min', status: 'Pending Pre-Op' },
+    { id: 'S004', patientId: 'P423', patientName: 'Maria Garcia', procedure: 'Cholecystectomy', surgeon: 'Dr. James Wilson', room: 'OR-2', time: '01:00 PM', duration: '2 hrs', status: 'Confirmed' },
   ];
 
-  const tomorrowSurgeries = [
-    { id: 'S005', patient: 'Daniel Lee', procedure: 'Appendectomy', surgeon: 'Dr. Thompson', room: 'OR 4', startTime: '08:00 AM', duration: '1 hr', status: 'Scheduled' },
-    { id: 'S006', patient: 'Sophia Brown', procedure: 'Cataract Surgery', surgeon: 'Dr. Wilson', room: 'OR 6', startTime: '09:30 AM', duration: '45 min', status: 'Scheduled' },
-    { id: 'S007', patient: 'Ethan Miller', procedure: 'Hernia Repair', surgeon: 'Dr. Rodriguez', room: 'OR 2', startTime: '11:00 AM', duration: '1.5 hrs', status: 'Scheduled' },
+  const emergencySurgeries = [
+    { id: 'E001', patientId: 'P789', patientName: 'Daniel Smith', procedure: 'Emergency Appendectomy', surgeon: 'Dr. David Kim', room: 'OR-4', time: 'ASAP', severity: 'High', status: 'Waiting' },
+    { id: 'E002', patientId: 'P651', patientName: 'Jennifer Taylor', procedure: 'Trauma Surgery', surgeon: 'Dr. Michael Brown', room: 'OR-6', time: 'ASAP', severity: 'Critical', status: 'In Prep' },
   ];
+
+  const getStatusBadgeClass = (status: string) => {
+    switch (status) {
+      case 'Confirmed':
+        return 'bg-green-100 text-green-800';
+      case 'Pending Pre-Op':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'Waiting':
+        return 'bg-amber-100 text-amber-800';
+      case 'In Prep':
+        return 'bg-blue-100 text-blue-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const getSeverityBadgeClass = (severity: string) => {
+    switch (severity) {
+      case 'Critical':
+        return 'bg-red-100 text-red-800';
+      case 'High':
+        return 'bg-orange-100 text-orange-800';
+      default:
+        return 'bg-yellow-100 text-yellow-800';
+    }
+  };
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">OR Utilization</CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium">Today's Surgeries</CardTitle>
+            <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">82%</div>
-            <Progress value={82} className="h-2 mt-2" />
-            <p className="text-xs text-muted-foreground mt-2">
-              +5% vs. previous month
+            <div className="text-2xl font-bold">8</div>
+            <p className="text-xs text-muted-foreground">
+              2 emergency, 6 scheduled
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Surgeries Today</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium">OR Utilization</CardTitle>
+            <Activity className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">78%</div>
+            <p className="text-xs text-muted-foreground">
+              +5% vs. previous week
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Surgical Team</CardTitle>
+            <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">12</div>
             <p className="text-xs text-muted-foreground">
-              8 elective, 4 emergency
-            </p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Surgical Teams</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">5</div>
-            <p className="text-xs text-muted-foreground">
-              3 specialized, 2 general
-            </p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">OR Turnover Time</CardTitle>
-            <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">28 min</div>
-            <p className="text-xs text-muted-foreground">
-              -4 min vs. target
+              5 surgeons, 7 support staff
             </p>
           </CardContent>
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle>Surgery Schedule</CardTitle>
+      <Tabs defaultValue="scheduled" className="w-full">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="scheduled">Scheduled Surgeries</TabsTrigger>
+          <TabsTrigger value="emergency">Emergency Surgeries</TabsTrigger>
+        </TabsList>
+        <TabsContent value="scheduled">
+          <Card>
+            <CardHeader>
+              <CardTitle>Scheduled Surgeries</CardTitle>
               <CardDescription>
-                AI-optimized operating room allocation and scheduling
+                AI-optimized surgery schedule for today
               </CardDescription>
-            </div>
-            <Button onClick={() => onActionClick('Create new surgery schedule')}>Schedule Surgery</Button>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <Tabs defaultValue="today" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="today">Today</TabsTrigger>
-              <TabsTrigger value="tomorrow">Tomorrow</TabsTrigger>
-            </TabsList>
-            <TabsContent value="today" className="mt-4">
+            </CardHeader>
+            <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>ID</TableHead>
                     <TableHead>Patient</TableHead>
                     <TableHead>Procedure</TableHead>
                     <TableHead>Surgeon</TableHead>
                     <TableHead>Room</TableHead>
                     <TableHead>Time</TableHead>
                     <TableHead>Status</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
+                    <TableHead className="text-right">Action</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {todaySurgeries.map((surgery) => (
+                  {scheduledSurgeries.map((surgery) => (
                     <TableRow key={surgery.id}>
-                      <TableCell className="font-medium">{surgery.id}</TableCell>
-                      <TableCell>{surgery.patient}</TableCell>
+                      <TableCell>
+                        <div className="font-medium">{surgery.patientName}</div>
+                        <div className="text-xs text-muted-foreground">{surgery.patientId}</div>
+                      </TableCell>
                       <TableCell>{surgery.procedure}</TableCell>
                       <TableCell>{surgery.surgeon}</TableCell>
                       <TableCell>{surgery.room}</TableCell>
-                      <TableCell>{surgery.startTime}</TableCell>
                       <TableCell>
-                        <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                          surgery.status === 'In Progress' 
-                            ? 'bg-blue-100 text-blue-800' 
-                            : surgery.status === 'Completed'
-                              ? 'bg-green-100 text-green-800'
-                              : 'bg-gray-100 text-gray-800'
-                        }`}>
-                          {surgery.status === 'In Progress' && <Clock className="mr-1 h-3 w-3" />}
-                          {surgery.status === 'Completed' && <CheckCircle2 className="mr-1 h-3 w-3" />}
-                          {surgery.status === 'Scheduled' && <Calendar className="mr-1 h-3 w-3" />}
+                        <div className="font-medium">{surgery.time}</div>
+                        <div className="text-xs text-muted-foreground">{surgery.duration}</div>
+                      </TableCell>
+                      <TableCell>
+                        <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getStatusBadgeClass(surgery.status)}`}>
                           {surgery.status}
                         </span>
                       </TableCell>
@@ -148,33 +149,50 @@ const SurgerySchedulingSection: React.FC<SurgerySchedulingSectionProps> = ({ onA
                   ))}
                 </TableBody>
               </Table>
-            </TabsContent>
-            <TabsContent value="tomorrow" className="mt-4">
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="emergency">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between">
+              <div>
+                <CardTitle>Emergency Surgeries</CardTitle>
+                <CardDescription>
+                  High-priority surgeries requiring immediate attention
+                </CardDescription>
+              </div>
+              <AlertTriangle className="h-5 w-5 text-amber-500" />
+            </CardHeader>
+            <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>ID</TableHead>
                     <TableHead>Patient</TableHead>
                     <TableHead>Procedure</TableHead>
                     <TableHead>Surgeon</TableHead>
                     <TableHead>Room</TableHead>
-                    <TableHead>Time</TableHead>
+                    <TableHead>Severity</TableHead>
                     <TableHead>Status</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
+                    <TableHead className="text-right">Action</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {tomorrowSurgeries.map((surgery) => (
+                  {emergencySurgeries.map((surgery) => (
                     <TableRow key={surgery.id}>
-                      <TableCell className="font-medium">{surgery.id}</TableCell>
-                      <TableCell>{surgery.patient}</TableCell>
+                      <TableCell>
+                        <div className="font-medium">{surgery.patientName}</div>
+                        <div className="text-xs text-muted-foreground">{surgery.patientId}</div>
+                      </TableCell>
                       <TableCell>{surgery.procedure}</TableCell>
                       <TableCell>{surgery.surgeon}</TableCell>
                       <TableCell>{surgery.room}</TableCell>
-                      <TableCell>{surgery.startTime}</TableCell>
                       <TableCell>
-                        <span className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-gray-100 text-gray-800">
-                          <Calendar className="mr-1 h-3 w-3" />
+                        <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getSeverityBadgeClass(surgery.severity)}`}>
+                          {surgery.severity}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getStatusBadgeClass(surgery.status)}`}>
                           {surgery.status}
                         </span>
                       </TableCell>
@@ -182,68 +200,65 @@ const SurgerySchedulingSection: React.FC<SurgerySchedulingSectionProps> = ({ onA
                         <Button
                           variant="outline"
                           size="sm"
-                          onClick={() => onActionClick(`View details for surgery ${surgery.id}`)}
+                          onClick={() => onActionClick(`Prioritize emergency surgery ${surgery.id}`)}
+                          className="bg-red-50 hover:bg-red-100 text-red-700 border-red-200"
                         >
-                          Details
+                          Prioritize
                         </Button>
                       </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
-            </TabsContent>
-          </Tabs>
-        </CardContent>
-      </Card>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>AI-Predicted Surgery Risks</CardTitle>
+            <CardTitle>OR Time Management</CardTitle>
             <CardDescription>
-              Risk assessment for upcoming procedures
+              AI-powered suggestions for optimizing surgical schedules
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="rounded-lg border bg-amber-50 p-3">
                 <div className="flex items-center space-x-3">
-                  <BadgeAlert className="h-5 w-5 text-amber-500" />
-                  <div className="font-medium">Total Knee Replacement (Patient: Robert Johnson)</div>
+                  <Clock className="h-5 w-5 text-amber-500" />
+                  <div className="font-medium">Schedule Optimization Alert</div>
                 </div>
                 <div className="mt-1 text-sm text-gray-700 pl-8">
-                  <p>AI predicts 12% risk of post-operative infection due to patient's diabetes history.</p>
-                  <div className="mt-2 flex justify-between items-center">
-                    <span className="text-xs font-medium">Risk level: Medium</span>
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={() => onActionClick('View risk details for Robert Johnson')}
-                    >
-                      View Details
-                    </Button>
-                  </div>
+                  Potential 20% reduction in OR turnaround time with AI-suggested workflow improvements.
                 </div>
+                <Button 
+                  variant="link" 
+                  size="sm"
+                  onClick={() => onActionClick('View OR efficiency recommendations')}
+                  className="pl-8 mt-1 gap-1 text-amber-700"
+                >
+                  View Recommendations <ChevronRight className="h-4 w-4" />
+                </Button>
               </div>
               
-              <div className="rounded-lg border bg-red-50 p-3">
+              <div className="rounded-lg border bg-blue-50 p-3">
                 <div className="flex items-center space-x-3">
-                  <AlertCircle className="h-5 w-5 text-red-500" />
-                  <div className="font-medium">C-Section (Patient: Emily Wilson)</div>
+                  <Users className="h-5 w-5 text-blue-500" />
+                  <div className="font-medium">Surgical Team Allocation</div>
                 </div>
                 <div className="mt-1 text-sm text-gray-700 pl-8">
-                  <p>AI predicts 18% risk of hemorrhage based on patient history and lab values.</p>
-                  <div className="mt-2 flex justify-between items-center">
-                    <span className="text-xs font-medium">Risk level: High</span>
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={() => onActionClick('View risk details for Emily Wilson')}
-                    >
-                      View Details
-                    </Button>
-                  </div>
+                  AI recommends reassigning Dr. Kim's afternoon slot to accommodate the emergency appendectomy.
                 </div>
+                <Button 
+                  variant="link" 
+                  size="sm"
+                  onClick={() => onActionClick('View team allocation suggestions')}
+                  className="pl-8 mt-1 gap-1 text-blue-700"
+                >
+                  View Suggestions <ChevronRight className="h-4 w-4" />
+                </Button>
               </div>
             </div>
           </CardContent>
@@ -251,49 +266,58 @@ const SurgerySchedulingSection: React.FC<SurgerySchedulingSectionProps> = ({ onA
 
         <Card>
           <CardHeader>
-            <CardTitle>Resource Optimization</CardTitle>
+            <CardTitle>Surgical Outcomes Prediction</CardTitle>
             <CardDescription>
-              AI-generated recommendations for surgery efficiency
+              AI-powered risk assessment for scheduled surgeries
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="rounded-lg border bg-green-50 p-3">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle2 className="h-5 w-5 text-green-500" />
-                  <div className="font-medium">Surgical Team Allocation</div>
+              <div className="flex items-center justify-between border-b pb-4">
+                <div className="space-y-1">
+                  <p className="text-sm font-medium leading-none">Quality Metrics</p>
+                  <p className="text-sm text-muted-foreground">
+                    Current complication rate: 2.3% (below national average)
+                  </p>
                 </div>
-                <div className="mt-1 text-sm text-gray-700 pl-8">
-                  <p>AI recommends redistributing nursing staff to optimize morning procedures.</p>
-                  <div className="mt-2">
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={() => onActionClick('Apply team redistribution recommendation')}
-                    >
-                      Apply Recommendation
-                    </Button>
-                  </div>
-                </div>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => onActionClick('View quality metrics details')}
+                >
+                  View Details
+                </Button>
               </div>
-              
-              <div className="rounded-lg border bg-blue-50 p-3">
-                <div className="flex items-center space-x-3">
-                  <Clock className="h-5 w-5 text-blue-500" />
-                  <div className="font-medium">Schedule Optimization</div>
+              <div className="flex items-center justify-between border-b pb-4">
+                <div className="space-y-1">
+                  <p className="text-sm font-medium leading-none">Risk Assessment</p>
+                  <p className="text-sm text-muted-foreground">
+                    1 patient flagged for potential surgical complications
+                  </p>
                 </div>
-                <div className="mt-1 text-sm text-gray-700 pl-8">
-                  <p>AI suggests swapping the order of two laparoscopic procedures to reduce OR turnover time by 15 minutes.</p>
-                  <div className="mt-2">
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={() => onActionClick('Apply schedule optimization recommendation')}
-                    >
-                      Apply Recommendation
-                    </Button>
-                  </div>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => onActionClick('View surgical risk assessment')}
+                  className="text-amber-700 border-amber-200 bg-amber-50"
+                >
+                  Review Risk
+                </Button>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="space-y-1">
+                  <p className="text-sm font-medium leading-none">Resource Utilization</p>
+                  <p className="text-sm text-muted-foreground">
+                    AI predicts 15% reduction in OR time with new protocols
+                  </p>
                 </div>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => onActionClick('View resource utilization details')}
+                >
+                  View Analytics
+                </Button>
               </div>
             </div>
           </CardContent>

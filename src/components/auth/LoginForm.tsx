@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { motion } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
+import { UserRole } from '@/contexts/auth/types';
 
 // Import refactored components
 import RoleSelector from './RoleSelector';
@@ -16,7 +17,7 @@ import LoginErrorAlert from './LoginErrorAlert';
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState<'patient' | 'doctor' | 'researcher'>('patient');
+  const [role, setRole] = useState<UserRole>('patient');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -41,7 +42,7 @@ const LoginForm = () => {
     if (error) setError(null);
   }, [error]);
 
-  const handleRoleSelect = useCallback((selectedRole: 'patient' | 'doctor' | 'researcher') => {
+  const handleRoleSelect = useCallback((selectedRole: UserRole) => {
     setRole(selectedRole);
   }, []);
 

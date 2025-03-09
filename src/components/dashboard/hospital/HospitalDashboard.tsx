@@ -1,8 +1,8 @@
 
-import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { AlertCircle, Activity, Calendar, BarChart3, Server, Users, Heart, Clock, Stethoscope } from 'lucide-react';
+import React, { useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import DashboardSummaryCards from './components/DashboardSummaryCards';
 import PatientRiskMonitorSection from './sections/PatientRiskMonitorSection';
 import ResourceManagementSection from './sections/ResourceManagementSection';
 import BillingAnalyticsSection from './sections/BillingAnalyticsSection';
@@ -10,90 +10,92 @@ import EmergencyResponseSection from './sections/EmergencyResponseSection';
 import HospitalAnalyticsSection from './sections/HospitalAnalyticsSection';
 import DischargeManagementSection from './sections/DischargeManagementSection';
 import SurgerySchedulingSection from './sections/SurgerySchedulingSection';
-import DashboardSummaryCards from './components/DashboardSummaryCards';
-import { useToast } from '@/hooks/use-toast';
 
 const HospitalDashboard = () => {
-  const { toast } = useToast();
-
+  const { user } = useAuth();
+  const [selectedSection, setSelectedSection] = useState<string>('overview');
+  
   const handleActionClick = (action: string) => {
-    toast({
-      title: "Action triggered",
-      description: `You clicked on ${action}. This feature is coming soon.`,
-    });
+    console.log("Action clicked:", action);
+    // This would be used to handle section-specific actions
+  };
+
+  const renderSection = () => {
+    switch (selectedSection) {
+      case 'patient-risk':
+        return <PatientRiskMonitorSection onActionClick={handleActionClick} />;
+      case 'resource-management':
+        return <ResourceManagementSection onActionClick={handleActionClick} />;
+      case 'billing':
+        return <BillingAnalyticsSection onActionClick={handleActionClick} />;
+      case 'emergency':
+        return <EmergencyResponseSection onActionClick={handleActionClick} />;
+      case 'analytics':
+        return <HospitalAnalyticsSection onActionClick={handleActionClick} />;
+      case 'discharge':
+        return <DischargeManagementSection onActionClick={handleActionClick} />;
+      case 'surgery':
+        return <SurgerySchedulingSection onActionClick={handleActionClick} />;
+      default:
+        return <DashboardSummaryCards onActionClick={handleActionClick} />;
+    }
   };
 
   return (
-    <div className="space-y-8">
-      <div className="flex flex-col space-y-2">
-        <h2 className="text-3xl font-bold tracking-tight">Hospital Dashboard</h2>
-        <p className="text-muted-foreground">
-          AI-driven healthcare optimization for your hospital operations.
-        </p>
+    <div className="container mx-auto p-4 space-y-6">
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-3xl font-bold text-health-dark">Hospital Dashboard</h1>
+          <p className="text-muted-foreground">
+            Welcome, {user?.name} - AI-powered insights for healthcare optimization
+          </p>
+        </div>
+        <img 
+          src={user?.profileImage} 
+          alt={user?.name}
+          className="h-12 w-12 rounded-full border-2 border-health-primary"
+        />
       </div>
 
-      <DashboardSummaryCards onActionClick={handleActionClick} />
+      <div className="grid grid-cols-1 md:grid-cols-7 gap-6">
+        <div className="md:col-span-2">
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium">Management Sections</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <nav className="space-y-1">
+                {[
+                  { id: 'overview', name: 'Dashboard Overview' },
+                  { id: 'patient-risk', name: 'Patient Risk Monitor' },
+                  { id: 'resource-management', name: 'Resource Management' },
+                  { id: 'emergency', name: 'Emergency Response' },
+                  { id: 'billing', name: 'Billing & Analytics' },
+                  { id: 'analytics', name: 'Hospital Analytics' },
+                  { id: 'discharge', name: 'Discharge Management' },
+                  { id: 'surgery', name: 'Surgery Scheduling' },
+                ].map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => setSelectedSection(item.id)}
+                    className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium ${
+                      selectedSection === item.id
+                        ? 'bg-health-primary text-white'
+                        : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </nav>
+            </CardContent>
+          </Card>
+        </div>
 
-      <Tabs defaultValue="patient-risk" className="space-y-4">
-        <TabsList className="grid grid-cols-4 md:grid-cols-7 lg:grid-cols-7">
-          <TabsTrigger value="patient-risk" className="flex items-center gap-2">
-            <AlertCircle className="h-4 w-4" />
-            <span className="hidden md:inline">Patient Risk</span>
-          </TabsTrigger>
-          <TabsTrigger value="resources" className="flex items-center gap-2">
-            <Server className="h-4 w-4" />
-            <span className="hidden md:inline">Resources</span>
-          </TabsTrigger>
-          <TabsTrigger value="billing" className="flex items-center gap-2">
-            <BarChart3 className="h-4 w-4" />
-            <span className="hidden md:inline">Billing</span>
-          </TabsTrigger>
-          <TabsTrigger value="emergency" className="flex items-center gap-2">
-            <Activity className="h-4 w-4" />
-            <span className="hidden md:inline">Emergency</span>
-          </TabsTrigger>
-          <TabsTrigger value="analytics" className="flex items-center gap-2">
-            <Users className="h-4 w-4" />
-            <span className="hidden md:inline">Analytics</span>
-          </TabsTrigger>
-          <TabsTrigger value="discharge" className="flex items-center gap-2">
-            <Heart className="h-4 w-4" />
-            <span className="hidden md:inline">Discharge</span>
-          </TabsTrigger>
-          <TabsTrigger value="surgery" className="flex items-center gap-2">
-            <Stethoscope className="h-4 w-4" />
-            <span className="hidden md:inline">Surgery</span>
-          </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="patient-risk" className="space-y-4">
-          <PatientRiskMonitorSection onActionClick={handleActionClick} />
-        </TabsContent>
-
-        <TabsContent value="resources" className="space-y-4">
-          <ResourceManagementSection onActionClick={handleActionClick} />
-        </TabsContent>
-
-        <TabsContent value="billing" className="space-y-4">
-          <BillingAnalyticsSection onActionClick={handleActionClick} />
-        </TabsContent>
-
-        <TabsContent value="emergency" className="space-y-4">
-          <EmergencyResponseSection onActionClick={handleActionClick} />
-        </TabsContent>
-
-        <TabsContent value="analytics" className="space-y-4">
-          <HospitalAnalyticsSection onActionClick={handleActionClick} />
-        </TabsContent>
-
-        <TabsContent value="discharge" className="space-y-4">
-          <DischargeManagementSection onActionClick={handleActionClick} />
-        </TabsContent>
-
-        <TabsContent value="surgery" className="space-y-4">
-          <SurgerySchedulingSection onActionClick={handleActionClick} />
-        </TabsContent>
-      </Tabs>
+        <div className="md:col-span-5">
+          {renderSection()}
+        </div>
+      </div>
     </div>
   );
 };
