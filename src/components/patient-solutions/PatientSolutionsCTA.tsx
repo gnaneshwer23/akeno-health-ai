@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Button } from '@/components/Button';
-import { ArrowRight, Activity, Brain, Shield, Flash, ClipboardCheck } from 'lucide-react';
+import { ArrowRight, Activity, Brain, Shield, ClipboardCheck } from 'lucide-react';
+import { Zap } from 'lucide-react';
 
 const PatientSolutionsCTA = () => {
   return (
@@ -32,7 +33,7 @@ const PatientSolutionsCTA = () => {
           </div>
           
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 flex flex-col items-center">
-            <Flash size={28} className="text-blue-200 mb-3" />
+            <Zap size={28} className="text-blue-200 mb-3" />
             <p className="text-sm">Faster, More Accurate Diagnoses</p>
           </div>
           
@@ -49,7 +50,7 @@ const PatientSolutionsCTA = () => {
         
         <div className="flex flex-col md:flex-row gap-4 justify-center">
           <Button 
-            variant="tertiary" 
+            variant="primary" 
             size="lg" 
             as="Link" 
             to="/register" 
@@ -83,8 +84,5 @@ const PatientSolutionsCTA = () => {
     </section>
   );
 };
-
-// Import the missing Flash icon from lucide-react
-import { Zap as Flash } from 'lucide-react';
 
 export default PatientSolutionsCTA;
