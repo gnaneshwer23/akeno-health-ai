@@ -100,8 +100,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       
       if (data?.user && data?.session) {
         // Success message will be shown when auth state changes
-        return data;
+        return data; // Return the data to be consistent with the type
       }
+      return null; // Explicitly return null for cases where login might not complete successfully
     } catch (error: any) {
       console.error("Login error:", error);
       toast({

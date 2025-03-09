@@ -15,7 +15,7 @@ export interface AuthContextType {
   user: AuthUser | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<any>; // Updated to allow returning data
   signup: (email: string, password: string, role: UserRole, name: string) => Promise<void>;
   logout: () => Promise<void>;
 }
