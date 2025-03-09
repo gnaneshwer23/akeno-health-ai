@@ -1,7 +1,19 @@
 
 import React from 'react';
 import { Button } from '@/components/Button';
-import { Users, BookOpen, Briefcase, ArrowRight, Sparkles, Building, Globe, Handshake } from 'lucide-react';
+import { 
+  Users, 
+  BookOpen, 
+  Briefcase, 
+  ArrowRight, 
+  Sparkles, 
+  Building, 
+  Globe, 
+  Handshake, 
+  FlaskConical, 
+  ActivitySquare,
+  ShieldCheck 
+} from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 
