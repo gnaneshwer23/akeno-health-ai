@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Loader2, Lock, Mail, User, Check, Shield, Send, UserPlus, AlertTriangle, Eye, EyeOff } from 'lucide-react';
+import { Loader2, Lock, Mail, User, Check, Shield, Send, UserPlus, AlertTriangle, Eye, EyeOff, Building2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -134,7 +134,7 @@ const RegisterForm = () => {
           <Label htmlFor="role" className="text-sm font-medium">
             I am registering as a
           </Label>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
             <Button
               type="button"
               variant={role === 'patient' ? 'default' : 'outline'}
@@ -161,6 +161,15 @@ const RegisterForm = () => {
             >
               <Send size={16} />
               <span>Researcher</span>
+            </Button>
+            <Button
+              type="button"
+              variant={role === 'hospital' ? 'default' : 'outline'}
+              onClick={() => setRole('hospital')}
+              className="flex items-center justify-center gap-1"
+            >
+              <Building2 size={16} />
+              <span>Hospital</span>
             </Button>
           </div>
         </motion.div>
