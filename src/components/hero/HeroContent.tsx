@@ -17,8 +17,9 @@ export const HeroContent: React.FC = () => {
         </div>
       </div>
       
-      <div className="text-sm font-medium text-health-primary/80 mb-4">
-        Patented Technology
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 rounded-full bg-health-primary/10 text-health-primary font-medium backdrop-blur-sm border border-health-primary/20">
+        <Sparkles size={16} className="text-health-primary" />
+        <span className="bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent font-semibold">Patented Technology No. 439306</span>
       </div>
       
       <div className="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 text-health-primary font-medium backdrop-blur-sm border border-health-primary/20">
