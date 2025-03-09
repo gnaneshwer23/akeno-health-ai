@@ -62,7 +62,7 @@ const FeaturesSection: React.FC = () => {
       { icon: <PenTool size={20} />, text: "AI-Powered Dosage Optimisation" }
     ],
     trials: [
-      { icon: <Users size={20} />, text: "AI-Powered Clinical Trials Matching" },
+      { icon: <User size={20} />, text: "AI-Powered Clinical Trials Matching" },
       { icon: <Lock size={20} />, text: "Blockchain-Based Patient Consent & Secure Data Sharing" },
       { icon: <Zap size={20} />, text: "Quantum-Powered Drug Simulations" },
       { icon: <RotateCw size={20} />, text: "AI-Optimised Drug Repurposing" },
