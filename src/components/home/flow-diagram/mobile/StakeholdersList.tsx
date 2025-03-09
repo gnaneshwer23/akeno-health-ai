@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { UserRound, Stethoscope, Building } from 'lucide-react';
+import { UserRound, Stethoscope, Building, Heart } from 'lucide-react';
 import Stakeholder from './Stakeholder';
 
 const StakeholdersList = () => {
@@ -18,9 +18,14 @@ const StakeholdersList = () => {
         delay={0.7}
       />
       <Stakeholder 
-        title="Hospitals & Providers" 
+        title="Hospitals & Healthcare" 
         icon={<Building size={22} className="text-[#8571DD]" />}
         delay={0.8}
+      />
+      <Stakeholder 
+        title="Pharmaceutical & Research" 
+        icon={<Heart size={22} className="text-[#8571DD]" />}
+        delay={0.9}
       />
     </div>
   );

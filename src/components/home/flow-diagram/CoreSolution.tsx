@@ -21,6 +21,10 @@ const CoreSolution = () => (
     <div className="absolute top-full mt-4 left-1/2 transform -translate-x-1/2 text-base font-semibold text-[#8571DD] whitespace-nowrap">
       Akeno AI Platform
     </div>
+    
+    {/* Circular data flow indicator */}
+    <div className="absolute -inset-8 border-2 border-dashed border-[#8571DD]/10 rounded-full animate-spin-slow" style={{animationDuration: '30s'}} />
+    <div className="absolute -inset-12 border border-dashed border-[#8571DD]/5 rounded-full animate-spin-slow" style={{animationDuration: '40s', animationDirection: 'reverse'}} />
   </motion.div>
 );
 

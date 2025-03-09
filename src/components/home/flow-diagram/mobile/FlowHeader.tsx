@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users } from 'lucide-react';
+import { Activity } from 'lucide-react';
 
 const FlowHeader = () => {
   return (
@@ -12,12 +12,15 @@ const FlowHeader = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F1F0FB] text-[#8571DD] font-medium text-xs mb-3">
-        <Users size={14} className="text-[#8571DD]" />
+        <Activity size={14} className="text-[#8571DD]" />
         <span>AI-POWERED HEALTHCARE</span>
       </div>
       <h2 className="text-xl font-bold text-[#1A1F2C]">
-        Empowering All Healthcare Stakeholders
+        End-to-End Healthcare AI System
       </h2>
+      <p className="text-sm text-gray-600 mt-2">
+        From patient data to personalized healthcare solutions
+      </p>
     </motion.div>
   );
 };

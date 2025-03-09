@@ -58,7 +58,7 @@ const Connection: React.FC<ConnectionProps> = ({
         fill="none"
         stroke={color}
         strokeWidth="1.5"
-        strokeOpacity="0.3"
+        strokeOpacity="0.4"
         strokeDasharray={dotted ? "5,5" : "0"}
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
@@ -68,6 +68,7 @@ const Connection: React.FC<ConnectionProps> = ({
         <motion.circle 
           r="3" 
           fill={color}
+          opacity="0.7"
           initial={{ offset: 0 }}
           animate={{ offset: 1 }}
           transition={{ duration: 2, repeat: Infinity, delay }}

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain } from 'lucide-react';
+import { Brain, Activity, Flask, Tablet } from 'lucide-react';
 
 const CoreSolution = () => (
   <motion.div 
@@ -18,7 +18,19 @@ const CoreSolution = () => (
     </div>
     <div className="absolute inset-0 border border-dashed border-[#8571DD]/30 rounded-xl rotate-6 -z-10" />
     <div className="absolute inset-0 border border-dashed border-[#8571DD]/30 rounded-xl -rotate-3 -z-10" />
-    <div className="absolute -right-10 top-1/2 transform -translate-y-1/2 text-sm font-semibold text-[#8571DD]">
+    
+    {/* AI Sub-modules */}
+    <div className="absolute -top-2 -left-4 w-10 h-10 rounded-full bg-[#F1F0FB] shadow-sm border border-[#8571DD]/20 flex items-center justify-center">
+      <Activity size={18} className="text-[#8571DD]" />
+    </div>
+    <div className="absolute -top-2 -right-4 w-10 h-10 rounded-full bg-[#F1F0FB] shadow-sm border border-[#8571DD]/20 flex items-center justify-center">
+      <Tablet size={18} className="text-[#8571DD]" />
+    </div>
+    <div className="absolute -bottom-2 -left-4 w-10 h-10 rounded-full bg-[#F1F0FB] shadow-sm border border-[#8571DD]/20 flex items-center justify-center">
+      <Flask size={18} className="text-[#8571DD]" />
+    </div>
+    
+    <div className="absolute -right-16 top-1/2 transform -translate-y-1/2 text-sm font-semibold text-[#8571DD]">
       Akeno AI Platform
     </div>
   </motion.div>
