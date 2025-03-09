@@ -6,6 +6,9 @@ import CaseStudiesHero from '@/components/case-studies/CaseStudiesHero';
 import CaseStudiesList from '@/components/case-studies/CaseStudiesList';
 import BlogContentList from '@/components/case-studies/BlogContentList';
 import CaseStudiesCTA from '@/components/case-studies/CaseStudiesCTA';
+import ResearchWhitepapers from '@/components/case-studies/ResearchWhitepapers';
+import IndustryNews from '@/components/case-studies/IndustryNews';
+import NewsletterSubscribe from '@/components/case-studies/NewsletterSubscribe';
 
 const CaseStudiesAndBlog = () => {
   return (
@@ -13,7 +16,23 @@ const CaseStudiesAndBlog = () => {
       <Navbar />
       <main className="flex-grow">
         <CaseStudiesHero />
-        <CaseStudiesList />
+        
+        {/* Latest AI Innovations Section */}
+        <div className="py-10">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
+              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Latest AI Innovations in Healthcare
+              </span>
+            </h2>
+            <p className="text-center text-indigo-700/70 max-w-3xl mx-auto mb-8">
+              Explore cutting-edge advancements in AI-powered healthcare, from predictive diagnostics to blockchain-secured medical records.
+            </p>
+          </div>
+        </div>
+        
+        <BlogContentList />
+        
         <div className="py-10 bg-gradient-to-b from-white to-indigo-50/30">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex items-center justify-center">
@@ -29,7 +48,19 @@ const CaseStudiesAndBlog = () => {
             </div>
           </div>
         </div>
-        <BlogContentList />
+        
+        {/* Research & Whitepapers Section */}
+        <ResearchWhitepapers />
+        
+        {/* Case Studies & Success Stories Section */}
+        <CaseStudiesList />
+        
+        {/* Industry News & Trends Section */}
+        <IndustryNews />
+        
+        {/* Newsletter Subscribe Section */}
+        <NewsletterSubscribe />
+        
         <CaseStudiesCTA />
       </main>
       <Footer />
