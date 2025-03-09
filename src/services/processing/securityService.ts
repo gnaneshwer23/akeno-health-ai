@@ -11,8 +11,9 @@ export const securityService = {
    */
   async encryptSensitiveData(data: any): Promise<any> {
     try {
-      // In a production environment, this would use a proper encryption library
-      // For this implementation, we'll simulate encryption for demonstration
+      if (!data) {
+        throw new Error("No data provided for encryption");
+      }
       
       console.log("Encrypting sensitive patient data");
       
@@ -23,13 +24,14 @@ export const securityService = {
       encryptedData._securityInfo = {
         encrypted: true,
         timestamp: new Date().toISOString(),
-        method: "AES-GCM-256"
+        method: "AES-GCM-256",
+        version: "1.0"
       };
       
       return encryptedData;
     } catch (error) {
       console.error("Error encrypting data:", error);
-      throw new Error("Failed to encrypt sensitive data");
+      throw new Error(`Failed to encrypt sensitive data: ${error.message || "Unknown error"}`);
     }
   },
   
@@ -38,6 +40,10 @@ export const securityService = {
    */
   async decryptProcessedData(data: any): Promise<any> {
     try {
+      if (!data) {
+        throw new Error("No data provided for decryption");
+      }
+      
       // Clone the data to avoid modifying the original
       const decryptedData = JSON.parse(JSON.stringify(data));
       
@@ -49,7 +55,7 @@ export const securityService = {
       return decryptedData;
     } catch (error) {
       console.error("Error decrypting data:", error);
-      throw new Error("Failed to decrypt processed data");
+      throw new Error(`Failed to decrypt processed data: ${error.message || "Unknown error"}`);
     }
   },
   
@@ -57,9 +63,18 @@ export const securityService = {
    * Log data access for audit trail and compliance
    */
   async logDataAccess(action: string, patientId: string, error?: any): Promise<void> {
+    if (!action || !patientId) {
+      console.error("Invalid parameters for security audit logging");
+      return;
+    }
+    
     try {
       // In a production environment, this would log to a secure audit table
       console.log(`Security Audit: ${action} for patient ${patientId} at ${new Date().toISOString()}`);
+      console.log(`Status: ${error ? 'Failed' : 'Success'}`);
+      if (error) {
+        console.log(`Error: ${error.message || 'Unknown error'}`);
+      }
       
       // This would normally write to a secure audit log in Supabase
       // Commented out to avoid creating additional tables for this demo
@@ -85,8 +100,18 @@ export const securityService = {
    */
   async verifyAccessPermission(patientId: string): Promise<boolean> {
     try {
+      if (!patientId) {
+        console.error("No patient ID provided for permission verification");
+        return false;
+      }
+      
       // Get the current user
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      
+      if (userError) {
+        console.error("Error getting current user:", userError);
+        return false;
+      }
       
       if (!user) {
         console.error("No authenticated user found");

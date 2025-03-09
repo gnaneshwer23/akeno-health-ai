@@ -18,13 +18,21 @@ serve(async (req) => {
     // Create Supabase client
     const supabaseUrl = Deno.env.get('SUPABASE_URL') || '';
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
+    
+    if (!supabaseUrl || !supabaseKey) {
+      throw new Error('Missing Supabase credentials. Please check environment variables.');
+    }
+    
     const supabase = createClient(supabaseUrl, supabaseKey);
     
     // Get JWT token from request
     const authHeader = req.headers.get('Authorization');
     if (!authHeader) {
       return new Response(
-        JSON.stringify({ error: 'No authorization header' }),
+        JSON.stringify({ 
+          error: 'No authorization header',
+          details: 'Authentication required. Please include an Authorization header with a valid JWT token.'
+        }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -35,13 +43,39 @@ serve(async (req) => {
     
     if (userError || !user) {
       return new Response(
-        JSON.stringify({ error: 'Unauthorized', details: userError }),
+        JSON.stringify({ 
+          error: 'Unauthorized', 
+          details: userError?.message || 'Invalid or expired token'
+        }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
     
     // Parse the request to get the data source and payload
-    const { source, data } = await req.json();
+    let requestBody;
+    try {
+      requestBody = await req.json();
+    } catch (e) {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Invalid request body', 
+          details: 'Request body must be valid JSON'
+        }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+    
+    const { source, data } = requestBody;
+    
+    if (!source || !data) {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Missing required fields', 
+          details: 'Both "source" and "data" fields are required'
+        }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
     
     console.log(`Processing ${source} data for user ${user.id}:`, data);
 
@@ -65,13 +99,19 @@ serve(async (req) => {
         break;
       default:
         return new Response(
-          JSON.stringify({ error: 'Invalid data source' }),
+          JSON.stringify({ 
+            error: 'Invalid data source', 
+            details: `Source "${source}" is not supported. Valid sources are: patient, ehr, wearable, genomic, medical_image`
+          }),
           { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
     }
     
     return new Response(
-      JSON.stringify(result),
+      JSON.stringify({
+        status: 'success',
+        data: result
+      }),
       { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
     
@@ -79,7 +119,10 @@ serve(async (req) => {
     console.error('Error processing request:', error);
     
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ 
+        error: error.message || 'Internal server error',
+        details: error.stack || 'No additional details available'
+      }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }

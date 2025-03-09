@@ -31,3 +31,5 @@ enabled = true
 [functions]
 [functions.data-processing]
 verify_jwt = true
+[functions.data-collection]
+verify_jwt = true

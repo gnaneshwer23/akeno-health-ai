@@ -10,11 +10,22 @@ export const riskAssessmentService = {
    */
   async fetchRiskAssessment(patientId: string): Promise<AssessmentResponse> {
     try {
+      // Validate patient ID
+      if (!patientId) {
+        throw new Error("Patient ID is required");
+      }
+      
+      console.log("Fetching risk assessment for patient:", patientId);
+      
       // Get risk assessment data
-      return await dataProcessingService.generateRiskAssessment(patientId);
+      const data = await dataProcessingService.generateRiskAssessment(patientId);
+      
+      console.log("Risk assessment data received:", data ? "success" : "empty");
+      
+      return data;
     } catch (error: any) {
       console.error("Error loading risk assessment:", error);
-      throw error;
+      throw new Error(`Failed to load risk assessment: ${error.message || "Unknown error"}`);
     }
   },
 
@@ -23,7 +34,9 @@ export const riskAssessmentService = {
    * @returns The patient ID
    */
   getPatientId(): string {
-    // For demo, this would come from the authenticated user
-    return localStorage.getItem('demoPatientId') || 'demo-patient-id';
+    const storedId = localStorage.getItem('demoPatientId');
+    const patientId = storedId || 'demo-patient-id';
+    console.log("Using patient ID:", patientId);
+    return patientId;
   }
 };
