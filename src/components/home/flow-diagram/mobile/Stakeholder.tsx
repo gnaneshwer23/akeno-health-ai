@@ -15,10 +15,10 @@ const Stakeholder = ({ title, icon, delay = 0 }: StakeholderProps) => (
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5, delay }}
   >
-    <div className="w-12 h-12 rounded-full bg-white border border-[#6E59A5]/30 shadow-sm flex items-center justify-center">
+    <div className="w-12 h-12 rounded-full bg-white border border-[#8571DD]/20 shadow-sm flex items-center justify-center">
       {icon}
     </div>
-    <span className="text-sm font-medium">{title}</span>
+    <span className="text-sm font-medium text-[#1A1F2C]">{title}</span>
   </motion.div>
 );
 

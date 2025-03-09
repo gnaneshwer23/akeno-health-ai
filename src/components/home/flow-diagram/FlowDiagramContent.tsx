@@ -22,32 +22,26 @@ import GradientDefinitions from './GradientDefinitions';
 
 const FlowDiagramContent = () => {
   return (
-    <div className="relative min-h-[520px] w-full">
+    <div className="relative min-h-[580px] w-full">
       {/* Data Sources - Left Side */}
-      <div className="absolute left-0 top-[60px] flex flex-col space-y-20">
+      <div className="absolute left-0 top-[60px] flex flex-col space-y-32">
         <DataSource 
           title="Patient Health Records & Biomarkers" 
-          icon={<FileText size={32} className="text-[#9b87f5]" />} 
-          color="[#9b87f5]"
+          icon={<FileText size={32} className="text-[#8571DD]" />} 
+          color="[#8571DD]"
           delay={0.1}
         />
         <DataSource 
           title="Real-Time Biometrics & Wearables" 
-          icon={<HeartPulse size={32} className="text-[#7E69AB]" />} 
-          color="[#7E69AB]"
+          icon={<HeartPulse size={32} className="text-[#8571DD]" />} 
+          color="[#8571DD]"
           delay={0.2}
         />
         <DataSource 
           title="Medical Imaging & Lab Data" 
-          icon={<Database size={32} className="text-[#6E59A5]" />} 
-          color="[#6E59A5]"
+          icon={<Database size={32} className="text-[#8571DD]" />} 
+          color="[#8571DD]"
           delay={0.3}
-        />
-        <DataSource 
-          title="Clinical Trial & Research Data" 
-          icon={<TestTube size={32} className="text-[#8B5CF6]" />} 
-          color="[#8B5CF6]"
-          delay={0.4}
         />
       </div>
 
@@ -57,69 +51,63 @@ const FlowDiagramContent = () => {
       </div>
 
       {/* Stakeholders - Right Center */}
-      <div className="absolute right-[35%] top-[60px] flex flex-col space-y-20">
+      <div className="absolute right-[45%] top-[80px] flex flex-col space-y-28">
         <Stakeholder 
           title="Patients" 
-          icon={<UserRound size={28} className="text-[#9b87f5]" />}
-          color="[#9b87f5]"
+          icon={<UserRound size={28} className="text-[#8571DD]" />}
+          color="[#8571DD]"
           delay={0.5}
         />
         <Stakeholder 
           title="Doctors & Clinicians" 
-          icon={<Stethoscope size={28} className="text-[#7E69AB]" />}
-          color="[#7E69AB]"
+          icon={<Stethoscope size={28} className="text-[#8571DD]" />}
+          color="[#8571DD]"
           delay={0.6}
         />
         <Stakeholder 
           title="Hospitals & Healthcare Providers" 
-          icon={<Building size={28} className="text-[#6E59A5]" />}
-          color="[#6E59A5]"
+          icon={<Building size={28} className="text-[#8571DD]" />}
+          color="[#8571DD]"
           delay={0.7}
-        />
-        <Stakeholder 
-          title="Biotech & Pharma" 
-          icon={<Dna size={28} className="text-[#8B5CF6]" />}
-          color="[#8B5CF6]"
-          delay={0.8}
         />
       </div>
 
       {/* Outcomes - Far Right */}
-      <div className="absolute right-0 top-[60px] flex flex-col space-y-[42px]">
+      <div className="absolute right-0 top-[60px] flex flex-col space-y-[48px]">
         <Outcome 
           title="Personalised Care Plans" 
-          icon={<CheckCheck size={16} className="text-[#9b87f5]" />}
-          color="[#9b87f5]"
+          icon={<CheckCheck size={16} className="text-[#8571DD]" />}
+          color="[#8571DD]"
           delay={0.8} 
         />
         <Outcome 
           title="AI-Enhanced Clinical Decisions" 
-          icon={<Zap size={16} className="text-[#7E69AB]" />}
-          color="[#7E69AB]"
+          icon={<Zap size={16} className="text-[#8571DD]" />}
+          color="[#8571DD]"
           delay={0.9} 
         />
         <Outcome 
           title="Optimized Resource Management" 
-          icon={<CheckCheck size={16} className="text-[#6E59A5]" />}
-          color="[#6E59A5]"
+          icon={<CheckCheck size={16} className="text-[#8571DD]" />}
+          color="[#8571DD]"
           delay={1.0} 
         />
         <Outcome 
           title="Accelerated Trial Matching" 
-          icon={<Zap size={16} className="text-[#8B5CF6]" />}
-          color="[#8B5CF6]"
+          icon={<Zap size={16} className="text-[#8571DD]" />}
+          color="[#8571DD]"
           delay={1.1} 
         />
         <Outcome 
           title="Real-Time Health Monitoring" 
-          icon={<CheckCheck size={16} className="text-[#9b87f5]" />}
-          color="[#9b87f5]"
+          icon={<CheckCheck size={16} className="text-[#8571DD]" />}
+          color="[#8571DD]"
           delay={1.2} 
         />
         <Outcome 
           title="Predictive Disease Detection" 
-          icon={<Zap size={16} className="text-[#7E69AB]" />}
-          color="[#7E69AB]"
+          icon={<Zap size={16} className="text-[#8571DD]" />}
+          color="[#8571DD]"
           delay={1.3} 
         />
       </div>
@@ -127,94 +115,81 @@ const FlowDiagramContent = () => {
       {/* Connections - Data Sources to AI */}
       <Connection 
         start={{ x: 90, y: 90 }} 
-        end={{ x: 300, y: 250 }} 
-        animated={true}
-        color="#9b87f5"
+        end={{ x: 340, y: 250 }} 
+        animated={false}
+        color="#8571DD"
         delay={0.2}
       />
       <Connection 
-        start={{ x: 90, y: 190 }} 
-        end={{ x: 300, y: 250 }} 
-        animated={true}
-        color="#7E69AB"
+        start={{ x: 90, y: 220 }} 
+        end={{ x: 340, y: 250 }} 
+        animated={false}
+        color="#8571DD"
         delay={0.3}
       />
       <Connection 
-        start={{ x: 90, y: 290 }} 
-        end={{ x: 300, y: 250 }} 
-        animated={true}
-        color="#6E59A5"
+        start={{ x: 90, y: 350 }} 
+        end={{ x: 340, y: 250 }} 
+        animated={false}
+        color="#8571DD"
         delay={0.4}
-      />
-      <Connection 
-        start={{ x: 90, y: 390 }} 
-        end={{ x: 300, y: 250 }} 
-        animated={true}
-        color="#8B5CF6"
-        delay={0.5}
       />
 
       {/* Connections - AI to Stakeholders */}
       <Connection 
-        start={{ x: 360, y: 250 }} 
-        end={{ x: 500, y: 90 }} 
-        color="#9b87f5"
+        start={{ x: 400, y: 250 }} 
+        end={{ x: 480, y: 100 }} 
+        color="#8571DD"
         delay={0.6}
       />
       <Connection 
-        start={{ x: 360, y: 250 }} 
-        end={{ x: 500, y: 190 }} 
-        color="#7E69AB"
+        start={{ x: 400, y: 250 }} 
+        end={{ x: 480, y: 220 }} 
+        color="#8571DD"
         delay={0.7}
       />
       <Connection 
-        start={{ x: 360, y: 250 }} 
-        end={{ x: 500, y: 290 }} 
-        color="#6E59A5"
+        start={{ x: 400, y: 250 }} 
+        end={{ x: 480, y: 340 }} 
+        color="#8571DD"
         delay={0.8}
-      />
-      <Connection 
-        start={{ x: 360, y: 250 }} 
-        end={{ x: 500, y: 390 }} 
-        color="#8B5CF6"
-        delay={0.9}
       />
 
       {/* Connections - Stakeholders to Outcomes */}
       <Connection 
-        start={{ x: 540, y: 90 }} 
+        start={{ x: 510, y: 100 }} 
         end={{ x: 650, y: 70 }} 
-        color="#9b87f5"
+        color="#8571DD"
         delay={1.0}
       />
       <Connection 
-        start={{ x: 540, y: 90 }} 
+        start={{ x: 510, y: 100 }} 
         end={{ x: 650, y: 285 }} 
-        color="#9b87f5"
+        color="#8571DD"
         delay={1.1}
       />
       <Connection 
-        start={{ x: 540, y: 190 }} 
+        start={{ x: 510, y: 220 }} 
         end={{ x: 650, y: 125 }} 
-        color="#7E69AB"
+        color="#8571DD"
         delay={1.2}
       />
       <Connection 
-        start={{ x: 540, y: 190 }} 
+        start={{ x: 510, y: 220 }} 
         end={{ x: 650, y: 340 }} 
-        color="#7E69AB"
+        color="#8571DD"
         delay={1.3}
       />
       <Connection 
-        start={{ x: 540, y: 290 }} 
+        start={{ x: 510, y: 340 }} 
         end={{ x: 650, y: 180 }} 
-        color="#6E59A5"
+        color="#8571DD"
         delay={1.4}
       />
       <Connection 
-        start={{ x: 540, y: 390 }} 
+        start={{ x: 510, y: 340 }} 
         end={{ x: 650, y: 230 }} 
-        color="#8B5CF6"
+        color="#8571DD"
         delay={1.5}
       />
 

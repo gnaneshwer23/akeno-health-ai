@@ -9,7 +9,7 @@ import Divider from './Divider';
 
 const FlowContent = () => {
   return (
-    <div className="bg-white/70 backdrop-blur-sm rounded-xl p-5 shadow-sm border border-[#D6BCFA]/20">
+    <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-sm border border-[#8571DD]/10">
       <FlowHeader />
       <DataSourcesList />
       <Divider delay={0.4} />

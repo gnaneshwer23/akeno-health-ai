@@ -14,7 +14,7 @@ const Divider = ({ delay = 0 }: DividerProps) => (
     animate={{ opacity: 1 }}
     transition={{ duration: 0.3, delay }}
   >
-    <ArrowDown size={20} className="text-[#8B5CF6]/50" />
+    <ArrowDown size={20} className="text-[#8571DD]/50" />
   </motion.div>
 );
 
