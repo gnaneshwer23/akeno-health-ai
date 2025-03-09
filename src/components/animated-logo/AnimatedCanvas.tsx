@@ -26,9 +26,9 @@ const AnimatedCanvas: React.FC<AnimatedCanvasProps> = ({ width, height }) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
-    // Particles configuration
+    // Particles configuration - reduced count for better performance
     const particlesArray: Particle[] = [];
-    const numberOfParticles = 40;
+    const numberOfParticles = 20; // Reduced from 40
     const colors = ['#6366f1', '#8b5cf6', '#0ea5e9']; // health-primary, health-secondary, health-accent
     
     class ParticleClass implements Particle {
@@ -42,9 +42,9 @@ const AnimatedCanvas: React.FC<AnimatedCanvasProps> = ({ width, height }) => {
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
+        this.size = Math.random() * 2 + 1; // Slightly smaller particles
+        this.speedX = Math.random() * 0.3 - 0.15; // Slower movement
+        this.speedY = Math.random() * 0.3 - 0.15; // Slower movement
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
       
@@ -72,19 +72,20 @@ const AnimatedCanvas: React.FC<AnimatedCanvasProps> = ({ width, height }) => {
       particlesArray.push(new ParticleClass());
     }
     
-    // Connect particles with lines if they're close enough
+    // Connect particles with lines if they're close enough - with optimization
     function connect() {
-      const maxDistance = 80;
+      const maxDistance = 60; // Reduced connection distance
+      // Use a less intensive loop by checking fewer pairs
       for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a; b < particlesArray.length; b++) {
+        for (let b = a + 1; b < particlesArray.length; b++) { // Start from a+1 to avoid duplicates
           const dx = particlesArray[a].x - particlesArray[b].x;
           const dy = particlesArray[a].y - particlesArray[b].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const distance = dx * dx + dy * dy; // No need for expensive square root
           
-          if (distance < maxDistance) {
-            const opacity = 1 - distance / maxDistance;
-            ctx!.strokeStyle = `rgba(99, 102, 241, ${opacity * 0.5})`;
-            ctx!.lineWidth = 1;
+          if (distance < maxDistance * maxDistance) { // Square the distance check
+            const opacity = 1 - (distance / (maxDistance * maxDistance));
+            ctx!.strokeStyle = `rgba(99, 102, 241, ${opacity * 0.4})`; // Reduced opacity
+            ctx!.lineWidth = 0.8; // Thinner lines
             ctx!.beginPath();
             ctx!.moveTo(particlesArray[a].x, particlesArray[a].y);
             ctx!.lineTo(particlesArray[b].x, particlesArray[b].y);
@@ -94,25 +95,36 @@ const AnimatedCanvas: React.FC<AnimatedCanvasProps> = ({ width, height }) => {
       }
     }
     
-    // Animation loop
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height);
+    // Animation loop with frame rate control
+    let lastTime = 0;
+    const fps = 30; // Target 30 fps instead of 60
+    const frameInterval = 1000 / fps;
+    
+    const animate = (timeStamp: number) => {
+      const deltaTime = timeStamp - lastTime;
       
-      // Update and draw particles
-      for (let i = 0; i < particlesArray.length; i++) {
-        const particle = particlesArray[i] as any;
-        particle.update();
-        particle.draw();
+      if (deltaTime >= frameInterval) {
+        lastTime = timeStamp - (deltaTime % frameInterval);
+        
+        ctx.clearRect(0, 0, width, height);
+        
+        // Update and draw particles
+        for (let i = 0; i < particlesArray.length; i++) {
+          const particle = particlesArray[i] as any;
+          particle.update();
+          particle.draw();
+        }
+        
+        // Connect particles with lines
+        connect();
       }
-      
-      // Connect particles with lines
-      connect();
       
       // Request next frame
       animationFrameId.current = requestAnimationFrame(animate);
     };
     
-    animate();
+    // Start animation
+    animationFrameId.current = requestAnimationFrame(animate);
     
     // Cleanup on unmount
     return () => {
