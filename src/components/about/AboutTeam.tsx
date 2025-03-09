@@ -46,7 +46,7 @@ export const AboutTeam = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="p-4 rounded-xl bg-gradient-to-br from-white to-purple-50 border border-purple-100 shadow-sm hover:shadow-md transition-all">
               <div className="text-center">
-                <h4 className="font-semibold text-health-dark mb-1">Dr. [CEO's Name]</h4>
+                <h4 className="font-semibold text-health-dark mb-1">Dr. Gnaneshwer Reddy</h4>
                 <p className="text-purple-700 text-sm font-medium mb-2">Founder & CEO</p>
                 <p className="text-health-dark/70 text-sm">Visionary in AI-powered healthcare innovation</p>
               </div>
@@ -54,7 +54,7 @@ export const AboutTeam = () => {
             
             <div className="p-4 rounded-xl bg-gradient-to-br from-white to-indigo-50 border border-indigo-100 shadow-sm hover:shadow-md transition-all">
               <div className="text-center">
-                <h4 className="font-semibold text-health-dark mb-1">[CMO's Name]</h4>
+                <h4 className="font-semibold text-health-dark mb-1">Dr. Sarah Johnson</h4>
                 <p className="text-indigo-700 text-sm font-medium mb-2">Chief Medical Officer</p>
                 <p className="text-health-dark/70 text-sm">Leading AI-driven clinical transformation</p>
               </div>
@@ -62,7 +62,7 @@ export const AboutTeam = () => {
             
             <div className="p-4 rounded-xl bg-gradient-to-br from-white to-blue-50 border border-blue-100 shadow-sm hover:shadow-md transition-all">
               <div className="text-center">
-                <h4 className="font-semibold text-health-dark mb-1">[CTO's Name]</h4>
+                <h4 className="font-semibold text-health-dark mb-1">Dr. Marcus Wei</h4>
                 <p className="text-blue-700 text-sm font-medium mb-2">Chief Technology Officer</p>
                 <p className="text-health-dark/70 text-sm">Expert in AI, blockchain, and quantum computing for healthcare</p>
               </div>
@@ -70,7 +70,7 @@ export const AboutTeam = () => {
             
             <div className="p-4 rounded-xl bg-gradient-to-br from-white to-emerald-50 border border-emerald-100 shadow-sm hover:shadow-md transition-all">
               <div className="text-center">
-                <h4 className="font-semibold text-health-dark mb-1">[COO's Name]</h4>
+                <h4 className="font-semibold text-health-dark mb-1">Michael Torres</h4>
                 <p className="text-emerald-700 text-sm font-medium mb-2">Chief Operating Officer</p>
                 <p className="text-health-dark/70 text-sm">Scaling operations and global healthcare partnerships</p>
               </div>
@@ -78,8 +78,8 @@ export const AboutTeam = () => {
           </div>
         </div>
         
-        <Tabs defaultValue="leadership" className="w-full fade-up-3">
-          <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-3 bg-transparent w-full mb-8">
+        <Tabs defaultValue="scientists" className="w-full fade-up-3">
+          <TabsList className="grid grid-cols-1 md:grid-cols-3 gap-3 bg-transparent w-full mb-8">
             {teamGroups.map((group) => (
               <TeamTabTrigger 
                 key={group.id} 

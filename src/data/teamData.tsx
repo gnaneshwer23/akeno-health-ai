@@ -4,42 +4,6 @@ import { TeamGroupData } from '@/components/about/TeamGroup';
 
 export const teamGroups: TeamGroupData[] = [
   {
-    id: "leadership",
-    icon: <Users size={28} />,
-    title: "Founders & Leadership",
-    description: "Visionaries with deep-rooted experience in biotechnology, AI innovation, digital health transformation, and medical research.",
-    members: [
-      {
-        name: "Dr. Gnaneshwer Reddy",
-        title: "CEO & Co-Founder",
-        bio: "Serial Entrepreneur and Director of AI Research at HealthyBharat, specialised in computational biology and AI applications in healthcare.",
-        avatar: "/placeholder.svg",
-        initials: "GR"
-      },
-      {
-        name: "Dr. Marcus Wei",
-        title: "CTO & Co-Founder",
-        bio: "Quantum computing pioneer with 15+ publications on AI-driven diagnostics and predictive healthcare models.",
-        avatar: "/placeholder.svg",
-        initials: "MW"
-      },
-      {
-        name: "Dr. Sarah Johnson",
-        title: "Chief Medical Officer",
-        bio: "Board-certified physician with extensive experience in translational medicine and clinical AI implementation.",
-        avatar: "/placeholder.svg",
-        initials: "SJ"
-      },
-      {
-        name: "Michael Torres",
-        title: "Chief Business Officer",
-        bio: "Former healthcare venture capitalist focused on scaling digital health startups and strategic partnerships.",
-        avatar: "/placeholder.svg",
-        initials: "MT"
-      }
-    ]
-  },
-  {
     id: "scientists",
     icon: <Brain size={28} />,
     title: "AI Scientists & Computational Biologists",
