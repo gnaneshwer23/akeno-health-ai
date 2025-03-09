@@ -11,7 +11,9 @@ import FloatingConnections from './ai-flow/FloatingConnections';
 const AIFlowDiagram = () => {
   return (
     <div className="container-ai-flow">
-      <h2 className="title-ai-flow">Bridging Data, Intelligence, and Care for a Healthier Tomorrow</h2>
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-health-dark mb-8">
+        Bridging Data, Intelligence, and Care for a Healthier Tomorrow
+      </h2>
       
       <div className="flow-diagram single-layer">
         {/* Floating connection elements */}
