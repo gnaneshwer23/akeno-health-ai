@@ -1,15 +1,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { DiagramItemProps } from '../utils/diagramUtils';
 
-interface DataSourceProps {
-  title: string;
-  icon: React.ReactNode;
-  color: string;
-  delay?: number;
-}
-
-const DataSource = ({ title, icon, color, delay = 0 }: DataSourceProps) => (
+const DataSource = ({ title, icon, color, delay = 0 }: DiagramItemProps) => (
   <motion.div 
     className="flex items-center gap-3"
     initial={{ opacity: 0, x: -20 }}
