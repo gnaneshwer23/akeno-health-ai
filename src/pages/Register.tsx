@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import RegisterForm from '@/components/auth/RegisterForm';
 import AuthLayout from '@/components/auth/AuthLayout';
 import ResearcherAuthLayout from '@/components/auth/ResearcherAuthLayout';
+import HospitalAuthLayout from '@/components/auth/HospitalAuthLayout';
 import { useAuth } from '@/contexts/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
 import { UserRole } from '@/contexts/auth/types';
@@ -35,6 +36,18 @@ const Register = () => {
       >
         <RegisterForm initialRole="researcher" />
       </ResearcherAuthLayout>
+    );
+  }
+  
+  // Use the HospitalAuthLayout for hospitals
+  if (role === 'hospital') {
+    return (
+      <HospitalAuthLayout 
+        title="Create Hospital Account"
+        description="Join Akeno Health's AI platform for healthcare institutions"
+      >
+        <RegisterForm initialRole="hospital" />
+      </HospitalAuthLayout>
     );
   }
 

@@ -3,6 +3,7 @@ import React, { memo, useState } from 'react';
 import LoginForm from '@/components/auth/LoginForm';
 import AuthLayout from '@/components/auth/AuthLayout';
 import ResearcherAuthLayout from '@/components/auth/ResearcherAuthLayout';
+import HospitalAuthLayout from '@/components/auth/HospitalAuthLayout';
 import { useAuth } from '@/contexts/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
 
@@ -31,6 +32,15 @@ const Login = () => {
       <ResearcherAuthLayout>
         <LoginForm initialRole="researcher" />
       </ResearcherAuthLayout>
+    );
+  }
+  
+  // Use the HospitalAuthLayout for hospitals
+  if (role === 'hospital') {
+    return (
+      <HospitalAuthLayout>
+        <LoginForm initialRole="hospital" />
+      </HospitalAuthLayout>
     );
   }
 
