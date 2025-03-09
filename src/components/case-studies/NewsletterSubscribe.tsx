@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 const NewsletterSubscribe = () => {
   const [email, setEmail] = useState('');
   const [subscriptionStatus, setSubscriptionStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const { toast } = useToast();
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,6 +20,10 @@ const NewsletterSubscribe = () => {
     
     // Simulating a successful subscription
     setSubscriptionStatus('success');
+    toast({
+      title: "Newsletter Subscription Successful",
+      description: "You've been added to our newsletter. Thanks for subscribing!",
+    });
     setEmail('');
     
     // Reset status after 3 seconds
@@ -57,7 +63,7 @@ const NewsletterSubscribe = () => {
               
               <Button 
                 type="submit" 
-                variant="primary"
+                variant="default"
                 size="lg"
                 className="bg-white text-indigo-900 hover:bg-indigo-100 transition-colors h-12"
               >

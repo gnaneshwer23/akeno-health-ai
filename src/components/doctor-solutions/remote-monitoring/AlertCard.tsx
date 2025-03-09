@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 interface AlertCardProps {
   type: 'critical' | 'warning';
@@ -20,11 +21,26 @@ const AlertCard = ({
   primaryActionText,
   secondaryActionText
 }: AlertCardProps) => {
+  const { toast } = useToast();
   const bgColor = type === 'critical' ? 'bg-red-50 border-red-200' : 'bg-yellow-50 border-yellow-200';
   const iconBgColor = type === 'critical' ? 'bg-red-100' : 'bg-yellow-100';
   const textColor = type === 'critical' ? 'text-red-600' : 'text-yellow-600';
   const badgeBgColor = type === 'critical' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800';
   const buttonBgColor = type === 'critical' ? 'bg-red-600' : 'bg-yellow-600';
+  
+  const handlePrimaryAction = () => {
+    toast({
+      title: `${primaryActionText}`,
+      description: `Action for "${title}" will be available in the next release.`,
+    });
+  };
+  
+  const handleSecondaryAction = () => {
+    toast({
+      title: `${secondaryActionText}`,
+      description: `Secondary action for "${title}" triggered.`,
+    });
+  };
   
   return (
     <div className={`${bgColor} p-4 rounded-lg flex items-start gap-3`}>
@@ -40,8 +56,18 @@ const AlertCard = ({
         </div>
         <p className="text-sm text-gray-700">{description}</p>
         <div className="mt-2 flex gap-2">
-          <button className={`text-xs ${buttonBgColor} text-white px-3 py-1 rounded-full`}>{primaryActionText}</button>
-          <button className="text-xs bg-white border border-gray-300 px-3 py-1 rounded-full">{secondaryActionText}</button>
+          <button 
+            className={`text-xs ${buttonBgColor} text-white px-3 py-1 rounded-full`}
+            onClick={handlePrimaryAction}
+          >
+            {primaryActionText}
+          </button>
+          <button 
+            className="text-xs bg-white border border-gray-300 px-3 py-1 rounded-full"
+            onClick={handleSecondaryAction}
+          >
+            {secondaryActionText}
+          </button>
         </div>
       </div>
     </div>

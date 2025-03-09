@@ -38,42 +38,26 @@ export const QuantumCTA = () => {
                 </div>
                 <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-lg shadow-sm border border-purple-300/30">
                   <Shield size={18} className="text-indigo-600" />
-                  <span className="text-sm font-medium">Secure Processing</span>
+                  <span className="text-sm font-medium">Secure Health Data</span>
                 </div>
-              </div>
-              
-              <div className="flex flex-wrap gap-4">
-                <Button 
-                  className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-                  asChild
-                >
-                  <Link to="/contact" className="flex items-center gap-2">
-                    <Atom size={16} />
-                    Contact Us Today
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="border-purple-300 text-purple-600 hover:bg-purple-50"
-                  asChild
-                >
-                  <Link to="/case-studies" className="flex items-center gap-2">
-                    <ArrowRight size={16} />
-                    Explore Our Research
-                  </Link>
-                </Button>
               </div>
             </div>
             
-            <div className="flex-shrink-0 w-40 h-40 md:w-48 md:h-48 relative">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 opacity-10 animate-pulse"></div>
-              <div className="absolute inset-3 rounded-full bg-gradient-to-r from-purple-500 to-blue-600 opacity-20 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="absolute inset-8 rounded-full bg-gradient-to-r from-purple-600 to-blue-700 opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute inset-14 rounded-full bg-gradient-to-r from-purple-700 to-blue-800 opacity-40 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Atom size={40} className="text-purple-600" />
-              </div>
+            <div className="flex flex-col md:w-auto w-full gap-3">
+              <Button 
+                asChild
+                className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
+              >
+                <Link to="/register">Join the Network</Link>
+              </Button>
+              
+              <Button 
+                variant="outline"
+                asChild 
+                className="border-purple-300 text-purple-700 hover:bg-purple-50"
+              >
+                <Link to="/quantum-computing">Learn More</Link>
+              </Button>
             </div>
           </div>
         </div>

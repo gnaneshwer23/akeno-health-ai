@@ -4,12 +4,28 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Activity, AlertCircle, Clock, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { useToast } from '@/hooks/use-toast';
 
 interface DashboardSummaryCardsProps {
-  onActionClick: (action: string) => void;
+  onActionClick?: (action: string) => void;
 }
 
-const DashboardSummaryCards: React.FC<DashboardSummaryCardsProps> = ({ onActionClick }) => {
+const DashboardSummaryCards: React.FC<DashboardSummaryCardsProps> = ({ 
+  onActionClick = () => {} 
+}) => {
+  const { toast } = useToast();
+  
+  const handleActionClick = (action: string) => {
+    if (onActionClick) {
+      onActionClick(action);
+    } else {
+      toast({
+        title: "Action Triggered",
+        description: `${action} functionality coming soon!`,
+      });
+    }
+  };
+
   return (
     <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       <Card>
@@ -25,7 +41,12 @@ const DashboardSummaryCards: React.FC<DashboardSummaryCardsProps> = ({ onActionC
           </p>
         </CardContent>
         <CardFooter className="p-2">
-          <Button variant="outline" size="sm" className="w-full" onClick={() => onActionClick('View bed allocation')}>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="w-full" 
+            onClick={() => handleActionClick('View bed allocation')}
+          >
             View Details
           </Button>
         </CardFooter>
@@ -48,7 +69,12 @@ const DashboardSummaryCards: React.FC<DashboardSummaryCardsProps> = ({ onActionC
           </div>
         </CardContent>
         <CardFooter className="p-2">
-          <Button variant="outline" size="sm" className="w-full" onClick={() => onActionClick('View critical alerts')}>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="w-full" 
+            onClick={() => handleActionClick('View critical alerts')}
+          >
             Respond Now
           </Button>
         </CardFooter>
@@ -73,7 +99,12 @@ const DashboardSummaryCards: React.FC<DashboardSummaryCardsProps> = ({ onActionC
           </p>
         </CardContent>
         <CardFooter className="p-2">
-          <Button variant="outline" size="sm" className="w-full" onClick={() => onActionClick('View ER status')}>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="w-full" 
+            onClick={() => handleActionClick('View ER status')}
+          >
             View Queue
           </Button>
         </CardFooter>
@@ -96,7 +127,12 @@ const DashboardSummaryCards: React.FC<DashboardSummaryCardsProps> = ({ onActionC
           </p>
         </CardContent>
         <CardFooter className="p-2">
-          <Button variant="outline" size="sm" className="w-full" onClick={() => onActionClick('View resource forecast')}>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="w-full" 
+            onClick={() => handleActionClick('View resource forecast')}
+          >
             See Forecast
           </Button>
         </CardFooter>

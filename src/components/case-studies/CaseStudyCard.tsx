@@ -1,14 +1,16 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface CaseStudyCardProps {
   title: string;
   challenge: string;
   solution: string;
   outcome: string;
+  slug?: string;
 }
 
 const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
@@ -16,6 +18,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   challenge,
   solution,
   outcome,
+  slug = "case-studies/detail"
 }) => {
   return (
     <Card className="h-full shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden bg-gradient-to-br from-white to-indigo-50 group border-t-4 border-t-purple-500 border-r border-r-indigo-200 border-l border-l-indigo-200 border-b border-b-indigo-200 rounded-xl">
@@ -50,9 +53,12 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
           variant="ghost" 
           size="sm" 
           className="ml-auto text-purple-600 group-hover:text-indigo-700 group-hover:bg-indigo-100/50 transition-all"
+          asChild
         >
-          View Details
-          <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
+          <Link to={`/${slug}`}>
+            View Details
+            <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
+          </Link>
         </Button>
       </CardFooter>
     </Card>

@@ -18,8 +18,15 @@ const NotificationsList = () => {
 
   const handleViewAll = () => {
     toast({
-      title: "Coming Soon",
-      description: "View all notifications functionality will be available soon!",
+      title: "Viewing All Notifications",
+      description: "Full notifications view functionality will be available soon!",
+    });
+  };
+
+  const handleNotificationAction = (title: string) => {
+    toast({
+      title: "Notification Action",
+      description: `Action for "${title}" has been triggered.`,
     });
   };
 
@@ -31,7 +38,7 @@ const NotificationsList = () => {
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <Alert variant="destructive" className="border-red-200 bg-red-50">
+          <Alert variant="destructive" className="border-red-200 bg-red-50" onClick={() => handleNotificationAction("Critical Health Alert")}>
             <AlertTriangle className="h-4 w-4" />
             <AlertTitle className="text-red-800">Critical Health Alert</AlertTitle>
             <AlertDescription className="text-red-700">
@@ -43,7 +50,7 @@ const NotificationsList = () => {
             </div>
           </Alert>
 
-          <Alert className="border-amber-200 bg-amber-50">
+          <Alert className="border-amber-200 bg-amber-50" onClick={() => handleNotificationAction("Medication Reminder")}>
             <Calendar className="h-4 w-4 text-amber-500" />
             <AlertTitle className="text-amber-800">Medication Reminder</AlertTitle>
             <AlertDescription className="text-amber-700">
@@ -55,7 +62,7 @@ const NotificationsList = () => {
             </div>
           </Alert>
 
-          <Alert className="border-blue-200 bg-blue-50">
+          <Alert className="border-blue-200 bg-blue-50" onClick={() => handleNotificationAction("Health Update")}>
             <Heart className="h-4 w-4 text-blue-500" />
             <AlertTitle className="text-blue-800">Health Update</AlertTitle>
             <AlertDescription className="text-blue-700">
@@ -67,7 +74,7 @@ const NotificationsList = () => {
             </div>
           </Alert>
 
-          <Alert className="border-green-200 bg-green-50">
+          <Alert className="border-green-200 bg-green-50" onClick={() => handleNotificationAction("Goal Achievement")}>
             <Activity className="h-4 w-4 text-green-500" />
             <AlertTitle className="text-green-800">Goal Achievement</AlertTitle>
             <AlertDescription className="text-green-700">

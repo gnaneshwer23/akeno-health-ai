@@ -2,16 +2,23 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { CircleDot, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Link } from 'react-router-dom';
 
 interface BlogCardProps {
   title: string;
   topics: string[];
   category?: string;
+  slug?: string;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ title, topics, category = "Healthcare AI" }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ 
+  title, 
+  topics, 
+  category = "Healthcare AI",
+  slug = "blog/detail"
+}) => {
   const getCategoryColors = (category: string) => {
     switch (category) {
       case "Quantum Computing":
@@ -88,9 +95,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, topics, category = "Healthca
           variant="ghost" 
           size="sm" 
           className={`ml-auto ${getTopicIconColor(category)} group-hover:bg-indigo-50/50 transition-all`}
+          asChild
         >
-          Read More
-          <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
+          <Link to={`/${slug}`}>
+            Read More
+            <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
+          </Link>
         </Button>
       </CardFooter>
     </Card>
