@@ -7,11 +7,11 @@ const PatientSolutionsHero = () => {
   const benefits = [
     {
       icon: <Activity size={20} className="text-teal-500" />,
-      text: "Continuous health monitoring"
+      text: "AI-powered health monitoring"
     },
     {
       icon: <BrainCircuit size={20} className="text-pink-500" />,
-      text: "AI-powered health insights"
+      text: "Personalized treatments"
     },
     {
       icon: <Shield size={20} className="text-blue-500" />,
@@ -30,11 +30,11 @@ const PatientSolutionsHero = () => {
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-blue-500/20 to-indigo-500/20 text-indigo-700 font-medium shadow-sm">
           <Sparkles size={16} className="text-blue-500" />
-          <span>Patient-Centered Solutions</span>
+          <span>For Patients</span>
         </span>
         
         <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-br from-indigo-800 via-blue-700 to-cyan-600 text-transparent bg-clip-text">
-          Empowering Patients with <span className="text-pink-600">AI</span> & <span className="text-teal-600">Digital Health</span>
+          Empowering Your Health with <span className="text-pink-600">AI</span>
         </h1>
         
         <div className="flex justify-center mb-6">
@@ -42,7 +42,7 @@ const PatientSolutionsHero = () => {
         </div>
         
         <p className="text-lg text-indigo-900/70 max-w-3xl mx-auto mb-8 leading-relaxed">
-          At Akeno Health AI, we are redefining precision medicine by providing AI-driven solutions that empower patients with personalized healthcare experiences and preventive insights.
+          Take control of your health with AI-powered, personalized, and secure healthcare solutions that detect disease before symptoms appear and connect you with the best care.
         </p>
         
         <div className="flex flex-wrap justify-center gap-4 mb-10">
@@ -56,11 +56,11 @@ const PatientSolutionsHero = () => {
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button size="lg" variant="primary" className="sm:w-auto w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-            Explore Solutions
+            Sign Up Now
             <ArrowRight size={16} />
           </Button>
           <Button size="lg" variant="outline" className="sm:w-auto w-full border-indigo-300 text-indigo-700 hover:bg-indigo-50">
-            Schedule a Demo
+            Request a Consultation
           </Button>
         </div>
       </div>
