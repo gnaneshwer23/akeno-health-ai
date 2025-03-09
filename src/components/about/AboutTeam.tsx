@@ -97,48 +97,6 @@ export const AboutTeam = () => {
           ))}
         </Tabs>
         
-        <div className="grid md:grid-cols-4 gap-6 mt-12 fade-up-4">
-          <div className="bg-gradient-to-br from-white to-blue-50 rounded-xl p-6 shadow-md border border-blue-100 hover:shadow-lg transition-all group">
-            <div className="flex items-start gap-3 mb-3">
-              <div className="bg-gradient-to-br from-blue-500 to-sky-600 p-2 rounded-lg shadow-md text-white group-hover:rotate-6 transition-transform">
-                <Stethoscope size={24} />
-              </div>
-              <h4 className="font-semibold text-health-dark">Clinical Professionals</h4>
-            </div>
-            <p className="text-health-dark/70 text-sm">Physicians, immunologists, and geneticists ensuring that AI solutions align with real-world medical needs.</p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-white to-amber-50 rounded-xl p-6 shadow-md border border-amber-100 hover:shadow-lg transition-all group">
-            <div className="flex items-start gap-3 mb-3">
-              <div className="bg-gradient-to-br from-amber-500 to-orange-600 p-2 rounded-lg shadow-md text-white group-hover:rotate-6 transition-transform">
-                <Lightbulb size={24} />
-              </div>
-              <h4 className="font-semibold text-health-dark">Strategic Advisors</h4>
-            </div>
-            <p className="text-health-dark/70 text-sm">Visionaries with extensive experience in healthcare strategy, AI ethics, and medical innovation.</p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-white to-purple-50 rounded-xl p-6 shadow-md border border-purple-100 hover:shadow-lg transition-all group">
-            <div className="flex items-start gap-3 mb-3">
-              <div className="bg-gradient-to-br from-purple-500 to-fuchsia-600 p-2 rounded-lg shadow-md text-white group-hover:rotate-6 transition-transform">
-                <Users size={24} />
-              </div>
-              <h4 className="font-semibold text-health-dark">Regulatory Experts</h4>
-            </div>
-            <p className="text-health-dark/70 text-sm">Specialists in navigating healthcare regulation, compliance, and data privacy in digital health.</p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-white to-emerald-50 rounded-xl p-6 shadow-md border border-emerald-100 hover:shadow-lg transition-all group">
-            <div className="flex items-start gap-3 mb-3">
-              <div className="bg-gradient-to-br from-emerald-500 to-teal-600 p-2 rounded-lg shadow-md text-white group-hover:rotate-6 transition-transform">
-                <Sparkles size={24} />
-              </div>
-              <h4 className="font-semibold text-health-dark">Innovation Team</h4>
-            </div>
-            <p className="text-health-dark/70 text-sm">Creators of breakthrough AI healthcare technologies and digital health transformation experts.</p>
-          </div>
-        </div>
-        
         <div className="mt-12 text-center fade-up-5">
           <div className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-100 to-purple-100 border border-purple-200 shadow-md">
             <p className="text-health-dark/80 font-medium">
