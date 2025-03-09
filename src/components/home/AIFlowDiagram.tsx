@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
+import { ArrowRight } from 'lucide-react';
 
 const AIFlowDiagram = () => {
   const nodesRef = useRef<HTMLDivElement>(null);
@@ -40,7 +41,21 @@ const AIFlowDiagram = () => {
   return (
     <div className="container-ai-flow">
       <h2 className="title-ai-flow">Akeno Health AI: Transforming Healthcare with AI-Powered Insights</h2>
-      <div id="diagram" ref={nodesRef}>
+      <div id="diagram" ref={nodesRef} className="relative">
+        {/* Column connections with arrows */}
+        <div className="absolute top-1/2 left-[24%] transform -translate-y-1/2 flex items-center justify-center z-10">
+          <hr className="w-8 border-t-2 border-health-primary/40" />
+          <ArrowRight className="text-health-primary/60 animate-pulse" size={20} />
+        </div>
+        <div className="absolute top-1/2 right-[49%] transform -translate-y-1/2 flex items-center justify-center z-10">
+          <hr className="w-8 border-t-2 border-health-primary/40" />
+          <ArrowRight className="text-health-primary/60 animate-pulse" size={20} />
+        </div>
+        <div className="absolute top-1/2 right-[24%] transform -translate-y-1/2 flex items-center justify-center z-10">
+          <hr className="w-8 border-t-2 border-health-primary/40" />
+          <ArrowRight className="text-health-primary/60 animate-pulse" size={20} />
+        </div>
+        
         <div className="column data-sources">
           <div className="node data-source wearables">
             <div className="icon">⌚</div>

@@ -97,7 +97,7 @@ const Index = () => {
           <div className="absolute bottom-1/4 right-10 w-16 h-16 rounded-full border-4 border-dashed border-health-secondary/20 -z-10 animate-rotate-slow" style={{animationDirection: 'reverse'}}></div>
         </div>
         
-        <div className="relative py-16 px-4 bg-gradient-to-br from-white to-health-light/30">
+        <div className="relative py-10 px-4 bg-gradient-to-br from-white to-health-light/30">
           <AIFlowDiagram />
         </div>
         
