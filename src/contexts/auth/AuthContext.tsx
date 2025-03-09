@@ -78,7 +78,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       async (event, session) => {
         console.log('Auth state changed:', event);
         
-        // Only update user data for relevant auth events
         if (['SIGNED_IN', 'SIGNED_OUT', 'USER_UPDATED', 'TOKEN_REFRESHED'].includes(event)) {
           await setUserFromSupabase(session);
         }
@@ -93,16 +92,28 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   // Optimized login with Supabase
   const login = async (email: string, password: string) => {
-    setIsLoading(true);
+    if (!email || !password) {
+      throw new Error('Email and password are required');
+    }
     
     try {
-      const data = await authService.login(email, password);
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
       
-      if (data?.user && data?.session) {
-        // Success message will be shown when auth state changes
-        return data; // Return the data to be consistent with the type
+      if (error) {
+        console.error("Login error from Supabase:", error);
+        throw error;
       }
-      return null; // Explicitly return null for cases where login might not complete successfully
+      
+      if (!data.user || !data.session) {
+        console.error("Login returned no user or session");
+        throw new Error("Failed to authenticate. Please try again later.");
+      }
+      
+      // Success - toast will be shown by the auth state change listener
+      return data;
     } catch (error: any) {
       console.error("Login error:", error);
       toast({
@@ -111,8 +122,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         variant: "destructive",
       });
       throw error;
-    } finally {
-      // setIsLoading is handled by the auth state change listener
     }
   };
 
@@ -145,7 +154,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     try {
       await authService.logout();
       // User state will be updated by the auth state change listener
-      // No need to manually set user to null here
     } catch (error: any) {
       toast({
         title: "Error logging out",

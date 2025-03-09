@@ -34,10 +34,7 @@ export const authService = {
       throw new Error('Email and password are required');
     }
     
-    console.log("Authenticating with Supabase:", { email });
-    
     try {
-      // Use a single direct API call to Supabase for authentication
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password
@@ -53,7 +50,6 @@ export const authService = {
         throw new Error("Failed to authenticate. Please try again later.");
       }
       
-      console.log("Authentication successful, user ID:", data.user.id);
       return data;
     } catch (error: any) {
       console.error("Login error in try/catch:", error);

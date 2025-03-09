@@ -47,7 +47,6 @@ const LoginForm = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
     
     if (!email || !password) {
       setError("Please enter both email and password");
@@ -55,17 +54,10 @@ const LoginForm = () => {
     }
     
     setIsSubmitting(true);
+    setError(null);
+    
     try {
-      // Simplified login call
       await login(email, password);
-      
-      // Only show success toast once
-      toast({
-        title: "Login successful",
-        description: "Welcome back to Akeno Health!",
-      });
-      
-      // Navigate to the appropriate dashboard
       navigate(from, { replace: true });
     } catch (error: any) {
       console.error("Login error:", error);
