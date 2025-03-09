@@ -8,11 +8,13 @@ import {
   Stethoscope, 
   Brain, 
   Users, 
-  User, 
   UserRound, 
-  CalendarCheck, 
-  CheckCheck, 
-  ListCheck 
+  Building, 
+  ArrowRight,
+  CheckCheck,
+  Zap,
+  HeartPulse,
+  Flask
 } from 'lucide-react';
 
 const DataSource = ({ title, icon, color, delay = 0 }) => (
@@ -25,7 +27,7 @@ const DataSource = ({ title, icon, color, delay = 0 }) => (
     <div className={`w-16 h-16 rounded-md border border-${color}/30 bg-${color}/10 flex items-center justify-center mb-2`}>
       {icon}
     </div>
-    <span className="text-xs font-medium text-center max-w-[80px]">{title}</span>
+    <span className="text-xs font-medium text-center max-w-[100px]">{title}</span>
   </motion.div>
 );
 
@@ -45,7 +47,7 @@ const CoreSolution = () => (
     <div className="absolute inset-0 border border-dashed border-health-primary/30 rounded-xl rotate-6 -z-10" />
     <div className="absolute inset-0 border border-dashed border-health-secondary/30 rounded-xl -rotate-3 -z-10" />
     <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 text-xs font-medium text-health-primary whitespace-nowrap">
-      AkenoAI Platform
+      Akeno AI Platform
     </div>
   </motion.div>
 );
@@ -64,14 +66,14 @@ const Stakeholder = ({ title, icon, delay = 0 }) => (
   </motion.div>
 );
 
-const Outcome = ({ title, delay = 0 }) => (
+const Outcome = ({ title, icon, delay = 0 }) => (
   <motion.div 
-    className="flex items-center gap-2 bg-health-light/80 px-4 py-2 rounded-full shadow-sm border border-health-primary/20"
+    className="flex items-center gap-2 bg-health-light/80 px-4 py-2.5 rounded-full shadow-sm border border-health-primary/20"
     initial={{ opacity: 0, x: 20 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5, delay }}
   >
-    <CheckCheck size={16} className="text-health-primary" />
+    {icon}
     <span className="text-xs font-medium">{title}</span>
   </motion.div>
 );
@@ -121,33 +123,39 @@ const AkenoServiceFlowDiagram = () => {
       >
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-health-primary/10 text-health-primary font-medium mb-4">
           <Users size={16} className="text-health-primary" />
-          <span>EMPOWERING ALL HEALTHCARE STAKEHOLDERS</span>
+          <span>AI-POWERED PATIENT-CENTRIC HEALTHCARE ECOSYSTEM</span>
         </div>
         <h2 className="text-2xl md:text-3xl font-bold">
-          Integrated AI Healthcare Ecosystem
+          Empowering All Healthcare Stakeholders with AI
         </h2>
       </motion.div>
 
-      <div className="relative min-h-[500px] w-full">
+      <div className="relative min-h-[520px] w-full">
         {/* Data Sources - Left Side */}
-        <div className="absolute left-0 top-1/4 space-y-16">
+        <div className="absolute left-0 top-[80px] space-y-16">
           <DataSource 
-            title="Electronic Health Records" 
+            title="Patient Health Records & Biomarkers" 
             icon={<FileText size={28} className="text-health-primary" />} 
             color="health-primary"
             delay={0.1}
           />
           <DataSource 
-            title="Biomarker Data" 
-            icon={<Dna size={28} className="text-health-secondary" />} 
+            title="Real-Time Biometrics & Wearables" 
+            icon={<HeartPulse size={28} className="text-health-secondary" />} 
             color="health-secondary"
             delay={0.2}
           />
           <DataSource 
-            title="Medical Imaging" 
+            title="Medical Imaging & Lab Data" 
             icon={<Database size={28} className="text-health-accent" />} 
             color="health-accent"
             delay={0.3}
+          />
+          <DataSource 
+            title="Clinical Trial & Research Data" 
+            icon={<Flask size={28} className="text-purple-500" />} 
+            color="purple"
+            delay={0.4}
           />
         </div>
 
@@ -157,83 +165,141 @@ const AkenoServiceFlowDiagram = () => {
         </div>
 
         {/* Stakeholders - Right Center */}
-        <div className="absolute right-[35%] top-1/4 flex flex-col space-y-16">
+        <div className="absolute right-[35%] top-[80px] flex flex-col space-y-16">
           <Stakeholder 
-            title="Clinical Providers" 
-            icon={<Stethoscope size={24} className="text-health-primary" />}
+            title="Patients" 
+            icon={<UserRound size={24} className="text-health-primary" />}
             delay={0.5}
           />
           <Stakeholder 
-            title="Hospital Systems" 
-            icon={<Users size={24} className="text-health-secondary" />}
+            title="Doctors & Clinicians" 
+            icon={<Stethoscope size={24} className="text-health-secondary" />}
             delay={0.6}
           />
           <Stakeholder 
-            title="Patients" 
-            icon={<UserRound size={24} className="text-health-accent" />}
+            title="Hospitals & Healthcare Providers" 
+            icon={<Users size={24} className="text-health-accent" />}
             delay={0.7}
+          />
+          <Stakeholder 
+            title="Biotech & Pharma" 
+            icon={<Building size={24} className="text-purple-500" />}
+            delay={0.8}
           />
         </div>
 
         {/* Outcomes - Far Right */}
-        <div className="absolute right-0 top-1/4 flex flex-col space-y-16">
-          <Outcome title="Precision Diagnostics" delay={0.8} />
-          <Outcome title="Resource Optimization" delay={0.9} />
-          <Outcome title="Personalized Care" delay={1.0} />
+        <div className="absolute right-0 top-[60px] flex flex-col space-y-10">
+          <Outcome 
+            title="Personalised Care Plans" 
+            icon={<CheckCheck size={16} className="text-health-primary" />}
+            delay={0.8} 
+          />
+          <Outcome 
+            title="AI-Enhanced Clinical Decisions" 
+            icon={<Zap size={16} className="text-health-secondary" />}
+            delay={0.9} 
+          />
+          <Outcome 
+            title="Optimized Resource Management" 
+            icon={<CheckCheck size={16} className="text-health-accent" />}
+            delay={1.0} 
+          />
+          <Outcome 
+            title="Accelerated Trial Matching" 
+            icon={<Zap size={16} className="text-purple-500" />}
+            delay={1.1} 
+          />
+          <Outcome 
+            title="Real-Time Health Monitoring" 
+            icon={<CheckCheck size={16} className="text-health-primary" />}
+            delay={1.2} 
+          />
+          <Outcome 
+            title="Predictive Disease Detection" 
+            icon={<Zap size={16} className="text-health-secondary" />}
+            delay={1.3} 
+          />
         </div>
 
         {/* Connections - Data Sources to AI */}
         <Connection 
-          start={{ x: 80, y: 40 }} 
+          start={{ x: 80, y: 90 }} 
           end={{ x: 300, y: 250 }} 
           animated={true}
           delay={0.2}
         />
         <Connection 
-          start={{ x: 80, y: 145 }} 
+          start={{ x: 80, y: 180 }} 
           end={{ x: 300, y: 250 }} 
           animated={true}
           delay={0.3}
         />
         <Connection 
-          start={{ x: 80, y: 250 }} 
+          start={{ x: 80, y: 275 }} 
           end={{ x: 300, y: 250 }} 
           animated={true}
           delay={0.4}
+        />
+        <Connection 
+          start={{ x: 80, y: 370 }} 
+          end={{ x: 300, y: 250 }} 
+          animated={true}
+          delay={0.5}
         />
 
         {/* Connections - AI to Stakeholders */}
         <Connection 
           start={{ x: 350, y: 250 }} 
-          end={{ x: 500, y: 40 }} 
-          delay={0.5}
-        />
-        <Connection 
-          start={{ x: 350, y: 250 }} 
-          end={{ x: 500, y: 145 }} 
+          end={{ x: 500, y: 90 }} 
           delay={0.6}
         />
         <Connection 
           start={{ x: 350, y: 250 }} 
-          end={{ x: 500, y: 250 }} 
+          end={{ x: 500, y: 180 }} 
           delay={0.7}
+        />
+        <Connection 
+          start={{ x: 350, y: 250 }} 
+          end={{ x: 500, y: 275 }} 
+          delay={0.8}
+        />
+        <Connection 
+          start={{ x: 350, y: 250 }} 
+          end={{ x: 500, y: 370 }} 
+          delay={0.9}
         />
 
         {/* Connections - Stakeholders to Outcomes */}
         <Connection 
-          start={{ x: 530, y: 40 }} 
-          end={{ x: 650, y: 40 }} 
-          delay={0.8}
-        />
-        <Connection 
-          start={{ x: 530, y: 145 }} 
-          end={{ x: 650, y: 145 }} 
-          delay={0.9}
-        />
-        <Connection 
-          start={{ x: 530, y: 250 }} 
-          end={{ x: 650, y: 250 }} 
+          start={{ x: 530, y: 90 }} 
+          end={{ x: 650, y: 70 }} 
           delay={1.0}
+        />
+        <Connection 
+          start={{ x: 530, y: 90 }} 
+          end={{ x: 650, y: 285 }} 
+          delay={1.1}
+        />
+        <Connection 
+          start={{ x: 530, y: 180 }} 
+          end={{ x: 650, y: 125 }} 
+          delay={1.2}
+        />
+        <Connection 
+          start={{ x: 530, y: 180 }} 
+          end={{ x: 650, y: 340 }} 
+          delay={1.3}
+        />
+        <Connection 
+          start={{ x: 530, y: 275 }} 
+          end={{ x: 650, y: 180 }} 
+          delay={1.4}
+        />
+        <Connection 
+          start={{ x: 530, y: 370 }} 
+          end={{ x: 650, y: 230 }} 
+          delay={1.5}
         />
 
         {/* SVG Definitions */}
