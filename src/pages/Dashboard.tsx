@@ -26,6 +26,9 @@ import ResearchData from '@/components/dashboard/researcher/research-data/Resear
 import Collaborations from '@/components/dashboard/researcher/collaborations/Collaborations';
 import Updates from '@/components/dashboard/researcher/updates/Updates';
 import HospitalDashboard from '@/components/dashboard/hospital/HospitalDashboard';
+import HospitalProfile from '@/components/dashboard/hospital/profile/HospitalProfile';
+import HospitalSettings from '@/components/dashboard/hospital/settings/HospitalSettings';
+import HospitalHelp from '@/components/dashboard/hospital/help/HospitalHelp';
 import { Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -139,6 +142,9 @@ const Dashboard = () => {
             <DashboardLayout>
               <Routes>
                 <Route path="/" element={<HospitalDashboard />} />
+                <Route path="/profile" element={<HospitalProfile />} />
+                <Route path="/settings" element={<HospitalSettings />} />
+                <Route path="/help" element={<HospitalHelp />} />
               </Routes>
             </DashboardLayout>
           </ProtectedRoute>
