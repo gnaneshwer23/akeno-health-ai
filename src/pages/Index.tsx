@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
@@ -10,6 +9,7 @@ import { StatisticsSection } from '@/components/StatisticsSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { PartnersSection } from '@/components/PartnersSection';
 import { QuantumCTA } from '@/components/quantum/QuantumCTA';
+import AIFlowDiagram from '@/components/home/AIFlowDiagram';
 
 const Index = () => {
   useEffect(() => {
@@ -95,6 +95,10 @@ const Index = () => {
           {/* Enhanced decorative circles */}
           <div className="absolute top-1/4 left-10 w-20 h-20 rounded-full border-4 border-dashed border-health-primary/20 -z-10 animate-rotate-slow"></div>
           <div className="absolute bottom-1/4 right-10 w-16 h-16 rounded-full border-4 border-dashed border-health-secondary/20 -z-10 animate-rotate-slow" style={{animationDirection: 'reverse'}}></div>
+        </div>
+        
+        <div className="relative py-16 px-4 bg-gradient-to-br from-white to-health-light/30">
+          <AIFlowDiagram />
         </div>
         
         <div className="relative">

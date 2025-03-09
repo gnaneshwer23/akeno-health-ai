@@ -203,3 +203,222 @@
 .chat-pulse {
   animation: pulse 2s infinite;
 }
+
+/* AI Flow Diagram Animations */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatAnimation {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-4px) rotate(0.5deg); }
+  75% { transform: translateY(2px) rotate(-0.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes sparkle {
+  0% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+  100% { opacity: 0; transform: scale(0) rotate(360deg); }
+}
+
+@keyframes techPulse {
+  0% { opacity: 0.8; transform: scale(1) translateY(0); }
+  50% { opacity: 1; transform: scale(1.05) translateY(-1px); }
+  100% { opacity: 0.8; transform: scale(1) translateY(0); }
+}
+
+@keyframes iconFloat {
+  0% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(-2px) rotate(3deg); }
+  75% { transform: translateY(1px) rotate(-2deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+@keyframes dataFlow {
+  0% { stroke-dashoffset: 1000; opacity: 0.15; transform: scale(0.98); }
+  40% { opacity: 0.45; transform: scale(1.01); }
+  60% { opacity: 0.45; transform: scale(1.01); }
+  100% { stroke-dashoffset: 0; opacity: 0.15; transform: scale(0.98); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+  60% { transform: translateY(-5px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes titleGradient {
+  0% { background-position: 0% 0%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes float-up {
+  0% { transform: translateY(100%) scale(0.6) rotate(0deg); opacity: 0; }
+  20% { transform: translateY(50%) scale(1.1) rotate(45deg); opacity: 0.8; }
+  80% { transform: translateY(-50%) scale(0.9) rotate(180deg); opacity: 0.6; }
+  100% { transform: translateY(-100%) scale(0.4) rotate(360deg); opacity: 0; }
+}
+
+/* AI Flow Diagram Styles */
+.container-ai-flow {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  max-width: 1400px;
+  margin: 0 auto;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.title-ai-flow {
+  font-size: 32px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #2c3e50, #3498db);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 40px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#diagram {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 20px;
+  position: relative;
+}
+
+@media (max-width: 1200px) {
+  #diagram {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  #diagram {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.node {
+  width: 100%;
+  max-width: 240px;
+  padding: 22px;
+  border-radius: 16px;
+  text-align: center;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.node:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: rgba(155, 89, 182, 0.3);
+}
+
+.node h3 {
+  margin: 0 0 10px;
+  color: #2c3e50;
+}
+
+small {
+  display: block;
+  margin-top: 8px;
+  opacity: 0.8;
+  font-size: 12px;
+  color: #34495e;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  animation: techPulse 2s ease-in-out infinite;
+}
+
+.icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.node:hover .icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(74, 144, 226, 0.9);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float-up 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  filter: blur(2px);
+  box-shadow: 0 0 12px rgba(74, 144, 226, 0.5);
+  mix-blend-mode: screen;
+}
+
+.ai-container {
+  background: rgba(74, 144, 226, 0.08);
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px dashed rgba(74, 144, 226, 0.4);
+  animation: pulse 4s infinite;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  max-width: 340px;
+  margin: 0 auto;
+  transform: translateY(30px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 35px rgba(74, 144, 226, 0.1);
+}
+
+.ai-title {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 25px;
+  background: linear-gradient(135deg, #3498db, #9b59b6, #2ecc71, #9b59b6);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  animation: titleGradient 8s ease infinite;
+  letter-spacing: 0.5px;
+  padding: 5px;
+  filter: drop-shadow(0 0 8px rgba(155, 89, 182, 0.3));
+}
+
+.ai-title .icon {
+  display: inline-block;
+  margin-right: 12px;
+  animation: iconFloat 4s ease-in-out infinite;
+  font-size: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transform-origin: center;
+}
