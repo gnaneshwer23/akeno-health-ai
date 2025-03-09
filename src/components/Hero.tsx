@@ -39,27 +39,27 @@ const Hero: React.FC = () => {
   const features = [
     {
       text: "Continuous Health Monitoring",
-      icon: <Activity size={16} className="text-health-primary" />
+      icon: <Activity size={18} className="text-health-primary" />
     },
     {
-      text: "AI-Driven Diagnostics & Precision Medicine",
-      icon: <Brain size={16} className="text-health-primary" />
+      text: "AI-Driven Diagnostics",
+      icon: <Brain size={18} className="text-health-primary" />
     },
     {
-      text: "Clinical Trial Matching & Drug Discovery",
-      icon: <FlaskConical size={16} className="text-health-primary" />
+      text: "Clinical Trial Matching",
+      icon: <FlaskConical size={18} className="text-health-primary" />
     },
     {
       text: "Digital Twin Technology",
-      icon: <Cpu size={16} className="text-health-primary" />
+      icon: <Cpu size={18} className="text-health-primary" />
     },
     {
-      text: "Blockchain-Powered Health Records",
-      icon: <Shield size={16} className="text-health-primary" />
+      text: "Blockchain Health Records",
+      icon: <Shield size={18} className="text-health-primary" />
     },
     {
-      text: "AI & Quantum Computing Solutions",
-      icon: <Atom size={16} className="text-health-primary" />
+      text: "Quantum Computing Solutions",
+      icon: <Atom size={18} className="text-health-primary" />
     }
   ];
   
@@ -78,19 +78,25 @@ const Hero: React.FC = () => {
       <div className="absolute bottom-40 right-20 w-32 h-32 border-2 border-health-secondary/20 rounded-full -rotate-12 parallax" data-speed="0.06"></div>
       <div className="absolute top-1/2 right-1/4 w-16 h-16 border-2 border-health-accent/30 rotate-45 parallax" data-speed="0.07"></div>
       
-      {/* Animated particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {Array(10).fill(0).map((_, i) => (
-          <div 
-            key={i}
-            className="absolute rounded-full bg-gradient-to-br from-health-primary/30 to-health-secondary/30"
-            style={{
-              width: `${Math.random() * 10 + 5}px`,
-              height: `${Math.random() * 10 + 5}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${Math.random() * 5 + 10}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`
+      {/* DNA helix animation - healthcare specific element */}
+      <div className="absolute top-1/3 right-1/6 w-12 h-64 parallax" data-speed="0.04">
+        {[...Array(8)].map((_, i) => (
+          <div key={i} className="absolute w-4 h-4 rounded-full bg-health-primary/20"
+            style={{ 
+              top: `${i * 16}px`,
+              left: `${Math.sin(i * 0.5) * 10}px`,
+              animationDelay: `${i * 0.1}s`,
+              animation: 'pulse 3s infinite ease-in-out'
+            }}
+          ></div>
+        ))}
+        {[...Array(8)].map((_, i) => (
+          <div key={i} className="absolute w-4 h-4 rounded-full bg-health-secondary/20"
+            style={{ 
+              top: `${i * 16 + 8}px`,
+              left: `${Math.sin((i + 0.5) * 0.5) * -10}px`,
+              animationDelay: `${i * 0.1 + 0.05}s`,
+              animation: 'pulse 3s infinite ease-in-out'
             }}
           ></div>
         ))}
@@ -102,16 +108,16 @@ const Hero: React.FC = () => {
         <div className="mb-6 flex justify-center">
           <div className="relative">
             <AnimatedLogo size="xl" className="mb-2 relative z-10" />
-            <div className="absolute -inset-4 bg-gradient-to-r from-health-primary/10 to-health-secondary/10 rounded-full blur-xl -z-10"></div>
+            <div className="absolute -inset-8 bg-gradient-to-r from-health-primary/10 to-health-secondary/10 rounded-full blur-xl -z-10"></div>
           </div>
         </div>
         
-        <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 text-health-primary font-medium backdrop-blur-sm border border-health-primary/20">
+        <div className="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 text-health-primary font-medium backdrop-blur-sm border border-health-primary/20">
           <Sparkles size={18} className="text-health-primary" />
           <span>The Future of AI-Driven Healthcare</span>
         </div>
         
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight">
           <span className="bg-gradient-to-r from-health-primary via-health-secondary to-health-accent bg-clip-text text-transparent">Transforming Healthcare</span> with <span className="text-health-primary">AI</span>
         </h1>
         
@@ -127,13 +133,13 @@ const Hero: React.FC = () => {
           Pioneering the most advanced AI-driven healthcare ecosystem, delivering real-time disease prediction, hyper-personalised treatment recommendations, and seamless clinical connectivity.
         </p>
         
-        <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-10 relative">
+        <div className="grid md:grid-cols-3 gap-3 max-w-4xl mx-auto mb-10 relative">
           <div className="absolute inset-0 bg-gradient-to-br from-health-primary/5 to-health-secondary/5 rounded-2xl -z-10 blur-xl"></div>
           
           {features.map((feature, index) => (
-            <div key={index} className="flex items-start gap-3 text-left bg-white/50 backdrop-blur-sm rounded-xl p-3 border border-white/80 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+            <div key={index} className="flex items-start gap-3 text-left bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-white/80 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
               <div className="mt-0.5 flex-shrink-0">
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-health-primary/20 to-health-secondary/20 text-health-primary">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-health-primary/20 to-health-secondary/20 text-health-primary">
                   {feature.icon}
                 </div>
               </div>
@@ -163,7 +169,7 @@ const Hero: React.FC = () => {
           <Button 
             size="lg" 
             variant="outline" 
-            className="sm:w-auto w-full relative overflow-hidden group"
+            className="sm:w-auto w-full relative overflow-hidden group border-health-primary/30 hover:border-health-primary/60"
             as="Link"
             to="/contact"
           >
@@ -173,13 +179,34 @@ const Hero: React.FC = () => {
           <Button 
             size="lg" 
             variant="ghost" 
-            className="sm:w-auto w-full relative overflow-hidden group"
+            className="sm:w-auto w-full relative overflow-hidden group hover:bg-health-primary/5"
             as="Link"
             to="/contact"
           >
             <span className="relative z-10">Join Our Network</span>
             <span className="absolute inset-0 bg-gradient-to-r from-health-primary/5 to-health-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </Button>
+        </div>
+        
+        {/* Animated typing text - healthcare specific element */}
+        <div className="hidden md:flex items-center justify-center gap-2 text-health-primary/70 mb-6 font-mono text-sm">
+          <span>AI analyzing</span>
+          <span className="relative w-28 h-5 overflow-hidden">
+            {["biomarkers", "genomics", "symptoms", "imaging", "vitals"].map((text, index) => (
+              <span 
+                key={index} 
+                className="absolute inset-0 animate-fade-up" 
+                style={{ 
+                  animationDelay: `${index * 3}s`, 
+                  animationDuration: '15s',
+                  animationIterationCount: 'infinite'
+                }}
+              >
+                {text}
+              </span>
+            ))}
+          </span>
+          <span>...</span>
         </div>
       </div>
       
