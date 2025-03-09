@@ -10,6 +10,7 @@ import { StatisticsSection } from '@/components/StatisticsSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { PartnersSection } from '@/components/PartnersSection';
 import { QuantumCTA } from '@/components/quantum/QuantumCTA';
+import ResponsiveServiceFlow from '@/components/home/ResponsiveServiceFlow';
 
 const Index = () => {
   useEffect(() => {
@@ -78,6 +79,11 @@ const Index = () => {
               <path d="M10 11H8V14H5L8 18H10L13 14H10V11Z" className="text-health-accent" stroke="currentColor" strokeWidth="2"/>
             </svg>
           </div>
+        </div>
+        
+        {/* Add our new service flow diagram section */}
+        <div className="relative bg-gradient-to-r from-health-light/30 to-white">
+          <ResponsiveServiceFlow />
         </div>
         
         <div className="relative">
