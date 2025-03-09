@@ -11,7 +11,7 @@ export const navigationLinks = [
       { name: 'For Patients', path: '/patient-solutions' },
       { name: 'For Doctors', path: '/doctor-solutions' },
       { name: 'For Hospitals', path: '/hospital-solutions' },
-      { name: 'For Biotech', path: '/biotech-solutions' },
+      { name: 'Pharma & Research', path: '/biotech-solutions' },
       { name: 'Quantum Computing', path: '/quantum-computing' },
     ]
   },
