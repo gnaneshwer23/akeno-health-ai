@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const MissionFooter: React.FC = () => {
   return (
@@ -13,26 +14,24 @@ export const MissionFooter: React.FC = () => {
       </div>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Button
-          variant="primary"
+          className="group bg-health-primary hover:bg-health-secondary"
           size="lg"
-          as="Link"
-          to="/how-it-works"
-          className="group relative overflow-hidden"
+          asChild
         >
-          <span className="relative z-10 flex items-center">
+          <Link to="/how-it-works" className="flex items-center gap-2">
             Learn More
-            <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
-          </span>
-          <span className="absolute inset-0 bg-gradient-to-r from-health-primary to-health-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+          </Link>
         </Button>
         <Button
           variant="outline"
           size="lg"
-          as="Link"
-          to="/contact"
           className="border-health-primary/30 hover:border-health-primary/60"
+          asChild
         >
-          Join the Future of Healthcare
+          <Link to="/contact" className="flex items-center gap-2">
+            Join the Future of Healthcare
+          </Link>
         </Button>
       </div>
     </div>

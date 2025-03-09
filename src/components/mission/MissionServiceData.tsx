@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ActivitySquare, Brain, FlaskConical, Database, Award, HeartPulse, Shield } from 'lucide-react';
+import { ActivitySquare, Brain, FlaskConical, Database, HeartPulse, Shield } from 'lucide-react';
 
 export const services = [
   {
@@ -14,14 +14,9 @@ export const services = [
     description: "AI-enhanced tools empower doctors with real-time, evidence-based recommendations, reducing diagnostic errors and treatment delays."
   },
   {
-    icon: <Award className="h-10 w-10 text-white" />,
+    icon: <HeartPulse className="h-10 w-10 text-white" />,
     title: "Precision Medicine & Digital Twin Technology",
     description: "Hyper-personalised treatments tailored to genetics, microbiome, and disease progression for optimised health outcomes."
-  },
-  {
-    icon: <HeartPulse className="h-10 w-10 text-white" />,
-    title: "AI-Integrated Mental & Cognitive Health Monitoring",
-    description: "Advanced AI-driven assessments detect early signs of cognitive decline, stress, and mental health conditions, enabling proactive and personalised interventions."
   },
   {
     icon: <FlaskConical className="h-10 w-10 text-white" />,
@@ -30,7 +25,12 @@ export const services = [
   },
   {
     icon: <Database className="h-10 w-10 text-white" />,
-    title: "Blockchain-Powered Universal Health Records (UHRs)",
+    title: "Blockchain-Powered Universal Health Records",
     description: "A secure, decentralised health data system, ensuring patient ownership and real-time access to medical history."
+  },
+  {
+    icon: <Shield className="h-10 w-10 text-white" />,
+    title: "AI-Integrated Mental & Cognitive Health",
+    description: "Advanced AI-driven assessments detect early signs of cognitive decline, stress, and mental health conditions for proactive interventions."
   }
 ];
