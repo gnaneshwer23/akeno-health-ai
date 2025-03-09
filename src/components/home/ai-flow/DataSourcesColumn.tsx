@@ -1,41 +1,42 @@
 
 import React from 'react';
 import { Watch, Clipboard, Dna, Microscope, Apple } from 'lucide-react';
+import DataSourceItem from './DataSourceItem';
 
 const DataSourcesColumn = () => {
   return (
     <div className="flow-column">
       <h3 className="column-title">Data Sources</h3>
       <div className="data-source-items">
-        <div className="flow-item-card">
-          <Watch className="item-icon-card" />
-          <div className="item-title-card">Edge AI & IoT</div>
-          <div className="item-desc-card">Smartwatches, ECG</div>
-        </div>
+        <DataSourceItem 
+          icon={Watch} 
+          title="Edge AI & IoT" 
+          description="Smartwatches, ECG" 
+        />
         
-        <div className="flow-item-card">
-          <Clipboard className="item-icon-card" />
-          <div className="item-title-card">EHR Integration</div>
-          <div className="item-desc-card">FHIR, DICOM</div>
-        </div>
+        <DataSourceItem 
+          icon={Clipboard} 
+          title="EHR Integration" 
+          description="FHIR, DICOM" 
+        />
         
-        <div className="flow-item-card">
-          <Dna className="item-icon-card" />
-          <div className="item-title-card">Multi-Omics</div>
-          <div className="item-desc-card">NGS, Proteomics</div>
-        </div>
+        <DataSourceItem 
+          icon={Dna} 
+          title="Multi-Omics" 
+          description="NGS, Proteomics" 
+        />
         
-        <div className="flow-item-card">
-          <Microscope className="item-icon-card" />
-          <div className="item-title-card">AI Imaging</div>
-          <div className="item-desc-card">Radiology AI</div>
-        </div>
+        <DataSourceItem 
+          icon={Microscope} 
+          title="AI Imaging" 
+          description="Radiology AI" 
+        />
         
-        <div className="flow-item-card">
-          <Apple className="item-icon-card" />
-          <div className="item-title-card">Behavioral</div>
-          <div className="item-desc-card">NLP, Mental Health</div>
-        </div>
+        <DataSourceItem 
+          icon={Apple} 
+          title="Behavioral" 
+          description="NLP, Mental Health" 
+        />
       </div>
     </div>
   );
