@@ -10,7 +10,7 @@ const HealthcareSolutionsSection = () => {
       
       <div className={styles.solution}>
         <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
         <div className={styles.icon}>👤</div>
         <div>Virtual Health AI</div>
@@ -19,7 +19,7 @@ const HealthcareSolutionsSection = () => {
       
       <div className={styles.solution}>
         <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
         <div className={styles.icon}>👨‍⚕️</div>
         <div>Digital Twin AI</div>
@@ -28,7 +28,7 @@ const HealthcareSolutionsSection = () => {
       
       <div className={styles.solution}>
         <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
         <div className={styles.icon}>🏥</div>
         <div>Workflow AI</div>
@@ -37,7 +37,7 @@ const HealthcareSolutionsSection = () => {
       
       <div className={styles.solution}>
         <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
         <div className={styles.icon}>💊</div>
         <div>Drug Discovery AI</div>

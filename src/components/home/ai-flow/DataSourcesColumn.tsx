@@ -13,7 +13,7 @@ const DataSourcesColumn = () => {
         <div>Edge AI & IoT</div>
         <small className={styles.nodeDescription}>Smartwatches, ECG, Glucose</small>
         <div className={styles.connector}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
       </div>
       
@@ -22,16 +22,16 @@ const DataSourcesColumn = () => {
         <div>EHR Integration</div>
         <small className={styles.nodeDescription}>FHIR, DICOM, OpenEHR</small>
         <div className={styles.connector}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
       </div>
       
       <div className={styles.dataSource}>
         <div className={styles.icon}>🧬</div>
-        <div>Multi-Omics</div>
+        <div>Multi-Omics Analysis</div>
         <small className={styles.nodeDescription}>NGS, Proteomics, PRS</small>
         <div className={styles.connector}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
       </div>
       
@@ -40,7 +40,7 @@ const DataSourcesColumn = () => {
         <div>AI-Enhanced Imaging</div>
         <small className={styles.nodeDescription}>Radiology AI, DICOM</small>
         <div className={styles.connector}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
       </div>
     </div>

@@ -10,15 +10,15 @@ const BenefitsSection = () => {
       
       <div className={styles.benefit}>
         <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
         <div>Real-Time Health AI</div>
-        <small className={styles.nodeDescription}>24/7 Monitoring</small>
+        <small className={styles.nodeDescription}>24/7 Monitoring & Insights</small>
       </div>
       
       <div className={styles.benefit}>
         <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
         <div>Precision Medicine</div>
         <small className={styles.nodeDescription}>Personalized Treatment</small>
@@ -26,7 +26,7 @@ const BenefitsSection = () => {
       
       <div className={styles.benefit}>
         <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
         <div>Smart Healthcare</div>
         <small className={styles.nodeDescription}>Automated Workflows</small>
@@ -34,10 +34,10 @@ const BenefitsSection = () => {
       
       <div className={styles.benefit}>
         <div className={styles.connectorIn}>
-          <ArrowRight className={styles.arrowIcon} size={14} />
+          <ArrowRight className={styles.arrowIcon} size={16} />
         </div>
         <div>Accelerated R&D</div>
-        <small className={styles.nodeDescription}>Quantum Discovery</small>
+        <small className={styles.nodeDescription}>Quantum-Powered Discovery</small>
       </div>
     </div>
   );
