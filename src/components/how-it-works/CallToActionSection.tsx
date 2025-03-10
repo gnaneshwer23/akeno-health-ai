@@ -1,10 +1,9 @@
 
 import React from 'react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowRight, Users, Brain, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { ActionButtons } from '@/components/about/cta/ActionButtons';
 
 const CallToActionSection = () => {
   const containerVariants = {
@@ -70,7 +69,7 @@ const CallToActionSection = () => {
           className="bg-white/5 rounded-2xl p-8 md:p-12 border border-white/10 mb-12 backdrop-blur-sm"
           variants={itemVariants}
         >
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             <motion.div 
               className="space-y-6"
               variants={itemVariants}
@@ -126,15 +125,46 @@ const CallToActionSection = () => {
             </motion.div>
             
             <motion.div 
-              className="border-t md:border-t-0 md:border-l border-indigo-500/20 pt-6 md:pt-0 md:pl-8 flex flex-col justify-center"
+              className="border-t md:border-t-0 md:border-l border-indigo-500/20 pt-6 md:pt-0 md:pl-12 flex flex-col justify-center"
               variants={itemVariants}
             >
               <h3 className="text-2xl font-semibold text-white mb-6">Take Action Today</h3>
               
               <div className="space-y-6">
-                <motion.div variants={itemVariants}>
-                  <ActionButtons />
-                </motion.div>
+                <div className="flex flex-col space-y-4">
+                  <Button
+                    size="lg"
+                    className="group bg-health-primary hover:bg-health-secondary w-full sm:w-auto"
+                    asChild
+                  >
+                    <Link to="/contact" className="flex items-center justify-center gap-2">
+                      Join the Future of AI Healthcare
+                      <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-indigo-300/30 hover:border-indigo-300/60 text-white w-full sm:w-auto"
+                    asChild
+                  >
+                    <Link to="/contact" className="flex items-center justify-center gap-2">
+                      Request a Demo
+                    </Link>
+                  </Button>
+                  
+                  <Button
+                    variant="ghost"
+                    size="lg"
+                    className="hover:bg-indigo-500/10 text-white w-full sm:w-auto"
+                    asChild
+                  >
+                    <Link to="/contact" className="flex items-center justify-center gap-2">
+                      Partner With Us
+                    </Link>
+                  </Button>
+                </div>
                 
                 <motion.p 
                   className="text-indigo-200/70 italic text-center text-sm mt-4"
@@ -154,13 +184,12 @@ const CallToActionSection = () => {
         >
           <Button
             className="group bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-            as="Link"
-            to="/contact"
+            asChild
           >
-            <span className="flex items-center gap-2">
+            <Link to="/contact" className="flex items-center gap-2">
               Begin Your Journey With Akeno Health
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </span>
+            </Link>
           </Button>
         </motion.div>
       </motion.div>

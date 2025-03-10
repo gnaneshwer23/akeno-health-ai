@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { journeySteps } from './journeyStepsData';
-import type { JourneyStep as JourneyStepType } from './journeyStepsData';
+import type { JourneyStep } from './journeyStepsData';
 import { getColorClasses } from './ColorSchemeUtils';
 import { cn } from '@/lib/utils';
 
@@ -32,12 +32,12 @@ const JourneyTimeline: React.FC = () => {
   );
 };
 
-interface JourneyStepProps {
-  item: JourneyStepType;
+interface JourneyStepItemProps {
+  item: JourneyStep;
   index: number;
 }
 
-const JourneyStepItem: React.FC<JourneyStepProps> = ({ item, index }) => {
+const JourneyStepItem: React.FC<JourneyStepItemProps> = ({ item, index }) => {
   const colors = getColorClasses(item.color);
   const isRightAligned = index % 2 === 0;
   
