@@ -7,14 +7,14 @@ import { MobileMenuDropdown } from './MobileMenuDropdown';
 import { 
   Users, 
   Stethoscope, 
-  Microscope, 
-  Atom, 
+  Microscope,
   Home, 
   Info, 
   HelpCircle,
   FileText,
   Phone,
-  LogIn
+  LogIn,
+  Atom
 } from 'lucide-react';
 
 interface MobileMenuProps {
@@ -54,12 +54,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       icon: Microscope, 
       label: 'For Biotech', 
       isActive: isActive('/biotech-solutions') 
-    },
-    { 
-      to: '/quantum-computing', 
-      icon: Atom, 
-      label: 'Quantum Computing', 
-      isActive: isActive('/quantum-computing') 
     }
   ];
 
@@ -96,14 +90,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             onClick={onLinkClick} 
           />
 
+          <MobileMenuLink 
+            to="/quantum-computing" 
+            icon={Atom} 
+            label="Quantum Computing" 
+            isActive={isActive('/quantum-computing')} 
+            onClick={onLinkClick} 
+          />
+
           <MobileMenuDropdown
             icon={Users}
             label="Solutions"
             isActive={
               isActive('/patient-solutions') || 
               isActive('/doctor-solutions') || 
-              isActive('/biotech-solutions') || 
-              isActive('/quantum-computing')
+              isActive('/biotech-solutions')
             }
             links={solutionsLinks}
             onLinkClick={onLinkClick}
@@ -125,7 +126,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             onClick={onLinkClick} 
           />
           
-          {/* Add Sign In link for mobile */}
           <MobileMenuLink 
             to="/login" 
             icon={LogIn} 
