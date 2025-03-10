@@ -4,32 +4,30 @@ import React from 'react';
 const FloatingConnections = () => {
   return (
     <>
-      {/* Floating connections - horizontal top */}
+      {/* Static horizontal connections */}
       <div className="floating-connection floating-connection-top">
-        <div className="flow-particle"></div>
-        <div className="flow-particle"></div>
-        <div className="flow-particle"></div>
+        <div className="flow-particle static"></div>
+        <div className="flow-particle static"></div>
+        <div className="flow-particle static"></div>
       </div>
       
-      {/* Floating connections - horizontal middle */}
       <div className="floating-connection floating-connection-middle">
-        <div className="flow-particle"></div>
-        <div className="flow-particle"></div>
-        <div className="flow-particle"></div>
+        <div className="flow-particle static"></div>
+        <div className="flow-particle static"></div>
+        <div className="flow-particle static"></div>
       </div>
       
-      {/* Floating connections - horizontal bottom */}
       <div className="floating-connection floating-connection-bottom">
-        <div className="flow-particle"></div>
-        <div className="flow-particle"></div>
-        <div className="flow-particle"></div>
+        <div className="flow-particle static"></div>
+        <div className="flow-particle static"></div>
+        <div className="flow-particle static"></div>
       </div>
       
-      {/* Floating connection - vertical */}
+      {/* Static vertical connection */}
       <div className="floating-connection floating-connection-vertical">
-        <div className="flow-particle flow-particle-vertical"></div>
-        <div className="flow-particle flow-particle-vertical"></div>
-        <div className="flow-particle flow-particle-vertical"></div>
+        <div className="flow-particle flow-particle-vertical static"></div>
+        <div className="flow-particle flow-particle-vertical static"></div>
+        <div className="flow-particle flow-particle-vertical static"></div>
       </div>
     </>
   );
