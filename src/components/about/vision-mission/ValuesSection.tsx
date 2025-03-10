@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Shield, Heart } from 'lucide-react';
+import { Brain, Shield, Heart, Sparkles } from 'lucide-react';
 
 interface ValueCardProps {
   title: string;
@@ -25,22 +26,25 @@ const fadeVariants = {
 const ValueCard = ({ title, description, icon, index }: ValueCardProps) => {
   return (
     <motion.div 
-      className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+      className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow group"
       variants={fadeVariants}
       custom={index + 1}
       whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
     >
       <div className="flex items-center mb-4">
-        <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center mr-3">
+        <div className="h-12 w-12 rounded-full bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
           {icon}
         </div>
         <h4 className="text-xl font-semibold text-health-dark">{title}</h4>
       </div>
       <p className="text-health-dark/70 mb-4">{description}</p>
-      <p className="text-sm text-health-dark/60 italic">
+      <p className="text-sm text-health-dark/60 italic relative">
         {title === "Innovation" && "Our commitment to cutting-edge AI research and development ensures we stay at the forefront of healthcare technology."}
         {title === "Integrity" && "We prioritize patient privacy and maintain the highest standards of data security in everything we do."}
         {title === "Inclusion" && "Healthcare is a fundamental right, and we strive to make our AI solutions accessible across all communities."}
+        <span className="absolute -bottom-1 -right-1">
+          {title === "Innovation" && <Sparkles size={14} className="text-indigo-400 opacity-70" />}
+        </span>
       </p>
     </motion.div>
   );
@@ -51,17 +55,17 @@ export const ValuesSection = () => {
     {
       title: "Innovation",
       description: "Pioneering AI healthcare solutions that reshape the future of medicine",
-      icon: <Brain className="h-5 w-5 text-indigo-500" />
+      icon: <Brain className="h-6 w-6 text-indigo-500" />
     },
     {
       title: "Integrity",
       description: "Upholding the highest ethical standards in data privacy and healthcare",
-      icon: <Shield className="h-5 w-5 text-purple-500" />
+      icon: <Shield className="h-6 w-6 text-purple-500" />
     },
     {
       title: "Inclusion",
       description: "Making advanced healthcare accessible to everyone, everywhere",
-      icon: <Heart className="h-5 w-5 text-rose-500" />
+      icon: <Heart className="h-6 w-6 text-rose-500" />
     }
   ];
 
@@ -83,11 +87,12 @@ export const ValuesSection = () => {
       }}
     >
       <motion.h3 
-        className="text-2xl font-bold text-center text-health-dark mb-8"
+        className="text-2xl font-bold text-center text-health-dark mb-8 relative inline-block"
         variants={fadeVariants}
         custom={0}
       >
         Our Core Values
+        <div className="absolute -bottom-2 left-0 right-0 mx-auto w-20 h-1 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full"></div>
       </motion.h3>
       
       <div className="grid md:grid-cols-3 gap-8">
