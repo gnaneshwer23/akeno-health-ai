@@ -1,8 +1,9 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { TeamMemberCard } from './TeamMemberCard';
 import { motion } from 'framer-motion';
+import { TeamGroupHeader } from './team/TeamGroupHeader';
+import { TeamMembersGrid } from './team/TeamMembersGrid';
 
 export interface TeamMember {
   name: string;
@@ -35,22 +36,8 @@ export const TeamGroup: React.FC<TeamGroupProps> = ({ group }) => {
       <Card className="bg-white border-none shadow-md overflow-hidden">
         <CardContent className="p-8">
           <div className="flex flex-col md:flex-row gap-6 items-start mb-8">
-            <motion.div 
-              className="md:w-1/4"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className="text-2xl font-bold text-health-dark mb-2">{group.title}</h3>
-              <div className="h-1 w-12 bg-gradient-to-r from-health-primary to-health-secondary rounded-full mb-4"></div>
-              <p className="text-health-dark/70">{group.description}</p>
-            </motion.div>
-            
-            <div className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {group.members.map((member, index) => (
-                <TeamMemberCard key={index} member={member} index={index} />
-              ))}
-            </div>
+            <TeamGroupHeader title={group.title} description={group.description} />
+            <TeamMembersGrid members={group.members} />
           </div>
         </CardContent>
       </Card>
