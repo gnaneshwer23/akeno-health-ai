@@ -34,8 +34,28 @@ const FloatingConnections = () => {
         </div>
       </div>
       
-      {/* Vertical connection */}
+      {/* Main vertical connection */}
       <div className="floating-connection floating-connection-vertical">
+        <div className="connection-line connection-line-vertical"></div>
+        <div className="flow-particle-group flow-particle-group-vertical">
+          <div className="flow-particle flow-particle-vertical"></div>
+          <div className="flow-particle flow-particle-vertical"></div>
+          <div className="flow-particle flow-particle-vertical"></div>
+        </div>
+      </div>
+
+      {/* Left vertical connection */}
+      <div className="floating-connection floating-connection-vertical floating-connection-left">
+        <div className="connection-line connection-line-vertical"></div>
+        <div className="flow-particle-group flow-particle-group-vertical">
+          <div className="flow-particle flow-particle-vertical"></div>
+          <div className="flow-particle flow-particle-vertical"></div>
+          <div className="flow-particle flow-particle-vertical"></div>
+        </div>
+      </div>
+
+      {/* Right vertical connection */}
+      <div className="floating-connection floating-connection-vertical floating-connection-right">
         <div className="connection-line connection-line-vertical"></div>
         <div className="flow-particle-group flow-particle-group-vertical">
           <div className="flow-particle flow-particle-vertical"></div>

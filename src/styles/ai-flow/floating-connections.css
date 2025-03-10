@@ -28,6 +28,14 @@
   transform: translateX(-50%);
 }
 
+.floating-connection-left {
+  left: 25%;
+}
+
+.floating-connection-right {
+  left: 75%;
+}
+
 /* Flow particle styling */
 .flow-particle-group {
   position: absolute;
