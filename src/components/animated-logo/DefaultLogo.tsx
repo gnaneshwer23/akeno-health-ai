@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { AnimatedCanvas } from './AnimatedCanvas';
 import { HumanBodySilhouette } from './HumanBodySilhouette';
@@ -5,8 +6,8 @@ import { Brain, Activity, HeartPulse, Dna, Cpu, Atom } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const DefaultLogo: React.FC = () => {
-  // Define a fixed radius for all icons around the silhouette - reducing it to keep elements inside
-  const fixedRadius = 24; // Reduced to ensure all elements stay visibly inside the container
+  // Define a fixed radius for all icons around the silhouette
+  const fixedRadius = 24; // Keeping elements inside the container
   
   // Create positions for icons at equal distances around a circle
   const iconPositions = [
@@ -43,7 +44,7 @@ const DefaultLogo: React.FC = () => {
         <div className="w-3/4 h-3/4 rounded-full border border-white/40"></div>
       </motion.div>
       
-      {/* Human silhouette and icons - centered container with more space */}
+      {/* Human silhouette and icons - centered container with consistent spacing */}
       <div className="absolute inset-[15%] flex items-center justify-center">
         <div className="relative w-full h-full">
           {/* Human silhouette at center */}
@@ -85,7 +86,7 @@ const DefaultLogo: React.FC = () => {
             ))}
           </div>
           
-          {/* Medical/Health icons arranged in a circle at fixed distance around the human */}
+          {/* Medical/Health icons arranged in a perfect circle at fixed distance around the human */}
           <div className="absolute inset-0">
             {iconPositions.map((item, index) => {
               const angle = item.angle * Math.PI / 180;
