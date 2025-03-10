@@ -1,66 +1,47 @@
 
 import React from 'react';
-import { Building, FlaskConical, ActivitySquare, BookOpen, ShieldCheck, Globe } from 'lucide-react';
-import { PartnerTypeCard } from './PartnerTypeCard';
+import { motion } from 'framer-motion';
+
+const partners = [
+  { name: 'Mayo Clinic', logo: '/institutions/mayo-clinic.svg' },
+  { name: 'Johns Hopkins', logo: '/institutions/johns-hopkins.svg' },
+  { name: 'NVIDIA', logo: '/institutions/nvidia.svg' },
+  { name: 'Alphabet', logo: '/institutions/alphabet.svg' },
+  { name: 'Microsoft', logo: '/institutions/microsoft.svg' },
+  { name: 'Oxford University', logo: '/institutions/oxford.svg' },
+  { name: 'NHS', logo: '/institutions/nhs.svg' },
+  { name: 'GSK', logo: '/institutions/gsk.svg' },
+];
+
+// The partner logos are for demonstration purposes only
+const PartnerLogo = ({ name }: { name: string }) => (
+  <div className="flex items-center justify-center h-16 w-40 bg-white/50 rounded-lg shadow-sm border border-blue-100 backdrop-blur-sm">
+    <div className="text-health-dark/60 font-medium">{name}</div>
+  </div>
+);
 
 export const PartnersSection = () => {
-  const partnerTypes = [
-    {
-      title: "Top-Tier Hospitals & Clinics",
-      description: "Implementing AI-powered diagnostics and patient monitoring",
-      icon: <Building className="h-6 w-6 text-indigo-500" />
-    },
-    {
-      title: "Pharmaceutical Giants & Biotech Startups",
-      description: "Accelerating clinical trials and drug discovery with AI",
-      icon: <FlaskConical className="h-6 w-6 text-purple-500" />
-    },
-    {
-      title: "Wearable Tech & IoT Companies",
-      description: "Integrating smart health devices for continuous monitoring",
-      icon: <ActivitySquare className="h-6 w-6 text-blue-500" />
-    },
-    {
-      title: "Academic & Research Institutions",
-      description: "Partnering for AI-driven medical breakthroughs",
-      icon: <BookOpen className="h-6 w-6 text-amber-500" />
-    },
-    {
-      title: "Regulatory & Compliance Bodies",
-      description: "Ensuring ethical, secure, and GDPR-compliant health data processing",
-      icon: <ShieldCheck className="h-6 w-6 text-emerald-500" />
-    }
-  ];
-
   return (
-    <div className="bg-white rounded-2xl shadow-xl border border-blue-100 p-8 mb-16">
-      <h3 className="text-xl font-bold text-health-dark mb-6 flex items-center gap-2">
-        <Globe className="h-6 w-6 text-blue-500" />
-        Key Collaborators
-      </h3>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {partnerTypes.map((partner, index) => (
-          <PartnerTypeCard 
-            key={index}
-            title={partner.title}
-            description={partner.description}
-            icon={partner.icon}
-          />
-        ))}
-      </div>
-      
-      <div className="mt-8 text-center">
-        <h3 className="text-lg font-bold text-health-dark mb-3">Investors Who Believe in the Future of AI Healthcare</h3>
-        <div className="flex flex-wrap justify-center gap-4">
-          <span className="px-4 py-2 bg-blue-50 rounded-full text-blue-700 text-sm font-medium border border-blue-100">[Investment Firm A]</span>
-          <span className="px-4 py-2 bg-indigo-50 rounded-full text-indigo-700 text-sm font-medium border border-indigo-100">[Investment Firm B]</span>
-          <span className="px-4 py-2 bg-purple-50 rounded-full text-purple-700 text-sm font-medium border border-purple-100">[Angel Investors & Venture Capital Partners]</span>
+    <div className="mb-16">
+      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg border border-blue-100">
+        <div className="flex flex-wrap justify-center gap-8">
+          {partners.map((partner, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+              whileHover={{ 
+                y: -5, 
+                boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.15)",
+                scale: 1.05 
+              }}
+            >
+              <PartnerLogo name={partner.name} />
+            </motion.div>
+          ))}
         </div>
-        
-        <p className="text-health-dark/80 font-medium mt-6">
-          Together, we are building the most advanced AI-powered healthcare ecosystem in the world.
-        </p>
       </div>
     </div>
   );

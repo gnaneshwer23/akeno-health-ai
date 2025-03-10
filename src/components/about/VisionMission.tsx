@@ -1,8 +1,22 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 import { Check, ArrowRight, Sparkles, Target, Rocket, Brain, Shield, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+const fadeVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.1 * i,
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  })
+};
 
 export const VisionMission = () => {
   const missionPoints = [
@@ -37,40 +51,147 @@ export const VisionMission = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-white via-health-light/10 to-white -z-10"></div>
       
       {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-health-primary/5 to-health-secondary/5 blur-3xl -z-10"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-health-primary/5 to-health-secondary/5 blur-3xl -z-10"></div>
-      <div className="absolute top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-indigo-400/5 blur-3xl -z-10"></div>
+      <motion.div 
+        className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-health-primary/10 to-health-secondary/10 blur-3xl -z-10"
+        animate={{
+          opacity: [0.5, 0.8, 0.5],
+          scale: [1, 1.05, 1],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      ></motion.div>
+      <motion.div 
+        className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-health-primary/10 to-health-secondary/10 blur-3xl -z-10"
+        animate={{
+          opacity: [0.5, 0.8, 0.5],
+          scale: [1, 1.05, 1],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+      ></motion.div>
+      <motion.div 
+        className="absolute top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-indigo-400/5 blur-3xl -z-10"
+        animate={{
+          opacity: [0.6, 0.9, 0.6],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      ></motion.div>
+      
+      {/* Connected dots network */}
+      <svg className="absolute inset-0 w-full h-full -z-10 opacity-10 pointer-events-none">
+        <defs>
+          <linearGradient id="visionLineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#6366f1" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.5" />
+          </linearGradient>
+        </defs>
+        {[...Array(8)].map((_, i) => (
+          <g key={i}>
+            <motion.circle
+              cx={`${10 + i * 12}%`}
+              cy={`${30 + (i % 4) * 15}%`}
+              r="2"
+              fill={i % 2 === 0 ? "#6366f1" : "#8b5cf6"}
+              animate={{
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                delay: i * 0.5
+              }}
+            />
+            {i < 7 && (
+              <motion.line
+                x1={`${10 + i * 12}%`}
+                y1={`${30 + (i % 4) * 15}%`}
+                x2={`${10 + (i+1) * 12}%`}
+                y2={`${30 + ((i+1) % 4) * 15}%`}
+                stroke="url(#visionLineGradient)"
+                strokeWidth="1"
+                strokeDasharray="5,5"
+                animate={{
+                  opacity: [0.2, 0.4, 0.2]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  delay: i * 0.5
+                }}
+              />
+            )}
+          </g>
+        ))}
+      </svg>
       
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-5 py-1.5 rounded-full bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-700 text-sm font-medium mb-5">
+          <motion.div 
+            className="inline-flex items-center px-5 py-1.5 rounded-full bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-700 text-sm font-medium mb-5"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <Sparkles size={16} className="text-indigo-500 mr-2" />
             Our Vision & Mission
-          </div>
+          </motion.div>
           
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-8">
-            Transforming Healthcare with AI
-          </h2>
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+              Transforming Healthcare with AI
+            </span>
+          </motion.h2>
           
-          <div className="flex justify-center mb-8">
+          <motion.div 
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <div className="h-1.5 w-24 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
-          </div>
+          </motion.div>
           
-          <p className="text-xl text-health-dark/70 max-w-3xl mx-auto mb-4">
+          <motion.p 
+            className="text-xl text-health-dark/70 max-w-3xl mx-auto mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             At <span className="font-semibold">Akeno Health</span>, we believe that <span className="font-semibold">healthcare should be predictive, personalised, and accessible to everyone</span>.
-          </p>
+          </motion.p>
         </div>
         
         {/* Vision and Mission Cards with Shared Background */}
         <div className="relative mb-20">
           {/* Connecting Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-300 to-purple-400 hidden lg:block"></div>
+          <motion.div 
+            className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-300 to-purple-400 hidden lg:block"
+            initial={{ height: 0 }}
+            whileInView={{ height: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          ></motion.div>
           
           <div className="grid lg:grid-cols-2 gap-12 relative">
             {/* Vision Card */}
-            <div className="relative z-10 group">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-600/30 rounded-3xl blur-lg transform group-hover:scale-105 transition-transform duration-500 opacity-80"></div>
+            <motion.div 
+              className="relative z-10 group"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              whileHover={{ y: -5 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/30 to-purple-600/40 rounded-3xl blur-lg transform group-hover:scale-105 transition-transform duration-500 opacity-80"></div>
               <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-indigo-100 h-full transform transition-transform duration-500 group-hover:translate-y-[-5px]">
                 <div className="flex items-center mb-6">
                   <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center shadow-lg mr-4">
@@ -88,11 +209,18 @@ export const VisionMission = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
             
             {/* Mission Card */}
-            <div className="relative z-10 group">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-fuchsia-600/30 rounded-3xl blur-lg transform group-hover:scale-105 transition-transform duration-500 opacity-80"></div>
+            <motion.div 
+              className="relative z-10 group"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              whileHover={{ y: -5 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-fuchsia-600/40 rounded-3xl blur-lg transform group-hover:scale-105 transition-transform duration-500 opacity-80"></div>
               <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-purple-100 h-full transform transition-transform duration-500 group-hover:translate-y-[-5px]">
                 <div className="flex items-center mb-6">
                   <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-700 flex items-center justify-center shadow-lg mr-4">
@@ -103,28 +231,60 @@ export const VisionMission = () => {
                 
                 <ul className="space-y-4">
                   {missionPoints.map((point, index) => (
-                    <li key={index} className="flex items-start gap-3">
+                    <motion.li 
+                      key={index} 
+                      className="flex items-start gap-3"
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.7 + (index * 0.1) }}
+                    >
                       <div className="min-w-6 mt-1">
                         <Check size={20} className="text-purple-600" />
                       </div>
                       <span className="text-lg text-gray-700">{point}</span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
         
         {/* Core Values Section */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-center text-health-dark mb-8">
+        <motion.div 
+          className="mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { 
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.3
+              }
+            }
+          }}
+        >
+          <motion.h3 
+            className="text-2xl font-bold text-center text-health-dark mb-8"
+            variants={fadeVariants}
+            custom={0}
+          >
             Our Core Values
-          </h3>
+          </motion.h3>
           
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+              <motion.div 
+                key={index}
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                variants={fadeVariants}
+                custom={index + 1}
+                whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+              >
                 <div className="flex items-center mb-4">
                   <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center mr-3">
                     {value.icon}
@@ -132,28 +292,41 @@ export const VisionMission = () => {
                   <h4 className="text-xl font-semibold text-health-dark">{value.title}</h4>
                 </div>
                 <p className="text-health-dark/70">{value.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
         
         {/* Call to Action */}
-        <div className="text-center">
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
           <p className="text-xl font-medium text-health-dark mb-8">
             We are not just improving healthcare – we are redefining it.
           </p>
           
-          <Button 
-            size="lg" 
-            className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 group"
-            asChild
-          >
-            <Link to="/contact" className="flex items-center gap-2">
-              Join Us in the AI Healthcare Revolution
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
-        </div>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 group"
+              asChild
+            >
+              <Link to="/contact" className="flex items-center gap-2">
+                Join Us in the AI Healthcare Revolution
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                >
+                  <ArrowRight size={16} />
+                </motion.div>
+              </Link>
+            </Button>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
