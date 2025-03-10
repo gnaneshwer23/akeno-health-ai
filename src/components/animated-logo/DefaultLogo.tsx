@@ -2,7 +2,7 @@
 import React from 'react';
 import { AnimatedCanvas } from './AnimatedCanvas';
 import { HumanBodySilhouette } from './HumanBodySilhouette';
-import { Brain, Activity, Cpu, Atom, HeartPulse, Dna } from 'lucide-react';
+import { Brain, Activity, HeartPulse, Dna, Cpu, Atom } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const DefaultLogo: React.FC = () => {
@@ -10,13 +10,17 @@ const DefaultLogo: React.FC = () => {
     <>
       <AnimatedCanvas width={120} height={120} />
       
-      {/* Background pulsing circle */}
+      {/* Background gradient circle */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-full h-full rounded-full bg-gradient-to-tr from-health-primary/40 via-health-secondary/30 to-health-accent/40"></div>
+      </div>
+      
+      {/* Pulsing circle */}
       <motion.div 
         className="absolute inset-0 flex items-center justify-center"
-        initial={{ opacity: 0.7 }}
         animate={{ 
-          opacity: [0.5, 0.8, 0.5],
-          scale: [0.9, 1, 0.9]
+          scale: [0.85, 0.9, 0.85],
+          opacity: [0.7, 0.9, 0.7]
         }}
         transition={{ 
           duration: 3, 
@@ -24,145 +28,114 @@ const DefaultLogo: React.FC = () => {
           ease: "easeInOut"
         }}
       >
-        <div className="w-3/4 h-3/4 rounded-full bg-gradient-to-tr from-health-primary via-health-secondary to-health-accent"></div>
+        <div className="w-3/4 h-3/4 rounded-full border-2 border-white/30"></div>
       </motion.div>
       
-      {/* Rotating circle */}
-      <motion.div 
-        className="absolute inset-0 flex items-center justify-center"
-        animate={{ rotate: 360 }}
-        transition={{ 
-          duration: 10, 
-          repeat: Infinity, 
-          ease: "linear"
-        }}
-      >
-        <div className="w-2/3 h-2/3 rounded-full border-t-2 border-l-2 border-white opacity-60"></div>
-      </motion.div>
-      
-      {/* Pulsing inner circle */}
-      <motion.div 
-        className="absolute inset-0 flex items-center justify-center"
-        animate={{ 
-          scale: [1, 1.05, 1],
-          opacity: [0.8, 1, 0.8]
-        }}
-        transition={{ 
-          duration: 2.5, 
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut"
-        }}
-      >
-        <div className="w-1/2 h-1/2 rounded-full bg-white"></div>
-      </motion.div>
-      
-      {/* Human silhouette container with its own animation */}
-      <motion.div 
-        className="absolute inset-0 flex items-center justify-center"
-        animate={{ 
-          scale: [1, 1.03, 1]
-        }}
-        transition={{ 
-          duration: 4, 
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut"
-        }}
-      >
-        <div className="w-2/5 h-2/5 flex items-center justify-center relative">
+      {/* Human silhouette and icons */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="relative w-1/2 h-1/2">
           {/* Human silhouette at center */}
           <HumanBodySilhouette />
           
-          {/* Health data and AI nodes surrounding the human */}
+          {/* Medical/Health icons arranged in a circle around the human */}
           <div className="absolute inset-0">
-            {/* Animated connections between human and health/AI elements */}
+            {/* Create a perfect circle of icons around the human */}
+            {/* Icon positions are calculated based on angle around circle */}
             <motion.div 
-              className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full"
+              className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
               animate={{ y: [0, -2, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <Brain size={12} className="text-health-secondary" />
-              <motion.div 
-                className="absolute h-5 w-px bg-health-secondary/60 bottom-full left-1/2 transform -translate-x-1/2"
-                animate={{ height: [20, 22, 20] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              ></motion.div>
+              <Brain size={14} className="text-health-primary" />
             </motion.div>
             
             <motion.div 
-              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full"
-              animate={{ y: [0, 2, 0] }}
+              className="absolute top-1/4 right-0 transform translate-x-1/2 -translate-y-1/2"
+              animate={{ x: [0, 2, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
             >
-              <Activity size={12} className="text-health-primary" />
-              <motion.div 
-                className="absolute h-5 w-px bg-health-primary/60 top-full left-1/2 transform -translate-x-1/2"
-                animate={{ height: [20, 22, 20] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-              ></motion.div>
+              <Cpu size={14} className="text-health-secondary" />
             </motion.div>
             
             <motion.div 
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-full"
-              animate={{ x: [0, -2, 0] }}
+              className="absolute bottom-1/4 right-0 transform translate-x-1/2 translate-y-1/2"
+              animate={{ x: [0, 2, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
             >
-              <HeartPulse size={12} className="text-health-accent" />
-              <motion.div 
-                className="absolute w-5 h-px bg-health-accent/60 right-full top-1/2 transform -translate-y-1/2"
-                animate={{ width: [20, 22, 20] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-              ></motion.div>
+              <Atom size={14} className="text-health-accent" />
             </motion.div>
             
             <motion.div 
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-full"
-              animate={{ x: [0, 2, 0] }}
+              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2"
+              animate={{ y: [0, 2, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
             >
-              <Atom size={12} className="text-health-secondary" />
-              <motion.div 
-                className="absolute w-5 h-px bg-health-secondary/60 left-full top-1/2 transform -translate-y-1/2"
-                animate={{ width: [20, 22, 20] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
-              ></motion.div>
+              <Activity size={14} className="text-health-primary" />
             </motion.div>
             
             <motion.div 
-              className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2"
-              animate={{ 
-                x: [0, 1, 0],
-                y: [0, -1, 0] 
-              }}
+              className="absolute bottom-1/4 left-0 transform -translate-x-1/2 translate-y-1/2"
+              animate={{ x: [0, -2, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
             >
-              <Cpu size={12} className="text-health-primary" />
-              <motion.div 
-                className="absolute h-4 w-px bg-health-primary/60 rotate-45 bottom-full right-1/2"
-                animate={{ height: [16, 18, 16] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-              ></motion.div>
+              <HeartPulse size={14} className="text-health-secondary" />
             </motion.div>
             
             <motion.div 
-              className="absolute bottom-0 left-0 transform -translate-x-1/2 translate-y-1/2"
-              animate={{ 
-                x: [0, -1, 0],
-                y: [0, 1, 0] 
-              }}
+              className="absolute top-1/4 left-0 transform -translate-x-1/2 -translate-y-1/2"
+              animate={{ x: [0, -2, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
             >
-              <Dna size={12} className="text-health-accent" />
-              <motion.div 
-                className="absolute h-4 w-px bg-health-accent/60 rotate-45 top-full left-1/2"
-                animate={{ height: [16, 18, 16] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-              ></motion.div>
+              <Dna size={14} className="text-health-accent" />
             </motion.div>
           </div>
         </div>
+      </div>
+      
+      {/* Inner white circle */}
+      <motion.div 
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        initial={{ scale: 0.8, opacity: 0.7 }}
+        animate={{ 
+          scale: [0.3, 0.32, 0.3],
+          opacity: [0.8, 1, 0.8]
+        }}
+        transition={{ 
+          duration: 2, 
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"
+        }}
+      >
+        <div className="w-full h-full rounded-full bg-white/90"></div>
       </motion.div>
+      
+      {/* Connecting lines between icons and human silhouette */}
+      <div className="absolute inset-0 pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" className="opacity-40">
+          <defs>
+            <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="var(--health-primary)" />
+              <stop offset="50%" stopColor="var(--health-secondary)" />
+              <stop offset="100%" stopColor="var(--health-accent)" />
+            </linearGradient>
+          </defs>
+          
+          {/* Radial lines connecting center to each icon */}
+          <motion.g
+            initial={{ opacity: 0.3 }}
+            animate={{ opacity: [0.3, 0.7, 0.3] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <line x1="50" y1="50" x2="50" y2="25" stroke="url(#line-gradient)" strokeWidth="0.5" />
+            <line x1="50" y1="50" x2="75" y2="37.5" stroke="url(#line-gradient)" strokeWidth="0.5" />
+            <line x1="50" y1="50" x2="75" y2="62.5" stroke="url(#line-gradient)" strokeWidth="0.5" />
+            <line x1="50" y1="50" x2="50" y2="75" stroke="url(#line-gradient)" strokeWidth="0.5" />
+            <line x1="50" y1="50" x2="25" y2="62.5" stroke="url(#line-gradient)" strokeWidth="0.5" />
+            <line x1="50" y1="50" x2="25" y2="37.5" stroke="url(#line-gradient)" strokeWidth="0.5" />
+          </motion.g>
+        </svg>
+      </div>
     </>
   );
 };
