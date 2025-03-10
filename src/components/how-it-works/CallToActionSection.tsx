@@ -1,39 +1,37 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { ArrowRight, Users, Brain, Shield } from 'lucide-react';
+import BenefitsGrid from './cta/BenefitsGrid';
+import CTAButtons from './cta/CTAButtons';
+import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
-const CallToActionSection = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { 
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { 
+      staggerChildren: 0.1,
+      delayChildren: 0.2
     }
-  };
-  
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 }
-  };
+  }
+};
 
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1 }
+};
+
+const CallToActionSection = () => {
   return (
     <section className="py-24 px-6 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 text-white relative overflow-hidden">
-      {/* Enhanced background decorative elements */}
+      {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-80 h-80 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/10 blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-gradient-to-tl from-purple-500/20 to-pink-500/10 blur-3xl"></div>
         <div className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full bg-gradient-to-tr from-blue-500/20 to-cyan-500/10 blur-2xl"></div>
       </div>
-      
-      {/* Enhanced decorative shapes */}
-      <div className="absolute top-20 right-10 w-24 h-24 rounded-lg border border-indigo-500/20 rotate-12 hidden lg:block"></div>
-      <div className="absolute bottom-20 left-10 w-32 h-32 rounded-full border border-purple-500/20 hidden lg:block"></div>
       
       <motion.div 
         className="max-w-5xl mx-auto relative z-10"
@@ -75,53 +73,7 @@ const CallToActionSection = () => {
               variants={itemVariants}
             >
               <h3 className="text-2xl font-semibold text-white">Next Steps</h3>
-              <p className="text-indigo-100/80">
-                Based on what you've learned about our process, choose the path that best fits your needs:
-              </p>
-              
-              <div className="space-y-4">
-                <motion.div 
-                  className="flex items-start gap-4"
-                  variants={itemVariants}
-                  whileHover={{ x: 5 }}
-                >
-                  <div className="h-10 w-10 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Users size={18} className="text-indigo-300" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-white">Explore Solutions</h4>
-                    <p className="text-indigo-200/80 text-sm">Browse our tailored solutions for patients, doctors, or healthcare institutions</p>
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className="flex items-start gap-4"
-                  variants={itemVariants}
-                  whileHover={{ x: 5 }}
-                >
-                  <div className="h-10 w-10 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Brain size={18} className="text-indigo-300" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-white">Learn About Our Technology</h4>
-                    <p className="text-indigo-200/80 text-sm">Discover more about our quantum computing and AI innovations</p>
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className="flex items-start gap-4"
-                  variants={itemVariants}
-                  whileHover={{ x: 5 }}
-                >
-                  <div className="h-10 w-10 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Shield size={18} className="text-indigo-300" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-white">Contact Our Team</h4>
-                    <p className="text-indigo-200/80 text-sm">Schedule a consultation to discuss your specific needs</p>
-                  </div>
-                </motion.div>
-              </div>
+              <BenefitsGrid />
             </motion.div>
             
             <motion.div 
@@ -129,50 +81,7 @@ const CallToActionSection = () => {
               variants={itemVariants}
             >
               <h3 className="text-2xl font-semibold text-white mb-6">Take Action Today</h3>
-              
-              <div className="space-y-4">
-                <div className="flex flex-col space-y-3">
-                  <Button
-                    size="lg"
-                    className="group bg-health-primary hover:bg-health-secondary w-full"
-                    asChild
-                  >
-                    <Link to="/contact" className="flex items-center justify-center gap-2">
-                      Join the Future of AI Healthcare
-                      <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                  
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="border-indigo-300/30 hover:border-indigo-300/60 text-white w-full"
-                    asChild
-                  >
-                    <Link to="/contact" className="flex items-center justify-center gap-2">
-                      Request a Demo
-                    </Link>
-                  </Button>
-                  
-                  <Button
-                    variant="ghost"
-                    size="lg"
-                    className="hover:bg-indigo-500/10 text-white w-full"
-                    asChild
-                  >
-                    <Link to="/contact" className="flex items-center justify-center gap-2">
-                      Partner With Us
-                    </Link>
-                  </Button>
-                </div>
-                
-                <motion.p 
-                  className="text-indigo-200/70 italic text-center text-sm mt-4"
-                  variants={itemVariants}
-                >
-                  "The future of healthcare is here. Join thousands of patients and healthcare providers already benefiting from Akeno Health's innovations."
-                </motion.p>
-              </div>
+              <CTAButtons />
             </motion.div>
           </div>
         </motion.div>
