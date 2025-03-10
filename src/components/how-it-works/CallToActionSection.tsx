@@ -2,11 +2,9 @@
 import React from 'react';
 import { Button } from '@/components/Button';
 import { motion } from 'framer-motion';
-import { ArrowRight, Users, Brain, Database, Shield } from 'lucide-react';
+import { ArrowRight, Users, Brain, Database, Shield, Check, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ActionButtons } from '@/components/about/cta/ActionButtons';
-import { PartnersSection } from '@/components/about/cta/PartnersSection';
-import { CTACardsSection } from '@/components/about/cta/CTACardsSection';
 
 const CallToActionSection = () => {
   const containerVariants = {
@@ -149,12 +147,117 @@ const CallToActionSection = () => {
           </div>
         </motion.div>
         
-        <motion.div variants={itemVariants}>
-          <PartnersSection />
+        {/* New Success Stories Section */}
+        <motion.div 
+          className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 mb-12"
+          variants={itemVariants}
+        >
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-semibold text-white mb-4">Success Stories</h3>
+            <p className="text-indigo-100/80 max-w-3xl mx-auto">
+              See how Akeno Health is making a real difference in healthcare outcomes around the world
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div 
+              className="bg-indigo-500/10 backdrop-blur-sm rounded-xl p-6 border border-indigo-400/20"
+              whileHover={{ y: -5 }}
+              variants={itemVariants}
+            >
+              <div className="flex justify-between items-start mb-4">
+                <div className="bg-indigo-500/20 p-2 rounded-lg">
+                  <Database size={20} className="text-indigo-300" />
+                </div>
+                <div className="flex space-x-1">
+                  {[1, 2, 3, 4, 5].map((_, i) => (
+                    <span key={i} className="text-yellow-300">★</span>
+                  ))}
+                </div>
+              </div>
+              <h4 className="font-semibold text-white mb-2">Memorial Hospital</h4>
+              <p className="text-indigo-200/70 text-sm mb-4">
+                "Reduced patient readmission rates by 32% and optimized resource allocation with AI-powered predictive analytics."
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-xs text-indigo-200/50">Hospital</span>
+                <Link to="/case-studies" className="text-indigo-300 hover:text-indigo-200 text-sm flex items-center gap-1">
+                  Read more <ArrowUpRight size={12} />
+                </Link>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-purple-500/10 backdrop-blur-sm rounded-xl p-6 border border-purple-400/20"
+              whileHover={{ y: -5 }}
+              variants={itemVariants}
+            >
+              <div className="flex justify-between items-start mb-4">
+                <div className="bg-purple-500/20 p-2 rounded-lg">
+                  <Users size={20} className="text-purple-300" />
+                </div>
+                <div className="flex space-x-1">
+                  {[1, 2, 3, 4, 5].map((_, i) => (
+                    <span key={i} className="text-yellow-300">★</span>
+                  ))}
+                </div>
+              </div>
+              <h4 className="font-semibold text-white mb-2">Dr. Michaels Practice</h4>
+              <p className="text-indigo-200/70 text-sm mb-4">
+                "Improved diagnostic accuracy by 47% with Akeno's AI imaging analysis, saving critical time in urgent cases."
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-xs text-indigo-200/50">Medical Practice</span>
+                <Link to="/case-studies" className="text-purple-300 hover:text-purple-200 text-sm flex items-center gap-1">
+                  Read more <ArrowUpRight size={12} />
+                </Link>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-blue-500/10 backdrop-blur-sm rounded-xl p-6 border border-blue-400/20"
+              whileHover={{ y: -5 }}
+              variants={itemVariants}
+            >
+              <div className="flex justify-between items-start mb-4">
+                <div className="bg-blue-500/20 p-2 rounded-lg">
+                  <Check size={20} className="text-blue-300" />
+                </div>
+                <div className="flex space-x-1">
+                  {[1, 2, 3, 4, 5].map((_, i) => (
+                    <span key={i} className="text-yellow-300">★</span>
+                  ))}
+                </div>
+              </div>
+              <h4 className="font-semibold text-white mb-2">Patient: Sarah K.</h4>
+              <p className="text-indigo-200/70 text-sm mb-4">
+                "The personalized health monitoring identified my condition early, leading to timely intervention and better outcomes."
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-xs text-indigo-200/50">Patient</span>
+                <Link to="/patient-solutions" className="text-blue-300 hover:text-blue-200 text-sm flex items-center gap-1">
+                  Read more <ArrowUpRight size={12} />
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
         
-        <motion.div variants={itemVariants}>
-          <CTACardsSection />
+        {/* Get Started Section */}
+        <motion.div 
+          className="text-center"
+          variants={itemVariants}
+        >
+          <Button
+            className="group bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            as="Link"
+            to="/contact"
+          >
+            <span className="flex items-center gap-2">
+              Begin Your Journey With Akeno Health
+              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </span>
+          </Button>
         </motion.div>
       </motion.div>
     </section>
