@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Check } from 'lucide-react';
 
 interface ProcessStepProps {
   stepNumber: number;
@@ -80,66 +81,105 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
   const colors = getStepColors(stepNumber);
   
   return (
-    <div className="mb-20">
+    <motion.div 
+      className="mb-24" 
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.7 }}
+    >
       <div className="flex flex-col lg:flex-row gap-10 items-start">
-        <div className="lg:w-1/3 flex-shrink-0">
+        <motion.div 
+          className="lg:w-1/3 flex-shrink-0"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <div className="sticky top-28">
             <div className="flex items-center gap-4 mb-4">
-              <div className={`flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br ${colors.accent} text-white text-xl font-medium shadow-md`}>{stepNumber}</div>
-              <h3 className={`text-2xl font-medium ${colors.text}`}>{title}</h3>
+              <div className={`flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br ${colors.accent} text-white text-xl font-bold shadow-lg`}>{stepNumber}</div>
+              <h3 className={`text-2xl font-bold ${colors.text}`}>{title}</h3>
             </div>
             <div className="pl-16">
               <p className="text-muted-foreground mb-6">
                 {description}
               </p>
-              <div className={`h-40 w-40 mx-auto rounded-xl bg-gradient-to-br ${colors.bg} flex items-center justify-center border ${colors.border} shadow-md`}>
-                {icon}
-              </div>
+              <motion.div 
+                className={`h-48 w-48 mx-auto rounded-2xl bg-gradient-to-br ${colors.bg} flex items-center justify-center border ${colors.border} shadow-lg`}
+                whileHover={{ scale: 1.05, rotate: 1 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="scale-150">
+                  {icon}
+                </div>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
         
-        <div className="lg:w-2/3">
+        <motion.div 
+          className="lg:w-2/3"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <div className="space-y-6">
-            <div className={`bg-gradient-to-br ${colors.bg} rounded-xl p-6 border ${colors.border} shadow-sm`}>
+            <motion.div 
+              className={`bg-gradient-to-br ${colors.bg} rounded-xl p-6 border ${colors.border} shadow-md`}
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <div className="grid md:grid-cols-2 gap-6">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex gap-4 hover:translate-x-1 transition-transform duration-200">
-                    <div className={`flex-shrink-0 h-10 w-10 rounded-full ${colors.iconBg} flex items-center justify-center`}>
+                  <motion.div 
+                    key={index} 
+                    className="flex gap-4 hover:translate-x-1 transition-transform duration-200"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.1 * index }}
+                  >
+                    <div className={`flex-shrink-0 h-12 w-12 rounded-full ${colors.iconBg} flex items-center justify-center`}>
                       {feature.icon}
                     </div>
                     <div>
                       {feature.title && (
-                        <h5 className={`text-base font-medium ${colors.text} mb-1`}>{feature.title}</h5>
+                        <h5 className={`text-base font-semibold ${colors.text} mb-1`}>{feature.title}</h5>
                       )}
                       <p className="text-sm text-muted-foreground">
                         {feature.content}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
             
-            <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-200">
+            <motion.div 
+              className="bg-white rounded-xl p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <div className="flex gap-4 items-start">
                 <div className="flex-shrink-0">
-                  <div className={`h-10 w-10 rounded-full bg-gradient-to-br ${colors.accent} flex items-center justify-center text-white shadow-md`}>
-                    <ArrowRight size={20} />
+                  <div className={`h-12 w-12 rounded-full bg-gradient-to-br ${colors.accent} flex items-center justify-center text-white shadow-md`}>
+                    <Check size={24} />
                   </div>
                 </div>
                 <div>
-                  <h5 className={`text-base font-medium ${colors.text} mb-2`}>Outcome:</h5>
-                  <p className="text-sm text-muted-foreground">
+                  <h5 className={`text-lg font-semibold ${colors.text} mb-2`}>Outcome:</h5>
+                  <p className="text-muted-foreground">
                     {outcome}
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

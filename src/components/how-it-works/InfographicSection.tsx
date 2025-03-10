@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 import { 
   Smartphone, Database, Brain, FlaskConical, Activity, HeartPulse, 
   Beaker, Link as LinkIcon, Shield, Users, Zap, Lock
@@ -137,42 +138,59 @@ const InfographicSection = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-white to-indigo-50/30 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDYwIEwgNjAgMCIgc3Ryb2tlPSIjNmY3MmZmIiBzdHJva2Utb3BhY2l0eT0iMC4wMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCBmaWxsPSJ1cmwoI2dyaWQpIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIi8+PC9zdmc+')] opacity-50 -z-10"></div>
+    <section className="py-20 px-6 bg-gradient-to-b from-white to-indigo-50/40 relative overflow-hidden">
+      {/* Enhanced background elements */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDYwIEwgNjAgMCIgc3Ryb2tlPSIjNmY3MmZmIiBzdHJva2Utb3BhY2l0eT0iMC4wMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCBmaWxsPSJ1cmwoI2dyaWQpIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIi8+PC9zdmc+')] opacity-20 -z-10"></div>
       <div className="absolute top-1/3 right-0 w-96 h-96 bg-indigo-300/10 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-300/10 rounded-full blur-3xl -z-10"></div>
       
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="inline-flex items-center px-4 py-1.5 mb-4 rounded-full bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-600 font-medium gap-2 border border-indigo-200/50 shadow-sm">
-            <Activity size={16} className="text-indigo-500" />
+      <motion.div 
+        className="max-w-5xl mx-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center px-4 py-1.5 mb-4 rounded-full bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-700 font-medium gap-2 border border-indigo-200/50 shadow-sm">
+            <Activity size={16} className="text-indigo-600" />
             <span>Your AI-Powered Healthcare Journey</span>
           </span>
           
-          <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
             Your Health Journey with <span className="bg-gradient-to-br from-indigo-600 to-purple-600 bg-clip-text text-transparent">Akeno AI</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             How our technology transforms your healthcare experience at every step
           </p>
-        </div>
+        </motion.div>
         
         <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-4 lg:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-300 via-purple-300 to-pink-300"></div>
+          {/* Enhanced Vertical Line */}
+          <div className="absolute left-4 lg:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-400 via-purple-400 to-pink-400 rounded-full -z-10"></div>
           
           {/* Journey Steps */}
           <div className="space-y-12">
             {journeySteps.map((item, index) => {
               const colors = getColorClasses(item.color);
               return (
-                <div key={index} className={cn(
-                  "flex flex-col lg:flex-row gap-6 items-center lg:items-start relative",
-                  index % 2 === 0 ? "lg:flex-row-reverse" : ""
-                )}>
+                <motion.div 
+                  key={index} 
+                  className={cn(
+                    "flex flex-col lg:flex-row gap-6 items-center lg:items-start relative",
+                    index % 2 === 0 ? "lg:flex-row-reverse" : ""
+                  )}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.7, delay: 0.1 * index }}
+                >
                   <div className="absolute left-4 lg:left-1/2 top-0 transform -translate-x-1/2 z-10">
-                    <div className={`flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br ${colors.gradient} text-white text-sm font-medium shadow-md`}>
+                    <div className={`flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br ${colors.gradient} text-white text-sm font-bold shadow-lg border-2 border-white`}>
                       {item.step}
                     </div>
                   </div>
@@ -181,27 +199,31 @@ const InfographicSection = () => {
                     "w-full lg:w-1/2 pl-16 lg:pl-0 lg:px-8",
                     index % 2 === 0 ? "lg:text-right" : "lg:text-left"
                   )}>
-                    <div className={`bg-white rounded-xl p-6 shadow-md border ${colors.border} hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${colors.shadow}`}>
+                    <motion.div 
+                      className={`bg-white rounded-xl p-6 shadow-md border ${colors.border} hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${colors.shadow}`}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
                       <div className={cn(
                         "flex gap-4 items-start",
                         index % 2 === 0 ? "lg:flex-row-reverse" : ""
                       )}>
-                        <div className={`flex-shrink-0 h-10 w-10 rounded-full bg-gradient-to-br ${colors.gradient} flex items-center justify-center text-white shadow-md`}>
+                        <div className={`flex-shrink-0 h-12 w-12 rounded-full bg-gradient-to-br ${colors.gradient} flex items-center justify-center text-white shadow-md`}>
                           {item.icon}
                         </div>
                         <div>
-                          <h4 className="font-medium text-health-dark mb-1">{item.title}</h4>
+                          <h4 className="font-bold text-lg text-health-dark mb-2">{item.title}</h4>
                           <p className="text-sm text-muted-foreground">{item.content}</p>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
               )
             })}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
