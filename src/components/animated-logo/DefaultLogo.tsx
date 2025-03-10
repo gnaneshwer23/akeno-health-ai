@@ -2,7 +2,7 @@
 import React from 'react';
 import { AnimatedCanvas } from './AnimatedCanvas';
 import { HumanBodySilhouette } from './HumanBodySilhouette';
-import { Brain, Activity, HeartPulse, Dna, Cpu, Atom, CircleDot } from 'lucide-react';
+import { Brain, Activity, HeartPulse, Dna, Cpu, Atom } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const DefaultLogo: React.FC = () => {
