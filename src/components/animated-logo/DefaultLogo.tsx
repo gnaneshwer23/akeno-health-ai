@@ -92,13 +92,13 @@ const DefaultLogo: React.FC = () => {
         </div>
       </div>
       
-      {/* Inner white circle */}
+      {/* Inner circle - changed to transparent with subtle glow */}
       <motion.div 
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
-        initial={{ scale: 0.8, opacity: 0.7 }}
+        initial={{ scale: 0.8, opacity: 0.3 }}
         animate={{ 
           scale: [0.3, 0.32, 0.3],
-          opacity: [0.8, 1, 0.8]
+          opacity: [0.3, 0.4, 0.3]
         }}
         transition={{ 
           duration: 2, 
@@ -107,7 +107,7 @@ const DefaultLogo: React.FC = () => {
           ease: "easeInOut"
         }}
       >
-        <div className="w-full h-full rounded-full bg-white/90"></div>
+        <div className="w-full h-full rounded-full bg-white/10 backdrop-blur-sm"></div>
       </motion.div>
       
       {/* Connecting lines between icons and human silhouette */}

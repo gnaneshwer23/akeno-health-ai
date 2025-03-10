@@ -1,10 +1,11 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const HumanBodySilhouette: React.FC = () => {
   return (
     <div className="relative h-full w-full flex items-center justify-center">
-      <svg 
+      <motion.svg 
         viewBox="0 0 24 24" 
         fill="none" 
         stroke="currentColor" 
@@ -12,6 +13,8 @@ const HumanBodySilhouette: React.FC = () => {
         strokeLinecap="round" 
         strokeLinejoin="round" 
         className="w-full h-full text-health-primary"
+        animate={{ opacity: [0.8, 1, 0.8] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       >
         {/* Head */}
         <circle cx="12" cy="7" r="3" />
@@ -25,13 +28,13 @@ const HumanBodySilhouette: React.FC = () => {
         {/* Legs */}
         <path d="M10 17l2 3" />
         <path d="M14 17l-2 3" />
-      </svg>
-      
-      {/* Decorative pulse point at heart location */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 w-1.5 h-1.5 bg-health-accent rounded-full animate-pulse"></div>
-      
-      {/* Decorative pulse point at brain location */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-health-secondary rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+
+        {/* Subtle glow effect */}
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="1" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+      </motion.svg>
     </div>
   );
 };
