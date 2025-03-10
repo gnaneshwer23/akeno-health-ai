@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { journeySteps, JourneyStep } from './journeyStepsData';
+import { journeySteps } from './journeyStepsData';
+import type { JourneyStep } from './journeyStepsData';
 import { getColorClasses } from './ColorSchemeUtils';
 import { cn } from '@/lib/utils';
 
