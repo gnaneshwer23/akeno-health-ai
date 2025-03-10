@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import { HeroBackgroundElements } from './hero/HeroBackgroundElements';
 import { HeroContent } from './hero/HeroContent';
 import { HeroFooterElements } from './hero/HeroFooterElements';
+import { EnhancedHeroElements } from './hero/EnhancedHeroElements';
 import { useParallaxEffect } from './hero/useParallaxEffect';
 
 const Hero: React.FC = () => {
@@ -16,6 +17,7 @@ const Hero: React.FC = () => {
       ref={heroRef} 
       className="min-h-screen pt-32 pb-20 px-6 flex flex-col items-center justify-center relative overflow-hidden"
     >
+      <EnhancedHeroElements />
       <HeroBackgroundElements heroRef={heroRef} />
       <HeroContent />
       <HeroFooterElements />
