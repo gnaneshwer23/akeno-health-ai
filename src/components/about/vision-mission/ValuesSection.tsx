@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Shield, Heart } from 'lucide-react';
@@ -37,7 +36,12 @@ const ValueCard = ({ title, description, icon, index }: ValueCardProps) => {
         </div>
         <h4 className="text-xl font-semibold text-health-dark">{title}</h4>
       </div>
-      <p className="text-health-dark/70">{description}</p>
+      <p className="text-health-dark/70 mb-4">{description}</p>
+      <p className="text-sm text-health-dark/60 italic">
+        {title === "Innovation" && "Our commitment to cutting-edge AI research and development ensures we stay at the forefront of healthcare technology."}
+        {title === "Integrity" && "We prioritize patient privacy and maintain the highest standards of data security in everything we do."}
+        {title === "Inclusion" && "Healthcare is a fundamental right, and we strive to make our AI solutions accessible across all communities."}
+      </p>
     </motion.div>
   );
 };
