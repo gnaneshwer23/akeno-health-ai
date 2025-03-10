@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { AnimatedCanvas } from './AnimatedCanvas';
 import { HumanBodySilhouette } from './HumanBodySilhouette';
@@ -6,17 +5,17 @@ import { Brain, Activity, HeartPulse, Dna, Cpu, Atom } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const DefaultLogo: React.FC = () => {
-  // Define a fixed radius for all icons around the silhouette
-  const fixedRadius = 35;
+  // Define a fixed radius for all icons around the silhouette - reducing it to keep elements inside
+  const fixedRadius = 28; // Reduced from 35 to keep elements inside the container
   
   // Create positions for icons at equal distances around a circle
   const iconPositions = [
-    { icon: <Brain size={16} className="text-health-primary" />, angle: 0 },
-    { icon: <Cpu size={16} className="text-health-secondary" />, angle: 60 },
-    { icon: <Atom size={16} className="text-health-accent" />, angle: 120 },
-    { icon: <Activity size={16} className="text-health-primary" />, angle: 180 },
-    { icon: <HeartPulse size={16} className="text-health-secondary" />, angle: 240 },
-    { icon: <Dna size={16} className="text-health-accent" />, angle: 300 },
+    { icon: <Brain size={14} className="text-health-primary" />, angle: 0 },
+    { icon: <Cpu size={14} className="text-health-secondary" />, angle: 60 },
+    { icon: <Atom size={14} className="text-health-accent" />, angle: 120 },
+    { icon: <Activity size={14} className="text-health-primary" />, angle: 180 },
+    { icon: <HeartPulse size={14} className="text-health-secondary" />, angle: 240 },
+    { icon: <Dna size={14} className="text-health-accent" />, angle: 300 },
   ];
 
   return (
@@ -44,9 +43,9 @@ const DefaultLogo: React.FC = () => {
         <div className="w-3/4 h-3/4 rounded-full border-2 border-white/30"></div>
       </motion.div>
       
-      {/* Human silhouette and icons */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-2/3 h-2/3">
+      {/* Human silhouette and icons - ensuring they stay within boundaries */}
+      <div className="absolute inset-[10%] flex items-center justify-center">
+        <div className="relative w-full h-full">
           {/* Human silhouette at center */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-1/2 h-1/2">
@@ -137,7 +136,7 @@ const DefaultLogo: React.FC = () => {
       </motion.div>
       
       {/* Connecting lines between icons and human silhouette */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-[10%] pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 100 100" className="opacity-20">
           <defs>
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
