@@ -6,16 +6,16 @@ import { motion } from 'framer-motion';
 
 const DefaultLogo: React.FC = () => {
   // Define a fixed radius for all icons around the silhouette - reducing it to keep elements inside
-  const fixedRadius = 28; // Reduced from 35 to keep elements inside the container
+  const fixedRadius = 24; // Reduced to ensure all elements stay visibly inside the container
   
   // Create positions for icons at equal distances around a circle
   const iconPositions = [
-    { icon: <Brain size={14} className="text-health-primary" />, angle: 0 },
-    { icon: <Cpu size={14} className="text-health-secondary" />, angle: 60 },
-    { icon: <Atom size={14} className="text-health-accent" />, angle: 120 },
-    { icon: <Activity size={14} className="text-health-primary" />, angle: 180 },
-    { icon: <HeartPulse size={14} className="text-health-secondary" />, angle: 240 },
-    { icon: <Dna size={14} className="text-health-accent" />, angle: 300 },
+    { icon: <Brain size={12} className="text-health-primary" />, angle: 0 },
+    { icon: <Cpu size={12} className="text-health-secondary" />, angle: 60 },
+    { icon: <Atom size={12} className="text-health-accent" />, angle: 120 },
+    { icon: <Activity size={12} className="text-health-primary" />, angle: 180 },
+    { icon: <HeartPulse size={12} className="text-health-secondary" />, angle: 240 },
+    { icon: <Dna size={12} className="text-health-accent" />, angle: 300 },
   ];
 
   return (
@@ -40,11 +40,11 @@ const DefaultLogo: React.FC = () => {
           ease: "easeInOut"
         }}
       >
-        <div className="w-3/4 h-3/4 rounded-full border-2 border-white/30"></div>
+        <div className="w-3/4 h-3/4 rounded-full border border-white/40"></div>
       </motion.div>
       
-      {/* Human silhouette and icons - ensuring they stay within boundaries */}
-      <div className="absolute inset-[10%] flex items-center justify-center">
+      {/* Human silhouette and icons - centered container with more space */}
+      <div className="absolute inset-[15%] flex items-center justify-center">
         <div className="relative w-full h-full">
           {/* Human silhouette at center */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -57,13 +57,13 @@ const DefaultLogo: React.FC = () => {
           <div className="absolute inset-0">
             {iconPositions.map((_, index) => (
               <React.Fragment key={`dots-${index}`}>
-                {[...Array(3)].map((__, dotIndex) => {
+                {[...Array(2)].map((__, dotIndex) => {
                   const angle = iconPositions[index].angle * Math.PI / 180;
-                  const dotDistance = fixedRadius * (dotIndex + 1) / 4; // Position dots along the path
+                  const dotDistance = fixedRadius * (dotIndex + 1) / 3; // Position dots along the path
                   return (
                     <motion.div
                       key={`dot-${index}-${dotIndex}`}
-                      className="absolute w-1 h-1 bg-health-accent/70 rounded-full"
+                      className="absolute w-[2px] h-[2px] bg-health-accent/80 rounded-full"
                       style={{
                         left: `${50 + dotDistance * Math.cos(angle)}%`,
                         top: `${50 + dotDistance * Math.sin(angle)}%`,
@@ -109,7 +109,9 @@ const DefaultLogo: React.FC = () => {
                     delay: index * 0.5
                   }}
                 >
-                  {item.icon}
+                  <div className="flex items-center justify-center p-1 bg-white/10 backdrop-blur-sm rounded-full">
+                    {item.icon}
+                  </div>
                 </motion.div>
               );
             })}
@@ -136,8 +138,8 @@ const DefaultLogo: React.FC = () => {
       </motion.div>
       
       {/* Connecting lines between icons and human silhouette */}
-      <div className="absolute inset-[10%] pointer-events-none">
-        <svg width="100%" height="100%" viewBox="0 0 100 100" className="opacity-20">
+      <div className="absolute inset-[15%] pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" className="opacity-30">
           <defs>
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="var(--health-primary)" />
@@ -160,10 +162,10 @@ const DefaultLogo: React.FC = () => {
                 y2={endY}
                 stroke="url(#line-gradient)"
                 strokeWidth="0.5"
-                strokeDasharray="2,2"
+                strokeDasharray="1,1.5"
                 animate={{ 
-                  opacity: [0.2, 0.5, 0.2],
-                  strokeDashoffset: [0, -10]
+                  opacity: [0.3, 0.6, 0.3],
+                  strokeDashoffset: [0, -5]
                 }}
                 transition={{ 
                   duration: 3, 
