@@ -5,7 +5,7 @@
   justify-content: space-between;
   width: 100%;
   pointer-events: none;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .floating-connection-top {
@@ -45,19 +45,19 @@
 }
 
 .flow-particle {
-  width: 4px;
-  height: 4px;
-  background: rgba(99, 102, 241, 0.8);
+  width: 6px;
+  height: 6px;
+  background: rgba(99, 102, 241, 0.9);
   border-radius: 50%;
   position: absolute;
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
 }
 
 /* Horizontal particles */
 .flow-particle-horizontal {
   top: 50%;
   transform: translateY(-50%) scale(0);
-  animation: flowHorizontal 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  animation: flowHorizontal 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .flow-particle-horizontal:nth-child(1) {
@@ -65,18 +65,18 @@
 }
 
 .flow-particle-horizontal:nth-child(2) {
-  animation-delay: 1.33s;
+  animation-delay: 1s;
 }
 
 .flow-particle-horizontal:nth-child(3) {
-  animation-delay: 2.66s;
+  animation-delay: 2s;
 }
 
 /* Vertical particles */
 .flow-particle-vertical {
   left: 50%;
   transform: translateX(-50%) scale(0);
-  animation: flowVertical 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  animation: flowVertical 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .flow-particle-vertical:nth-child(1) {
@@ -84,11 +84,11 @@
 }
 
 .flow-particle-vertical:nth-child(2) {
-  animation-delay: 1.33s;
+  animation-delay: 1s;
 }
 
 .flow-particle-vertical:nth-child(3) {
-  animation-delay: 2.66s;
+  animation-delay: 2s;
 }
 
 /* Connection line styling */
@@ -98,37 +98,36 @@
 }
 
 .connection-line-horizontal {
-  height: 1px;
+  height: 2px;
   width: 100%;
   top: 50%;
   transform: translateY(-50%);
   background: linear-gradient(90deg, 
     rgba(99, 102, 241, 0),
-    rgba(99, 102, 241, 0.2) 20%, 
-    rgba(99, 102, 241, 0.3) 50%,
-    rgba(99, 102, 241, 0.2) 80%,
+    rgba(99, 102, 241, 0.3) 20%, 
+    rgba(99, 102, 241, 0.4) 50%,
+    rgba(99, 102, 241, 0.3) 80%,
     rgba(99, 102, 241, 0)
   );
 }
 
 .connection-line-vertical {
-  width: 1px;
+  width: 2px;
   height: 100%;
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(180deg, 
     rgba(99, 102, 241, 0),
-    rgba(99, 102, 241, 0.2) 20%, 
-    rgba(99, 102, 241, 0.3) 50%,
-    rgba(99, 102, 241, 0.2) 80%,
+    rgba(99, 102, 241, 0.3) 20%, 
+    rgba(99, 102, 241, 0.4) 50%,
+    rgba(99, 102, 241, 0.3) 80%,
     rgba(99, 102, 241, 0)
   );
 }
 
-/* Animation keyframes */
 @keyframes flowHorizontal {
   0% {
-    transform: translateY(-50%) scale(0);
+    transform: translateY(-50%) scale(0.5);
     left: -10px;
     opacity: 0;
   }
@@ -141,7 +140,7 @@
     opacity: 1;
   }
   100% {
-    transform: translateY(-50%) scale(0);
+    transform: translateY(-50%) scale(0.5);
     left: calc(100% + 10px);
     opacity: 0;
   }
@@ -149,7 +148,7 @@
 
 @keyframes flowVertical {
   0% {
-    transform: translateX(-50%) scale(0);
+    transform: translateX(-50%) scale(0.5);
     top: -10px;
     opacity: 0;
   }
@@ -162,8 +161,9 @@
     opacity: 1;
   }
   100% {
-    transform: translateX(-50%) scale(0);
+    transform: translateX(-50%) scale(0.5);
     top: calc(100% + 10px);
     opacity: 0;
   }
 }
+
