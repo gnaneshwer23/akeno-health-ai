@@ -27,6 +27,14 @@ export const VisionMission = () => {
     "Create a global, decentralised, and intelligent healthcare network"
   ];
 
+  const visionPoints = [
+    "A world where diseases are predicted before they occur",
+    "Treatments tailored to each individual's unique genetic makeup",
+    "Medical research that accelerates breakthroughs and saves lives",
+    "Healthcare that is proactive rather than reactive",
+    "AI identifying health risks before they become serious conditions"
+  ];
+
   const values = [
     {
       title: "Innovation",
@@ -200,14 +208,23 @@ export const VisionMission = () => {
                   <h3 className="text-2xl font-bold text-indigo-900">Our Vision</h3>
                 </div>
                 
-                <div className="prose prose-lg">
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    A world where <span className="font-semibold text-indigo-700">diseases are predicted before they occur</span>, treatments are tailored to each individual, and medical research accelerates breakthroughs that save lives.
-                  </p>
-                  <p className="text-lg text-gray-700 mt-4 leading-relaxed">
-                    We envision healthcare that is <span className="font-semibold text-indigo-700">proactive rather than reactive</span>, leveraging the power of AI to identify health risks before they become serious conditions.
-                  </p>
-                </div>
+                <ul className="space-y-4">
+                  {visionPoints.map((point, index) => (
+                    <motion.li 
+                      key={index} 
+                      className="flex items-start gap-3"
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.7 + (index * 0.1) }}
+                    >
+                      <div className="min-w-6 mt-1">
+                        <Check size={20} className="text-indigo-600" />
+                      </div>
+                      <span className="text-lg text-gray-700">{point}</span>
+                    </motion.li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
             
@@ -331,3 +348,4 @@ export const VisionMission = () => {
     </section>
   );
 };
+
