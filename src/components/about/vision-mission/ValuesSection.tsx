@@ -1,0 +1,102 @@
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Brain, Shield, Heart } from 'lucide-react';
+
+interface ValueCardProps {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  index: number;
+}
+
+const fadeVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.1 * i,
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  })
+};
+
+const ValueCard = ({ title, description, icon, index }: ValueCardProps) => {
+  return (
+    <motion.div 
+      className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+      variants={fadeVariants}
+      custom={index + 1}
+      whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+    >
+      <div className="flex items-center mb-4">
+        <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center mr-3">
+          {icon}
+        </div>
+        <h4 className="text-xl font-semibold text-health-dark">{title}</h4>
+      </div>
+      <p className="text-health-dark/70">{description}</p>
+    </motion.div>
+  );
+};
+
+export const ValuesSection = () => {
+  const values = [
+    {
+      title: "Innovation",
+      description: "Pioneering AI healthcare solutions that reshape the future of medicine",
+      icon: <Brain className="h-5 w-5 text-indigo-500" />
+    },
+    {
+      title: "Integrity",
+      description: "Upholding the highest ethical standards in data privacy and healthcare",
+      icon: <Shield className="h-5 w-5 text-purple-500" />
+    },
+    {
+      title: "Inclusion",
+      description: "Making advanced healthcare accessible to everyone, everywhere",
+      icon: <Heart className="h-5 w-5 text-rose-500" />
+    }
+  ];
+
+  return (
+    <motion.div 
+      className="mb-16"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { 
+          opacity: 1,
+          transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.3
+          }
+        }
+      }}
+    >
+      <motion.h3 
+        className="text-2xl font-bold text-center text-health-dark mb-8"
+        variants={fadeVariants}
+        custom={0}
+      >
+        Our Core Values
+      </motion.h3>
+      
+      <div className="grid md:grid-cols-3 gap-8">
+        {values.map((value, index) => (
+          <ValueCard 
+            key={index}
+            title={value.title}
+            description={value.description}
+            icon={value.icon}
+            index={index}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
