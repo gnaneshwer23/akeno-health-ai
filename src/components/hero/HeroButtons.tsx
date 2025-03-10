@@ -3,8 +3,25 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 
 export const HeroButtons: React.FC = () => {
+  const { toast } = useToast();
+  
+  const handleDemo = () => {
+    toast({
+      title: "Demo Request Registered",
+      description: "Thank you for your interest. A team member will contact you shortly to schedule a demo.",
+    });
+  };
+  
+  const handleNetwork = () => {
+    toast({
+      title: "Network Registration",
+      description: "Thank you for joining our network. Check your email for confirmation and next steps.",
+    });
+  };
+
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
       <Button 
@@ -22,24 +39,24 @@ export const HeroButtons: React.FC = () => {
         size="lg" 
         variant="outline" 
         className="sm:w-auto w-full relative overflow-hidden group border-health-primary/30 hover:border-health-primary/60"
-        asChild
+        onClick={handleDemo}
       >
-        <Link to="/contact" className="flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <Play size={16} className="text-health-primary" />
           Request a Demo
-        </Link>
+        </div>
       </Button>
       
       <Button 
         size="lg" 
         variant="ghost" 
         className="sm:w-auto w-full relative overflow-hidden group hover:bg-health-primary/5"
-        asChild
+        onClick={handleNetwork}
       >
-        <Link to="/contact" className="flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <Users size={16} className="text-health-primary" />
           Join Our Network
-        </Link>
+        </div>
       </Button>
     </div>
   );

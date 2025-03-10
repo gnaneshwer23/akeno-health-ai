@@ -2,8 +2,22 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Clock, Brain, Activity, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 
 const DoctorSolutionsCTA = () => {
+  const { toast } = useToast();
+  
+  const handleDemo = () => {
+    toast({
+      title: "Demo Request",
+      description: "Thank you for your interest in our doctor solutions. A team member will contact you shortly.",
+    });
+  };
+  
+  const handleLearnMore = () => {
+    // This already links to how-it-works page, so we'll keep it as is
+  };
+
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-health-primary to-health-secondary text-white relative overflow-hidden">
       {/* Decorative elements */}
@@ -52,10 +66,10 @@ const DoctorSolutionsCTA = () => {
           
           <Button 
             variant="outline" 
-            asChild
             className="border-white text-white hover:bg-white/10"
+            onClick={handleDemo}
           >
-            <Link to="/contact">Request a Demo</Link>
+            Request a Demo
           </Button>
           
           <Button 

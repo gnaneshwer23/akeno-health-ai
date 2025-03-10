@@ -4,8 +4,18 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 
 export const StoryFooter: React.FC = () => {
+  const { toast } = useToast();
+  
+  const handleJoinMission = () => {
+    toast({
+      title: "Welcome to Our Mission",
+      description: "Thank you for joining our mission to revolutionize healthcare with AI. Our team will be in touch shortly.",
+    });
+  };
+
   return (
     <motion.div 
       className="text-center mt-20"
@@ -23,10 +33,10 @@ export const StoryFooter: React.FC = () => {
           <Button 
             variant="default"
             size="lg" 
-            asChild
             className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 group w-full"
+            onClick={handleJoinMission}
           >
-            <Link to="/contact" className="flex items-center">
+            <div className="flex items-center">
               Join Our Mission
               <motion.div
                 animate={{ x: [0, 5, 0] }}
@@ -35,7 +45,7 @@ export const StoryFooter: React.FC = () => {
               >
                 <ArrowRight size={16} />
               </motion.div>
-            </Link>
+            </div>
           </Button>
         </motion.div>
         

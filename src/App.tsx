@@ -10,7 +10,7 @@ import Register from './pages/Register';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import ScrollToTop from '@/components/utils/ScrollToTop';
 import { Loader2 } from 'lucide-react';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from 'sonner';
 import FloatingChatbot from '@/components/chatbot/FloatingChatbot';
 
 // Create a client
@@ -70,7 +70,7 @@ const App = () => {
               </Routes>
             </Suspense>
             <FloatingChatbot id="floating-chatbot-button" />
-            <Toaster />
+            <Toaster position="top-right" />
           </Router>
         </AuthProvider>
       </QueryClientProvider>
