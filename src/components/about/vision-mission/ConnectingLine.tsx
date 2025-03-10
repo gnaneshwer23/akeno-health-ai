@@ -15,7 +15,7 @@ export const ConnectingLine = () => {
       
       {/* Connection dots */}
       <motion.div 
-        className="absolute top-1/4 left-1/2 transform -translate-x-1/2 h-4 w-4 bg-purple-400 rounded-full"
+        className="absolute top-1/4 left-1/2 transform -translate-x-1/2 h-4 w-4 bg-purple-400 rounded-full shadow-lg"
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: true }}
@@ -30,7 +30,7 @@ export const ConnectingLine = () => {
       </motion.div>
       
       <motion.div 
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 h-4 w-4 bg-indigo-400 rounded-full"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 h-4 w-4 bg-indigo-400 rounded-full shadow-lg"
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: true }}
@@ -45,7 +45,7 @@ export const ConnectingLine = () => {
       </motion.div>
       
       <motion.div 
-        className="absolute top-3/4 left-1/2 transform -translate-x-1/2 h-4 w-4 bg-blue-400 rounded-full"
+        className="absolute top-3/4 left-1/2 transform -translate-x-1/2 h-4 w-4 bg-blue-400 rounded-full shadow-lg"
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: true }}

@@ -20,7 +20,7 @@ export const QuantumHero = () => {
           </motion.span>
           
           <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-purple-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-purple-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -38,7 +38,7 @@ export const QuantumHero = () => {
           </motion.div>
           
           <motion.p 
-            className="text-xl text-health-dark/80 max-w-3xl mx-auto mb-10 leading-relaxed"
+            className="text-lg sm:text-xl text-health-dark/80 max-w-3xl mx-auto mb-10 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -47,7 +47,7 @@ export const QuantumHero = () => {
           </motion.p>
             
           <motion.div
-            className="flex justify-center gap-4"
+            className="flex flex-col sm:flex-row justify-center gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
