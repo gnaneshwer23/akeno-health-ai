@@ -6,153 +6,87 @@ import { Brain, Activity, HeartPulse, Dna, Cpu, Atom } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const DefaultLogo: React.FC = () => {
-  // Define a fixed radius for all icons around the silhouette
-  const fixedRadius = 30; // Increased for better distribution
-  
-  // Create positions for icons at equal distances around a circle
-  const iconPositions = [
-    { icon: <Brain size={12} className="text-health-primary" />, angle: 0 },
-    { icon: <Cpu size={12} className="text-health-secondary" />, angle: 60 },
-    { icon: <Atom size={12} className="text-health-accent" />, angle: 120 },
-    { icon: <Activity size={12} className="text-health-primary" />, angle: 180 },
-    { icon: <HeartPulse size={12} className="text-health-secondary" />, angle: 240 },
-    { icon: <Dna size={12} className="text-health-accent" />, angle: 300 },
+  // Create positions for icons evenly distributed in a circle
+  const iconConfigs = [
+    { icon: Brain, color: 'text-indigo-500', gradient: 'from-indigo-500/20 to-indigo-500/10' },
+    { icon: Activity, color: 'text-blue-500', gradient: 'from-blue-500/20 to-blue-500/10' },
+    { icon: HeartPulse, color: 'text-purple-500', gradient: 'from-purple-500/20 to-purple-500/10' },
+    { icon: Dna, color: 'text-sky-500', gradient: 'from-sky-500/20 to-sky-500/10' },
+    { icon: Cpu, color: 'text-violet-500', gradient: 'from-violet-500/20 to-violet-500/10' },
+    { icon: Atom, color: 'text-blue-400', gradient: 'from-blue-400/20 to-blue-400/10' },
   ];
 
   return (
-    <>
+    <div className="relative w-full h-full">
       <AnimatedCanvas width={120} height={120} />
       
-      {/* Background gradient circle */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-full h-full rounded-full bg-gradient-to-tr from-health-primary/40 via-health-secondary/30 to-health-accent/40"></div>
-      </div>
-      
-      {/* Pulsing circle */}
-      <motion.div 
-        className="absolute inset-0 flex items-center justify-center"
-        animate={{ 
-          scale: [0.85, 0.9, 0.85],
-          opacity: [0.7, 0.9, 0.7]
-        }}
-        transition={{ 
-          duration: 3, 
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      >
-        <div className="w-3/4 h-3/4 rounded-full border border-white/40"></div>
-      </motion.div>
-      
-      {/* Human silhouette and icons - compact and properly centered */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-full h-full">
-          {/* Human silhouette at center */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-1/3 h-1/3">
-              <HumanBodySilhouette />
-            </div>
-          </div>
+      {/* Main circular container */}
+      <div className="absolute inset-0">
+        {/* Background glow effect */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-health-primary/20 via-health-secondary/15 to-health-accent/20 blur-sm"></div>
+        
+        {/* Icons distributed around the circle */}
+        {iconConfigs.map((config, index) => {
+          const angle = (index * 60) * (Math.PI / 180); // 60 degrees spacing
+          const radius = 42; // Percentage from center
+          const x = 50 + radius * Math.cos(angle);
+          const y = 50 + radius * Math.sin(angle);
           
-          {/* Connecting dots - small dots that appear and disappear between the icons and center */}
-          <div className="absolute inset-0">
-            {iconPositions.map((_, index) => (
-              <React.Fragment key={`dots-${index}`}>
-                {[...Array(2)].map((__, dotIndex) => {
-                  const angle = iconPositions[index].angle * Math.PI / 180;
-                  const dotDistance = fixedRadius * (dotIndex + 1) / 3; // Position dots along the path
-                  return (
-                    <motion.div
-                      key={`dot-${index}-${dotIndex}`}
-                      className="absolute w-[2px] h-[2px] bg-health-accent/80 rounded-full"
-                      style={{
-                        left: `${50 + dotDistance * Math.cos(angle)}%`,
-                        top: `${50 + dotDistance * Math.sin(angle)}%`,
-                      }}
-                      animate={{
-                        scale: [0, 1, 0],
-                        opacity: [0, 1, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.3 + dotIndex * 0.2,
-                        ease: "easeInOut"
-                      }}
-                    />
-                  );
-                })}
-              </React.Fragment>
-            ))}
-          </div>
+          const Icon = config.icon;
           
-          {/* Medical/Health icons arranged in a perfect circle at fixed distance around the human */}
-          <div className="absolute inset-0">
-            {iconPositions.map((item, index) => {
-              const angle = item.angle * Math.PI / 180;
-              return (
-                <motion.div 
-                  key={`icon-${index}`}
-                  className="absolute"
-                  style={{
-                    left: `${50 + fixedRadius * Math.cos(angle)}%`,
-                    top: `${50 + fixedRadius * Math.sin(angle)}%`,
-                    transform: 'translate(-50%, -50%)'
-                  }}
-                  animate={{ 
-                    scale: [0.9, 1.1, 0.9],
-                    opacity: [0.8, 1, 0.8]
-                  }}
-                  transition={{ 
-                    duration: 3, 
-                    repeat: Infinity, 
-                    ease: "easeInOut",
-                    delay: index * 0.5
-                  }}
-                >
-                  <div className="flex items-center justify-center p-1.5 bg-white/20 backdrop-blur-sm rounded-full shadow-md">
-                    {item.icon}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+          return (
+            <motion.div
+              key={index}
+              className="absolute"
+              style={{
+                left: `${x}%`,
+                top: `${y}%`,
+                transform: 'translate(-50%, -50%)'
+              }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ 
+                scale: [1, 1.1, 1],
+                opacity: 1
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                repeatType: "reverse",
+                delay: index * 0.2
+              }}
+            >
+              <div className={`p-1.5 rounded-full bg-gradient-to-br ${config.gradient} backdrop-blur-sm shadow-lg`}>
+                <Icon size={14} className={`${config.color}`} />
+              </div>
+            </motion.div>
+          );
+        })}
+
+        {/* Center human silhouette */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.div 
+            className="w-1/3 h-1/3"
+            animate={{ 
+              opacity: [0.7, 1, 0.7],
+              scale: [0.95, 1, 0.95]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <HumanBodySilhouette />
+          </motion.div>
         </div>
-      </div>
-      
-      {/* Inner circle - transparent with subtle glow */}
-      <motion.div 
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
-        initial={{ scale: 0.8, opacity: 0.3 }}
-        animate={{ 
-          scale: [0.3, 0.32, 0.3],
-          opacity: [0.3, 0.4, 0.3]
-        }}
-        transition={{ 
-          duration: 2, 
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut"
-        }}
-      >
-        <div className="w-full h-full rounded-full bg-white/10 backdrop-blur-sm"></div>
-      </motion.div>
-      
-      {/* Connecting lines between icons and human silhouette */}
-      <div className="absolute inset-0 pointer-events-none">
-        <svg width="100%" height="100%" viewBox="0 0 100 100" className="opacity-30">
-          <defs>
-            <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="var(--health-primary)" />
-              <stop offset="50%" stopColor="var(--health-secondary)" />
-              <stop offset="100%" stopColor="var(--health-accent)" />
-            </linearGradient>
-          </defs>
-          
-          {iconPositions.map((item, index) => {
-            const angle = item.angle * Math.PI / 180;
-            const endX = 50 + fixedRadius * Math.cos(angle);
-            const endY = 50 + fixedRadius * Math.sin(angle);
+
+        {/* Connecting lines */}
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+          {iconConfigs.map((_, index) => {
+            const angle = (index * 60) * (Math.PI / 180);
+            const radius = 42;
+            const endX = 50 + radius * Math.cos(angle);
+            const endY = 50 + radius * Math.sin(angle);
             
             return (
               <motion.line
@@ -161,24 +95,32 @@ const DefaultLogo: React.FC = () => {
                 y1="50"
                 x2={endX}
                 y2={endY}
-                stroke="url(#line-gradient)"
+                stroke="url(#grad)"
                 strokeWidth="0.5"
-                strokeDasharray="1,1.5"
+                strokeDasharray="2,2"
+                initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ 
-                  opacity: [0.3, 0.6, 0.3],
-                  strokeDashoffset: [0, -5]
+                  pathLength: 1,
+                  opacity: [0.2, 0.4, 0.2]
                 }}
-                transition={{ 
-                  duration: 3, 
-                  repeat: Infinity, 
-                  ease: "linear"
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.1
                 }}
               />
             );
           })}
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="var(--health-primary)" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="var(--health-accent)" stopOpacity="0.3" />
+            </linearGradient>
+          </defs>
         </svg>
       </div>
-    </>
+    </div>
   );
 };
 
