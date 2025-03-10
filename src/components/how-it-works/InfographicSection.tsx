@@ -1,148 +1,14 @@
 
 import React from 'react';
-import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { 
-  Smartphone, Database, Brain, FlaskConical, Activity, HeartPulse, 
-  Beaker, Link as LinkIcon, Shield, Users, Zap, Lock
-} from 'lucide-react';
+import InfographicBackground from './infographic/InfographicBackground';
+import InfographicHeader from './infographic/InfographicHeader';
+import JourneyTimeline from './infographic/JourneyTimeline';
 
 const InfographicSection = () => {
-  const journeySteps = [
-    {
-      step: 1,
-      title: "Health Data Collection",
-      content: "AI gathers data from wearables, medical records, genetics, and more",
-      icon: <Smartphone size={24} />,
-      color: "indigo"
-    },
-    {
-      step: 2,
-      title: "Digital Twin Creation",
-      content: "AI builds a virtual health model to simulate outcomes",
-      icon: <Database size={24} />,
-      color: "purple"
-    },
-    {
-      step: 3,
-      title: "AI Risk Analysis",
-      content: "Early disease detection before symptoms appear",
-      icon: <Brain size={24} />,
-      color: "blue"
-    },
-    {
-      step: 4,
-      title: "AI-Powered Diagnosis",
-      content: "Enhanced medical insights for doctors",
-      icon: <Zap size={24} />,
-      color: "cyan"
-    },
-    {
-      step: 5,
-      title: "Precision Treatment",
-      content: "Personalized therapy based on your unique biology",
-      icon: <FlaskConical size={24} />,
-      color: "teal"
-    },
-    {
-      step: 6,
-      title: "Continuous Monitoring",
-      content: "Real-time health tracking and adjustments",
-      icon: <Activity size={24} />,
-      color: "pink"
-    },
-    {
-      step: 7,
-      title: "Secure Data Sharing",
-      content: "Blockchain-protected health data under your control",
-      icon: <Lock size={24} />,
-      color: "amber"
-    }
-  ];
-
-  const getColorClasses = (color: string) => {
-    switch(color) {
-      case 'indigo':
-        return {
-          bg: "bg-indigo-50",
-          gradient: "from-indigo-500 to-indigo-600",
-          border: "border-indigo-200",
-          light: "bg-indigo-100",
-          shadow: "shadow-indigo-200/50",
-          iconBg: "bg-indigo-500/10 text-indigo-600"
-        };
-      case 'purple':
-        return {
-          bg: "bg-purple-50",
-          gradient: "from-purple-500 to-purple-600",
-          border: "border-purple-200",
-          light: "bg-purple-100",
-          shadow: "shadow-purple-200/50",
-          iconBg: "bg-purple-500/10 text-purple-600"
-        };
-      case 'blue':
-        return {
-          bg: "bg-blue-50",
-          gradient: "from-blue-500 to-blue-600",
-          border: "border-blue-200",
-          light: "bg-blue-100",
-          shadow: "shadow-blue-200/50",
-          iconBg: "bg-blue-500/10 text-blue-600"
-        };
-      case 'cyan':
-        return {
-          bg: "bg-cyan-50",
-          gradient: "from-cyan-500 to-cyan-600",
-          border: "border-cyan-200",
-          light: "bg-cyan-100",
-          shadow: "shadow-cyan-200/50",
-          iconBg: "bg-cyan-500/10 text-cyan-600"
-        };
-      case 'teal':
-        return {
-          bg: "bg-teal-50",
-          gradient: "from-teal-500 to-teal-600",
-          border: "border-teal-200",
-          light: "bg-teal-100",
-          shadow: "shadow-teal-200/50",
-          iconBg: "bg-teal-500/10 text-teal-600"
-        };
-      case 'pink':
-        return {
-          bg: "bg-pink-50",
-          gradient: "from-pink-500 to-pink-600",
-          border: "border-pink-200",
-          light: "bg-pink-100",
-          shadow: "shadow-pink-200/50",
-          iconBg: "bg-pink-500/10 text-pink-600"
-        };
-      case 'amber':
-        return {
-          bg: "bg-amber-50",
-          gradient: "from-amber-500 to-amber-600",
-          border: "border-amber-200",
-          light: "bg-amber-100",
-          shadow: "shadow-amber-200/50",
-          iconBg: "bg-amber-500/10 text-amber-600"
-        };
-      default:
-        return {
-          bg: "bg-gray-50",
-          gradient: "from-gray-500 to-gray-600",
-          border: "border-gray-200",
-          light: "bg-gray-100",
-          shadow: "shadow-gray-200/50",
-          iconBg: "bg-gray-500/10 text-gray-600"
-        };
-    }
-  };
-
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-white to-indigo-50/40 relative overflow-hidden">
-      {/* Enhanced background elements */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDYwIEwgNjAgMCIgc3Ryb2tlPSIjNmY3MmZmIiBzdHJva2Utb3BhY2l0eT0iMC4wMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCBmaWxsPSJ1cmwoI2dyaWQpIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIi8+PC9zdmc+')] opacity-20 -z-10"></div>
-      <div className="absolute top-1/3 right-0 w-96 h-96 bg-indigo-300/10 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-300/10 rounded-full blur-3xl -z-10"></div>
+      <InfographicBackground />
       
       <motion.div 
         className="max-w-5xl mx-auto"
@@ -150,79 +16,8 @@ const InfographicSection = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="inline-flex items-center px-4 py-1.5 mb-4 rounded-full bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-700 font-medium gap-2 border border-indigo-200/50 shadow-sm">
-            <Activity size={16} className="text-indigo-600" />
-            <span>Your AI-Powered Healthcare Journey</span>
-          </span>
-          
-          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
-            Your Health Journey with <span className="bg-gradient-to-br from-indigo-600 to-purple-600 bg-clip-text text-transparent">Akeno AI</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            How our technology transforms your healthcare experience at every step
-          </p>
-        </motion.div>
-        
-        <div className="relative">
-          {/* Enhanced Vertical Line */}
-          <div className="absolute left-4 lg:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-400 via-purple-400 to-pink-400 rounded-full -z-10"></div>
-          
-          {/* Journey Steps */}
-          <div className="space-y-12">
-            {journeySteps.map((item, index) => {
-              const colors = getColorClasses(item.color);
-              return (
-                <motion.div 
-                  key={index} 
-                  className={cn(
-                    "flex flex-col lg:flex-row gap-6 items-center lg:items-start relative",
-                    index % 2 === 0 ? "lg:flex-row-reverse" : ""
-                  )}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.7, delay: 0.1 * index }}
-                >
-                  <div className="absolute left-4 lg:left-1/2 top-0 transform -translate-x-1/2 z-10">
-                    <div className={`flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br ${colors.gradient} text-white text-sm font-bold shadow-lg border-2 border-white`}>
-                      {item.step}
-                    </div>
-                  </div>
-                  
-                  <div className={cn(
-                    "w-full lg:w-1/2 pl-16 lg:pl-0 lg:px-8",
-                    index % 2 === 0 ? "lg:text-right" : "lg:text-left"
-                  )}>
-                    <motion.div 
-                      className={`bg-white rounded-xl p-6 shadow-md border ${colors.border} hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${colors.shadow}`}
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <div className={cn(
-                        "flex gap-4 items-start",
-                        index % 2 === 0 ? "lg:flex-row-reverse" : ""
-                      )}>
-                        <div className={`flex-shrink-0 h-12 w-12 rounded-full bg-gradient-to-br ${colors.gradient} flex items-center justify-center text-white shadow-md`}>
-                          {item.icon}
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-lg text-health-dark mb-2">{item.title}</h4>
-                          <p className="text-sm text-muted-foreground">{item.content}</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
+        <InfographicHeader />
+        <JourneyTimeline />
       </motion.div>
     </section>
   );
