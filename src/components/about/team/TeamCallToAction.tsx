@@ -25,7 +25,7 @@ export const TeamCallToAction: React.FC = () => {
         >
           <Button 
             size="lg" 
-            className="group bg-gradient-to-r from-health-primary to-health-secondary hover:from-health-primary/90 hover:to-health-secondary/90"
+            className="group bg-gradient-to-r from-health-primary to-health-secondary hover:from-health-primary/90 hover:to-health-secondary/90 w-full sm:w-auto"
             asChild
           >
             <Link to="/contact" className="flex items-center gap-2">
@@ -47,7 +47,7 @@ export const TeamCallToAction: React.FC = () => {
           <Button 
             variant="outline" 
             size="lg" 
-            className="border-health-primary/30 hover:border-health-primary/60 bg-white/50 backdrop-blur-sm"
+            className="border-health-primary/30 hover:border-health-primary/60 bg-white/50 backdrop-blur-sm w-full sm:w-auto"
             asChild
           >
             <Link to="/contact">Become a Partner</Link>

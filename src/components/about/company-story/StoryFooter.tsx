@@ -24,7 +24,7 @@ export const StoryFooter: React.FC = () => {
             variant="default"
             size="lg" 
             asChild
-            className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 group"
+            className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 group w-full"
           >
             <Link to="/contact" className="flex items-center">
               Join Our Mission
@@ -44,7 +44,7 @@ export const StoryFooter: React.FC = () => {
             variant="outline" 
             size="lg" 
             asChild
-            className="border-amber-300 text-amber-900 hover:bg-amber-50"
+            className="border-amber-300 text-amber-900 hover:bg-amber-50 w-full"
           >
             <Link to="/how-it-works">
               Learn More About Our Journey

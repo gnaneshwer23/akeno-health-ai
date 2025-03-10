@@ -130,11 +130,11 @@ const CallToActionSection = () => {
             >
               <h3 className="text-2xl font-semibold text-white mb-6">Take Action Today</h3>
               
-              <div className="space-y-6">
-                <div className="flex flex-col space-y-4">
+              <div className="space-y-4">
+                <div className="flex flex-col space-y-3">
                   <Button
                     size="lg"
-                    className="group bg-health-primary hover:bg-health-secondary w-full sm:w-auto"
+                    className="group bg-health-primary hover:bg-health-secondary w-full"
                     asChild
                   >
                     <Link to="/contact" className="flex items-center justify-center gap-2">
@@ -146,7 +146,7 @@ const CallToActionSection = () => {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="border-indigo-300/30 hover:border-indigo-300/60 text-white w-full sm:w-auto"
+                    className="border-indigo-300/30 hover:border-indigo-300/60 text-white w-full"
                     asChild
                   >
                     <Link to="/contact" className="flex items-center justify-center gap-2">
@@ -157,7 +157,7 @@ const CallToActionSection = () => {
                   <Button
                     variant="ghost"
                     size="lg"
-                    className="hover:bg-indigo-500/10 text-white w-full sm:w-auto"
+                    className="hover:bg-indigo-500/10 text-white w-full"
                     asChild
                   >
                     <Link to="/contact" className="flex items-center justify-center gap-2">
@@ -177,13 +177,13 @@ const CallToActionSection = () => {
           </div>
         </motion.div>
         
-        {/* Get Started Section */}
+        {/* Final Call to Action Button */}
         <motion.div 
           className="text-center"
           variants={itemVariants}
         >
           <Button
-            className="group bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="group bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 py-6 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             asChild
           >
             <Link to="/contact" className="flex items-center gap-2">
