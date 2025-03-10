@@ -21,7 +21,7 @@ const JourneyTimeline: React.FC = () => {
       {/* Journey Steps */}
       <div className="space-y-12">
         {journeySteps.map((item, index) => (
-          <JourneyStep 
+          <JourneyStepItem 
             key={index}
             item={item}
             index={index}
@@ -37,7 +37,7 @@ interface JourneyStepProps {
   index: number;
 }
 
-const JourneyStep: React.FC<JourneyStepProps> = ({ item, index }) => {
+const JourneyStepItem: React.FC<JourneyStepProps> = ({ item, index }) => {
   const colors = getColorClasses(item.color);
   const isRightAligned = index % 2 === 0;
   
