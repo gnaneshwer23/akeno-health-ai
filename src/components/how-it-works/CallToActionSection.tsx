@@ -2,8 +2,11 @@
 import React from 'react';
 import { Button } from '@/components/Button';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, Users, Brain, Database, Shield, Zap, HeartPulse, Dna } from 'lucide-react';
+import { ArrowRight, Users, Brain, Database, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ActionButtons } from '@/components/about/cta/ActionButtons';
+import { PartnersSection } from '@/components/about/cta/PartnersSection';
+import { CTACardsSection } from '@/components/about/cta/CTACardsSection';
 
 const CallToActionSection = () => {
   const containerVariants = {
@@ -50,7 +53,7 @@ const CallToActionSection = () => {
             className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-indigo-100 to-white bg-clip-text text-transparent"
             variants={itemVariants}
           >
-            Why Akeno Health is the <span className="text-indigo-300">Future of Healthcare</span>
+            Ready to Transform Your Healthcare Journey?
           </motion.h2>
           
           <div className="flex justify-center mb-6">
@@ -61,172 +64,97 @@ const CallToActionSection = () => {
             className="text-xl text-indigo-100/90 max-w-3xl mx-auto"
             variants={itemVariants}
           >
-            Experience the world's first fully AI-powered, self-learning healthcare ecosystem
+            Now that you understand how Akeno works, take the next step with our innovative healthcare ecosystem
           </motion.p>
-        </motion.div>
-        
-        <motion.div 
-          className="grid md:grid-cols-2 gap-6 mb-16"
-          variants={itemVariants}
-        >
-          <motion.div 
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="space-y-5">
-              <div className="flex items-start gap-4">
-                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
-                <p className="text-indigo-100">
-                  <span className="font-semibold">The world's first fully AI-powered</span>, self-learning healthcare ecosystem
-                </p>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
-                <p className="text-indigo-100">
-                  <span className="font-semibold">Early disease detection</span> & real-time predictive diagnostics
-                </p>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
-                <p className="text-indigo-100">
-                  <span className="font-semibold">AI-driven precision medicine</span> & Quantum-powered drug discovery
-                </p>
-              </div>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="space-y-5">
-              <div className="flex items-start gap-4">
-                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
-                <p className="text-indigo-100">
-                  <span className="font-semibold">Seamless doctor-patient-pharma connectivity</span> for optimized care
-                </p>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
-                <p className="text-indigo-100">
-                  <span className="font-semibold">Blockchain-secured, patient-controlled</span> health data with quantum encryption
-                </p>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <CheckCircle className="w-6 h-6 text-indigo-300 flex-shrink-0 mt-0.5" />
-                <p className="text-indigo-100">
-                  <span className="font-semibold">AI-automated clinical trials</span> & research acceleration for better treatments
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
         
         <motion.div 
           className="bg-white/5 rounded-2xl p-8 md:p-12 border border-white/10 mb-12 backdrop-blur-sm"
           variants={itemVariants}
         >
-          <motion.h3 
-            className="text-2xl md:text-3xl font-bold mb-8 text-center bg-gradient-to-r from-white via-indigo-200 to-white bg-clip-text text-transparent"
-            variants={itemVariants}
-          >
-            Experience the Future of AI Healthcare – Get Started Today!
-          </motion.h3>
-          
           <div className="grid md:grid-cols-2 gap-8 mb-10">
-            <div className="space-y-5">
-              <motion.div 
-                className="flex items-center gap-4"
-                variants={itemVariants}
-                whileHover={{ x: 5 }}
-              >
-                <div className="h-12 w-12 rounded-full bg-indigo-500/20 flex items-center justify-center">
-                  <Users size={22} className="text-indigo-300" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg text-white">For Patients</h4>
-                  <p className="text-indigo-200/80 text-sm">Get personalised, AI-powered health monitoring & early detection</p>
-                </div>
-              </motion.div>
+            <motion.div 
+              className="space-y-6"
+              variants={itemVariants}
+            >
+              <h3 className="text-2xl font-semibold text-white">Next Steps</h3>
+              <p className="text-indigo-100/80">
+                Based on what you've learned about our process, choose the path that best fits your needs:
+              </p>
               
-              <motion.div 
-                className="flex items-center gap-4"
-                variants={itemVariants}
-                whileHover={{ x: 5 }}
-              >
-                <div className="h-12 w-12 rounded-full bg-indigo-500/20 flex items-center justify-center">
-                  <Dna size={22} className="text-indigo-300" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg text-white">For Doctors & Hospitals</h4>
-                  <p className="text-indigo-200/80 text-sm">Enhance decision-making with AI-driven diagnostics & real-time insights</p>
-                </div>
-              </motion.div>
-            </div>
+              <div className="space-y-4">
+                <motion.div 
+                  className="flex items-start gap-4"
+                  variants={itemVariants}
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="h-10 w-10 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Users size={18} className="text-indigo-300" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white">Explore Solutions</h4>
+                    <p className="text-indigo-200/80 text-sm">Browse our tailored solutions for patients, doctors, or healthcare institutions</p>
+                  </div>
+                </motion.div>
+                
+                <motion.div 
+                  className="flex items-start gap-4"
+                  variants={itemVariants}
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="h-10 w-10 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Brain size={18} className="text-indigo-300" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white">Learn About Our Technology</h4>
+                    <p className="text-indigo-200/80 text-sm">Discover more about our quantum computing and AI innovations</p>
+                  </div>
+                </motion.div>
+                
+                <motion.div 
+                  className="flex items-start gap-4"
+                  variants={itemVariants}
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="h-10 w-10 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Shield size={18} className="text-indigo-300" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white">Contact Our Team</h4>
+                    <p className="text-indigo-200/80 text-sm">Schedule a consultation to discuss your specific needs</p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
             
-            <div className="space-y-5">
-              <motion.div 
-                className="flex items-center gap-4"
-                variants={itemVariants}
-                whileHover={{ x: 5 }}
-              >
-                <div className="h-12 w-12 rounded-full bg-indigo-500/20 flex items-center justify-center">
-                  <HeartPulse size={22} className="text-indigo-300" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg text-white">For Pharma & Researchers</h4>
-                  <p className="text-indigo-200/80 text-sm">Accelerate drug discovery, clinical trials, and personalised medicine</p>
-                </div>
-              </motion.div>
+            <motion.div 
+              className="border-t md:border-t-0 md:border-l border-indigo-500/20 pt-6 md:pt-0 md:pl-8 flex flex-col justify-center"
+              variants={itemVariants}
+            >
+              <h3 className="text-2xl font-semibold text-white mb-6">Take Action Today</h3>
               
-              <motion.div 
-                className="flex items-center gap-4"
-                variants={itemVariants}
-                whileHover={{ x: 5 }}
-              >
-                <div className="h-12 w-12 rounded-full bg-indigo-500/20 flex items-center justify-center">
-                  <Brain size={22} className="text-indigo-300" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg text-white">For Investors & Partners</h4>
-                  <p className="text-indigo-200/80 text-sm">Be part of the world's most advanced healthcare AI ecosystem</p>
-                </div>
-              </motion.div>
-            </div>
+              <div className="space-y-6">
+                <motion.div variants={itemVariants}>
+                  <ActionButtons />
+                </motion.div>
+                
+                <motion.p 
+                  className="text-indigo-200/70 italic text-center text-sm mt-4"
+                  variants={itemVariants}
+                >
+                  "The future of healthcare is here. Join thousands of patients and healthcare providers already benefiting from Akeno Health's innovations."
+                </motion.p>
+              </div>
+            </motion.div>
           </div>
-          
-          <motion.div 
-            className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8"
-            variants={itemVariants}
-          >
-            <Button 
-              variant="primary" 
-              size="lg"
-              as="Link"
-              to="/contact"
-              className="group bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 w-full md:w-auto border-0"
-              icon={<ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />}
-            >
-              Contact Us Today
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg"
-              as="Link"
-              to="/patient-solutions"
-              className="border-indigo-300 text-indigo-100 hover:bg-indigo-500/20 w-full md:w-auto"
-              icon={<Shield size={16} />}
-            >
-              Learn About Our Solutions
-            </Button>
-          </motion.div>
+        </motion.div>
+        
+        <motion.div variants={itemVariants}>
+          <PartnersSection />
+        </motion.div>
+        
+        <motion.div variants={itemVariants}>
+          <CTACardsSection />
         </motion.div>
       </motion.div>
     </section>
