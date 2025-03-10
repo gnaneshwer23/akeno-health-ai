@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const DefaultLogo: React.FC = () => {
   // Define a fixed radius for all icons around the silhouette
-  const fixedRadius = 24; // Keeping elements inside the container
+  const fixedRadius = 30; // Increased for better distribution
   
   // Create positions for icons at equal distances around a circle
   const iconPositions = [
@@ -44,12 +44,12 @@ const DefaultLogo: React.FC = () => {
         <div className="w-3/4 h-3/4 rounded-full border border-white/40"></div>
       </motion.div>
       
-      {/* Human silhouette and icons - centered container with consistent spacing */}
-      <div className="absolute inset-[15%] flex items-center justify-center">
+      {/* Human silhouette and icons - compact and properly centered */}
+      <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-full h-full">
           {/* Human silhouette at center */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-1/2 h-1/2">
+            <div className="w-1/3 h-1/3">
               <HumanBodySilhouette />
             </div>
           </div>
@@ -110,7 +110,7 @@ const DefaultLogo: React.FC = () => {
                     delay: index * 0.5
                   }}
                 >
-                  <div className="flex items-center justify-center p-1 bg-white/10 backdrop-blur-sm rounded-full">
+                  <div className="flex items-center justify-center p-1.5 bg-white/20 backdrop-blur-sm rounded-full shadow-md">
                     {item.icon}
                   </div>
                 </motion.div>
@@ -139,7 +139,7 @@ const DefaultLogo: React.FC = () => {
       </motion.div>
       
       {/* Connecting lines between icons and human silhouette */}
-      <div className="absolute inset-[15%] pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 100 100" className="opacity-30">
           <defs>
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
