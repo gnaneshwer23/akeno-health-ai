@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowRight, Lightbulb, Sparkles, Brain, Network, Activity } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const fadeUpVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -249,7 +250,7 @@ export const CompanyStory = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button 
-                variant="primary" 
+                variant="default" 
                 size="lg" 
                 asChild
                 className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 group"
