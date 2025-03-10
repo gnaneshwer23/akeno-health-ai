@@ -13,6 +13,12 @@ const FloatingConnections = () => {
           <div className="flow-particle flow-particle-horizontal"></div>
           <div className="flow-particle flow-particle-horizontal"></div>
           <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
         </div>
       </div>
       
@@ -25,12 +31,24 @@ const FloatingConnections = () => {
           <div className="flow-particle flow-particle-horizontal"></div>
           <div className="flow-particle flow-particle-horizontal"></div>
           <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
         </div>
       </div>
       
       {/* Bottom horizontal connection */}
       <div className="floating-connection floating-connection-bottom">
         <div className="flow-particle-group flow-particle-group-horizontal">
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
+          <div className="flow-particle flow-particle-horizontal"></div>
           <div className="flow-particle flow-particle-horizontal"></div>
           <div className="flow-particle flow-particle-horizontal"></div>
           <div className="flow-particle flow-particle-horizontal"></div>
