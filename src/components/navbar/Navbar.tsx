@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/useAuth';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -9,7 +9,7 @@ import { NavLinks } from './NavLinks';
 import { AuthButtons } from './AuthButtons';
 import { DefaultLogo } from '@/components/animated-logo/DefaultLogo';
 import { MobileMenu } from './MobileMenu';
-import { Button } from '@/components/ui/button';
+import { CustomButton } from '@/components/ui/custom-button';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -64,26 +64,29 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             {isAuthenticated ? (
               <div className="flex items-center gap-4">
-                <Button
+                <CustomButton
                   variant="outline"
                   size="sm"
                   className="hidden sm:block"
                   onClick={() => logout()}
                 >
                   Log Out
-                </Button>
-                <Link to="/dashboard" className="flex items-center gap-2">
-                  <div className="bg-health-primary text-white font-medium text-sm px-3 py-1.5 rounded-md hover:bg-health-primary/90 transition-colors">
-                    Dashboard
-                  </div>
-                  {user?.profileImage && (
-                    <img
-                      src={user.profileImage}
-                      alt={user.name || "User"}
-                      className="w-8 h-8 rounded-full border border-gray-200"
-                    />
-                  )}
-                </Link>
+                </CustomButton>
+                <CustomButton 
+                  to="/dashboard" 
+                  variant="primary"
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  Dashboard
+                </CustomButton>
+                {user?.profileImage && (
+                  <img
+                    src={user.profileImage}
+                    alt={user.name || "User"}
+                    className="w-8 h-8 rounded-full border border-gray-200"
+                  />
+                )}
               </div>
             ) : (
               <AuthButtons />

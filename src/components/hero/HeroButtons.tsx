@@ -1,8 +1,7 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Play, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { CustomButton } from '@/components/ui/custom-button';
+import { Play, Users } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export const HeroButtons: React.FC = () => {
@@ -24,40 +23,35 @@ export const HeroButtons: React.FC = () => {
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-      <Button 
+      <CustomButton 
         size="lg" 
-        className="sm:w-auto w-full group relative overflow-hidden bg-health-primary hover:bg-health-secondary"
-        asChild
+        variant="primary" 
+        to="/contact"
+        withArrow
+        className="sm:w-auto w-full"
       >
-        <Link to="/contact" className="flex items-center gap-2">
-          Get Started
-          <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-        </Link>
-      </Button>
+        Get Started
+      </CustomButton>
       
-      <Button 
+      <CustomButton 
         size="lg" 
         variant="outline" 
-        className="sm:w-auto w-full relative overflow-hidden group border-health-primary/30 hover:border-health-primary/60"
+        className="sm:w-auto w-full border-health-primary/30 hover:border-health-primary/60"
         onClick={handleDemo}
+        icon={<Play size={16} className="text-health-primary" />}
       >
-        <div className="flex items-center gap-2">
-          <Play size={16} className="text-health-primary" />
-          Request a Demo
-        </div>
-      </Button>
+        Request a Demo
+      </CustomButton>
       
-      <Button 
+      <CustomButton 
         size="lg" 
         variant="ghost" 
-        className="sm:w-auto w-full relative overflow-hidden group hover:bg-health-primary/5"
+        className="sm:w-auto w-full hover:bg-health-primary/5"
         onClick={handleNetwork}
+        icon={<Users size={16} className="text-health-primary" />}
       >
-        <div className="flex items-center gap-2">
-          <Users size={16} className="text-health-primary" />
-          Join Our Network
-        </div>
-      </Button>
+        Join Our Network
+      </CustomButton>
     </div>
   );
 };

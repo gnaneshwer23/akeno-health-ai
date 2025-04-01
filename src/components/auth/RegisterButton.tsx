@@ -1,9 +1,9 @@
 
 import React, { memo } from 'react';
-import { Button } from '@/components/ui/button';
 import { Loader2, UserPlus } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { itemVariants } from './animations';
+import { CustomButton } from '@/components/ui/custom-button';
 
 interface RegisterButtonProps {
   isSubmitting: boolean;
@@ -12,25 +12,16 @@ interface RegisterButtonProps {
 const RegisterButton = ({ isSubmitting }: RegisterButtonProps) => {
   return (
     <motion.div variants={itemVariants}>
-      <Button 
+      <CustomButton 
         type="submit" 
-        variant="default" 
+        variant="primary" 
         size="lg" 
-        className="w-full mt-4 group relative shadow-sm bg-health-primary text-white hover:bg-health-primary/90"
+        className="w-full mt-4 shadow-sm"
         disabled={isSubmitting}
+        icon={isSubmitting ? <Loader2 size={16} className="animate-spin" /> : <UserPlus size={16} />}
       >
-        {isSubmitting ? (
-          <>
-            <Loader2 size={16} className="mr-2 animate-spin" />
-            Creating account...
-          </>
-        ) : (
-          <>
-            <UserPlus size={16} className="mr-2" />
-            Create Account
-          </>
-        )}
-      </Button>
+        {isSubmitting ? "Creating account..." : "Create Account"}
+      </CustomButton>
     </motion.div>
   );
 };

@@ -1,8 +1,7 @@
 
 import React from 'react';
-import { ArrowRight, Play, Users } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Play, Users } from 'lucide-react';
+import { CustomButton } from '@/components/ui/custom-button';
 import { useToast } from '@/hooks/use-toast';
 
 export const ActionButtons = () => {
@@ -24,40 +23,35 @@ export const ActionButtons = () => {
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-      <Button
+      <CustomButton
         size="lg"
-        className="group bg-health-primary hover:bg-health-secondary w-full sm:w-auto"
-        asChild
+        variant="primary"
+        to="/contact"
+        withArrow
+        className="w-full sm:w-auto"
       >
-        <Link to="/contact" className="flex items-center gap-2">
-          Join the Future of AI Healthcare
-          <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-        </Link>
-      </Button>
+        Join the Future of AI Healthcare
+      </CustomButton>
       
-      <Button
+      <CustomButton
         variant="outline"
         size="lg"
         className="border-health-primary/30 hover:border-health-primary/60 w-full sm:w-auto"
         onClick={handleDemo}
+        icon={<Play size={16} className="text-health-primary" />}
       >
-        <div className="flex items-center gap-2">
-          <Play size={16} className="text-health-primary" />
-          Request a Demo
-        </div>
-      </Button>
+        Request a Demo
+      </CustomButton>
       
-      <Button
+      <CustomButton
         variant="ghost"
         size="lg"
         className="hover:bg-health-primary/5 w-full sm:w-auto"
         onClick={handlePartnership}
+        icon={<Users size={16} className="text-health-primary" />}
       >
-        <div className="flex items-center gap-2">
-          <Users size={16} className="text-health-primary" />
-          Partner With Us
-        </div>
-      </Button>
+        Partner With Us
+      </CustomButton>
     </div>
   );
 };

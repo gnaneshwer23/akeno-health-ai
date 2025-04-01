@@ -1,9 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { CustomButton } from '@/components/ui/custom-button';
 import { useToast } from '@/hooks/use-toast';
 
 const CTAButtons = () => {
@@ -26,34 +24,33 @@ const CTAButtons = () => {
   return (
     <div className="space-y-4">
       <div className="flex flex-col space-y-3">
-        <Button
+        <CustomButton
           size="lg"
-          className="group bg-health-primary hover:bg-health-secondary w-full"
-          asChild
+          variant="primary"
+          to="/contact"
+          withArrow
+          className="w-full"
         >
-          <Link to="/contact" className="flex items-center justify-center gap-2">
-            Join the Future of AI Healthcare
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-          </Link>
-        </Button>
+          Join the Future of AI Healthcare
+        </CustomButton>
         
-        <Button
+        <CustomButton
           variant="outline"
           size="lg"
           className="border-indigo-300/30 hover:border-indigo-300/60 text-white w-full"
           onClick={handleDemo}
         >
           Request a Demo
-        </Button>
+        </CustomButton>
         
-        <Button
+        <CustomButton
           variant="ghost"
           size="lg"
           className="hover:bg-indigo-500/10 text-white w-full"
           onClick={handlePartnership}
         >
           Partner With Us
-        </Button>
+        </CustomButton>
       </div>
       
       <motion.p 

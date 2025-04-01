@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { CustomButton } from '@/components/ui/custom-button';
 import MainLayout from '@/layouts/MainLayout';
 
 const NotFound = () => {
@@ -18,21 +18,21 @@ const NotFound = () => {
         </p>
         
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
-          <Button 
+          <CustomButton 
             onClick={() => navigate(-1)} 
             variant="outline"
             className="group"
+            icon={<ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />}
           >
-            <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
             Go Back
-          </Button>
+          </CustomButton>
           
-          <Button 
-            onClick={() => navigate('/')}
-            className="bg-health-primary hover:bg-health-secondary"
+          <CustomButton 
+            to="/"
+            variant="primary"
           >
             Return Home
-          </Button>
+          </CustomButton>
         </div>
         
         <div className="mt-16">
