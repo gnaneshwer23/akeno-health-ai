@@ -6,7 +6,11 @@ import {
   Search,
   Users,
   Microscope,
-  Activity
+  Activity,
+  Calendar,
+  Pill,
+  Clock,
+  Heart
 } from 'lucide-react';
 
 type SuggestedQuestionsProps = {
@@ -25,6 +29,36 @@ const SuggestedQuestions: React.FC<SuggestedQuestionsProps> = ({
         "How do I create an account?",
         "What solutions do you offer?",
         "Is my data secure?",
+      ]
+    },
+    {
+      title: "Appointments",
+      icon: <Calendar className="h-4 w-4 text-emerald-500" />,
+      questions: [
+        "Schedule an appointment with Dr. Sarah",
+        "When is my next appointment?",
+        "Reschedule my appointment for next week",
+        "What's the availability for cardiologists?",
+      ]
+    },
+    {
+      title: "Medications",
+      icon: <Pill className="h-4 w-4 text-rose-500" />,
+      questions: [
+        "Set a reminder for my medication",
+        "What are the side effects of metformin?",
+        "I forgot to take my evening dose",
+        "How should I take this with food?",
+      ]
+    },
+    {
+      title: "Health Monitoring",
+      icon: <Heart className="h-4 w-4 text-red-500" />,
+      questions: [
+        "Track my blood pressure readings",
+        "What's my average glucose this week?",
+        "Log my weight for today",
+        "How's my sleep quality trending?",
       ]
     },
     {
@@ -48,18 +82,8 @@ const SuggestedQuestions: React.FC<SuggestedQuestionsProps> = ({
       ]
     },
     {
-      title: "Biotech Solutions",
-      icon: <Microscope className="h-4 w-4 text-amber-500" />,
-      questions: [
-        "How does the drug discovery platform work?",
-        "Tell me about clinical research tools",
-        "What is synthetic biology?",
-        "How can quantum computing help research?",
-      ]
-    },
-    {
       title: "Support",
-      icon: <FileQuestion className="h-4 w-4 text-red-500" />,
+      icon: <FileQuestion className="h-4 w-4 text-amber-500" />,
       questions: [
         "How do I contact support?",
         "What are your support hours?",

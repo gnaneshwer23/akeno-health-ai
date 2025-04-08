@@ -4,15 +4,15 @@ import { Bot } from 'lucide-react';
 
 const TypingIndicator = () => {
   return (
-    <div className="flex items-start mt-5">
-      <div className="flex-shrink-0 h-8 w-8 rounded-full bg-health-primary/10 flex items-center justify-center">
+    <div className="flex gap-3 mt-3 items-start">
+      <div className="flex-shrink-0 h-8 w-8 rounded-full bg-health-primary/20 flex items-center justify-center">
         <Bot size={16} className="text-health-primary" />
       </div>
-      <div className="mx-2 px-4 py-2 bg-gray-100 rounded-full">
-        <div className="flex space-x-1 items-center">
-          <div className="w-2 h-2 bg-health-primary rounded-full animate-pulse" style={{ animationDelay: '0ms' }}></div>
-          <div className="w-2 h-2 bg-health-primary rounded-full animate-pulse" style={{ animationDelay: '300ms' }}></div>
-          <div className="w-2 h-2 bg-health-primary rounded-full animate-pulse" style={{ animationDelay: '600ms' }}></div>
+      <div className="flex-1 bg-white p-3 rounded-lg shadow-sm max-w-[60%]">
+        <div className="flex space-x-2">
+          <div className="w-2 h-2 bg-health-primary/60 rounded-full animate-pulse"></div>
+          <div className="w-2 h-2 bg-health-primary/60 rounded-full animate-pulse delay-100"></div>
+          <div className="w-2 h-2 bg-health-primary/60 rounded-full animate-pulse delay-200"></div>
         </div>
       </div>
     </div>

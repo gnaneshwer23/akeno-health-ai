@@ -8,11 +8,14 @@ import SuggestedQuestions from './SuggestedQuestions';
 import ChatHeader from './ChatHeader';
 import ChatMessageList from './ChatMessageList';
 import ChatInputForm from './ChatInputForm';
+import { useAuth } from '@/contexts/auth/useAuth';
 import { 
   getResponseForMessage, 
   createUserMessage, 
   createBotMessage,
-  getInitialMessage
+  getInitialMessage,
+  handleHealthAction,
+  getPatientSpecificResponse
 } from './chatService';
 import { ChatMessageType } from '@/types/supabase-types';
 
@@ -22,6 +25,7 @@ const ChatWidget = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
+  const { user } = useAuth();
 
   const handleSendMessage = (e?: React.FormEvent) => {
     e?.preventDefault();
@@ -41,7 +45,29 @@ const ChatWidget = () => {
   };
 
   const respondToMessage = (message: string) => {
-    const responseContent = getResponseForMessage(message);
+    // Check for healthcare action commands
+    const actionResult = handleHealthAction(message, user);
+    
+    if (actionResult.isAction) {
+      // Add bot response for action
+      const botMessage = createBotMessage(actionResult.response);
+      setMessages((prev) => [...prev, botMessage]);
+      
+      // Show toast for successful actions
+      if (actionResult.success) {
+        toast({
+          title: actionResult.toastTitle,
+          description: actionResult.toastDescription,
+        });
+      }
+      return;
+    }
+    
+    // Get personalized response if user is authenticated
+    const responseContent = user 
+      ? getPatientSpecificResponse(message, user) 
+      : getResponseForMessage(message);
+      
     const botMessage = createBotMessage(responseContent);
     setMessages((prev) => [...prev, botMessage]);
   };
@@ -77,6 +103,7 @@ const ChatWidget = () => {
           <Button 
             className="h-14 w-14 rounded-full bg-gradient-to-r from-health-primary to-health-secondary hover:opacity-90 shadow-lg"
             onClick={() => setIsOpen(true)}
+            data-testid="chatbot-button"
           >
             <MessageCircle className="h-6 w-6 text-white" />
           </Button>
