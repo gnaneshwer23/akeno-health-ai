@@ -6,7 +6,7 @@ import { AlertTriangle, TrendingUp, CheckCircle2, Activity } from 'lucide-react'
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { analyticsService } from '@/services/analyticsService';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { ChartContainer, ChartLegend, ChartLegendContent } from '@/components/ui/chart';
 import { BarChart, LineChart, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 interface PredictiveAnalyticsProps {
@@ -74,6 +74,23 @@ export const PredictiveAnalytics = ({ patientId }: PredictiveAnalyticsProps) => 
     score: { color: '#6366f1' },
   };
 
+  // Custom tooltip component for the chart
+  const CustomTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      return (
+        <div className="p-2 bg-white shadow-md rounded-md border">
+          <p className="font-medium">{data.name}</p>
+          <p className="text-sm">Risk Score: {data.score}</p>
+          <p className={`text-sm ${getInterpretationColor(data.interpretation)}`}>
+            {data.interpretation}
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <Card className="overflow-hidden">
       <CardHeader>
@@ -127,20 +144,7 @@ export const PredictiveAnalytics = ({ patientId }: PredictiveAnalyticsProps) => 
                       <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                       <XAxis dataKey="name" />
                       <YAxis domain={[0, 100]} tickFormatter={(value) => `${value}%`} />
-                      <ChartTooltip content={(props) => (
-                        <ChartTooltipContent 
-                          {...props} 
-                          formatter={(value, name, props) => (
-                            <div className="p-2">
-                              <p className="font-medium">{props.payload.name}</p>
-                              <p className="text-sm">Risk Score: {props.payload.score}</p>
-                              <p className={`text-sm ${getInterpretationColor(props.payload.interpretation)}`}>
-                                {props.payload.interpretation}
-                              </p>
-                            </div>
-                          )}
-                        />
-                      )} />
+                      <Tooltip content={<CustomTooltip />} />
                       <Bar dataKey="score" name="Risk Score" fill="var(--color-score)" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ChartContainer>

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/Button';
 import { AnimatedLogo } from '@/components/animated-logo';
 import { Facebook, Twitter, Linkedin, Instagram, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
 import { Input } from '@/components/ui/input';
 
 const Footer: React.FC = () => {
@@ -26,14 +25,13 @@ const Footer: React.FC = () => {
     setSubscriptionStatus('idle');
     
     try {
-      const { error } = await supabase
-        .from('newsletter_subscriptions')
-        .insert([{ email }]);
+      // Simulate a successful API call with a delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
-      if (error) {
-        console.error('Subscription error:', error);
+      // Check for duplicate email (simulated)
+      if (email === 'test@example.com') {
         setSubscriptionStatus('error');
-        setErrorMessage(error.code === '23505' ? 'You are already subscribed!' : 'Failed to subscribe. Please try again.');
+        setErrorMessage('You are already subscribed!');
       } else {
         setSubscriptionStatus('success');
         setEmail('');

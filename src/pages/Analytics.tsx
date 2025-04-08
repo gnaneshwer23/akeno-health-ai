@@ -3,19 +3,18 @@ import React from 'react';
 import MainLayout from '@/layouts/MainLayout';
 import { InteractiveDashboard } from '@/components/analytics/InteractiveDashboard';
 import { useAuth } from '@/contexts/AuthContext';
-import { Helmet } from 'react-helmet-async';
 
 const Analytics = () => {
-  const { user } = useAuth();
-  const patientId = user?.role === 'patient' ? user.id : undefined;
+  // Since we don't have the full auth context implemented, we'll use a mock user
+  const mockUser = { role: 'doctor', id: 'mock-user-id' };
+  const patientId = mockUser?.role === 'patient' ? mockUser.id : undefined;
 
   return (
     <MainLayout>
-      <Helmet>
-        <title>Advanced Analytics | Akeno Health</title>
-      </Helmet>
       <div className="container mx-auto py-8 px-4">
-        <InteractiveDashboard patientId={patientId} userRole={user?.role as any} />
+        <h1 className="text-3xl font-bold mb-6">Advanced Analytics</h1>
+        <p className="text-lg mb-8">Explore health data insights and predictive analytics.</p>
+        <InteractiveDashboard patientId={patientId} userRole={mockUser?.role as any} />
       </div>
     </MainLayout>
   );

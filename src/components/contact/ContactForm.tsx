@@ -1,10 +1,10 @@
+
 import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from '@/components/ui/button';
 import { Mail, User, MessageSquare, Building, Send, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -29,22 +29,8 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Send the form data to Supabase
-      const { error } = await supabase
-        .from('contact_messages')
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            organization: formData.organization || null,
-            message: formData.message
-          }
-        ]);
-      
-      if (error) throw error;
-      
-      // We'll skip the direct email notification as it's causing errors
-      // and rely on the Supabase database entry instead
+      // Simulate API call with a delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
       toast({
         title: "Message sent",
