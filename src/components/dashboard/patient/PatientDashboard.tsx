@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/useAuth';
 import HealthScoreCard from './health-overview/HealthScoreCard';
 import HealthMetricsGrid from './health-metrics/HealthMetricsGrid';
 import RiskAssessmentCard from './risk-assessment/RiskAssessmentCard';

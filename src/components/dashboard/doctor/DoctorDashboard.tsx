@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/useAuth';
 import DashboardHeader from './sections/DashboardHeader';
 import DashboardStats from './sections/DashboardStats';
 import PatientRiskMonitor from './sections/PatientRiskMonitor';

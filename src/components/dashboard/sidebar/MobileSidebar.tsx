@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { LogOut, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/useAuth';
 import { Button } from '@/components/Button';
 import { 
   Sheet,

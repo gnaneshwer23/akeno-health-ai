@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Copy, Key, RefreshCw, Lock, Server } from 'lucide-react';
 import { 
@@ -13,7 +12,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 import { securityService } from '@/services/processing/securityService';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/useAuth';
 
 const APIKeyManager: React.FC = () => {
   const { user } = useAuth();

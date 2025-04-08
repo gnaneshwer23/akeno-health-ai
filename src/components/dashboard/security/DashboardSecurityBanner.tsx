@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Shield, Lock, AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/useAuth';
 import { motion } from 'framer-motion';
 
 const DashboardSecurityBanner: React.FC = () => {

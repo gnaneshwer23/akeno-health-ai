@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/useAuth';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import DashboardSummaryCards from './components/DashboardSummaryCards';
 import PatientRiskMonitorSection from './sections/PatientRiskMonitorSection';

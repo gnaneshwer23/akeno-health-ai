@@ -1,6 +1,5 @@
-
-import React, { useState } from 'react';
-import { useAuth } from '@/contexts/AuthContext';
+import React from 'react';
+import { useAuth } from '@/contexts/auth/useAuth';
 import { Link } from 'react-router-dom';
 import { 
   Card, 
@@ -28,7 +27,8 @@ import {
   Settings,
   Workflow,
   Stethoscope,
-  UserCog
+  UserCog,
+  Users
 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -790,8 +790,5 @@ const DoctorProfile = () => {
     </div>
   );
 };
-
-// Missing icons import
-import { Users } from 'lucide-react';
 
 export default DoctorProfile;

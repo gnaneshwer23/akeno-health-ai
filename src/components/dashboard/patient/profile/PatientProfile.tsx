@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   Card, 
@@ -8,7 +7,7 @@ import {
   CardTitle,
   CardFooter
 } from "@/components/ui/card";
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/useAuth';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
