@@ -13,12 +13,12 @@ const Register = () => {
   const [role, setRole] = useState<UserRole>(null);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const roleParam = searchParams.get('role') as UserRole | null;
+  const roleParam = searchParams.get('role');
 
   // Check for role in URL params (e.g., /register?role=researcher)
   useEffect(() => {
     if (roleParam && ['patient', 'doctor', 'researcher', 'hospital'].includes(roleParam)) {
-      setRole(roleParam);
+      setRole(roleParam as UserRole);
     }
   }, [roleParam]);
 

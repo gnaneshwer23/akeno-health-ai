@@ -6,10 +6,11 @@ import ResearcherAuthLayout from '@/components/auth/ResearcherAuthLayout';
 import HospitalAuthLayout from '@/components/auth/HospitalAuthLayout';
 import { useAuth } from '@/contexts/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
+import { UserRole } from '@/contexts/auth/types';
 
 const Login = () => {
   const { isAuthenticated } = useAuth();
-  const [role, setRole] = useState<string | null>(null);
+  const [role, setRole] = useState<UserRole>(null);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const roleParam = searchParams.get('role');
@@ -17,7 +18,7 @@ const Login = () => {
   // Check for role in URL params (e.g., /login?role=researcher)
   React.useEffect(() => {
     if (roleParam && ['patient', 'doctor', 'researcher', 'hospital'].includes(roleParam)) {
-      setRole(roleParam);
+      setRole(roleParam as UserRole);
     }
   }, [roleParam]);
 
@@ -47,7 +48,7 @@ const Login = () => {
   // Default layout for other roles
   return (
     <AuthLayout>
-      <LoginForm initialRole={role as any} />
+      <LoginForm initialRole={role} />
     </AuthLayout>
   );
 };

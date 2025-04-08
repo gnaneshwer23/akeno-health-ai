@@ -31,6 +31,7 @@ import HospitalSettings from '@/components/dashboard/hospital/settings/HospitalS
 import HospitalHelp from '@/components/dashboard/hospital/help/HospitalHelp';
 import { Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { UserRole } from '@/contexts/auth/types';
 
 const Dashboard = () => {
   const { user, isLoading } = useAuth();
@@ -61,7 +62,8 @@ const Dashboard = () => {
 
   // Determine the default dashboard route based on user role
   const getDefaultDashboard = () => {
-    switch (user?.role) {
+    const role = user?.role as UserRole;
+    switch (role) {
       case 'patient':
         return '/dashboard/patient';
       case 'doctor':

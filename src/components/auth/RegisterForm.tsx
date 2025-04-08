@@ -62,7 +62,8 @@ const RegisterForm = ({ initialRole }: RegisterFormProps) => {
     setIsSubmitting(true);
     
     try {
-      await signup(email, password, role, name);
+      // Fixed: Ensuring role is passed as UserRole type
+      await signup(email, password, role as UserRole, name);
       
       toast({
         title: "Registration successful",
@@ -78,6 +79,7 @@ const RegisterForm = ({ initialRole }: RegisterFormProps) => {
     }
   };
 
+  // Make sure we're handling UserRole type correctly
   const handleRoleSelect = (newRole: UserRole) => setRole(newRole);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value);
