@@ -1,7 +1,7 @@
 
 import React, { useState, useCallback, memo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/useAuth';
 import { motion } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
 import { UserRole } from '@/contexts/auth/types';
