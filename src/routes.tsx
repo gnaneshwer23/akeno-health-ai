@@ -1,9 +1,9 @@
+
 import React, { lazy, Suspense } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './App';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
-import Analytics from './pages/Analytics';
 
 // Lazy loaded pages for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -48,14 +48,6 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoading />}>
             <Contact />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'analytics',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <Analytics />
           </Suspense>
         ),
       },
