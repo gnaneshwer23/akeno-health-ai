@@ -1,13 +1,14 @@
+
 import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
-import { CTASection } from '@/components/CTASection';
 import { Footer } from '@/components/Footer';
-import { StatisticsSection } from '@/components/StatisticsSection';
-import { TestimonialsSection } from '@/components/TestimonialsSection';
-import { PartnersSection } from '@/components/PartnersSection';
-import { QuantumCTA } from '@/components/quantum/QuantumCTA';
-import AIFlowDiagram from '@/components/home/AIFlowDiagram';
+import { HowItWorksSection } from '@/components/home/HowItWorksSection';
+import { StakeholdersSection } from '@/components/home/StakeholdersSection';
+import { UseCasesSection } from '@/components/home/UseCasesSection';
+import { TechDifferentiatorsSection } from '@/components/home/TechDifferentiatorsSection';
+import { TestimonialsPartnersSection } from '@/components/home/TestimonialsPartnersSection';
+import { FinalCTASection } from '@/components/home/FinalCTASection';
 
 const Index = () => {
   useEffect(() => {
@@ -49,6 +50,7 @@ const Index = () => {
       <Navbar />
       
       <main className="flex-grow">
+        {/* Hero Section with new content */}
         <Hero />
         
         {/* Enhanced colorful divider */}
@@ -65,39 +67,23 @@ const Index = () => {
           </div>
         </div>
         
-        <div className="relative">
-          <StatisticsSection />
-          
-          {/* Healthcare-specific decorative elements */}
-          <div className="absolute bottom-24 left-10 opacity-10">
-            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15 7C16.1046 7 17 6.10457 17 5C17 3.89543 16.1046 3 15 3C13.8954 3 13 3.89543 13 5C13 6.10457 13.8954 7 15 7Z" className="text-health-primary" stroke="currentColor" strokeWidth="2"/>
-              <path d="M12.6133 9.87717C12.2769 9.33347 11.6922 9 11.0518 9H6.94816C6.30778 9 5.72306 9.33347 5.38673 9.87717L3.10571 13.5186C2.70901 14.1223 2.81889 14.9459 3.36107 15.4321L7.1499 18.8731C7.55497 19.2367 8.1277 19.3926 8.68312 19.2921L9.66183 19.1042C9.88347 19.0596 10.1129 19.0373 10.3435 19.0373H13.6565C13.8871 19.0373 14.1165 19.0596 14.3382 19.1042L15.3169 19.2921C15.8723 19.3926 16.445 19.2367 16.8501 18.8731L20.6389 15.4321C21.1811 14.9459 21.291 14.1223 20.8943 13.5186L18.6133 9.87717C18.2769 9.33347 17.6922 9 17.0518 9H16" className="text-health-secondary" stroke="currentColor" strokeWidth="2"/>
-              <path d="M10 11H8V14H5L8 18H10L13 14H10V11Z" className="text-health-accent" stroke="currentColor" strokeWidth="2"/>
-            </svg>
-          </div>
-        </div>
+        {/* Section 2: How It Works */}
+        <HowItWorksSection />
         
-        <div className="relative py-10 px-4 bg-gradient-to-br from-white to-health-light/30">
-          <AIFlowDiagram />
-        </div>
+        {/* Section 3: Stakeholders */}
+        <StakeholdersSection />
         
-        <div className="relative">
-          <TestimonialsSection />
-          <PartnersSection />
-          
-          {/* Enhanced diamond pattern background */}
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgMjAgMTAgTSAxMCAwIEwgMTAgMjAiIHN0cm9rZT0iIzZmNzJmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuMDUiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNncmlkKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==')] opacity-30 -z-10"></div>
-        </div>
+        {/* Section 4: Use Cases */}
+        <UseCasesSection />
         
-        {/* Moved QuantumCTA to the bottom, replacing the CTASection */}
-        <div className="relative bg-gradient-to-br from-health-light/30 to-white">
-          <QuantumCTA />
-          
-          {/* Enhanced decorative circles */}
-          <div className="absolute top-1/4 left-10 w-20 h-20 rounded-full border-4 border-dashed border-health-primary/20 -z-10 animate-rotate-slow"></div>
-          <div className="absolute bottom-1/4 right-10 w-16 h-16 rounded-full border-4 border-dashed border-health-secondary/20 -z-10 animate-rotate-slow" style={{animationDirection: 'reverse'}}></div>
-        </div>
+        {/* Section 5: Tech Differentiators */}
+        <TechDifferentiatorsSection />
+        
+        {/* Section 6: Testimonials & Partners */}
+        <TestimonialsPartnersSection />
+        
+        {/* Section 7: Final CTA */}
+        <FinalCTASection />
       </main>
       
       <Footer />
