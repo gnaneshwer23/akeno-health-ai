@@ -9,10 +9,10 @@ import Analytics from './pages/Analytics';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
-const Login = lazy(() => import('./pages/Login'));
+const Login = lazy(() => import('./pages/auth/Login'));
 const Register = lazy(() => import('./pages/Register'));
-const ResetPassword = lazy(() => import('./pages/ResetPassword'));
-const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ResetPassword = lazy(() => import('./pages/auth/ResetPassword'));
+const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword'));
 
 // Loading fallback
 const PageLoading = () => (
