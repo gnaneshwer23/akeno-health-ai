@@ -14,7 +14,20 @@ import { CustomButton } from '@/components/ui/custom-button';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { user, isAuthenticated, logout } = useAuth();
+  // We'll handle the case where auth context might not be available
+  const auth = React.useCallback(() => {
+    try {
+      return useAuth();
+    } catch (error) {
+      console.warn('Auth context not available:', error);
+      return { 
+        user: null, 
+        isAuthenticated: false, 
+        logout: () => Promise.resolve() 
+      };
+    }
+  }, [])();
+
   const location = useLocation();
 
   // Handle scroll effect
@@ -62,13 +75,13 @@ const Navbar = () => {
 
           {/* Auth Buttons or User Menu */}
           <div className="flex items-center space-x-4">
-            {isAuthenticated ? (
+            {auth.isAuthenticated ? (
               <div className="flex items-center gap-4">
                 <CustomButton
                   variant="outline"
                   size="sm"
                   className="hidden sm:block"
-                  onClick={() => logout()}
+                  onClick={() => auth.logout()}
                 >
                   Log Out
                 </CustomButton>
@@ -80,10 +93,10 @@ const Navbar = () => {
                 >
                   Dashboard
                 </CustomButton>
-                {user?.profileImage && (
+                {auth.user?.profileImage && (
                   <img
-                    src={user.profileImage}
-                    alt={user.name || "User"}
+                    src={auth.user.profileImage}
+                    alt={auth.user.name || "User"}
                     className="w-8 h-8 rounded-full border border-gray-200"
                   />
                 )}

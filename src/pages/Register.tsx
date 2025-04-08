@@ -4,7 +4,7 @@ import RegisterForm from '@/components/auth/RegisterForm';
 import AuthLayout from '@/components/auth/AuthLayout';
 import ResearcherAuthLayout from '@/components/auth/ResearcherAuthLayout';
 import HospitalAuthLayout from '@/components/auth/HospitalAuthLayout';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/useAuth';
 import { Navigate, useLocation } from 'react-router-dom';
 import { UserRole } from '@/contexts/auth/types';
 

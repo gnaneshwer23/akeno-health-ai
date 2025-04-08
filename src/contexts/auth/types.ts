@@ -13,8 +13,8 @@ export interface AuthUser {
 
 export interface AuthContextType {
   user: AuthUser | null;
-  isAuthenticated: boolean;  // Added this property
-  isLoading: boolean;        // Added this property
+  isAuthenticated: boolean;
+  isLoading: boolean;
   login: (email: string, password: string) => Promise<any>;
   signup: (email: string, password: string, role: UserRole, name: string) => Promise<void>;
   logout: () => Promise<void>;

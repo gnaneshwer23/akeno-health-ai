@@ -3,7 +3,7 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/components/theme-provider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/auth/AuthContext';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -29,6 +29,7 @@ const HealthcareDecisionMaking = lazy(() => import('./pages/HealthcareDecisionMa
 const CaseStudiesAndBlog = lazy(() => import('./pages/CaseStudiesAndBlog'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const Analytics = lazy(() => import('./pages/Analytics'));
 
 const App = () => {
   return (
@@ -56,6 +57,7 @@ const App = () => {
                 <Route path="/case-studies" element={<CaseStudiesAndBlog />} />
                 <Route path="/case-studies-blog" element={<CaseStudiesAndBlog />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/analytics" element={<Analytics />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route 

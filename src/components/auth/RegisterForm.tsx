@@ -1,7 +1,7 @@
 
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/useAuth';
 import { Eye, EyeOff } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
@@ -62,8 +62,8 @@ const RegisterForm = ({ initialRole }: RegisterFormProps) => {
     setIsSubmitting(true);
     
     try {
-      // Fixed: Ensuring role is passed as UserRole type
-      await signup(email, password, role as UserRole, name);
+      // Making sure role is properly typed
+      await signup(email, password, role, name);
       
       toast({
         title: "Registration successful",
