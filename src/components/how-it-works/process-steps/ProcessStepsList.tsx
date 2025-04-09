@@ -1,15 +1,15 @@
 
 import React from 'react';
 import ProcessStep from '../ProcessStep';
-import { processStepsData } from './stepsData';
+import { processSteps } from './stepsData';
 import { motion } from 'framer-motion';
 
 const ProcessStepsList: React.FC = () => {
   return (
     <div className="space-y-16">
-      {processStepsData.map((step, index) => (
+      {processSteps.map((step, index) => (
         <motion.div
-          key={step.stepNumber}
+          key={step.id}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -20,12 +20,12 @@ const ProcessStepsList: React.FC = () => {
           }}
         >
           <ProcessStep
-            stepNumber={step.stepNumber}
+            stepNumber={index + 1}
             title={step.title}
-            description={step.description}
+            description={step.tagline}
             icon={step.icon}
-            features={step.features}
-            outcome={step.outcome}
+            features={[]}
+            outcome=""
           />
         </motion.div>
       ))}

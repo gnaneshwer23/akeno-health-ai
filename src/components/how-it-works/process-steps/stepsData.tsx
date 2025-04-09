@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { 
-  Activity, Brain, Flask, Shield, Database, 
-  Zap, HeartPulse, Link as LinkIcon, Lock
+  Smartphone, Database, Brain, Activity, FlaskConical, Workflow, 
+  Dna, LineChart, HeartPulse, Beaker, Users, Shield, FileText, 
+  Zap, Lock, Link as LinkIcon, Pill
 } from 'lucide-react';
 
 export interface ProcessStep {
@@ -182,7 +182,7 @@ export const processSteps: ProcessStep[] = [
         </ul>
       </div>
     ),
-    icon: <Flask size={24} />,
+    icon: <FlaskConical size={24} />,
     color: "cyan"
   },
   {
