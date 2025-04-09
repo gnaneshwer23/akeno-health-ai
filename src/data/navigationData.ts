@@ -15,7 +15,6 @@ export const navigationLinks = [
       { name: 'Pharma & Research', path: '/biotech-solutions' },
     ]
   },
-  { name: 'Products', path: '/#products' },
   { name: 'Case Studies & Blog', path: '/case-studies-blog' },
   { name: 'Contact', path: '/contact' },
 ];
