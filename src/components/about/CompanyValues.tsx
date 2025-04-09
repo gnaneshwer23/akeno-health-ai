@@ -19,6 +19,7 @@ const ValueCard: React.FC<ValueCardProps> = ({ title, description, icon, emoji, 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
+      whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
       className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-all group"
     >
       <div className="flex items-center gap-4 mb-4">
@@ -31,6 +32,7 @@ const ValueCard: React.FC<ValueCardProps> = ({ title, description, icon, emoji, 
         </div>
       </div>
       <p className="text-health-dark/70 mb-4">{description}</p>
+      <div className="h-px w-full bg-gradient-to-r from-health-primary/20 via-health-secondary/20 to-transparent my-4"></div>
       <p className="text-sm text-health-dark/60 italic">{longDescription}</p>
     </motion.div>
   );
@@ -69,9 +71,15 @@ export const CompanyValues = () => {
   ];
 
   return (
-    <section className="py-16 px-6 relative bg-gradient-to-b from-white via-health-light/20 to-white" id="values">
-      {/* Subtle background patterns */}
-      <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMDAgMEgwdjEwMGgxMDBWMHpNMjAgMjBoNjB2NjBIMjBWMjB6IiBmaWxsPSIjZWY1NjliIiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')]"></div>
+    <section className="py-16 px-6 relative overflow-hidden" id="values">
+      {/* Enhanced background patterns with animation */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMDAgMEgwdjEwMGgxMDBWMHpNMjAgMjBoNjB2NjBIMjBWMjB6IiBmaWxsPSIjZWY1NjliIiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')]"
+      ></motion.div>
       
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -84,6 +92,7 @@ export const CompanyValues = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-health-dark">
             Our Values
           </h2>
+          <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary mx-auto mb-6 rounded-full"></div>
           <p className="text-lg text-health-dark/70 max-w-3xl mx-auto">
             The core principles that guide our mission and innovation every day.
           </p>

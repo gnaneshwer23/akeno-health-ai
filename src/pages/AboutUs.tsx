@@ -16,6 +16,7 @@ import { TeamSectionWrapper } from '@/components/about/page/TeamSectionWrapper';
 import { PartnersCollaboration } from '@/components/about/PartnersCollaboration';
 import { CompanyValues } from '@/components/about/CompanyValues';
 import { CareersSection } from '@/components/about/CareersSection';
+import { motion } from 'framer-motion';
 
 const AboutUs = () => {
   useEffect(() => {
@@ -56,35 +57,82 @@ const AboutUs = () => {
       <Navbar />
       
       <main className="flex-grow z-10">
+        {/* Hero Section with Enhanced Animation */}
         <AboutHero />
         
-        {/* Colorful divider */}
-        <AboutUsDivider />
+        {/* Colorful divider with pulse animation */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          <AboutUsDivider />
+        </motion.div>
         
         {/* Section 1: Vision & Mission */}
-        <VisionMission />
+        <section id="vision-mission">
+          <VisionMission />
+        </section>
         
-        {/* Section 2: Our Story */}
-        <CompanySectionWrapper>
-          <CompanyStory />
-        </CompanySectionWrapper>
+        {/* Section 2: Our Values with glass effect */}
+        <section id="values" className="relative">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0 bg-gradient-to-r from-indigo-50/30 to-blue-50/30 -z-10"
+          />
+          <CompanyValues />
+        </section>
         
-        {/* Section 3: Meet the Team */}
-        <TeamSectionWrapper>
-          <AboutTeam />
-        </TeamSectionWrapper>
+        {/* Section 3: Our Story */}
+        <section id="story">
+          <CompanySectionWrapper>
+            <CompanyStory />
+          </CompanySectionWrapper>
+        </section>
         
-        {/* Section 4: Partners & Collaborations */}
-        <PartnersCollaboration />
+        {/* Section 4: Meet the Team */}
+        <section id="team">
+          <TeamSectionWrapper>
+            <AboutTeam />
+          </TeamSectionWrapper>
+        </section>
         
-        {/* Section 5: Our Values */}
-        <CompanyValues />
+        {/* Section 5: Partners & Collaborations */}
+        <section id="partners" className="relative overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0 bg-gradient-to-br from-health-light/10 to-white -z-10"
+          />
+          <PartnersCollaboration />
+        </section>
         
         {/* Section 6: Careers & Culture */}
-        <CareersSection />
+        <section id="careers" className="relative">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0 bg-gradient-to-r from-purple-50/30 to-indigo-50/30 -z-10"
+          />
+          <CareersSection />
+        </section>
         
         {/* Section 7: Final CTA */}
-        <AboutCTA />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <AboutCTA />
+        </motion.div>
       </main>
       
       <Footer />
