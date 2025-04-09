@@ -18,7 +18,7 @@ export const MissionCard = ({ missionPoints }: MissionCardProps) => {
       transition={{ duration: 0.6, delay: 0.6 }}
       whileHover={{ y: -5 }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-fuchsia-600/40 rounded-3xl blur-lg transform group-hover:scale-105 transition-transform duration-500 opacity-80"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-fuchsia-600/30 rounded-3xl blur-lg transform group-hover:scale-105 transition-transform duration-500 opacity-80"></div>
       <div className="relative bg-gradient-to-br from-white/98 to-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-purple-100 h-full transform transition-transform duration-500 group-hover:translate-y-[-5px]">
         <div className="flex items-center mb-8">
           <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-700 flex items-center justify-center shadow-lg mr-5">
@@ -30,7 +30,7 @@ export const MissionCard = ({ missionPoints }: MissionCardProps) => {
           </div>
         </div>
         
-        <ul className="space-y-5 pl-2">
+        <ul className="space-y-4 pl-2">
           {missionPoints.map((point, index) => (
             <PointListItem key={index} point={point} index={index} color="purple" />
           ))}

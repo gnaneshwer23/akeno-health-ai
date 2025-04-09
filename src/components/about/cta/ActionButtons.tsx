@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, Users } from 'lucide-react';
+import { Users } from 'lucide-react';
 import { CustomButton } from '@/components/ui/custom-button';
 import { toast } from 'sonner';
 

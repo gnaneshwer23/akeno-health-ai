@@ -69,12 +69,12 @@ const AboutUs = () => {
         </motion.div>
         
         {/* Vision & Mission Section */}
-        <section id="vision-mission" className="py-20">
+        <section id="vision-mission" className="py-16">
           <VisionMission />
         </section>
         
         {/* Our Story Section with proper spacing */}
-        <section id="story" className="py-24 bg-gradient-to-b from-transparent to-gray-50/20">
+        <section id="story" className="py-16 bg-gradient-to-b from-transparent to-gray-50/20">
           <CompanySectionWrapper>
             <CompanyStory />
           </CompanySectionWrapper>
@@ -82,7 +82,7 @@ const AboutUs = () => {
         
         {/* Visual separator with animation */}
         <motion.div 
-          className="w-full h-px max-w-4xl mx-auto my-6"
+          className="w-full h-px max-w-4xl mx-auto my-4"
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true }}
@@ -92,19 +92,19 @@ const AboutUs = () => {
         </motion.div>
         
         {/* Meet the Team Section with proper spacing */}
-        <section id="team" className="py-20">
+        <section id="team" className="py-16">
           <TeamSectionWrapper>
             <AboutTeam />
           </TeamSectionWrapper>
         </section>
         
-        {/* Final CTA with enhanced animation */}
+        {/* Single CTA section with enhanced animation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20" // Added bottom margin
+          className="mb-16"
         >
           <AboutCTA />
         </motion.div>

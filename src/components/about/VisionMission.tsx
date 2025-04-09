@@ -30,7 +30,7 @@ export const VisionMission = () => {
   ];
 
   return (
-    <section id="vision-mission" className="py-20 relative overflow-hidden">
+    <section className="py-16 relative overflow-hidden">
       {/* Background Elements */}
       <BackgroundDecorations />
       
@@ -89,18 +89,9 @@ export const VisionMission = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
+          className="mb-8"
         >
           <ValuesSection />
-        </motion.div>
-        
-        {/* Call to Action with animation */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <VisionMissionCTA />
         </motion.div>
       </div>
     </section>
