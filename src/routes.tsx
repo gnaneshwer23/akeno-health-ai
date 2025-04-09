@@ -13,11 +13,6 @@ const Login = lazy(() => import('./pages/auth/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const ResetPassword = lazy(() => import('./pages/auth/ResetPassword'));
 const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword'));
-const Products = lazy(() => import('./pages/Products'));
-const AIStudio = lazy(() => import('./pages/AIStudio'));
-const RealWorldEvidence = lazy(() => import('./pages/RealWorldEvidence'));
-const DigitalTwinPanel = lazy(() => import('./pages/DigitalTwinPanel'));
-const BiomarkerAnalytics = lazy(() => import('./pages/BiomarkerAnalytics'));
 const CaseStudiesAndBlog = lazy(() => import('./pages/CaseStudiesAndBlog'));
 
 // Loading fallback
@@ -54,46 +49,6 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoading />}>
             <Contact />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'products',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <Products />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'ai-studio',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <AIStudio />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'real-world-evidence',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <RealWorldEvidence />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'digital-twin-panel',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <DigitalTwinPanel />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'biomarker-analytics',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <BiomarkerAnalytics />
           </Suspense>
         ),
       },
