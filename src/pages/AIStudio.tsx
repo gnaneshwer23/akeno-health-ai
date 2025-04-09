@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
@@ -14,7 +13,7 @@ import {
   Rocket, 
   Puzzle, 
   Database, 
-  Flask, 
+  Flasks, 
   MessageSquare
 } from 'lucide-react';
 
