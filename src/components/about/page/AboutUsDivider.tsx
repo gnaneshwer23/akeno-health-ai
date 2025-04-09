@@ -35,6 +35,19 @@ export const AboutUsDivider: React.FC = () => {
           ))}
         </div>
       </div>
+      
+      {/* Enhanced divider element */}
+      <div className="mt-4 max-w-screen-lg mx-auto">
+        <div className="flex items-center gap-2 justify-center">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-indigo-200 to-transparent"></div>
+          <motion.div 
+            className="w-2 h-2 rounded-full bg-indigo-400" 
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-200 to-transparent"></div>
+        </div>
+      </div>
     </motion.div>
   );
 };

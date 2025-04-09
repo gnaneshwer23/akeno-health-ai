@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+import { CustomButton } from '@/components/ui/custom-button';
 
 export const AboutCTA = () => {
   const { toast } = useToast();
@@ -61,30 +62,24 @@ export const AboutCTA = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-            <Button 
+            <CustomButton 
               size="lg" 
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 group"
-              asChild
+              variant="primary"
+              to="/contact"
+              withArrow
+              className="w-full sm:w-auto"
             >
-              <Link to="/contact" className="flex items-center gap-2">
-                Get in Touch
-                <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                >
-                  <ArrowRight size={16} />
-                </motion.div>
-              </Link>
-            </Button>
+              Get in Touch
+            </CustomButton>
             
-            <Button 
+            <CustomButton
               variant="outline" 
               size="lg"
-              className="border-indigo-300 text-indigo-700 hover:bg-indigo-50"
+              className="border-indigo-300 text-indigo-700 hover:bg-indigo-50 w-full sm:w-auto"
               onClick={handleDemoRequest}
             >
               Request a Demo
-            </Button>
+            </CustomButton>
           </div>
         </motion.div>
       </div>

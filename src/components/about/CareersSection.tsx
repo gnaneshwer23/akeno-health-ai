@@ -3,7 +3,6 @@ import React from 'react';
 import { CareersHeader } from './careers/CareersHeader';
 import { CultureValuesGrid } from './careers/CultureValuesGrid';
 import { BenefitsSection } from './careers/BenefitsSection';
-import { TeamStatsGrid } from './careers/TeamStatsGrid';
 import { CareersFooter } from './careers/CareersFooter';
 import { CareersBackground } from './careers/CareersBackground';
 
@@ -22,9 +21,6 @@ export const CareersSection = () => {
 
         {/* Benefits section */}
         <BenefitsSection />
-        
-        {/* Key stats section */}
-        <TeamStatsGrid />
         
         {/* Footer with CTA */}
         <CareersFooter />

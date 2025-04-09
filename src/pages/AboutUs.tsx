@@ -54,7 +54,7 @@ const AboutUs = () => {
       
       <Navbar />
       
-      <main className="flex-grow z-10">
+      <main className="flex-grow z-10 pt-20">
         {/* Hero Section with Enhanced Animation */}
         <AboutHero />
         
@@ -67,7 +67,7 @@ const AboutUs = () => {
           <AboutUsDivider />
         </motion.div>
         
-        {/* Section 1: Vision & Mission with improved spacing */}
+        {/* Vision & Mission Section */}
         <section id="vision-mission" className="pt-10">
           <VisionMission />
         </section>
@@ -75,21 +75,26 @@ const AboutUs = () => {
         {/* Smooth transition divider */}
         <div className="w-full h-24 bg-gradient-to-b from-transparent to-gray-50/30"></div>
         
-        {/* Section 3: Our Story with improved spacing */}
+        {/* Our Story Section */}
         <section id="story" className="py-8">
           <CompanySectionWrapper>
             <CompanyStory />
           </CompanySectionWrapper>
         </section>
         
-        {/* Visual separator with dots pattern */}
-        <div className="relative h-20 overflow-hidden">
-          <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMiIgZmlsbD0iIzY0NzVmZiIgZmlsbC1vcGFjaXR5PSIwLjUiLz48L3N2Zz4=')]"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/70"></div>
-        </div>
+        {/* Visual separator with animation */}
+        <motion.div 
+          className="w-full h-px max-w-4xl mx-auto"
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <div className="h-full bg-gradient-to-r from-transparent via-indigo-300/50 to-transparent"></div>
+        </motion.div>
         
-        {/* Section 4: Meet the Team with enhanced wrapper */}
-        <section id="team" className="pb-8">
+        {/* Meet the Team Section */}
+        <section id="team" className="py-12">
           <TeamSectionWrapper>
             <AboutTeam />
           </TeamSectionWrapper>
@@ -98,7 +103,7 @@ const AboutUs = () => {
         {/* Smooth gradient transition */}
         <div className="w-full h-16 bg-gradient-to-b from-white to-purple-50/10"></div>
         
-        {/* Section 5: Careers & Culture */}
+        {/* Careers & Culture Section */}
         <section id="careers" className="relative">
           <motion.div
             initial={{ opacity: 0 }}
