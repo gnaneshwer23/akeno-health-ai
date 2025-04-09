@@ -14,7 +14,6 @@ import { AboutUsDivider } from '@/components/about/page/AboutUsDivider';
 import { CompanySectionWrapper } from '@/components/about/page/CompanySectionWrapper';
 import { TeamSectionWrapper } from '@/components/about/page/TeamSectionWrapper';
 import { CareersSection } from '@/components/about/CareersSection';
-import { PartnersSection } from '@/components/about/cta/PartnersSection';
 import { motion } from 'framer-motion';
 
 const AboutUs = () => {
@@ -109,11 +108,6 @@ const AboutUs = () => {
             className="absolute inset-0 bg-gradient-to-r from-purple-50/30 to-indigo-50/30 -z-10"
           />
           <CareersSection />
-        </section>
-        
-        {/* Partners Section */}
-        <section id="partners" className="py-16">
-          <PartnersSection />
         </section>
         
         {/* Final CTA with enhanced animation */}

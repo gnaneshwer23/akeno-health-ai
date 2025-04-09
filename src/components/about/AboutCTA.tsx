@@ -4,8 +4,18 @@ import { ArrowRight, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 
 export const AboutCTA = () => {
+  const { toast } = useToast();
+  
+  const handleDemoRequest = () => {
+    toast({
+      title: "Demo Request Received",
+      description: "Thanks for your interest! We'll be in touch shortly to schedule your personalized demo.",
+    });
+  };
+  
   return (
     <section className="px-6 py-20 relative overflow-hidden">
       {/* Enhanced background with patterns and gradients */}
@@ -71,11 +81,9 @@ export const AboutCTA = () => {
               variant="outline" 
               size="lg"
               className="border-indigo-300 text-indigo-700 hover:bg-indigo-50"
-              asChild
+              onClick={handleDemoRequest}
             >
-              <Link to="/how-it-works">
-                Learn About Our Technology
-              </Link>
+              Request a Demo
             </Button>
           </div>
         </motion.div>
