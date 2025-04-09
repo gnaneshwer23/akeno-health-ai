@@ -10,6 +10,7 @@ export const navigationLinks = [
     sublinks: [
       { name: 'Overview', path: '/solutions' },
       { name: 'Quantum Computing', path: '/solutions#quantum-computing' },
+      { name: 'AI Studio', path: '/ai-studio' },
       { name: 'For Patients', path: '/patient-solutions' },
       { name: 'For Doctors', path: '/doctor-solutions' },
       { name: 'For Hospitals', path: '/hospital-solutions' },
