@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ProductCard from './ProductCard';
-import { Network, Dna, Microscope, Globe } from 'lucide-react';
+import { Network, Dna, Microscope, Globe, TestTube } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const CoreProducts = () => {
@@ -45,12 +45,11 @@ const CoreProducts = () => {
 
           {/* Biomarker Analytics Suite */}
           <ProductCard
-            icon={<Microscope className="text-teal-600" />}
+            icon={<TestTube className="text-teal-600" />}
             iconBgClass="bg-teal-500/10"
             title="Biomarker Analytics Suite"
             description="Comprehensive platform for analyzing multi-omic biomarkers and discovering connections between genomic, proteomic, and metabolomic data."
-            linkText="Coming Soon →"
-            onClick={handleButtonClick}
+            linkTo="/biomarker-analytics"
           />
 
           {/* Real-World Evidence Module */}

@@ -12,6 +12,7 @@ export const navigationLinks = [
       { name: 'AI Studio', path: '/ai-studio' },
       { name: 'Real-World Evidence', path: '/real-world-evidence' },
       { name: 'Digital Twin Panel', path: '/digital-twin-panel' },
+      { name: 'Biomarker Analytics', path: '/biomarker-analytics' },
     ]
   },
   { 

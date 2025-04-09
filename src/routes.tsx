@@ -17,6 +17,7 @@ const Products = lazy(() => import('./pages/Products'));
 const AIStudio = lazy(() => import('./pages/AIStudio'));
 const RealWorldEvidence = lazy(() => import('./pages/RealWorldEvidence'));
 const DigitalTwinPanel = lazy(() => import('./pages/DigitalTwinPanel'));
+const BiomarkerAnalytics = lazy(() => import('./pages/BiomarkerAnalytics'));
 
 // Loading fallback
 const PageLoading = () => (
@@ -84,6 +85,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoading />}>
             <DigitalTwinPanel />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'biomarker-analytics',
+        element: (
+          <Suspense fallback={<PageLoading />}>
+            <BiomarkerAnalytics />
           </Suspense>
         ),
       },
