@@ -65,7 +65,7 @@ const HowItWorks = () => {
         <AnimatedJourneyFlow />
         <AboutUsDivider />
         
-        {/* Explainer Section */}
+        {/* Explainer Section with enhanced design */}
         <ExplainerSection className="bg-white" />
         <AboutUsDivider />
         

@@ -5,6 +5,7 @@ import { Button } from '@/components/Button';
 import { Activity, ArrowRight, Calendar, FileText, HeartPulse } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { toast } from '@/hooks/use-toast';
+import { CustomButton } from '@/components/ui/custom-button';
 
 const CallToActionSection = () => {
   const handleButtonClick = (actionType: string) => {
@@ -42,29 +43,28 @@ const CallToActionSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
+            <CustomButton
               variant="primary"
               size="lg"
-              as="button" 
               onClick={() => handleButtonClick("Free Trial")}
-              className="group"
+              className="group w-full sm:w-auto"
+              rightIcon={<ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
             >
-              <Activity size={18} />
+              <Activity size={18} className="mr-1" />
               Start Your Free Trial
-              <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
-            </Button>
+            </CustomButton>
             
-            <Button
+            <CustomButton
               variant="outline"
               size="lg"
               as={Link}
               to="/contact"
               onClick={() => handleButtonClick("Demo Request")}
-              className="group"
+              className="group w-full sm:w-auto"
             >
-              <Calendar size={18} />
+              <Calendar size={18} className="mr-1" />
               Schedule a Demo
-            </Button>
+            </CustomButton>
           </div>
         </motion.div>
         
@@ -84,16 +84,16 @@ const CallToActionSection = () => {
             <p className="text-muted-foreground mb-6">
               Gain valuable insights from your health data to prevent illness and optimize wellbeing with personalized recommendations.
             </p>
-            <Button
+            <CustomButton
               variant="link"
               as={Link}
               to="/patient-solutions"
               onClick={() => handleButtonClick("Patient Solutions")}
               className="group text-indigo-600"
+              rightIcon={<ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
             >
               Learn More
-              <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
-            </Button>
+            </CustomButton>
           </motion.div>
           
           <motion.div 
@@ -111,16 +111,16 @@ const CallToActionSection = () => {
             <p className="text-muted-foreground mb-6">
               Enhance your clinical decision making with AI-powered diagnostics, treatment recommendations, and patient monitoring.
             </p>
-            <Button
+            <CustomButton
               variant="link"
               as={Link}
               to="/doctor-solutions"
               onClick={() => handleButtonClick("Doctor Solutions")}
               className="group text-purple-600"
+              rightIcon={<ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
             >
               Learn More
-              <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
-            </Button>
+            </CustomButton>
           </motion.div>
           
           <motion.div 
@@ -138,16 +138,16 @@ const CallToActionSection = () => {
             <p className="text-muted-foreground mb-6">
               Optimize resource allocation, reduce readmissions, and improve patient outcomes with predictive analytics and AI systems.
             </p>
-            <Button
+            <CustomButton
               variant="link"
               as={Link}
               to="/hospital-solutions"
               onClick={() => handleButtonClick("Hospital Solutions")}
               className="group text-cyan-600"
+              rightIcon={<ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
             >
               Learn More
-              <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
-            </Button>
+            </CustomButton>
           </motion.div>
         </div>
       </div>

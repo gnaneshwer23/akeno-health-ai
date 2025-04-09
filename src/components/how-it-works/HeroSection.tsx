@@ -3,15 +3,21 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Database, Brain, Activity, Shield, Zap, ArrowRight } from 'lucide-react';
 import { CustomButton } from '@/components/ui/custom-button';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from '@/hooks/use-toast';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
-  const { toast } = useToast();
-  
   const handleDemo = () => {
     toast({
       title: "Demo Request Received",
       description: "Thank you for your interest. A team member will contact you shortly to schedule a demo.",
+    });
+  };
+
+  const handleGetStarted = () => {
+    toast({
+      title: "Getting Started",
+      description: "Welcome to Akeno Health! We're excited to have you join our healthcare revolution.",
     });
   };
 
@@ -123,9 +129,11 @@ const HeroSection = () => {
             <CustomButton 
               size="lg" 
               variant="primary"
+              as={Link}
               to="/patient-solutions"
-              className="shadow-md hover:shadow-lg transition-all"
-              icon={<ArrowRight className="ml-1" size={18} />}
+              onClick={handleGetStarted}
+              className="shadow-md hover:shadow-lg transition-all w-full sm:w-auto"
+              rightIcon={<ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />}
             >
               Get Started Today
             </CustomButton>
@@ -133,8 +141,8 @@ const HeroSection = () => {
             <CustomButton 
               size="lg" 
               variant="outline"
-              className="border-health-primary text-health-primary hover:bg-health-primary/5"
               onClick={handleDemo}
+              className="border-health-primary text-health-primary hover:bg-health-primary/5 w-full sm:w-auto"
             >
               Book a Demo
             </CustomButton>
