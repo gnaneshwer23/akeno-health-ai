@@ -17,9 +17,10 @@ export const PointListItem = ({ point, index, color }: PointListItemProps) => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: 0.7 + (index * 0.1) }}
+      whileHover={{ x: 3 }}
     >
-      <div className="min-w-6 mt-1">
-        <Check size={20} className={`text-${color}-600`} />
+      <div className={`min-w-6 mt-0.5 rounded-full bg-${color}-100 p-1 flex items-center justify-center`}>
+        <Check size={16} className={`text-${color}-600`} />
       </div>
       <span className="text-lg text-gray-700">{point}</span>
     </motion.li>

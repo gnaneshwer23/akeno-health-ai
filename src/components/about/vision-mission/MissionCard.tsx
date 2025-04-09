@@ -24,7 +24,10 @@ export const MissionCard = ({ missionPoints }: MissionCardProps) => {
           <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-700 flex items-center justify-center shadow-lg mr-4">
             <Rocket size={30} className="text-white" />
           </div>
-          <h3 className="text-2xl font-bold text-purple-900">Our Mission</h3>
+          <div>
+            <h3 className="text-2xl font-bold text-purple-900">Our Mission</h3>
+            <p className="text-purple-700/70 text-sm">How we'll get there</p>
+          </div>
         </div>
         
         <ul className="space-y-4">

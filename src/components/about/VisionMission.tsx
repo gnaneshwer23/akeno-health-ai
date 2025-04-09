@@ -7,27 +7,30 @@ import { VisionMissionCTA } from './vision-mission/VisionMissionCTA';
 import { BackgroundDecorations } from './vision-mission/BackgroundDecorations';
 import { ConnectedDots } from './vision-mission/ConnectedDots';
 import { ConnectingLine } from './vision-mission/ConnectingLine';
+import { ValuesSection } from './vision-mission/ValuesSection';
 import { motion } from 'framer-motion';
 
 export const VisionMission = () => {
+  // Streamlined mission points - more concise
   const missionPoints = [
-    "Empower individuals with continuous AI-driven health insights",
-    "Support healthcare providers with real-time, AI-powered clinical decision support",
-    "Enable pharmaceutical companies to accelerate drug discovery and optimise clinical trials",
-    "Secure health data ownership through blockchain-powered patient records",
-    "Create a global, decentralised, and intelligent healthcare network"
+    "Empower individuals with AI-driven health insights",
+    "Support healthcare providers with real-time decision support",
+    "Accelerate pharmaceutical research and development",
+    "Secure patient data ownership with blockchain technology",
+    "Build a global, intelligent healthcare network"
   ];
 
+  // Streamlined vision points - more concise
   const visionPoints = [
-    "A world where diseases are predicted before they occur",
-    "Treatments tailored to each individual's unique genetic makeup",
-    "Medical research that accelerates breakthroughs and saves lives",
-    "Healthcare that is proactive rather than reactive",
-    "AI identifying health risks before they become serious conditions"
+    "Predictive healthcare that prevents disease",
+    "Personalized treatments for each individual",
+    "Accelerated medical research through AI",
+    "Proactive rather than reactive healthcare",
+    "Early identification of health risks"
   ];
 
   return (
-    <section id="vision" className="py-20 relative overflow-hidden">
+    <section id="vision-mission" className="py-20 relative overflow-hidden">
       {/* Background Elements */}
       <BackgroundDecorations />
       
@@ -79,6 +82,16 @@ export const VisionMission = () => {
             </motion.div>
           </div>
         </div>
+
+        {/* Values section - NEW component to visualize our values */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <ValuesSection />
+        </motion.div>
         
         {/* Call to Action with animation */}
         <motion.div

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target } from 'lucide-react';
+import { Eye } from 'lucide-react';
 import { PointListItem } from './PointListItem';
 
 interface VisionCardProps {
@@ -22,9 +22,12 @@ export const VisionCard = ({ visionPoints }: VisionCardProps) => {
       <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-indigo-100 h-full transform transition-transform duration-500 group-hover:translate-y-[-5px]">
         <div className="flex items-center mb-6">
           <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center shadow-lg mr-4">
-            <Target size={30} className="text-white" />
+            <Eye size={30} className="text-white" />
           </div>
-          <h3 className="text-2xl font-bold text-indigo-900">Our Vision</h3>
+          <div>
+            <h3 className="text-2xl font-bold text-indigo-900">Our Vision</h3>
+            <p className="text-indigo-700/70 text-sm">The future we're building</p>
+          </div>
         </div>
         
         <ul className="space-y-4">
