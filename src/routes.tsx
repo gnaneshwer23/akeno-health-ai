@@ -1,4 +1,3 @@
-
 import React, { lazy, Suspense } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './App';
@@ -13,8 +12,8 @@ const Login = lazy(() => import('./pages/auth/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const ResetPassword = lazy(() => import('./pages/auth/ResetPassword'));
 const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword'));
-const Products = lazy(() => import('./pages/Products')); // Ensure Products page is imported
-const AIStudio = lazy(() => import('./pages/AIStudio')); // Keep AIStudio as separate import
+const Products = lazy(() => import('./pages/Products'));
+const AIStudio = lazy(() => import('./pages/AIStudio'));
 
 // Loading fallback
 const PageLoading = () => (
