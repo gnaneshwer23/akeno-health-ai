@@ -11,6 +11,8 @@ import { FinalCTASection } from '@/components/home/FinalCTASection';
 import { FeaturesSection } from '@/components/FeaturesSection';
 import { MissionStatement } from '@/components/mission/MissionStatement';
 import ResponsiveServiceFlow from '@/components/home/ResponsiveServiceFlow';
+import CoreProducts from '@/components/products/CoreProducts';
+import ProductsRealWorldEvidence from '@/components/products/ProductsRealWorldEvidence';
 
 const Home = () => {
   return (
@@ -33,6 +35,14 @@ const Home = () => {
       
       {/* Aligned Features Section */}
       <FeaturesSection />
+      
+      {/* Product Overview Section */}
+      <div id="products">
+        <CoreProducts />
+      </div>
+      
+      {/* Featured Real World Evidence Section */}
+      <ProductsRealWorldEvidence />
       
       {/* Service Flow Diagram - shows how data flows through the Akeno system */}
       <div className="py-12 px-6 bg-white">

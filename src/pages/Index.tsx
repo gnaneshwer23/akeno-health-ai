@@ -10,6 +10,8 @@ import { TechDifferentiatorsSection } from '@/components/home/TechDifferentiator
 import { TestimonialsPartnersSection } from '@/components/home/TestimonialsPartnersSection';
 import { FinalCTASection } from '@/components/home/FinalCTASection';
 import AIFlowDiagram from '@/components/home/AIFlowDiagram';
+import CoreProducts from '@/components/products/CoreProducts';
+import ProductsRealWorldEvidence from '@/components/products/ProductsRealWorldEvidence';
 
 const Index = () => {
   useEffect(() => {
@@ -67,6 +69,14 @@ const Index = () => {
             </div>
           </div>
         </div>
+        
+        {/* Product Overview Section */}
+        <div id="products" className="py-8">
+          <CoreProducts />
+        </div>
+        
+        {/* Featured Real World Evidence Section */}
+        <ProductsRealWorldEvidence />
         
         {/* Section 2: How It Works */}
         <HowItWorksSection />
