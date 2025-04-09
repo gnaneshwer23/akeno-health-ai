@@ -16,50 +16,50 @@ export type JourneyStep = {
 export const journeySteps: JourneyStep[] = [
   {
     step: 1,
-    title: "Health Data Collection",
-    content: "AI gathers data from wearables, medical records, genetics, and more",
+    title: "Real-Time Data Collection",
+    content: "We start by listening to your body — continuously",
     icon: <Smartphone size={24} />,
     color: "indigo"
   },
   {
     step: 2,
-    title: "Digital Twin Creation",
-    content: "AI builds a virtual health model to simulate outcomes",
-    icon: <Database size={24} />,
+    title: "AI Risk Detection",
+    content: "Before symptoms appear, our AI predicts risk",
+    icon: <Brain size={24} />,
     color: "purple"
   },
   {
     step: 3,
-    title: "AI Risk Analysis",
-    content: "Early disease detection before symptoms appear",
-    icon: <Brain size={24} />,
+    title: "Clinical Intelligence",
+    content: "AI becomes your doctor's co-pilot",
+    icon: <HeartPulse size={24} />,
     color: "blue"
   },
   {
     step: 4,
-    title: "AI-Powered Diagnosis",
-    content: "Enhanced medical insights for doctors",
-    icon: <Zap size={24} />,
+    title: "Digital Twin Simulation",
+    content: "A treatment plan tested on your digital self first",
+    icon: <FlaskConical size={24} />,
     color: "cyan"
   },
   {
     step: 5,
-    title: "Precision Treatment",
-    content: "Personalized therapy based on your unique biology",
-    icon: <FlaskConical size={24} />,
+    title: "Adaptive Care",
+    content: "As you heal, the system evolves with you",
+    icon: <Activity size={24} />,
     color: "teal"
   },
   {
     step: 6,
-    title: "Continuous Monitoring",
-    content: "Real-time health tracking and adjustments",
-    icon: <Activity size={24} />,
+    title: "Clinical Trial Matching",
+    content: "Access cutting-edge treatments and research",
+    icon: <Zap size={24} />,
     color: "pink"
   },
   {
     step: 7,
-    title: "Secure Data Sharing",
-    content: "Blockchain-protected health data under your control",
+    title: "Blockchain Security",
+    content: "You control your health data – always",
     icon: <Lock size={24} />,
     color: "amber"
   }

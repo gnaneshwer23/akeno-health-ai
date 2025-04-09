@@ -1,107 +1,133 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import BenefitsGrid from './cta/BenefitsGrid';
-import CTAButtons from './cta/CTAButtons';
-import { ArrowRight } from 'lucide-react';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1,
-    transition: { 
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1 }
-};
 
 const CallToActionSection = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 text-white relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-80 h-80 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/10 blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-gradient-to-tl from-purple-500/20 to-pink-500/10 blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full bg-gradient-to-tr from-blue-500/20 to-cyan-500/10 blur-2xl"></div>
-      </div>
-      
-      <motion.div 
-        className="max-w-5xl mx-auto relative z-10"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <motion.div 
-          className="text-center mb-16"
-          variants={itemVariants}
-        >
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-indigo-100 to-white bg-clip-text text-transparent"
-            variants={itemVariants}
+    <section className="py-24 px-6 bg-gradient-to-b from-indigo-50/50 to-white">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            Ready to Transform Your Healthcare Journey?
-          </motion.h2>
-          
-          <div className="flex justify-center mb-6">
-            <div className="h-1 w-32 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full"></div>
-          </div>
-          
-          <motion.p 
-            className="text-xl text-indigo-100/90 max-w-3xl mx-auto"
-            variants={itemVariants}
-          >
-            Now that you understand how Akeno works, take the next step with our innovative healthcare ecosystem
-          </motion.p>
-        </motion.div>
-        
-        <motion.div 
-          className="bg-white/5 rounded-2xl p-8 md:p-12 border border-white/10 mb-12 backdrop-blur-sm"
-          variants={itemVariants}
-        >
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            <motion.div 
-              className="space-y-6"
-              variants={itemVariants}
-            >
-              <h3 className="text-2xl font-semibold text-white">Next Steps</h3>
-              <BenefitsGrid />
-            </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
+              Why It <span className="bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">Works</span>
+            </h2>
             
-            <motion.div 
-              className="border-t md:border-t-0 md:border-l border-indigo-500/20 pt-6 md:pt-0 md:pl-12 flex flex-col justify-center"
-              variants={itemVariants}
-            >
-              <h3 className="text-2xl font-semibold text-white mb-6">Take Action Today</h3>
-              <CTAButtons />
-            </motion.div>
-          </div>
-        </motion.div>
-        
-        {/* Final Call to Action Button */}
-        <motion.div 
-          className="text-center"
-          variants={itemVariants}
-        >
-          <Button
-            className="group bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 py-6 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-            asChild
+            <div className="flex justify-start mb-6">
+              <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary rounded-full"></div>
+            </div>
+            
+            <p className="text-lg text-muted-foreground mb-8">
+              Akeno Health combines cutting-edge AI technology with medical expertise to create a healthcare platform that truly works for patients, providers, and researchers alike.
+            </p>
+            
+            <ul className="space-y-4 mb-8">
+              {[
+                "Predicts & prevents diseases early",
+                "Builds trust with explainable AI",
+                "Delivers ultra-personalised treatment",
+                "Enables researchers & pharma to innovate",
+                "Ensures ethical, privacy-preserving data usage"
+              ].map((item, i) => (
+                <motion.li
+                  key={i}
+                  className="flex items-start gap-3"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 * i }}
+                >
+                  <CheckCircle size={20} className="text-green-500 mt-1 flex-shrink-0" />
+                  <span className="text-gray-700">{item}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+          
+          <motion.div
+            className="bg-gradient-to-br from-indigo-100 to-purple-50 p-8 md:p-10 rounded-xl shadow-lg border border-indigo-200/50"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <Link to="/contact" className="flex items-center gap-2">
-              Begin Your Journey With Akeno Health
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
-        </motion.div>
-      </motion.div>
+            <h3 className="text-2xl md:text-3xl font-bold text-health-dark mb-6 text-center">
+              Join the Intelligent Health Movement Today
+            </h3>
+            
+            <div className="grid md:grid-cols-1 gap-4 mb-6">
+              <motion.div 
+                className="p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-indigo-100"
+                whileHover={{ y: -2 }}
+                transition={{ type: "spring", stiffness: 500 }}
+              >
+                <h4 className="font-semibold text-lg mb-2 text-health-dark">For Patients</h4>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Experience personalized healthcare with early disease detection, tailored treatment plans, and continuous monitoring.
+                </p>
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-between border-health-primary/30 text-health-primary hover:bg-health-primary/5"
+                >
+                  Try Akeno for Patients
+                  <ArrowRight size={16} />
+                </Button>
+              </motion.div>
+              
+              <motion.div 
+                className="p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-indigo-100"
+                whileHover={{ y: -2 }}
+                transition={{ type: "spring", stiffness: 500 }}
+              >
+                <h4 className="font-semibold text-lg mb-2 text-health-dark">For Healthcare Providers</h4>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Enhance clinical decision-making, optimize resources, and deliver better outcomes for your patients.
+                </p>
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-between border-health-primary/30 text-health-primary hover:bg-health-primary/5"
+                >
+                  Request Provider Demo
+                  <ArrowRight size={16} />
+                </Button>
+              </motion.div>
+              
+              <motion.div 
+                className="p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-indigo-100"
+                whileHover={{ y: -2 }}
+                transition={{ type: "spring", stiffness: 500 }}
+              >
+                <h4 className="font-semibold text-lg mb-2 text-health-dark">For Researchers</h4>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Access our Digital Twin platform to accelerate research, design better trials, and drive innovation.
+                </p>
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-between border-health-primary/30 text-health-primary hover:bg-health-primary/5"
+                >
+                  Explore Research Solutions
+                  <ArrowRight size={16} />
+                </Button>
+              </motion.div>
+            </div>
+            
+            <div className="text-center">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-health-primary to-health-secondary hover:from-health-primary/90 hover:to-health-secondary/90 text-white shadow-md"
+              >
+                Book a Personalized Demo
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 };

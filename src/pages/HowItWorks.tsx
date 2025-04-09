@@ -9,6 +9,7 @@ import { Footer } from '@/components/Footer';
 import { AboutUsFloatingElements } from '@/components/about/page/AboutUsFloatingElements';
 import { AboutUsDivider } from '@/components/about/page/AboutUsDivider';
 import { motion } from 'framer-motion';
+import AnimatedJourneyFlow from '@/components/how-it-works/AnimatedJourneyFlow';
 
 const HowItWorks = () => {
   // Scroll to top when component mounts
@@ -31,6 +32,8 @@ const HowItWorks = () => {
         <HeroSection />
         <AboutUsDivider />
         <ProcessStepsSection />
+        <AboutUsDivider />
+        <AnimatedJourneyFlow />
         <AboutUsDivider />
         <InfographicSection />
         <AboutUsDivider />

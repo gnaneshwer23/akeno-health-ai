@@ -1,239 +1,308 @@
 
 import React from 'react';
 import { 
-  Smartphone, Database, Brain, Activity, FlaskConical, 
-  Dna, LineChart, HeartPulse, Beaker, Users, Shield, FileText, 
-  Zap, Lock, Link as LinkIcon, Pill
+  Activity, Brain, Flask, Shield, Database, 
+  Zap, HeartPulse, Link as LinkIcon, Lock
 } from 'lucide-react';
 
-export interface ProcessStepData {
-  stepNumber: number;
+export interface ProcessStep {
+  id: string;
   title: string;
-  description: string;
+  tagline: string;
+  description: React.ReactNode;
   icon: React.ReactNode;
-  features: {
-    icon: React.ReactNode;
-    title?: string;
-    content: string;
-  }[];
-  outcome: string;
+  color: string;
 }
 
-export const processStepsData: ProcessStepData[] = [
-  // Step 1
+export const processSteps: ProcessStep[] = [
   {
-    stepNumber: 1,
-    title: "Real-Time Health Monitoring & Data Collection",
-    description: "Akeno Health continuously gathers real-time health data from multiple sources, creating a comprehensive 360° view of a patient's health.",
-    icon: <Database size={60} className="text-indigo-500" />,
-    features: [
-      {
-        icon: <Smartphone size={24} />,
-        title: "Wearables & IoT Devices",
-        content: "Smartwatches, ECG patches, glucose monitors, BP cuffs, fitness trackers"
-      },
-      {
-        icon: <FileText size={24} />,
-        title: "Electronic Health Records",
-        content: "Secure, AI-integrated health data exchange from clinics & hospitals"
-      },
-      {
-        icon: <Dna size={24} />,
-        title: "Genomic & Microbiome Data",
-        content: "Personalised DNA & gut microbiome analysis for precision medicine"
-      },
-      {
-        icon: <Activity size={24} />,
-        title: "Medical Imaging & Lab Data",
-        content: "AI-driven diagnostics from X-rays, MRIs, and blood tests"
-      },
-    ],
-    outcome: "A fully automated, real-time health monitoring system that detects patterns before symptoms appear."
+    id: "data-collection",
+    title: "Real-Time Data Collection",
+    tagline: "We start by listening to your body — continuously.",
+    description: (
+      <div className="space-y-3">
+        <p className="text-muted-foreground">
+          Akeno Health aggregates data from multiple sources to build a comprehensive picture of your health:
+        </p>
+        <ul className="space-y-2 text-sm">
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-blue-600 text-xs">•</span>
+            </div>
+            <span>Smart wearables (ECG, CGM, HR, Sleep, SpO₂)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-blue-600 text-xs">•</span>
+            </div>
+            <span>IoT medical devices (BP monitors, smart scales)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-blue-600 text-xs">•</span>
+            </div>
+            <span>Electronic Health Records (EHRs, labs, prescriptions)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-blue-600 text-xs">•</span>
+            </div>
+            <span>Multi-Omics data (genomics, microbiome, proteomics)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-blue-600 text-xs">•</span>
+            </div>
+            <span>Lifestyle & environment inputs (diet, stress, pollution)</span>
+          </li>
+        </ul>
+        <p className="text-sm font-medium flex items-center gap-2 mt-3 text-blue-600">
+          <Lock size={16} />
+          All data is encrypted at source (end-to-end)
+        </p>
+      </div>
+    ),
+    icon: <Database size={24} />,
+    color: "blue"
   },
-  
-  // Step 2
   {
-    stepNumber: 2,
-    title: "AI-Powered Early Detection & Personalised Risk Analysis",
-    description: "Akeno Health's AI-driven risk assessment engine continuously analyses real-time health data to detect early warning signs of diseases and health risks.",
-    icon: <LineChart size={60} className="text-purple-500" />,
-    features: [
-      {
-        icon: <Brain size={24} />,
-        title: "Predictive AI Modelling",
-        content: "Identifies potential health risks based on patient history & biometric patterns"
-      },
-      {
-        icon: <Dna size={24} />,
-        title: "Disease Forecasting",
-        content: "AI predicts conditions like cancer, diabetes, heart disease, neurological disorders"
-      },
-      {
-        icon: <Activity size={24} />,
-        title: "Personalised Risk Scores",
-        content: "AI generates individualised risk reports and alerts patients & doctors"
-      },
-      {
-        icon: <HeartPulse size={24} />,
-        title: "Automated Preventive Plans",
-        content: "AI recommends customised lifestyle & medical interventions"
-      },
-    ],
-    outcome: "Patients receive early health warnings & personalised recommendations before diseases progress."
+    id: "risk-detection",
+    title: "AI-Powered Risk Detection & Early Warnings",
+    tagline: "Before symptoms appear, our AI predicts risk.",
+    description: (
+      <div className="space-y-3">
+        <p className="text-muted-foreground">
+          Our AI continuously analyzes your health data to detect potential issues before they become serious:
+        </p>
+        <ul className="space-y-2 text-sm">
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-indigo-600 text-xs">•</span>
+            </div>
+            <span>Real-time analysis of vitals & historical trends</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-indigo-600 text-xs">•</span>
+            </div>
+            <span>Polygenic risk scoring for disease predisposition</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-indigo-600 text-xs">•</span>
+            </div>
+            <span>AI flags deviations in health baselines and sends early alerts</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-indigo-600 text-xs">•</span>
+            </div>
+            <span>Use of federated learning to continuously improve without centralising data</span>
+          </li>
+        </ul>
+      </div>
+    ),
+    icon: <Brain size={24} />,
+    color: "indigo"
   },
-  
-  // Step 3
   {
-    stepNumber: 3,
-    title: "AI-Driven Clinical Decision Support & Doctor Insights",
-    description: "Akeno Health empowers doctors & healthcare providers with AI-driven clinical decision support, allowing them to deliver more accurate, personalised, and faster diagnoses.",
-    icon: <Brain size={60} className="text-blue-500" />,
-    features: [
-      {
-        icon: <Dna size={24} />,
-        title: "AI-Powered Diagnosis",
-        content: "Instant differential diagnosis suggestions with symptom analysis"
-      },
-      {
-        icon: <Shield size={24} />,
-        title: "Automated Treatment Plans",
-        content: "AI recommends evidence-based personalised treatment options"
-      },
-      {
-        icon: <Activity size={24} />,
-        title: "Medication Safety Alerts",
-        content: "Ensures patient safety by preventing adverse drug reactions"
-      },
-      {
-        icon: <Users size={24} />,
-        title: "Doctor Collaboration Platform",
-        content: "AI-enhanced real-time consultation between specialists"
-      },
-    ],
-    outcome: "Doctors make faster, evidence-based decisions, improving patient outcomes & reducing errors."
+    id: "clinical-intelligence",
+    title: "AI Clinical Intelligence & Doctor Insights",
+    tagline: "AI becomes your doctor's co-pilot.",
+    description: (
+      <div className="space-y-3">
+        <p className="text-muted-foreground">
+          Akeno Health empowers healthcare providers with AI-powered clinical insights:
+        </p>
+        <ul className="space-y-2 text-sm">
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-purple-600 text-xs">•</span>
+            </div>
+            <span>Clinical Decision Support (CDS) during diagnosis</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-purple-600 text-xs">•</span>
+            </div>
+            <span>Predictive treatment pathways based on real-world data</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-purple-600 text-xs">•</span>
+            </div>
+            <span>NLP-powered literature review: AI cites guidelines & recent studies</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-purple-600 text-xs">•</span>
+            </div>
+            <span>Drug-drug interaction alerts, allergy detection, dosing recommendations</span>
+          </li>
+        </ul>
+      </div>
+    ),
+    icon: <HeartPulse size={24} />,
+    color: "purple"
   },
-  
-  // Step 4
   {
-    stepNumber: 4,
-    title: "Precision Medicine & AI-Powered Treatment Optimisation",
-    description: "Akeno Health leverages AI, Quantum Computing, and Digital Twin Technology to optimise treatments for each individual.",
-    icon: <Zap size={60} className="text-cyan-500" />,
-    features: [
-      {
-        icon: <Dna size={24} />,
-        title: "Genomics Integration",
-        content: "AI customises treatments based on DNA & microbiome analysis"
-      },
-      {
-        icon: <Brain size={24} />,
-        title: "Digital Twin Technology",
-        content: "Creates a virtual health replica to simulate treatments before prescribing"
-      },
-      {
-        icon: <FlaskConical size={24} />,
-        title: "Quantum-Powered Drug Matching",
-        content: "Identifies the most effective drugs for a patient's unique genetic profile"
-      },
-      {
-        icon: <HeartPulse size={24} />,
-        title: "AI-Optimised Dosage",
-        content: "AI tailors drug dosages in real-time based on metabolic responses"
-      },
-    ],
-    outcome: "Every patient receives fully personalised, optimised treatment for faster recovery & fewer side effects."
+    id: "precision-treatment",
+    title: "Precision Treatment & Digital Twin Simulation",
+    tagline: "A treatment plan tested on your digital self first.",
+    description: (
+      <div className="space-y-3">
+        <p className="text-muted-foreground">
+          We create a personalized digital model of your health to simulate treatment options:
+        </p>
+        <ul className="space-y-2 text-sm">
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-cyan-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-cyan-600 text-xs">•</span>
+            </div>
+            <span>Your Digital Twin is created using genomics + medical + behavioural data</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-cyan-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-cyan-600 text-xs">•</span>
+            </div>
+            <span>Simulates responses to different treatment options</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-cyan-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-cyan-600 text-xs">•</span>
+            </div>
+            <span>AI suggests the optimal protocol (drug, dose, duration)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-cyan-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-cyan-600 text-xs">•</span>
+            </div>
+            <span>Adapts continuously with each new data point</span>
+          </li>
+        </ul>
+      </div>
+    ),
+    icon: <Flask size={24} />,
+    color: "cyan"
   },
-  
-  // Step 5
   {
-    stepNumber: 5,
-    title: "Seamless Connectivity – Patients, Doctors, Pharma, and Research",
-    description: "Akeno Health eliminates healthcare silos by seamlessly integrating patients, healthcare providers, researchers, and pharma companies through a real-time, AI-powered ecosystem.",
-    icon: <LinkIcon size={60} className="text-pink-500" />,
-    features: [
-      {
-        icon: <Pill size={24} />,
-        title: "AI-Powered Prescription",
-        content: "Connects doctors, pharmacies, and patients for seamless medication management"
-      },
-      {
-        icon: <Smartphone size={24} />,
-        title: "Telemedicine & AI Assistant",
-        content: "Instant patient support via AI-driven chatbots & telehealth"
-      },
-      {
-        icon: <Users size={24} />,
-        title: "Automated Referrals",
-        content: "AI matches patients to the best specialists & healthcare facilities"
-      },
-      {
-        icon: <Shield size={24} />,
-        title: "AI-Powered Insurance",
-        content: "Faster approvals & fraud detection for insurance companies"
-      },
-    ],
-    outcome: "A fully connected, AI-driven healthcare ecosystem that optimises efficiency for all stakeholders."
+    id: "real-time-monitoring",
+    title: "Real-Time Monitoring & Adaptive Care",
+    tagline: "As you heal, the system evolves with you.",
+    description: (
+      <div className="space-y-3">
+        <p className="text-muted-foreground">
+          Akeno Health continuously monitors your health and adapts your care plan:
+        </p>
+        <ul className="space-y-2 text-sm">
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-teal-600 text-xs">•</span>
+            </div>
+            <span>AI monitors treatment response via wearables + biomarkers</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-teal-600 text-xs">•</span>
+            </div>
+            <span>Auto-adjusts medication or notifies doctors in real-time</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-teal-600 text-xs">•</span>
+            </div>
+            <span>Mental health, sleep, and nutrition tracked holistically</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-teal-600 text-xs">•</span>
+            </div>
+            <span>Chronic condition coaching through conversational AI</span>
+          </li>
+        </ul>
+      </div>
+    ),
+    icon: <Activity size={24} />,
+    color: "teal"
   },
-  
-  // Step 6
   {
-    stepNumber: 6,
-    title: "AI-Powered Clinical Trials Matching & Drug Discovery Acceleration",
-    description: "Akeno Health revolutionises clinical trials and drug discovery by leveraging AI and Quantum Computing to streamline research, recruitment, and pharmaceutical innovation.",
-    icon: <Beaker size={60} className="text-indigo-500" />,
-    features: [
-      {
-        icon: <Users size={24} />,
-        title: "Automated Trial Matching",
-        content: "AI scans millions of patient profiles to match them with relevant clinical trials"
-      },
-      {
-        icon: <FlaskConical size={24} />,
-        title: "Quantum-Accelerated Discovery",
-        content: "AI simulates molecular interactions to identify potential drug candidates faster"
-      },
-      {
-        icon: <Dna size={24} />,
-        title: "AI-Powered Biomarker Discovery",
-        content: "Identifies early disease indicators for targeted therapies"
-      },
-      {
-        icon: <Shield size={24} />,
-        title: "Blockchain-Based Consent",
-        content: "Ensures secure & transparent clinical trial participation"
-      },
-    ],
-    outcome: "Faster drug development, increased trial success rates, and better treatment options for patients."
+    id: "clinical-trial",
+    title: "Clinical Trial Matching & Research Acceleration",
+    tagline: "You may be eligible for cutting-edge treatments before others.",
+    description: (
+      <div className="space-y-3">
+        <p className="text-muted-foreground">
+          Connect to breakthrough research and cutting-edge treatments:
+        </p>
+        <ul className="space-y-2 text-sm">
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-pink-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-pink-600 text-xs">•</span>
+            </div>
+            <span>AI checks patient profiles against 10,000+ active trials</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-pink-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-pink-600 text-xs">•</span>
+            </div>
+            <span>Privacy-preserving federated trial matching</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-pink-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-pink-600 text-xs">•</span>
+            </div>
+            <span>For researchers: run simulations, stratify cohorts, design smarter studies</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-pink-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-pink-600 text-xs">•</span>
+            </div>
+            <span>Digital twins inform trial protocol design & real-world impact models</span>
+          </li>
+        </ul>
+      </div>
+    ),
+    icon: <Zap size={24} />,
+    color: "pink"
   },
-  
-  // Step 7
   {
-    stepNumber: 7,
-    title: "Blockchain-Enabled Data Security & Patient-Controlled Health Records",
-    description: "Akeno Health revolutionises health data security by integrating Blockchain, AI, and Quantum Encryption for ultra-secure, patient-owned medical records.",
-    icon: <Lock size={60} className="text-green-500" />,
-    features: [
-      {
-        icon: <Database size={24} />,
-        title: "Decentralised Health Records",
-        content: "Patients fully control their health data and decide who can access it"
-      },
-      {
-        icon: <Shield size={24} />,
-        title: "Quantum Encryption",
-        content: "Protects sensitive patient data from cyber threats"
-      },
-      {
-        icon: <Lock size={24} />,
-        title: "Zero-Knowledge Proofs",
-        content: "Patients can share insights without revealing personal identity"
-      },
-      {
-        icon: <Brain size={24} />,
-        title: "AI-Powered Anonymisation",
-        content: "Enables secure medical research & AI training without compromising privacy"
-      },
-    ],
-    outcome: "Patients have complete control over their health records while ensuring ultra-secure, tamper-proof data protection."
-  }
+    id: "security",
+    title: "Blockchain-Based Security & Global Interoperability",
+    tagline: "You control your health data – always.",
+    description: (
+      <div className="space-y-3">
+        <p className="text-muted-foreground">
+          Your data remains secure, private, and completely under your control:
+        </p>
+        <ul className="space-y-2 text-sm">
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-amber-600 text-xs">•</span>
+            </div>
+            <span>All medical records stored in a Universal Health Record (UHR)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-amber-600 text-xs">•</span>
+            </div>
+            <span>Access managed by smart contracts & ZKPs (zero-knowledge proofs)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-amber-600 text-xs">•</span>
+            </div>
+            <span>Interoperability with systems across countries (FHIR, HL7, DICOM)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="h-5 w-5 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-amber-600 text-xs">•</span>
+            </div>
+            <span>Full GDPR/HIPAA/ICMR compliance</span>
+          </li>
+        </ul>
+      </div>
+    ),
+    icon: <Shield size={24} />,
+    color: "amber"
+  },
 ];

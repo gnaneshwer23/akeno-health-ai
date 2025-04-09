@@ -21,12 +21,16 @@ const InfographicHeader: React.FC = () => {
         transition={{ type: "spring", stiffness: 400 }}
       >
         <Activity size={16} className="text-indigo-600" />
-        <span>Your AI-Powered Healthcare Journey</span>
+        <span>Interactive Health Journey</span>
       </motion.span>
       
       <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
         Your Health Journey with <span className="bg-gradient-to-br from-indigo-600 to-purple-600 bg-clip-text text-transparent">Akeno AI</span>
       </h2>
+      
+      <div className="flex justify-center mb-4">
+        <div className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
+      </div>
       
       <motion.p 
         className="text-lg text-muted-foreground max-w-3xl mx-auto"
@@ -35,7 +39,7 @@ const InfographicHeader: React.FC = () => {
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        How our technology transforms your healthcare experience at every step
+        From wearables to wellness, see how our technology transforms your healthcare experience at every step
       </motion.p>
     </motion.div>
   );
