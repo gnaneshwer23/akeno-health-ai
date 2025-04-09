@@ -6,7 +6,7 @@ import { Brain, Activity, HeartPulse, Dna, Cpu, Atom } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const DefaultLogo: React.FC = () => {
-  // Create positions for icons evenly distributed in a circle
+  // Create positions for icons ensuring they stay within circle bounds
   const iconConfigs = [
     { icon: Brain, color: 'text-indigo-500', gradient: 'from-indigo-500/20 to-indigo-500/10' },
     { icon: Activity, color: 'text-blue-500', gradient: 'from-blue-500/20 to-blue-500/10' },
@@ -25,10 +25,11 @@ const DefaultLogo: React.FC = () => {
         {/* Background glow effect */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-health-primary/20 via-health-secondary/15 to-health-accent/20 blur-sm"></div>
         
-        {/* Icons distributed around the circle */}
+        {/* Icons distributed around the circle - with constrained radius */}
         {iconConfigs.map((config, index) => {
+          // Use a smaller radius to ensure icons stay inside the circle
           const angle = (index * 60) * (Math.PI / 180); // 60 degrees spacing
-          const radius = 42; // Percentage from center
+          const radius = 38; // Reduced from 42 to keep icons inside
           const x = 50 + radius * Math.cos(angle);
           const y = 50 + radius * Math.sin(angle);
           
@@ -80,11 +81,11 @@ const DefaultLogo: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Connecting lines */}
+        {/* Connecting lines - with constrained radius */}
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
           {iconConfigs.map((_, index) => {
             const angle = (index * 60) * (Math.PI / 180);
-            const radius = 42;
+            const radius = 38; // Reduced from 42 to match icon positions
             const endX = 50 + radius * Math.cos(angle);
             const endY = 50 + radius * Math.sin(angle);
             

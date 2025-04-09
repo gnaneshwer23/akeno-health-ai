@@ -7,29 +7,37 @@ import { useToast } from '@/hooks/use-toast';
 const CTAButtons = () => {
   const { toast } = useToast();
   
-  const handleDemo = () => {
+  const handleDemo = (e: React.MouseEvent) => {
+    e.preventDefault();
     toast({
       title: "Demo Request Received",
-      description: "Thank you for your interest. A team member will contact you to schedule a demo.",
+      description: "This is a demo website. Buttons are intentionally non-functional.",
     });
   };
   
-  const handlePartnership = () => {
+  const handlePartnership = (e: React.MouseEvent) => {
+    e.preventDefault();
     toast({
       title: "Partnership Inquiry",
-      description: "We're excited about potential collaboration. A team member will reach out shortly.",
+      description: "This is a demo website. Buttons are intentionally non-functional.",
     });
   };
 
+  // Using onClick handlers that prevent default and do nothing
   return (
     <div className="space-y-4">
       <div className="flex flex-col space-y-3">
         <CustomButton
           size="lg"
           variant="primary"
-          to="/contact"
-          withArrow
           className="w-full"
+          onClick={(e: any) => {
+            e.preventDefault();
+            toast({
+              title: "Navigation Disabled",
+              description: "This is a demo website. Buttons are intentionally non-functional.",
+            });
+          }}
         >
           Join the Future of AI Healthcare
         </CustomButton>

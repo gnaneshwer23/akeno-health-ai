@@ -17,6 +17,26 @@ const HowItWorks = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Prevent default on all button clicks in the component
+  useEffect(() => {
+    const handleButtonClicks = (e: MouseEvent) => {
+      const target = e.target as Element;
+      if (target.tagName === 'BUTTON' || 
+          target.closest('button') || 
+          target.tagName === 'A' ||
+          target.closest('a')) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    document.addEventListener('click', handleButtonClicks, true);
+    
+    return () => {
+      document.removeEventListener('click', handleButtonClicks, true);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col overflow-hidden">
       <Navbar />
