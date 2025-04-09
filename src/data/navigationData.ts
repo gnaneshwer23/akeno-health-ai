@@ -3,13 +3,13 @@ export const navigationLinks = [
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },
   { name: 'How It Works', path: '/how-it-works' },
-  { name: 'Quantum Computing', path: '/quantum-computing' },
   { 
     name: 'Solutions', 
-    path: '/solutions',  // Updated to link to the Solutions page
+    path: '/solutions',
     isDropdown: true,
     sublinks: [
-      { name: 'Overview', path: '/solutions' },  // Added overview link
+      { name: 'Overview', path: '/solutions' },
+      { name: 'Quantum Computing', path: '/solutions#quantum-computing' },
       { name: 'For Patients', path: '/patient-solutions' },
       { name: 'For Doctors', path: '/doctor-solutions' },
       { name: 'For Hospitals', path: '/hospital-solutions' },

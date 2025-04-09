@@ -1,34 +1,19 @@
 
 import React, { useEffect } from 'react';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { QuantumHero } from '@/components/quantum/QuantumHero';
-import { QuantumIntro } from '@/components/quantum/QuantumIntro';
-import { QuantumApplications } from '@/components/quantum/QuantumApplications';
-import { QuantumFuture } from '@/components/quantum/QuantumFuture';
-import { QuantumCTA } from '@/components/quantum/QuantumCTA';
-import { QuantumBenefits } from '@/components/quantum/QuantumBenefits';
+import { useNavigate } from 'react-router-dom';
 
 const QuantumComputing = () => {
-  // Scroll to top on component mount
+  const navigate = useNavigate();
+  
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+    // Redirect to the solutions page with the quantum-computing anchor
+    navigate('/solutions#quantum-computing');
+  }, [navigate]);
+  
+  // This is just a fallback in case the navigation doesn't work
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white via-purple-50/30 to-white">
-      <Navbar />
-      
-      <main className="flex-grow pt-28 pb-20">
-        <QuantumHero />
-        <QuantumIntro />
-        <QuantumApplications />
-        <QuantumBenefits />
-        <QuantumFuture />
-        <QuantumCTA />
-      </main>
-      
-      <Footer />
+    <div className="min-h-screen flex items-center justify-center">
+      <p>Redirecting to Solutions page...</p>
     </div>
   );
 };
