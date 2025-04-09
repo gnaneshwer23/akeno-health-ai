@@ -1,15 +1,16 @@
 
 import React from 'react';
 import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 import PatientSolutionsHero from '@/components/patient-solutions/PatientSolutionsHero';
-import PatientHowItWorks from '@/components/patient-solutions/PatientHowItWorks';
+import PatientJourney from '@/components/patient-solutions/PatientJourney';
+import RealTimeMonitoring from '@/components/patient-solutions/RealTimeMonitoring';
 import HealthMonitoring from '@/components/patient-solutions/HealthMonitoring';
 import DigitalTwin from '@/components/patient-solutions/DigitalTwin';
 import PatientPrivacy from '@/components/patient-solutions/PatientPrivacy';
 import ClinicalTrialsAccess from '@/components/patient-solutions/ClinicalTrialsAccess';
 import PatientTestimonials from '@/components/patient-solutions/PatientTestimonials';
 import PatientSolutionsCTA from '@/components/patient-solutions/PatientSolutionsCTA';
-import { Footer } from '@/components/Footer';
 
 const PatientSolutions = () => {
   return (
@@ -17,17 +18,25 @@ const PatientSolutions = () => {
       <Navbar />
       
       <main className="flex-grow">
+        {/* Hero section with purpose statement */}
         <PatientSolutionsHero />
         
-        <div className="relative py-10 overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-300/20 to-purple-300/20 rounded-full blur-3xl -z-10"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-green-300/20 to-blue-300/20 rounded-full blur-3xl -z-10"></div>
-          <PatientHowItWorks />
-        </div>
+        {/* How Akeno Health Works for You */}
+        <PatientJourney />
         
+        {/* Real-Time Monitoring & Alerts */}
+        <RealTimeMonitoring />
+        
+        {/* AI-Powered Health Insights & Care Plans */}
         <HealthMonitoring />
+        
+        {/* Digital Twin Technology */}
         <DigitalTwin />
+        
+        {/* Your Data, Protected by Blockchain */}
         <PatientPrivacy />
+        
+        {/* Clinical Trials Access */}
         <ClinicalTrialsAccess />
         
         <div className="relative">
@@ -35,6 +44,7 @@ const PatientSolutions = () => {
           <PatientTestimonials />
         </div>
         
+        {/* Call to Action */}
         <PatientSolutionsCTA />
       </main>
       
