@@ -42,12 +42,12 @@ const CallToActionSection = () => {
             Join thousands of patients and healthcare providers already using Akeno Health AI to revolutionize their approach to wellness and precision medicine.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-6 mb-8">
             <CustomButton
               variant="primary"
               size="lg"
               onClick={() => handleButtonClick("Free Trial")}
-              className="group w-full sm:w-auto"
+              className="group w-64 sm:w-auto min-w-[220px]"
               rightIcon={<ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
             >
               <Activity size={18} className="mr-1" />
@@ -59,7 +59,7 @@ const CallToActionSection = () => {
               size="lg"
               to="/contact"
               onClick={() => handleButtonClick("Demo Request")}
-              className="group w-full sm:w-auto"
+              className="group w-64 sm:w-auto min-w-[220px]"
             >
               <Calendar size={18} className="mr-1" />
               Schedule a Demo

@@ -119,9 +119,9 @@ const HeroSection = () => {
             Discover how our advanced AI platform integrates with your daily life to predict, prevent, and personalize healthcare like never before, all while keeping your data secure and private.
           </motion.p>
           
-          {/* Hero buttons - Fixed spacing issue by improving the responsive layout */}
+          {/* Hero buttons - Fixed spacing with improved responsive layout and increased horizontal gap */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-6 justify-center"
+            className="flex flex-wrap justify-center gap-6 px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -131,7 +131,7 @@ const HeroSection = () => {
               variant="primary"
               to="/patient-solutions"
               onClick={handleGetStarted}
-              className="shadow-md hover:shadow-lg transition-all w-full sm:w-auto"
+              className="shadow-md hover:shadow-lg transition-all w-64 sm:w-auto min-w-[240px]"
               rightIcon={<ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />}
             >
               Get Started Today
@@ -141,7 +141,7 @@ const HeroSection = () => {
               size="lg" 
               variant="outline"
               onClick={handleDemo}
-              className="border-health-primary text-health-primary hover:bg-health-primary/5 w-full sm:w-auto"
+              className="border-health-primary text-health-primary hover:bg-health-primary/5 w-64 sm:w-auto min-w-[240px]"
             >
               Book a Demo
             </CustomButton>
