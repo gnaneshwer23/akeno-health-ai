@@ -46,7 +46,7 @@ const CoreSolution = () => {
               transition={{ duration: 0.4, delay: 0.5 + (index * 0.1) }}
             >
               <div className="text-[#8571DD]">{model.icon}</div>
-              <span className="text-xs font-medium">{model.label}</span>
+              <span className="text-xs font-medium whitespace-nowrap">{model.label}</span>
             </motion.div>
           ))}
         </div>
