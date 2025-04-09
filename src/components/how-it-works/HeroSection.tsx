@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Database, Brain, Activity, Shield, Zap } from 'lucide-react';
+import { Database, Brain, Activity, Shield, Zap, ArrowRight } from 'lucide-react';
 import { CustomButton } from '@/components/ui/custom-button';
 import { useToast } from '@/hooks/use-toast';
 
@@ -119,8 +119,8 @@ const HeroSection = () => {
               size="lg" 
               variant="primary"
               to="/patient-solutions"
-              withArrow
               className="shadow-md hover:shadow-lg transition-all"
+              rightIcon={<ArrowRight className="ml-1" size={18} />}
             >
               Get Started Today
             </CustomButton>
