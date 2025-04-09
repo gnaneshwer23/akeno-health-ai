@@ -20,6 +20,7 @@ const queryClient = new QueryClient();
 const Index = lazy(() => import('./pages/Index'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
 const HowItWorks = lazy(() => import('./pages/HowItWorks'));
+const Solutions = lazy(() => import('./pages/Solutions')); // New Solutions page
 const PatientSolutions = lazy(() => import('./pages/PatientSolutions'));
 const DoctorSolutions = lazy(() => import('./pages/DoctorSolutions'));
 const HospitalSolutions = lazy(() => import('./pages/HospitalSolutions'));
@@ -48,6 +49,7 @@ const App = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/how-it-works" element={<HowItWorks />} />
+                <Route path="/solutions" element={<Solutions />} /> {/* New Solutions route */}
                 <Route path="/patient-solutions" element={<PatientSolutions />} />
                 <Route path="/doctor-solutions" element={<DoctorSolutions />} />
                 <Route path="/hospital-solutions" element={<HospitalSolutions />} />
