@@ -4,9 +4,12 @@ import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Label } from "@/components/ui/label"
 
 const NewsletterSubscribe = () => {
   const [email, setEmail] = useState('');
+  const [role, setRole] = useState('clinician');
   const [subscriptionStatus, setSubscriptionStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const { toast } = useToast();
 
@@ -22,7 +25,7 @@ const NewsletterSubscribe = () => {
     setSubscriptionStatus('success');
     toast({
       title: "Newsletter Subscription Successful",
-      description: "You've been added to our newsletter. Thanks for subscribing!",
+      description: `You've been added to our ${role} newsletter. Thanks for subscribing!`,
     });
     setEmail('');
     
@@ -41,16 +44,15 @@ const NewsletterSubscribe = () => {
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Stay Ahead with the Latest AI & Healthcare Insights
+            Don't Miss the Next Breakthrough
           </h2>
           
           <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-            Subscribe to our newsletter and get weekly updates on AI innovations, research breakthroughs, 
-            and industry news delivered directly to your inbox.
+            Get monthly insights on healthcare AI, drug discovery, and digital twin innovations delivered directly to your inbox.
           </p>
           
           <form onSubmit={handleSubscribe} className="max-w-md mx-auto">
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 mb-6">
               <div className="flex-grow relative">
                 <Input
                   type="email"
@@ -69,6 +71,32 @@ const NewsletterSubscribe = () => {
               >
                 Subscribe Now
               </Button>
+            </div>
+            
+            <div className="mb-4">
+              <RadioGroup 
+                defaultValue="clinician" 
+                className="flex flex-wrap justify-center gap-4" 
+                value={role}
+                onValueChange={setRole}
+              >
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="researcher" id="researcher" className="border-white/50 text-white" />
+                  <Label htmlFor="researcher" className="text-white/90">Researcher</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="clinician" id="clinician" className="border-white/50 text-white" />
+                  <Label htmlFor="clinician" className="text-white/90">Clinician</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="patient" id="patient" className="border-white/50 text-white" />
+                  <Label htmlFor="patient" className="text-white/90">Patient</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="investor" id="investor" className="border-white/50 text-white" />
+                  <Label htmlFor="investor" className="text-white/90">Investor</Label>
+                </div>
+              </RadioGroup>
             </div>
             
             {subscriptionStatus === 'success' && (

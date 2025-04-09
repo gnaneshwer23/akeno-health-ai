@@ -9,6 +9,9 @@ import CaseStudiesCTA from '@/components/case-studies/CaseStudiesCTA';
 import ResearchWhitepapers from '@/components/case-studies/ResearchWhitepapers';
 import IndustryNews from '@/components/case-studies/IndustryNews';
 import NewsletterSubscribe from '@/components/case-studies/NewsletterSubscribe';
+import FeaturedInsightsBanner from '@/components/case-studies/FeaturedInsightsBanner';
+import MediaPressRoom from '@/components/case-studies/MediaPressRoom';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const CaseStudiesAndBlog = () => {
   return (
@@ -17,21 +20,48 @@ const CaseStudiesAndBlog = () => {
       <main className="flex-grow">
         <CaseStudiesHero />
         
-        {/* Latest AI Innovations Section */}
+        {/* Featured Insights Banner Section */}
+        <FeaturedInsightsBanner />
+        
+        {/* Content Categories Tabs */}
         <div className="py-10">
           <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
-              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Latest AI Innovations in Healthcare
-              </span>
-            </h2>
-            <p className="text-center text-indigo-700/70 max-w-3xl mx-auto mb-8">
-              Explore cutting-edge advancements in AI-powered healthcare, from predictive diagnostics to blockchain-secured medical records.
-            </p>
+            <Tabs defaultValue="all" className="w-full">
+              <div className="flex justify-center mb-6">
+                <TabsList className="bg-indigo-50 p-1 rounded-xl">
+                  <TabsTrigger value="all" className="rounded-lg">
+                    All Content
+                  </TabsTrigger>
+                  <TabsTrigger value="ai-medicine" className="rounded-lg">
+                    AI & Precision Medicine
+                  </TabsTrigger>
+                  <TabsTrigger value="research" className="rounded-lg">
+                    Research & Whitepapers
+                  </TabsTrigger>
+                  <TabsTrigger value="case-studies" className="rounded-lg">
+                    Clinical Case Studies
+                  </TabsTrigger>
+                </TabsList>
+              </div>
+            
+              <TabsContent value="all">
+                <BlogContentList />
+              </TabsContent>
+              
+              <TabsContent value="ai-medicine">
+                <BlogContentList category="Precision Medicine" />
+              </TabsContent>
+              
+              <TabsContent value="research">
+                <ResearchWhitepapers />
+              </TabsContent>
+              
+              <TabsContent value="case-studies">
+                <CaseStudiesList />
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
-        
-        <BlogContentList />
         
         <div className="py-10 bg-gradient-to-b from-white to-indigo-50/30">
           <div className="max-w-6xl mx-auto px-6">
@@ -49,19 +79,18 @@ const CaseStudiesAndBlog = () => {
           </div>
         </div>
         
-        {/* Research & Whitepapers Section */}
-        <ResearchWhitepapers />
-        
-        {/* Case Studies & Success Stories Section */}
-        <CaseStudiesList />
-        
-        {/* Industry News & Trends Section */}
-        <IndustryNews />
+        {/* Media & Press Room Section */}
+        <MediaPressRoom />
         
         {/* Newsletter Subscribe Section */}
         <NewsletterSubscribe />
         
-        <CaseStudiesCTA />
+        <CaseStudiesCTA 
+          title="From Lab to Life – Be Part of the AI Health Revolution"
+          buttonPrimary="Subscribe to Blog"
+          buttonSecondary="Write for Us"
+          buttonTertiary="Explore the Akeno Health Platform"
+        />
       </main>
       <Footer />
     </div>

@@ -4,70 +4,142 @@ import BlogCard from './BlogCard';
 import { Input } from '@/components/ui/input';
 import { Search, Tag, Filter } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/button';
 
 const blogCategories = [
-  "Quantum Computing",
-  "AI Diagnostics",
-  "Precision Medicine",
-  "Digital Twins",
-  "Telemedicine"
+  "All",
+  "AI & Precision Medicine",
+  "Research & Whitepapers",
+  "Clinical Case Studies",
+  "Drug Discovery & Trials",
+  "Data Ethics & Security",
+  "Global Health & Equity",
+  "Press Releases",
+  "Patient Stories"
 ];
 
 const blogPosts = [
   {
-    title: "How Quantum Computing is Disrupting Drug Discovery",
-    category: "Quantum Computing",
+    title: "How Akeno's Explainable AI Is Changing Clinical Decision-Making",
+    category: "AI & Precision Medicine",
+    author: "Dr. Sarah Chen",
+    date: "March 23, 2025",
+    excerpt: "Transparent AI systems that explain their reasoning are helping doctors make confident, evidence-based decisions in critical care scenarios.",
     topics: [
-      "Exploring how quantum algorithms optimize molecular simulations, reducing drug development cycles from years to months.",
-      "Real-world examples of pharmaceutical breakthroughs enabled by AI-driven quantum simulations.",
-      "The future of AI-powered drug repurposing and how existing medications can be leveraged for new treatments."
+      "Breaking down complex AI decisions into understandable components",
+      "How clinicians use AI explanations to validate treatment plans",
+      "Case examples of successful AI-augmented clinical decisions"
     ]
   },
   {
-    title: "AI & Multi-Omics – Unlocking the Future of Precision Medicine",
-    category: "Precision Medicine",
+    title: "Why Multi-Omics Is the Future of Personalised Treatment",
+    category: "AI & Precision Medicine",
+    author: "Dr. Michael Rodriguez",
+    date: "March 18, 2025",
+    excerpt: "Integrating genomics, proteomics, metabolomics, and microbiome data creates the most complete picture of patient health ever possible.",
     topics: [
-      "How AI interprets genomics, epigenomics, proteomics, and microbiome data to create hyper-personalized treatments.",
-      "The role of AI-powered immune system profiling in diagnosing autoimmune and inflammatory diseases.",
-      "Case studies on AI-driven biomarker discovery for cancer, metabolic disorders, and rare diseases."
+      "The synergistic power of analyzing multiple biological data layers",
+      "How multi-omic profiles are leading to unexpected treatment discoveries",
+      "Building comprehensive patient profiles for truly personalized medicine"
     ]
   },
   {
-    title: "The Role of AI & Digital Twins in Predictive Healthcare",
-    category: "Digital Twins",
+    title: "The Science Behind Predicting Alzheimer's 3 Years Early",
+    category: "AI & Precision Medicine",
+    author: "Dr. Emily Patel",
+    date: "March 12, 2025",
+    excerpt: "Our neural networks can detect subtle patterns in brain imaging and biomarkers that predict neurodegenerative disease years before symptoms appear.",
     topics: [
-      "What are Digital Twins, and how do they create a virtual simulation of a patient's real-time health state?",
-      "The impact of AI-powered disease progression simulations in early-stage intervention.",
-      "How Digital Twins enable continuous, adaptive treatment plans for chronic diseases."
+      "Early biomarker signatures that indicate future Alzheimer's development",
+      "How AI models analyze longitudinal brain scans for predictive insights",
+      "The impact of early intervention on disease progression and outcomes"
     ]
   },
   {
-    title: "AI-Powered Diagnostics – The Next Evolution in Healthcare",
-    category: "AI Diagnostics",
+    title: "Digital Twin Prevented Chemo Overdose in Breast Cancer Case",
+    category: "Clinical Case Studies",
+    author: "Dr. James Wilson",
+    date: "March 5, 2025",
+    excerpt: "Patient-specific metabolic simulation identified potential toxicity risks before treatment began, allowing for optimized dosing.",
     topics: [
-      "How AI-driven radiology, pathology, and real-time health monitoring are revolutionizing early disease detection.",
-      "The role of machine learning in AI-powered imaging, detecting cancers faster and more accurately than traditional methods.",
-      "Ethical considerations and regulatory challenges in AI-assisted diagnostics."
+      "Creating personalized pharmacokinetic models with digital twins",
+      "Simulating medication metabolism pathways for safer dosing",
+      "Real-world case study with dramatic patient outcome improvements"
     ]
   },
   {
-    title: "AI & Telemedicine – The Future of Remote Healthcare",
-    category: "Telemedicine",
+    title: "Pharma Trial Recruitment Time Reduced by 64% Using Akeno AI",
+    category: "Drug Discovery & Trials",
+    author: "Lisa Cooper, PhD",
+    date: "February 28, 2025",
+    excerpt: "AI matching algorithms paired perfect candidates with trial requirements, dramatically accelerating enrollment timelines.",
     topics: [
-      "The role of AI-driven telehealth assistants in improving patient-doctor interactions.",
-      "How AI chatbots are enhancing patient engagement, providing symptom assessments, and optimizing appointment scheduling.",
-      "The future of AI-powered virtual consultations – Can AI replace traditional doctor visits?"
+      "Using multi-parameter matching to find ideal trial candidates",
+      "Reducing costly recruitment delays in pharmaceutical development",
+      "How smart recruitment improves trial completion rates"
+    ]
+  },
+  {
+    title: "What the EU AI Act Means for Digital Health Startups",
+    category: "Data Ethics & Security",
+    author: "Alex Johnson, JD",
+    date: "February 21, 2025",
+    excerpt: "A comprehensive analysis of new regulations and how healthcare AI companies can navigate compliance requirements.",
+    topics: [
+      "Breaking down the new regulatory framework for high-risk AI systems",
+      "Practical compliance strategies for healthcare AI innovators",
+      "The impact on development timelines and documentation requirements"
+    ]
+  },
+  {
+    title: "Akeno's Federated Learning Trials in the UK, India & Germany",
+    category: "Global Health & Equity",
+    author: "Dr. Priya Sharma",
+    date: "February 14, 2025",
+    excerpt: "Our collaborative approach allows hospitals to share insights without sharing sensitive patient data across borders.",
+    topics: [
+      "How federated learning preserves privacy while enabling collaboration",
+      "Cross-cultural insights from diverse patient populations",
+      "Overcoming technical challenges in distributed AI training"
+    ]
+  },
+  {
+    title: "AI-Driven Early Detection Flags Arrhythmia 10 Days Before ECG Spike",
+    category: "Clinical Case Studies",
+    author: "Dr. Thomas Lee",
+    date: "February 7, 2025",
+    excerpt: "A subtle pattern of biomarker changes allowed our system to predict a dangerous cardiac event before conventional monitoring could detect it.",
+    topics: [
+      "The cardiac biomarker constellation that predicts arrhythmia",
+      "How continuous monitoring enables pattern recognition impossible in periodic testing",
+      "Patient outcome improvement through prophylactic intervention"
+    ]
+  },
+  {
+    title: "Building Ethical AI in Healthcare: Our Guiding Principles",
+    category: "Data Ethics & Security",
+    author: "Maria Gonzalez, PhD",
+    date: "January 31, 2025",
+    excerpt: "The framework we've developed to ensure all AI development at Akeno prioritizes patient welfare, equity, and transparency.",
+    topics: [
+      "Our five-pillar approach to ethical AI development",
+      "How we test for and mitigate algorithmic bias",
+      "Balancing innovation speed with ethical safeguards"
     ]
   }
 ];
 
-const BlogContentList = () => {
+interface BlogContentListProps {
+  category?: string;
+}
+
+const BlogContentList: React.FC<BlogContentListProps> = ({ category = "All" }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState(category);
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.topics.some(topic => topic.toLowerCase().includes(searchTerm.toLowerCase()));
     
     const matchesCategory = activeCategory === 'All' || post.category === activeCategory;
@@ -78,31 +150,43 @@ const BlogContentList = () => {
   const getCategoryColors = (category: string, isActive: boolean) => {
     if (isActive) {
       switch (category) {
-        case "Quantum Computing": 
-          return "bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700";
-        case "AI Diagnostics": 
-          return "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700";
-        case "Precision Medicine": 
+        case "AI & Precision Medicine": 
           return "bg-gradient-to-r from-teal-600 to-emerald-600 text-white hover:from-teal-700 hover:to-emerald-700";
-        case "Digital Twins": 
+        case "Research & Whitepapers": 
+          return "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700";
+        case "Clinical Case Studies": 
+          return "bg-gradient-to-r from-amber-600 to-orange-600 text-white hover:from-amber-700 hover:to-orange-700";
+        case "Drug Discovery & Trials": 
+          return "bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700";
+        case "Data Ethics & Security": 
+          return "bg-gradient-to-r from-red-600 to-rose-600 text-white hover:from-red-700 hover:to-rose-700";
+        case "Global Health & Equity": 
           return "bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-700 hover:to-blue-700";
-        case "Telemedicine": 
-          return "bg-gradient-to-r from-amber-600 to-yellow-600 text-white hover:from-amber-700 hover:to-yellow-700";
+        case "Press Releases": 
+          return "bg-gradient-to-r from-gray-600 to-slate-600 text-white hover:from-gray-700 hover:to-slate-700";
+        case "Patient Stories": 
+          return "bg-gradient-to-r from-pink-600 to-rose-600 text-white hover:from-pink-700 hover:to-rose-700";
         default: 
           return "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700";
       }
     } else {
       switch (category) {
-        case "Quantum Computing": 
-          return "bg-purple-50 text-purple-700 hover:bg-purple-100";
-        case "AI Diagnostics": 
-          return "bg-blue-50 text-blue-700 hover:bg-blue-100";
-        case "Precision Medicine": 
+        case "AI & Precision Medicine": 
           return "bg-teal-50 text-teal-700 hover:bg-teal-100";
-        case "Digital Twins": 
-          return "bg-cyan-50 text-cyan-700 hover:bg-cyan-100";
-        case "Telemedicine": 
+        case "Research & Whitepapers": 
+          return "bg-blue-50 text-blue-700 hover:bg-blue-100";
+        case "Clinical Case Studies": 
           return "bg-amber-50 text-amber-700 hover:bg-amber-100";
+        case "Drug Discovery & Trials": 
+          return "bg-purple-50 text-purple-700 hover:bg-purple-100";
+        case "Data Ethics & Security": 
+          return "bg-red-50 text-red-700 hover:bg-red-100";
+        case "Global Health & Equity": 
+          return "bg-cyan-50 text-cyan-700 hover:bg-cyan-100";
+        case "Press Releases": 
+          return "bg-gray-50 text-gray-700 hover:bg-gray-100";
+        case "Patient Stories": 
+          return "bg-pink-50 text-pink-700 hover:bg-pink-100";
         default: 
           return "bg-indigo-50 text-indigo-700 hover:bg-indigo-100";
       }
@@ -110,21 +194,8 @@ const BlogContentList = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-white to-purple-50/30">
+    <section className="py-10 px-6 bg-gradient-to-b from-white to-purple-50/30">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
-            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Blog Content:
-            </span> Thought Leadership & AI in Healthcare
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 mx-auto mb-6"></div>
-          <p className="mt-4 text-lg text-indigo-700/70 max-w-3xl mx-auto">
-            Akeno Health AI is committed to advancing knowledge, innovation, and awareness 
-            around the intersection of AI, precision medicine, and quantum computing.
-          </p>
-        </div>
-
         <div className="mb-10 bg-white rounded-xl shadow-md p-4 border border-indigo-100">
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <div className="relative w-full md:w-72">
@@ -139,32 +210,29 @@ const BlogContentList = () => {
             </div>
             
             <div className="flex items-center gap-2 text-sm text-indigo-600">
-              <Tag size={16} className="text-purple-500" />
-              <span>Categories:</span>
+              <Filter size={16} className="text-purple-500" />
+              <span>Filter by:</span>
             </div>
             
             <div className="flex flex-wrap gap-2 justify-center">
-              <Badge
-                className={`cursor-pointer transition-all ${
-                  activeCategory === 'All' 
-                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700' 
-                    : 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100'
-                }`}
-                variant="outline"
-                onClick={() => setActiveCategory('All')}
-              >
-                All
-              </Badge>
-              {blogCategories.map((category) => (
+              {blogCategories.slice(0, 6).map((cat) => (
                 <Badge
-                  key={category}
-                  className={`cursor-pointer transition-all ${getCategoryColors(category, activeCategory === category)}`}
+                  key={cat}
+                  className={`cursor-pointer transition-all ${getCategoryColors(cat, activeCategory === cat)}`}
                   variant="outline"
-                  onClick={() => setActiveCategory(category)}
+                  onClick={() => setActiveCategory(cat)}
                 >
-                  {category}
+                  {cat}
                 </Badge>
               ))}
+              
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="text-indigo-700 border-indigo-200 h-[22px] px-2 text-xs flex items-center"
+              >
+                More Filters
+              </Button>
             </div>
           </div>
         </div>
@@ -181,6 +249,9 @@ const BlogContentList = () => {
                 title={post.title}
                 topics={post.topics}
                 category={post.category}
+                author={post.author}
+                date={post.date}
+                excerpt={post.excerpt}
               />
             ))}
           </div>
