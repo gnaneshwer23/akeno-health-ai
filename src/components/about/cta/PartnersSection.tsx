@@ -3,7 +3,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const partners = [
-  { name: 'Mayo Clinic', logo: '/institutions/mayo-clinic.svg' },
   { name: 'Johns Hopkins', logo: '/institutions/johns-hopkins.svg' },
   { name: 'NVIDIA', logo: '/institutions/nvidia.svg' },
   { name: 'Alphabet', logo: '/institutions/alphabet.svg' },

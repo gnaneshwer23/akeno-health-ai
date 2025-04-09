@@ -22,7 +22,7 @@ export const TestimonialsPartnersSection: React.FC = () => {
   ];
   
   const partners = [
-    "NHS", "Apollo", "Roche", "Pfizer", "Mayo Clinic", "Imperial College", "Google Cloud", "NVIDIA"
+    "NHS", "Apollo", "Roche", "Pfizer", "Google Cloud", "NVIDIA"
   ];
 
   return (

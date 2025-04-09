@@ -64,7 +64,7 @@ const FlowContent = () => {
               <div className="w-14 h-14 rounded-md bg-white border border-[#8571DD]/20 flex items-center justify-center shadow-sm">
                 <div className="text-[#8571DD]">{source.icon}</div>
               </div>
-              <span className="text-sm font-medium text-[#1A1F2C]">{source.title}</span>
+              <span className="text-sm font-medium text-[#1A1F2C] whitespace-nowrap">{source.title}</span>
             </motion.div>
           ))}
         </div>
@@ -103,7 +103,7 @@ const FlowContent = () => {
               transition={{ duration: 0.4, delay: 0.6 + (index * 0.1) }}
             >
               <div className="text-[#8571DD]">{model.icon}</div>
-              <span className="text-xs font-medium">{model.title}</span>
+              <span className="text-xs font-medium whitespace-nowrap">{model.title}</span>
             </motion.div>
           ))}
         </div>
@@ -127,7 +127,7 @@ const FlowContent = () => {
               <div className="w-10 h-10 rounded-full bg-white border border-[#8571DD]/20 flex items-center justify-center shadow-sm">
                 <div className="text-[#8571DD]">{stakeholder.icon}</div>
               </div>
-              <span className="text-sm font-medium text-[#1A1F2C]">{stakeholder.title}</span>
+              <span className="text-sm font-medium text-[#1A1F2C] whitespace-nowrap">{stakeholder.title}</span>
             </motion.div>
           ))}
         </div>
@@ -149,7 +149,7 @@ const FlowContent = () => {
               transition={{ duration: 0.4, delay: 1.4 + (index * 0.1) }}
             >
               <div className="text-[#8571DD] flex-shrink-0">{outcome.icon}</div>
-              <span className="text-sm font-medium text-[#1A1F2C]">{outcome.title}</span>
+              <span className="text-sm font-medium text-[#1A1F2C] whitespace-nowrap">{outcome.title}</span>
             </motion.div>
           ))}
         </div>
