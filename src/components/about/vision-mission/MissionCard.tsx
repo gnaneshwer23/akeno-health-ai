@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Rocket } from 'lucide-react';
+import { Target } from 'lucide-react';
 import { PointListItem } from './PointListItem';
 
 interface MissionCardProps {
@@ -22,7 +22,7 @@ export const MissionCard = ({ missionPoints }: MissionCardProps) => {
       <div className="relative bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-purple-100 h-full transform transition-transform duration-500 group-hover:translate-y-[-5px]">
         <div className="flex items-center mb-8">
           <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-700 flex items-center justify-center shadow-lg mr-5">
-            <Rocket size={32} className="text-white" />
+            <Target size={32} className="text-white" />
           </div>
           <div>
             <h3 className="text-3xl font-bold text-purple-900">Our Mission</h3>

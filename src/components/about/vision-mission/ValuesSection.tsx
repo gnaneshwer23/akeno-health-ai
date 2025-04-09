@@ -1,13 +1,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Lightbulb, Shield, Globe, Scale, Sparkles } from 'lucide-react';
+import { Lightbulb, Shield, Globe, Scale } from 'lucide-react';
 
 interface ValueCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
-  emoji: string;
   longDescription: string;
   index: number;
 }
@@ -25,7 +24,7 @@ const fadeVariants = {
   })
 };
 
-const ValueCard = ({ title, description, icon, emoji, longDescription, index }: ValueCardProps) => {
+const ValueCard = ({ title, description, icon, longDescription, index }: ValueCardProps) => {
   return (
     <motion.div 
       className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow group"
@@ -38,7 +37,7 @@ const ValueCard = ({ title, description, icon, emoji, longDescription, index }: 
           {icon}
         </div>
         <h4 className="text-xl font-semibold text-health-dark">
-          {title} <span className="ml-2 text-2xl">{emoji}</span>
+          {title}
         </h4>
       </div>
       <p className="text-health-dark/70 mb-4">{description}</p>
@@ -52,28 +51,24 @@ export const ValuesSection = () => {
   const values = [
     {
       title: "Innovation",
-      emoji: "💡",
       description: "Pioneering AI healthcare solutions that reshape the future of medicine",
       icon: <Lightbulb className="h-6 w-6 text-amber-500" />,
       longDescription: "Our commitment to cutting-edge AI research and development ensures we stay at the forefront of healthcare technology."
     },
     {
       title: "Trust",
-      emoji: "🤝",
       description: "Upholding the highest ethical standards in data privacy and healthcare",
       icon: <Shield className="h-6 w-6 text-purple-500" />,
       longDescription: "We prioritize patient privacy and maintain the highest standards of data security in everything we do."
     },
     {
       title: "Impact",
-      emoji: "🌍",
       description: "Making advanced healthcare accessible to everyone, everywhere",
       icon: <Globe className="h-6 w-6 text-blue-500" />,
       longDescription: "Healthcare solutions should work for everyone, everywhere. We design our technology to reach underserved communities globally."
     },
     {
       title: "Equity",
-      emoji: "⚖️",
       description: "Healthcare is a right. Our tech is designed to include the overlooked and underserved.",
       icon: <Scale className="h-6 w-6 text-green-500" />,
       longDescription: "We actively work to eliminate biases in healthcare AI and ensure our solutions promote health equity across all populations."
@@ -111,7 +106,6 @@ export const ValuesSection = () => {
           <ValueCard 
             key={index}
             title={value.title}
-            emoji={value.emoji}
             description={value.description}
             icon={value.icon}
             longDescription={value.longDescription}
@@ -126,7 +120,6 @@ export const ValuesSection = () => {
         custom={5}
       >
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100">
-          <Sparkles size={16} className="text-purple-500" />
           <span className="text-sm font-medium text-purple-700">Guided by our values in everything we do</span>
         </div>
       </motion.div>

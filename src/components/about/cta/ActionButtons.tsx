@@ -5,9 +5,9 @@ import { CustomButton } from '@/components/ui/custom-button';
 import { toast } from 'sonner';
 
 export const ActionButtons = () => {
-  const handleDemo = () => {
-    toast.success("Demo Request Received", {
-      description: "Thank you for your interest. A team member will reach out to schedule your demo.",
+  const handleJoinTeam = () => {
+    toast.success("Join Team Request Received", {
+      description: "Thank you for your interest in joining our team. We'll review your application and get back to you soon.",
     });
   };
   
@@ -22,7 +22,7 @@ export const ActionButtons = () => {
       <CustomButton
         size="lg"
         variant="primary"
-        to="/contact"
+        onClick={handleJoinTeam}
         withArrow
         className="w-full sm:w-auto bg-gradient-to-r from-health-primary to-health-secondary hover:from-health-secondary hover:to-health-primary"
       >
