@@ -22,6 +22,8 @@ const AboutUs = lazy(() => import('./pages/AboutUs'));
 const HowItWorks = lazy(() => import('./pages/HowItWorks'));
 const Solutions = lazy(() => import('./pages/Solutions')); 
 const Products = lazy(() => import('./pages/Products'));
+const RealWorldEvidence = lazy(() => import('./pages/RealWorldEvidence'));
+const DigitalTwinPanel = lazy(() => import('./pages/DigitalTwinPanel'));
 const PatientSolutions = lazy(() => import('./pages/PatientSolutions'));
 const DoctorSolutions = lazy(() => import('./pages/DoctorSolutions'));
 const HospitalSolutions = lazy(() => import('./pages/HospitalSolutions'));
@@ -54,6 +56,8 @@ const App = () => {
                 <Route path="/products" element={<Products />} />
                 <Route path="/solutions" element={<Solutions />} />
                 <Route path="/ai-studio" element={<AIStudio />} />
+                <Route path="/real-world-evidence" element={<RealWorldEvidence />} />
+                <Route path="/digital-twin-panel" element={<DigitalTwinPanel />} />
                 <Route path="/patient-solutions" element={<PatientSolutions />} />
                 <Route path="/doctor-solutions" element={<DoctorSolutions />} />
                 <Route path="/hospital-solutions" element={<HospitalSolutions />} />

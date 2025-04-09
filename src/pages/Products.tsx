@@ -5,9 +5,7 @@ import MainLayout from '@/layouts/MainLayout';
 // Import refactored components
 import ProductsHero from '@/components/products/ProductsHero';
 import CoreProducts from '@/components/products/CoreProducts';
-import RealWorldEvidence from '@/components/products/RealWorldEvidence';
 import HealthcareSolutions from '@/components/products/HealthcareSolutions';
-import DigitalTwinPanel from '@/components/products/DigitalTwinPanel';
 import BenefitsSection from '@/components/products/BenefitsSection';
 import CallToAction from '@/components/products/CallToAction';
 
@@ -25,16 +23,6 @@ const Products = () => {
         
         {/* Products Overview Section */}
         <CoreProducts />
-
-        {/* Real-World Evidence Section */}
-        <section id="real-world-evidence">
-          <RealWorldEvidence />
-        </section>
-
-        {/* Digital Twin Panel Section */}
-        <section id="digital-twin-panel">
-          <DigitalTwinPanel />
-        </section>
 
         {/* Featured Products Section */}
         <HealthcareSolutions />

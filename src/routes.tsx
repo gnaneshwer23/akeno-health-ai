@@ -15,6 +15,8 @@ const ResetPassword = lazy(() => import('./pages/auth/ResetPassword'));
 const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword'));
 const Products = lazy(() => import('./pages/Products'));
 const AIStudio = lazy(() => import('./pages/AIStudio'));
+const RealWorldEvidence = lazy(() => import('./pages/RealWorldEvidence'));
+const DigitalTwinPanel = lazy(() => import('./pages/DigitalTwinPanel'));
 
 // Loading fallback
 const PageLoading = () => (
@@ -66,6 +68,22 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoading />}>
             <AIStudio />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'real-world-evidence',
+        element: (
+          <Suspense fallback={<PageLoading />}>
+            <RealWorldEvidence />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'digital-twin-panel',
+        element: (
+          <Suspense fallback={<PageLoading />}>
+            <DigitalTwinPanel />
           </Suspense>
         ),
       },
