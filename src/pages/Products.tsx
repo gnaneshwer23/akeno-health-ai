@@ -1,10 +1,9 @@
-
 import React, { useEffect } from 'react';
 import MainLayout from '@/layouts/MainLayout';
 import { motion } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
 import { CustomButton } from '@/components/ui/custom-button';
-import { Package, Flask, Dna, Shield, Microscope, Network } from 'lucide-react';
+import { Package, FlaskConical, Dna, Shield, Microscope, Network } from 'lucide-react';
 import PageHeader from '@/components/ui/page-header';
 
 const Products = () => {
@@ -137,7 +136,7 @@ const Products = () => {
               >
                 <div className="p-6">
                   <div className="bg-indigo-500/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
-                    <Flask className="text-indigo-600" />
+                    <FlaskConical className="text-indigo-600" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">Clinical Decision Support</h3>
                   <p className="text-gray-600 mb-4">
