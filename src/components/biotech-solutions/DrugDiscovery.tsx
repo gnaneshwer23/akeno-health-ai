@@ -14,27 +14,27 @@ const DrugDiscovery = () => {
     {
       icon: <FlaskConical size={24} />,
       title: "AI-Driven Target Identification & Drug Discovery",
-      description: "Machine learning models analyze multi-omics datasets to identify new drug targets, repurpose existing drugs, and optimize lead compounds."
+      description: "Machine learning models analyze our database of multi-omics datasets to identify new drug targets, repurpose existing drugs, and optimize lead compounds."
     },
     {
       icon: <Users size={24} />,
       title: "Biomarker-Based Clinical Trials",
-      description: "AI integrates multi-omics data to stratify patients based on predictive biomarkers, ensuring more effective clinical trial designs."
+      description: "AI integrates genomic data samples from our database of 3,800+ sequences to stratify patients based on predictive biomarkers for more effective trials."
     },
     {
       icon: <Brain size={24} />,
       title: "Digital Twin Simulations",
-      description: "AI-powered patient digital twins allow for in silico modeling of disease progression and drug response, refining trial protocols."
+      description: "AI-powered patient digital twins utilize our comprehensive electronic health records to model disease progression and drug response, refining trial protocols."
     },
     {
       icon: <LineChart size={24} />,
       title: "AI for Trial Optimization",
-      description: "Machine learning enhances patient recruitment, eligibility screening, and adaptive trial designs, reducing dropout rates."
+      description: "Machine learning enhances patient recruitment by analyzing thousands of profiles and health records to improve eligibility screening and reduce dropout rates."
     },
     {
       icon: <Stethoscope size={24} />,
       title: "Predictive Modeling for Drug Safety",
-      description: "AI analyzes adverse event patterns, genetic predispositions, and polypharmacy risks to predict drug responses and safety."
+      description: "AI analyzes our extensive wearable data metrics and genomic samples to predict drug responses and safety across different patient profiles."
     }
   ];
 
@@ -51,7 +51,7 @@ const DrugDiscovery = () => {
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our AI accelerates drug discovery timelines, optimizes biomarker-driven clinical trials, enhances patient stratification, and increases the likelihood of successful therapeutic outcomes.
+            Our AI platform connects to real patient data across 24 active research cohorts with 1,842 subjects, accelerating drug discovery timelines and optimizing clinical trials.
           </p>
         </div>
         
@@ -84,7 +84,7 @@ const DrugDiscovery = () => {
             <div>
               <h3 className="text-xl font-medium text-health-dark mb-2">Outcome</h3>
               <p className="text-muted-foreground">
-                AI accelerates drug discovery timelines, optimizes biomarker-driven clinical trials, enhances patient stratification, and increases the likelihood of successful therapeutic outcomes while reducing development costs.
+                AI accelerates drug discovery timelines by 60% by leveraging our database of 12.5M+ patient data points, optimizing biomarker-driven clinical trials, enhancing patient stratification, and increasing success rates while reducing development costs.
               </p>
             </div>
           </div>

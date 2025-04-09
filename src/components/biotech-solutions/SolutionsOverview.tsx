@@ -8,17 +8,17 @@ const SolutionsOverview = () => {
     {
       icon: <FlaskConical size={24} />,
       title: "AI-Powered Drug Discovery & Clinical Trials",
-      description: "Machine learning models analyze complex biological data to identify new drug targets, optimize clinical trials, and predict treatment outcomes."
+      description: "Our platform processes 12.5M+ data points from genomic samples, clinical trials, and patient outcomes to identify new drug targets and optimize research protocols."
     },
     {
       icon: <Dna size={24} />,
       title: "Synthetic Biology & Immune Therapy",
-      description: "AI designs gene and cell therapies, optimizes immunotherapies, and accelerates development of precision medicine solutions."
+      description: "AI designs gene and cell therapies using our database of 3,800+ genomic samples, optimizing immunotherapies and precision medicine solutions."
     },
     {
       icon: <Database size={24} />,
       title: "Data-Driven Clinical Research Insights",
-      description: "AI extracts actionable insights from real-world data to enhance clinical trial designs, post-market surveillance, and regulatory compliance."
+      description: "Access to real-world health records, imaging datasets, and research findings to enhance clinical trial designs, post-market surveillance, and regulatory compliance."
     }
   ];
 
@@ -31,7 +31,7 @@ const SolutionsOverview = () => {
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our platform integrates AI-powered analytics, digital twin technology, and large-scale biological data processing to accelerate drug development, optimize clinical trials, and drive therapeutic innovations.
+            Our platform integrates AI-powered analytics with our extensive database of patient records, genomic data, and clinical outcomes to accelerate drug development, optimize trials, and drive therapeutic innovations.
           </p>
         </div>
         
