@@ -105,6 +105,15 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
+      // Adding an alias for case-studies to point to CaseStudiesAndBlog for menu compatibility
+      {
+        path: 'case-studies',
+        element: (
+          <Suspense fallback={<PageLoading />}>
+            <CaseStudiesAndBlog />
+          </Suspense>
+        ),
+      },
       {
         path: 'login',
         element: (

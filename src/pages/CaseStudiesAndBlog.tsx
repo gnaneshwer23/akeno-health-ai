@@ -17,7 +17,7 @@ const CaseStudiesAndBlog = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-indigo-50/50 via-white to-purple-50/50">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow pt-20">
         <CaseStudiesHero />
         
         {/* Featured Insights Banner Section */}
@@ -27,7 +27,7 @@ const CaseStudiesAndBlog = () => {
         <div className="py-10">
           <div className="max-w-6xl mx-auto px-6">
             <Tabs defaultValue="all" className="w-full">
-              <div className="flex justify-center mb-6">
+              <div className="flex justify-center mb-6 overflow-x-auto pb-2">
                 <TabsList className="bg-indigo-50 p-1 rounded-xl">
                   <TabsTrigger value="all" className="rounded-lg">
                     All Content
