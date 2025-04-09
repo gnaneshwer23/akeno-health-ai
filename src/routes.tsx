@@ -13,6 +13,8 @@ const Login = lazy(() => import('./pages/auth/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const ResetPassword = lazy(() => import('./pages/auth/ResetPassword'));
 const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword'));
+const Products = lazy(() => import('./pages/Products')); // Ensure Products page is imported
+const AIStudio = lazy(() => import('./pages/AIStudio')); // Keep AIStudio as separate import
 
 // Loading fallback
 const PageLoading = () => (
@@ -48,6 +50,22 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoading />}>
             <Contact />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'products',
+        element: (
+          <Suspense fallback={<PageLoading />}>
+            <Products />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'ai-studio',
+        element: (
+          <Suspense fallback={<PageLoading />}>
+            <AIStudio />
           </Suspense>
         ),
       },

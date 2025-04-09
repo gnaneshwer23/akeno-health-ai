@@ -1,7 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import MainLayout from '@/layouts/MainLayout';
 import { motion } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
 import { CustomButton } from '@/components/ui/custom-button';
@@ -22,10 +21,8 @@ const Products = () => {
   };
   
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Navbar />
-      
-      <main className="flex-grow pt-24 pb-16">
+    <MainLayout>
+      <main className="flex-grow pt-8 md:pt-12 pb-16">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
           <div className="container mx-auto px-4 py-12 md:py-16">
@@ -150,9 +147,7 @@ const Products = () => {
           </div>
         </section>
       </main>
-      
-      <Footer />
-    </div>
+    </MainLayout>
   );
 };
 
