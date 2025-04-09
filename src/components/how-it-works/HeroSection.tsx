@@ -79,14 +79,19 @@ const HeroSection = () => {
           </motion.div>
           
           {/* Hero title */}
-          <motion.h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-health-primary via-health-secondary to-purple-600 bg-clip-text text-transparent"
+          <motion.div
+            className="mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            How Akeno Health Works
-          </motion.h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-health-primary via-health-secondary to-purple-600 bg-clip-text text-transparent">
+              How Akeno Health Works
+            </h1>
+            <p className="mt-4 text-xl md:text-2xl font-semibold text-health-dark">
+              The Future of Precision Medicine, Built on AI & Quantum Computing
+            </p>
+          </motion.div>
           
           {/* Hero subtitle */}
           <motion.p
@@ -120,7 +125,7 @@ const HeroSection = () => {
               variant="primary"
               to="/patient-solutions"
               className="shadow-md hover:shadow-lg transition-all"
-              rightIcon={<ArrowRight className="ml-1" size={18} />}
+              icon={<ArrowRight className="ml-1" size={18} />}
             >
               Get Started Today
             </CustomButton>

@@ -10,8 +10,6 @@ import { AboutUsFloatingElements } from '@/components/about/page/AboutUsFloating
 import { AboutUsDivider } from '@/components/about/page/AboutUsDivider';
 import { motion } from 'framer-motion';
 import AnimatedJourneyFlow from '@/components/how-it-works/AnimatedJourneyFlow';
-import FlowDiagramContent from '@/components/home/flow-diagram/FlowDiagramContent';
-import DiagramHeader from '@/components/home/flow-diagram/DiagramHeader';
 import { ExplainerSection } from '@/components/ExplainerSection';
 
 const HowItWorks = () => {
@@ -61,17 +59,6 @@ const HowItWorks = () => {
         
         {/* Core Process Section */}
         <ProcessStepsSection />
-        <AboutUsDivider />
-        
-        {/* Flow Diagram Section */}
-        <section className="py-16 px-6 bg-white">
-          <div className="max-w-6xl mx-auto">
-            <DiagramHeader />
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-md border border-indigo-100 overflow-hidden">
-              <FlowDiagramContent />
-            </div>
-          </div>
-        </section>
         <AboutUsDivider />
         
         {/* Animated Journey Section */}

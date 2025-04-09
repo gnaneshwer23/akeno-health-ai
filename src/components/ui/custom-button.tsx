@@ -18,6 +18,7 @@ interface CustomButtonProps {
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   asChild?: boolean;
+  rightIcon?: React.ReactNode;
 }
 
 export const CustomButton: React.FC<CustomButtonProps> = ({
@@ -29,6 +30,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   href,
   onClick,
   icon,
+  rightIcon,
   withArrow = false,
   isLoading = false,
   disabled = false,
@@ -65,6 +67,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
         <Link to={to} className="flex items-center gap-2">
           {icon && <span className="inline-flex">{icon}</span>}
           <span>{children}</span>
+          {rightIcon}
           {withArrow && (
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           )}
@@ -90,6 +93,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
         <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
           {icon && <span className="inline-flex">{icon}</span>}
           <span>{children}</span>
+          {rightIcon}
           {withArrow && (
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           )}
@@ -116,6 +120,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
       <div className="flex items-center gap-2">
         {icon && <span className="inline-flex">{icon}</span>}
         <span>{children}</span>
+        {rightIcon}
         {withArrow && (
           <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
         )}

@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CustomButton } from '@/components/ui/custom-button';
 import { useToast } from '@/hooks/use-toast';
+import { ArrowRight } from 'lucide-react';
 
 const CTAButtons = () => {
   const { toast } = useToast();
@@ -36,7 +37,7 @@ const CTAButtons = () => {
           variant="primary"
           className="w-full"
           onClick={handleMainAction}
-          withArrow
+          icon={<ArrowRight size={18} />}
         >
           Join the Future of AI Healthcare
         </CustomButton>
