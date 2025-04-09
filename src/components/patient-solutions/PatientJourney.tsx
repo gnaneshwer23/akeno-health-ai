@@ -42,7 +42,7 @@ const PatientJourney = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-white relative">
+    <section className="py-20 px-6 relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <motion.div
@@ -76,9 +76,9 @@ const PatientJourney = () => {
           </motion.p>
         </div>
         
-        {/* Journey Path Visualization - Desktop */}
-        <div className="hidden lg:block relative mb-16">
-          <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-blue-200 via-indigo-300 to-blue-200 transform -translate-y-1/2"></div>
+        {/* Journey Path Visualization - Simplified for better readability */}
+        <div className="hidden lg:block relative mb-16 overflow-hidden">
+          <div className="absolute top-1/2 left-0 w-full h-1.5 bg-gradient-to-r from-blue-200 via-indigo-300 to-blue-200 transform -translate-y-1/2 rounded-full"></div>
           
           <div className="flex justify-between relative">
             {journeySteps.map((step, index) => (
@@ -90,7 +90,7 @@ const PatientJourney = () => {
                 transition={{ duration: 0.5, delay: 0.1 * index }}
                 className="flex flex-col items-center relative"
               >
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center shadow-md z-10 mb-4">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center shadow-md z-10 mb-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer">
                   <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-blue-600">
                     {step.icon}
                   </div>
@@ -101,7 +101,7 @@ const PatientJourney = () => {
           </div>
         </div>
         
-        {/* Journey Steps - All Devices */}
+        {/* Journey Steps - Cards with better spacing and visual hierarchy */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {journeySteps.map((step, index) => (
             <motion.div
@@ -110,7 +110,7 @@ const PatientJourney = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-6 border border-blue-100 group relative overflow-hidden"
+              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 border border-blue-100 group relative overflow-hidden hover:-translate-y-1"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full opacity-20 transform translate-x-16 -translate-y-16 group-hover:scale-110 transition-transform duration-300"></div>
               
@@ -123,7 +123,7 @@ const PatientJourney = () => {
                 </div>
                 
                 <h3 className="text-xl font-semibold text-health-dark mb-2">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
+                <p className="text-muted-foreground leading-relaxed">{step.description}</p>
               </div>
             </motion.div>
           ))}
@@ -142,7 +142,7 @@ const PatientJourney = () => {
             </div>
             <div>
               <h3 className="text-xl font-semibold text-health-dark mb-2">No jargon. No stress. Just smarter care.</h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground leading-relaxed">
                 Akeno Health empowers you to live longer, live healthier, and feel more in control. Whether you're managing 
                 a chronic condition or simply want to stay fit and informed, our AI works with you every step of the way.
               </p>

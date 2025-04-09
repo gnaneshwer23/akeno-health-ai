@@ -5,6 +5,7 @@ import { Activity, Brain, Smartphone, Shield, Users, HeartPulse } from 'lucide-r
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { CustomButton } from '@/components/ui/custom-button';
 
 const SolutionsOverview = () => {
   const mainSolutions = [
@@ -44,8 +45,10 @@ const SolutionsOverview = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-white relative">
+    <section className="py-20 px-6 bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-blue-50 to-transparent"></div>
+      <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-blue-50/50 blur-3xl"></div>
+      <div className="absolute -top-10 -left-10 w-64 h-64 rounded-full bg-indigo-50/50 blur-3xl"></div>
       
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -55,17 +58,35 @@ const SolutionsOverview = () => {
         className="max-w-6xl mx-auto relative z-10"
       >
         <div className="text-center mb-16">
-          <div className="inline-block px-4 py-1.5 mb-4 rounded-full bg-blue-100 text-blue-700 font-medium">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="inline-block px-4 py-1.5 mb-4 rounded-full bg-blue-100 text-blue-700 font-medium"
+          >
             Our Solutions for Patients
-          </div>
+          </motion.div>
           
-          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-3xl md:text-4xl font-bold text-health-dark mb-6"
+          >
             Comprehensive Patient Solutions
-          </h2>
+          </motion.h2>
           
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-lg text-muted-foreground max-w-3xl mx-auto"
+          >
             Our platform integrates AI-powered diagnostics, continuous health monitoring, and predictive analytics to create a smarter, more personalized healthcare experience.
-          </p>
+          </motion.p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 mb-16">
@@ -76,6 +97,7 @@ const SolutionsOverview = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group"
             >
               <FeatureCard
                 key={index}
@@ -83,6 +105,7 @@ const SolutionsOverview = () => {
                 title={solution.title}
                 description={solution.description}
                 index={index}
+                className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               />
             </motion.div>
           ))}
@@ -93,16 +116,18 @@ const SolutionsOverview = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 shadow-lg border border-blue-100"
+          className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 shadow-lg border border-blue-100 relative overflow-hidden"
         >
-          <div className="text-center mb-10">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl"></div>
+          
+          <div className="text-center mb-10 relative z-10">
             <h3 className="text-2xl font-bold text-health-dark mb-4">Additional Benefits</h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Our comprehensive approach to patient care extends beyond our core solutions.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 relative z-10">
             {additionalBenefits.map((benefit, index) => (
               <motion.div 
                 key={index} 
@@ -110,9 +135,9 @@ const SolutionsOverview = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-md border border-blue-100 hover:shadow-lg transition-all"
+                className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-md border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
               >
-                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
                   {benefit.icon}
                 </div>
                 <h4 className="text-xl font-semibold text-health-dark mb-2">{benefit.title}</h4>
@@ -121,15 +146,14 @@ const SolutionsOverview = () => {
             ))}
           </div>
           
-          <div className="flex justify-center mt-10">
-            <Button
-              asChild
-              className="bg-blue-600 hover:bg-blue-700"
+          <div className="flex justify-center mt-12 relative z-10">
+            <CustomButton
+              variant="primary"
+              to="/register"
+              withArrow
             >
-              <Link to="/register">
-                Try Akeno Health Today
-              </Link>
-            </Button>
+              Try Akeno Health Today
+            </CustomButton>
           </div>
         </motion.div>
       </motion.div>
