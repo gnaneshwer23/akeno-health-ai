@@ -35,7 +35,6 @@ const HealthcareDecisionMaking = lazy(() => import('./pages/HealthcareDecisionMa
 const CaseStudiesAndBlog = lazy(() => import('./pages/CaseStudiesAndBlog'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-const Analytics = lazy(() => import('./pages/Analytics'));
 
 const App = () => {
   return (
@@ -69,7 +68,6 @@ const App = () => {
                 <Route path="/case-studies" element={<CaseStudiesAndBlog />} />
                 <Route path="/case-studies-blog" element={<CaseStudiesAndBlog />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/analytics" element={<Analytics />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route 
