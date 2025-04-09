@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   Smartphone, Database, Brain, Activity, FlaskConical, Workflow, 
@@ -10,7 +11,7 @@ export interface ProcessStep {
   title: string;
   tagline: string;
   description: React.ReactNode;
-  icon: React.ReactNode;
+  icon: string; // Changed from React.ReactNode to string
   color: string;
 }
 
@@ -62,7 +63,7 @@ export const processSteps: ProcessStep[] = [
         </p>
       </div>
     ),
-    icon: <Database size={24} />,
+    icon: "database",
     color: "blue"
   },
   {
@@ -102,7 +103,7 @@ export const processSteps: ProcessStep[] = [
         </ul>
       </div>
     ),
-    icon: <Brain size={24} />,
+    icon: "brain",
     color: "indigo"
   },
   {
@@ -142,7 +143,7 @@ export const processSteps: ProcessStep[] = [
         </ul>
       </div>
     ),
-    icon: <HeartPulse size={24} />,
+    icon: "heart",
     color: "purple"
   },
   {
@@ -182,7 +183,7 @@ export const processSteps: ProcessStep[] = [
         </ul>
       </div>
     ),
-    icon: <FlaskConical size={24} />,
+    icon: "flask",
     color: "cyan"
   },
   {
@@ -222,7 +223,7 @@ export const processSteps: ProcessStep[] = [
         </ul>
       </div>
     ),
-    icon: <Activity size={24} />,
+    icon: "activity",
     color: "teal"
   },
   {
@@ -262,7 +263,7 @@ export const processSteps: ProcessStep[] = [
         </ul>
       </div>
     ),
-    icon: <Zap size={24} />,
+    icon: "zap",
     color: "pink"
   },
   {
@@ -302,7 +303,7 @@ export const processSteps: ProcessStep[] = [
         </ul>
       </div>
     ),
-    icon: <Shield size={24} />,
+    icon: "shield",
     color: "amber"
   },
 ];
