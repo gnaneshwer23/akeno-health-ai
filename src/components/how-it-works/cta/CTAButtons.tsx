@@ -7,18 +7,23 @@ import { useToast } from '@/hooks/use-toast';
 const CTAButtons = () => {
   const { toast } = useToast();
   
-  const handleDemo = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handleDemo = () => {
     toast({
       title: "Demo Request Received",
       description: "This is a demo website. Buttons are intentionally non-functional.",
     });
   };
   
-  const handlePartnership = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handlePartnership = () => {
     toast({
       title: "Partnership Inquiry",
+      description: "This is a demo website. Buttons are intentionally non-functional.",
+    });
+  };
+
+  const handleMainAction = () => {
+    toast({
+      title: "Navigation Disabled",
       description: "This is a demo website. Buttons are intentionally non-functional.",
     });
   };
@@ -31,13 +36,7 @@ const CTAButtons = () => {
           size="lg"
           variant="primary"
           className="w-full"
-          onClick={(e: any) => {
-            e.preventDefault();
-            toast({
-              title: "Navigation Disabled",
-              description: "This is a demo website. Buttons are intentionally non-functional.",
-            });
-          }}
+          onClick={handleMainAction}
         >
           Join the Future of AI Healthcare
         </CustomButton>
