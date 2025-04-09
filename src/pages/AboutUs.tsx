@@ -13,7 +13,6 @@ import { AboutUsConnectedDots } from '@/components/about/page/AboutUsConnectedDo
 import { AboutUsDivider } from '@/components/about/page/AboutUsDivider';
 import { CompanySectionWrapper } from '@/components/about/page/CompanySectionWrapper';
 import { TeamSectionWrapper } from '@/components/about/page/TeamSectionWrapper';
-import { CareersSection } from '@/components/about/CareersSection';
 import { motion } from 'framer-motion';
 
 const AboutUs = () => {
@@ -84,7 +83,7 @@ const AboutUs = () => {
         
         {/* Visual separator with animation */}
         <motion.div 
-          className="w-full h-px max-w-4xl mx-auto"
+          className="w-full h-px max-w-4xl mx-auto my-10"
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true }}
@@ -100,22 +99,7 @@ const AboutUs = () => {
           </TeamSectionWrapper>
         </section>
         
-        {/* Smooth gradient transition */}
-        <div className="w-full h-16 bg-gradient-to-b from-white to-purple-50/10"></div>
-        
-        {/* Careers & Culture Section */}
-        <section id="careers" className="relative">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0 bg-gradient-to-r from-purple-50/30 to-indigo-50/30 -z-10"
-          />
-          <CareersSection />
-        </section>
-        
-        {/* Final CTA with enhanced animation */}
+        {/* Final CTA with enhanced animation - now as the only CTA section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

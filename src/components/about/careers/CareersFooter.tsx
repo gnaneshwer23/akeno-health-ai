@@ -5,6 +5,7 @@ import { Mail, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Link } from 'react-router-dom';
+import { CustomButton } from '@/components/ui/custom-button';
 
 export const CareersFooter: React.FC = () => {
   const { toast } = useToast();
@@ -32,30 +33,26 @@ export const CareersFooter: React.FC = () => {
           </p>
           
           <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto">
-            <Button 
-              className="bg-indigo-600 hover:bg-indigo-700 flex items-center justify-center gap-2"
+            <CustomButton 
+              variant="primary"
+              size="lg"
+              className="w-full"
               onClick={handleNotify}
+              icon={<Mail size={18} />}
+              withArrow
             >
-              <Mail size={18} />
               Get Job Alerts
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              >
-                <ArrowRight size={16} />
-              </motion.span>
-            </Button>
+            </CustomButton>
             
-            <Button
+            <CustomButton
               variant="outline"
-              className="border-indigo-300 text-indigo-700 hover:bg-indigo-50"
-              asChild
+              size="lg"
+              to="/contact"
+              className="border-indigo-300 text-indigo-700 hover:bg-indigo-50 w-full"
+              icon={<ArrowRight size={16} />}
             >
-              <Link to="/contact" className="flex items-center justify-center gap-2">
-                Contact Recruiting Team
-                <ArrowRight size={16} />
-              </Link>
-            </Button>
+              Contact Recruiting Team
+            </CustomButton>
           </div>
         </div>
       </motion.div>

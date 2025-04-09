@@ -50,11 +50,11 @@ export const AboutCTA = () => {
         >
           <div className="inline-flex items-center mb-6 px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-purple-100 border border-indigo-200">
             <Heart size={16} className="text-indigo-600 mr-2" />
-            <span className="font-medium text-indigo-800">Ready to Make a Difference?</span>
+            <span className="font-medium text-indigo-800">Join Our Mission</span>
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent">
-            Join Us in Transforming Healthcare
+            Transform Healthcare With Us
           </h2>
           
           <p className="text-lg text-health-dark/70 max-w-2xl mx-auto mb-8">
