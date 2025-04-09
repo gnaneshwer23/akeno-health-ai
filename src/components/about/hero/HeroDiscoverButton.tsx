@@ -1,39 +1,45 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.1 * i,
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  })
-};
+import { ArrowDown, ChevronDown } from 'lucide-react';
 
 export const HeroDiscoverButton = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <motion.div 
-      className="hidden md:flex justify-center"
-      initial="hidden"
-      animate="visible"
-      custom={5}
-      variants={fadeUpVariants}
+    <motion.div
+      className="flex flex-col items-center justify-center mt-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.2, duration: 0.8 }}
     >
-      <a href="#vision-mission" className="flex flex-col items-center text-health-primary/70 hover:text-health-primary transition-colors">
-        <span className="text-sm mb-2">Discover More</span>
-        <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+      <motion.button
+        onClick={() => scrollToSection('vision-mission')}
+        className="group flex flex-col items-center justify-center"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        <span className="text-health-dark/60 font-medium mb-2 text-sm">Discover Our Story</span>
+        <motion.div 
+          className="w-10 h-10 rounded-full bg-gradient-to-r from-health-primary to-health-secondary flex items-center justify-center text-white"
+          animate={{ 
+            y: [0, 5, 0],
+            boxShadow: [
+              '0 0 0 rgba(99, 102, 241, 0)', 
+              '0 0 8px rgba(99, 102, 241, 0.5)', 
+              '0 0 0 rgba(99, 102, 241, 0)'
+            ]
+          }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown size={20} className="text-indigo-500" />
+          <ChevronDown size={20} />
         </motion.div>
-      </a>
+      </motion.button>
     </motion.div>
   );
 };

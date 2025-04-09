@@ -6,6 +6,7 @@ import { HeroConnectedDots } from './hero/HeroConnectedDots';
 import { HeroHeader } from './hero/HeroHeader';
 import { HeroFeatureIcons } from './hero/HeroFeatureIcons';
 import { HeroDiscoverButton } from './hero/HeroDiscoverButton';
+import { HeroFloatingBadges } from './hero/HeroFloatingBadges';
 
 export const AboutHero = () => {
   return (
@@ -18,6 +19,9 @@ export const AboutHero = () => {
       
       {/* Connected dots network */}
       <HeroConnectedDots />
+      
+      {/* Floating badges with feature highlights */}
+      <HeroFloatingBadges />
       
       <div className="max-w-7xl mx-auto relative">
         <div className="text-center">
