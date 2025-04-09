@@ -30,7 +30,7 @@ export const PointListItem = ({ point, index, color }: PointListItemProps) => {
       initial={{ opacity: 0, x: 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: 0.7 + (index * 0.1) }}
+      transition={{ duration: 0.4, delay: 0.5 + (index * 0.1) }}
       whileHover={{ x: 3 }}
     >
       <div className={`flex-shrink-0 min-w-8 h-8 mt-0.5 rounded-full ${iconBgColor} p-1.5 flex items-center justify-center transition-colors duration-300 ${hoverBgColor}`}>

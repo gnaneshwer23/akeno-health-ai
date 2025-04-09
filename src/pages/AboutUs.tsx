@@ -14,7 +14,6 @@ import { AboutUsDivider } from '@/components/about/page/AboutUsDivider';
 import { CompanySectionWrapper } from '@/components/about/page/CompanySectionWrapper';
 import { TeamSectionWrapper } from '@/components/about/page/TeamSectionWrapper';
 import { motion } from 'framer-motion';
-import { CompanyValues } from '@/components/about/CompanyValues';
 import { Toaster } from 'sonner';
 
 const AboutUs = () => {
@@ -64,6 +63,7 @@ const AboutUs = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
+          className="py-6"
         >
           <AboutUsDivider />
         </motion.div>
@@ -73,7 +73,7 @@ const AboutUs = () => {
           <VisionMission />
         </section>
         
-        {/* Our Story Section with proper spacing */}
+        {/* Our Story Section with enhanced timeline */}
         <section id="story" className="py-16 bg-gradient-to-b from-transparent to-gray-50/20">
           <CompanySectionWrapper>
             <CompanyStory />
@@ -82,7 +82,7 @@ const AboutUs = () => {
         
         {/* Visual separator with animation */}
         <motion.div 
-          className="w-full h-px max-w-4xl mx-auto my-4"
+          className="w-full h-px max-w-4xl mx-auto my-8"
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true }}
@@ -104,7 +104,7 @@ const AboutUs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-16 mt-8"
         >
           <AboutCTA />
         </motion.div>
