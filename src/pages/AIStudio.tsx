@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { useToast } from '@/hooks/use-toast';
+import { motion } from 'framer-motion';
+import { Toaster } from 'sonner';
 
 // Import refactored components
 import AIStudioHero from '@/components/ai-studio/AIStudioHero';
@@ -17,20 +19,26 @@ const AIStudio = () => {
   // Scroll to top on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = 'AI Studio - Akeno Health AI';
   }, []);
   
   const handleButtonClick = () => {
     toast({
-      title: "Feature Demo",
-      description: "This is a demo website. Buttons are intentionally non-functional.",
+      title: "AI Studio Feature",
+      description: "This feature will be available in the full release. Stay tuned!",
     });
   };
   
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white via-blue-50/30 to-white">
+    <div className="min-h-screen flex flex-col bg-white overflow-hidden">
       <Navbar />
       
-      <main className="flex-grow pt-24 pb-16">
+      <motion.main 
+        className="flex-grow"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         {/* Hero Section */}
         <AIStudioHero handleButtonClick={handleButtonClick} />
         
@@ -38,13 +46,24 @@ const AIStudio = () => {
         <PurposeSection />
         
         {/* Feature Sections */}
-        <section className="py-16">
+        <section className="py-12 relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white -z-10" />
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900">
+            <motion.div 
+              className="max-w-3xl mx-auto text-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-700 to-purple-600 bg-clip-text text-transparent">
                 Key Sections & Features
               </h2>
-            </div>
+              <p className="text-gray-600 text-lg">
+                Explore the powerful tools and capabilities that make AI Studio 
+                the leading platform for healthcare AI development.
+              </p>
+            </motion.div>
             
             {/* Feature Components */}
             <FeatureList />
@@ -56,9 +75,10 @@ const AIStudio = () => {
         
         {/* Call to Action */}
         <CallToAction handleButtonClick={handleButtonClick} />
-      </main>
+      </motion.main>
       
       <Footer />
+      <Toaster position="top-center" />
     </div>
   );
 };
