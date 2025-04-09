@@ -13,8 +13,8 @@ import { AboutUsConnectedDots } from '@/components/about/page/AboutUsConnectedDo
 import { AboutUsDivider } from '@/components/about/page/AboutUsDivider';
 import { CompanySectionWrapper } from '@/components/about/page/CompanySectionWrapper';
 import { TeamSectionWrapper } from '@/components/about/page/TeamSectionWrapper';
-import { CompanyValues } from '@/components/about/CompanyValues';
 import { CareersSection } from '@/components/about/CareersSection';
+import { PartnersSection } from '@/components/about/cta/PartnersSection';
 import { motion } from 'framer-motion';
 
 const AboutUs = () => {
@@ -76,30 +76,6 @@ const AboutUs = () => {
         {/* Smooth transition divider */}
         <div className="w-full h-24 bg-gradient-to-b from-transparent to-gray-50/30"></div>
         
-        {/* Section 2: Our Values with enhanced glass effect */}
-        <section id="values" className="relative">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0 bg-gradient-to-r from-indigo-50/30 to-blue-50/30 -z-10"
-          />
-          <CompanyValues />
-        </section>
-        
-        {/* Animated connector between sections */}
-        <div className="relative h-16 overflow-hidden">
-          <motion.div 
-            className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-indigo-300 to-transparent"
-            initial={{ width: 0, opacity: 0 }}
-            whileInView={{ width: "100%", opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5 }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-50/30 to-transparent"></div>
-        </div>
-        
         {/* Section 3: Our Story with improved spacing */}
         <section id="story" className="py-8">
           <CompanySectionWrapper>
@@ -135,8 +111,10 @@ const AboutUs = () => {
           <CareersSection />
         </section>
         
-        {/* Smooth transition to CTA */}
-        <div className="w-full h-24 bg-gradient-to-b from-purple-50/10 to-transparent"></div>
+        {/* Partners Section */}
+        <section id="partners" className="py-16">
+          <PartnersSection />
+        </section>
         
         {/* Final CTA with enhanced animation */}
         <motion.div
