@@ -1,126 +1,150 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Hospital, ArrowRight, Phone, Mail, Zap } from 'lucide-react';
+import { Hospital, ArrowRight, Phone, Mail, Zap, FileText, Calendar } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { CustomButton } from '@/components/ui/custom-button';
 
 const HospitalSolutionsCTA = () => {
   return (
     <section className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="bg-white rounded-2xl shadow-xl overflow-hidden"
+        >
           <div className="grid md:grid-cols-2">
             <div className="p-8 md:p-12 bg-gradient-to-br from-health-primary/10 to-health-secondary/10">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white text-health-primary font-medium mb-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-flex items-center px-4 py-2 rounded-full bg-white text-health-primary font-medium mb-6"
+              >
                 <Hospital size={18} className="mr-2" />
-                <span>Request a Demo</span>
-              </div>
+                <span>Let's Transform Care Together</span>
+              </motion.div>
               
-              <h2 className="text-3xl md:text-4xl font-medium text-health-dark mb-6">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-3xl md:text-4xl font-bold text-health-dark mb-6"
+              >
                 Experience the Power of AI-Driven Healthcare Transformation
-              </h2>
+              </motion.h2>
               
-              <p className="text-lg text-muted-foreground mb-8">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-lg text-muted-foreground mb-8"
+              >
                 Join the future of AI-powered healthcare and transform your hospital operations with cutting-edge technology that improves patient outcomes and reduces costs.
-              </p>
+              </motion.p>
               
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 flex-shrink-0">
-                    <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-100 text-green-600">
-                      <Zap size={12} />
-                    </div>
-                  </div>
-                  <span>Improve patient outcomes with AI-powered diagnostics and monitoring</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 flex-shrink-0">
-                    <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-100 text-green-600">
-                      <Zap size={12} />
-                    </div>
-                  </div>
-                  <span>Reduce hospital costs through automation and predictive resource management</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 flex-shrink-0">
-                    <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-100 text-green-600">
-                      <Zap size={12} />
-                    </div>
-                  </div>
-                  <span>Enhance operational efficiency with seamless AI-driven workflow integration</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 flex-shrink-0">
-                    <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-100 text-green-600">
-                      <Zap size={12} />
-                    </div>
-                  </div>
-                  <span>Provide cutting-edge AI-assisted clinical decision support to doctors</span>
-                </li>
-              </ul>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                  <CTAFeature
+                    icon={<Zap size={16} />}
+                    text="Improve patient outcomes with AI-powered diagnostics and monitoring"
+                  />
+                  <CTAFeature
+                    icon={<Zap size={16} />}
+                    text="Reduce hospital costs through automation and predictive resource management"
+                  />
+                  <CTAFeature
+                    icon={<Zap size={16} />}
+                    text="Enhance operational efficiency with seamless AI-driven workflow integration"
+                  />
+                  <CTAFeature
+                    icon={<Zap size={16} />}
+                    text="Provide cutting-edge AI-assisted clinical decision support to doctors"
+                  />
+                </div>
+              </motion.div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="gap-2">
-                  Request a Demo <ArrowRight size={18} />
-                </Button>
-                <Button size="lg" variant="outline" className="gap-2">
-                  Join Our AI Hospital Network <Hospital size={18} />
-                </Button>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <CustomButton
+                  variant="primary"
+                  size="lg"
+                  to="/contact"
+                  withArrow
+                  icon={<Calendar className="mr-2 h-4 w-4" />}
+                >
+                  Book a Live Demo
+                </CustomButton>
+                <CustomButton
+                  variant="outline"
+                  size="lg"
+                  to="/contact"
+                  icon={<FileText className="mr-2 h-4 w-4" />}
+                >
+                  Download ROI Brochure
+                </CustomButton>
+              </motion.div>
             </div>
             
             <div className="p-8 md:p-12 bg-white">
-              <h3 className="text-xl font-medium text-health-dark mb-6">
+              <motion.h3
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="text-xl font-bold text-health-dark mb-6"
+              >
                 Speak to an AI Healthcare Expert
-              </h3>
+              </motion.h3>
               
-              <div className="space-y-4 mb-8">
-                <div>
-                  <label htmlFor="hospital-name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Hospital/Healthcare Organization
-                  </label>
-                  <input
-                    type="text"
-                    id="hospital-name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-health-primary focus:border-health-primary"
-                    placeholder="Enter your organization name"
-                  />
-                </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="space-y-4 mb-8"
+              >
+                <FormField
+                  label="Hospital/Healthcare Organization"
+                  id="hospital-name"
+                  placeholder="Enter your organization name"
+                />
                 
-                <div>
-                  <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="contact-name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-health-primary focus:border-health-primary"
-                    placeholder="Enter your full name"
-                  />
-                </div>
+                <FormField
+                  label="Your Name"
+                  id="contact-name"
+                  placeholder="Enter your full name"
+                />
                 
-                <div>
-                  <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="contact-email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-health-primary focus:border-health-primary"
-                    placeholder="Enter your email address"
-                  />
-                </div>
+                <FormField
+                  label="Email Address"
+                  id="contact-email"
+                  type="email"
+                  placeholder="Enter your email address"
+                />
                 
-                <div>
-                  <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="contact-phone"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-health-primary focus:border-health-primary"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
+                <FormField
+                  label="Phone Number"
+                  id="contact-phone"
+                  type="tel"
+                  placeholder="Enter your phone number"
+                />
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
@@ -133,13 +157,26 @@ const HospitalSolutionsCTA = () => {
                     placeholder="Tell us about your hospital's needs"
                   ></textarea>
                 </div>
-              </div>
+              </motion.div>
               
-              <Button size="lg" className="w-full gap-2">
-                Submit Request <ArrowRight size={18} />
-              </Button>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <Button size="lg" className="w-full gap-2">
+                  Submit Request <ArrowRight size={18} />
+                </Button>
+              </motion.div>
               
-              <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="mt-6 flex flex-col sm:flex-row gap-4 justify-center"
+              >
                 <a href="#" className="flex items-center gap-2 text-health-primary hover:text-health-secondary">
                   <Phone size={18} />
                   <span>+1 (800) 123-4567</span>
@@ -148,13 +185,67 @@ const HospitalSolutionsCTA = () => {
                   <Mail size={18} />
                   <span>hospital@akeno-health.com</span>
                 </a>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-12 text-center"
+        >
+          <p className="text-muted-foreground">
+            Join leading hospitals and healthcare providers already using Akeno Health AI
+          </p>
+          <div className="flex flex-wrap justify-center gap-8 mt-6">
+            {['NHS Trust', 'University Hospital', 'Memorial Health', 'Regional Medical'].map((partner, index) => (
+              <div key={index} className="text-xl font-bold text-gray-400 opacity-70">
+                {partner}
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 };
+
+const CTAFeature = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
+  <div className="flex items-start gap-3">
+    <div className="mt-1 flex-shrink-0">
+      <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-100 text-green-600">
+        {icon}
+      </div>
+    </div>
+    <span className="text-sm">{text}</span>
+  </div>
+);
+
+const FormField = ({ 
+  label, 
+  id, 
+  type = "text", 
+  placeholder 
+}: { 
+  label: string; 
+  id: string; 
+  type?: string; 
+  placeholder: string 
+}) => (
+  <div>
+    <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-1">
+      {label}
+    </label>
+    <input
+      type={type}
+      id={id}
+      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-health-primary focus:border-health-primary"
+      placeholder={placeholder}
+    />
+  </div>
+);
 
 export default HospitalSolutionsCTA;
