@@ -6,31 +6,31 @@ export const services = [
   {
     icon: <ActivitySquare className="h-10 w-10 text-white" />,
     title: "Continuous Health Monitoring",
-    description: "AI-powered wearables and real-time biomarkers detect early disease signals before symptoms appear."
+    description: "Our platform processes data from wearables and clinical sources to detect early signs of health changes before symptoms appear."
   },
   {
     icon: <Brain className="h-10 w-10 text-white" />,
     title: "AI-Powered Diagnostics & Clinical Decision Support",
-    description: "AI-enhanced tools empower doctors with real-time, evidence-based recommendations, reducing diagnostic errors and treatment delays."
+    description: "Advanced algorithms analyze patient data to provide evidence-based recommendations, reducing diagnostic errors."
   },
   {
     icon: <HeartPulse className="h-10 w-10 text-white" />,
     title: "Precision Medicine & Digital Twin Technology",
-    description: "Hyper-personalised treatments tailored to genetics, microbiome, and disease progression for optimised health outcomes."
+    description: "Personalized treatments tailored to your unique genetics, microbiome, and health profile for optimized outcomes."
   },
   {
     icon: <FlaskConical className="h-10 w-10 text-white" />,
     title: "AI-Driven Clinical Trials & Drug Discovery",
-    description: "Advanced AI matches patients to clinical trials and accelerates drug discovery using quantum computing."
+    description: "We match patients to appropriate clinical trials and accelerate drug discovery using advanced computing."
   },
   {
     icon: <Database className="h-10 w-10 text-white" />,
-    title: "Blockchain-Powered Universal Health Records",
-    description: "A secure, decentralised health data system, ensuring patient ownership and real-time access to medical history."
+    title: "Secure Health Records Management",
+    description: "Our blockchain-powered health data system ensures your data remains secure while providing authorized access when needed."
   },
   {
     icon: <Shield className="h-10 w-10 text-white" />,
-    title: "AI-Integrated Mental & Cognitive Health",
-    description: "Advanced AI-driven assessments detect early signs of cognitive decline, stress, and mental health conditions for proactive interventions."
+    title: "Early Detection & Preventive Care",
+    description: "Advanced AI assessments detect early signs of health conditions, enabling proactive interventions before problems escalate."
   }
 ];
