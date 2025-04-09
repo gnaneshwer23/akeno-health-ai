@@ -129,7 +129,6 @@ const HeroSection = () => {
             <CustomButton 
               size="lg" 
               variant="primary"
-              as={Link}
               to="/patient-solutions"
               onClick={handleGetStarted}
               className="shadow-md hover:shadow-lg transition-all w-full sm:w-auto"

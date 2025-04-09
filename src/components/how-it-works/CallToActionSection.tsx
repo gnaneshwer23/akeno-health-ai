@@ -57,7 +57,6 @@ const CallToActionSection = () => {
             <CustomButton
               variant="outline"
               size="lg"
-              as={Link}
               to="/contact"
               onClick={() => handleButtonClick("Demo Request")}
               className="group w-full sm:w-auto"
@@ -86,7 +85,6 @@ const CallToActionSection = () => {
             </p>
             <CustomButton
               variant="link"
-              as={Link}
               to="/patient-solutions"
               onClick={() => handleButtonClick("Patient Solutions")}
               className="group text-indigo-600"
@@ -113,7 +111,6 @@ const CallToActionSection = () => {
             </p>
             <CustomButton
               variant="link"
-              as={Link}
               to="/doctor-solutions"
               onClick={() => handleButtonClick("Doctor Solutions")}
               className="group text-purple-600"
@@ -140,7 +137,6 @@ const CallToActionSection = () => {
             </p>
             <CustomButton
               variant="link"
-              as={Link}
               to="/hospital-solutions"
               onClick={() => handleButtonClick("Hospital Solutions")}
               className="group text-cyan-600"

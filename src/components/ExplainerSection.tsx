@@ -165,7 +165,6 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
               <CustomButton 
                 size="lg" 
                 variant="outline"
-                as={Link}
                 to="/contact"
                 onClick={handleContactClick}
                 className="group border-health-primary/20"
@@ -233,15 +232,12 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
               <CustomButton 
                 size="lg" 
                 variant="secondary"
-                as={Link}
                 to="/contact"
                 onClick={handleContactClick}
                 className="group bg-white text-indigo-700 hover:bg-indigo-50 transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap"
               >
-                <span className="flex items-center gap-2">
-                  Contact Us Today
-                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-                </span>
+                Contact Us Today
+                <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
               </CustomButton>
             </div>
           </div>
@@ -298,9 +294,9 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
                   });
                 }}
                 className="group"
+                rightIcon={<ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
               >
                 Explore Quantum Technology
-                <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
               </CustomButton>
             </div>
             
