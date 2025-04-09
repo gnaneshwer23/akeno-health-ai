@@ -7,7 +7,8 @@ import {
   Clipboard, 
   Bell, 
   Clock,
-  ArrowRight 
+  ArrowRight,
+  Database 
 } from 'lucide-react';
 
 const DoctorJourney = () => {
@@ -15,27 +16,32 @@ const DoctorJourney = () => {
     {
       icon: <Stethoscope size={24} />,
       title: "Connect Your Systems",
-      description: "Securely connect Akeno to your existing EHR and hospital systems. We integrate with all major platforms while maintaining data security."
+      description: "Securely connect Akeno to your existing EHR and hospital systems. We integrate with all major platforms while maintaining HIPAA-compliant data security."
     },
     {
       icon: <Brain size={24} />,
       title: "AI-Enhanced Practice",
-      description: "Experience intelligent diagnostic support, treatment recommendations, and clinical insights - all powered by our advanced AI that learns from medical literature and practice patterns."
+      description: "Experience intelligent diagnostic support, treatment recommendations, and clinical insights based on our backend's analysis of electronic health records, genomic data, and medical images."
+    },
+    {
+      icon: <Database size={24} />,
+      title: "Access Patient Data",
+      description: "Access comprehensive patient data including wearable metrics, biomarkers, genomic profiles, and imaging results - all in one secure, unified interface."
     },
     {
       icon: <Clipboard size={24} />,
       title: "Smart Documentation",
-      description: "Reduce your administrative burden with AI-generated clinical notes, automated reporting, and intelligent summarization of patient histories."
+      description: "Reduce your administrative burden with AI-generated clinical notes, automated reporting, and intelligent summarization of patient histories from our electronic health records database."
     },
     {
       icon: <Bell size={24} />,
       title: "Receive Real-Time Alerts",
-      description: "Get notified about critical patient changes, potential diagnoses, and treatment considerations that might otherwise be missed."
+      description: "Get notified about critical patient changes, potential diagnoses, and treatment considerations based on continuous biomarker and wearable data monitoring."
     },
     {
       icon: <Clock size={24} />,
       title: "Save Time, Improve Care",
-      description: "Focus more on direct patient care and less on data entry and research, while improving outcomes through evidence-based practice."
+      description: "Focus more on direct patient care and less on data entry and research, while improving outcomes through evidence-based practice powered by our AI analytics."
     }
   ];
 
@@ -70,7 +76,7 @@ const DoctorJourney = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
           >
-            From Clinical Decision Support to Smart Documentation
+            From Clinical Decision Support to Smart Documentation - All Backed by Our Secure Health Database
           </motion.p>
         </div>
         
@@ -79,7 +85,7 @@ const DoctorJourney = () => {
           <div className="absolute top-1/2 left-0 w-full h-1.5 bg-gradient-to-r from-blue-200 via-indigo-300 to-blue-200 transform -translate-y-1/2 rounded-full"></div>
           
           <div className="flex justify-between relative">
-            {journeySteps.map((step, index) => (
+            {journeySteps.slice(0, 5).map((step, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -141,7 +147,7 @@ const DoctorJourney = () => {
             <div>
               <h3 className="text-xl font-semibold text-health-dark mb-2">You make the final call — faster, safer, and more confidently.</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Akeno Health doesn't replace doctors—it empowers them. Our AI-powered clinical decision support system reduces 
+                Akeno Health doesn't replace doctors—it empowers them. Our AI-powered clinical decision support system, backed by secure health databases including electronic health records, genomic data, medical images, and wearable data, reduces 
                 cognitive load, enhances diagnostic accuracy, and streamlines documentation, giving you more time to focus on what matters most: your patients.
               </p>
             </div>

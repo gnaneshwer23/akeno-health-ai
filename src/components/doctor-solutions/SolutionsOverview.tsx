@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { FeatureCard } from '@/components/FeatureCard';
-import { Stethoscope, FileText, Bell, ArrowRight, Brain, Shield } from 'lucide-react';
+import { Stethoscope, FileText, Bell, ArrowRight, Brain, Shield, Database, Image } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const SolutionsOverview = () => {
@@ -9,22 +9,27 @@ const SolutionsOverview = () => {
     {
       icon: <Brain size={24} />,
       title: "AI-Powered Clinical Decision Support",
-      description: "Get instant differential diagnoses, AI-recommended treatment plans, safety-first alerts for drug interactions, and evidence-based citations from peer-reviewed studies."
+      description: "Get instant differential diagnoses powered by our electronic health records and genomic databases. AI-recommended treatment plans, safety-first alerts for drug interactions, and evidence-based citations from peer-reviewed studies."
     },
     {
-      icon: <Stethoscope size={24} />,
-      title: "Diagnostic Intelligence",
-      description: "AI-assisted image interpretation, smart reporting tools for radiology and clinical notes, and explainable outputs with heatmaps and diagnostic rationales."
+      icon: <Image size={24} />,
+      title: "Advanced Medical Imaging Analysis",
+      description: "AI-assisted image interpretation of your patients' MRIs, CT scans, and X-rays stored in our medical images database, with smart reporting tools and explainable diagnostics with visual heatmaps."
     },
     {
       icon: <FileText size={24} />,
       title: "EHR Integration & Documentation",
-      description: "Auto-SOAP generation from patient interactions, real-time integration with leading EHR platforms, and smart summarisation of medical histories."
+      description: "Auto-SOAP generation from patient interactions, real-time integration with leading EHR platforms, and smart summarisation of medical histories from our comprehensive electronic health records database."
     },
     {
       icon: <Bell size={24} />,
       title: "Patient Monitoring & Alerts",
-      description: "Receive AI-powered alerts for deteriorating patients, configure clinical escalation protocols, and monitor remote patients via wearables dashboards."
+      description: "Receive AI-powered alerts for deteriorating patients based on real-time wearable data analysis, configure clinical escalation protocols, and monitor remote patients via comprehensive wearables dashboards."
+    },
+    {
+      icon: <Database size={24} />,
+      title: "Comprehensive Data Integration",
+      description: "Access patients' electronic health records, genomic data, biomarker trends, and medical imaging - all in one unified platform with powerful search and analysis capabilities."
     }
   ];
 
@@ -67,7 +72,7 @@ const SolutionsOverview = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg text-muted-foreground max-w-3xl mx-auto"
           >
-            Our platform integrates AI-powered diagnostics, real-time data insights, and treatment recommendations to transform medicine into a more predictive, proactive, and precision-based system.
+            Our platform integrates your patients' comprehensive health data with AI-powered analytics to deliver diagnostics assistance, real-time insights, and treatment recommendations to transform medicine into a more predictive, proactive, and precision-based system.
           </motion.p>
         </div>
         
@@ -82,7 +87,7 @@ const SolutionsOverview = () => {
           <ProcessStep 
             icon={<Brain size={28} />} 
             label="Diagnose" 
-            description="AI helps identify potential conditions based on symptoms, history, and tests" 
+            description="AI helps identify potential conditions based on EHR, genomics, and imaging" 
             number={1}
           />
           
@@ -95,7 +100,7 @@ const SolutionsOverview = () => {
           <ProcessStep 
             icon={<Shield size={28} />} 
             label="Decide" 
-            description="Evidence-based treatment options with safety checks and guidelines" 
+            description="Evidence-based treatment options with safety checks" 
             number={2}
           />
           
@@ -108,7 +113,7 @@ const SolutionsOverview = () => {
           <ProcessStep 
             icon={<FileText size={28} />} 
             label="Document" 
-            description="Automated clinical notes and documentation with full transparency" 
+            description="Automated clinical notes using patient data" 
             number={3}
           />
           
@@ -121,13 +126,13 @@ const SolutionsOverview = () => {
           <ProcessStep 
             icon={<Bell size={28} />} 
             label="Monitor" 
-            description="Ongoing patient monitoring with smart alerts and follow-ups" 
+            description="Ongoing tracking with wearable data and alerts" 
             number={4}
           />
         </motion.div>
         
         {/* Feature Cards - Now with staggered animation */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
@@ -156,8 +161,9 @@ const SolutionsOverview = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <div className="inline-block px-4 py-2 bg-blue-50 text-blue-700 rounded-lg font-medium border border-blue-100 shadow-sm">
-            🎯 Outcome: You make the final call — faster, safer, and more confidently.
+          <div className="inline-block px-6 py-3 bg-blue-50 text-blue-700 rounded-lg font-medium border border-blue-100 shadow-sm">
+            <span className="block text-lg font-semibold mb-1">🎯 All powered by our secure health database infrastructure</span>
+            <span className="text-sm">Electronic Health Records + Genomic Data + Medical Imaging + Wearable Data</span>
           </div>
         </motion.div>
       </div>

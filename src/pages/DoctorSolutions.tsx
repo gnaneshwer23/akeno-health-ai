@@ -15,6 +15,7 @@ import VirtualAssistant from '@/components/doctor-solutions/VirtualAssistant';
 import ComplianceSection from '@/components/doctor-solutions/ComplianceSection';
 import PatientCommunication from '@/components/doctor-solutions/PatientCommunication';
 import { motion } from 'framer-motion';
+import ResponsiveDoctorServiceFlow from '@/components/doctor-solutions/ResponsiveDoctorServiceFlow';
 
 const DoctorSolutions = () => {
   return (
@@ -36,6 +37,45 @@ const DoctorSolutions = () => {
         >
           <SolutionsOverview />
         </motion.div>
+        
+        {/* NEW: Service Flow Diagram */}
+        <div className="bg-white py-20 px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="inline-block px-4 py-1.5 bg-health-primary/10 text-health-primary rounded-full font-medium text-sm mb-4"
+              >
+                Data Infrastructure
+              </motion.div>
+              
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="text-3xl md:text-4xl font-bold text-health-dark mb-4"
+              >
+                Your Practice Powered By Advanced Health Data
+              </motion.h2>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8"
+              >
+                Akeno's comprehensive health database system integrates multiple data sources to power your clinical decision making.
+              </motion.p>
+            </div>
+            
+            <ResponsiveDoctorServiceFlow />
+          </div>
+        </div>
         
         {/* Doctor Journey Section with subtle background */}
         <div className="bg-white relative overflow-hidden py-20">
