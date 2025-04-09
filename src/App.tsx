@@ -21,12 +21,13 @@ const Index = lazy(() => import('./pages/Index'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
 const HowItWorks = lazy(() => import('./pages/HowItWorks'));
 const Solutions = lazy(() => import('./pages/Solutions')); 
+const Products = lazy(() => import('./pages/Products')); // Add the Products page
 const PatientSolutions = lazy(() => import('./pages/PatientSolutions'));
 const DoctorSolutions = lazy(() => import('./pages/DoctorSolutions'));
 const HospitalSolutions = lazy(() => import('./pages/HospitalSolutions'));
 const BiotechSolutions = lazy(() => import('./pages/BiotechSolutions'));
 const QuantumComputing = lazy(() => import('./pages/QuantumComputing'));
-const AIStudio = lazy(() => import('./pages/AIStudio')); // Add the AI Studio page
+const AIStudio = lazy(() => import('./pages/AIStudio'));
 const HealthcareDecisionMaking = lazy(() => import('./pages/HealthcareDecisionMaking'));
 const CaseStudiesAndBlog = lazy(() => import('./pages/CaseStudiesAndBlog'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -50,8 +51,9 @@ const App = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/how-it-works" element={<HowItWorks />} />
+                <Route path="/products" element={<Products />} /> {/* Add Products route */}
                 <Route path="/solutions" element={<Solutions />} />
-                <Route path="/ai-studio" element={<AIStudio />} /> {/* Add AI Studio route */}
+                <Route path="/ai-studio" element={<AIStudio />} />
                 <Route path="/patient-solutions" element={<PatientSolutions />} />
                 <Route path="/doctor-solutions" element={<DoctorSolutions />} />
                 <Route path="/hospital-solutions" element={<HospitalSolutions />} />
