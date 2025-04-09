@@ -2,9 +2,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Database, Brain, Activity, Shield, Zap } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { CustomButton } from '@/components/ui/custom-button';
+import { useToast } from '@/hooks/use-toast';
 
 const HeroSection = () => {
+  const { toast } = useToast();
+  
+  const handleDemo = () => {
+    toast({
+      title: "Demo Request Received",
+      description: "Thank you for your interest. A team member will contact you shortly to schedule a demo.",
+    });
+  };
+
   return (
     <section className="relative py-24 px-6 overflow-hidden bg-gradient-to-b from-indigo-50 to-white">
       {/* Background elements */}
@@ -105,19 +115,24 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Button 
+            <CustomButton 
               size="lg" 
-              className="bg-health-primary hover:bg-health-secondary text-white shadow-md hover:shadow-lg transition-all"
+              variant="primary"
+              to="/patient-solutions"
+              withArrow
+              className="shadow-md hover:shadow-lg transition-all"
             >
               Get Started Today
-            </Button>
-            <Button 
+            </CustomButton>
+            
+            <CustomButton 
               size="lg" 
               variant="outline"
               className="border-health-primary text-health-primary hover:bg-health-primary/5"
+              onClick={handleDemo}
             >
               Book a Demo
-            </Button>
+            </CustomButton>
           </motion.div>
         </div>
         

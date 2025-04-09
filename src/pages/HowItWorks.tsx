@@ -10,30 +10,37 @@ import { AboutUsFloatingElements } from '@/components/about/page/AboutUsFloating
 import { AboutUsDivider } from '@/components/about/page/AboutUsDivider';
 import { motion } from 'framer-motion';
 import AnimatedJourneyFlow from '@/components/how-it-works/AnimatedJourneyFlow';
+import FlowDiagramContent from '@/components/home/flow-diagram/FlowDiagramContent';
+import DiagramHeader from '@/components/home/flow-diagram/DiagramHeader';
+import { ExplainerSection } from '@/components/ExplainerSection';
 
 const HowItWorks = () => {
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Update page title
+    document.title = 'How It Works - Akeno Health AI';
   }, []);
 
-  // Prevent default on all button clicks in the component
+  // Handle anchor link smooth scrolling
   useEffect(() => {
-    const handleButtonClicks = (e: MouseEvent) => {
+    const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as Element;
-      if (target.tagName === 'BUTTON' || 
-          target.closest('button') || 
-          target.tagName === 'A' ||
-          target.closest('a')) {
+      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
         e.preventDefault();
-        e.stopPropagation();
+        const targetId = target.getAttribute('href');
+        const targetElement = document.querySelector(targetId as string);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     };
 
-    document.addEventListener('click', handleButtonClicks, true);
+    document.addEventListener('click', handleAnchorClick);
     
     return () => {
-      document.removeEventListener('click', handleButtonClicks, true);
+      document.removeEventListener('click', handleAnchorClick);
     };
   }, []);
 
@@ -51,12 +58,35 @@ const HowItWorks = () => {
       >
         <HeroSection />
         <AboutUsDivider />
+        
+        {/* Core Process Section */}
         <ProcessStepsSection />
         <AboutUsDivider />
+        
+        {/* Flow Diagram Section */}
+        <section className="py-16 px-6 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <DiagramHeader />
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-md border border-indigo-100 overflow-hidden">
+              <FlowDiagramContent />
+            </div>
+          </div>
+        </section>
+        <AboutUsDivider />
+        
+        {/* Animated Journey Section */}
         <AnimatedJourneyFlow />
         <AboutUsDivider />
+        
+        {/* Explainer Section */}
+        <ExplainerSection className="bg-white" />
+        <AboutUsDivider />
+        
+        {/* Infographic Timeline Section */}
         <InfographicSection />
         <AboutUsDivider />
+        
+        {/* Final CTA Section */}
         <CallToActionSection />
       </motion.main>
       

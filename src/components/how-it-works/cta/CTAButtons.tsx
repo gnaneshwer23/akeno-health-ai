@@ -10,25 +10,24 @@ const CTAButtons = () => {
   const handleDemo = () => {
     toast({
       title: "Demo Request Received",
-      description: "This is a demo website. Buttons are intentionally non-functional.",
+      description: "Thank you for your interest. A team member will contact you shortly to schedule a demo.",
     });
   };
   
   const handlePartnership = () => {
     toast({
       title: "Partnership Inquiry",
-      description: "This is a demo website. Buttons are intentionally non-functional.",
+      description: "Thank you for your interest in partnering with us. Our team will reach out to discuss collaboration opportunities.",
     });
   };
 
   const handleMainAction = () => {
     toast({
-      title: "Navigation Disabled",
-      description: "This is a demo website. Buttons are intentionally non-functional.",
+      title: "Getting Started",
+      description: "Welcome to Akeno Health! We're excited to have you join our healthcare revolution.",
     });
   };
 
-  // Using onClick handlers that prevent default and do nothing
   return (
     <div className="space-y-4">
       <div className="flex flex-col space-y-3">
@@ -37,6 +36,7 @@ const CTAButtons = () => {
           variant="primary"
           className="w-full"
           onClick={handleMainAction}
+          withArrow
         >
           Join the Future of AI Healthcare
         </CustomButton>
