@@ -29,19 +29,36 @@ const SolutionsOverview = () => {
   ];
 
   return (
-    <section className="py-16 px-6 bg-white relative">
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-50 to-transparent opacity-50"></div>
+    <section className="py-16 px-6 bg-white/80 backdrop-blur-sm relative">
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-1.5 bg-health-primary/10 text-health-primary rounded-full font-medium text-sm mb-4"
+          >
+            Clinical Solutions
+          </motion.div>
+          
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold text-health-dark mb-6"
+            className="text-3xl md:text-4xl font-bold text-health-dark mb-4"
           >
             AI-Powered Solutions for Healthcare Professionals
           </motion.h2>
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary mx-auto mb-6"
+          />
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -54,22 +71,24 @@ const SolutionsOverview = () => {
           </motion.p>
         </div>
         
-        {/* Solutions Process Flow */}
+        {/* Solutions Process Flow - Redesigned with visual connections */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col md:flex-row items-center justify-center mb-14 max-w-4xl mx-auto"
+          className="flex flex-col md:flex-row items-center justify-center mb-16 max-w-4xl mx-auto"
         >
           <ProcessStep 
             icon={<Brain size={28} />} 
             label="Diagnose" 
             description="AI helps identify potential conditions based on symptoms, history, and tests" 
+            number={1}
           />
           
           <div className="hidden md:flex items-center justify-center">
-            <ArrowRight size={24} className="text-health-primary/30 mx-4" />
+            <div className="w-12 h-0.5 bg-health-primary/30"></div>
+            <ArrowRight size={20} className="text-health-primary mx-1" />
           </div>
           <div className="w-0.5 h-6 bg-health-primary/30 md:hidden my-2"></div>
           
@@ -77,10 +96,12 @@ const SolutionsOverview = () => {
             icon={<Shield size={28} />} 
             label="Decide" 
             description="Evidence-based treatment options with safety checks and guidelines" 
+            number={2}
           />
           
           <div className="hidden md:flex items-center justify-center">
-            <ArrowRight size={24} className="text-health-primary/30 mx-4" />
+            <div className="w-12 h-0.5 bg-health-primary/30"></div>
+            <ArrowRight size={20} className="text-health-primary mx-1" />
           </div>
           <div className="w-0.5 h-6 bg-health-primary/30 md:hidden my-2"></div>
           
@@ -88,10 +109,12 @@ const SolutionsOverview = () => {
             icon={<FileText size={28} />} 
             label="Document" 
             description="Automated clinical notes and documentation with full transparency" 
+            number={3}
           />
           
           <div className="hidden md:flex items-center justify-center">
-            <ArrowRight size={24} className="text-health-primary/30 mx-4" />
+            <div className="w-12 h-0.5 bg-health-primary/30"></div>
+            <ArrowRight size={20} className="text-health-primary mx-1" />
           </div>
           <div className="w-0.5 h-6 bg-health-primary/30 md:hidden my-2"></div>
           
@@ -99,9 +122,11 @@ const SolutionsOverview = () => {
             icon={<Bell size={28} />} 
             label="Monitor" 
             description="Ongoing patient monitoring with smart alerts and follow-ups" 
+            number={4}
           />
         </motion.div>
         
+        {/* Feature Cards - Now with staggered animation */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {solutions.map((solution, index) => (
             <motion.div
@@ -131,7 +156,7 @@ const SolutionsOverview = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <div className="inline-block px-4 py-2 bg-blue-50 text-blue-700 rounded-lg font-medium">
+          <div className="inline-block px-4 py-2 bg-blue-50 text-blue-700 rounded-lg font-medium border border-blue-100 shadow-sm">
             🎯 Outcome: You make the final call — faster, safer, and more confidently.
           </div>
         </motion.div>
@@ -140,13 +165,26 @@ const SolutionsOverview = () => {
   );
 };
 
-const ProcessStep = ({ icon, label, description }: { icon: React.ReactNode; label: string; description: string }) => (
-  <div className="flex flex-col items-center p-4 text-center">
-    <div className="w-16 h-16 rounded-full bg-health-primary/10 flex items-center justify-center mb-2 hover:bg-health-primary/20 transition-colors group">
+const ProcessStep = ({ 
+  icon, 
+  label, 
+  description,
+  number 
+}: { 
+  icon: React.ReactNode; 
+  label: string; 
+  description: string;
+  number: number;
+}) => (
+  <div className="flex flex-col items-center p-4 text-center relative">
+    <div className="absolute -top-3 -right-3 h-6 w-6 rounded-full bg-health-primary flex items-center justify-center text-white text-xs font-bold">
+      {number}
+    </div>
+    <div className="w-16 h-16 rounded-full bg-health-primary/10 flex items-center justify-center mb-3 hover:bg-health-primary/20 transition-colors group-hover:scale-105 duration-300">
       <div className="text-health-primary">{icon}</div>
     </div>
     <span className="text-base font-semibold text-health-dark mb-1">{label}</span>
-    <span className="text-xs text-muted-foreground max-w-[120px]">{description}</span>
+    <span className="text-xs text-muted-foreground max-w-[140px]">{description}</span>
   </div>
 );
 
