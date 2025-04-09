@@ -44,7 +44,7 @@ export const TimelineMilestones: React.FC<TimelineMilestonesProps> = ({
           ></motion.div>
           
           {/* Milestones */}
-          <div className="space-y-12 relative">
+          <div className="space-y-10 relative">
             {milestones.map((milestone, index) => (
               <MilestoneCard
                 key={index}
@@ -60,10 +60,10 @@ export const TimelineMilestones: React.FC<TimelineMilestonesProps> = ({
       )}
 
       {variant === 'detailed' && (
-        <div className="space-y-20 relative">
+        <div className="space-y-16 relative">
           {/* Vertical timeline line for detailed view */}
           <motion.div 
-            className="absolute left-[10%] sm:left-24 top-0 bottom-0 w-1 bg-gradient-to-b from-amber-300 via-indigo-400 to-emerald-400 rounded-full hidden md:block"
+            className="absolute left-[10%] sm:left-24 top-0 bottom-0 w-1.5 bg-gradient-to-b from-amber-300 via-indigo-400 to-emerald-400 rounded-full hidden md:block"
             initial={{ height: 0 }}
             whileInView={{ height: "100%" }}
             viewport={{ once: true }}

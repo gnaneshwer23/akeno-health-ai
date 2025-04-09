@@ -3,7 +3,6 @@ import React from 'react';
 import { SectionHeader } from './vision-mission/SectionHeader';
 import { VisionCard } from './vision-mission/VisionCard';
 import { MissionCard } from './vision-mission/MissionCard';
-import { VisionMissionCTA } from './vision-mission/VisionMissionCTA';
 import { BackgroundDecorations } from './vision-mission/BackgroundDecorations';
 import { ConnectedDots } from './vision-mission/ConnectedDots';
 import { ConnectingLine } from './vision-mission/ConnectingLine';
@@ -30,14 +29,14 @@ export const VisionMission = () => {
   ];
 
   return (
-    <section className="py-16 relative overflow-hidden">
+    <section className="relative overflow-hidden">
       {/* Background Elements */}
       <BackgroundDecorations />
       
       {/* Connected dots network with improved animation */}
       <ConnectedDots />
       
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header with animation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,7 +48,7 @@ export const VisionMission = () => {
         </motion.div>
         
         {/* Vision and Mission Cards with Shared Background */}
-        <div className="relative mb-16">
+        <div className="relative mb-12 md:mb-16">
           {/* Connecting Line with enhanced animation */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -60,7 +59,7 @@ export const VisionMission = () => {
             <ConnectingLine />
           </motion.div>
           
-          <div className="grid lg:grid-cols-2 gap-12 relative">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 relative">
             {/* Vision Card with animation */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -89,7 +88,6 @@ export const VisionMission = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-8"
         >
           <ValuesSection />
         </motion.div>

@@ -54,7 +54,7 @@ const AboutUs = () => {
       
       <Navbar />
       
-      <main className="flex-grow z-10 pt-20">
+      <main className="flex-grow z-10 pt-16">
         {/* Hero Section with Enhanced Animation */}
         <AboutHero />
         
@@ -63,18 +63,18 @@ const AboutUs = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="py-6"
+          className="py-4"
         >
           <AboutUsDivider />
         </motion.div>
         
-        {/* Vision & Mission Section */}
-        <section id="vision-mission" className="py-16">
+        {/* Vision & Mission Section - Improved spacing */}
+        <section id="vision-mission" className="py-12 md:py-16">
           <VisionMission />
         </section>
         
         {/* Our Story Section with enhanced timeline */}
-        <section id="story" className="py-16 bg-gradient-to-b from-transparent to-gray-50/20">
+        <section id="story" className="py-12 md:py-16 bg-gradient-to-b from-transparent to-gray-50/20">
           <CompanySectionWrapper>
             <CompanyStory />
           </CompanySectionWrapper>
@@ -82,7 +82,7 @@ const AboutUs = () => {
         
         {/* Visual separator with animation */}
         <motion.div 
-          className="w-full h-px max-w-4xl mx-auto my-8"
+          className="w-full h-px max-w-4xl mx-auto my-6"
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true }}
@@ -92,7 +92,7 @@ const AboutUs = () => {
         </motion.div>
         
         {/* Meet the Team Section with proper spacing */}
-        <section id="team" className="py-16">
+        <section id="team" className="py-12 md:py-16">
           <TeamSectionWrapper>
             <AboutTeam />
           </TeamSectionWrapper>
@@ -104,7 +104,7 @@ const AboutUs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 mt-8"
+          className="mb-16 mt-4"
         >
           <AboutCTA />
         </motion.div>
