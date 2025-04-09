@@ -13,7 +13,6 @@ import { AboutUsConnectedDots } from '@/components/about/page/AboutUsConnectedDo
 import { AboutUsDivider } from '@/components/about/page/AboutUsDivider';
 import { CompanySectionWrapper } from '@/components/about/page/CompanySectionWrapper';
 import { TeamSectionWrapper } from '@/components/about/page/TeamSectionWrapper';
-import { PartnersCollaboration } from '@/components/about/PartnersCollaboration';
 import { CompanyValues } from '@/components/about/CompanyValues';
 import { CareersSection } from '@/components/about/CareersSection';
 import { motion } from 'framer-motion';
@@ -100,19 +99,7 @@ const AboutUs = () => {
           </TeamSectionWrapper>
         </section>
         
-        {/* Section 5: Partners & Collaborations */}
-        <section id="partners" className="relative overflow-hidden">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0 bg-gradient-to-br from-health-light/10 to-white -z-10"
-          />
-          <PartnersCollaboration />
-        </section>
-        
-        {/* Section 6: Careers & Culture */}
+        {/* Section 5: Careers & Culture */}
         <section id="careers" className="relative">
           <motion.div
             initial={{ opacity: 0 }}
@@ -124,7 +111,7 @@ const AboutUs = () => {
           <CareersSection />
         </section>
         
-        {/* Section 7: Final CTA */}
+        {/* Final CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

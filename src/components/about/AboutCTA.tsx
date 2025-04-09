@@ -1,8 +1,6 @@
 
 import React from 'react';
 import { Handshake } from 'lucide-react';
-import { PartnersSection } from './cta/PartnersSection';
-import { CTACardsSection } from './cta/CTACardsSection';
 import { ActionButtons } from './cta/ActionButtons';
 
 export const AboutCTA = () => {
@@ -24,12 +22,12 @@ export const AboutCTA = () => {
           <div className="inline-flex items-center px-5 py-2 mb-6 rounded-full bg-gradient-to-r from-blue-500/10 to-sky-500/10 font-medium gap-2 border border-blue-500/10 shadow-lg shadow-indigo-500/5">
             <Handshake size={16} className="text-blue-500 animate-pulse" />
             <span className="bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text text-transparent">
-              Our Partners & Investors
+              Ready to Work with Us?
             </span>
           </div>
           
           <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 bg-clip-text text-transparent">
-            Collaborating for a Healthier Future
+            Join Our Mission for a Healthier Future
           </h2>
           
           <div className="flex justify-center mb-6">
@@ -37,17 +35,9 @@ export const AboutCTA = () => {
           </div>
           
           <p className="text-health-dark/70 max-w-3xl mx-auto mb-8">
-            Akeno Health thrives on strategic partnerships with some of the world's leading healthcare institutions, technology firms, and investment partners.
+            Whether you're a healthcare provider, researcher, or patient, Akeno Health offers cutting-edge AI solutions to transform healthcare experiences and outcomes.
           </p>
         </div>
-        
-        <PartnersSection />
-      
-        <h3 className="text-2xl font-bold text-center text-health-dark mb-6">
-          Explore More
-        </h3>
-        
-        <CTACardsSection />
         
         <div className="text-center mt-16">
           <p className="text-xl font-medium text-health-dark mb-8">

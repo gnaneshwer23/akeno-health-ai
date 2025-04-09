@@ -3,7 +3,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Globe, Heart, ArrowRight, Target, Award, Star } from 'lucide-react';
 import { CustomButton } from '@/components/ui/custom-button';
-import { CTACardsSection } from './cta/CTACardsSection';
 
 export const CareersSection = () => {
   return (
@@ -99,8 +98,6 @@ export const CareersSection = () => {
             </motion.div>
           </div>
         </div>
-
-        <CTACardsSection />
         
         <div className="flex justify-center mt-12">
           <CustomButton
