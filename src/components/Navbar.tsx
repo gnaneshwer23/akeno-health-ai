@@ -36,6 +36,17 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
+  
+  // Handle anchor links for hash navigation
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);

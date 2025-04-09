@@ -10,6 +10,8 @@ export const navigationLinks = [
     sublinks: [
       { name: 'Overview', path: '/products' },
       { name: 'AI Studio', path: '/ai-studio' },
+      { name: 'Real-World Evidence', path: '/products#real-world-evidence' },
+      { name: 'Digital Twin Panel', path: '/products#digital-twin-panel' },
     ]
   },
   { 
