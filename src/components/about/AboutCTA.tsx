@@ -20,7 +20,7 @@ export const AboutCTA = () => {
   };
   
   return (
-    <section className="px-6 relative overflow-hidden">
+    <section className="px-6 pt-4 pb-20 relative overflow-hidden">
       {/* Enhanced background with patterns and gradients */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-health-light/20 to-white -z-10"></div>
       

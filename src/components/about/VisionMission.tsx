@@ -29,7 +29,7 @@ export const VisionMission = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden py-12">
       {/* Background Elements */}
       <BackgroundDecorations />
       
@@ -43,12 +43,13 @@ export const VisionMission = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          className="mb-12"
         >
           <SectionHeader />
         </motion.div>
         
         {/* Vision and Mission Cards with Shared Background */}
-        <div className="relative mb-12 md:mb-16">
+        <div className="relative mb-12">
           {/* Connecting Line with enhanced animation */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -59,7 +60,7 @@ export const VisionMission = () => {
             <ConnectingLine />
           </motion.div>
           
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 relative">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-10 relative">
             {/* Vision Card with animation */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
