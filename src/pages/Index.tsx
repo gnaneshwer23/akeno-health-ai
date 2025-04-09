@@ -9,6 +9,7 @@ import { UseCasesSection } from '@/components/home/UseCasesSection';
 import { TechDifferentiatorsSection } from '@/components/home/TechDifferentiatorsSection';
 import { TestimonialsPartnersSection } from '@/components/home/TestimonialsPartnersSection';
 import { FinalCTASection } from '@/components/home/FinalCTASection';
+import AIFlowDiagram from '@/components/home/AIFlowDiagram';
 
 const Index = () => {
   useEffect(() => {
@@ -69,6 +70,11 @@ const Index = () => {
         
         {/* Section 2: How It Works */}
         <HowItWorksSection />
+        
+        {/* AI Flow Diagram - Bridging Data, Intelligence, and Care */}
+        <div className="py-12 px-6">
+          <AIFlowDiagram />
+        </div>
         
         {/* Section 3: Stakeholders */}
         <StakeholdersSection />
