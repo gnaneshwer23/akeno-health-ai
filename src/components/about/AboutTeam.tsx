@@ -6,7 +6,7 @@ import { LeadershipTeam } from './team/LeadershipTeam';
 
 export const AboutTeam = () => {
   return (
-    <section className="mb-20 px-6 py-16 relative bg-gradient-to-b from-health-light to-white overflow-hidden" id="team">
+    <section className="px-6 py-16 relative bg-gradient-to-b from-health-light to-white overflow-hidden" id="team">
       <TeamSectionBackground />
       
       <div className="max-w-6xl mx-auto">

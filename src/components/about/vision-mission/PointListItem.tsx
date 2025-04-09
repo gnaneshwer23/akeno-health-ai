@@ -34,7 +34,7 @@ export const PointListItem = ({ point, index, color }: PointListItemProps) => {
       <div className={`min-w-7 h-7 mt-0.5 rounded-full ${bgColor} ${hoverBgColor} p-1.5 flex items-center justify-center transition-colors duration-300`}>
         <Check size={16} className={`${textColor} transition-all duration-300 group-hover:scale-110`} strokeWidth={3} />
       </div>
-      <span className="text-lg font-medium text-gray-700">{point}</span>
+      <span className="text-lg font-medium text-gray-700 leading-relaxed">{point}</span>
     </motion.li>
   );
 };

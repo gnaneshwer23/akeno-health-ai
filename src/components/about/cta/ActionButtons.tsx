@@ -8,12 +8,14 @@ export const ActionButtons = () => {
   const handleJoinTeam = () => {
     toast.success("Join Team Request Received", {
       description: "Thank you for your interest in joining our team. We'll review your application and get back to you soon.",
+      duration: 5000,
     });
   };
   
   const handlePartnership = () => {
     toast.success("Partnership Inquiry", {
       description: "Thank you for your interest in partnering with us. Our team will contact you shortly.",
+      duration: 5000,
     });
   };
 
@@ -24,7 +26,7 @@ export const ActionButtons = () => {
         variant="primary"
         onClick={handleJoinTeam}
         withArrow
-        className="w-full sm:w-auto bg-gradient-to-r from-health-primary to-health-secondary hover:from-health-secondary hover:to-health-primary"
+        className="w-full sm:w-auto bg-gradient-to-r from-health-primary to-health-secondary hover:from-health-secondary hover:to-health-primary transition-all duration-300"
       >
         Join Our Team
       </CustomButton>
@@ -32,7 +34,7 @@ export const ActionButtons = () => {
       <CustomButton
         variant="outline"
         size="lg" 
-        className="border-health-primary/30 hover:border-health-primary/60 bg-white hover:bg-white/90 w-full sm:w-auto"
+        className="border-health-primary/30 hover:border-health-primary/60 bg-white hover:bg-white/90 w-full sm:w-auto transition-colors duration-300"
         onClick={handlePartnership}
         icon={<Users size={18} className="text-health-primary" />}
       >

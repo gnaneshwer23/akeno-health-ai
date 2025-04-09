@@ -19,7 +19,7 @@ export const MissionCard = ({ missionPoints }: MissionCardProps) => {
       whileHover={{ y: -5 }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-fuchsia-600/40 rounded-3xl blur-lg transform group-hover:scale-105 transition-transform duration-500 opacity-80"></div>
-      <div className="relative bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-purple-100 h-full transform transition-transform duration-500 group-hover:translate-y-[-5px]">
+      <div className="relative bg-gradient-to-br from-white/98 to-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-purple-100 h-full transform transition-transform duration-500 group-hover:translate-y-[-5px]">
         <div className="flex items-center mb-8">
           <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-700 flex items-center justify-center shadow-lg mr-5">
             <Target size={32} className="text-white" />

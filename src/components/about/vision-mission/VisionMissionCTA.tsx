@@ -6,14 +6,14 @@ import { ActionButtons } from '../cta/ActionButtons';
 export const VisionMissionCTA = () => {
   return (
     <motion.div
-      className="px-8 py-10 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 border border-purple-100/50 shadow-lg text-center"
+      className="px-8 py-10 rounded-2xl bg-gradient-to-r from-indigo-50/90 to-purple-50/90 border border-purple-100/50 shadow-lg text-center"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
     >
       <motion.h4 
-        className="text-2xl font-bold mb-4 text-health-dark"
+        className="text-2xl md:text-3xl font-bold mb-4 text-health-dark"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
