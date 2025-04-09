@@ -1,22 +1,18 @@
 
 import React from 'react';
-import { Play, Users } from 'lucide-react';
+import { ArrowRight, Users } from 'lucide-react';
 import { CustomButton } from '@/components/ui/custom-button';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 
 export const ActionButtons = () => {
-  const { toast } = useToast();
-  
   const handleDemo = () => {
-    toast({
-      title: "Demo Request Received",
+    toast.success("Demo Request Received", {
       description: "Thank you for your interest. A team member will reach out to schedule your demo.",
     });
   };
   
   const handlePartnership = () => {
-    toast({
-      title: "Partnership Inquiry",
+    toast.success("Partnership Inquiry", {
       description: "Thank you for your interest in partnering with us. Our team will contact you shortly.",
     });
   };
@@ -28,29 +24,19 @@ export const ActionButtons = () => {
         variant="primary"
         to="/contact"
         withArrow
-        className="w-full sm:w-auto"
+        className="w-full sm:w-auto bg-gradient-to-r from-health-primary to-health-secondary hover:from-health-secondary hover:to-health-primary"
       >
-        Join the Future of AI Healthcare
+        Join Our Team
       </CustomButton>
       
       <CustomButton
         variant="outline"
-        size="lg"
-        className="border-health-primary/30 hover:border-health-primary/60 w-full sm:w-auto"
-        onClick={handleDemo}
-        icon={<Play size={16} className="text-health-primary" />}
-      >
-        Request a Demo
-      </CustomButton>
-      
-      <CustomButton
-        variant="ghost"
-        size="lg"
-        className="hover:bg-health-primary/5 w-full sm:w-auto"
+        size="lg" 
+        className="border-health-primary/30 hover:border-health-primary/60 bg-white hover:bg-white/90 w-full sm:w-auto"
         onClick={handlePartnership}
-        icon={<Users size={16} className="text-health-primary" />}
+        icon={<Users size={18} className="text-health-primary" />}
       >
-        Partner With Us
+        Become a Partner
       </CustomButton>
     </div>
   );

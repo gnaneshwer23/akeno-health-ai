@@ -1,39 +1,45 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { ActionButtons } from '../cta/ActionButtons';
 
 export const VisionMissionCTA = () => {
   return (
-    <motion.div 
-      className="text-center"
-      initial={{ opacity: 0, y: 30 }}
+    <motion.div
+      className="px-8 py-10 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 border border-purple-100/50 shadow-lg text-center"
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.8 }}
+      transition={{ duration: 0.7 }}
     >
-      <p className="text-xl font-medium text-health-dark mb-8">
-        We are not just improving healthcare – we are redefining it.
-      </p>
+      <motion.h4 
+        className="text-2xl font-bold mb-4 text-health-dark"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        Join Us in Transforming Healthcare
+      </motion.h4>
       
-      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-        <Button 
-          size="lg" 
-          className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 group"
-          asChild
-        >
-          <Link to="/contact" className="flex items-center gap-2">
-            Join Us in the AI Healthcare Revolution
-            <motion.div
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            >
-              <ArrowRight size={16} />
-            </motion.div>
-          </Link>
-        </Button>
+      <motion.p 
+        className="text-health-dark/80 font-medium text-lg mb-8 max-w-3xl mx-auto"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        We are backed by renowned medical professionals, AI pioneers, and biotech leaders who guide our mission 
+        towards a smarter, more efficient healthcare system.
+      </motion.p>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+      >
+        <ActionButtons />
       </motion.div>
     </motion.div>
   );

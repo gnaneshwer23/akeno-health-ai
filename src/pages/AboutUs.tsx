@@ -14,6 +14,8 @@ import { AboutUsDivider } from '@/components/about/page/AboutUsDivider';
 import { CompanySectionWrapper } from '@/components/about/page/CompanySectionWrapper';
 import { TeamSectionWrapper } from '@/components/about/page/TeamSectionWrapper';
 import { motion } from 'framer-motion';
+import { CompanyValues } from '@/components/about/CompanyValues';
+import { Toaster } from 'sonner';
 
 const AboutUs = () => {
   useEffect(() => {
@@ -99,7 +101,7 @@ const AboutUs = () => {
           </TeamSectionWrapper>
         </section>
         
-        {/* Final CTA with enhanced animation - now as the only CTA section */}
+        {/* Final CTA with enhanced animation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -111,6 +113,7 @@ const AboutUs = () => {
       </main>
       
       <Footer />
+      <Toaster position="top-right" />
     </div>
   );
 };

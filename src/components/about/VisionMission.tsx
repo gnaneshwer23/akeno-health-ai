@@ -49,7 +49,7 @@ export const VisionMission = () => {
         </motion.div>
         
         {/* Vision and Mission Cards with Shared Background */}
-        <div className="relative mb-10">
+        <div className="relative mb-16">
           {/* Connecting Line with enhanced animation */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -83,7 +83,7 @@ export const VisionMission = () => {
           </div>
         </div>
 
-        {/* Values section - NEW component to visualize our values */}
+        {/* Values section - Enhanced component to visualize our values */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

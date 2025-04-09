@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Shield, Heart, Globe, Sparkles, Lightbulb, Scale } from 'lucide-react';
+import { Lightbulb, Shield, Globe, Scale, Sparkles } from 'lucide-react';
 
 interface ValueCardProps {
   title: string;
@@ -37,9 +37,8 @@ const ValueCard = ({ title, description, icon, emoji, longDescription, index }: 
         <div className="h-12 w-12 rounded-full bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
           {icon}
         </div>
-        <h4 className="text-xl font-semibold text-health-dark flex items-center gap-2">
-          {title}
-          <span className="text-2xl">{emoji}</span>
+        <h4 className="text-xl font-semibold text-health-dark">
+          {title} <span className="ml-2 text-2xl">{emoji}</span>
         </h4>
       </div>
       <p className="text-health-dark/70 mb-4">{description}</p>
