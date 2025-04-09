@@ -1,3 +1,4 @@
+
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -20,7 +21,7 @@ const Index = lazy(() => import('./pages/Index'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
 const HowItWorks = lazy(() => import('./pages/HowItWorks'));
 const Solutions = lazy(() => import('./pages/Solutions')); 
-const Products = lazy(() => import('./pages/Products')); // Make sure Products is imported
+const Products = lazy(() => import('./pages/Products'));
 const PatientSolutions = lazy(() => import('./pages/PatientSolutions'));
 const DoctorSolutions = lazy(() => import('./pages/DoctorSolutions'));
 const HospitalSolutions = lazy(() => import('./pages/HospitalSolutions'));
@@ -50,7 +51,7 @@ const App = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/how-it-works" element={<HowItWorks />} />
-                <Route path="/products" element={<Products />} /> {/* Make sure Products route is defined */}
+                <Route path="/products" element={<Products />} />
                 <Route path="/solutions" element={<Solutions />} />
                 <Route path="/ai-studio" element={<AIStudio />} />
                 <Route path="/patient-solutions" element={<PatientSolutions />} />
