@@ -18,6 +18,7 @@ const AIStudio = lazy(() => import('./pages/AIStudio'));
 const RealWorldEvidence = lazy(() => import('./pages/RealWorldEvidence'));
 const DigitalTwinPanel = lazy(() => import('./pages/DigitalTwinPanel'));
 const BiomarkerAnalytics = lazy(() => import('./pages/BiomarkerAnalytics'));
+const CaseStudiesAndBlog = lazy(() => import('./pages/CaseStudiesAndBlog'));
 
 // Loading fallback
 const PageLoading = () => (
@@ -93,6 +94,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoading />}>
             <BiomarkerAnalytics />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'case-studies-blog',
+        element: (
+          <Suspense fallback={<PageLoading />}>
+            <CaseStudiesAndBlog />
           </Suspense>
         ),
       },

@@ -49,7 +49,7 @@ const CaseStudiesAndBlog = () => {
               </TabsContent>
               
               <TabsContent value="ai-medicine">
-                <BlogContentList category="Precision Medicine" />
+                <BlogContentList category="AI & Precision Medicine" />
               </TabsContent>
               
               <TabsContent value="research">

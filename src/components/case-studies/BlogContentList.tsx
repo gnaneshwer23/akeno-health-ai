@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import BlogCard from './BlogCard';
 import { Input } from '@/components/ui/input';
@@ -9,7 +8,7 @@ import { Button } from '@/components/ui/button';
 const blogCategories = [
   "All",
   "AI & Precision Medicine",
-  "Research & Whitepapers",
+  "Research & Whitepapers", 
   "Clinical Case Studies",
   "Drug Discovery & Trials",
   "Data Ethics & Security",
@@ -259,7 +258,7 @@ const BlogContentList: React.FC<BlogContentListProps> = ({ category = "All" }) =
 
         <div className="mt-12 flex justify-center">
           <nav className="flex items-center gap-1">
-            <Button variant="primary" size="sm" className="w-8 h-8 p-0 flex items-center justify-center bg-gradient-to-r from-indigo-600 to-purple-600 shadow-md">
+            <Button variant="default" size="sm" className="w-8 h-8 p-0 flex items-center justify-center bg-gradient-to-r from-indigo-600 to-purple-600 shadow-md">
               1
             </Button>
             <Button variant="ghost" size="sm" className="w-8 h-8 p-0 flex items-center justify-center text-indigo-700 hover:bg-indigo-50">
