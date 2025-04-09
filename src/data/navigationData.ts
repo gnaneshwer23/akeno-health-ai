@@ -20,7 +20,7 @@ export const navigationLinks = [
     isDropdown: true,
     sublinks: [
       { name: 'Overview', path: '/solutions' },
-      { name: 'Quantum Computing', path: '/solutions#quantum-computing' },
+      { name: 'Quantum Computing', path: '/quantum-computing' },
       { name: 'For Patients', path: '/patient-solutions' },
       { name: 'For Doctors', path: '/doctor-solutions' },
       { name: 'For Hospitals', path: '/hospital-solutions' },
