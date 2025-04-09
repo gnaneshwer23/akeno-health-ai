@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 export const AboutUsDivider: React.FC = () => {
   return (
     <motion.div 
-      className="relative py-8 overflow-hidden"
+      className="relative py-10 overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.5, duration: 0.5 }}

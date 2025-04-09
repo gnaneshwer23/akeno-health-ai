@@ -1,8 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Mail } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Link } from 'react-router-dom';
 import { CustomButton } from '@/components/ui/custom-button';
@@ -49,7 +48,6 @@ export const CareersFooter: React.FC = () => {
               size="lg"
               to="/contact"
               className="border-indigo-300 text-indigo-700 hover:bg-indigo-50 w-full"
-              icon={<ArrowRight size={16} />}
             >
               Contact Recruiting Team
             </CustomButton>
