@@ -4,6 +4,7 @@ import { Button } from './Button';
 import { Brain, Database, Activity, Lock, Cpu, FlaskConical, Atom, LineChart, Sparkles, Globe, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
+import { toast } from '@/hooks/use-toast';
 
 interface ExplainerSectionProps {
   className?: string;
@@ -67,6 +68,13 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
     }
   ];
 
+  const handleFeatureClick = (title: string) => {
+    toast({
+      title: `${title} Selected`,
+      description: "Learn more about this feature in our documentation.",
+    });
+  };
+
   return (
     <section id="how-it-works" className={cn("py-24 px-6 relative overflow-hidden", className)}>
       <div className="absolute inset-0 bg-gradient-to-b from-white to-health-light/40"></div>
@@ -85,8 +93,8 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
             <span className="bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">How It Works</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
-            The Future of Precision Medicine, Built on AI & Quantum Computing
+          <h2 className="text-3xl md:text-5xl font-bold text-health-dark mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            The Future of Precision Medicine,<br className="hidden md:block" /> Built on AI & Quantum Computing
           </h2>
           
           <div className="flex justify-center mb-6">
@@ -100,9 +108,11 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-16">
           {features.map((feature, index) => (
-            <div key={index} 
+            <div 
+              key={index} 
+              onClick={() => handleFeatureClick(feature.title)}
               className={`bg-white rounded-2xl border border-white shadow-lg 
-                transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl
+                transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer
                 hover:border-health-primary/20 fade-up-${Math.min(index % 5 + 2, 5)}`}>
               <div className="relative h-3 w-full overflow-hidden rounded-t-2xl bg-gradient-to-r from-health-primary to-health-secondary">
                 <div className="absolute inset-0 bg-white/20"></div>
@@ -133,12 +143,18 @@ const ExplainerSection: React.FC<ExplainerSectionProps> = ({ className }) => {
             <Button 
               size="lg" 
               variant="secondary"
-              as="Link"
-              to="/how-it-works"
+              as={Link}
+              to="/contact"
+              onClick={() => {
+                toast({
+                  title: "Contact Request Initiated",
+                  description: "We'll help you learn more about our precision medicine platform.",
+                });
+              }}
               className="group bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 shadow-md hover:shadow-lg"
             >
               <span className="flex items-center gap-2">
-                Explore More
+                Contact Us Today
                 <LineChart size={18} className="transition-transform group-hover:scale-110" />
               </span>
             </Button>

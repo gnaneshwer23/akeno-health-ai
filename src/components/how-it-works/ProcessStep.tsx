@@ -12,7 +12,7 @@ interface ProcessStepProps {
   stepNumber: number;
   title: string;
   description: string;
-  icon: string; // Changed this to string to match what we pass from stepsData
+  icon: string; // Icon name string
   features: FeatureItem[];
   outcome: string;
 }

@@ -1,130 +1,153 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/Button';
+import { Activity, ArrowRight, Calendar, FileText, HeartPulse } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { toast } from '@/hooks/use-toast';
 
 const CallToActionSection = () => {
+  const handleButtonClick = (actionType: string) => {
+    toast({
+      title: `${actionType} Initiated`,
+      description: "Thank you for your interest. We will process your request shortly.",
+    });
+  };
+
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-indigo-50/50 to-white">
+    <section className="py-20 px-6 bg-gradient-to-b from-white to-indigo-50/50 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute top-0 left-1/4 w-64 h-64 bg-gradient-to-br from-indigo-300/10 to-purple-300/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-gradient-to-br from-indigo-300/10 to-purple-300/10 rounded-full blur-3xl"></div>
+      
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="inline-flex items-center px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-health-primary/10 to-health-secondary/10 text-health-primary font-medium gap-2 border border-health-primary/10 shadow-sm">
+            <HeartPulse size={16} className="text-health-primary" />
+            <span className="bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">Ready to Begin?</span>
+          </div>
+          
+          <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
+            Start Your Health Transformation Today
+          </h2>
+          
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-10">
+            Join thousands of patients and healthcare providers already using Akeno Health AI to revolutionize their approach to wellness and precision medicine.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              variant="primary"
+              size="lg"
+              as="button" 
+              onClick={() => handleButtonClick("Free Trial")}
+              className="group"
+            >
+              <Activity size={18} />
+              Start Your Free Trial
+              <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
+            </Button>
+            
+            <Button
+              variant="outline"
+              size="lg"
+              as={Link}
+              to="/contact"
+              onClick={() => handleButtonClick("Demo Request")}
+              className="group"
+            >
+              <Calendar size={18} />
+              Schedule a Demo
+            </Button>
+          </div>
+        </motion.div>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          <motion.div 
+            className="bg-white rounded-xl p-6 border border-health-primary/10 shadow-md"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            whileHover={{ y: -5, boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)" }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-6">
-              Why It <span className="bg-gradient-to-r from-health-primary to-health-secondary bg-clip-text text-transparent">Works</span>
-            </h2>
-            
-            <div className="flex justify-start mb-6">
-              <div className="h-1 w-24 bg-gradient-to-r from-health-primary to-health-secondary rounded-full"></div>
+            <div className="h-12 w-12 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4">
+              <FileText size={24} />
             </div>
-            
-            <p className="text-lg text-muted-foreground mb-8">
-              Akeno Health combines cutting-edge AI technology with medical expertise to create a healthcare platform that truly works for patients, providers, and researchers alike.
+            <h3 className="text-xl font-semibold mb-3 text-health-dark">For Patients</h3>
+            <p className="text-muted-foreground mb-6">
+              Gain valuable insights from your health data to prevent illness and optimize wellbeing with personalized recommendations.
             </p>
-            
-            <ul className="space-y-4 mb-8">
-              {[
-                "Predicts & prevents diseases early",
-                "Builds trust with explainable AI",
-                "Delivers ultra-personalised treatment",
-                "Enables researchers & pharma to innovate",
-                "Ensures ethical, privacy-preserving data usage"
-              ].map((item, i) => (
-                <motion.li
-                  key={i}
-                  className="flex items-start gap-3"
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.1 * i }}
-                >
-                  <CheckCircle size={20} className="text-green-500 mt-1 flex-shrink-0" />
-                  <span className="text-gray-700">{item}</span>
-                </motion.li>
-              ))}
-            </ul>
+            <Button
+              variant="link"
+              as={Link}
+              to="/patient-solutions"
+              onClick={() => handleButtonClick("Patient Solutions")}
+              className="group text-indigo-600"
+            >
+              Learn More
+              <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
+            </Button>
           </motion.div>
           
-          <motion.div
-            className="bg-gradient-to-br from-indigo-100 to-purple-50 p-8 md:p-10 rounded-xl shadow-lg border border-indigo-200/50"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.div 
+            className="bg-white rounded-xl p-6 border border-health-primary/10 shadow-md"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            whileHover={{ y: -5, boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)" }}
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-health-dark mb-6 text-center">
-              Join the Intelligent Health Movement Today
-            </h3>
-            
-            <div className="grid md:grid-cols-1 gap-4 mb-6">
-              <motion.div 
-                className="p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-indigo-100"
-                whileHover={{ y: -2 }}
-                transition={{ type: "spring", stiffness: 500 }}
-              >
-                <h4 className="font-semibold text-lg mb-2 text-health-dark">For Patients</h4>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Experience personalized healthcare with early disease detection, tailored treatment plans, and continuous monitoring.
-                </p>
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-between border-health-primary/30 text-health-primary hover:bg-health-primary/5"
-                >
-                  Try Akeno for Patients
-                  <ArrowRight size={16} />
-                </Button>
-              </motion.div>
-              
-              <motion.div 
-                className="p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-indigo-100"
-                whileHover={{ y: -2 }}
-                transition={{ type: "spring", stiffness: 500 }}
-              >
-                <h4 className="font-semibold text-lg mb-2 text-health-dark">For Healthcare Providers</h4>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Enhance clinical decision-making, optimize resources, and deliver better outcomes for your patients.
-                </p>
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-between border-health-primary/30 text-health-primary hover:bg-health-primary/5"
-                >
-                  Request Provider Demo
-                  <ArrowRight size={16} />
-                </Button>
-              </motion.div>
-              
-              <motion.div 
-                className="p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-indigo-100"
-                whileHover={{ y: -2 }}
-                transition={{ type: "spring", stiffness: 500 }}
-              >
-                <h4 className="font-semibold text-lg mb-2 text-health-dark">For Researchers</h4>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Access our Digital Twin platform to accelerate research, design better trials, and drive innovation.
-                </p>
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-between border-health-primary/30 text-health-primary hover:bg-health-primary/5"
-                >
-                  Explore Research Solutions
-                  <ArrowRight size={16} />
-                </Button>
-              </motion.div>
+            <div className="h-12 w-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mb-4">
+              <HeartPulse size={24} />
             </div>
-            
-            <div className="text-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-health-primary to-health-secondary hover:from-health-primary/90 hover:to-health-secondary/90 text-white shadow-md"
-              >
-                Book a Personalized Demo
-              </Button>
+            <h3 className="text-xl font-semibold mb-3 text-health-dark">For Doctors</h3>
+            <p className="text-muted-foreground mb-6">
+              Enhance your clinical decision making with AI-powered diagnostics, treatment recommendations, and patient monitoring.
+            </p>
+            <Button
+              variant="link"
+              as={Link}
+              to="/doctor-solutions"
+              onClick={() => handleButtonClick("Doctor Solutions")}
+              className="group text-purple-600"
+            >
+              Learn More
+              <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </motion.div>
+          
+          <motion.div 
+            className="bg-white rounded-xl p-6 border border-health-primary/10 shadow-md"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            whileHover={{ y: -5, boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)" }}
+          >
+            <div className="h-12 w-12 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center mb-4">
+              <Activity size={24} />
             </div>
+            <h3 className="text-xl font-semibold mb-3 text-health-dark">For Hospitals</h3>
+            <p className="text-muted-foreground mb-6">
+              Optimize resource allocation, reduce readmissions, and improve patient outcomes with predictive analytics and AI systems.
+            </p>
+            <Button
+              variant="link"
+              as={Link}
+              to="/hospital-solutions"
+              onClick={() => handleButtonClick("Hospital Solutions")}
+              className="group text-cyan-600"
+            >
+              Learn More
+              <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
+            </Button>
           </motion.div>
         </div>
       </div>

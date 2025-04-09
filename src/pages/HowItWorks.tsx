@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import HeroSection from '@/components/how-it-works/HeroSection';
 import ProcessStepsSection from '@/components/how-it-works/ProcessStepsSection';
-import InfographicSection from '@/components/how-it-works/InfographicSection';
 import CallToActionSection from '@/components/how-it-works/CallToActionSection';
 import { Footer } from '@/components/Footer';
 import { AboutUsFloatingElements } from '@/components/about/page/AboutUsFloatingElements';
@@ -11,6 +10,7 @@ import { AboutUsDivider } from '@/components/about/page/AboutUsDivider';
 import { motion } from 'framer-motion';
 import AnimatedJourneyFlow from '@/components/how-it-works/AnimatedJourneyFlow';
 import { ExplainerSection } from '@/components/ExplainerSection';
+import { toast } from '@/hooks/use-toast';
 
 const HowItWorks = () => {
   // Scroll to top when component mounts
@@ -67,10 +67,6 @@ const HowItWorks = () => {
         
         {/* Explainer Section */}
         <ExplainerSection className="bg-white" />
-        <AboutUsDivider />
-        
-        {/* Infographic Timeline Section */}
-        <InfographicSection />
         <AboutUsDivider />
         
         {/* Final CTA Section */}
