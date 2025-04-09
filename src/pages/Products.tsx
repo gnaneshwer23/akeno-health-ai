@@ -19,7 +19,7 @@ const Products = () => {
   
   return (
     <MainLayout>
-      <main className="flex-grow pt-8 md:pt-12 pb-16">
+      <main className="flex-grow pt-8 md:pt-12 pb-16" id="products-page">
         {/* Hero Section */}
         <ProductsHero />
         
@@ -27,10 +27,14 @@ const Products = () => {
         <CoreProducts />
 
         {/* Real-World Evidence Section */}
-        <RealWorldEvidence />
+        <section id="real-world-evidence">
+          <RealWorldEvidence />
+        </section>
 
         {/* Digital Twin Panel Section */}
-        <DigitalTwinPanel />
+        <section id="digital-twin-panel">
+          <DigitalTwinPanel />
+        </section>
 
         {/* Featured Products Section */}
         <HealthcareSolutions />
