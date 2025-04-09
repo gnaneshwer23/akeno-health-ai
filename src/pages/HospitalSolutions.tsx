@@ -13,6 +13,7 @@ import PatientDischargeSection from '@/components/hospital-solutions/PatientDisc
 import EmergencyResponseSection from '@/components/hospital-solutions/EmergencyResponseSection';
 import ComplianceSection from '@/components/hospital-solutions/ComplianceSection';
 import HospitalAnalytics from '@/components/hospital-solutions/HospitalAnalytics';
+import ResponsiveHospitalServiceFlow from '@/components/hospital-solutions/ResponsiveHospitalServiceFlow';
 import { Footer } from '@/components/Footer';
 import { motion } from 'framer-motion';
 
@@ -37,6 +38,19 @@ const HospitalSolutions = () => {
         >
           <SolutionsOverview />
         </motion.div>
+        
+        {/* Data Pipeline Visualization */}
+        <div className="bg-white pt-16 pb-20 px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-health-dark mb-4">Hospital Data Intelligence Pipeline</h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Our secure integration platform transforms hospital data into actionable intelligence through advanced AI processing
+              </p>
+            </div>
+            <ResponsiveHospitalServiceFlow />
+          </div>
+        </div>
         
         {/* Patient Management & Risk Prediction */}
         <div className="bg-white relative overflow-hidden py-20">
