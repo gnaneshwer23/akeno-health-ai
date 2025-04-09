@@ -8,6 +8,7 @@ import StakeholderSolutions from '@/components/solutions/StakeholderSolutions';
 import SolutionFeatures from '@/components/solutions/SolutionFeatures';
 import EdgeFeatures from '@/components/solutions/EdgeFeatures';
 import SolutionsCTA from '@/components/solutions/SolutionsCTA';
+import { motion } from 'framer-motion';
 
 const Solutions = () => {
   return (
@@ -20,6 +21,19 @@ const Solutions = () => {
         
         {/* Overview of the Akeno Health ecosystem */}
         <SolutionsOverview />
+        
+        {/* Visual separator */}
+        <motion.div 
+          className="py-8 overflow-hidden"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-health-primary/30 to-transparent"></div>
+          </div>
+        </motion.div>
         
         {/* Solutions for different stakeholders */}
         <StakeholderSolutions />
