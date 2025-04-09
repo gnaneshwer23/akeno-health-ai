@@ -15,7 +15,7 @@ const partners = [
 // The partner logos are for demonstration purposes only
 const PartnerLogo = ({ name }: { name: string }) => (
   <div className="flex items-center justify-center h-16 w-40 bg-white/50 rounded-lg shadow-sm border border-blue-100 backdrop-blur-sm">
-    <div className="text-health-dark/60 font-medium">{name}</div>
+    <div className="text-health-dark/60 font-medium whitespace-nowrap">{name}</div>
   </div>
 );
 
