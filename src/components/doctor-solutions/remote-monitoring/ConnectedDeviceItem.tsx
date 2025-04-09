@@ -15,7 +15,7 @@ const ConnectedDeviceItem = ({ icon, name, className = "" }: ConnectedDeviceItem
         {icon}
       </div>
     </div>
-    <span className="text-xs font-medium text-health-dark/80 bg-gradient-to-r from-white/90 to-health-light/90 px-3 py-1 rounded-full shadow-sm border border-health-primary/5 group-hover:border-health-primary/20 transition-all">{name}</span>
+    <span className="text-xs font-medium text-health-dark/80 bg-gradient-to-r from-white/90 to-health-light/90 px-3 py-1 rounded-full shadow-sm border border-health-primary/5 group-hover:border-health-primary/20 transition-all whitespace-nowrap">{name}</span>
   </div>
 );
 
