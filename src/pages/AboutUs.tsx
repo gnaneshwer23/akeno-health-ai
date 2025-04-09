@@ -13,6 +13,9 @@ import { AboutUsConnectedDots } from '@/components/about/page/AboutUsConnectedDo
 import { AboutUsDivider } from '@/components/about/page/AboutUsDivider';
 import { CompanySectionWrapper } from '@/components/about/page/CompanySectionWrapper';
 import { TeamSectionWrapper } from '@/components/about/page/TeamSectionWrapper';
+import { PartnersCollaboration } from '@/components/about/PartnersCollaboration';
+import { CompanyValues } from '@/components/about/CompanyValues';
+import { CareersSection } from '@/components/about/CareersSection';
 
 const AboutUs = () => {
   useEffect(() => {
@@ -58,16 +61,29 @@ const AboutUs = () => {
         {/* Colorful divider */}
         <AboutUsDivider />
         
+        {/* Section 1: Vision & Mission */}
         <VisionMission />
         
+        {/* Section 2: Our Story */}
         <CompanySectionWrapper>
           <CompanyStory />
         </CompanySectionWrapper>
         
+        {/* Section 3: Meet the Team */}
         <TeamSectionWrapper>
           <AboutTeam />
         </TeamSectionWrapper>
         
+        {/* Section 4: Partners & Collaborations */}
+        <PartnersCollaboration />
+        
+        {/* Section 5: Our Values */}
+        <CompanyValues />
+        
+        {/* Section 6: Careers & Culture */}
+        <CareersSection />
+        
+        {/* Section 7: Final CTA */}
         <AboutCTA />
       </main>
       

@@ -7,7 +7,7 @@ import NotFound from './pages/NotFound';
 
 // Lazy loaded pages for better performance
 const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('./pages/About'));
+const AboutUs = lazy(() => import('./pages/AboutUs'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Login = lazy(() => import('./pages/auth/Login'));
 const Register = lazy(() => import('./pages/Register'));
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
         path: 'about',
         element: (
           <Suspense fallback={<PageLoading />}>
-            <About />
+            <AboutUs />
           </Suspense>
         ),
       },
