@@ -3,7 +3,6 @@ import React from 'react';
 import { TeamSectionBackground } from './team/TeamSectionBackground';
 import { TeamSectionHeader } from './team/TeamSectionHeader';
 import { LeadershipTeam } from './team/LeadershipTeam';
-import { TeamTabs } from './team/TeamTabs';
 import { TeamCallToAction } from './team/TeamCallToAction';
 
 export const AboutTeam = () => {
@@ -14,7 +13,6 @@ export const AboutTeam = () => {
       <div className="max-w-6xl mx-auto">
         <TeamSectionHeader />
         <LeadershipTeam />
-        <TeamTabs />
         <TeamCallToAction />
       </div>
     </section>
