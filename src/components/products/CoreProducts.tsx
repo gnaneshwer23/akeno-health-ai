@@ -40,8 +40,7 @@ const CoreProducts = () => {
             iconBgClass="bg-purple-500/10"
             title="Digital Twin Platform"
             description="Create personalized patient digital twins for simulation, testing, and predictive healthcare. Model real-world biological responses for better patient outcomes."
-            linkText="Coming Soon →"
-            onClick={handleButtonClick}
+            linkTo="#digital-twin-panel"
           />
 
           {/* Biomarker Analytics Suite */}
@@ -60,7 +59,7 @@ const CoreProducts = () => {
             iconBgClass="bg-green-500/10"
             title="Real-World Evidence Module"
             description="Unlock the power of longitudinal health data to inform treatment outcomes, drug efficacy, and personalized interventions from real-world clinical practice."
-            linkTo="/real-world-evidence"
+            linkTo="#real-world-evidence"
           />
         </div>
       </div>

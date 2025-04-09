@@ -1,13 +1,13 @@
 
 import React, { useEffect } from 'react';
 import MainLayout from '@/layouts/MainLayout';
-import { useToast } from '@/hooks/use-toast';
 
 // Import refactored components
 import ProductsHero from '@/components/products/ProductsHero';
 import CoreProducts from '@/components/products/CoreProducts';
 import RealWorldEvidence from '@/components/products/RealWorldEvidence';
 import HealthcareSolutions from '@/components/products/HealthcareSolutions';
+import DigitalTwinPanel from '@/components/products/DigitalTwinPanel';
 import BenefitsSection from '@/components/products/BenefitsSection';
 import CallToAction from '@/components/products/CallToAction';
 
@@ -28,6 +28,9 @@ const Products = () => {
 
         {/* Real-World Evidence Section */}
         <RealWorldEvidence />
+
+        {/* Digital Twin Panel Section */}
+        <DigitalTwinPanel />
 
         {/* Featured Products Section */}
         <HealthcareSolutions />
