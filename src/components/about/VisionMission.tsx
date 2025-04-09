@@ -3,7 +3,6 @@ import React from 'react';
 import { SectionHeader } from './vision-mission/SectionHeader';
 import { VisionCard } from './vision-mission/VisionCard';
 import { MissionCard } from './vision-mission/MissionCard';
-import { ValuesSection } from './vision-mission/ValuesSection';
 import { VisionMissionCTA } from './vision-mission/VisionMissionCTA';
 import { BackgroundDecorations } from './vision-mission/BackgroundDecorations';
 import { ConnectedDots } from './vision-mission/ConnectedDots';
@@ -39,7 +38,7 @@ export const VisionMission = () => {
         <SectionHeader />
         
         {/* Vision and Mission Cards with Shared Background */}
-        <div className="relative mb-20">
+        <div className="relative mb-10">
           {/* Connecting Line */}
           <ConnectingLine />
           
@@ -51,9 +50,6 @@ export const VisionMission = () => {
             <MissionCard missionPoints={missionPoints} />
           </div>
         </div>
-        
-        {/* Core Values Section */}
-        <ValuesSection />
         
         {/* Call to Action */}
         <VisionMissionCTA />

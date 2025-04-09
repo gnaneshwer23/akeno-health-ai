@@ -9,9 +9,10 @@ interface ValueCardProps {
   icon: React.ReactNode;
   emoji: string;
   delay: number;
+  longDescription: string;
 }
 
-const ValueCard: React.FC<ValueCardProps> = ({ title, description, icon, emoji, delay }) => {
+const ValueCard: React.FC<ValueCardProps> = ({ title, description, icon, emoji, delay, longDescription }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -29,7 +30,8 @@ const ValueCard: React.FC<ValueCardProps> = ({ title, description, icon, emoji, 
           <h3 className="text-xl font-semibold text-health-dark inline-block">{title}</h3>
         </div>
       </div>
-      <p className="text-health-dark/70">{description}</p>
+      <p className="text-health-dark/70 mb-4">{description}</p>
+      <p className="text-sm text-health-dark/60 italic">{longDescription}</p>
     </motion.div>
   );
 };
@@ -40,25 +42,29 @@ export const CompanyValues = () => {
       title: 'Innovation',
       description: 'We push boundaries — from AI explainability to quantum-driven predictions.',
       icon: <Lightbulb size={24} className="text-health-primary" />,
-      emoji: '💡'
+      emoji: '💡',
+      longDescription: 'Our commitment to cutting-edge AI research and development ensures we stay at the forefront of healthcare technology.'
     },
     {
       title: 'Trust',
       description: 'Data belongs to patients. We build with privacy, ethics, and transparency first.',
       icon: <Handshake size={24} className="text-health-primary" />,
-      emoji: '🤝'
+      emoji: '🤝',
+      longDescription: 'We prioritize patient privacy and maintain the highest standards of data security in everything we do.'
     },
     {
       title: 'Impact',
       description: 'Our success is measured by lives improved — from rural clinics to global trials.',
       icon: <Globe size={24} className="text-health-primary" />,
-      emoji: '🌍'
+      emoji: '🌍',
+      longDescription: 'Healthcare solutions should work for everyone, everywhere. We design our technology to reach underserved communities globally.'
     },
     {
       title: 'Equity',
       description: 'Healthcare is a right. Our tech is designed to include the overlooked and underserved.',
       icon: <Scale size={24} className="text-health-primary" />,
-      emoji: '⚖️'
+      emoji: '⚖️',
+      longDescription: 'We actively work to eliminate biases in healthcare AI and ensure our solutions promote health equity across all populations.'
     }
   ];
 
@@ -92,6 +98,7 @@ export const CompanyValues = () => {
               icon={value.icon}
               emoji={value.emoji}
               delay={0.2 * index}
+              longDescription={value.longDescription}
             />
           ))}
         </div>

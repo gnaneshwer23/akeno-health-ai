@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Globe, Heart, ArrowRight } from 'lucide-react';
+import { Brain, Globe, Heart, ArrowRight, Target, Award, Star } from 'lucide-react';
 import { CustomButton } from '@/components/ui/custom-button';
 import { CTACardsSection } from './cta/CTACardsSection';
 
@@ -35,20 +35,69 @@ export const CareersSection = () => {
           <CultureValueCard
             icon={<Brain size={24} className="text-health-primary" />}
             title="Lifelong learning and AI upskilling"
+            description="We invest in continuous education and provide resources to keep our team at the cutting edge of healthcare AI."
             delay={0.1}
           />
           
           <CultureValueCard
             icon={<Globe size={24} className="text-health-primary" />}
             title="Remote-first and inclusive hiring"
+            description="We believe talent has no borders. Our diverse team works across time zones with flexibility and autonomy."
             delay={0.3}
           />
           
           <CultureValueCard
             icon={<Heart size={24} className="text-health-primary" />}
             title="Purpose over perks"
+            description="We're driven by our mission to transform healthcare, creating meaningful impact in patients' lives worldwide."
             delay={0.5}
           />
+        </div>
+
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 mb-14">
+          <div className="flex justify-between flex-wrap gap-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-3"
+            >
+              <Award className="w-8 h-8 text-indigo-500" />
+              <div>
+                <h4 className="font-semibold">Competitive Compensation</h4>
+                <p className="text-sm text-gray-600">Fair pay + equity options</p>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex items-center gap-3"
+            >
+              <Star className="w-8 h-8 text-indigo-500" />
+              <div>
+                <h4 className="font-semibold">Professional Growth</h4>
+                <p className="text-sm text-gray-600">Mentorship + career pathing</p>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex items-center gap-3"
+            >
+              <Brain className="w-8 h-8 text-indigo-500" />
+              <div>
+                <h4 className="font-semibold">Cutting-edge Tech</h4>
+                <p className="text-sm text-gray-600">Latest AI + Healthcare tools</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         <CTACardsSection />
@@ -82,44 +131,24 @@ export const CareersSection = () => {
 interface CultureValueCardProps {
   icon: React.ReactNode;
   title: string;
+  description: string;
   delay: number;
 }
 
-const CultureValueCard: React.FC<CultureValueCardProps> = ({ icon, title, delay }) => {
+const CultureValueCard: React.FC<CultureValueCardProps> = ({ icon, title, description, delay }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4 items-center hover:shadow-md transition-shadow"
+      className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
     >
-      <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-health-primary/10 to-health-secondary/10 flex items-center justify-center">
+      <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-health-primary/10 to-health-secondary/10 flex items-center justify-center mb-4">
         {icon}
       </div>
-      <p className="text-health-dark/80 font-medium">{title}</p>
+      <h4 className="text-health-dark font-medium mb-2">{title}</h4>
+      <p className="text-health-dark/80 text-sm">{description}</p>
     </motion.div>
-  );
-};
-
-// Add this at the top of your file
-const Target = ({ size = 24, ...props }) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <circle cx="12" cy="12" r="10" />
-      <circle cx="12" cy="12" r="6" />
-      <circle cx="12" cy="12" r="2" />
-    </svg>
   );
 };
