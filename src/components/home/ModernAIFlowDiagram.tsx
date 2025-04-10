@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { Watch, Dna, Brain, Eye, FlaskConical, Target, BarChart4, Sparkles, Cable, FileText } from 'lucide-react';
-
 const ModernAIFlowDiagram: React.FC = () => {
   const dataSources = [{
     icon: <Watch size={28} className="text-cyan-400" />,
@@ -29,7 +27,6 @@ const ModernAIFlowDiagram: React.FC = () => {
     description: "Patient History",
     color: "from-amber-600 to-amber-300"
   }];
-  
   const aiCapabilities = [{
     icon: <Target size={22} className="text-purple-300" />,
     title: "Predictive Analytics"
@@ -43,7 +40,7 @@ const ModernAIFlowDiagram: React.FC = () => {
     icon: <FlaskConical size={22} className="text-purple-300" />,
     title: "Research & Discovery"
   }];
-  
+
   // Updated with matching colors from data sources
   const systemBenefits = [{
     title: "Disease Prediction",
@@ -66,11 +63,10 @@ const ModernAIFlowDiagram: React.FC = () => {
     value: 70,
     color: "bg-gradient-to-t from-amber-600 to-amber-300" // Matches Clinical Records
   }];
-  
   return <div className="modern-flow-container">
       <h2 className="modern-flow-title">Bridging Data, Intelligence, and Care</h2>
       
-      <div className="modern-flow-diagram">
+      <div className="modern-flow-diagram py-[5px] px-0 my-0 mx-0">
         {/* Left Column - Data Sources */}
         <div className="flow-column data-sources">
           <h2 className="column-title">Data Sources</h2>
@@ -121,36 +117,32 @@ const ModernAIFlowDiagram: React.FC = () => {
         </div>
         
         {/* Right Column - System Benefits */}
-        <div className="flow-column system-benefits px-0 py-[33px] mx-[22px]">
+        <div className="flow-column system-benefits px-0 mx-[22px] py-[24px]">
           <h2 className="column-title">System-Wide Benefits</h2>
           
           <div className="benefits-chart my-[33px] mx-0 px-0">
             {systemBenefits.map((benefit, index) => {
-              // Get the corresponding data source for this index
-              const relatedSource = dataSources[index];
-              return (
-                <div key={index} className="benefit-item">
+            // Get the corresponding data source for this index
+            const relatedSource = dataSources[index];
+            return <div key={index} className="benefit-item px-0 py-[5px] my-0">
                   <div className="benefit-bar-container">
-                    <div 
-                      className={`benefit-bar ${benefit.color}`} 
-                      style={{
-                        height: `${benefit.value}%`,
-                        animationDelay: `${index * 0.3}s`
-                      }}
-                    />
+                    <div className={`benefit-bar ${benefit.color}`} style={{
+                  height: `${benefit.value}%`,
+                  animationDelay: `${index * 0.3}s`
+                }} />
                   </div>
                   <div className="benefit-label-container">
-                    <div className="benefit-label" style={{ color: relatedSource ? `rgb(var(--${relatedSource.name.toLowerCase().split(' ')[0]}-color, 255, 255, 255))` : '#ffffff' }}>
+                    <div className="benefit-label" style={{
+                  color: relatedSource ? `rgb(var(--${relatedSource.name.toLowerCase().split(' ')[0]}-color, 255, 255, 255))` : '#ffffff'
+                }}>
                       {benefit.title}
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                </div>;
+          })}
           </div>
         </div>
       </div>
     </div>;
 };
-
 export default ModernAIFlowDiagram;
