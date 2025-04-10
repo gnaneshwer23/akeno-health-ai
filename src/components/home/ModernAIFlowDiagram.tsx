@@ -83,7 +83,7 @@ const ModernAIFlowDiagram: React.FC = () => {
         </div>
         
         {/* Middle Column - Akeno AI Engine */}
-        <div className="flow-column akeno-engine bg-gray-900 rounded-none px-0 mx-[100px] py-[50px]">
+        <div className="flow-column akeno-engine rounded-none mx-[100px] py-[50px] px-0 bg-slate-950">
           {/* AI Capabilities above the engine */}
           <div className="ai-capabilities-container">
             {aiCapabilities.slice(0, 2).map((capability, index) => <div key={index} className="ai-capability-card">
