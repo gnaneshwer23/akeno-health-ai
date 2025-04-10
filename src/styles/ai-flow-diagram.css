@@ -1,3 +1,5 @@
 
 /* Importing refactored AI Flow Diagram styles */
 @import './ai-flow/index.css';
+@import '../styles/enhanced-ai-flow.css';
+

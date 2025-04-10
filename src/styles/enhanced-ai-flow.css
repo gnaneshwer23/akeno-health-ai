@@ -1,0 +1,36 @@
+
+/* Enhanced AI Flow Diagram Styles */
+
+.container-enhanced-flow {
+  position: relative;
+  overflow: hidden;
+}
+
+.flow-diagram-enhanced {
+  position: relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .source, .output {
+    width: 120px;
+  }
+  
+  .center-node {
+    width: 150px;
+    height: 150px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Subtle background animation */
+@keyframes background-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.flow-diagram-enhanced {
+  background-size: 200% 200%;
+  animation: background-shift 15s ease infinite;
+}
