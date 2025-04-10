@@ -6,23 +6,28 @@ const ModernAIFlowDiagram: React.FC = () => {
   const dataSources = [{
     icon: <Watch size={28} className="text-cyan-400" />,
     name: "Wearable Data",
-    description: "Real-time Monitoring"
+    description: "Real-time Monitoring",
+    color: "from-cyan-600 to-cyan-300"
   }, {
-    icon: <Dna size={28} className="text-cyan-400" />,
+    icon: <Dna size={28} className="text-purple-400" />,
     name: "Genomic Data",
-    description: "Molecular Analysis"
+    description: "Molecular Analysis",
+    color: "from-purple-600 to-purple-300"
   }, {
-    icon: <Brain size={28} className="text-cyan-400" />,
+    icon: <Brain size={28} className="text-blue-400" />,
     name: "Cognitive Health",
-    description: "Mental Health Metrics"
+    description: "Mental Health Metrics",
+    color: "from-blue-600 to-blue-300"
   }, {
-    icon: <Eye size={28} className="text-cyan-400" />,
+    icon: <Eye size={28} className="text-rose-400" />,
     name: "Medical Imaging",
-    description: "Visual Diagnostics"
+    description: "Visual Diagnostics",
+    color: "from-rose-500 to-rose-300"
   }, {
-    icon: <FileText size={28} className="text-cyan-400" />,
+    icon: <FileText size={28} className="text-amber-400" />,
     name: "Clinical Records",
-    description: "Patient History"
+    description: "Patient History",
+    color: "from-amber-600 to-amber-300"
   }];
   
   const aiCapabilities = [{
@@ -39,27 +44,27 @@ const ModernAIFlowDiagram: React.FC = () => {
     title: "Research & Discovery"
   }];
   
-  // Updated with more precise values and better color gradients
+  // Updated with matching colors from data sources
   const systemBenefits = [{
     title: "Disease Prediction",
     value: 58,
-    color: "bg-gradient-to-t from-teal-600 to-teal-300"
+    color: "bg-gradient-to-t from-cyan-600 to-cyan-300" // Matches Wearable Data
   }, {
     title: "Precision Medicine",
     value: 73,
-    color: "bg-gradient-to-t from-blue-600 to-blue-300"
+    color: "bg-gradient-to-t from-purple-600 to-purple-300" // Matches Genomic Data
   }, {
     title: "Drug Discovery",
     value: 80,
-    color: "bg-gradient-to-t from-purple-600 to-purple-300"
+    color: "bg-gradient-to-t from-blue-600 to-blue-300" // Matches Cognitive Health
   }, {
     title: "AI Clinical Decisions",
     value: 65,
-    color: "bg-gradient-to-t from-rose-500 to-rose-300"
+    color: "bg-gradient-to-t from-rose-500 to-rose-300" // Matches Medical Imaging
   }, {
     title: "Data-Driven Healthcare",
     value: 70,
-    color: "bg-gradient-to-t from-amber-600 to-amber-300"
+    color: "bg-gradient-to-t from-amber-600 to-amber-300" // Matches Clinical Records
   }];
   
   return <div className="modern-flow-container">
@@ -120,20 +125,28 @@ const ModernAIFlowDiagram: React.FC = () => {
           <h2 className="column-title">System-Wide Benefits</h2>
           
           <div className="benefits-chart my-[33px] mx-0 px-0">
-            {systemBenefits.map((benefit, index) => <div key={index} className="benefit-item">
-                <div className="benefit-bar-container">
-                  <div 
-                    className={`benefit-bar ${benefit.color}`} 
-                    style={{
-                      height: `${benefit.value}%`,
-                      animationDelay: `${index * 0.3}s`
-                    }}
-                  />
+            {systemBenefits.map((benefit, index) => {
+              // Get the corresponding data source for this index
+              const relatedSource = dataSources[index];
+              return (
+                <div key={index} className="benefit-item">
+                  <div className="benefit-bar-container">
+                    <div 
+                      className={`benefit-bar ${benefit.color}`} 
+                      style={{
+                        height: `${benefit.value}%`,
+                        animationDelay: `${index * 0.3}s`
+                      }}
+                    />
+                  </div>
+                  <div className="benefit-label-container">
+                    <div className="benefit-label" style={{ color: relatedSource ? `rgb(var(--${relatedSource.name.toLowerCase().split(' ')[0]}-color, 255, 255, 255))` : '#ffffff' }}>
+                      {benefit.title}
+                    </div>
+                  </div>
                 </div>
-                <div className="benefit-label-container">
-                  <div className="benefit-label">{benefit.title}</div>
-                </div>
-              </div>)}
+              );
+            })}
           </div>
         </div>
       </div>

@@ -6,8 +6,8 @@
   align-items: flex-end;
   height: 200px;
   width: 100%;
-  margin: 30px 0 80px; /* Increased bottom margin to give more room for labels */
-  padding: 0;
+  margin: 30px 0 100px; /* Increased bottom margin to give more room for labels */
+  padding: 0 15px; /* Added horizontal padding for better spacing */
   position: relative;
 }
 
@@ -15,9 +15,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 18%;
+  width: 19%; /* Slightly increased width to give more room */
   height: 100%;
   position: relative;
+  padding: 0 5px; /* Added horizontal padding for better spacing */
 }
 
 .benefit-bar-container {
@@ -29,12 +30,12 @@
 }
 
 .benefit-bar {
-  width: 16px;
+  width: 14px; /* Slightly reduced width to make bars cleaner */
   max-height: 100%;
   border-radius: 10px 10px 0 0;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
   transition: transform 0.3s ease;
-  animation: barFloat 4s ease-in-out infinite;
+  animation: barFloat 5s ease-in-out infinite;
   position: relative;
 }
 
@@ -44,22 +45,22 @@
 }
 
 .benefit-label-container {
-  width: 100%;
-  margin-top: 8px;
-  height: 60px; /* Increased height for the label container */
+  width: 130%; /* Increased width to give more room for text */
+  margin-top: 10px;
+  height: 70px; /* Increased height for the label container */
   display: flex;
   justify-content: center;
-  padding: 0 2px;
+  padding: 0 5px;
 }
 
 .benefit-label {
   color: #ffffff;
-  font-size: 0.7rem;
+  font-size: 0.75rem; /* Slightly increased font size */
   font-weight: 500;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9); /* Enhanced text shadow for better readability */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 1); /* Enhanced text shadow for better readability */
   width: 100%;
-  line-height: 1.2;
+  line-height: 1.3;
   display: block;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -72,41 +73,36 @@
     transform: translateY(0);
   }
   25% {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
   }
   50% {
     transform: translateY(0);
   }
   75% {
-    transform: translateY(4px);
+    transform: translateY(5px);
   }
   100% {
     transform: translateY(0);
   }
 }
 
-/* Staggered animations for bars */
+/* Staggered animations for bars - removed since we're using data source colors now */
 .benefit-item:nth-child(1) .benefit-bar {
   animation-delay: 0s;
-  background: linear-gradient(to top, #42d392, #64ebbe);
 }
 
 .benefit-item:nth-child(2) .benefit-bar {
   animation-delay: 0.4s;
-  background: linear-gradient(to top, #4a7bf7, #7faaff);
 }
 
 .benefit-item:nth-child(3) .benefit-bar {
   animation-delay: 0.8s;
-  background: linear-gradient(to top, #9f7aea, #c3adf7);
 }
 
 .benefit-item:nth-child(4) .benefit-bar {
   animation-delay: 1.2s;
-  background: linear-gradient(to top, #f56565, #feb2b2);
 }
 
 .benefit-item:nth-child(5) .benefit-bar {
   animation-delay: 1.6s;
-  background: linear-gradient(to top, #ecc94b, #faf089);
 }
