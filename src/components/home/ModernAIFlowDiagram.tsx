@@ -1,136 +1,171 @@
 
 import React from 'react';
 import { 
-  FileText, 
+  Watch, 
   Dna, 
-  Activity, 
   Brain, 
-  HeartPulse, 
-  LineChart,
+  Eye,
+  FlaskConical,
+  Target,
   BarChart4,
-  TrendingUp,
-  Search,
-  Pill,
-  LockKeyhole
+  Sparkles,
+  Cable,
+  FileText
 } from 'lucide-react';
 
 const ModernAIFlowDiagram: React.FC = () => {
   const dataSources = [
     { 
-      icon: <FileText size={24} color="#5bbeff" />, 
-      name: "EHR Integration", 
-      description: "Clinical Records & Notes" 
-    },
-    { 
-      icon: <Dna size={24} color="#5bbeff" />, 
-      name: "Multi-Omics", 
-      description: "Genomic & Molecular Data" 
-    },
-    { 
-      icon: <LockKeyhole size={24} color="#5bbeff" />, 
-      name: "Edge AI & IoT", 
+      icon: <Watch size={28} className="text-cyan-400" />, 
+      name: "Wearable Data", 
       description: "Real-time Monitoring" 
     },
     { 
-      icon: <FileText size={24} color="#5bbeff" />, 
-      name: "Imaging AI", 
-      description: "Medical Imaging Analysis" 
+      icon: <Dna size={28} className="text-cyan-400" />, 
+      name: "Genomic Data", 
+      description: "Molecular Analysis" 
     },
     { 
-      icon: <Brain size={24} color="#5bbeff" />, 
-      name: "Behavioral Health", 
+      icon: <Brain size={28} className="text-cyan-400" />, 
+      name: "Cognitive Health", 
       description: "Mental Health Metrics" 
+    },
+    { 
+      icon: <Eye size={28} className="text-cyan-400" />, 
+      name: "Medical Imaging", 
+      description: "Visual Diagnostics" 
+    },
+    { 
+      icon: <FileText size={28} className="text-cyan-400" />, 
+      name: "Clinical Records", 
+      description: "Patient History" 
+    },
+  ];
+
+  const aiCapabilities = [
+    {
+      icon: <Target size={22} className="text-purple-300" />,
+      title: "Predictive Analytics",
+    },
+    {
+      icon: <Brain size={22} className="text-purple-300" />,
+      title: "Diagnostic Intelligence",
+    },
+    {
+      icon: <Cable size={22} className="text-purple-300" />,
+      title: "Clinical Decision",
+    },
+    {
+      icon: <FlaskConical size={22} className="text-purple-300" />,
+      title: "Research & Discovery",
     }
   ];
 
-  const healthOutcomes = [
+  const systemBenefits = [
     {
-      icon: <HeartPulse size={24} color="#b45cff" />,
-      title: "Digital Twin AI",
-      description: "Personalized Health Model"
+      title: "Real Time Health",
+      value: 65,
+      color: "bg-cyan-400"
     },
     {
-      icon: <BarChart4 size={24} color="#b45cff" />,
-      title: "Predictive Dashboard",
-      description: "Health Forecasting"
+      title: "Precision Medicine",
+      value: 75,
+      color: "bg-blue-400"
     },
     {
-      icon: <Search size={24} color="#b45cff" />,
-      title: "Risk Forecasts",
-      description: "Early Warning System"
+      title: "Smart Healthcare",
+      value: 85,
+      color: "bg-indigo-400"
     },
     {
-      icon: <Pill size={24} color="#b45cff" />,
-      title: "Drug Discovery",
-      description: "Treatment Optimization"
+      title: "Smart R&D",
+      value: 95,
+      color: "bg-violet-400"
     },
     {
-      icon: <Activity size={24} color="#b45cff" />,
-      title: "Real-Time Monitoring",
-      description: "Continuous Assessment"
+      title: "Accelerated R&D",
+      value: 100,
+      color: "bg-purple-400"
     }
   ];
 
   return (
     <div className="modern-flow-container">
       <h2 className="modern-flow-title">Bridging Data, Intelligence, and Care</h2>
-      <div className="modern-flow-wrapper">
-        {/* Data Sources Section - Left Side */}
-        <div className="modern-flow-section">
-          <h2 className="modern-section-title">Data Sources</h2>
+      
+      <div className="modern-flow-diagram">
+        {/* Left Column - Data Sources */}
+        <div className="flow-column data-sources">
+          <h2 className="column-title">Data Sources</h2>
           
-          {dataSources.map((source, index) => (
-            <div key={index} className="data-source">
-              <div className="data-icon">
-                {source.icon}
-                <div className="pulse-dots">
-                  <div className="pulse-dot"></div>
-                  <div className="pulse-dot"></div>
-                  <div className="pulse-dot"></div>
+          <div className="data-sources-list">
+            {dataSources.map((source, index) => (
+              <div key={index} className="data-source-item">
+                <div className="data-source-icon-container">
+                  <div className="data-source-icon">{source.icon}</div>
+                  <div className="flow-connection-dots">
+                    {Array(12).fill(0).map((_, i) => (
+                      <div key={i} className="flow-dot" style={{animationDelay: `${i * 0.1}s`}}></div>
+                    ))}
+                  </div>
+                </div>
+                <div className="data-source-content">
+                  <div className="data-source-name">{source.name}</div>
+                  <div className="data-source-description">{source.description}</div>
                 </div>
               </div>
-              <div className="data-content">
-                <div className="data-gradient left-gradient"></div>
-                <div className="data-text">{source.name}</div>
-                <div className="data-description">{source.description}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* Akeno AI Engine Section - Center */}
-        <div className="modern-flow-section">
-          <div className="akeno-engine-container">
-            <div className="engine-outer-ring"></div>
-            <div className="akeno-engine">
-              <h3>Akeno AI</h3>
-              <p>Healthcare Engine</p>
-              <div className="engine-glow"></div>
-            </div>
+            ))}
           </div>
         </div>
         
-        {/* Health Insights Section - Right Side */}
-        <div className="modern-flow-section">
-          <h2 className="modern-section-title">Insights</h2>
+        {/* Middle Column - Akeno AI Engine */}
+        <div className="flow-column akeno-engine">
+          {/* AI Capabilities above the engine */}
+          <div className="ai-capabilities-container">
+            {aiCapabilities.slice(0, 2).map((capability, index) => (
+              <div key={index} className="ai-capability-card">
+                <span className="capability-icon">{capability.icon}</span>
+                <span className="capability-title">{capability.title}</span>
+              </div>
+            ))}
+          </div>
           
-          {healthOutcomes.map((outcome, index) => (
-            <div key={index} className="health-outcome">
-              <div className="outcome-content">
-                <div className="outcome-gradient right-gradient"></div>
-                <div className="health-title">{outcome.title}</div>
-                <div className="health-description">{outcome.description}</div>
-              </div>
-              <div className="outcome-icon">
-                {outcome.icon}
-                <div className="bar-graph-container">
-                  <div className="bar-graph bar1"></div>
-                  <div className="bar-graph bar2"></div>
-                  <div className="bar-graph bar3"></div>
-                </div>
-              </div>
+          {/* The AI Engine */}
+          <div className="akeno-engine-circle">
+            <div className="engine-pulse-ring"></div>
+            <div className="engine-inner">
+              <div className="engine-text">Akeno AI</div>
             </div>
-          ))}
+          </div>
+          
+          {/* AI Capabilities below the engine */}
+          <div className="ai-capabilities-container">
+            {aiCapabilities.slice(2, 4).map((capability, index) => (
+              <div key={index} className="ai-capability-card">
+                <span className="capability-icon">{capability.icon}</span>
+                <span className="capability-title">{capability.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Right Column - System Benefits */}
+        <div className="flow-column system-benefits">
+          <h2 className="column-title">System-Wide Benefits</h2>
+          
+          <div className="benefits-chart">
+            {systemBenefits.map((benefit, index) => (
+              <div key={index} className="benefit-item">
+                <div className="benefit-bar-container">
+                  <div 
+                    className={`benefit-bar ${benefit.color}`} 
+                    style={{height: `${benefit.value}%`}}
+                  ></div>
+                </div>
+                <div className="benefit-label">{benefit.title}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
