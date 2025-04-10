@@ -74,3 +74,72 @@
 .benefit-bar {
   animation: barAnimation 3s ease-in-out infinite alternate;
 }
+
+/* Connection line animations */
+@keyframes connectionPulse {
+  0% {
+    opacity: 0.4;
+    box-shadow: 0 0 3px rgba(91, 190, 255, 0.3);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 8px rgba(180, 92, 255, 0.5);
+  }
+  100% {
+    opacity: 0.4;
+    box-shadow: 0 0 3px rgba(91, 190, 255, 0.3);
+  }
+}
+
+.capability-connection {
+  animation: connectionPulse 2s ease-in-out infinite alternate;
+}
+
+/* Flow particles animation */
+@keyframes flowAlongLine {
+  0% {
+    opacity: 0;
+    transform: translate(-5px, -5px) scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(0, -15px) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(0, -40px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(5px, -50px) scale(0.8);
+  }
+}
+
+.flow-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.capability-connection .flow-particle {
+  animation: flowAlongLine 2s infinite;
+}
+
+.capability-connection-top-left .flow-particle {
+  animation-delay: 0.2s;
+}
+
+.capability-connection-top-right .flow-particle {
+  animation-delay: 0.7s;
+}
+
+.capability-connection-bottom-left .flow-particle {
+  animation-delay: 1.2s;
+}
+
+.capability-connection-bottom-right .flow-particle {
+  animation-delay: 1.7s;
+}

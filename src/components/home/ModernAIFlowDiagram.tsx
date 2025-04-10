@@ -44,20 +44,28 @@ const ModernAIFlowDiagram: React.FC = () => {
 
   const aiCapabilities = [
     {
-      icon: <Target size={22} className="text-purple-300" />,
+      icon: <Target size={22} className="text-cyan-300" />,
       title: "Predictive Analytics",
+      color: "cyan",
+      connectorClass: "capability-connection-top-left"
     },
     {
-      icon: <Brain size={22} className="text-purple-300" />,
+      icon: <Brain size={22} className="text-blue-300" />,
       title: "Diagnostic Intelligence",
+      color: "blue",
+      connectorClass: "capability-connection-top-right"
     },
     {
-      icon: <Cable size={22} className="text-purple-300" />,
+      icon: <Cable size={22} className="text-indigo-300" />,
       title: "Clinical Decision",
+      color: "indigo",
+      connectorClass: "capability-connection-bottom-left"
     },
     {
-      icon: <FlaskConical size={22} className="text-purple-300" />,
+      icon: <FlaskConical size={22} className="text-violet-300" />,
       title: "Research & Discovery",
+      color: "violet",
+      connectorClass: "capability-connection-bottom-right"
     }
   ];
 
@@ -120,32 +128,40 @@ const ModernAIFlowDiagram: React.FC = () => {
         
         {/* Middle Column - Akeno AI Engine */}
         <div className="flow-column akeno-engine">
-          {/* AI Capabilities above the engine */}
-          <div className="ai-capabilities-container">
-            {aiCapabilities.slice(0, 2).map((capability, index) => (
-              <div key={index} className="ai-capability-card">
-                <span className="capability-icon">{capability.icon}</span>
-                <span className="capability-title">{capability.title}</span>
-              </div>
-            ))}
-          </div>
-          
-          {/* The AI Engine */}
-          <div className="akeno-engine-circle">
-            <div className="engine-pulse-ring"></div>
-            <div className="engine-inner">
-              <div className="engine-text">Akeno AI</div>
+          <div className="capability-wrapper">
+            {/* AI Capabilities above the engine */}
+            <div className="capability-top">
+              {aiCapabilities.slice(0, 2).map((capability, index) => (
+                <div key={index} className={`ai-capability-card ${capability.color}`}>
+                  <span className="capability-icon">{capability.icon}</span>
+                  <span className="capability-title">{capability.title}</span>
+                  <div className={`capability-connection ${capability.connectorClass}`}>
+                    <div className="flow-particle"></div>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-          
-          {/* AI Capabilities below the engine */}
-          <div className="ai-capabilities-container">
-            {aiCapabilities.slice(2, 4).map((capability, index) => (
-              <div key={index} className="ai-capability-card">
-                <span className="capability-icon">{capability.icon}</span>
-                <span className="capability-title">{capability.title}</span>
+            
+            {/* The AI Engine */}
+            <div className="akeno-engine-circle">
+              <div className="engine-pulse-ring"></div>
+              <div className="engine-inner">
+                <div className="engine-text">Akeno AI</div>
               </div>
-            ))}
+            </div>
+            
+            {/* AI Capabilities below the engine */}
+            <div className="capability-bottom">
+              {aiCapabilities.slice(2, 4).map((capability, index) => (
+                <div key={index} className={`ai-capability-card ${capability.color}`}>
+                  <span className="capability-icon">{capability.icon}</span>
+                  <span className="capability-title">{capability.title}</span>
+                  <div className={`capability-connection ${capability.connectorClass}`}>
+                    <div className="flow-particle"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         
