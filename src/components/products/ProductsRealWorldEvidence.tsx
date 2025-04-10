@@ -11,7 +11,10 @@ import {
   FileSearch,
   ChartBar,
   Laptop,
-  CheckCircle
+  CheckCircle,
+  ArrowRight,
+  Shield,
+  BarChart3
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -30,6 +33,24 @@ const ProductsRealWorldEvidence = () => {
       description: "Thank you for your interest. A demo will be scheduled shortly.",
     });
   };
+
+  const features = [
+    {
+      icon: <BarChart3 size={24} className="text-blue-500" />,
+      title: "Patient Outcome Analysis",
+      description: "Track real-world outcomes across diverse patient populations to validate treatment effectiveness beyond clinical trials"
+    },
+    {
+      icon: <Shield size={24} className="text-green-500" />,
+      title: "Regulatory Compliance",
+      description: "Generate FDA/EMA-compliant evidence packages with comprehensive audit trails and documentation"
+    },
+    {
+      icon: <Database size={24} className="text-purple-500" />,
+      title: "Federated Data Analysis",
+      description: "Analyze distributed datasets across institutions without compromising patient privacy or data security"
+    }
+  ];
 
   return (
     <section className="py-16 md:py-24 bg-white">
@@ -114,15 +135,24 @@ const ProductsRealWorldEvidence = () => {
                     <div className="text-gray-400 text-sm ml-2">Real-World Evidence Dashboard</div>
                   </div>
                   <div className="p-4">
-                    <img 
-                      src="/images/rwe-dashboard.png" 
-                      alt="Real-World Evidence Dashboard"
-                      className="w-full h-auto rounded-lg shadow-md" 
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = "https://placehold.co/600x400?text=RWE+Dashboard";
-                      }}
-                    />
+                    <div className="mb-4 bg-gray-100 rounded-lg p-3">
+                      <div className="flex justify-between items-center mb-3">
+                        <h3 className="text-sm font-semibold text-gray-700">Clinical Outcomes Analysis</h3>
+                        <span className="text-xs bg-blue-100 text-blue-800 py-1 px-2 rounded-full">Live</span>
+                      </div>
+                      <div className="relative h-32 bg-white rounded border border-gray-200 p-2">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-full h-24 flex items-end justify-around px-2">
+                            <div className="w-1/6 bg-blue-500 h-[65%] rounded-t"></div>
+                            <div className="w-1/6 bg-blue-600 h-[45%] rounded-t"></div>
+                            <div className="w-1/6 bg-blue-700 h-[75%] rounded-t"></div>
+                            <div className="w-1/6 bg-blue-800 h-[55%] rounded-t"></div>
+                            <div className="w-1/6 bg-blue-900 h-[85%] rounded-t"></div>
+                            <div className="w-1/6 bg-indigo-600 h-[60%] rounded-t"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <div className="mt-4 grid grid-cols-3 gap-3">
                       <div className="bg-blue-50 p-3 rounded-lg">
                         <div className="text-blue-600 text-lg font-bold">94%</div>
@@ -158,60 +188,70 @@ const ProductsRealWorldEvidence = () => {
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Feature 1 */}
-            <motion.div 
-              className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <div className="h-12 w-12 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
-                <ChartBar size={24} />
-              </div>
-              <h4 className="text-xl font-semibold mb-2">Cohort Analysis</h4>
-              <p className="text-gray-600">
-                Build and analyze patient cohorts with advanced filtering capabilities across multiple 
-                data sources including EHRs, claims data, and patient-reported outcomes.
-              </p>
-            </motion.div>
-            
-            {/* Feature 2 */}
-            <motion.div 
-              className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-            >
-              <div className="h-12 w-12 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center mb-4">
-                <Database size={24} />
-              </div>
-              <h4 className="text-xl font-semibold mb-2">Federated Analysis</h4>
-              <p className="text-gray-600">
-                Conduct studies across multiple healthcare organizations without data movement,
-                preserving privacy while enabling large-scale collaborative research.
-              </p>
-            </motion.div>
-            
-            {/* Feature 3 */}
-            <motion.div 
-              className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            >
-              <div className="h-12 w-12 rounded-lg bg-green-100 text-green-600 flex items-center justify-center mb-4">
-                <Laptop size={24} />
-              </div>
-              <h4 className="text-xl font-semibold mb-2">Regulatory Toolkit</h4>
-              <p className="text-gray-600">
-                Generate submission-ready documentation for regulatory bodies with comprehensive 
-                audit trails, methodology validation, and evidence packages.
-              </p>
-            </motion.div>
+            {features.map((feature, index) => (
+              <motion.div 
+                key={index}
+                className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+              >
+                <div className="h-12 w-12 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+                  {feature.icon}
+                </div>
+                <h4 className="text-xl font-semibold mb-2">{feature.title}</h4>
+                <p className="text-gray-600">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
+          
+          <motion.div
+            className="mt-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
+            <CustomButton
+              variant="primary"
+              size="lg"
+              to="/real-world-evidence"
+              className="px-8"
+              withArrow={true}
+            >
+              Explore Full Capabilities
+            </CustomButton>
+          </motion.div>
+          
+          <motion.div
+            className="mt-16 p-6 rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+          >
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="md:w-1/4 flex justify-center">
+                <div className="h-24 w-24 rounded-full bg-blue-400/10 flex items-center justify-center">
+                  <Globe size={40} className="text-blue-600" />
+                </div>
+              </div>
+              <div className="md:w-3/4">
+                <h4 className="text-xl font-semibold mb-2">Global Healthcare Impact</h4>
+                <p className="text-gray-600 mb-4">
+                  Our Real-World Evidence module is helping healthcare organizations across 26 countries 
+                  transform care delivery and improve patient outcomes through evidence-based decision making.
+                </p>
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                  <span className="text-sm text-gray-500">Currently processing over 5.2 million patient records daily</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
