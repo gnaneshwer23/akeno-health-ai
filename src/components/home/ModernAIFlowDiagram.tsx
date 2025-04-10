@@ -7,11 +7,9 @@ import {
   Activity, 
   Brain, 
   HeartPulse, 
-  PanelTop, 
-  Shield, 
-  LineChart, 
-  GanttChartSquare, 
-  Pill
+  LineChart,
+  BarChart4,
+  TrendingUp
 } from 'lucide-react';
 
 const ModernAIFlowDiagram: React.FC = () => {
@@ -45,24 +43,24 @@ const ModernAIFlowDiagram: React.FC = () => {
 
   const healthOutcomes = [
     {
+      icon: <BarChart4 size={24} color="#5bbeff" />,
       title: "Digital Twin AI",
-      description: "Personalized health simulation for precision medicine and tailored interventions"
+      description: "Personalized health simulation for precision medicine"
     },
     {
+      icon: <LineChart size={24} color="#5bbeff" />,
       title: "Predictive Dashboard",
-      description: "Early warning system highlighting potential health risks before symptoms appear"
+      description: "Early warning system highlighting potential health risks"
     },
     {
+      icon: <TrendingUp size={24} color="#5bbeff" />,
       title: "Risk Forecasts",
-      description: "Advanced risk stratification and personalized prevention strategies"
+      description: "Advanced risk stratification and prevention strategies"
     },
     {
-      title: "Drug Discovery",
-      description: "AI-accelerated pharmaceutical development and treatment optimization"
-    },
-    {
+      icon: <HeartPulse size={24} color="#5bbeff" />,
       title: "Real-Time Monitoring",
-      description: "Continuous health tracking with intelligent alerts and actionable insights"
+      description: "Continuous health tracking with intelligent alerts"
     }
   ];
 
@@ -72,7 +70,7 @@ const ModernAIFlowDiagram: React.FC = () => {
       <p className="modern-flow-subtitle">for a Healthier Tomorrow</p>
       
       <div className="modern-flow-wrapper">
-        {/* Data Sources Section */}
+        {/* Data Sources Section with animated pulse dots */}
         <div className="modern-flow-section">
           <h3 className="modern-section-title">Health Data Sources</h3>
           
@@ -81,15 +79,20 @@ const ModernAIFlowDiagram: React.FC = () => {
               <div className="data-icon">
                 {source.icon}
               </div>
-              <div>
+              <div className="data-content">
                 <div className="data-text">{source.name}</div>
                 <div className="data-description">{source.description}</div>
+              </div>
+              <div className="data-pulse-container">
+                <div className="data-pulse-dot" style={{animationDelay: `${index * 0.2}s`}}></div>
+                <div className="data-pulse-dot" style={{animationDelay: `${(index * 0.2) + 0.3}s`}}></div>
+                <div className="data-pulse-dot" style={{animationDelay: `${(index * 0.2) + 0.6}s`}}></div>
               </div>
             </div>
           ))}
         </div>
         
-        {/* Akeno AI Engine Section */}
+        {/* Akeno AI Engine Section - glowing, beating circle */}
         <div className="modern-flow-section">
           <div className="akeno-engine-container">
             <div className="engine-pulse"></div>
@@ -98,17 +101,33 @@ const ModernAIFlowDiagram: React.FC = () => {
             <div className="akeno-engine">
               <div className="engine-text">Akeno AI Engine</div>
             </div>
+            <div className="engine-glow"></div>
           </div>
         </div>
         
-        {/* Health Outcomes Section */}
+        {/* Health Outcomes Section with animated bar graphs */}
         <div className="modern-flow-section">
           <h3 className="modern-section-title">AI Healthcare Solutions</h3>
           
           {healthOutcomes.map((outcome, index) => (
             <div key={index} className="health-outcome">
-              <div className="health-title">{outcome.title}</div>
+              <div className="outcome-header">
+                <div className="outcome-icon">{outcome.icon}</div>
+                <div className="health-title">{outcome.title}</div>
+              </div>
               <div className="health-description">{outcome.description}</div>
+              <div className="analytics-bars-container">
+                {[...Array(5)].map((_, i) => (
+                  <div 
+                    key={i} 
+                    className="analytics-bar" 
+                    style={{
+                      height: `${20 + Math.floor(Math.random() * 60)}%`,
+                      animationDelay: `${(i * 0.2) + (index * 0.1)}s`
+                    }}
+                  ></div>
+                ))}
+              </div>
             </div>
           ))}
         </div>

@@ -15,9 +15,13 @@
 .modern-flow-title {
   color: #ffffff;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   font-size: 2rem;
   font-weight: 700;
+  background: linear-gradient(90deg, #5bbeff, #b45cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .modern-flow-subtitle {
@@ -31,7 +35,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 
@@ -47,19 +51,23 @@
   font-weight: 600;
 }
 
-/* Data Sources Styling */
+/* Data Sources Styling with Pulse Dots */
 .data-source {
   position: relative;
   margin: 25px 0;
   display: flex;
   align-items: center;
+  background: linear-gradient(145deg, #0a2a4a, #1a3a5a);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .data-icon {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(145deg, #0a2a4a, #1a3a5a);
+  background: linear-gradient(145deg, #0f3a65, #1a3a5a);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,54 +77,56 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+.data-content {
+  flex: 1;
+  text-align: left;
+}
+
 .data-text {
   color: white;
-  text-align: left;
   font-weight: 500;
+  margin-bottom: 4px;
 }
 
 .data-description {
   color: #90a5bc;
   font-size: 0.85rem;
-  text-align: left;
 }
 
-.data-flow-container {
-  position: relative;
-  flex-grow: 1;
-  height: 20px;
+/* Pulse Dots Animation */
+.data-pulse-container {
   display: flex;
   align-items: center;
+  margin-left: 10px;
 }
 
-.data-flow {
-  position: relative;
-  height: 3px;
-  width: 100%;
-  background: rgba(30, 60, 100, 0.5);
-  overflow: hidden;
+.data-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #5bbeff;
+  border-radius: 50%;
+  margin: 0 3px;
+  animation: pulseDot 1.5s ease-in-out infinite;
 }
 
-.data-particle {
-  position: absolute;
-  height: 100%;
-  width: 40px;
-  background-image: linear-gradient(to right, 
-      rgba(91, 190, 255, 0.1), 
-      rgba(91, 190, 255, 0.8), 
-      rgba(180, 92, 255, 0.8), 
-      rgba(180, 92, 255, 0.1));
-  animation: flowAnimation 3s linear infinite;
-  opacity: 0.8;
-  border-radius: 3px;
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
 }
 
-/* Akeno AI Engine Styling - Enhanced Heartbeat */
+/* Akeno AI Engine Styling - Enhanced Heartbeat and Glow */
 .akeno-engine-container {
   position: relative;
   width: 240px;
   height: 240px;
   margin: 0 auto;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,6 +151,7 @@
   font-weight: 700;
   text-align: center;
   max-width: 80%;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
 .engine-pulse {
@@ -160,7 +171,19 @@
   animation-delay: 1s;
 }
 
-/* Output Styling */
+.engine-glow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(91, 190, 255, 0.3);
+  filter: blur(8px);
+  animation: glowing 4s infinite alternate;
+  z-index: 1;
+}
+
+/* Output Styling with Bar Graphs */
 .health-outcome {
   position: relative;
   margin: 25px 0;
@@ -176,23 +199,55 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
+.outcome-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.outcome-icon {
+  margin-right: 10px;
+}
+
 .health-title {
   font-weight: 600;
   color: #5bbeff;
-  margin-bottom: 5px;
 }
 
 .health-description {
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* Bar Graphs Animation */
+.analytics-bars-container {
+  display: flex;
+  height: 40px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 0 10px;
+}
+
+.analytics-bar {
+  width: 18%;
+  background: linear-gradient(to top, #5bbeff, #b45cff);
+  border-radius: 3px 3px 0 0;
+  animation: barAnimation 3s ease-in-out infinite;
+}
+
+@keyframes barAnimation {
+  0%, 100% {
+    height: var(--height);
+  }
+  50% {
+    height: calc(var(--height) - 15%);
+  }
 }
 
 /* Animations */
-@keyframes flowAnimation {
-  0% { left: -40px; }
-  100% { left: 100%; }
-}
-
 @keyframes heartbeat {
   0% { transform: scale(1); }
   15% { transform: scale(1.05); }
@@ -206,6 +261,11 @@
   0% { transform: scale(0.8); opacity: 0.8; }
   50% { transform: scale(1.5); opacity: 0; }
   100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes glowing {
+  0% { opacity: 0.3; transform: scale(0.9); }
+  100% { opacity: 0.8; transform: scale(1.1); }
 }
 
 /* Responsive Adjustments */
@@ -223,12 +283,14 @@
   
   .akeno-engine-container {
     order: -1;
+    margin-bottom: 30px;
   }
 }
 
 @media (max-width: 600px) {
   .data-source {
     flex-direction: column;
+    padding: 15px 10px;
   }
   
   .data-icon {
@@ -236,12 +298,22 @@
     margin-bottom: 10px;
   }
   
-  .data-text, .data-description {
+  .data-content {
     text-align: center;
+    margin-bottom: 10px;
   }
   
   .akeno-engine {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .data-pulse-container {
+    justify-content: center;
+    margin-left: 0;
+  }
+  
+  .analytics-bars-container {
+    height: 30px;
   }
 }
