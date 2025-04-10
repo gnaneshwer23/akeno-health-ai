@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { 
   Watch, 
   Dna, 
@@ -44,28 +44,28 @@ const ModernAIFlowDiagram: React.FC = () => {
 
   const aiCapabilities = [
     {
-      icon: <Target size={22} className="text-cyan-300" />,
+      icon: <Target size={22} className="text-cyan-400" />,
       title: "Predictive Analytics",
-      color: "cyan",
-      connectorClass: "capability-connection-top-left"
+      color: "text-cyan-400",
+      connectTo: "bg-cyan-400"
     },
     {
-      icon: <Brain size={22} className="text-blue-300" />,
+      icon: <Brain size={22} className="text-blue-400" />,
       title: "Diagnostic Intelligence",
-      color: "blue",
-      connectorClass: "capability-connection-top-right"
+      color: "text-blue-400",
+      connectTo: "bg-blue-400"
     },
     {
-      icon: <Cable size={22} className="text-indigo-300" />,
+      icon: <Cable size={22} className="text-indigo-400" />,
       title: "Clinical Decision",
-      color: "indigo",
-      connectorClass: "capability-connection-bottom-left"
+      color: "text-indigo-400",
+      connectTo: "bg-indigo-400"
     },
     {
-      icon: <FlaskConical size={22} className="text-violet-300" />,
+      icon: <FlaskConical size={22} className="text-violet-400" />,
       title: "Research & Discovery",
-      color: "violet",
-      connectorClass: "capability-connection-bottom-right"
+      color: "text-violet-400",
+      connectTo: "bg-violet-400"
     }
   ];
 
@@ -96,6 +96,51 @@ const ModernAIFlowDiagram: React.FC = () => {
       color: "bg-purple-400"
     }
   ];
+
+  // Create connections between AI capabilities and benefit bars
+  useEffect(() => {
+    // Clear any existing connections
+    const existingConnections = document.querySelectorAll('.capability-to-benefit-connection');
+    existingConnections.forEach(conn => conn.remove());
+    
+    // Create new connections with a slight delay to ensure elements are rendered
+    setTimeout(() => {
+      aiCapabilities.forEach((capability, index) => {
+        const capabilityElement = document.querySelector(`.ai-capability-card:nth-child(${index + 1})`);
+        const benefitElement = document.querySelector(`.benefit-item .benefit-bar.${capability.connectTo}`);
+        
+        if (capabilityElement && benefitElement) {
+          const capRect = capabilityElement.getBoundingClientRect();
+          const benefitRect = benefitElement.getBoundingClientRect();
+          
+          const connection = document.createElement('div');
+          connection.className = `capability-to-benefit-connection ${capability.color}`;
+          document.querySelector('.modern-flow-diagram').appendChild(connection);
+          
+          // Position and size the connection
+          const startX = capRect.right;
+          const startY = capRect.top + capRect.height / 2;
+          const endX = benefitRect.left;
+          const endY = benefitRect.top + benefitRect.height / 2;
+          
+          const length = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+          const angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI;
+          
+          connection.style.width = `${length}px`;
+          connection.style.left = `${startX}px`;
+          connection.style.top = `${startY}px`;
+          connection.style.transform = `rotate(${angle}deg)`;
+          connection.style.opacity = '1';
+        }
+      });
+    }, 500);
+    
+    // Cleanup function
+    return () => {
+      const connections = document.querySelectorAll('.capability-to-benefit-connection');
+      connections.forEach(conn => conn.remove());
+    };
+  }, []);
 
   return (
     <div className="modern-flow-container">
@@ -128,40 +173,32 @@ const ModernAIFlowDiagram: React.FC = () => {
         
         {/* Middle Column - Akeno AI Engine */}
         <div className="flow-column akeno-engine">
-          <div className="capability-wrapper">
-            {/* AI Capabilities above the engine */}
-            <div className="capability-top">
-              {aiCapabilities.slice(0, 2).map((capability, index) => (
-                <div key={index} className={`ai-capability-card ${capability.color}`}>
-                  <span className="capability-icon">{capability.icon}</span>
-                  <span className="capability-title">{capability.title}</span>
-                  <div className={`capability-connection ${capability.connectorClass}`}>
-                    <div className="flow-particle"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            {/* The AI Engine */}
-            <div className="akeno-engine-circle">
-              <div className="engine-pulse-ring"></div>
-              <div className="engine-inner">
-                <div className="engine-text">Akeno AI</div>
+          {/* AI Capabilities above the engine */}
+          <div className="ai-capabilities-container">
+            {aiCapabilities.slice(0, 2).map((capability, index) => (
+              <div key={index} className={`ai-capability-card ${capability.color}`}>
+                <span className={`capability-icon ${capability.color}`}>{capability.icon}</span>
+                <span className="capability-title">{capability.title}</span>
               </div>
+            ))}
+          </div>
+          
+          {/* The AI Engine */}
+          <div className="akeno-engine-circle">
+            <div className="engine-pulse-ring"></div>
+            <div className="engine-inner">
+              <div className="engine-text">Akeno AI</div>
             </div>
-            
-            {/* AI Capabilities below the engine */}
-            <div className="capability-bottom">
-              {aiCapabilities.slice(2, 4).map((capability, index) => (
-                <div key={index} className={`ai-capability-card ${capability.color}`}>
-                  <span className="capability-icon">{capability.icon}</span>
-                  <span className="capability-title">{capability.title}</span>
-                  <div className={`capability-connection ${capability.connectorClass}`}>
-                    <div className="flow-particle"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          </div>
+          
+          {/* AI Capabilities below the engine */}
+          <div className="ai-capabilities-container">
+            {aiCapabilities.slice(2, 4).map((capability, index) => (
+              <div key={index} className={`ai-capability-card ${capability.color}`}>
+                <span className={`capability-icon ${capability.color}`}>{capability.icon}</span>
+                <span className="capability-title">{capability.title}</span>
+              </div>
+            ))}
           </div>
         </div>
         

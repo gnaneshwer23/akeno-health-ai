@@ -5,13 +5,12 @@
   border-radius: 6px 6px 0 0;
   background-image: linear-gradient(to top, currentColor, rgba(255, 255, 255, 0.7));
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  transition: height 1s ease, transform 0.3s ease;
+  transition: height 1s ease, box-shadow 0.5s ease;
   position: relative;
 }
 
 .benefit-bar:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 25px currentColor;
 }
 
 .benefit-label {
@@ -24,56 +23,48 @@
   transition: color 0.3s ease;
 }
 
-.benefit-item:hover .benefit-label {
+.benefit-bar:hover + .benefit-label {
   color: #ffffff;
 }
 
-/* Animation for the bars - variable setup with enhanced colors */
+/* Animation for the bars - variable setup */
 .benefit-bar.bg-cyan-400 {
   --value: 65%;
-  color: #22d3ee;
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  color: #22d3ee; /* Cyan color */
 }
-
 .benefit-bar.bg-blue-400 {
   --value: 75%;
-  color: #60a5fa;
-  box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+  color: #5bbeff; /* Blue color */
 }
-
 .benefit-bar.bg-indigo-400 {
   --value: 85%;
-  color: #818cf8;
-  box-shadow: 0 0 20px rgba(129, 140, 248, 0.3);
+  color: #818cf8; /* Indigo color */
 }
-
 .benefit-bar.bg-violet-400 {
   --value: 95%;
-  color: #a78bfa;
-  box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+  color: #a78bfa; /* Violet color */
 }
-
 .benefit-bar.bg-purple-400 {
   --value: 100%;
-  color: #c084fc;
-  box-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
+  color: #b45cff; /* Purple color */
 }
 
-/* Visual connections between bars */
-.benefits-chart::before {
-  content: '';
+/* Connection lines from AI capabilities to bars */
+.capability-to-benefit-connection {
   position: absolute;
-  bottom: 25%;
-  left: 30px;
-  right: 30px;
   height: 2px;
-  background: linear-gradient(to right, 
-    rgba(34, 211, 238, 0.5),
-    rgba(96, 165, 250, 0.5),
-    rgba(129, 140, 248, 0.5),
-    rgba(167, 139, 250, 0.5),
-    rgba(192, 132, 252, 0.5)
-  );
-  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(91, 190, 255, 0.7), currentColor);
   z-index: 1;
+  opacity: 0;
+  transform-origin: left;
+  animation: pulse-connection 2s ease-in-out infinite;
+}
+
+@keyframes pulse-connection {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
