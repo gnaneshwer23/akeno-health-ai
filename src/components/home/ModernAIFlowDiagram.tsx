@@ -116,9 +116,9 @@ const ModernAIFlowDiagram: React.FC = () => {
           <div className="benefits-chart mx-[30px] mb-[80px] mt-[30px] px-[30px] py-[3px]">
             {systemBenefits.map((benefit, index) => <div key={index} className="benefit-item">
                 <div className="benefit-bar-container">
-                  <div className={`benefit-bar ${benefit.color}`} style={{
+                  <div style={{
                 height: `${benefit.value}%`
-              }}></div>
+              }} className="px-[30px]"></div>
                   <div className="benefit-label my-[6px] py-[9px] px-0 mx-0">{benefit.title}</div>
                 </div>
               </div>)}
