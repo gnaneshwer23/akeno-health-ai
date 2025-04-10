@@ -30,6 +30,12 @@
   animation: iconFloat 3s ease-in-out infinite;
 }
 
+/* Enhanced hover effects */
+.impact-bar:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .impact-label-container {
@@ -38,10 +44,4 @@
     white-space: nowrap;
     width: auto !important;
   }
-}
-
-/* Enhanced hover effects */
-.impact-bar:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
