@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Brain, Dna, Flask, Stethoscope, Database } from 'lucide-react';
+import { Brain, Dna, Beaker, Stethoscope, Database } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import '@/styles/analytics/impact-graph.css';
 
@@ -30,7 +30,7 @@ const HealthcareAIImpactGraph: React.FC = () => {
     {
       category: 'Drug Discovery',
       score: 78,
-      icon: <Flask className="h-8 w-8 text-blue-400" />,
+      icon: <Beaker className="h-8 w-8 text-blue-400" />,
       color: 'from-blue-600 to-blue-300'
     },
     {
