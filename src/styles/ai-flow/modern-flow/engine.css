@@ -1,0 +1,73 @@
+
+/* Akeno AI Engine specific styles */
+.akeno-engine-circle {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  margin: 20px 0;
+}
+
+.engine-pulse-ring {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border-radius: 50%;
+  border: 2px solid rgba(91, 190, 255, 0.5);
+}
+
+.engine-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #5bbeff, #b45cff);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 
+    0 0 30px rgba(91, 190, 255, 0.5),
+    0 0 60px rgba(180, 92, 255, 0.3);
+}
+
+.engine-text {
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* AI Capabilities */
+.ai-capabilities-container {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-capability-card {
+  background-color: rgba(10, 20, 40, 0.7);
+  border: 1px solid rgba(180, 92, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 180px;
+}
+
+.capability-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.capability-title {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+}

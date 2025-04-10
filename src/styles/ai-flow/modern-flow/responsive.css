@@ -1,0 +1,82 @@
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .modern-flow-diagram {
+    flex-direction: column;
+  }
+  
+  .flow-column {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 40px;
+  }
+  
+  .column-title {
+    margin-bottom: 20px;
+  }
+  
+  .flow-connection-dots {
+    display: none;
+  }
+  
+  .ai-capability-card {
+    width: 45%;
+  }
+  
+  .ai-capabilities-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .benefits-chart {
+    height: 200px;
+  }
+  
+  .benefit-bar {
+    width: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .modern-flow-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .column-title {
+    font-size: 1.3rem;
+  }
+  
+  .akeno-engine-circle {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .engine-text {
+    font-size: 1.5rem;
+  }
+  
+  .ai-capability-card {
+    padding: 10px;
+    width: 130px;
+  }
+  
+  .capability-title {
+    font-size: 0.8rem;
+  }
+  
+  .benefits-chart {
+    height: 150px;
+    gap: 5px;
+  }
+  
+  .benefit-bar {
+    width: 16px;
+  }
+  
+  .benefit-label {
+    font-size: 0.65rem;
+    word-break: break-word;
+  }
+}

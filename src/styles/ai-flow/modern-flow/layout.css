@@ -1,0 +1,76 @@
+
+/* Layout styles for columns and general structure */
+.flow-column {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.column-title {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Data Sources Column */
+.data-sources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.data-source-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+
+.data-source-icon-container {
+  position: relative;
+}
+
+.data-source-content {
+  flex: 1;
+}
+
+/* Akeno AI Engine Column */
+.akeno-engine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+/* System Benefits Column */
+.benefits-chart {
+  display: flex;
+  height: 300px;
+  align-items: flex-end;
+  gap: 10px;
+  position: relative;
+  margin: 20px 0;
+}
+
+.benefit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+}
+
+.benefit-bar-container {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}

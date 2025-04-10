@@ -1,0 +1,48 @@
+
+/* Data Sources specific styles */
+.data-source-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: rgba(10, 23, 36, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.15);
+  border: 1px solid rgba(91, 190, 255, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.data-source-name {
+  color: #5bbeff;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.data-source-description {
+  color: #90a5bc;
+  font-size: 0.85rem;
+}
+
+/* Connection dots for data flow */
+.flow-connection-dots {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 100px;
+  height: 2px;
+  display: flex;
+  align-items: center;
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.flow-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #5bbeff, #b45cff);
+  opacity: 0;
+}
