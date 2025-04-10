@@ -76,7 +76,6 @@
   border-radius: 50%;
   background: linear-gradient(90deg, #5bbeff, #b45cff);
   opacity: 0;
-  animation: flow-dot 3s infinite ease-in;
 }
 
 .flow-dot.bg-cyan-400 {
@@ -99,20 +98,40 @@
   background: linear-gradient(90deg, #c084fc, #e879f9);
 }
 
-/* Add animation for the flow dots */
-@keyframes flow-dot {
-  0% {
-    left: 0%;
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    left: 100%;
-    opacity: 0;
-  }
+/* Through-AI flow dots */
+.through-ai-connection {
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  z-index: 1;
+}
+
+.flow-dot-through-ai.dot-0 {
+  --target-position: 15%;
+  animation-delay: 0s;
+  background: linear-gradient(90deg, #38bdf8, #60a5fa);
+}
+
+.flow-dot-through-ai.dot-1 {
+  --target-position: 35%;
+  animation-delay: 1s;
+  background: linear-gradient(90deg, #60a5fa, #818cf8);
+}
+
+.flow-dot-through-ai.dot-2 {
+  --target-position: 55%;
+  animation-delay: 2s;
+  background: linear-gradient(90deg, #818cf8, #a78bfa);
+}
+
+.flow-dot-through-ai.dot-3 {
+  --target-position: 75%;
+  animation-delay: 3s;
+  background: linear-gradient(90deg, #a78bfa, #c084fc);
+}
+
+.flow-dot-through-ai.dot-4 {
+  --target-position: 95%;
+  animation-delay: 4s;
+  background: linear-gradient(90deg, #c084fc, #e879f9);
 }

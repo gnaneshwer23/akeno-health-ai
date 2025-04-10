@@ -45,6 +45,22 @@
   to { height: var(--value); }
 }
 
+/* Bar up-down animation */
+@keyframes bar-breathe {
+  0%, 100% { 
+    height: var(--value); 
+    opacity: 1;
+  }
+  50% { 
+    height: calc(var(--value) - 10px);
+    opacity: 0.9;
+  }
+}
+
+.benefit-bar.animated {
+  animation: bar-grow 1.2s ease-out forwards, bar-breathe 3s ease-in-out infinite 1.2s;
+}
+
 /* AI capabilities fade-in */
 @keyframes fade-in {
   from {
@@ -102,3 +118,54 @@
 .data-source-item:nth-child(5) {
   animation-delay: 0.5s;
 }
+
+/* Flow dots path through Akeno AI to benefits */
+@keyframes flow-through-ai {
+  0% {
+    left: 0;
+    top: 50%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  45% {
+    left: 100%;
+    top: 50%;
+    opacity: 1;
+  }
+  50% {
+    left: 105%;
+    top: 50%;
+    opacity: 0;
+  }
+  51% {
+    left: -5%;
+    top: 50%;
+    opacity: 0;
+  }
+  55% {
+    left: 0;
+    top: 50%;
+    opacity: 1;
+  }
+  95% {
+    left: 100%;
+    top: var(--target-position);
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    top: var(--target-position);
+    opacity: 0;
+  }
+}
+
+.flow-dot-through-ai {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  animation: flow-through-ai 6s infinite ease-in-out;
+}
+

@@ -58,3 +58,34 @@
   transform: translateY(-3px);
   transition: all 0.3s ease;
 }
+
+/* Add a glow effect when the flow dots reach their target */
+@keyframes bar-glow {
+  0%, 100% { box-shadow: 0 0 5px currentColor; }
+  50% { box-shadow: 0 0 25px currentColor; }
+}
+
+.benefit-bar.glow-0 {
+  animation: bar-glow 2s infinite;
+  animation-delay: 5s;
+}
+
+.benefit-bar.glow-1 {
+  animation: bar-glow 2s infinite;
+  animation-delay: 6s;
+}
+
+.benefit-bar.glow-2 {
+  animation: bar-glow 2s infinite;
+  animation-delay: 7s;
+}
+
+.benefit-bar.glow-3 {
+  animation: bar-glow 2s infinite;
+  animation-delay: 8s;
+}
+
+.benefit-bar.glow-4 {
+  animation: bar-glow 2s infinite;
+  animation-delay: 9s;
+}

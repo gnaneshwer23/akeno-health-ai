@@ -85,6 +85,7 @@ const ModernAIFlowDiagram: React.FC = () => {
                         bar.classList.contains('bg-violet-400') ? '95%' :
                         '100%';
           bar.setAttribute('style', `height: ${value}`);
+          bar.classList.add('animated', `glow-${index}`);
         }, index * 200);
       });
     }, 500);
@@ -117,7 +118,7 @@ const ModernAIFlowDiagram: React.FC = () => {
         </div>
         
         {/* Middle Column - Akeno AI Engine */}
-        <div className="flow-column akeno-engine rounded-none mx-[100px] py-[50px] px-0 bg-slate-950">
+        <div className="flow-column akeno-engine rounded-none mx-[100px] py-[50px] px-0 bg-slate-950 relative">
           {/* AI Capabilities above the engine */}
           <div className="ai-capabilities-container">
             {aiCapabilities.slice(0, 2).map((capability, index) => <div key={index} className="ai-capability-card">
@@ -140,6 +141,16 @@ const ModernAIFlowDiagram: React.FC = () => {
                 <span className="capability-icon">{capability.icon}</span>
                 <span className="capability-title">{capability.title}</span>
               </div>)}
+          </div>
+
+          {/* Through-AI Flow Dots */}
+          <div className="through-ai-connection">
+            {dataSources.map((_, index) => (
+              <div 
+                key={index} 
+                className={`flow-dot-through-ai dot-${index}`}
+              ></div>
+            ))}
           </div>
         </div>
         
