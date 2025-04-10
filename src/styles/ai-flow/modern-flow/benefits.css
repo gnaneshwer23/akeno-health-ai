@@ -5,12 +5,8 @@
   border-radius: 6px 6px 0 0;
   background-image: linear-gradient(to top, currentColor, rgba(255, 255, 255, 0.7));
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  transition: height 1s ease, box-shadow 0.5s ease;
+  transition: height 1s ease;
   position: relative;
-}
-
-.benefit-bar:hover {
-  box-shadow: 0 0 25px currentColor;
 }
 
 .benefit-label {
@@ -20,51 +16,21 @@
   text-align: center;
   width: 100%;
   font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.benefit-bar:hover + .benefit-label {
-  color: #ffffff;
 }
 
 /* Animation for the bars - variable setup */
 .benefit-bar.bg-cyan-400 {
   --value: 65%;
-  color: #22d3ee; /* Cyan color */
 }
 .benefit-bar.bg-blue-400 {
   --value: 75%;
-  color: #5bbeff; /* Blue color */
 }
 .benefit-bar.bg-indigo-400 {
   --value: 85%;
-  color: #818cf8; /* Indigo color */
 }
 .benefit-bar.bg-violet-400 {
   --value: 95%;
-  color: #a78bfa; /* Violet color */
 }
 .benefit-bar.bg-purple-400 {
   --value: 100%;
-  color: #b45cff; /* Purple color */
-}
-
-/* Connection lines from AI capabilities to bars */
-.capability-to-benefit-connection {
-  position: absolute;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(91, 190, 255, 0.7), currentColor);
-  z-index: 1;
-  opacity: 0;
-  transform-origin: left;
-  animation: pulse-connection 2s ease-in-out infinite;
-}
-
-@keyframes pulse-connection {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.7;
-  }
 }
