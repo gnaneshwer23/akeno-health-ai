@@ -113,7 +113,7 @@ const ModernAIFlowDiagram: React.FC = () => {
         <div className="flow-column system-benefits px-[25px]">
           <h2 className="column-title">System-Wide Benefits</h2>
           
-          <div className="benefits-chart mx-[30px] mb-[80px] mt-[30px] px-[30px] py-[3px]">
+          <div className="benefits-chart mb-[80px] mt-[30px] px-[30px] py-[30px] my-0 mx-0">
             {systemBenefits.map((benefit, index) => <div key={index} className="benefit-item">
                 <div className="benefit-bar-container bg-green-300 px-0 my-[3px] mx-0 py-0">
                   <div style={{
