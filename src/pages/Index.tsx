@@ -9,7 +9,7 @@ import { UseCasesSection } from '@/components/home/UseCasesSection';
 import { TechDifferentiatorsSection } from '@/components/home/TechDifferentiatorsSection';
 import { TestimonialsPartnersSection } from '@/components/home/TestimonialsPartnersSection';
 import { FinalCTASection } from '@/components/home/FinalCTASection';
-import EnhancedAIFlowDiagram from '@/components/home/EnhancedAIFlowDiagram';
+import AIFlowDiagram from '@/components/home/AIFlowDiagram';
 import CoreProducts from '@/components/products/CoreProducts';
 import ProductsRealWorldEvidence from '@/components/products/ProductsRealWorldEvidence';
 
@@ -81,8 +81,10 @@ const Index = () => {
         {/* Section 2: How It Works */}
         <HowItWorksSection />
         
-        {/* NEW: Enhanced AI Flow Diagram - Bridging Data, Intelligence, and Care */}
-        <EnhancedAIFlowDiagram />
+        {/* AI Flow Diagram - Bridging Data, Intelligence, and Care */}
+        <div className="py-12 px-6">
+          <AIFlowDiagram />
+        </div>
         
         {/* Section 3: Stakeholders */}
         <StakeholdersSection />
