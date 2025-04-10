@@ -12,6 +12,18 @@
   position: relative;
 }
 
+.modern-flow-title {
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #5bbeff, #b45cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .modern-flow-wrapper {
   display: flex;
   width: 100%;
@@ -54,6 +66,46 @@
   z-index: 2;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
+}
+
+/* Pulse dots animation for continuous health data */
+.pulse-dots {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: flex;
+  gap: 2px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #5bbeff;
+  animation: pulseDot 1.5s infinite;
+}
+
+.pulse-dot:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.pulse-dot:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+@keyframes pulseDot {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
 }
 
 .data-content {
@@ -132,6 +184,7 @@
   align-items: center;
   animation: pulse 4s ease-in-out infinite;
   z-index: 2;
+  overflow: hidden;
 }
 
 .akeno-engine h3 {
@@ -147,6 +200,29 @@
   margin: 0;
   text-align: center;
   opacity: 0.9;
+}
+
+.engine-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(91, 190, 255, 0.8) 0%, rgba(106, 95, 215, 0) 70%);
+  animation: glow 2s ease-in-out infinite alternate;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
 }
 
 /* Health Outcomes Styling */
@@ -176,6 +252,57 @@
   align-items: center;
   flex-shrink: 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bar graph animations for insights */
+.bar-graph-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.bar-graph {
+  width: 5px;
+  background-color: #b45cff;
+  border-radius: 2px 2px 0 0;
+}
+
+.bar1 {
+  height: 10px;
+  animation: barMove1 3s ease-in-out infinite;
+}
+
+.bar2 {
+  height: 15px;
+  animation: barMove2 3.5s ease-in-out infinite;
+}
+
+.bar3 {
+  height: 8px;
+  animation: barMove3 2.5s ease-in-out infinite;
+}
+
+@keyframes barMove1 {
+  0%, 100% { height: 10px; }
+  50% { height: 16px; }
+}
+
+@keyframes barMove2 {
+  0%, 100% { height: 15px; }
+  50% { height: 8px; }
+}
+
+@keyframes barMove3 {
+  0%, 100% { height: 8px; }
+  50% { height: 19px; }
 }
 
 .health-title {
@@ -246,6 +373,10 @@
   
   .modern-section-title {
     font-size: 1.5rem;
+  }
+  
+  .modern-flow-title {
+    font-size: 1.6rem;
   }
   
   .data-source, .health-outcome {

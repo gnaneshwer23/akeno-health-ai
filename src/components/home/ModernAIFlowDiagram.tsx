@@ -73,6 +73,7 @@ const ModernAIFlowDiagram: React.FC = () => {
 
   return (
     <div className="modern-flow-container">
+      <h2 className="modern-flow-title">Bridging Data, Intelligence, and Care</h2>
       <div className="modern-flow-wrapper">
         {/* Data Sources Section - Left Side */}
         <div className="modern-flow-section">
@@ -82,6 +83,11 @@ const ModernAIFlowDiagram: React.FC = () => {
             <div key={index} className="data-source">
               <div className="data-icon">
                 {source.icon}
+                <div className="pulse-dots">
+                  <div className="pulse-dot"></div>
+                  <div className="pulse-dot"></div>
+                  <div className="pulse-dot"></div>
+                </div>
               </div>
               <div className="data-content">
                 <div className="data-gradient left-gradient"></div>
@@ -99,6 +105,7 @@ const ModernAIFlowDiagram: React.FC = () => {
             <div className="akeno-engine">
               <h3>Akeno AI</h3>
               <p>Healthcare Engine</p>
+              <div className="engine-glow"></div>
             </div>
           </div>
         </div>
@@ -116,6 +123,11 @@ const ModernAIFlowDiagram: React.FC = () => {
               </div>
               <div className="outcome-icon">
                 {outcome.icon}
+                <div className="bar-graph-container">
+                  <div className="bar-graph bar1"></div>
+                  <div className="bar-graph bar2"></div>
+                  <div className="bar-graph bar3"></div>
+                </div>
               </div>
             </div>
           ))}
