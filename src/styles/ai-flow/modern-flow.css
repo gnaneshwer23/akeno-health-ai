@@ -12,30 +12,11 @@
   position: relative;
 }
 
-.modern-flow-title {
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 2rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #5bbeff, #b45cff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.modern-flow-subtitle {
-  color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 1.1rem;
-}
-
 .modern-flow-wrapper {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
 }
 
@@ -45,88 +26,94 @@
 }
 
 .modern-section-title {
-  color: #5bbeff;
+  color: #ffffff;
   margin-bottom: 30px;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
+  text-align: center;
 }
 
-/* Data Sources Styling with Pulse Dots */
+/* Data Sources Styling */
 .data-source {
   position: relative;
   margin: 25px 0;
   display: flex;
   align-items: center;
-  background: linear-gradient(145deg, #0a2a4a, #1a3a5a);
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  gap: 15px;
 }
 
 .data-icon {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(145deg, #0f3a65, #1a3a5a);
+  background: #0a1724;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 15px;
   position: relative;
   z-index: 2;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
 }
 
 .data-content {
   flex: 1;
   text-align: left;
+  position: relative;
+  padding-left: 15px;
 }
 
 .data-text {
   color: white;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 4px;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .data-description {
   color: #90a5bc;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 2;
 }
 
-/* Pulse Dots Animation */
-.data-pulse-container {
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
+.data-gradient, .outcome-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  z-index: 1;
 }
 
-.data-pulse-dot {
-  width: 8px;
-  height: 8px;
-  background-color: #5bbeff;
-  border-radius: 50%;
-  margin: 0 3px;
-  animation: pulseDot 1.5s ease-in-out infinite;
+.left-gradient {
+  background: linear-gradient(90deg, #1e3a5f 0%, #122540 100%);
 }
 
-@keyframes pulseDot {
-  0%, 100% {
-    transform: scale(0.5);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
+.right-gradient {
+  background: linear-gradient(90deg, #122540 0%, #2d1e5f 100%);
 }
 
-/* Akeno AI Engine Styling - Enhanced Heartbeat and Glow */
+/* Akeno AI Engine Styling */
 .akeno-engine-container {
   position: relative;
   width: 240px;
   height: 240px;
   margin: 0 auto;
-  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.engine-outer-ring {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: #182d46;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,135 +124,90 @@
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  background-image: radial-gradient(circle, #5bbeff 0%, #b45cff 100%);
-  box-shadow: 0 0 50px rgba(91, 190, 255, 0.5);
+  background-image: radial-gradient(circle, #5bbeff 0%, #6a5fd7 100%);
+  box-shadow: 0 0 30px rgba(91, 190, 255, 0.3);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  animation: heartbeat 1.5s ease-in-out infinite;
+  animation: pulse 4s ease-in-out infinite;
   z-index: 2;
 }
 
-.engine-text {
-  font-size: 1.2rem;
+.akeno-engine h3 {
+  font-size: 1.8rem;
   font-weight: 700;
+  margin: 0 0 5px 0;
   text-align: center;
-  max-width: 80%;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
-.engine-pulse {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: rgba(91, 190, 255, 0.15);
-  animation: pulse 2s infinite;
+.akeno-engine p {
+  font-size: 1rem;
+  margin: 0;
+  text-align: center;
+  opacity: 0.9;
 }
 
-.engine-pulse:nth-child(2) {
-  animation-delay: 0.5s;
-}
-
-.engine-pulse:nth-child(3) {
-  animation-delay: 1s;
-}
-
-.engine-glow {
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: transparent;
-  border: 2px solid rgba(91, 190, 255, 0.3);
-  filter: blur(8px);
-  animation: glowing 4s infinite alternate;
-  z-index: 1;
-}
-
-/* Output Styling with Bar Graphs */
+/* Health Outcomes Styling */
 .health-outcome {
   position: relative;
   margin: 25px 0;
-  padding: 20px;
-  background: linear-gradient(145deg, #0a2a4a, #1a3a5a);
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.health-outcome:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.outcome-header {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  gap: 15px;
+  flex-direction: row-reverse;
+}
+
+.outcome-content {
+  flex: 1;
+  text-align: right;
+  position: relative;
+  padding-right: 15px;
 }
 
 .outcome-icon {
-  margin-right: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #0a1724;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .health-title {
+  color: white;
   font-weight: 600;
-  color: #5bbeff;
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .health-description {
-  color: rgba(255, 255, 255, 0.8);
+  color: #90a5bc;
   font-size: 0.9rem;
-  margin-bottom: 15px;
-  text-align: left;
+  position: relative;
+  z-index: 2;
 }
 
-/* Bar Graphs Animation */
-.analytics-bars-container {
-  display: flex;
-  height: 40px;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-top: 15px;
-  padding: 0 10px;
-}
-
-.analytics-bar {
-  width: 18%;
-  background: linear-gradient(to top, #5bbeff, #b45cff);
-  border-radius: 3px 3px 0 0;
-  animation: barAnimation 3s ease-in-out infinite;
-}
-
-@keyframes barAnimation {
-  0%, 100% {
-    height: var(--height);
-  }
-  50% {
-    height: calc(var(--height) - 15%);
-  }
-}
-
-/* Animations */
-@keyframes heartbeat {
-  0% { transform: scale(1); }
-  15% { transform: scale(1.05); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.03); }
-  60% { transform: scale(1); }
-  100% { transform: scale(1); }
-}
-
+/* Animation for the AI Engine */
 @keyframes pulse {
-  0% { transform: scale(0.8); opacity: 0.8; }
-  50% { transform: scale(1.5); opacity: 0; }
-  100% { transform: scale(1.8); opacity: 0; }
-}
-
-@keyframes glowing {
-  0% { opacity: 0.3; transform: scale(0.9); }
-  100% { opacity: 0.8; transform: scale(1.1); }
+  0% { 
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(91, 190, 255, 0.3);
+  }
+  50% { 
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(106, 95, 215, 0.5);
+  }
+  100% { 
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(91, 190, 255, 0.3);
+  }
 }
 
 /* Responsive Adjustments */
@@ -285,35 +227,55 @@
     order: -1;
     margin-bottom: 30px;
   }
+  
+  .health-outcome {
+    flex-direction: row;
+  }
+  
+  .outcome-content {
+    text-align: left;
+    padding-left: 15px;
+    padding-right: 0;
+  }
 }
 
 @media (max-width: 600px) {
-  .data-source {
+  .modern-flow-section {
+    max-width: 100%;
+  }
+  
+  .modern-section-title {
+    font-size: 1.5rem;
+  }
+  
+  .data-source, .health-outcome {
     flex-direction: column;
-    padding: 15px 10px;
-  }
-  
-  .data-icon {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-  
-  .data-content {
+    align-items: center;
     text-align: center;
-    margin-bottom: 10px;
+  }
+  
+  .data-content, .outcome-content {
+    text-align: center;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
   }
   
   .akeno-engine {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
   }
   
-  .data-pulse-container {
-    justify-content: center;
-    margin-left: 0;
+  .engine-outer-ring {
+    width: 200px;
+    height: 200px;
   }
-  
-  .analytics-bars-container {
-    height: 30px;
+
+  .akeno-engine h3 {
+    font-size: 1.5rem;
+  }
+
+  .akeno-engine p {
+    font-size: 0.9rem;
   }
 }

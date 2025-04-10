@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { 
-  Database, 
   FileText, 
   Dna, 
   Activity, 
@@ -9,70 +8,75 @@ import {
   HeartPulse, 
   LineChart,
   BarChart4,
-  TrendingUp
+  TrendingUp,
+  Search,
+  Pill,
+  LockKeyhole
 } from 'lucide-react';
 
 const ModernAIFlowDiagram: React.FC = () => {
   const dataSources = [
     { 
-      icon: <Database size={24} color="#5bbeff" />, 
+      icon: <FileText size={24} color="#5bbeff" />, 
       name: "EHR Integration", 
-      description: "Clinical records, lab results, and medical history" 
+      description: "Clinical Records & Notes" 
     },
     { 
       icon: <Dna size={24} color="#5bbeff" />, 
       name: "Multi-Omics", 
-      description: "Genomic, proteomic, and metabolomic data" 
+      description: "Genomic & Molecular Data" 
     },
     { 
-      icon: <Activity size={24} color="#5bbeff" />, 
+      icon: <LockKeyhole size={24} color="#5bbeff" />, 
       name: "Edge AI & IoT", 
-      description: "Wearables, sensors, and remote monitoring devices" 
+      description: "Real-time Monitoring" 
     },
     { 
       icon: <FileText size={24} color="#5bbeff" />, 
       name: "Imaging AI", 
-      description: "MRI, CT scans, x-rays, and ultrasounds" 
+      description: "Medical Imaging Analysis" 
     },
     { 
       icon: <Brain size={24} color="#5bbeff" />, 
       name: "Behavioral Health", 
-      description: "Mental health, cognitive functions, and lifestyle" 
+      description: "Mental Health Metrics" 
     }
   ];
 
   const healthOutcomes = [
     {
-      icon: <BarChart4 size={24} color="#5bbeff" />,
+      icon: <HeartPulse size={24} color="#b45cff" />,
       title: "Digital Twin AI",
-      description: "Personalized health simulation for precision medicine"
+      description: "Personalized Health Model"
     },
     {
-      icon: <LineChart size={24} color="#5bbeff" />,
+      icon: <BarChart4 size={24} color="#b45cff" />,
       title: "Predictive Dashboard",
-      description: "Early warning system highlighting potential health risks"
+      description: "Health Forecasting"
     },
     {
-      icon: <TrendingUp size={24} color="#5bbeff" />,
+      icon: <Search size={24} color="#b45cff" />,
       title: "Risk Forecasts",
-      description: "Advanced risk stratification and prevention strategies"
+      description: "Early Warning System"
     },
     {
-      icon: <HeartPulse size={24} color="#5bbeff" />,
+      icon: <Pill size={24} color="#b45cff" />,
+      title: "Drug Discovery",
+      description: "Treatment Optimization"
+    },
+    {
+      icon: <Activity size={24} color="#b45cff" />,
       title: "Real-Time Monitoring",
-      description: "Continuous health tracking with intelligent alerts"
+      description: "Continuous Assessment"
     }
   ];
 
   return (
     <div className="modern-flow-container">
-      <h2 className="modern-flow-title">Bridging Data, Intelligence, and Care</h2>
-      <p className="modern-flow-subtitle">for a Healthier Tomorrow</p>
-      
       <div className="modern-flow-wrapper">
-        {/* Data Sources Section with animated pulse dots */}
+        {/* Data Sources Section - Left Side */}
         <div className="modern-flow-section">
-          <h3 className="modern-section-title">Health Data Sources</h3>
+          <h2 className="modern-section-title">Data Sources</h2>
           
           {dataSources.map((source, index) => (
             <div key={index} className="data-source">
@@ -80,53 +84,38 @@ const ModernAIFlowDiagram: React.FC = () => {
                 {source.icon}
               </div>
               <div className="data-content">
+                <div className="data-gradient left-gradient"></div>
                 <div className="data-text">{source.name}</div>
                 <div className="data-description">{source.description}</div>
-              </div>
-              <div className="data-pulse-container">
-                <div className="data-pulse-dot" style={{animationDelay: `${index * 0.2}s`}}></div>
-                <div className="data-pulse-dot" style={{animationDelay: `${(index * 0.2) + 0.3}s`}}></div>
-                <div className="data-pulse-dot" style={{animationDelay: `${(index * 0.2) + 0.6}s`}}></div>
               </div>
             </div>
           ))}
         </div>
         
-        {/* Akeno AI Engine Section - glowing, beating circle */}
+        {/* Akeno AI Engine Section - Center */}
         <div className="modern-flow-section">
           <div className="akeno-engine-container">
-            <div className="engine-pulse"></div>
-            <div className="engine-pulse"></div>
-            <div className="engine-pulse"></div>
+            <div className="engine-outer-ring"></div>
             <div className="akeno-engine">
-              <div className="engine-text">Akeno AI Engine</div>
+              <h3>Akeno AI</h3>
+              <p>Healthcare Engine</p>
             </div>
-            <div className="engine-glow"></div>
           </div>
         </div>
         
-        {/* Health Outcomes Section with animated bar graphs */}
+        {/* Health Insights Section - Right Side */}
         <div className="modern-flow-section">
-          <h3 className="modern-section-title">AI Healthcare Solutions</h3>
+          <h2 className="modern-section-title">Insights</h2>
           
           {healthOutcomes.map((outcome, index) => (
             <div key={index} className="health-outcome">
-              <div className="outcome-header">
-                <div className="outcome-icon">{outcome.icon}</div>
+              <div className="outcome-content">
+                <div className="outcome-gradient right-gradient"></div>
                 <div className="health-title">{outcome.title}</div>
+                <div className="health-description">{outcome.description}</div>
               </div>
-              <div className="health-description">{outcome.description}</div>
-              <div className="analytics-bars-container">
-                {[...Array(5)].map((_, i) => (
-                  <div 
-                    key={i} 
-                    className="analytics-bar" 
-                    style={{
-                      height: `${20 + Math.floor(Math.random() * 60)}%`,
-                      animationDelay: `${(i * 0.2) + (index * 0.1)}s`
-                    }}
-                  ></div>
-                ))}
+              <div className="outcome-icon">
+                {outcome.icon}
               </div>
             </div>
           ))}
