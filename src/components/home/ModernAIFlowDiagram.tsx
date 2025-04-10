@@ -44,7 +44,7 @@ const ModernAIFlowDiagram: React.FC = () => {
     title: "Research & Discovery"
   }];
 
-  // Updated with matching colors from data sources
+  // Updated benefit titles to match the image
   const systemBenefits = [{
     title: "Disease Prediction",
     value: 58,
