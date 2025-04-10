@@ -1,27 +1,35 @@
-import React from 'react';
-import { Watch, Dna, Brain, Eye, FlaskConical, Target, BarChart4, Sparkles, Cable, FileText } from 'lucide-react';
+
+import React, { useEffect } from 'react';
+import { Watch, Dna, Brain, Eye, FileText, Target, Cable, FlaskConical, Sparkles } from 'lucide-react';
+
 const ModernAIFlowDiagram: React.FC = () => {
   const dataSources = [{
     icon: <Watch size={28} className="text-cyan-400" />,
     name: "Wearable Data",
-    description: "Real-time Monitoring"
+    description: "Real-time Monitoring",
+    color: "text-cyan-400"
   }, {
-    icon: <Dna size={28} className="text-cyan-400" />,
+    icon: <Dna size={28} className="text-blue-400" />,
     name: "Genomic Data",
-    description: "Molecular Analysis"
+    description: "Molecular Analysis",
+    color: "text-blue-400"
   }, {
-    icon: <Brain size={28} className="text-cyan-400" />,
+    icon: <Brain size={28} className="text-indigo-400" />,
     name: "Cognitive Health",
-    description: "Mental Health Metrics"
+    description: "Mental Health Metrics",
+    color: "text-indigo-400"
   }, {
-    icon: <Eye size={28} className="text-cyan-400" />,
+    icon: <Eye size={28} className="text-violet-400" />,
     name: "Medical Imaging",
-    description: "Visual Diagnostics"
+    description: "Visual Diagnostics",
+    color: "text-violet-400"
   }, {
-    icon: <FileText size={28} className="text-cyan-400" />,
+    icon: <FileText size={28} className="text-purple-400" />,
     name: "Clinical Records",
-    description: "Patient History"
+    description: "Patient History",
+    color: "text-purple-400"
   }];
+
   const aiCapabilities = [{
     icon: <Target size={22} className="text-purple-300" />,
     title: "Predictive Analytics"
@@ -35,6 +43,7 @@ const ModernAIFlowDiagram: React.FC = () => {
     icon: <FlaskConical size={22} className="text-purple-300" />,
     title: "Research & Discovery"
   }];
+
   const systemBenefits = [{
     title: "Real Time Health",
     value: 65,
@@ -48,7 +57,7 @@ const ModernAIFlowDiagram: React.FC = () => {
     value: 85,
     color: "bg-indigo-400"
   }, {
-    title: "Smart R&D",
+    title: "Medical AI",
     value: 95,
     color: "bg-violet-400"
   }, {
@@ -56,6 +65,31 @@ const ModernAIFlowDiagram: React.FC = () => {
     value: 100,
     color: "bg-purple-400"
   }];
+
+  // Animation for the benefit bars
+  useEffect(() => {
+    const bars = document.querySelectorAll('.benefit-bar');
+    
+    // Set initial height to 0
+    bars.forEach((bar) => {
+      bar.setAttribute('style', 'height: 0%');
+    });
+    
+    // Animate bars to their full height with staggered delay
+    setTimeout(() => {
+      bars.forEach((bar, index) => {
+        setTimeout(() => {
+          const value = bar.classList.contains('bg-cyan-400') ? '65%' :
+                        bar.classList.contains('bg-blue-400') ? '75%' :
+                        bar.classList.contains('bg-indigo-400') ? '85%' :
+                        bar.classList.contains('bg-violet-400') ? '95%' :
+                        '100%';
+          bar.setAttribute('style', `height: ${value}`);
+        }, index * 200);
+      });
+    }, 500);
+  }, []);
+
   return <div className="modern-flow-container">
       <h2 className="modern-flow-title">Bridging Data, Intelligence, and Care</h2>
       
@@ -67,15 +101,15 @@ const ModernAIFlowDiagram: React.FC = () => {
           <div className="data-sources-list">
             {dataSources.map((source, index) => <div key={index} className="data-source-item">
                 <div className="data-source-icon-container">
-                  <div className="data-source-icon">{source.icon}</div>
+                  <div className={`data-source-icon ${source.color}`}>{source.icon}</div>
                   <div className="flow-connection-dots">
-                    {Array(12).fill(0).map((_, i) => <div key={i} className="flow-dot" style={{
+                    {Array(12).fill(0).map((_, i) => <div key={i} className={`flow-dot ${source.color.replace('text-', 'bg-')}`} style={{
                   animationDelay: `${i * 0.1}s`
                 }}></div>)}
                   </div>
                 </div>
                 <div className="data-source-content">
-                  <div className="data-source-name">{source.name}</div>
+                  <div className={`data-source-name ${source.color}`}>{source.name}</div>
                   <div className="data-source-description">{source.description}</div>
                 </div>
               </div>)}
@@ -117,7 +151,7 @@ const ModernAIFlowDiagram: React.FC = () => {
             {systemBenefits.map((benefit, index) => <div key={index} className="benefit-item">
                 <div className="benefit-bar-container">
                   <div className={`benefit-bar ${benefit.color}`} style={{
-                height: `${benefit.value}%`
+                height: '0%'
               }}></div>
                 </div>
                 <div className="benefit-label">{benefit.title}</div>
@@ -127,4 +161,5 @@ const ModernAIFlowDiagram: React.FC = () => {
       </div>
     </div>;
 };
+
 export default ModernAIFlowDiagram;
