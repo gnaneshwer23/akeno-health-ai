@@ -1,100 +1,76 @@
 
-/* Animations for data flow, engine pulses, and other dynamic elements */
-
-/* Data flow animation */
-@keyframes flow-dot-animation {
+/* Animation styles */
+@keyframes flowDotAnimation {
   0% {
     opacity: 0;
-    transform: translateX(0);
+    left: 0%;
+    transform: translateY(0);
   }
-  50% {
-    opacity: 0.9;
+  10% {
+    opacity: 1;
   }
-  100% {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-}
-
-.flow-dot {
-  animation: flow-dot-animation 2s ease-in-out infinite;
-}
-
-/* Bar chart animation */
-@keyframes bar-rise {
-  0% {
-    height: 0;
-  }
-  100% {
-    height: var(--value);
-  }
-}
-
-.benefit-bar {
-  animation: bar-rise 1.5s ease-out forwards;
-}
-
-/* Connection lines pulse animation */
-@keyframes connection-pulse {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-/* Data dots flow animation */
-@keyframes data-dots-flow {
-  0% {
-    opacity: 0;
-    transform: translateX(0);
-  }
-  50% {
+  90% {
     opacity: 1;
   }
   100% {
     opacity: 0;
-    transform: translateX(100%);
+    left: 100%;
+    transform: translateY(0);
   }
 }
 
-/* Connection highlight effect */
-@keyframes connection-highlight {
+.flow-dot {
+  animation: flowDotAnimation 2.5s infinite;
+}
+
+@keyframes pulseRing {
   0% {
-    background-position: 0% 50%;
+    transform: scale(0.9);
+    opacity: 0.8;
+    border-color: rgba(91, 190, 255, 0.8);
   }
   50% {
-    background-position: 100% 50%;
+    transform: scale(1.05);
+    opacity: 0.5;
+    border-color: rgba(180, 92, 255, 0.8);
   }
   100% {
-    background-position: 0% 50%;
+    transform: scale(0.9);
+    opacity: 0.8;
+    border-color: rgba(91, 190, 255, 0.8);
   }
 }
 
-/* For text with gradient animation */
-@keyframes text-gradient-shift {
+@keyframes glowPulse {
   0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
+    box-shadow: 
+      0 0 20px rgba(91, 190, 255, 0.5),
+      0 0 40px rgba(180, 92, 255, 0.3);
   }
   100% {
-    background-position: 0% 50%;
+    box-shadow: 
+      0 0 40px rgba(91, 190, 255, 0.7),
+      0 0 80px rgba(180, 92, 255, 0.5);
   }
 }
 
-.modern-flow-title {
-  animation: text-gradient-shift 5s ease infinite;
-  background-size: 200% 200%;
+@keyframes barAnimation {
+  0% {
+    height: calc(var(--value) - 5%);
+  }
+  100% {
+    height: calc(var(--value) + 5%);
+  }
 }
 
-/* Capability card hover effect */
-.ai-capability-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.engine-pulse-ring {
+  animation: pulseRing 3s linear infinite;
 }
 
-.ai-capability-card:hover {
-  transform: translateY(-5px);
+.engine-inner {
+  animation: glowPulse 4s ease-in-out infinite alternate;
+}
+
+.benefit-bar {
+  animation: barAnimation 3s ease-in-out infinite alternate;
 }
