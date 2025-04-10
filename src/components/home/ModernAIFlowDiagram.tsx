@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Watch, Dna, Brain, Eye, FlaskConical, Target, BarChart4, Sparkles, Cable, FileText } from 'lucide-react';
 const ModernAIFlowDiagram: React.FC = () => {
@@ -36,7 +37,7 @@ const ModernAIFlowDiagram: React.FC = () => {
     title: "Research & Discovery"
   }];
   const systemBenefits = [{
-    title: "Real Time Health",
+    title: "Disease Prediction",
     value: 65,
     color: "bg-cyan-400"
   }, {
@@ -44,15 +45,15 @@ const ModernAIFlowDiagram: React.FC = () => {
     value: 75,
     color: "bg-blue-400"
   }, {
-    title: "Smart Healthcare",
+    title: "Drug Discovery",
     value: 85,
     color: "bg-indigo-400"
   }, {
-    title: "Smart R&D",
+    title: "AI Clinical Decisions",
     value: 95,
     color: "bg-violet-400"
   }, {
-    title: "Accelerated R&D",
+    title: "Data-Driven Healthcare",
     value: 100,
     color: "bg-purple-400"
   }];
