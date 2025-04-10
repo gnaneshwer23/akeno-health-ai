@@ -30,24 +30,11 @@
   }
   
   .benefits-chart {
-    height: 180px;
-    margin: 20px 0 160px; /* Increased bottom margin for labels on tablet */
-    padding: 0 20px; /* Added horizontal padding */
+    height: 200px;
   }
   
   .benefit-bar {
-    width: 35px; /* Wider bars on tablet */
-  }
-  
-  .benefit-label-container {
-    margin-top: 20px;
-    width: 220%; /* Wider labels on tablet */
-    height: 120px; /* Taller label area */
-  }
-  
-  .benefit-label {
-    font-size: 0.85rem;
-    line-height: 1.4;
+    width: 20px;
   }
 }
 
@@ -81,27 +68,15 @@
   
   .benefits-chart {
     height: 150px;
-    padding: 0 10px;
-    margin: 20px 0 180px; /* Even more space for labels on mobile */
+    gap: 5px;
   }
   
   .benefit-bar {
-    width: 30px; /* Still wider bars for mobile but adjusted for screen size */
-  }
-  
-  .benefit-label-container {
-    height: 140px; /* Much taller label area on mobile */
-    width: 280%; /* Even wider labels on mobile */
-    margin-top: 25px; /* More space between bars and labels */
+    width: 16px;
   }
   
   .benefit-label {
-    font-size: 0.8rem;
-    line-height: 1.4;
-  }
-  
-  .benefit-item {
-    padding: 0;
-    width: 20%;
+    font-size: 0.65rem;
+    word-break: break-word;
   }
 }
