@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { Watch, Dna, Brain, Eye, FlaskConical, Target, BarChart4, Sparkles, Cable, FileText } from 'lucide-react';
+
 const ModernAIFlowDiagram: React.FC = () => {
   const dataSources = [{
     icon: <Watch size={28} className="text-cyan-400" />,
@@ -22,6 +24,7 @@ const ModernAIFlowDiagram: React.FC = () => {
     name: "Clinical Records",
     description: "Patient History"
   }];
+  
   const aiCapabilities = [{
     icon: <Target size={22} className="text-purple-300" />,
     title: "Predictive Analytics"
@@ -35,27 +38,30 @@ const ModernAIFlowDiagram: React.FC = () => {
     icon: <FlaskConical size={22} className="text-purple-300" />,
     title: "Research & Discovery"
   }];
+  
+  // Updated with more precise values and better color gradients
   const systemBenefits = [{
     title: "Disease Prediction",
-    value: 62,
+    value: 58,
     color: "bg-gradient-to-t from-teal-600 to-teal-300"
   }, {
     title: "Precision Medicine",
-    value: 78,
+    value: 73,
     color: "bg-gradient-to-t from-blue-600 to-blue-300"
   }, {
     title: "Drug Discovery",
-    value: 85,
+    value: 80,
     color: "bg-gradient-to-t from-purple-600 to-purple-300"
   }, {
     title: "AI Clinical Decisions",
-    value: 70,
+    value: 65,
     color: "bg-gradient-to-t from-rose-500 to-rose-300"
   }, {
     title: "Data-Driven Healthcare",
-    value: 75,
+    value: 70,
     color: "bg-gradient-to-t from-amber-600 to-amber-300"
   }];
+  
   return <div className="modern-flow-container">
       <h2 className="modern-flow-title">Bridging Data, Intelligence, and Care</h2>
       
@@ -113,14 +119,19 @@ const ModernAIFlowDiagram: React.FC = () => {
         <div className="flow-column system-benefits px-0 py-[33px] mx-[22px]">
           <h2 className="column-title">System-Wide Benefits</h2>
           
-          <div className="benefits-chart my-[33px] mx-0 px-0 py-[9px]">
+          <div className="benefits-chart my-[33px] mx-0 px-0">
             {systemBenefits.map((benefit, index) => <div key={index} className="benefit-item">
-                <div className={`benefit-bar ${benefit.color}`} style={{
-              height: `${benefit.value}%`,
-              animationDelay: `${index * 0.3}s`
-            }}></div>
+                <div className="benefit-bar-container">
+                  <div 
+                    className={`benefit-bar ${benefit.color}`} 
+                    style={{
+                      height: `${benefit.value}%`,
+                      animationDelay: `${index * 0.3}s`
+                    }}
+                  />
+                </div>
                 <div className="benefit-label-container">
-                  <span className="benefit-label my-[4px] mx-[4px] py-0 px-0 text-xs font-semibold text-left">{benefit.title}</span>
+                  <div className="benefit-label">{benefit.title}</div>
                 </div>
               </div>)}
           </div>
@@ -128,4 +139,5 @@ const ModernAIFlowDiagram: React.FC = () => {
       </div>
     </div>;
 };
+
 export default ModernAIFlowDiagram;

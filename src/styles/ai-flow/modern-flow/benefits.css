@@ -6,7 +6,7 @@
   align-items: flex-end;
   height: 200px;
   width: 100%;
-  margin: 30px 0 60px;
+  margin: 30px 0 80px; /* Increased bottom margin to give more room for labels */
   padding: 0;
   position: relative;
 }
@@ -20,8 +20,16 @@
   position: relative;
 }
 
+.benefit-bar-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
 .benefit-bar {
-  width: 20px;
+  width: 16px;
   max-height: 100%;
   border-radius: 10px 10px 0 0;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
@@ -37,32 +45,40 @@
 
 .benefit-label-container {
   width: 100%;
-  margin-top: 15px;
-  height: 40px;
+  margin-top: 8px;
+  height: 60px; /* Increased height for the label container */
   display: flex;
   justify-content: center;
-}
-
-.benefit-label {
-  color: #e0e7ff;
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
-  width: 100%;
-  line-height: 1.1;
-  display: block;
-  word-wrap: break-word;
   padding: 0 2px;
 }
 
-/* Animation for the bars */
+.benefit-label {
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9); /* Enhanced text shadow for better readability */
+  width: 100%;
+  line-height: 1.2;
+  display: block;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Animation for the bars - modified to move up and down */
 @keyframes barFloat {
   0% {
     transform: translateY(0);
   }
+  25% {
+    transform: translateY(-8px);
+  }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(4px);
   }
   100% {
     transform: translateY(0);
@@ -72,20 +88,25 @@
 /* Staggered animations for bars */
 .benefit-item:nth-child(1) .benefit-bar {
   animation-delay: 0s;
+  background: linear-gradient(to top, #42d392, #64ebbe);
 }
 
 .benefit-item:nth-child(2) .benefit-bar {
   animation-delay: 0.4s;
+  background: linear-gradient(to top, #4a7bf7, #7faaff);
 }
 
 .benefit-item:nth-child(3) .benefit-bar {
   animation-delay: 0.8s;
+  background: linear-gradient(to top, #9f7aea, #c3adf7);
 }
 
 .benefit-item:nth-child(4) .benefit-bar {
   animation-delay: 1.2s;
+  background: linear-gradient(to top, #f56565, #feb2b2);
 }
 
 .benefit-item:nth-child(5) .benefit-bar {
   animation-delay: 1.6s;
+  background: linear-gradient(to top, #ecc94b, #faf089);
 }
