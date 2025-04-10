@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { Watch, Dna, Brain, Eye, FlaskConical, Target, BarChart4, Sparkles, Cable, FileText } from 'lucide-react';
+
 const ModernAIFlowDiagram: React.FC = () => {
   const dataSources = [{
     icon: <Watch size={28} className="text-cyan-400" />,
@@ -22,6 +24,7 @@ const ModernAIFlowDiagram: React.FC = () => {
     name: "Clinical Records",
     description: "Patient History"
   }];
+  
   const aiCapabilities = [{
     icon: <Target size={22} className="text-purple-300" />,
     title: "Predictive Analytics"
@@ -35,28 +38,31 @@ const ModernAIFlowDiagram: React.FC = () => {
     icon: <FlaskConical size={22} className="text-purple-300" />,
     title: "Research & Discovery"
   }];
+  
   const systemBenefits = [{
     title: "Disease Prediction",
-    value: 65,
-    color: "bg-cyan-400"
+    value: 58,
+    color: "bg-gradient-to-t from-cyan-600 to-cyan-300"
   }, {
     title: "Precision Medicine",
-    value: 75,
-    color: "bg-blue-400"
+    value: 72,
+    color: "bg-gradient-to-t from-blue-600 to-blue-300"
   }, {
     title: "Drug Discovery",
     value: 85,
-    color: "bg-indigo-400"
+    color: "bg-gradient-to-t from-indigo-600 to-indigo-300"
   }, {
     title: "AI Clinical Decisions",
-    value: 95,
-    color: "bg-violet-400"
+    value: 92,
+    color: "bg-gradient-to-t from-violet-600 to-violet-300"
   }, {
     title: "Data-Driven Healthcare",
-    value: 100,
-    color: "bg-purple-400"
+    value: 78,
+    color: "bg-gradient-to-t from-purple-600 to-purple-300"
   }];
-  return <div className="modern-flow-container">
+  
+  return (
+    <div className="modern-flow-container">
       <h2 className="modern-flow-title">Bridging Data, Intelligence, and Care</h2>
       
       <div className="modern-flow-diagram">
@@ -65,20 +71,24 @@ const ModernAIFlowDiagram: React.FC = () => {
           <h2 className="column-title">Data Sources</h2>
           
           <div className="data-sources-list">
-            {dataSources.map((source, index) => <div key={index} className="data-source-item">
+            {dataSources.map((source, index) => (
+              <div key={index} className="data-source-item">
                 <div className="data-source-icon-container">
                   <div className="data-source-icon">{source.icon}</div>
                   <div className="flow-connection-dots">
-                    {Array(12).fill(0).map((_, i) => <div key={i} className="flow-dot" style={{
-                  animationDelay: `${i * 0.1}s`
-                }}></div>)}
+                    {Array(12).fill(0).map((_, i) => (
+                      <div key={i} className="flow-dot" style={{
+                        animationDelay: `${i * 0.1}s`
+                      }}></div>
+                    ))}
                   </div>
                 </div>
                 <div className="data-source-content">
                   <div className="data-source-name">{source.name}</div>
                   <div className="data-source-description">{source.description}</div>
                 </div>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
         
@@ -86,10 +96,12 @@ const ModernAIFlowDiagram: React.FC = () => {
         <div className="flow-column akeno-engine rounded-none mx-[100px] py-[50px] px-0 bg-slate-950">
           {/* AI Capabilities above the engine */}
           <div className="ai-capabilities-container">
-            {aiCapabilities.slice(0, 2).map((capability, index) => <div key={index} className="ai-capability-card">
+            {aiCapabilities.slice(0, 2).map((capability, index) => (
+              <div key={index} className="ai-capability-card">
                 <span className="capability-icon">{capability.icon}</span>
                 <span className="capability-title">{capability.title}</span>
-              </div>)}
+              </div>
+            ))}
           </div>
           
           {/* The AI Engine */}
@@ -102,10 +114,12 @@ const ModernAIFlowDiagram: React.FC = () => {
           
           {/* AI Capabilities below the engine */}
           <div className="ai-capabilities-container">
-            {aiCapabilities.slice(2, 4).map((capability, index) => <div key={index} className="ai-capability-card">
+            {aiCapabilities.slice(2, 4).map((capability, index) => (
+              <div key={index} className="ai-capability-card">
                 <span className="capability-icon">{capability.icon}</span>
                 <span className="capability-title">{capability.title}</span>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
         
@@ -114,17 +128,21 @@ const ModernAIFlowDiagram: React.FC = () => {
           <h2 className="column-title">System-Wide Benefits</h2>
           
           <div className="benefits-chart mx-[30px] my-[30px] px-[45px] py-[3px]">
-            {systemBenefits.map((benefit, index) => <div key={index} className="benefit-item">
+            {systemBenefits.map((benefit, index) => (
+              <div key={index} className="benefit-item">
                 <div className="benefit-bar-container">
                   <div className={`benefit-bar ${benefit.color}`} style={{
-                height: `${benefit.value}%`
-              }}></div>
+                    height: `${benefit.value}%`
+                  }}></div>
                 </div>
                 <div className="benefit-label">{benefit.title}</div>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default ModernAIFlowDiagram;

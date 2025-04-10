@@ -36,6 +36,11 @@
   .benefit-bar {
     width: 20px;
   }
+  
+  /* Improved spacing for benefit labels */
+  .benefit-item {
+    padding: 0 5px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -69,6 +74,7 @@
   .benefits-chart {
     height: 150px;
     gap: 5px;
+    padding: 5px;
   }
   
   .benefit-bar {
@@ -78,5 +84,13 @@
   .benefit-label {
     font-size: 0.65rem;
     word-break: break-word;
+    /* Add more space between bars for labels */
+    padding: 0 2px;
+    margin-top: 10px;
+  }
+  
+  /* Increase chart bottom margin to accommodate labels */
+  .benefits-chart {
+    margin-bottom: 50px;
   }
 }
