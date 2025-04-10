@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Watch, Dna, Brain, Eye, FlaskConical, Target, BarChart4, Sparkles, Cable, FileText } from 'lucide-react';
 const ModernAIFlowDiagram: React.FC = () => {
@@ -114,7 +113,7 @@ const ModernAIFlowDiagram: React.FC = () => {
         <div className="flow-column system-benefits px-[25px]">
           <h2 className="column-title">System-Wide Benefits</h2>
           
-          <div className="benefits-chart">
+          <div className="benefits-chart mx-[30px] my-[30px] px-[45px] py-[3px]">
             {systemBenefits.map((benefit, index) => <div key={index} className="benefit-item">
                 <div className="benefit-bar-container">
                   <div className={`benefit-bar ${benefit.color}`} style={{
