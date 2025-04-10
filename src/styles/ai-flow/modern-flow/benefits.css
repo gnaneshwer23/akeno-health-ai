@@ -20,13 +20,21 @@
   width: 100%;
   font-weight: 500;
   line-height: 1.2;
-  word-break: break-word;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  white-space: normal; /* Allow text to wrap naturally */
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
   padding: 0 2px;
+  position: absolute;
+  top: 100%; /* Position below the bar */
+  left: 0;
+  width: 100%;
+}
+
+/* Remove text truncation */
+.benefit-label {
+  overflow: visible;
+  display: block;
+  min-width: 70px; /* Ensure there's enough width for the text */
+  transform: translateX(-20px); /* Center the label under the bar */
 }
 
 /* Animation for the bars */

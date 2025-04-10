@@ -31,6 +31,7 @@
   
   .benefits-chart {
     height: 200px;
+    margin-bottom: 80px; /* Add extra space below for labels */
   }
   
   .benefit-bar {
@@ -40,6 +41,10 @@
   /* Improved spacing for benefit labels */
   .benefit-item {
     padding: 0 5px;
+  }
+  
+  .benefit-label {
+    white-space: normal;
   }
 }
 
@@ -73,8 +78,9 @@
   
   .benefits-chart {
     height: 150px;
-    gap: 5px;
+    gap: 10px; /* Increase gap between bars for better label spacing */
     padding: 5px;
+    margin-bottom: 80px; /* Extra space for labels */
   }
   
   .benefit-bar {
@@ -83,14 +89,13 @@
   
   .benefit-label {
     font-size: 0.65rem;
-    word-break: break-word;
-    /* Add more space between bars for labels */
+    white-space: normal;
     padding: 0 2px;
     margin-top: 10px;
   }
   
-  /* Increase chart bottom margin to accommodate labels */
-  .benefits-chart {
-    margin-bottom: 50px;
+  /* Update benefit item width for better spacing */
+  .benefit-item {
+    min-width: 60px;
   }
 }

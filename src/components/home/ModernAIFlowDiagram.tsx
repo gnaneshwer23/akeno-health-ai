@@ -42,7 +42,7 @@ const ModernAIFlowDiagram: React.FC = () => {
   const systemBenefits = [{
     title: "Disease Prediction",
     value: 58,
-    color: "bg-gradient-to-t from-cyan-600 to-cyan-300"
+    color: "bg-gradient-to-t from-teal-600 to-teal-300"
   }, {
     title: "Precision Medicine",
     value: 72,
@@ -50,7 +50,7 @@ const ModernAIFlowDiagram: React.FC = () => {
   }, {
     title: "Drug Discovery",
     value: 85,
-    color: "bg-gradient-to-t from-indigo-600 to-indigo-300"
+    color: "bg-gradient-to-t from-indigo-600 to-indigo-400"
   }, {
     title: "AI Clinical Decisions",
     value: 92,
@@ -58,7 +58,7 @@ const ModernAIFlowDiagram: React.FC = () => {
   }, {
     title: "Data-Driven Healthcare",
     value: 78,
-    color: "bg-gradient-to-t from-purple-600 to-purple-300"
+    color: "bg-gradient-to-t from-purple-600 to-fuchsia-300"
   }];
   
   return (
@@ -127,15 +127,15 @@ const ModernAIFlowDiagram: React.FC = () => {
         <div className="flow-column system-benefits px-[25px]">
           <h2 className="column-title">System-Wide Benefits</h2>
           
-          <div className="benefits-chart mx-[30px] my-[30px] px-[45px] py-[3px]">
+          <div className="benefits-chart mx-[30px] mb-[80px] mt-[30px] px-[30px] py-[3px]">
             {systemBenefits.map((benefit, index) => (
               <div key={index} className="benefit-item">
                 <div className="benefit-bar-container">
                   <div className={`benefit-bar ${benefit.color}`} style={{
                     height: `${benefit.value}%`
                   }}></div>
+                  <div className="benefit-label">{benefit.title}</div>
                 </div>
-                <div className="benefit-label">{benefit.title}</div>
               </div>
             ))}
           </div>
