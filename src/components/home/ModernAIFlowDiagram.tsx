@@ -110,7 +110,7 @@ const ModernAIFlowDiagram: React.FC = () => {
         </div>
         
         {/* Right Column - System Benefits */}
-        <div className="flow-column system-benefits">
+        <div className="flow-column system-benefits px-[25px]">
           <h2 className="column-title">System-Wide Benefits</h2>
           
           <div className="benefits-chart">
