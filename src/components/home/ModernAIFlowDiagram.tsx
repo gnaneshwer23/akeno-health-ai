@@ -104,8 +104,8 @@ const ModernAIFlowDiagram: React.FC = () => {
                 <div className="data-source-icon-container">
                   <div className={`data-source-icon ${source.color}`}>{source.icon}</div>
                   <div className="flow-connection-dots">
-                    {Array(12).fill(0).map((_, i) => <div key={i} className={`flow-dot ${source.color.replace('text-', 'bg-')}`} style={{
-                  animationDelay: `${i * 0.1}s`
+                    {Array(18).fill(0).map((_, i) => <div key={i} className={`flow-dot ${source.color.replace('text-', 'bg-')}`} style={{
+                  animationDelay: `${i * 0.07}s`
                 }}></div>)}
                   </div>
                 </div>
@@ -143,9 +143,18 @@ const ModernAIFlowDiagram: React.FC = () => {
               </div>)}
           </div>
 
-          {/* Through-AI Flow Dots */}
+          {/* Through-AI Flow Dots - Added more dots */}
           <div className="through-ai-connection">
-            {dataSources.map((_, index) => (
+            {/* Original 5 dots */}
+            {[0, 1, 2, 3, 4].map((index) => (
+              <div 
+                key={index} 
+                className={`flow-dot-through-ai dot-${index}`}
+              ></div>
+            ))}
+            
+            {/* Additional 5 dots */}
+            {[5, 6, 7, 8, 9].map((index) => (
               <div 
                 key={index} 
                 className={`flow-dot-through-ai dot-${index}`}

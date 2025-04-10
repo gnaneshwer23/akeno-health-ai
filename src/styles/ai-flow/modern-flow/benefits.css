@@ -89,3 +89,22 @@
   animation: bar-glow 2s infinite;
   animation-delay: 9s;
 }
+
+/* Enhanced bar animations */
+@keyframes bar-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scaleY(0.97);
+  }
+}
+
+.benefit-bar.animated {
+  animation: 
+    bar-grow 1.2s ease-out forwards,
+    bar-breathe 3s ease-in-out infinite 1.2s,
+    bar-pulse 1.5s alternate infinite 2s;
+}

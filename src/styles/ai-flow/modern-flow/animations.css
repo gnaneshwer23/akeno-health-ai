@@ -45,15 +45,15 @@
   to { height: var(--value); }
 }
 
-/* Bar up-down animation */
+/* Bar up-down animation - Enhanced with more movement */
 @keyframes bar-breathe {
   0%, 100% { 
     height: var(--value); 
     opacity: 1;
   }
   50% { 
-    height: calc(var(--value) - 10px);
-    opacity: 0.9;
+    height: calc(var(--value) - 20px);
+    opacity: 0.85;
   }
 }
 
@@ -119,7 +119,7 @@
   animation-delay: 0.5s;
 }
 
-/* Flow dots path through Akeno AI to benefits */
+/* Flow dots path through Akeno AI to benefits - Enhanced with more movement and frequency */
 @keyframes flow-through-ai {
   0% {
     left: 0;
