@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CustomButton } from '@/components/ui/custom-button';
@@ -17,6 +16,7 @@ import {
   BarChart3
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import RealWorldEvidenceDemo from './RealWorldEvidenceDemo';
 
 const FeatureIcon = ({ children }: { children: React.ReactNode }) => (
   <div className="h-10 w-10 rounded-full bg-health-primary/10 flex items-center justify-center text-health-primary">
@@ -56,6 +56,7 @@ const ProductsRealWorldEvidence = () => {
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
+          {/* Main content section */}
           <motion.div 
             className="flex flex-col md:flex-row gap-10 mb-16"
             initial={{ opacity: 0 }}
@@ -172,13 +173,31 @@ const ProductsRealWorldEvidence = () => {
               </div>
             </motion.div>
           </motion.div>
+
+          {/* Interactive Demo Section */}
+          <motion.div
+            className="mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-semibold mb-2">Interactive Demo</h3>
+              <p className="text-gray-600 max-w-3xl mx-auto">
+                Experience our Real-World Evidence platform with simulated data from a global healthcare study.
+              </p>
+            </div>
+            <RealWorldEvidenceDemo />
+          </motion.div>
           
+          {/* Key Capabilities */}
           <motion.div 
             className="text-center mb-12"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             <h3 className="text-2xl font-semibold mb-2">Key Capabilities</h3>
             <p className="text-gray-600 max-w-3xl mx-auto">
@@ -187,7 +206,7 @@ const ProductsRealWorldEvidence = () => {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {features.map((feature, index) => (
               <motion.div 
                 key={index}
@@ -195,7 +214,7 @@ const ProductsRealWorldEvidence = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
               >
                 <div className="h-12 w-12 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
                   {feature.icon}
@@ -208,30 +227,43 @@ const ProductsRealWorldEvidence = () => {
             ))}
           </div>
           
+          {/* CTA Section */}
           <motion.div
-            className="mt-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-          >
-            <CustomButton
-              variant="primary"
-              size="lg"
-              to="/real-world-evidence"
-              className="px-8"
-              withArrow={true}
-            >
-              Explore Full Capabilities
-            </CustomButton>
-          </motion.div>
-          
-          <motion.div
-            className="mt-16 p-6 rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.8 }}
+          >
+            <div className="flex flex-wrap justify-center gap-4">
+              <CustomButton
+                variant="primary"
+                size="lg"
+                to="/real-world-evidence"
+                className="px-8"
+                withArrow={true}
+              >
+                Explore Full Capabilities
+              </CustomButton>
+              <CustomButton
+                variant="outline"
+                size="lg"
+                to="/simulated-data-manager"
+                className="px-8"
+              >
+                <Database className="h-4 w-4 mr-2" />
+                Try Demo Data
+              </CustomButton>
+            </div>
+          </motion.div>
+          
+          {/* Global Impact Section */}
+          <motion.div
+            className="p-6 rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.9 }}
           >
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="md:w-1/4 flex justify-center">

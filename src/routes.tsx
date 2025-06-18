@@ -1,112 +1,136 @@
+import { createBrowserRouter } from "react-router-dom";
 
-import React, { lazy, Suspense } from 'react';
-import { createBrowserRouter, Navigate } from 'react-router-dom';
-import App from './App';
-import Dashboard from './pages/Dashboard';
-import NotFound from './pages/NotFound';
+import Home from "@/pages/Home";
+import AboutUs from "@/pages/AboutUs";
+import Solutions from "@/pages/Solutions";
+import HowItWorks from "@/pages/HowItWorks";
+import PatientSolutions from "@/pages/PatientSolutions";
+import DoctorSolutions from "@/pages/DoctorSolutions";
+import HospitalSolutions from "@/pages/HospitalSolutions";
+import BiotechSolutions from "@/pages/BiotechSolutions";
+import CaseStudiesAndBlog from "@/pages/CaseStudiesAndBlog";
+import Contact from "@/pages/Contact";
+import Login from "@/pages/Login";
+import Register from "@/pages/Register";
+import Dashboard from "@/pages/Dashboard";
+import RealWorldEvidence from "@/pages/RealWorldEvidence";
+import BiomarkerAnalytics from "@/pages/BiomarkerAnalytics";
+import DigitalTwinPanel from "@/pages/DigitalTwinPanel";
+import HealthcareDecisionMaking from "@/pages/HealthcareDecisionMaking";
+import Analytics from "@/pages/Analytics";
+import AIStudio from "@/pages/AIStudio";
+import QuantumComputing from "@/pages/QuantumComputing";
+import LoginAuth from "@/pages/auth/LoginAuth";
+import RegisterAuth from "@/pages/auth/RegisterAuth";
+import ForgotPassword from "@/pages/auth/ForgotPassword";
+import ResetPassword from "@/pages/auth/ResetPassword";
+import NotFound from "@/pages/NotFound";
 
-// Lazy loaded pages for better performance
-const Home = lazy(() => import('./pages/Home'));
-const AboutUs = lazy(() => import('./pages/AboutUs'));
-const Contact = lazy(() => import('./pages/Contact'));
-const Login = lazy(() => import('./pages/auth/Login'));
-const Register = lazy(() => import('./pages/Register'));
-const ResetPassword = lazy(() => import('./pages/auth/ResetPassword'));
-const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword'));
-const CaseStudiesAndBlog = lazy(() => import('./pages/CaseStudiesAndBlog'));
+import SimulatedDataManager from '@/pages/SimulatedDataManager';
 
-// Loading fallback
-const PageLoading = () => (
-  <div className="flex items-center justify-center h-screen">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-health-primary"></div>
-  </div>
-);
-
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
-    path: '/',
-    element: <App />,
-    errorElement: <NotFound />,
-    children: [
-      {
-        index: true,
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <Home />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'about',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <AboutUs />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'contact',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <Contact />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'case-studies-blog',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <CaseStudiesAndBlog />
-          </Suspense>
-        ),
-      },
-      // Adding an alias for case-studies to point to CaseStudiesAndBlog for menu compatibility
-      {
-        path: 'case-studies',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <CaseStudiesAndBlog />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'login',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <Login />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'register',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <Register />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'reset-password',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <ResetPassword />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'forgot-password',
-        element: (
-          <Suspense fallback={<PageLoading />}>
-            <ForgotPassword />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'dashboard/*',
-        element: <Dashboard />,
-      },
-    ],
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/about",
+    element: <AboutUs />,
+  },
+  {
+    path: "/solutions",
+    element: <Solutions />,
+  },
+  {
+    path: "/how-it-works",
+    element: <HowItWorks />,
+  },
+  {
+    path: "/patient-solutions",
+    element: <PatientSolutions />,
+  },
+  {
+    path: "/doctor-solutions",
+    element: <DoctorSolutions />,
+  },
+  {
+    path: "/hospital-solutions",
+    element: <HospitalSolutions />,
+  },
+  {
+    path: "/biotech-solutions",
+    element: <BiotechSolutions />,
+  },
+  {
+    path: "/case-studies",
+    element: <CaseStudiesAndBlog />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+  },
+  {
+    path: "/real-world-evidence",
+    element: <RealWorldEvidence />,
+  },
+  {
+    path: "/biomarker-analytics",
+    element: <BiomarkerAnalytics />,
+  },
+  {
+    path: "/digital-twin-panel",
+    element: <DigitalTwinPanel />,
+  },
+  {
+    path: "/healthcare-decision-making",
+    element: <HealthcareDecisionMaking />,
+  },
+  {
+    path: "/analytics",
+    element: <Analytics />,
+  },
+  {
+    path: "/ai-studio",
+    element: <AIStudio />,
+  },
+  {
+    path: "/quantum-computing",
+    element: <QuantumComputing />,
+  },
+  {
+    path: "/auth/login",
+    element: <LoginAuth />,
+  },
+  {
+    path: "/auth/register",
+    element: <RegisterAuth />,
+  },
+  {
+    path: "/auth/forgot-password",
+    element: <ForgotPassword />,
+  },
+  {
+    path: "/auth/reset-password",
+    element: <ResetPassword />,
+  },
+  {
+    path: "/simulated-data-manager",
+    element: <SimulatedDataManager />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
-
-export default router;
