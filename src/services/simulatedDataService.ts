@@ -85,14 +85,14 @@ export const simulatedDataService = {
 
       console.log('Data seeding completed successfully');
       return { success: true, message: 'Simulated data created successfully' };
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error seeding data:', error);
       return { success: false, error: error.message };
     }
   },
 
-  async createSimulatedPatients(userId: string): Promise<SimulatedPatient[]> {
-    const simulatedPatients: Omit<SimulatedPatient, 'id'>[] = [
+  async createSimulatedPatients(userId: string) {
+    const simulatedPatients = [
       {
         user_id: userId,
         first_name: 'John',
