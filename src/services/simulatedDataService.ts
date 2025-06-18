@@ -98,7 +98,7 @@ export const simulatedDataService = {
         first_name: 'John',
         last_name: 'Doe',
         date_of_birth: '1985-03-15',
-        gender: 'male',
+        gender: 'male' as const,
         contact_email: 'john.doe@email.com',
         contact_phone: '+1-555-0123',
         address: '123 Main St, Anytown, USA',

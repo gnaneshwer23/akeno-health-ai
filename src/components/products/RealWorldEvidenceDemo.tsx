@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CustomButton } from '@/components/ui/custom-button';
@@ -12,7 +11,7 @@ import {
   Users, 
   FileText, 
   Activity,
-  DNA,
+  Dna,
   Image,
   Database,
   CheckCircle,
@@ -284,7 +283,7 @@ const RealWorldEvidenceDemo = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <DNA className="h-5 w-5" />
+                <Dna className="h-5 w-5" />
                 Biomarker Improvements
               </CardTitle>
             </CardHeader>

@@ -1,3 +1,4 @@
+
 import { createBrowserRouter } from "react-router-dom";
 
 import Home from "@/pages/Home";
@@ -20,8 +21,6 @@ import HealthcareDecisionMaking from "@/pages/HealthcareDecisionMaking";
 import Analytics from "@/pages/Analytics";
 import AIStudio from "@/pages/AIStudio";
 import QuantumComputing from "@/pages/QuantumComputing";
-import LoginAuth from "@/pages/auth/LoginAuth";
-import RegisterAuth from "@/pages/auth/RegisterAuth";
 import ForgotPassword from "@/pages/auth/ForgotPassword";
 import ResetPassword from "@/pages/auth/ResetPassword";
 import NotFound from "@/pages/NotFound";
@@ -108,14 +107,6 @@ export const router = createBrowserRouter([
   {
     path: "/quantum-computing",
     element: <QuantumComputing />,
-  },
-  {
-    path: "/auth/login",
-    element: <LoginAuth />,
-  },
-  {
-    path: "/auth/register",
-    element: <RegisterAuth />,
   },
   {
     path: "/auth/forgot-password",

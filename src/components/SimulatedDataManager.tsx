@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { CustomButton } from '@/components/ui/custom-button';
 import { useToast } from '@/hooks/use-toast';
 import { simulatedDataService } from '@/services/simulatedDataService';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Database, Users, Activity, DNA, Image, FileText, Loader2 } from 'lucide-react';
+import { Database, Users, Activity, Dna, Image, FileText, Loader2 } from 'lucide-react';
 
 const SimulatedDataManager = () => {
   const [isSeeding, setIsSeeding] = useState(false);
@@ -57,7 +56,7 @@ const SimulatedDataManager = () => {
       description: "Heart rate, blood pressure, steps, sleep patterns (30 days)"
     },
     {
-      icon: <DNA className="h-5 w-5" />,
+      icon: <Dna className="h-5 w-5" />,
       title: "Genomic Data",
       description: "DNA sequences, variants, and biomarker analysis"
     },
