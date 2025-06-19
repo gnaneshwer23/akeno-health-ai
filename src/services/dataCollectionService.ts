@@ -239,6 +239,40 @@ const getWearableData = async (patientId: string): Promise<any[] | null> => {
   }
 };
 
+// Mock functions for genomic and medical image data since tables don't exist
+const getGenomicData = async (patientId: string): Promise<any[] | null> => {
+  console.log('Mock genomic data for patient:', patientId);
+  // Return mock data since genomic_data table doesn't exist
+  return [
+    {
+      id: '1',
+      patient_id: patientId,
+      sample_id: 'SAMPLE_001',
+      collection_date: new Date().toISOString(),
+      sequence_type: 'dna',
+      sequence_data: 'ATCGATCGATCGATCG...',
+      analysis_results: { variants: 5, quality_score: 0.95 },
+      biomarkers: { APOE: 'e3/e4', BRCA1: 'wildtype' }
+    }
+  ];
+};
+
+const getMedicalImageData = async (patientId: string): Promise<any[] | null> => {
+  console.log('Mock medical image data for patient:', patientId);
+  // Return mock data since medical_images table doesn't exist
+  return [
+    {
+      id: '1',
+      patient_id: patientId,
+      image_type: 'xray',
+      image_date: new Date().toISOString(),
+      image_url: 'https://via.placeholder.com/400x300?text=X-Ray+Sample',
+      body_part: 'chest',
+      radiologist_notes: 'Normal chest X-ray'
+    }
+  ];
+};
+
 // Export as a service object that components can import and use
 export const dataCollectionService = {
   submitPatientProfile,
@@ -246,5 +280,7 @@ export const dataCollectionService = {
   submitBiomarkerData,
   getBiomarkerData,
   submitWearableData,
-  getWearableData
+  getWearableData,
+  getGenomicData,
+  getMedicalImageData
 };

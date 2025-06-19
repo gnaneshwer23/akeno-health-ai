@@ -9,7 +9,7 @@ import { databaseStatsService, DatabaseStats } from './database/databaseStatsSer
  * Combined database service to maintain backward compatibility
  */
 export const databaseService = {
-  // Research findings operations
+  // Research findings operations (using mock data)
   getResearchFindings: researchService.getResearchFindings,
   addResearchFinding: researchService.addResearchFinding,
 
@@ -22,7 +22,7 @@ export const databaseService = {
   // Database statistics
   getDatabaseStats: databaseStatsService.getDatabaseStats,
   
-  // Backup logs
+  // Backup logs (using mock data)
   getBackupLogs: backupService.getBackupLogs
 };
 
