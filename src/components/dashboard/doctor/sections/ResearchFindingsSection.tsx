@@ -32,49 +32,48 @@ const ResearchFindingsSection = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    fetchResearchFindings();
-    
-    // Listen for real-time updates
-    const channel = supabase
-      .channel('research_changes')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'research_findings'
-        },
-        () => {
-          fetchResearchFindings();
-        }
-      )
-      .subscribe();
-    
-    return () => {
-      supabase.removeChannel(channel);
-    };
+    // Since research_findings table doesn't exist, we'll show mock data for now
+    fetchMockResearchFindings();
   }, []);
 
-  const fetchResearchFindings = async () => {
+  const fetchMockResearchFindings = async () => {
     try {
       setIsLoading(true);
       
-      let query = supabase
-        .from('research_findings')
-        .select('*')
-        .order('date_published', { ascending: false });
-      
+      // Mock research findings data since the table doesn't exist yet
+      const mockFindings: ResearchFinding[] = [
+        {
+          id: '1',
+          title: 'AI-Powered Diagnostic Accuracy in Cardiology',
+          finding_type: 'clinical_trial',
+          summary: 'Recent study shows 94% accuracy in AI-assisted cardiac diagnosis, improving early detection of heart conditions.',
+          date_published: new Date().toISOString(),
+          reference_url: '#',
+          relevance_score: 95,
+          specialization: 'Cardiology'
+        },
+        {
+          id: '2',
+          title: 'Machine Learning in Diabetes Management',
+          finding_type: 'systematic_review',
+          summary: 'Comprehensive review of ML applications in diabetes care shows significant improvements in patient outcomes.',
+          date_published: new Date(Date.now() - 86400000).toISOString(),
+          reference_url: '#',
+          relevance_score: 88,
+          specialization: 'Endocrinology'
+        }
+      ];
+
       if (searchTerm) {
-        query = query.or(`title.ilike.%${searchTerm}%,summary.ilike.%${searchTerm}%,specialization.ilike.%${searchTerm}%`);
+        const filtered = mockFindings.filter(finding => 
+          finding.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          finding.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          finding.specialization?.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFindings(filtered);
+      } else {
+        setFindings(mockFindings);
       }
-      
-      const { data, error } = await query.limit(10);
-      
-      if (error) {
-        throw error;
-      }
-      
-      setFindings(data || []);
     } catch (error) {
       console.error('Error fetching research findings:', error);
       toast({
@@ -97,7 +96,7 @@ const ResearchFindingsSection = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    fetchResearchFindings();
+    fetchMockResearchFindings();
   };
 
   return (
