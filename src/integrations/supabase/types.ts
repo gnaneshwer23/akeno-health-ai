@@ -14,7 +14,166 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      biomarkers: {
+        Row: {
+          biomarker_name: string
+          created_at: string
+          id: string
+          lab_source: string | null
+          measured_at: string
+          patient_id: string | null
+          reference_range_max: number | null
+          reference_range_min: number | null
+          unit: string
+          value: number
+        }
+        Insert: {
+          biomarker_name: string
+          created_at?: string
+          id?: string
+          lab_source?: string | null
+          measured_at: string
+          patient_id?: string | null
+          reference_range_max?: number | null
+          reference_range_min?: number | null
+          unit: string
+          value: number
+        }
+        Update: {
+          biomarker_name?: string
+          created_at?: string
+          id?: string
+          lab_source?: string | null
+          measured_at?: string
+          patient_id?: string | null
+          reference_range_max?: number | null
+          reference_range_min?: number | null
+          unit?: string
+          value?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "biomarkers_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      patients: {
+        Row: {
+          created_at: string
+          date_of_birth: string | null
+          email: string
+          first_name: string
+          gender: string | null
+          height_cm: number | null
+          id: string
+          last_name: string
+          timezone: string | null
+          updated_at: string
+          user_id: string | null
+          weight_kg: number | null
+        }
+        Insert: {
+          created_at?: string
+          date_of_birth?: string | null
+          email: string
+          first_name: string
+          gender?: string | null
+          height_cm?: number | null
+          id?: string
+          last_name: string
+          timezone?: string | null
+          updated_at?: string
+          user_id?: string | null
+          weight_kg?: number | null
+        }
+        Update: {
+          created_at?: string
+          date_of_birth?: string | null
+          email?: string
+          first_name?: string
+          gender?: string | null
+          height_cm?: number | null
+          id?: string
+          last_name?: string
+          timezone?: string | null
+          updated_at?: string
+          user_id?: string | null
+          weight_kg?: number | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          id: string
+          name: string | null
+          profile_image: string | null
+          role: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id: string
+          name?: string | null
+          profile_image?: string | null
+          role?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string | null
+          profile_image?: string | null
+          role?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      wearable_data: {
+        Row: {
+          created_at: string
+          data_type: string
+          device_type: string
+          id: string
+          patient_id: string | null
+          processed_metrics: Json | null
+          raw_data: Json
+          sync_timestamp: string
+        }
+        Insert: {
+          created_at?: string
+          data_type: string
+          device_type: string
+          id?: string
+          patient_id?: string | null
+          processed_metrics?: Json | null
+          raw_data: Json
+          sync_timestamp: string
+        }
+        Update: {
+          created_at?: string
+          data_type?: string
+          device_type?: string
+          id?: string
+          patient_id?: string | null
+          processed_metrics?: Json | null
+          raw_data?: Json
+          sync_timestamp?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "wearable_data_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
